@@ -18,9 +18,9 @@ codeql database run-queries ./FlaskApp-database ./Flask_Queries
 codeql bqrs info <file>
 codeql bqrs info ./example_query_output.bqrs
 
-(First one is preferred)
+(First one is preferred, the two commands differ in the output formats they support)
 codeql bqrs decode [--output=<file>] [--result-set=<name>] [--sort-key=<col>[,<col>...]] <file>
 codeql bqrs decode --output=example_query_results.txt --format=text ./example_query_output.bqrs
-or
+or (though it is better to use database analyze that does everything automatically)
 codeql bqrs interpret --format=<format> --output=<output> -t=<String=String> <bqrs-file>
 codeql bqrs interpret --format=csv --output=example_query_results.csv -t=kind=if -t=id=1 ./example_query_output.bqrs
