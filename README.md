@@ -14,7 +14,7 @@ codeql database analyze \<database\> --format=\<format\> --output=\<output\><br>
 codeql database analyze ./FlaskApp-database --format=sarif-latest --output=flaskapp-analysis.sarif
 
 (First one is preferred)<br>
-codeql query run (--database=\<database\> | --dataset=\<dataset\>) [--output=<file.bqrs>] \<file.ql\><br>
+codeql query run (--database=\<database\> | --dataset=\<dataset\>) \[--output=\<file.bqrs\>\] \<file.ql\><br>
 codeql query run --database=FlaskApp-database --output=example_query_output.bqrs ./example_query.ql
 or
 codeql database analyze ./FlaskApp-database ./example_query.ql --format=csv --output=results.csv<br>
