@@ -27,7 +27,7 @@ codeql bqrs info \<file\><br>
 codeql bqrs info ./example_query_output.bqrs
 
 (First one is preferred, the two commands differ in the output formats they support)<br>
-codeql bqrs decode [--output=<file>] [--result-set=<name>] \[--sort-key=\<col\>[,<col>...]] \<file\><br>
+codeql bqrs decode \[--output=\<file\>\] \[--result-set=\<name\>\] \[--sort-key=\<col\>\[,\<col\>...\]\] \<file\><br>
 codeql bqrs decode --output=example_query_results.txt --format=text ./example_query_output.bqrs<br>
 or (though it is better to use database analyze that does everything automatically)<br>
 codeql bqrs interpret --format=\<format\> --output=\<output\> -t=\<String=String\> \<bqrs-file\><br>
