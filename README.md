@@ -2,7 +2,7 @@
 
 ## Launch FLask App
 
-flask --app hello run
+flask --app app run
 
 ## CodeQL Commands
 
