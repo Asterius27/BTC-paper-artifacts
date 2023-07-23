@@ -10,6 +10,9 @@ codeql query run (--database=<database> | --dataset=<dataset>) [--output=<file.b
 codeql query run --database=FlaskApp-database --output=example_query_output.bqrs ./example_query.ql
 or
 codeql database analyze ./FlaskApp-database ./example_query.ql --format=csv --output=results.csv
+or you can run all of the ql files contained in a directory (the bqrs output files are saved in the results folder inside the database folder)
+codeql database run-queries <database> <query|dir|suite|pack>
+codeql database run-queries ./FlaskApp-database ./Flask_Queries
 
 (This is not needed, it just shows metadata info of the bqrs file)
 codeql bqrs info <file>
