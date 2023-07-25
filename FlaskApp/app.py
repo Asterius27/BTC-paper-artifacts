@@ -7,6 +7,10 @@ app.secret_key = "your_secret_key"
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+# Javascript access to cookies (insecure)
+app.config["REMEMBER_COOKIE_HTTPONLY"] = False
+app.config["SESSION_COOKIE_HTTPONLY"] = False
+
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):
         self.id = id
@@ -52,9 +56,9 @@ def index():
 def login(id, password):
     user = User.get(id)
     if user and user.password == password:
-        login_user(user)
+        login_user(user, remember=True)
 
-        # open redirect vulnerability
+        # Open redirect vulnerability
         next = request.args.get('next')
         if next:
             return redirect(next)
