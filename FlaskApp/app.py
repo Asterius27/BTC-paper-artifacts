@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, request
 from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user
 from typing import Dict, Optional
 
@@ -35,8 +35,11 @@ def load_user(user_id: str) -> Optional[User]:
 
 @app.route("/")
 def index():
+
+    # example query
     if True:
         pass
+
     username = "anonymous"
     if current_user.is_authenticated:
         username = current_user.username
@@ -50,6 +53,12 @@ def login(id, password):
     user = User.get(id)
     if user and user.password == password:
         login_user(user)
+
+        # open redirect vulnerability
+        next = request.args.get('next')
+        if next:
+            return redirect(next)
+        
         return redirect(url_for("index"))
     return "<h1>Invalid user id or password</h1>"
 

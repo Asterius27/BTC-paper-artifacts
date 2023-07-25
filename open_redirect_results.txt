@@ -1,0 +1,27 @@
+Result set: edges
+|                a                 |                b                |
++----------------------------------+---------------------------------+
+| ControlFlowNode for ImportMember | GSSA Variable request           |
+| GSSA Variable request            | ControlFlowNode for request     |
+| ControlFlowNode for request      | ControlFlowNode for Attribute   |
+| ControlFlowNode for Attribute    | ControlFlowNode for Attribute() |
+| ControlFlowNode for Attribute()  | ControlFlowNode for next        |
+
+Result set: nodes
+|                n                 |     key      |               val                |
++----------------------------------+--------------+----------------------------------+
+| ControlFlowNode for ImportMember | semmle.label | ControlFlowNode for ImportMember |
+| GSSA Variable request            | semmle.label | GSSA Variable request            |
+| ControlFlowNode for request      | semmle.label | ControlFlowNode for request      |
+| ControlFlowNode for Attribute    | semmle.label | ControlFlowNode for Attribute    |
+| ControlFlowNode for Attribute()  | semmle.label | ControlFlowNode for Attribute()  |
+| ControlFlowNode for next         | semmle.label | ControlFlowNode for next         |
+
+Result set: subpaths
+| arg | par | ret | out |
++-----+-----+-----+-----+
+
+Result set: #select
+|           col0           |              source              |           sink           |                          col3                          |               col4               |        col5         |  login_call  |                                          col7                                          |
++--------------------------+----------------------------------+--------------------------+--------------------------------------------------------+----------------------------------+---------------------+--------------+----------------------------------------------------------------------------------------+
+| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | login_user() | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:55 |
