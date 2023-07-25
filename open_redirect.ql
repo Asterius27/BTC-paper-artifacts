@@ -5,6 +5,9 @@ import DataFlow::PathGraph
 // TODO doesn't work if there is a function call in the guard (the if before the redirect), 
 // only works if the variable is explicitly checked inside the if (with a == or others)
 // source: https://github.com/github/codeql/blob/main/python/ql/src/Security/CWE-601/UrlRedirect.ql
+
+// TODO DataFlow is interprocedural, don't know if basicBlock.reaches also is interprocedural
+// TODO sink might be before the login_user call
 from Configuration config, DataFlow::PathNode source, DataFlow::PathNode sink, Call login_call, Name name
 where config.hasFlowPath(source, sink)
   and name.getId() = "login_user" 
