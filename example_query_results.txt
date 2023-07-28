@@ -1,3 +1,26 @@
-| ifstmt |                col1                 |                                          col2                                           |
-+--------+-------------------------------------+-----------------------------------------------------------------------------------------+
-| If     | This 'if' statement is redundant... | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/hello.py:7 |
+| ifstmt |                col1                 |                                               col2                                                |
++--------+-------------------------------------+---------------------------------------------------------------------------------------------------+
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/_compression.py:122                     |
+| If     | This 'if' statement is redundant... | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:44                      |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/lib2to3/btm_utils.py:217                |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/copyreg.py:121                          |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/distutils/dep_util.py:79                |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/enum.py:134                             |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/fractions.py:142                        |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/functools.py:585                        |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/inspect.py:963                          |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/multiprocessing/resource_tracker.py:202 |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/sre_compile.py:254                      |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/subprocess.py:1072                      |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/subprocess.py:1085                      |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/subprocess.py:1348                      |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/subprocess.py:1576                      |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/subprocess.py:1588                      |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/subprocess.py:1600                      |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/tempfile.py:807                         |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/distutils/text_file.py:190              |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/textwrap.py:438                         |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/warnings.py:378                         |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/asyncio/windows_events.py:838           |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/asyncio/windows_events.py:841           |
+| If     | This 'if' statement is redundant... | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/zipfile.py:663                          |
