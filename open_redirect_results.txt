@@ -1,42 +1,9 @@
 Result set: edges
-|                  a                  |                  b                  |
-+-------------------------------------+-------------------------------------+
-| ControlFlowNode for ImportMember    | GSSA Variable request               |
-| GSSA Variable request               | ControlFlowNode for request         |
-| ControlFlowNode for request         | ControlFlowNode for Attribute       |
-| ControlFlowNode for Attribute       | ControlFlowNode for Attribute()     |
-| ControlFlowNode for Attribute()     | ControlFlowNode for url             |
-| ControlFlowNode for Attribute()     | ControlFlowNode for open_redirect() |
-| ControlFlowNode for url             | ControlFlowNode for url             |
-| ControlFlowNode for open_redirect() | ControlFlowNode for next            |
-
-Result set: nodes
-|                  n                  |     key      |                 val                 |
-+-------------------------------------+--------------+-------------------------------------+
-| ControlFlowNode for ImportMember    | semmle.label | ControlFlowNode for ImportMember    |
-| GSSA Variable request               | semmle.label | GSSA Variable request               |
-| ControlFlowNode for request         | semmle.label | ControlFlowNode for request         |
-| ControlFlowNode for Attribute       | semmle.label | ControlFlowNode for Attribute       |
-| ControlFlowNode for Attribute()     | semmle.label | ControlFlowNode for Attribute()     |
-| ControlFlowNode for url             | semmle.label | ControlFlowNode for url             |
-| ControlFlowNode for url             | semmle.label | ControlFlowNode for url             |
-| ControlFlowNode for open_redirect() | semmle.label | ControlFlowNode for open_redirect() |
-| ControlFlowNode for next            | semmle.label | ControlFlowNode for next            |
-
-Result set: subpaths
-|               arg               |           par           |           ret           |                 out                 |
-+---------------------------------+-------------------------+-------------------------+-------------------------------------+
-| ControlFlowNode for Attribute() | ControlFlowNode for url | ControlFlowNode for url | ControlFlowNode for open_redirect() |
+|               a                |            b             |
++--------------------------------+--------------------------+
+| ControlFlowNode for login_user | ControlFlowNode for user |
 
 Result set: #select
-|           col0           |              source              |           sink           |                          col3                          |               col4               |        col5         |             login_call              |                                          col7                                          |                                          col8                                          | col9 |                                         col10                                         |    col11     |
-+--------------------------+----------------------------------+--------------------------+--------------------------------------------------------+----------------------------------+---------------------+-------------------------------------+----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+------+---------------------------------------------------------------------------------------+--------------+
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | ControlFlowNode for ImportMember    | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1  | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | GSSA Variable request               | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1  | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | ControlFlowNode for request         | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:59 | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | ControlFlowNode for Attribute       | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:59 | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | ControlFlowNode for Attribute()     | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:59 | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | ControlFlowNode for url             | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:76 | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | ControlFlowNode for url             | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:78 | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | ControlFlowNode for open_redirect() | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:59 | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
-| ControlFlowNode for next | ControlFlowNode for ImportMember | ControlFlowNode for next | Untrusted URL redirection after login depends on a $@. | ControlFlowNode for ImportMember | user-provided value | ControlFlowNode for next            | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:65 | next | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:1 | ImportMember |
+|             source             |                                     col1                                     |
++--------------------------------+------------------------------------------------------------------------------+
+| ControlFlowNode for login_user | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:77 |
