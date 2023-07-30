@@ -56,7 +56,8 @@ def index():
 def login(id, password):
     user = User.get(id)
     if user and user.password == password:
-        next = open_redirect(request.args.get('next'), user)
+        
+        next = open_redirect(request.args.get('next'))
         
 
         # Open redirect vulnerability
@@ -73,6 +74,18 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-def open_redirect(url, user):
-    login_user(user, remember=True)
+def open_redirect(url):
     return url
+
+def open_redirect_new(user):
+    y = 6
+    open_redirect_new_new(user)
+    x = 7
+
+def open_redirect_new_new(user):
+    if True:
+        pass
+    else:
+        x = 5
+    z = 9
+    login_user(user, remember=True)

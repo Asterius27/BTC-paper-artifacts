@@ -1,8 +1,9 @@
 import python
-// import semmle.python.security.dataflow.UrlRedirectQuery
+import semmle.python.security.dataflow.UrlRedirectQuery
 import semmle.python.ApiGraphs
-// import semmle.python.dataflow.new.DataFlow
-// import DataFlow::PathGraph
+import semmle.python.dataflow.new.DataFlow2
+// import semmle.python.dataflow.new.internal.DataFlowDispatch
+// import DataFlow::PathGraph (used to print the edges)
 
 // TODO doesn't work if there is a function call in the guard (the if before the redirect), 
 // only works if the variable is explicitly checked inside the if (with a == or others)
@@ -11,17 +12,13 @@ import semmle.python.ApiGraphs
 // TODO finish interprocedural flow analysis (between next variable and login_user)
 // TODO sink might be before the login_user call
 
-/*
-class LoginDataFlowConfiguration extends DataFlow::Configuration {
+class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   LoginDataFlowConfiguration() { this = "LoginDataFlowConfiguration" }
 
-  override predicate isSource(DataFlow::Node source) {
-    1 = 1
-    */
-    /*
+  override predicate isSource(DataFlow2::Node source) {
     source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
     and source.asExpr().toString() = "login_user"
-    */
+    // 1 = 1
     // source.asExpr().toString() = "next"
     /*exists(Call login_call, Name name | 
       name.getId() = "login_user" 
@@ -35,12 +32,11 @@ class LoginDataFlowConfiguration extends DataFlow::Configuration {
       and node.asExpr().toString() = "login_user"
       and source = node)
     */
-  // }
+  }
 
-  /*
-  override predicate isSink(DataFlow::Node sink) {
-    sink.asExpr().toString() = "next"
-    */
+  override predicate isSink(DataFlow2::Node sink) {
+    1 = 1
+    // sink.asExpr().toString() = "next"
     /*
     sink = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
     and sink.asExpr().toString() = "login_user"
@@ -56,9 +52,16 @@ class LoginDataFlowConfiguration extends DataFlow::Configuration {
     /*exists(Name name |
       name.getId() = "next"
       and sink.asExpr() = name)*/
-  // }
-// }
+  }
 
+  // TODO filter this in some way (maybe start by checking how the function getparent works)
+  override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
+    fromNode.asCfgNode().getASuccessor() = toNode.asCfgNode()
+    or exists(Function f | 
+      f = fromNode.getScope()
+      and f.getParent() = toNode.asExpr())
+  }
+}
 
 /* This selects the login_user call
 from DataFlow::Node node
@@ -73,11 +76,13 @@ where config.hasFlowPath(source, sink)
 select source, sink, source.getNode().getLocation(), sink.getNode().getLocation(), source.getNode(), sink.getNode()
 */
 
+/*
 query predicate edges(DataFlow::Node a, DataFlow::Node b) {
   a.asCfgNode().getASuccessor() = b.asCfgNode()
   and a = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
   and a.asExpr().toString() = "login_user"
 }
+*/
 
 /*
 predicate getLoginGraph(DataFlow::PathNode source, DataFlow::PathNode sink) {
@@ -90,14 +95,21 @@ predicate getLoginGraph(DataFlow::PathNode source, DataFlow::PathNode sink) {
   */
 // }
 
-from DataFlow::Node source
+from LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
+where lconfig.hasFlowPath(login, redirect)
+select login, redirect, login.getNode().getLocation(), redirect.getNode().getLocation()
+
+/*
+from Configuration config, DataFlow::PathNode source, DataFlow::PathNode sink, LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
 where 
-  // config.hasFlowPath(source, sink)
-  // lconfig.hasFlowPath(source, sink)
+  config.hasFlowPath(source, sink)
+  and sink.getNode() = redirect.getNode()
+  and lconfig.hasFlowPath(login, redirect)
   // getLoginGraph(source, sink)
-  source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
-  and source.asExpr().toString() = "login_user"
-select source, source.getLocation()
+  // source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
+  // and source.asExpr().toString() = "login_user"
+select source, sink, login, redirect, source.getNode().getLocation(), sink.getNode().getLocation(), login.getNode().getLocation(), redirect.getNode().getLocation()
+*/
 
 /*
 from Configuration config, LoginDataFlowConfiguration lconfig, DataFlow::PathNode source, DataFlow::PathNode sink, 
