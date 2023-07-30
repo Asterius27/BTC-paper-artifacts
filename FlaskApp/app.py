@@ -56,7 +56,7 @@ def index():
 def login(id, password):
     user = User.get(id)
     if user and user.password == password:
-        
+        open_redirect_new(user)
         next = open_redirect(request.args.get('next'))
         
 

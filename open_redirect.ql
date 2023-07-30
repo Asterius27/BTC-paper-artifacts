@@ -9,9 +9,6 @@ import semmle.python.dataflow.new.DataFlow2
 // only works if the variable is explicitly checked inside the if (with a == or others)
 // source: https://github.com/github/codeql/blob/main/python/ql/src/Security/CWE-601/UrlRedirect.ql
 
-// TODO finish interprocedural flow analysis (between next variable and login_user)
-// TODO sink might be before the login_user call
-
 class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   LoginDataFlowConfiguration() { this = "LoginDataFlowConfiguration" }
 
@@ -35,7 +32,8 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   }
 
   override predicate isSink(DataFlow2::Node sink) {
-    1 = 1
+    // 1 = 1
+    sink instanceof Sink
     // sink.asExpr().toString() = "next"
     /*
     sink = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
@@ -47,19 +45,20 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
       and login_call.getFunc() = name
       and sink.asExpr() = login_call)
     */
-    // sink instanceof Sink
     // sink instanceof DataFlow::Node
     /*exists(Name name |
       name.getId() = "next"
       and sink.asExpr() = name)*/
   }
 
-  // TODO filter this in some way (maybe start by checking how the function getparent works)
+  // TODO works, but it's slow and can give out of memory errors
   override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
     fromNode.asCfgNode().getASuccessor() = toNode.asCfgNode()
-    or exists(Function f | 
+    or exists(Function f, Call c | 
       f = fromNode.getScope()
-      and f.getParent() = toNode.asExpr())
+      and c.getFunc().toString() = f.getName()
+      and c.getAFlowNode() = toNode.asCfgNode())
+      // and f.getParent() = toNode.asExpr())
   }
 }
 
@@ -95,11 +94,21 @@ predicate getLoginGraph(DataFlow::PathNode source, DataFlow::PathNode sink) {
   */
 // }
 
+/*
+from Function f, DataFlow2::Node source, Call c
+where source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
+  and source.asExpr().toString() = "login_user"
+  and f = source.getScope()
+  and c.getFunc().toString() = f.getName()
+select f, f.getLocation(), c, c.getLocation()
+*/
+
+/*
 from LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
 where lconfig.hasFlowPath(login, redirect)
 select login, redirect, login.getNode().getLocation(), redirect.getNode().getLocation()
+*/
 
-/*
 from Configuration config, DataFlow::PathNode source, DataFlow::PathNode sink, LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
 where 
   config.hasFlowPath(source, sink)
@@ -109,7 +118,6 @@ where
   // source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
   // and source.asExpr().toString() = "login_user"
 select source, sink, login, redirect, source.getNode().getLocation(), sink.getNode().getLocation(), login.getNode().getLocation(), redirect.getNode().getLocation()
-*/
 
 /*
 from Configuration config, LoginDataFlowConfiguration lconfig, DataFlow::PathNode source, DataFlow::PathNode sink, 
