@@ -53,6 +53,8 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   }
 
   // TODO works, but it's slow (faster if given more threads) and uses a lot of memory
+  // Note: if there is more than one login_user call and at least one of them reaches the open redirect sink, then all of the login_user calls will be displayed in the results of the query (even the ones that do not reach the sink)
+  // TODO if a sink is reachable, it returns all possible sinks that are in the program instead of only the reachable sink
   override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
     fromNode.asCfgNode().getASuccessor() = toNode.asCfgNode()
     or exists(Function f, Call c | 
@@ -117,12 +119,11 @@ select f, f.getLocation(), f.getADecorator().getLocation()
 
 // select Flask::FlaskApp::instance().getAValueReachableFromSource().asExpr(), Flask::FlaskApp::instance().getAValueReachableFromSource().asExpr().getLocation(), Flask::FlaskApp::instance().getAValueReachableFromSource().getLocation()
 
-/*
 from LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
 where lconfig.hasFlowPath(login, redirect)
 select login, redirect, login.getNode().getLocation(), redirect.getNode().getLocation()
-*/
 
+/*
 from Configuration config, DataFlow::PathNode source, DataFlow::PathNode sink, LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
 where 
   config.hasFlowPath(source, sink)
@@ -132,6 +133,7 @@ where
   // source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
   // and source.asExpr().toString() = "login_user"
 select source, sink, login, redirect, source.getNode().getLocation(), sink.getNode().getLocation(), login.getNode().getLocation(), redirect.getNode().getLocation()
+*/
 
 /*
 from Configuration config, LoginDataFlowConfiguration lconfig, DataFlow::PathNode source, DataFlow::PathNode sink, 
