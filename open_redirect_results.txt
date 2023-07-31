@@ -1,7 +1,2 @@
-|             login              |             redirect             |                                     col2                                     |                                                   col3                                                   |
-+--------------------------------+----------------------------------+------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-| ControlFlowNode for login_user | ControlFlowNode for next         | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:91 | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:66                             |
-| ControlFlowNode for login_user | ControlFlowNode for url_for()    | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:91 | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:68                             |
-| ControlFlowNode for login_user | ControlFlowNode for url_for()    | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:91 | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:75                             |
-| ControlFlowNode for login_user | ControlFlowNode for redirect_url | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:91 | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/site-packages/flask_login/login_manager.py:198 |
-| ControlFlowNode for login_user | ControlFlowNode for redirect_url | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:91 | C:/Users/luigi/AppData/Local/Programs/Python/Python39/Lib/site-packages/flask_login/login_manager.py:310 |
+| source | sink | login | redirect | col4 | col5 | col6 | col7 |
++--------+------+-------+----------+------+------+------+------+

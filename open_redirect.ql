@@ -2,6 +2,7 @@ import python
 import semmle.python.security.dataflow.UrlRedirectQuery
 import semmle.python.ApiGraphs
 import semmle.python.dataflow.new.DataFlow2
+import semmle.python.frameworks.Flask
 // import semmle.python.dataflow.new.internal.DataFlowDispatch
 // import DataFlow::PathGraph (used to print the edges)
 
@@ -51,14 +52,16 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
       and sink.asExpr() = name)*/
   }
 
-  // TODO works, but it's slow and can give out of memory errors
+  // TODO works, but it's slow (faster if given more threads) and uses a lot of memory
   override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
     fromNode.asCfgNode().getASuccessor() = toNode.asCfgNode()
     or exists(Function f, Call c | 
       f = fromNode.getScope()
       and c.getFunc().toString() = f.getName()
-      and c.getAFlowNode() = toNode.asCfgNode())
-      // and f.getParent() = toNode.asExpr())
+      and c.getAFlowNode() = toNode.asCfgNode()
+      and not exists(string str | 
+        str = Flask::FlaskApp::instance().getAValueReachableFromSource().getLocation().toString()
+        and str = f.getADecorator().getLocation().toString()))
   }
 }
 
@@ -104,6 +107,17 @@ select f, f.getLocation(), c, c.getLocation()
 */
 
 /*
+from Function f
+where f.getName().matches("login")
+  and exists(string str | 
+    str = Flask::FlaskApp::instance().getAValueReachableFromSource().getLocation().toString()
+    and str = f.getADecorator().getLocation().toString())
+select f, f.getLocation(), f.getADecorator().getLocation()
+*/
+
+// select Flask::FlaskApp::instance().getAValueReachableFromSource().asExpr(), Flask::FlaskApp::instance().getAValueReachableFromSource().asExpr().getLocation(), Flask::FlaskApp::instance().getAValueReachableFromSource().getLocation()
+
+/*
 from LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
 where lconfig.hasFlowPath(login, redirect)
 select login, redirect, login.getNode().getLocation(), redirect.getNode().getLocation()
@@ -130,7 +144,9 @@ select sink.getNode(), source, sink, "Untrusted URL redirection after login depe
   login_call, login_call.getNode().getLocation(), sink.getNode().getLocation(), sink.getNode().asExpr(), source.getNode().getLocation(), source.getNode().asExpr()
 */
 
-/* Not interprocedural
+/* TODO Not interprocedural, but works and has no performance issues (should change some things: 
+  use API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource() to find the correct function and
+  source is always login_user and sink is always the open redirect sink)
 from Configuration config, DataFlow::PathNode source, DataFlow::PathNode sink, Call login_call, Name name
 where config.hasFlowPath(source, sink)
   and name.getId() = "login_user" 

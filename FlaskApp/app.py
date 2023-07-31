@@ -58,7 +58,6 @@ def login(id, password):
     if user and user.password == password:
         open_redirect_new(user)
         next = open_redirect(request.args.get('next'))
-        
 
         # Open redirect vulnerability
         # next = request.args.get('next')
