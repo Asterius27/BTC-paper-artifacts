@@ -56,13 +56,13 @@ def index():
 def login(id, password):
     user = User.get(id)
     if user and user.password == password:
-        # open_redirect_new(user)
-        # next = open_redirect(request.args.get('next'))
+        open_redirect_new(user)
+        next = open_redirect(request.args.get('next'))
 
         # Open redirect vulnerability
-        # next = request.args.get('next')
-        # if next:
-        #    return redirect(next)
+        next = request.args.get('next')
+        if next:
+            return redirect(next)
         
         return redirect(url_for("index"))
     return "<h1>Invalid user id or password</h1>"
@@ -71,7 +71,7 @@ def login(id, password):
 @login_required
 def logout():
     logout_user()
-    return redirect(request.args.get('link')) # url_for("index")
+    return redirect(url_for("index"))
 
 def open_redirect(url):
     return url
@@ -80,7 +80,6 @@ def open_redirect_new(user):
     y = 6
     open_redirect_new_new(user)
     x = 7
-    return redirect(url_for("index"))
 
 def open_redirect_new_new(user):
     if True:

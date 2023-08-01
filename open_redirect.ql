@@ -2,9 +2,9 @@ import python
 import semmle.python.security.dataflow.UrlRedirectQuery
 import semmle.python.ApiGraphs
 import semmle.python.dataflow.new.DataFlow2
-import semmle.python.frameworks.Flask
+// import semmle.python.frameworks.Flask
+// import DataFlow::PathGraph // (used to print the edges)
 // import semmle.python.dataflow.new.internal.DataFlowDispatch
-// import DataFlow::PathGraph (used to print the edges)
 
 // TODO doesn't work if there is a function call in the guard (the if before the redirect), 
 // only works if the variable is explicitly checked inside the if (with a == or others)
@@ -17,6 +17,7 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
     source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
     and source.asExpr().toString() = "login_user"
     // 1 = 1
+    // source instanceof Sink
     // source.asExpr().toString() = "next"
     /*exists(Call login_call, Name name | 
       name.getId() = "login_user" 
@@ -52,18 +53,51 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
       and sink.asExpr() = name)*/
   }
 
+  /*
+  override predicate isBarrierOut(DataFlow2::Node barrier) {
+    barrier instanceof Sink
+  }
+
+  override predicate isBarrierIn(DataFlow2::Node barrier) {
+    barrier = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
+    and barrier.asExpr().toString() = "login_user"
+  }
+  */
+
   // TODO works, but it's slow (faster if given more threads) and uses a lot of memory
-  // Note: if there is more than one login_user call and at least one of them reaches the open redirect sink, then all of the login_user calls will be displayed in the results of the query (even the ones that do not reach the sink)
-  // TODO if a sink is reachable, it returns all possible sinks that are in the program instead of only the reachable sink
+  // TODO when also including the library files (so without the lines: and exists(c.getLocation().getFile().getRelativePath()), and exists(f.getLocation().getFile().getRelativePath()))), the following happens:
+  // if there is more than one login_user call and at least one of them reaches the open redirect sink, then all of the login_user calls will be displayed in the results of the query (even the ones that do not reach the sink)
+  // and if a sink is reachable by a login_user call, then it returns all possible sinks that are in the program instead of only the reachable sink
+  // don't know why but it's as if the library files break the call graph that is constructed by the isAdditionalFlowStep
+  // also it's better to not include the library files for performance reasons
+  // SO ALWAYS CHECK THAT THE PACKAGES/LIBRARIES ARE NOT IN THE SAME DIRECTORY AS THE USER WRITTEN FILES
   override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
     fromNode.asCfgNode().getASuccessor() = toNode.asCfgNode()
+    // or fromNode.asExpr().toString() = toNode.getEnclosingCallable().getQualifiedName()
+    // or fromNode.getEnclosingCallable().getQualifiedName() = toNode.asExpr().toString()
+    /*
+    or exists(Function f, Call c | 
+      c.getAFlowNode() = fromNode.asCfgNode()
+      and f = toNode.getScope()
+      and c.getFunc().toString() = f.getName())
+    */
     or exists(Function f, Call c | 
       f = fromNode.getScope()
       and c.getFunc().toString() = f.getName()
       and c.getAFlowNode() = toNode.asCfgNode()
+      and exists(c.getLocation().getFile().getRelativePath())
+      and exists(f.getLocation().getFile().getRelativePath()))
+    /*
       and not exists(string str | 
         str = Flask::FlaskApp::instance().getAValueReachableFromSource().getLocation().toString()
         and str = f.getADecorator().getLocation().toString()))
+    */
+    /*
+    and not exists(Call a, Call b |
+      a.getAFlowNode() = fromNode.asCfgNode()
+      and b.getAFlowNode() = toNode.asCfgNode()
+      and a.getFunc() = b.getFunc())
+    */
   }
 }
 
@@ -81,10 +115,11 @@ select source, sink, source.getNode().getLocation(), sink.getNode().getLocation(
 */
 
 /*
-query predicate edges(DataFlow::Node a, DataFlow::Node b) {
-  a.asCfgNode().getASuccessor() = b.asCfgNode()
-  and a = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
-  and a.asExpr().toString() = "login_user"
+query predicate edges(DataFlow2::PathNode a, DataFlow2::PathNode b) {
+  exists(Function f, Call c | 
+    f = a.getScope()
+    and c.getFunc().toString() = f.getName()
+    and c.getAFlowNode() = b.asCfgNode())
 }
 */
 
@@ -105,7 +140,7 @@ where source = API::moduleImport("flask_login").getMember("login_user").getAValu
   and source.asExpr().toString() = "login_user"
   and f = source.getScope()
   and c.getFunc().toString() = f.getName()
-select f, f.getLocation(), c, c.getLocation()
+select f, f.getLocation(), c, c.getLocation(), f.getLocation().getFile().getRelativePath(), c.getLocation().getFile().getRelativePath()
 */
 
 /*
@@ -119,11 +154,12 @@ select f, f.getLocation(), f.getADecorator().getLocation()
 
 // select Flask::FlaskApp::instance().getAValueReachableFromSource().asExpr(), Flask::FlaskApp::instance().getAValueReachableFromSource().asExpr().getLocation(), Flask::FlaskApp::instance().getAValueReachableFromSource().getLocation()
 
+/*
 from LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
 where lconfig.hasFlowPath(login, redirect)
 select login, redirect, login.getNode().getLocation(), redirect.getNode().getLocation()
+*/
 
-/*
 from Configuration config, DataFlow::PathNode source, DataFlow::PathNode sink, LoginDataFlowConfiguration lconfig, DataFlow2::PathNode login, DataFlow2::PathNode redirect
 where 
   config.hasFlowPath(source, sink)
@@ -133,7 +169,6 @@ where
   // source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
   // and source.asExpr().toString() = "login_user"
 select source, sink, login, redirect, source.getNode().getLocation(), sink.getNode().getLocation(), login.getNode().getLocation(), redirect.getNode().getLocation()
-*/
 
 /*
 from Configuration config, LoginDataFlowConfiguration lconfig, DataFlow::PathNode source, DataFlow::PathNode sink, 
