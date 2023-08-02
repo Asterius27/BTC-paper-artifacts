@@ -1,11 +1,12 @@
 from flask import Flask, redirect, url_for, request
-from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user
+from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user, fresh_login_required
 from typing import Dict, Optional
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 login_manager = LoginManager()
 login_manager.init_app(app)
+login_manager.session_protection = "basic"
 
 # Javascript access to cookies (insecure)
 app.config["REMEMBER_COOKIE_HTTPONLY"] = False
@@ -72,6 +73,11 @@ def login(id, password):
 def logout():
     logout_user()
     return redirect(url_for("index"))
+
+@app.get("/secureroute")
+@fresh_login_required
+def sec():
+    return "This route requires a fresh login in order to be accessed"
 
 def open_redirect(url):
     return url
