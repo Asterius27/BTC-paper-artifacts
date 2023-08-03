@@ -13,6 +13,7 @@ import semmle.python.dataflow.new.DataFlow2
 class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   LoginDataFlowConfiguration() { this = "LoginDataFlowConfiguration" }
 
+  // TODO haven't tested if this works when using "as" in the import
   override predicate isSource(DataFlow2::Node source) {
     source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
     and source.asExpr().toString() = "login_user"
