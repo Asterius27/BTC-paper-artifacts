@@ -2,8 +2,12 @@ from flask import Flask, redirect, url_for, request
 from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user, fresh_login_required
 from typing import Dict, Optional
 
+def bar():
+    return "secret_key"
+
 app = Flask(__name__)
-app.secret_key = "your_secret_key"
+key = bar()
+app.config["SECRET_KEY"] = key
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.session_protection = "basic"

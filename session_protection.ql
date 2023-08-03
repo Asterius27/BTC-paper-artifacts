@@ -1,8 +1,8 @@
 import python
 import semmle.python.ApiGraphs
 
-// TODO doesn't work if the value ("None") isn't a literal (so for example if it depends on environment variables (or any variable in general) or if it's the result of a function)
-// possible solution: use dataflow analysis
+// TODO use dataflow analysis (note: shoudl already be interprocedural and should already take into account dataflow between variables, need to test it (in secret_key_hardcoded.ql it works))
+// of course it doesn't detect values that are know only at runtime (such as environment variables)
 from DataFlow::Node n
 where n = API::moduleImport("flask_login").getMember("LoginManager").getReturn().getMember("session_protection").getAValueReachingSink()
   and n.asExpr().toString() = "None"
