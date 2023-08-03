@@ -22,9 +22,16 @@ where config.hasFlowPath(source, sink)
 select source, sink, source.getNode().getLocation(), sink.getNode().getLocation(), "The secret key is a hardcoded string"
 */
 
+string output(StrConst key) {
+  // approximately 1 byte per char and recommended length for SHA1 is 24 bytes
+  if key.getS().length() < 24
+  then result = "The secret key is a hardcoded string and it's too short"
+  else result = "The secret key is a hardcoded string"
+}
+
 // Is already interprocedural and takes into account dataflow between variables
 from DataFlow::Node node
 where (node = Flask::FlaskApp::instance().getMember("config").getSubscript("SECRET_KEY").getAValueReachingSink()
   or node = Flask::FlaskApp::instance().getMember("secret_key").getAValueReachingSink())
   and node.asExpr() instanceof StrConst
-select node.getLocation(), "The secret key is a hardcoded string"
+select node.getLocation(), output(node.asExpr())

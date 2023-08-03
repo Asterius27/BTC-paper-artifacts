@@ -7,9 +7,13 @@ def bar():
 
 app = Flask(__name__)
 key = bar()
+
+# Hardcoded and short secret key
 app.config["SECRET_KEY"] = key
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+# Session protection with fresh_login_required (in sec() function) (secure implementation)
 login_manager.session_protection = "basic"
 
 # Javascript access to cookies (insecure)
@@ -64,7 +68,7 @@ def login(id, password):
         open_redirect_new(user)
         next = open_redirect(request.args.get('next'))
 
-        # Open redirect vulnerability
+        # Open redirect vulnerability after login
         next = request.args.get('next')
         if next:
             return redirect(next)
