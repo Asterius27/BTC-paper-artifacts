@@ -69,7 +69,7 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   // TODO when also including the library files (so without the lines: and exists(c.getLocation().getFile().getRelativePath()), and exists(f.getLocation().getFile().getRelativePath()))), the following happens:
   // if there is more than one login_user call and at least one of them reaches the open redirect sink, then all of the login_user calls will be displayed in the results of the query (even the ones that do not reach the sink)
   // and if a sink is reachable by a login_user call, then it returns all possible sinks that are in the program instead of only the reachable sink
-  // don't know why but it's as if the library files break the call graph that is constructed by the isAdditionalFlowStep
+  // don't know why but it's as if the library files break the call graph that is constructed by the isAdditionalFlowStep (might be because getAValueReachableFromSource() in isSource() is already interprocedural)
   // also it's better to not include the library files for performance reasons
   // SO ALWAYS CHECK THAT THE PACKAGES/LIBRARIES ARE NOT IN THE SAME DIRECTORY AS THE USER WRITTEN FILES
   override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
