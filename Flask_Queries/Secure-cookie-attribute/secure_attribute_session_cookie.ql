@@ -1,0 +1,12 @@
+import python
+import semmle.python.ApiGraphs
+import semmle.python.frameworks.Flask
+
+// TODO might want to check if session cookies are disabled as part of the query
+// TODO intraprocedural version of the query
+// dataflow analysis works also with "pointers" (references) and it's interprocedural (it takes into account dataflow between variables and functions)
+// of course it doesn't detect values that are know only at runtime (such as environment variables)
+where not exists(DataFlow::Node node |
+    node = Flask::FlaskApp::instance().getMember("config").getSubscript("SESSION_COOKIE_SECURE").getAValueReachingSink()
+    and node.asExpr().(ImmutableLiteral).booleanValue() = true)
+select "Session cookie is also sent over HTTP (Secure attribute not set or set to false)"

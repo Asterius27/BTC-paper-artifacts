@@ -1,6 +1,8 @@
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request, session
 from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user, fresh_login_required
 from typing import Dict, Optional
+from datetime import timedelta
+import datetime as dt
 
 def bar():
     return "secret_key"
@@ -10,6 +12,8 @@ key = bar()
 
 # Hardcoded and short secret key
 app.config["SECRET_KEY"] = key
+# or app.secret_key = "ciao"
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -21,6 +25,24 @@ z = app.config
 z["SESSION_COOKIE_HTTPONLY"] = False
 app.config["REMEMBER_COOKIE_HTTPONLY"] = False
 # app.config["SESSION_COOKIE_HTTPONLY"] = False
+
+# Cookies not accessible via HTTP, default is False
+app.config["REMEMBER_COOKIE_SECURE"] = True
+# app.config["SESSION_COOKIE_SECURE"] = True
+
+# Cookie shared with subdomains
+# app.config["REMEMBER_COOKIE_DOMAIN"] = False # valid for all subdomains of SERVER_NAME, default is None
+app.config["SESSION_COOKIE_DOMAIN"] = ".example.com"
+
+# Cookie expiration, can be set using integers (to express seconds), or using the datetime.timedelta object
+app.config["REMEMBER_COOKIE_DURATION"] = 6000 # can also be set as a parameter of the login_user function (duration=...), default is 365 days
+session.permanent = True
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=3) # works only if session.permanent is true, default is 31 days
+# or app.permanent_session_lifetime = dt.timedelta(weeks=6, days=2)
+
+# Cookie prefixes
+app.config["REMEMBER_COOKIE_NAME"] = "__Secure-remember" # default is remember_token
+app.config["SESSION_COOKIE_NAME"] = "__Host-session" # default is session
 
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):
