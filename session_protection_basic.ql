@@ -1,7 +1,8 @@
 import python
 import semmle.python.ApiGraphs
 
-// TODO use dataflow analysis (note: should already be interprocedural and should already take into account dataflow between variables, need to test it (in secret_key.ql it works))
+// TODO intraprocedural version of the query
+// dataflow analysis works also with "pointers" (references) and it's interprocedural (it takes into account dataflow between variables and functions)
 // of course it doesn't detect values that are know only at runtime (such as environment variables)
 from DataFlow::Node n
 where ((n = API::moduleImport("flask_login").getMember("LoginManager").getReturn().getMember("session_protection").getAValueReachingSink()

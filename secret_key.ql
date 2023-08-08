@@ -29,7 +29,7 @@ string output(StrConst key) {
   else result = "The secret key is a hardcoded string"
 }
 
-// Is already interprocedural and takes into account dataflow between variables
+// It's already interprocedural and takes into account dataflow between variables
 from DataFlow::Node node
 where (node = Flask::FlaskApp::instance().getMember("config").getSubscript("SECRET_KEY").getAValueReachingSink()
   or node = Flask::FlaskApp::instance().getMember("secret_key").getAValueReachingSink())

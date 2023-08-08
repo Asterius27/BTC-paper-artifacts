@@ -17,8 +17,10 @@ login_manager.init_app(app)
 login_manager.session_protection = "basic"
 
 # Javascript access to cookies (insecure)
+z = app.config
+z["SESSION_COOKIE_HTTPONLY"] = False
 app.config["REMEMBER_COOKIE_HTTPONLY"] = False
-app.config["SESSION_COOKIE_HTTPONLY"] = False
+# app.config["SESSION_COOKIE_HTTPONLY"] = False
 
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):
