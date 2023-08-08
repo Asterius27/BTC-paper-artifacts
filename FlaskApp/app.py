@@ -30,8 +30,8 @@ app.config["REMEMBER_COOKIE_HTTPONLY"] = False
 app.config["REMEMBER_COOKIE_SECURE"] = True
 # app.config["SESSION_COOKIE_SECURE"] = True
 
-# Cookie shared with subdomains
-# app.config["REMEMBER_COOKIE_DOMAIN"] = False # valid for all subdomains of SERVER_NAME, default is None
+# Cookie shared with subdomains, default is None
+# app.config["REMEMBER_COOKIE_DOMAIN"] = ".example.com"
 app.config["SESSION_COOKIE_DOMAIN"] = ".example.com"
 
 # Cookie expiration, can be set using integers (to express seconds), or using the datetime.timedelta object
