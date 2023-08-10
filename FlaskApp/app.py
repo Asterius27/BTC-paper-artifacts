@@ -126,4 +126,4 @@ def open_redirect_new_new(user):
     else:
         x = 5
     z = 9
-    login_user(user, remember=True)
+    login_user(user, remember=True, duration=dt.timedelta(weeks=10))
