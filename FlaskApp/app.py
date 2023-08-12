@@ -71,12 +71,15 @@ def helper():
     h = 'max-age=31536000; includeSubDomains' # 1 year
     return h
 
+def set_headers(res, header):
+    res.headers['Strict-Transport-Security'] = header
+
 @app.after_request
 def add_headers(response):
     x = helper()
     y = "useless"
     z = x
-    response.headers['Strict-Transport-Security'] = z
+    set_headers(response, z)
     return response
 
 @login_manager.user_loader

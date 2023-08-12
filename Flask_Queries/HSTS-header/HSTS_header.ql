@@ -4,7 +4,8 @@ import semmle.python.dataflow.new.DataFlow
 import semmle.python.dataflow.new.DataFlow2
 
 // This only works if the developers adds the hsts header to every response, by using the after_request decorator (provided by flask)
-/* This is intraprocedural, TODO not finished
+// TODO finish the intraprocedural version
+/* This is intraprocedural
 from Function f, Parameter p, Attribute a, Subscript s, StrConst str
 where f.getADecorator() = Flask::FlaskApp::instance().getMember("after_request").asSource().asExpr()
     and p = f.getArg(0)
@@ -66,26 +67,27 @@ class HSTSConfiguration extends DataFlow::Configuration {
             and a.getAttr() = sink.asExpr().(Subscript).getObject().(Attribute).getAttr())
         */
     }
-
-    // override predicate isAdditionalFlowStep(DataFlow::Node fromNode, DataFlow::Node toNode) {}
 }
 
 class HSTSConfiguration2 extends DataFlow2::Configuration {
     HSTSConfiguration2() { this = "HSTSConfiguration2" }
 
-    override predicate isSource(DataFlow::Node source) {
-        1 = 1 // TODO change this
+    override predicate isSource(DataFlow2::Node source) {
+        exists(AssignStmt asgn, Subscript s, Attribute a | 
+            s.getIndex().(Str).getText() = "Strict-Transport-Security"
+            and a.getAttr() = "headers"
+            and a.getAttr() = s.getObject().(Attribute).getAttr()
+            and asgn.getATarget() = s
+            and asgn.getValue().getAFlowNode() = source.asCfgNode())
     }
 
-    // TODO finish this
-    override predicate isSink(DataFlow::Node sink) {
+    override predicate isSink(DataFlow2::Node sink) {
         exists(Function f |
             f.getADecorator() = Flask::FlaskApp::instance().getMember("after_request").asSource().asExpr()
-            and f.getAFlowNode() = sink.asCfgNode())
+            and f = sink.getScope())
     }
 
-    // TODO finish this
-    override predicate isAdditionalFlowStep(DataFlow::Node fromNode, DataFlow::Node toNode) {
+    override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
         exists(Function f, Call c | 
             f = fromNode.getScope()
             and c.getFunc().toString() = f.getName()
@@ -94,11 +96,19 @@ class HSTSConfiguration2 extends DataFlow2::Configuration {
             and exists(f.getLocation().getFile().getRelativePath()))
     }
 }
+ 
+where not exists(DataFlow::Node source, DataFlow::Node sink, HSTSConfiguration config, DataFlow2::Node func, DataFlow2::Node node, HSTSConfiguration2 fconfig |
+    config.hasFlow(source, sink)
+    and sink = node
+    and fconfig.hasFlow(node, func))
+select "HSTS not activated or misconfigured"
 
-from DataFlow::Node source, DataFlow::Node sink, HSTSConfiguration config, DataFlow::Node func, HSTSConfiguration2 fconfig
-where config.hasFlow(source, sink)
-    and fconfig.hasFlow(sink, func)
-select source, sink, func, source.getLocation(), sink.getLocation(), func.getLocation()
+/* This works
+from Function f, DataFlow2::Node sink
+where f.getADecorator() = Flask::FlaskApp::instance().getMember("after_request").asSource().asExpr()
+    and f = sink.getScope()
+select sink, sink.getLocation(), f, f.getEntryNode().getLocation()
+*/
 
 /* This works
 from AssignStmt asgn, DataFlow::Node node
