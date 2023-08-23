@@ -1,4 +1,3 @@
-|    cls     |             attr              |                                     col2                                     |
-+------------+-------------------------------+------------------------------------------------------------------------------+
-| class User | ControlFlowNode for Attribute | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:50 |
-| class User | ControlFlowNode for Attribute | E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:59 |
+|    cls     |        col1        |         col2         |
++------------+--------------------+----------------------+
+| class User | builtin-class type | Function User.get_id |

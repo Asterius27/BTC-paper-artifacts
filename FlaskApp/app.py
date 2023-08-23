@@ -60,6 +60,9 @@ class User(UserMixin):
 
     def __repr__(self) -> str:
         return self.__str__()
+    
+    def get_id(self):
+        return str(self.id)
 
 users: Dict[str, "User"] = {
     '1': User(1, 'mario', '1234'),
