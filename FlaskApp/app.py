@@ -47,7 +47,7 @@ app.config["SESSION_COOKIE_NAME"] = "__Host-session" # default is session
 
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):
-        self.id = id
+        self.id = aux(id)
         self.username = username
         self.password = password
 
@@ -62,13 +62,18 @@ class User(UserMixin):
         return self.__str__()
     
     def get_id(self):
-        return str(self.id)
+        resu = 8
+        x = 5
+        return self.id
 
 users: Dict[str, "User"] = {
     '1': User(1, 'mario', '1234'),
     '2': User(2, 'paolo', 'password'),
     '3': User(3, 'giovanni', 'abcd')
 }
+
+def aux(a):
+    return a
 
 def helper():
     h = 'max-age=31536000; includeSubDomains' # 1 year
