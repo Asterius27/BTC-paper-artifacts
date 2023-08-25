@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Session cookie accessible via javascript
+SESSION_COOKIE_HTTPONLY = False
 
 # Application definition
 
