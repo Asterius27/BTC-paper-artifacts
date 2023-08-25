@@ -1,8 +1,12 @@
 # Session-Management-Analyser
 
-## Launch FLask App
+## Launch Flask App
 
-flask --app app run
+(python -m) flask --app app run
+
+## Launch Django App
+
+python manage.py runserver
 
 ## CodeQL Commands
 
