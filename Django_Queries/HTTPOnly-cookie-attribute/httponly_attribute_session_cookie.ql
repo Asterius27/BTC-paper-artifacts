@@ -2,6 +2,7 @@ import python
 import semmle.python.dataflow.new.DataFlow
 
 // TODO intraprocedural version of the query
+// TODO there might be other ways to set the HTTPOnly cookie attribute (not sure)
 class HTTPOnlyConfiguration extends DataFlow::Configuration {
     HTTPOnlyConfiguration() { this = "HTTPOnlyConfiguration" }
 
