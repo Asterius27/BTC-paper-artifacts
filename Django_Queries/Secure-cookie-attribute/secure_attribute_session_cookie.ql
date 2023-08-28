@@ -2,7 +2,7 @@ import python
 import semmle.python.dataflow.new.DataFlow
 
 // TODO intraprocedural version of the query
-// TODO there might be other ways to set the Secure cookie attribute (not sure)
+// TODO there might be other ways to set the Secure cookie attribute (not sure because it's a constant, so the only way to set it should be in the settings.py file (which is what this query checks))
 class SecureConfiguration extends DataFlow::Configuration {
     SecureConfiguration() { this = "SecureConfiguration" }
 
