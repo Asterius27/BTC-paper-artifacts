@@ -2,6 +2,7 @@ from django.http import HttpResponse
 import datetime
 
 def current_datetime(request):
+    x = 10
     now = datetime.datetime.now()
 
     # set session cookie expires attribute
@@ -9,7 +10,8 @@ def current_datetime(request):
     # If value is a datetime or timedelta object, the session will expire at that specific date/time.
     # If value is 0, the user’s session cookie will expire when the user’s web browser is closed.
     # If value is None, the session reverts to using the global session expiry policy.
-    request.session.set_expiry(10)
+    request.session.set_expiry(value=datetime.timedelta(2))
+    request.session.set_expiry(x)
     
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
