@@ -10,7 +10,7 @@ class AgeConfiguration extends DataFlow::Configuration {
     AgeConfiguration() { this = "AgeConfiguration" }
 
     override predicate isSource(DataFlow::Node source) {
-        source.asExpr().(IntegerLiteral).getValue() < 2592000 // 30 days
+        source.asExpr().(IntegerLiteral).getValue() > 2592000 // 30 days
     }
 
     override predicate isSink(DataFlow::Node sink) {
@@ -93,26 +93,59 @@ int params(API::Node td) {
     + auxp(td, 6) * 604800
 }
 
-/* TODO test this (should work)
-where not exists(DataFlow::Node source, DataFlow::Node sink, AgeConfiguration config | 
+predicate seconds() {
+    exists(DataFlow3::Node source, DataFlow3::Node sink, SetExpiryConfiguration config | 
+        config.hasFlow(source, sink)
+        // and source.asExpr().toString() != "None"
+        and source.asExpr().(IntegerLiteral).getValue() > 2592000
+    )
+}
+
+predicate timedelta() {
+    exists(DataFlow3::Node source, DataFlow3::Node sink, SetExpiryConfiguration config, API::Node timedelta | 
+        config.hasFlow(source, sink)
+        and timedelta = API::moduleImport("datetime").getMember("timedelta")
+        and source = timedelta.getReturn().getAValueReachableFromSource()
+        and params(timedelta) + keywords(timedelta) > 2592000
+    )
+}
+
+where (exists(DataFlow::Node source, DataFlow::Node sink, AgeConfiguration config | 
         config.hasFlow(source, sink))
     and not exists(DataFlow2::Node source, DataFlow2::Node sink, BrowserConfiguration config | 
+        config.hasFlow(source, sink)))
+    or (seconds() or timedelta())
+select "Session cookie duration is too long"
+
+/* This works
+where exists(DataFlow::Node source, DataFlow::Node sink, AgeConfiguration config | 
+        config.hasFlow(source, sink))
+    and exists(DataFlow2::Node source, DataFlow2::Node sink, BrowserConfiguration config | 
         config.hasFlow(source, sink))
 select "Session cookie duration is too long"
 */
 
-// TODO test this (it's slow probably because of the "or", have to try and remove it)
+/* This works
+where seconds() or timedelta()
+select "Session cookie duration is too long"
+*/
+
+/* This has performance problems, takes too long and couldn't test it (it's slow probably because of the "or")
 from DataFlow3::Node source, DataFlow3::Node sink, SetExpiryConfiguration config, API::Node timedelta
 where config.hasFlow(source, sink)
     and source.asExpr().toString() != "None"
-    and (source.asExpr().(IntegerLiteral).getValue() < 2592000
+    and (
+        (exists(source.asExpr().(IntegerLiteral).getValue())
+        and source.asExpr().(IntegerLiteral).getValue() < 2592000)
         or (timedelta = API::moduleImport("datetime").getMember("timedelta")
+            and not exists(source.asExpr().(IntegerLiteral).getValue())
             and exists(timedelta.getReturn().getAValueReachableFromSource().getLocation().getFile().getRelativePath())
             and source = timedelta.getReturn().getAValueReachableFromSource()
             and params(timedelta) + keywords(timedelta) < 2592000
         )
     )
 select source, sink, source.getLocation(), sink.getLocation()
+*/
 
 /* This works
 from DataFlow3::Node source, DataFlow3::Node sink, SetExpiryConfiguration config
