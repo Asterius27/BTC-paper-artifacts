@@ -1,5 +1,9 @@
 # Session-Management-Analyser
 
+## Launch Session Management Analyser App
+
+npm start
+
 ## Launch Flask App
 
 (python -m) flask --app app run
