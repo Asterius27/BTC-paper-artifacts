@@ -10,6 +10,7 @@ const octokit = new Octokit({ auth: process.env.TOKEN });
 // when having millions of results both the web ui and the api aren't perfect (sometimes it returns more results, other times less results) (as for repositories)
 // web ui and api results don't match when the query is generic (ex. when only filtering by language), with more specific queries the results match.
 // /search/code limits it's result when compared to the web ui (see https://docs.github.com/en/search-github/searching-on-github/searching-code for full list of limitations), but allows to search for stuff inside the files.
+// results also differ between requests that are the same but made in different points in time (when using /search/code)
 // TODO what to do? get all python repositories and then filter them locally, maybe using codeql?
 // TODO this reaches the API rate limit, it will take a while to download all of the repositories, maybe add a timer and wait in order to not exceed the rate limit?
 // For authenticated requests, you can make up to 30 requests per minute for all search endpoints except for the "Search code" endpoint. The "Search code" endpoint requires you to authenticate and limits you to 10 requests per minute
@@ -21,7 +22,7 @@ for (let i = 0; ; i++) {
         },
         q: '"from flask_login" language:Python', // add fork:true to include forks, should we also include forks?
         per_page: 100,
-        page: i
+        page: i + 1
     });
     arr.push(data);
     console.log("headers: " + headers.link);
@@ -30,7 +31,7 @@ for (let i = 0; ; i++) {
     console.log("items length: " + arr[i].items.length);
     console.log("owner: " + arr[i].items[0].repository.owner.login);
     console.log("repo name: " + arr[i].items[0].repository.name);
-    console.log("page: " + i);
+    console.log("page: " + (i + 1));
     if (!data) { // TODO don't know if this works, have to test it
         break
     }
