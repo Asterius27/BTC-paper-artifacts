@@ -20,7 +20,7 @@ login_manager.init_app(app)
 # Session protection with fresh_login_required (in sec() function) (secure implementation)
 login_manager.session_protection = "basic"
 
-# Javascript access to cookies (insecure)
+# Javascript access to cookies (insecure) (HTTPOnly attribute), default is True
 z = app.config
 z["SESSION_COOKIE_HTTPONLY"] = False
 app.config["REMEMBER_COOKIE_HTTPONLY"] = False
@@ -52,6 +52,9 @@ app.config["SESSION_COOKIE_SAMESITE"] = None # default is None
 # Another way of setting/updating multiple keys
 app.config.update(SESSION_COOKIE_DOMAIN=".example.com", REMEMBER_COOKIE_SAMESITE="Strict")
 
+def aux(a):
+    return a
+
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):
         self.id = aux(id)
@@ -78,9 +81,6 @@ users: Dict[str, "User"] = {
     '2': User(2, 'paolo', 'password'),
     '3': User(3, 'giovanni', 'abcd')
 }
-
-def aux(a):
-    return a
 
 def helper():
     h = 'max-age=31536000; includeSubDomains' # 1 year
@@ -141,6 +141,21 @@ def logout():
 @fresh_login_required
 def sec():
     return "This route requires a fresh login in order to be accessed"
+
+# TODO found an issue: cookie attributes have to be set before login occurs, and if they are changed after the login, then if the user logs out and logs in 
+# again the new cookies that will be created will have the attributes that were changed earlier after the first login occurred
+# So you can't change the current cookie attributes after the login occurred, but those changes will affect the next cookie that will be created by the login.
+@app.get("/cookiesfalse")
+def attributest():
+    app.config["SESSION_COOKIE_HTTPONLY"] = False
+    app.config["REMEMBER_COOKIE_HTTPONLY"] = False
+    return "<p>Trying to change cookie attributes to false...</p>"
+
+@app.get("/cookiestrue")
+def attributesf():
+    app.config["SESSION_COOKIE_HTTPONLY"] = True
+    app.config["REMEMBER_COOKIE_HTTPONLY"] = True
+    return "<p>Trying to change cookie attributes to true...</p>"
 
 def open_redirect(url):
     return url
