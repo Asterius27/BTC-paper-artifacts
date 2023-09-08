@@ -9,7 +9,7 @@ const octokit = new Octokit({ auth: process.env.TOKEN });
 // It allows to filter by language (automatically detected by github) and it allows to filter using topics, but they are user defined.
 // when having millions of results both the web ui and the api aren't perfect (sometimes it returns more results, other times less results) (as for repositories)
 // web ui and api results don't match when the query is generic (ex. when only filtering by language), with more specific queries the results match. (api returns more results)
-// /search/code limits it's result when compared to the web ui (see https://docs.github.com/en/search-github/searching-on-github/searching-code for full list of limitations), but allows to search for stuff inside the files. (returns way less results than web ui)
+// /search/code limits it's result when compared to the web ui (see https://docs.github.com/en/search-github/searching-on-github/searching-code for full list of limitations), but allows to search for stuff inside the files. (returns way less results than web ui, see: https://github.com/github/rest-api-description/issues/2956)
 // results also differ between requests that are the same but made in different points in time (when using /search/code)
 // TODO this reaches the API rate limit, it will take a while to download all of the repositories, maybe add a timer and wait in order to not exceed the rate limit? yes
 // For authenticated requests, you can make up to 30 requests per minute for all search endpoints except for the "Search code" endpoint. The "Search code" endpoint requires you to authenticate and limits you to 10 requests per minute

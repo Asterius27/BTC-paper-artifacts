@@ -45,6 +45,13 @@ app.permanent_session_lifetime = dt.timedelta(weeks=6, days=2)
 app.config["REMEMBER_COOKIE_NAME"] = "__Secure-remember" # default is remember_token
 app.config["SESSION_COOKIE_NAME"] = "__Host-session" # default is session
 
+# CSRF (Samesite attribute)
+app.config["REMEMBER_COOKIE_SAMESITE"] = 'Lax' # default is None
+app.config["SESSION_COOKIE_SAMESITE"] = None # default is None
+
+# Another way of setting/updating multiple keys
+app.config.update(SESSION_COOKIE_DOMAIN=".example.com", REMEMBER_COOKIE_SAMESITE="Strict")
+
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):
         self.id = aux(id)
