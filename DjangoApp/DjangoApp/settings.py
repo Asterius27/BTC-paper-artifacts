@@ -53,7 +53,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies' # sets sessio
 # CSRF (Samesite attribute)
 SESSION_COOKIE_SAMESITE = 'None' # default is 'Lax', can also be set to 'Strict' or False
 
-# TODO Session serializer
+# Session serializer
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer' # Default is 'django.contrib.sessions.serializers.JSONSerializer' (should not be changed, using a custom one is not recommended and the pickle serializer is unsafe)
 
 # HSTS
