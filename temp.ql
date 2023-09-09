@@ -50,15 +50,18 @@ predicate reaches(ControlFlowNode source, ControlFlowNode sink) {
         and reaches(c.getFunc().getAFlowNode(), sink))
 }
 
-from DataFlow::Node source, DataFlow::Node sink, Call c
+// TODO Should work (interprocedural), need to test it more thoroughly and implement it in the predicate with recursion (and then also add the login_user() node barrier)
+// methods and classes are not taken into account (add them?)
+from DataFlow::Node source, DataFlow::Node sink, Call c, Function f
 where source = API::moduleImport("flask").getMember("Flask").getAValueReachableFromSource()
     and not source.asExpr() instanceof ImportMember
     and exists(source.getLocation().getFile().getRelativePath())
     and sink = Flask::FlaskApp::instance().getMember("config").getAValueReachableFromSource()
     and exists(sink.getLocation().getFile().getRelativePath())
     and source.asCfgNode().strictlyReaches(c.getAFlowNode())
-    and c.getFunc().getAFlowNode().strictlyReaches(sink.asCfgNode())
-select source, sink, source.getLocation(), sink.getLocation(), c, c.getLocation()
+    and c.getFunc().toString() = f.getName()
+    and f.getAFlowNode().strictlyReaches(sink.asCfgNode())
+select source, c, c.getLocation(), f, f.getLocation(), sink, sink.getLocation(), source.getLocation()
 
 /* This works but is intraprocedural
 from DataFlow::Node source, DataFlow::Node sink
@@ -71,7 +74,7 @@ where source = API::moduleImport("flask").getMember("Flask").getAValueReachableF
 select source, sink, source.getLocation(), sink.getLocation()
 */
 
-/* This works
+/* This works (other ways of setting/updating multiple keys)
 from DataFlow::Node node
 where (node = Flask::FlaskApp::instance().getMember("config").getMember("update").getKeywordParameter("REMEMBER_COOKIE_SAMESITE").getAValueReachingSink()
     and node.asExpr().toString() = "None")
