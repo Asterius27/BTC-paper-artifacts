@@ -45,11 +45,11 @@ app.permanent_session_lifetime = dt.timedelta(weeks=6, days=2)
 app.config["REMEMBER_COOKIE_NAME"] = "__Secure-remember" # default is remember_token
 app.config["SESSION_COOKIE_NAME"] = "__Host-session" # default is session
 
-# TODO CSRF (Samesite attribute)
+# CSRF (Samesite attribute)
 app.config["REMEMBER_COOKIE_SAMESITE"] = 'Lax' # default is None
 app.config["SESSION_COOKIE_SAMESITE"] = None # default is None
 
-# TODO JSON serializer options, can only use the default json serializer in flask
+# JSON serializer options, can only use the default json serializer in flask
 # Serialize objects to ASCII-encoded JSON. If this is disabled, the JSON will be returned as a Unicode string, or encoded as UTF-8 by jsonify. 
 # This has security implications when rendering the JSON into JavaScript in templates, and should typically remain enabled.
 app.config["JSON_AS_ASCII"] = False # default is True
