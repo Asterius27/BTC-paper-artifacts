@@ -7,6 +7,9 @@ import datetime as dt
 def bar():
     return "secret_key"
 
+def configuration():
+    app.config["SESSION_COOKIE_HTTPONLY"] = False
+
 app = Flask(__name__)
 key = bar()
 
@@ -54,8 +57,12 @@ app.config["SESSION_COOKIE_SAMESITE"] = None # default is None
 # This has security implications when rendering the JSON into JavaScript in templates, and should typically remain enabled.
 app.config["JSON_AS_ASCII"] = False # default is True
 
-# TODO Another way of setting/updating multiple keys
+# Another way of setting/updating multiple keys
 app.config.update(SESSION_COOKIE_DOMAIN=".example.com", REMEMBER_COOKIE_SAMESITE="Strict")
+d = {'REMEMBER_COOKIE_SAMESITE': None}
+app.config.update(d)
+
+configuration()
 
 def aux(a):
     return a
