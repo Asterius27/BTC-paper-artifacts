@@ -154,12 +154,12 @@ def logout():
 def sec():
     return "This route requires a fresh login in order to be accessed"
 
-# TODO found an issue: cookie attributes have to be set before login occurs, and if they are changed after the login, then if the user logs out and logs in 
+# Cookie attributes have to be set before login occurs, and if they are changed after the login, then if the user logs out and logs in 
 # again the new cookies that will be created will have the attributes that were changed earlier after the first login occurred
 # So you can't change the current cookie attributes after the login occurred, but those changes will affect the next cookie that will be created by the login.
-# Solution: check that the config changes are made in the same context of the flask app initialization (app = Flask(__name__)) and that there is no login_user() 
-# function call between the app = Flask(__name__) and the config change
-# Write a general query that just checks if the application does some config changes in places where it shouldn't or one query for every config change we are interested in
+# So we should check that the config changes are made in the same context of (are reachable from) the flask app initialization (app = Flask(__name__)) 
+# (and that there is no login_user() function call between the app = Flask(__name__) and the config change? Probably not necessary TODO)
+# Write a general query that just checks if the application does some config changes in places where it shouldn't (or one query for every config change we are interested in? TODO)
 @app.get("/cookiesfalse")
 def attributest():
     app.config["SESSION_COOKIE_HTTPONLY"] = False
