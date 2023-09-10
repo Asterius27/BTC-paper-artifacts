@@ -45,8 +45,9 @@ where exists(DataFlow::Node perma |
         perma = API::moduleImport("flask").getMember("session").getMember("permanent").getAValueReachingSink()
         and perma.asExpr().(ImmutableLiteral).booleanValue() = true
         and exists(perma.getLocation().getFile().getRelativePath()))
-    and (exists(DataFlow::Node config, API::Node timedelta | 
-        config = Flask::FlaskApp::instance().getMember("config").getSubscript("PERMANENT_SESSION_LIFETIME").getAValueReachingSink()
+    and (exists(DataFlow::Node config, API::Node timedelta, KeyValuePair kv | 
+        ((config = Flask::FlaskApp::instance().getMember("config").getSubscript("PERMANENT_SESSION_LIFETIME").getAValueReachingSink()
+        or config = Flask::FlaskApp::instance().getMember("config").getMember("update").getKeywordParameter("PERMANENT_SESSION_LIFETIME").getAValueReachingSink())
         and exists(config.getLocation().getFile().getRelativePath())
         and ((config.asExpr() instanceof IntegerLiteral
         and config.asExpr().(IntegerLiteral).getValue() > 2592000) // 30 days
@@ -54,6 +55,13 @@ where exists(DataFlow::Node perma |
         and exists(timedelta.getReturn().getAValueReachableFromSource().getLocation().getFile().getRelativePath())
         and config = timedelta.getReturn().getAValueReachableFromSource()
         and params(timedelta) + keywords(timedelta) > 2592000)))
+        or (config = Flask::FlaskApp::instance().getMember("config").getMember("update").getParameter(0).getAValueReachingSink()
+        and kv = config.asExpr().(Dict).getAnItem()
+        and kv.getKey().(Str).getText() = "PERMANENT_SESSION_LIFETIME"
+        and (kv.getValue().(IntegerLiteral).getValue() > 2592000
+        or (timedelta = API::moduleImport("datetime").getMember("timedelta")
+        and kv.getValue().getAFlowNode() = timedelta.getReturn().getAValueReachableFromSource().asCfgNode()
+        and params(timedelta) + keywords(timedelta) > 2592000))))
     or exists(DataFlow::Node config, API::Node timedelta | 
         config = Flask::FlaskApp::instance().getMember("permanent_session_lifetime").getAValueReachingSink()
         and exists(config.getLocation().getFile().getRelativePath())

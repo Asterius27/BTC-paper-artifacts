@@ -6,8 +6,12 @@ import semmle.python.frameworks.Flask
 // TODO intraprocedural version of the query
 // dataflow analysis works also with "pointers" (references) and it's interprocedural (it takes into account dataflow between variables and functions)
 // of course it doesn't detect values that are know only at runtime (such as environment variables)
-from DataFlow::Node node
-where (node = Flask::FlaskApp::instance().getMember("config").getSubscript("SESSION_COOKIE_SAMESITE").getAValueReachingSink()
-    and node.asExpr().toString() = "None")
-    or not exists(Flask::FlaskApp::instance().getMember("config").getSubscript("SESSION_COOKIE_SAMESITE").getAValueReachingSink())
-select "Session cookie samesite attribute is disable or not set (the default value is disabled)"
+where not exists(DataFlow::Node node, KeyValuePair kv | 
+    ((node = Flask::FlaskApp::instance().getMember("config").getSubscript("SESSION_COOKIE_SAMESITE").getAValueReachingSink()
+    or node = Flask::FlaskApp::instance().getMember("config").getMember("update").getKeywordParameter("SESSION_COOKIE_SAMESITE").getAValueReachingSink())
+    and node.asExpr().toString() != "None")
+    or (node = Flask::FlaskApp::instance().getMember("config").getMember("update").getParameter(0).getAValueReachingSink()
+    and kv = node.asExpr().(Dict).getAnItem()
+    and kv.getKey().(Str).getText() = "SESSION_COOKIE_SAMESITE"
+    and kv.getValue().toString() != "None"))
+select "Session cookie samesite attribute is disabled or not set (the default value is disabled)"

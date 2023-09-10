@@ -41,17 +41,25 @@ int params(API::Node td) {
     + auxp(td, 6) * 604800
 }
 
-where not exists(DataFlow::Node config, API::Node timedelta | 
+where not exists(DataFlow::Node config, API::Node timedelta, KeyValuePair kv | 
         not exists(DataFlow::Node duration |
             duration = API::moduleImport("flask_login").getMember("login_user").getKeywordParameter("duration").getAValueReachingSink()
             or duration = API::moduleImport("flask_login").getMember("login_user").getParameter(2).getAValueReachingSink())
-        and config = Flask::FlaskApp::instance().getMember("config").getSubscript("REMEMBER_COOKIE_DURATION").getAValueReachingSink()
+        and (((config = Flask::FlaskApp::instance().getMember("config").getSubscript("REMEMBER_COOKIE_DURATION").getAValueReachingSink()
+        or config = Flask::FlaskApp::instance().getMember("config").getMember("update").getKeywordParameter("REMEMBER_COOKIE_DURATION").getAValueReachingSink())
         and ((config.asExpr() instanceof IntegerLiteral
         and config.asExpr().(IntegerLiteral).getValue() < 2592000) // 30 days
         or (timedelta = API::moduleImport("datetime").getMember("timedelta")
         // and exists(timedelta.getReturn().getAValueReachableFromSource().getLocation().getFile().getRelativePath())
         and config = timedelta.getReturn().getAValueReachableFromSource()
         and params(timedelta) + keywords(timedelta) < 2592000)))
+        or (config = Flask::FlaskApp::instance().getMember("config").getMember("update").getParameter(0).getAValueReachingSink()
+        and kv = config.asExpr().(Dict).getAnItem()
+        and kv.getKey().(Str).getText() = "REMEMBER_COOKIE_DURATION"
+        and (kv.getValue().(IntegerLiteral).getValue() < 2592000
+        or (timedelta = API::moduleImport("datetime").getMember("timedelta")
+        and kv.getValue().getAFlowNode() = timedelta.getReturn().getAValueReachableFromSource().asCfgNode()
+        and params(timedelta) + keywords(timedelta) < 2592000)))))
     and not exists(DataFlow::Node config, API::Node timedelta | 
         (config = API::moduleImport("flask_login").getMember("login_user").getKeywordParameter("duration").getAValueReachingSink()
         or config = API::moduleImport("flask_login").getMember("login_user").getParameter(2).getAValueReachingSink())

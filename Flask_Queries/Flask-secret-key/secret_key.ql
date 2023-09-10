@@ -31,8 +31,13 @@ string output(StrConst key) {
 
 // TODO intraprocedural version
 // It's already interprocedural and takes into account dataflow between variables
-from DataFlow::Node node
-where (node = Flask::FlaskApp::instance().getMember("config").getSubscript("SECRET_KEY").getAValueReachingSink()
-  or node = Flask::FlaskApp::instance().getMember("secret_key").getAValueReachingSink())
-  and node.asExpr() instanceof StrConst
+from DataFlow::Node node, KeyValuePair kv
+where ((node = Flask::FlaskApp::instance().getMember("config").getSubscript("SECRET_KEY").getAValueReachingSink()
+  or node = Flask::FlaskApp::instance().getMember("secret_key").getAValueReachingSink()
+  or node = Flask::FlaskApp::instance().getMember("config").getMember("update").getKeywordParameter("SECRET_KEY").getAValueReachingSink())
+  and node.asExpr() instanceof StrConst)
+  or (node = Flask::FlaskApp::instance().getMember("config").getMember("update").getParameter(0).getAValueReachingSink()
+  and kv = node.asExpr().(Dict).getAnItem()
+  and kv.getKey().(Str).getText() = "SECRET_KEY"
+  and kv.getValue() instanceof StrConst)
 select node.getLocation(), output(node.asExpr())
