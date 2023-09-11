@@ -82,20 +82,23 @@ if (process.argv.includes("-a")) {
         execSync("codeql database create ./repositories/repo" + i + "/" + dir[0] + "-database --language=python --source-root ./repositories/repo" + i + "/" + dir[0]);
     }
     */
-    // for(let j = 0; j < queries.length; j++) {
-        let j = 0
+    /* This works
+    for(let j = 0; j < queries.length; j++) {
         let query = fs.readdirSync(queries_dir + '/' + queries[j]);
         for(let h = 0; h < query.length; h++) {
             if (query[h].endsWith(".ql")) {
-                console.log(queries_dir + '/' + queries[j] + "/" + query[h]);
-                // for(let i = 0; i < files.length; i++) {
-                    let i = 0;
-                    let dir = fs.readdirSync('repositories/repo' + i);
+                for(let i = 0; i < files.length; i++) {
+                    let dir = fs.readdirSync('repositories/repo' + i); // TODO this doesn't work, have to get the string that ends with -database
+                    if (!fs.existsSync("./repositories/repo" + i + "/" + queries[j])){
+                        fs.mkdirSync("./repositories/repo" + i + "/" + queries[j]);
+                    }
                     execSync("codeql query run --database=./repositories/repo" + i + "/" + dir[0] + "-database --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs " + queries_dir + '/' + queries[j] + "/" + query[h]);
-                // }
+                    execSync("codeql bqrs decode --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".txt --format=text ./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs");
+                }
             }
         }
-    // }
+    }
+    */
 }
 
 // This has no rate limits, gets all repositories and allows us to filter them by language, but doesn't allow to search for keywords inside files
