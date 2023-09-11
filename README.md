@@ -3,7 +3,7 @@
 ## Launch Session Management Analyser App
 
 ```console
-npm start
+npm start [-- [-d] [-a]]
 ```
 
 ## Launch Flask App
