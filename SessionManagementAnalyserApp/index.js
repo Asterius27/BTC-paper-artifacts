@@ -76,29 +76,27 @@ if (process.argv.includes("-a")) {
         fs.unlinkSync('repositories/repo' + i + '.zip');
     }
     */
-    /* This works
+    // This works
     for(let i = 0; i < files.length; i++) {
         let dir = fs.readdirSync('repositories/repo' + i);
         execSync("codeql database create ./repositories/repo" + i + "/" + dir[0] + "-database --language=python --source-root ./repositories/repo" + i + "/" + dir[0]);
     }
-    */
-    /* This works
+    // This works
     for(let j = 0; j < queries.length; j++) {
         let query = fs.readdirSync(queries_dir + '/' + queries[j]);
         for(let h = 0; h < query.length; h++) {
             if (query[h].endsWith(".ql")) {
                 for(let i = 0; i < files.length; i++) {
-                    let dir = fs.readdirSync('repositories/repo' + i); // TODO this doesn't work, have to get the string that ends with -database
+                    let dir = fs.readdirSync('repositories/repo' + i).filter(str => str.endsWith("-database"));
                     if (!fs.existsSync("./repositories/repo" + i + "/" + queries[j])){
                         fs.mkdirSync("./repositories/repo" + i + "/" + queries[j]);
                     }
-                    execSync("codeql query run --database=./repositories/repo" + i + "/" + dir[0] + "-database --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs " + queries_dir + '/' + queries[j] + "/" + query[h]);
+                    execSync("codeql query run --database=./repositories/repo" + i + "/" + dir[0] + " --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs " + queries_dir + '/' + queries[j] + "/" + query[h]);
                     execSync("codeql bqrs decode --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".txt --format=text ./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs");
                 }
             }
         }
     }
-    */
 }
 
 // This has no rate limits, gets all repositories and allows us to filter them by language, but doesn't allow to search for keywords inside files

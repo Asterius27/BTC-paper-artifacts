@@ -16,6 +16,7 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   override predicate isSource(DataFlow2::Node source) {
     source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
     and not source.asExpr() instanceof ImportMember
+    and exists(source.asCfgNode())
     and exists(source.getLocation().getFile().getRelativePath())
     // 1 = 1
     // source instanceof Sink
