@@ -67,6 +67,7 @@ if (process.argv.includes("-d")) {
 }
 
 if (process.argv.includes("-a")) {
+    const start = Date.now();
     let queries_dir = "../Flask_Queries"
     let files = fs.readdirSync('repositories');
     let queries = fs.readdirSync(queries_dir);
@@ -76,11 +77,12 @@ if (process.argv.includes("-a")) {
         fs.unlinkSync('repositories/repo' + i + '.zip');
     }
     */
-    // This works
+    /* This works
     for(let i = 0; i < files.length; i++) {
         let dir = fs.readdirSync('repositories/repo' + i);
         execSync("codeql database create ./repositories/repo" + i + "/" + dir[0] + "-database --language=python --source-root ./repositories/repo" + i + "/" + dir[0]);
     }
+    */
     // This works
     for(let j = 0; j < queries.length; j++) {
         let query = fs.readdirSync(queries_dir + '/' + queries[j]);
@@ -93,10 +95,13 @@ if (process.argv.includes("-a")) {
                     }
                     execSync("codeql query run --database=./repositories/repo" + i + "/" + dir[0] + " --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs " + queries_dir + '/' + queries[j] + "/" + query[h]);
                     execSync("codeql bqrs decode --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".txt --format=text ./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs");
+                    console.log("\n");
                 }
             }
         }
     }
+    let millis = Date.now() - start;
+    console.log(`Total time elapsed (in seconds): ${Math.floor(millis / 1000)}`);
 }
 
 // This has no rate limits, gets all repositories and allows us to filter them by language, but doesn't allow to search for keywords inside files
