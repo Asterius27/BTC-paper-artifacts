@@ -4,7 +4,7 @@ import semmle.python.frameworks.Flask
 
 // TODO might want to check if session cookies are disabled as part of the query
 // TODO intraprocedural version of the query
-// TODO this is slow (11 and a half minutes on toy application)
+// This was slow (11 and a half minutes on toy application), the problem was with the ORs. Substituting them with an if solved the issue
 // dataflow analysis works also with "pointers" (references) and it's interprocedural (it takes into account dataflow between variables and functions)
 // of course it doesn't detect values that are know only at runtime (such as environment variables)
 bindingset[param]
@@ -41,33 +41,39 @@ int params(API::Node td) {
     + auxp(td, 6) * 604800
 }
 
-where not exists(DataFlow::Node config, API::Node timedelta, KeyValuePair kv | 
+predicate expires_duration_node(DataFlow::Node config) {
+    if config.asExpr() instanceof IntegerLiteral
+    then config.asExpr().(IntegerLiteral).getValue() < 2592000 // 30 days
+    else exists(API::Node timedelta | 
+        timedelta = API::moduleImport("datetime").getMember("timedelta")
+        and config = timedelta.getReturn().getAValueReachableFromSource()
+        and params(timedelta) + keywords(timedelta) < 2592000)
+}
+
+predicate expires_duration_kv(KeyValuePair kv) {
+    if kv.getValue() instanceof IntegerLiteral
+    then kv.getValue().(IntegerLiteral).getValue() < 2592000
+    else exists(API::Node timedelta | 
+        timedelta = API::moduleImport("datetime").getMember("timedelta")
+        and kv.getValue().getAFlowNode() = timedelta.getReturn().getAValueReachableFromSource().asCfgNode()
+        and params(timedelta) + keywords(timedelta) < 2592000)
+}
+
+where not exists(DataFlow::Node config, KeyValuePair kv | 
         not exists(DataFlow::Node duration |
             duration = API::moduleImport("flask_login").getMember("login_user").getKeywordParameter("duration").getAValueReachingSink()
             or duration = API::moduleImport("flask_login").getMember("login_user").getParameter(2).getAValueReachingSink())
         and (((config = Flask::FlaskApp::instance().getMember("config").getSubscript("REMEMBER_COOKIE_DURATION").getAValueReachingSink()
         or config = Flask::FlaskApp::instance().getMember("config").getMember("update").getKeywordParameter("REMEMBER_COOKIE_DURATION").getAValueReachingSink())
-        and ((config.asExpr() instanceof IntegerLiteral
-        and config.asExpr().(IntegerLiteral).getValue() < 2592000) // 30 days
-        or (timedelta = API::moduleImport("datetime").getMember("timedelta")
-        // and exists(timedelta.getReturn().getAValueReachableFromSource().getLocation().getFile().getRelativePath())
-        and config = timedelta.getReturn().getAValueReachableFromSource()
-        and params(timedelta) + keywords(timedelta) < 2592000)))
+        and expires_duration_node(config))
         or (config = Flask::FlaskApp::instance().getMember("config").getMember("update").getParameter(0).getAValueReachingSink()
         and kv = config.asExpr().(Dict).getAnItem()
         and kv.getKey().(Str).getText() = "REMEMBER_COOKIE_DURATION"
-        and (kv.getValue().(IntegerLiteral).getValue() < 2592000
-        or (timedelta = API::moduleImport("datetime").getMember("timedelta")
-        and kv.getValue().getAFlowNode() = timedelta.getReturn().getAValueReachableFromSource().asCfgNode()
-        and params(timedelta) + keywords(timedelta) < 2592000)))))
-    and not exists(DataFlow::Node config, API::Node timedelta | 
+        and expires_duration_kv(kv))))
+    and not exists(DataFlow::Node config | 
         (config = API::moduleImport("flask_login").getMember("login_user").getKeywordParameter("duration").getAValueReachingSink()
         or config = API::moduleImport("flask_login").getMember("login_user").getParameter(2).getAValueReachingSink())
-        and ((config.asExpr() instanceof IntegerLiteral
-        and config.asExpr().(IntegerLiteral).getValue() < 2592000)
-        or (timedelta = API::moduleImport("datetime").getMember("timedelta")
-        and config = timedelta.getReturn().getAValueReachableFromSource()
-        and params(timedelta) + keywords(timedelta) < 2592000)))
+        and expires_duration_node(config))
 select "Remember cookie duration is too long"
 
 /* This works
