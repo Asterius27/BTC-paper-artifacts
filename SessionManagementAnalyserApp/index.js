@@ -74,7 +74,7 @@ if (SUPPORTED_LIBRARIES.some(str => process.argv[process.argv.length - 1] === st
                     'X-GitHub-Api-Version': '2022-11-28'
                 }
             });
-            fs.appendFileSync("repositories/" + framework + "repo" + i + ".zip", Buffer.from(zip.data));
+            fs.appendFileSync("repositories/" + framework + "/repo" + i + ".zip", Buffer.from(zip.data));
         }
         console.log("Successfully downloaded all the repositories\n");
     }
