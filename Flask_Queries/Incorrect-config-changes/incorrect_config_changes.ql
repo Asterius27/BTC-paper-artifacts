@@ -57,6 +57,7 @@ predicate reachesWithBarrier(ControlFlowNode source, ControlFlowNode sink, Contr
 */
 
 // Interprocedural reachability query
+// TODO this might lead to infite recursion, have to put a time limit (or something) when running this query
 predicate reaches(ControlFlowNode source, ControlFlowNode sink) {
     source.strictlyReaches(sink)
     and exists(sink.getLocation().getFile().getRelativePath())
