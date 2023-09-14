@@ -60,6 +60,9 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer' # De
 SECURE_HSTS_SECONDS = 30 # default is 0. If set to a non-zero integer value, the SecurityMiddleware sets the HTTP Strict Transport Security header on all responses that do not already have it. (it's the max-age of hsts)
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True # default is false
 
+# Redirect HTTP to HTTPS
+SECURE_SSL_REDIRECT = True # default is false
+
 # Application definition
 
 INSTALLED_APPS = [

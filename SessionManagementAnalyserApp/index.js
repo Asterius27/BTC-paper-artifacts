@@ -46,62 +46,79 @@ for (let i = 0; i < 10; i++) {
 */
 
 // Testing the whole process with a couple of repositories, it works
-if (process.argv.includes("-d")) {
-    const { data } = await octokit.request('GET /search/code', {
-        headers: {
-            'X-GitHub-Api-Version': '2022-11-28',
-        },
-        q: '"from flask_login" language:Python', // or '"from django" language:Python'
-        per_page: 10
-    });
-    for(let i = 0; i < data.items.length; i++) {
-        let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
-            owner: data.items[i].repository.owner.login,
-            repo: data.items[i].repository.name,
-            headers: {
-                'X-GitHub-Api-Version': '2022-11-28'
-            }
-        });
-        fs.appendFileSync("repositories/repo" + i + ".zip", Buffer.from(zip.data));
-    }
-}
+const SUPPORTED_LIBRARIES = ["Flask", "Django"]
 
-if (process.argv.includes("-a")) {
-    const start = Date.now();
-    let queries_dir = "../Flask_Queries"
-    let files = fs.readdirSync('repositories');
-    let queries = fs.readdirSync(queries_dir);
-    /* This works
-    for(let i = 0; i < files.length; i++) {
-        await decompress('./repositories/repo' + i + '.zip', './repositories/repo' + i);
-        fs.unlinkSync('repositories/repo' + i + '.zip');
+if (SUPPORTED_LIBRARIES.some(str => process.argv[process.argv.length - 1] === str)) {
+    let framework = process.argv.pop();
+    let lang = "python";
+    if (!fs.existsSync("./repositories")){
+        fs.mkdirSync("./repositories");
     }
-    */
-    /* This works
-    for(let i = 0; i < files.length; i++) {
-        let dir = fs.readdirSync('repositories/repo' + i);
-        execSync("codeql database create ./repositories/repo" + i + "/" + dir[0] + "-database --language=python --source-root ./repositories/repo" + i + "/" + dir[0]);
+    if (!fs.existsSync("./repositories/" + framework)){
+        fs.mkdirSync("./repositories/" + framework);
     }
-    */
-    // This works
-    for(let j = 0; j < queries.length; j++) {
-        let query = fs.readdirSync(queries_dir + '/' + queries[j]);
-        for(let h = 0; h < query.length; h++) {
-            if (query[h].endsWith(".ql")) {
-                for(let i = 0; i < files.length; i++) {
-                    let dir = fs.readdirSync('repositories/repo' + i).filter(str => str.endsWith("-database"));
-                    if (!fs.existsSync("./repositories/repo" + i + "/" + queries[j])){
-                        fs.mkdirSync("./repositories/repo" + i + "/" + queries[j]);
+
+    if (process.argv.includes("-d")) {
+        const { data } = await octokit.request('GET /search/code', {
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28',
+            },
+            q: '"from django" language:Python', // or '"from flask_login" language:Python'
+            per_page: 4 // TODO change this to 100, add the page argument and cycle through the pages (as done above)
+        });
+        for(let i = 0; i < data.items.length; i++) {
+            let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
+                owner: data.items[i].repository.owner.login,
+                repo: data.items[i].repository.name,
+                headers: {
+                    'X-GitHub-Api-Version': '2022-11-28'
+                }
+            });
+            fs.appendFileSync("repositories/" + framework + "repo" + i + ".zip", Buffer.from(zip.data));
+        }
+        console.log("Successfully downloaded all the repositories\n");
+    }
+    
+    if (process.argv.includes("-a")) {
+        const start = Date.now();
+        let queries_dir = "../" + framework + "_Queries";
+        let repos_dir = 'repositories/' + framework;
+        let repos = fs.readdirSync(repos_dir);
+        let queries = fs.readdirSync(queries_dir);
+        
+        for(let i = 0; i < repos.length; i++) {
+            await decompress('./' + repos_dir + '/repo' + i + '.zip', './' + repos_dir + '/repo' + i);
+            fs.unlinkSync(repos_dir + '/repo' + i + '.zip');
+        }
+        
+        for(let i = 0; i < repos.length; i++) {
+            let dir = fs.readdirSync(repos_dir + '/repo' + i);
+            execSync("codeql database create ./" + repos_dir + "/repo" + i + "/" + dir[0] + "-database --language=" + lang + " --source-root ./" + repos_dir + "/repo" + i + "/" + dir[0]);
+        }
+        
+        for(let j = 0; j < queries.length; j++) {
+            let query = fs.readdirSync(queries_dir + '/' + queries[j]);
+            for(let h = 0; h < query.length; h++) {
+                if (query[h].endsWith(".ql")) {
+                    for(let i = 0; i < repos.length; i++) {
+                        let dir = fs.readdirSync(repos_dir + '/repo' + i).filter(str => str.endsWith("-database"));
+                        if (!fs.existsSync("./" + repos_dir + "/repo" + i + "/" + queries[j])){
+                            fs.mkdirSync("./" + repos_dir + "/repo" + i + "/" + queries[j]);
+                        }
+                        execSync("codeql query run --database=./" + repos_dir + "/repo" + i + "/" + dir[0] + " --output=./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs " + queries_dir + '/' + queries[j] + "/" + query[h]);
+                        execSync("codeql bqrs decode --output=./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".txt --format=text ./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs");
+                        console.log("\n");
                     }
-                    execSync("codeql query run --database=./repositories/repo" + i + "/" + dir[0] + " --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs " + queries_dir + '/' + queries[j] + "/" + query[h]);
-                    execSync("codeql bqrs decode --output=./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".txt --format=text ./repositories/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs");
-                    console.log("\n");
                 }
             }
         }
+
+        let millis = Date.now() - start;
+        console.log(`Total time elapsed (in seconds) to run the whole analysis: ${Math.floor(millis / 1000)}`);
     }
-    let millis = Date.now() - start;
-    console.log(`Total time elapsed (in seconds): ${Math.floor(millis / 1000)}`);
+
+} else {
+    console.log("Please specify a supported library...");
 }
 
 // This has no rate limits, gets all repositories and allows us to filter them by language, but doesn't allow to search for keywords inside files

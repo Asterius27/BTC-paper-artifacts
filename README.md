@@ -2,8 +2,9 @@
 
 ## Launch Session Management Analyser App
 
+Supported frameworks/libraries: Django, Flask (includes Flask-login)
 ```console
-npm start [-- [-d] [-a]]
+npm start [-- [-d] [-a] <name of the library or framework>]
 ```
 
 ## Launch Flask App
