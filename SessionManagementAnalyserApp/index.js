@@ -64,7 +64,7 @@ if (SUPPORTED_LIBRARIES.some(str => process.argv[process.argv.length - 1] === st
                 'X-GitHub-Api-Version': '2022-11-28',
             },
             q: '"from django" language:Python', // or '"from flask_login" language:Python'
-            per_page: 4 // TODO change this to 100, add the page argument and cycle through the pages (as done above)
+            per_page: 5 // TODO change this to 100, add the page argument and cycle through the pages (as done above)
         });
         for(let i = 0; i < data.items.length; i++) {
             let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
@@ -85,29 +85,50 @@ if (SUPPORTED_LIBRARIES.some(str => process.argv[process.argv.length - 1] === st
         let repos_dir = 'repositories/' + framework;
         let repos = fs.readdirSync(repos_dir);
         let queries = fs.readdirSync(queries_dir);
+        let skip = []
         
         for(let i = 0; i < repos.length; i++) {
-            await decompress('./' + repos_dir + '/repo' + i + '.zip', './' + repos_dir + '/repo' + i);
+            try {
+                await decompress('./' + repos_dir + '/repo' + i + '.zip', './' + repos_dir + '/repo' + i);
+            } catch(e) {
+                console.log(e);
+                skip.push(i);
+            }
             fs.unlinkSync(repos_dir + '/repo' + i + '.zip');
         }
+        console.log("Decompressed all the repositories\n");
         
         for(let i = 0; i < repos.length; i++) {
-            let dir = fs.readdirSync(repos_dir + '/repo' + i);
-            execSync("codeql database create ./" + repos_dir + "/repo" + i + "/" + dir[0] + "-database --language=" + lang + " --source-root ./" + repos_dir + "/repo" + i + "/" + dir[0]);
+            if(!skip.includes(i)) {
+                let dir = fs.readdirSync(repos_dir + '/repo' + i);
+                try {
+                    execSync("codeql database create ./" + repos_dir + "/repo" + i + "/" + dir[0] + "-database --language=" + lang + " --source-root ./" + repos_dir + "/repo" + i + "/" + dir[0], {timeout: 480000});
+                } catch(e) {
+                    console.log(e);
+                    skip.push(i);
+                }
+            }
         }
+        console.log("Created all the databases from the repositories\n");
         
         for(let j = 0; j < queries.length; j++) {
             let query = fs.readdirSync(queries_dir + '/' + queries[j]);
             for(let h = 0; h < query.length; h++) {
                 if (query[h].endsWith(".ql")) {
                     for(let i = 0; i < repos.length; i++) {
-                        let dir = fs.readdirSync(repos_dir + '/repo' + i).filter(str => str.endsWith("-database"));
-                        if (!fs.existsSync("./" + repos_dir + "/repo" + i + "/" + queries[j])){
-                            fs.mkdirSync("./" + repos_dir + "/repo" + i + "/" + queries[j]);
+                        if(!skip.includes(i)) {
+                            let dir = fs.readdirSync(repos_dir + '/repo' + i).filter(str => str.endsWith("-database"));
+                            if (!fs.existsSync("./" + repos_dir + "/repo" + i + "/" + queries[j])){
+                                fs.mkdirSync("./" + repos_dir + "/repo" + i + "/" + queries[j]);
+                            }
+                            try {
+                                execSync("codeql query run --database=./" + repos_dir + "/repo" + i + "/" + dir[0] + " --output=./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs " + queries_dir + '/' + queries[j] + "/" + query[h]);
+                                execSync("codeql bqrs decode --output=./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".txt --format=text ./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs");
+                            } catch(e) {
+                                console.log(e);
+                            }
+                            console.log("\n");
                         }
-                        execSync("codeql query run --database=./" + repos_dir + "/repo" + i + "/" + dir[0] + " --output=./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs " + queries_dir + '/' + queries[j] + "/" + query[h]);
-                        execSync("codeql bqrs decode --output=./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".txt --format=text ./" + repos_dir + "/repo" + i + "/" + queries[j] + "/" + query[h].slice(0, -3) + ".bqrs");
-                        console.log("\n");
                     }
                 }
             }
