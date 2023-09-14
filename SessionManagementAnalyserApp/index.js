@@ -45,13 +45,13 @@ for (let i = 0; i < 10; i++) {
 }
 */
 
-// Testing the whole process with a couple of repositories
+// Testing the whole process with a couple of repositories, it works
 if (process.argv.includes("-d")) {
     const { data } = await octokit.request('GET /search/code', {
         headers: {
             'X-GitHub-Api-Version': '2022-11-28',
         },
-        q: '"from flask_login" language:Python',
+        q: '"from flask_login" language:Python', // or '"from django" language:Python'
         per_page: 10
     });
     for(let i = 0; i < data.items.length; i++) {
