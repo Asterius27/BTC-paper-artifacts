@@ -5,6 +5,8 @@ import semmle.python.ApiGraphs
 // TODO intraprocedural version of the query
 
 // TODO this might lead to infite recursion, have to put a time limit (or something) when running this query
+// This query isn't that useful, if the developer doesn't remove the permanent key then it might remain and be used in the next session
+// It basically just checks that the developer correctly cleans up the session upon logout
 predicate reaches(ControlFlowNode source, ControlFlowNode sink) {
     source.strictlyReaches(sink)
     and exists(sink.getLocation().getFile().getRelativePath())
