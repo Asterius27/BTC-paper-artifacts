@@ -39,7 +39,7 @@ app.config["SESSION_COOKIE_DOMAIN"] = ".example.com"
 
 # Cookie expiration, can be set using integers (to express seconds), or using the datetime.timedelta object
 app.config["REMEMBER_COOKIE_DURATION"] = 6000 # can also be set as a parameter of the login_user function (duration=...), default is 365 days
-session.permanent = True
+session.permanent = True # default is false
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(2) # works only if session.permanent is true, default is 31 days
 # or 
 app.permanent_session_lifetime = dt.timedelta(weeks=6, days=2)
@@ -146,6 +146,7 @@ def login(id, password):
 @app.get("/logout")
 @login_required
 def logout():
+    session.pop("_permanent")
     logout_user()
     return redirect(url_for("index"))
 
