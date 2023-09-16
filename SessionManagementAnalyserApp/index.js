@@ -18,6 +18,7 @@ const octokit = new Octokit({ auth: process.env.TOKEN });
 // For authenticated requests, you can make up to 30 requests per minute for all search endpoints except for the "Search code" endpoint. The "Search code" endpoint requires you to authenticate and limits you to 10 requests per minute
 // The GitHub REST API provides up to 1,000 results for each search and no more (even if the query results say that the total count is higher), it's a limit for both the /search/code and /search/repositories
 // So only the first 1000 search results are available
+// When using the web ui the search results available are limited to 1000 for the repositories and 100 for the code (even if it says that more repositories/code match the query)
 // /search/repositories allows us to sort and order by number of stars, forks..., while /search/code does not (in the web ui it's the same)
 /*
 let arr = []
