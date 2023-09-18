@@ -2,7 +2,6 @@ import python
 import semmle.python.dataflow.new.DataFlow
 import semmle.python.dataflow.new.DataFlow2
 
-// TODO intraprocedural version of the query
 // TODO there might be other ways to set the HSTS header (not sure because it's a constant, so the only way to set it should be in the settings.py file (which is what this query checks))
 class HSTSConfiguration extends DataFlow::Configuration {
     HSTSConfiguration() { this = "HSTSConfiguration" }

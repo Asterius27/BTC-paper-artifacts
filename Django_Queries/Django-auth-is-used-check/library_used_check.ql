@@ -1,6 +1,6 @@
 import python
 import semmle.python.ApiGraphs
- 
+
 where exists(DataFlow::Node auth, DataFlow::Node login | 
         auth = API::moduleImport("django.contrib.auth").getMember("authenticate").getAValueReachableFromSource()
         and not auth.asExpr() instanceof ImportMember

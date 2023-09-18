@@ -2,7 +2,6 @@ import python
 import semmle.python.dataflow.new.DataFlow
 import semmle.python.dataflow.new.DataFlow2
 
-// TODO intraprocedural version of the query
 // TODO there might be other ways to change the session engine and set the secret key (not sure because they are constants, so the only way to set them should be in the settings.py file (which is what this query checks))
 class ClientSideSessionConfiguration extends DataFlow::Configuration {
     ClientSideSessionConfiguration() { this = "ClientSideSessionConfiguration" }
