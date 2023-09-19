@@ -2,7 +2,6 @@ import python
 import semmle.python.dataflow.new.DataFlow
 import semmle.python.ApiGraphs
 
-// TODO intraprocedural version of the query
 // TODO extend to any object that is passed to the login_user function (check that the object's get_id function returns something that is not user controlled data)
 // but I don't know how to statically find the type (class) of an object (needed to then retrieve the object's get_id function) (probably impossible)
 // and I don't know how to define "user controlled data"

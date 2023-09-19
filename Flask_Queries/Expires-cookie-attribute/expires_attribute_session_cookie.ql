@@ -3,7 +3,6 @@ import semmle.python.ApiGraphs
 import semmle.python.frameworks.Flask
 
 // TODO might want to check if session cookies are disabled as part of the query
-// TODO intraprocedural version of the query
 // This was slow (3 and a half minutes on toy application), the problem was with the ORs. Substituting them with an if solved the issue
 // dataflow analysis works also with "pointers" (references) and it's interprocedural (it takes into account dataflow between variables and functions)
 // of course it doesn't detect values that are know only at runtime (such as environment variables)
