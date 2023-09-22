@@ -40,7 +40,7 @@ if (!SUPPORTED_LANGUAGES.some(str => str.toLowerCase() === lang.toLowerCase())) 
     // TODO
 }
 
-// TODO need to try and improve it because right now it tries to detect the language the application was written in based only on the number of files written in that language
+// TODO need to try and improve it because right now it tries to detect the language the application was written in based only on the number of files written in that language (maybe try and use this: https://github.com/github-linguist/linguist)
 // If the project is big this takes a couple of seconds to compute
 function getLanguage(dir, file_count) {
     let files = fs.readdirSync(dir, { withFileTypes: true }).filter(item => item.isFile()).map(item => item.name);
