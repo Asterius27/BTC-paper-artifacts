@@ -147,6 +147,7 @@ def login(id, password):
 @login_required
 def logout():
     session.pop("_permanent")
+    # session.clear()
     logout_user()
     return redirect(url_for("index"))
 

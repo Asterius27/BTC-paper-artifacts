@@ -2,7 +2,9 @@ import python
 import semmle.python.ApiGraphs
 
 // TODO might want to check if session cookies are disabled as part of the query
-// TODO this might lead to infite recursion, have to put a time limit (or something) when running this query, maybe also check that session.clear() is called?
+// TODO this might lead to infite recursion, have to put a time limit (or something) when running this query
+// TODO also check that session.clear() is called, since if the developer adds stuff to the session cookie (using session["..."] = ...), the cookie doesn't get deleted and that stuff remains in the cookie. (only the _user_id, _fresh, _id, _remember fields get deleted)
+// The session cookie gets deleted only if the session dictionary (session["..."]) is empty.
 // This query isn't that useful, if the developer doesn't remove the permanent key then it might remain and be used in the next session
 // It basically just checks that the developer correctly cleans up the session upon logout
 predicate reaches(ControlFlowNode source, ControlFlowNode sink) {
