@@ -70,6 +70,7 @@ predicate reaches(ControlFlowNode source, ControlFlowNode sink) {
         and reaches(f.getAFlowNode(), sink))
 }
 
+// TODO only check for the config changes we are interested in: SESSION_COOKIE_HTTPONLY, REMEMBER_COOKIE_SECURE, SESSION_COOKIE_DOMAIN...
 from DataFlow::Node source, DataFlow::Node sink
 where source = API::moduleImport("flask").getMember("Flask").getAValueReachableFromSource()
     and not source.asExpr() instanceof ImportMember

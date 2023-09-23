@@ -1,10 +1,8 @@
-import { Octokit } from "octokit";
-import { setTimeout } from 'timers/promises';
 import 'dotenv/config';
 import * as fs from 'fs';
-import decompress from "decompress";
 import { execSync } from "child_process";
 import * as detect from "language-detect";
+import { pythonAnalysis } from "./python.js";
 
 // const octokit = new Octokit({ auth: process.env.TOKEN });
 const SUPPORTED_LANGUAGES = ["python"];
@@ -34,10 +32,15 @@ if (process.argv.some(str => str.startsWith("-l="))) {
 }
 
 if (!SUPPORTED_LANGUAGES.some(str => str.toLowerCase() === lang.toLowerCase())) {
-    console.log("Either wasn't able to detect the language automatically, so you should try to specify it manually\n or the language is not supported");
-} else {
-    console.log("Starting the analysis...");
-    // TODO
+    throw new Error("Either wasn't able to detect the language automatically, so you should try to specify it manually\n or the language is not supported");
+}
+
+console.log("Starting the analysis...");
+if (!fs.existsSync(root_dir + "-database")) {
+    execSync("codeql database create " + root_dir + "-database --language=" + lang.toLowerCase() + " --source-root " + root_dir, {timeout: 480000});
+}
+if (lang.toLowerCase() === "python") {
+    pythonAnalysis(root_dir);
 }
 
 // TODO need to try and improve it because right now it tries to detect the language the application was written in based only on the number of files written in that language (maybe try and use this: https://github.com/github-linguist/linguist)

@@ -1,0 +1,7 @@
+<html><body><h1>Flask/Flask-login Report (It will be prettier)</h1><h2>Post Login Security</h2><h3>Session Hijacking</h3><table><thead><tr><th>Vulnerability</th><th>Flask</th><th>Flask-login</th></tr></thead><tbody><tr><td>Secure cookie attribute not set</td><td>| Session cookie is also sent over HTTP (Secure attribute not set or set to false) |
+</td><td></td></tr><tr><td>HSTS not activated</td><td></td><td>N/A</td></tr><tr><td>HSTS activated without include subdomains option and cookie set for a parent domain</td><td></td><td></td></tr><tr><td>HTTPOnly cookie attribute not set</td><td>| E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:11  | Remember cookie is accessible via javascript (HTTPOnly attribute set to false) |
+| E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:28  | Remember cookie is accessible via javascript (HTTPOnly attribute set to false) |
+| E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:167 | Remember cookie is accessible via javascript (HTTPOnly attribute set to false) |
+</td><td>| E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:29  | Remember cookie is accessible via javascript (HTTPOnly attribute set to false) |
+| E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:168 | Remember cookie is accessible via javascript (HTTPOnly attribute set to false) |
+</td></tr></tbody></table></body></html>
