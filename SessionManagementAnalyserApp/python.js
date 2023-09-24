@@ -59,9 +59,26 @@ export function pythonAnalysis(root_dir) {
         generateReport(flask_queries, "Flask/Flask-login", root_dir + "-results");
     }
     if (django_lib[0]) {
+        let session_engine = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Custom-session-engine", "custom_session_engine");
+        if (session_engine[0]) {
+            throw new Error("Using a custom session engine, so the analysis won't be run");
+        }
         django_queries = getDjangoQueries();
-        // TODO
-        console.log(django_queries);
+        for (let [key, value] of Object.entries(django_queries)) {
+            for (let [dir, files] of Object.entries(value)) {
+                if (!fs.existsSync(root_dir + "-results/" + dir)){
+                    fs.mkdirSync(root_dir + "-results/" + dir);
+                }
+                for (let [file, arr] of Object.entries(files)) {
+                    try {
+                        let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, DJANGO_QUERIES_DIR + "/" + dir, file);
+                        django_queries[key][dir][file] = res;
+                    } catch(e) {
+                        django_queries[key][dir][file] = [true, "The query threw an execution error and didn't complete"];
+                    }
+                }
+            }
+        }
         generateReport(django_queries, "Django", root_dir + "-results");
     }
 }

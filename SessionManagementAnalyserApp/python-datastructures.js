@@ -74,7 +74,58 @@ let flask = {
 function getFlaskQueries() { return flask; }
 
 let django = {
-    // TODO
+    "DJANGO_COOKIE_QUERIES": {
+        "Cookie-name-prefixes": {
+            "name_prefix_session_cookie": [false, ""]
+        },
+        "Domain-cookie-attribute": {
+            "domain_attribute_session_cookie": [false, ""]
+        },
+        "Expires-cookie-attribute": {
+            "expires_attribute_session_cookie": [false, ""]
+        },
+        "HTTPOnly-cookie-attribute": {
+            "httponly_attribute_session_cookie": [false, ""]
+        },
+        "Samesite-cookie-attribute": {
+            "samesite_attribute_session_cookie": [false, ""]
+        },
+        "Secure-cookie-attribute": {
+            "secure_attribute_session_cookie": [false, ""]
+        }
+    },
+    "DJANGO_SERIALIZATION_QUERIES": {
+        "Session-serializer": {
+            "session_serializer": [false, ""]
+        }
+    },
+    "DJANGO_LOGOUT_QUERIES": {
+        "Logout-session-invalidation": {
+            "client_side_session": [false, ""]
+        }
+    },
+    "DJANGO_HSTS_QUERIES": {
+        "HSTS-header": {
+            "HSTS_header": [false, ""]
+        },
+        "HSTS-header-and-cookie-domain": {
+            "HSTS_header_no_subdomains": [false, ""],
+            "domain_attribute_session_cookie": [false, ""]
+        },
+        "HSTS-header-subdomains": {
+            "HSTS_header_subdomains": [false, ""]
+        }
+    },
+    "DJANGO_SECRET_KEY_QUERY": {
+        "Django-secret-key": {
+            "secret_key": [false, ""]
+        }
+    },
+    "DJANGO_LOGIN_QUERY": {
+        "Redirect-everything-to-HTTPS": {
+            "secure_ssl_redirect": [false, ""]
+        }
+    }
 }
 
 function getDjangoQueries() { return django; }

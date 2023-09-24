@@ -28,9 +28,8 @@ function aux(key1, key2, key3, obj, output) {
 
 export function generateReport(results, lib, dir) {
     generateCSS(dir);
-    let html = "";
+    let html = '<html><head><link rel="stylesheet" href="style.css"></head><body><div class="header"><h1>' + lib + " Report - Client Side Sessions (It will be prettier)</h1></div>";
     if (lib === "Flask/Flask-login") {
-        html = '<html><head><link rel="stylesheet" href="style.css"></head><body><div class="header"><h1>' + lib + " Report - Client Side Sessions (It will be prettier)</h1></div>";
         html += '<button type="button" class="collapsible">Post Login Security</button><div class="content">';
 
         html += '<button type="button" class="collapsible">Session Hijacking</button><div class="content"><table class="styled-table"><thead><tr>';
@@ -131,25 +130,28 @@ export function generateReport(results, lib, dir) {
         html += "<td>N/A</td></tr>";
         html += '</tbody></table></div>';
         html += '</div>';
-
-        html += '<script> \
-        var coll = document.getElementsByClassName("collapsible"); \
-        var i; \
-        for (i = 0; i < coll.length; i++) { \
-          coll[i].addEventListener("click", function() { \
-            this.classList.toggle("active"); \
-            var content = this.nextElementSibling; \
-            if (content.style.display === "block") { \
-              content.style.display = "none"; \
-            } else { \
-              content.style.display = "block"; \
-            } \
-          }); \
-        } \
-        </script></body></html>';
     }
     if (lib === "Django") {
         // TODO
+        console.log("Hello\n");
+        console.log(results);
+        console.log(lib);
+        console.log(dir);
     }
+    html += '<script> \
+    var coll = document.getElementsByClassName("collapsible"); \
+    var i; \
+    for (i = 0; i < coll.length; i++) { \
+        coll[i].addEventListener("click", function() { \
+        this.classList.toggle("active"); \
+        var content = this.nextElementSibling; \
+        if (content.style.display === "block") { \
+            content.style.display = "none"; \
+        } else { \
+            content.style.display = "block"; \
+        } \
+        }); \
+    } \
+    </script></body></html>';
     fs.writeFileSync(dir + '/FinalReport.html', html);
 }
