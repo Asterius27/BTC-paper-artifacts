@@ -14,4 +14,4 @@ where ((node = Flask::FlaskApp::instance().getMember("config").getSubscript("SES
     and kv = node.asExpr().(Dict).getAnItem()
     and kv.getKey().(Str).getText() = "SESSION_COOKIE_HTTPONLY"
     and kv.getValue().(ImmutableLiteral).booleanValue() = false)
-select node.getLocation(), "Remember cookie is accessible via javascript (HTTPOnly attribute set to false)"
+select node.getLocation(), "Session cookie is accessible via javascript (HTTPOnly attribute set to false)"

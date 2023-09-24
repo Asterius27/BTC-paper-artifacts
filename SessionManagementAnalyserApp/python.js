@@ -62,6 +62,6 @@ export function pythonAnalysis(root_dir) {
         django_queries = getDjangoQueries();
         // TODO
         console.log(django_queries);
-        generateReport(django_queries, "Django");
+        generateReport(django_queries, "Django", root_dir + "-results");
     }
 }
