@@ -17,7 +17,7 @@ if (process.argv.some(str => str.startsWith("-s="))) {
 // Language the application was written in, if not specified an attempt will be made to detect it automatically
 if (process.argv.some(str => str.startsWith("-l="))) {
     lang = process.argv.filter(str => str.startsWith("-l="))[0].slice(3);
-    console.log(lang);
+    console.log(lang + "\n");
 } else {
     let file_count = getLanguage(root_dir, {});
     let max = 0;
