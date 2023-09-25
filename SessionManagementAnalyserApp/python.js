@@ -7,8 +7,9 @@ const FLASK_QUERIES_DIR = "../Flask_Queries";
 const DJANGO_QUERIES_DIR = "../Django_Queries";
 
 function execBoolQuery(database, outputLocation, queryLocation, queryName) {
-    // execSync("codeql query run --database=" + database + " --output=" + outputLocation + "/" + queryName + ".bqrs " + queryLocation + "/" + queryName + ".ql");
-    // execSync("codeql bqrs decode --output=" + outputLocation + "/" + queryName + ".txt --format=text " + outputLocation + "/" + queryName + ".bqrs");
+    // comment the following two lines to re-generate the html report without re-running the queries (have to run the queries at least once before generating the html report)
+    execSync("codeql query run --database=" + database + " --output=" + outputLocation + "/" + queryName + ".bqrs " + queryLocation + "/" + queryName + ".ql");
+    execSync("codeql bqrs decode --output=" + outputLocation + "/" + queryName + ".txt --format=text " + outputLocation + "/" + queryName + ".bqrs");
     let lines = fs.readFileSync(outputLocation + "/" + queryName + ".txt", 'utf-8').split("\n");
     lines.pop();
     if (lines.length > 2) {

@@ -4,7 +4,6 @@ import { execSync } from "child_process";
 import * as detect from "language-detect";
 import { pythonAnalysis } from "./python.js";
 
-// const octokit = new Octokit({ auth: process.env.TOKEN });
 const SUPPORTED_LANGUAGES = ["python"];
 let root_dir = "./";
 let lang = "";
