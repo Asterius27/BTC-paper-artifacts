@@ -26,6 +26,7 @@ function aux(key1, key2, key3, obj, output) {
     }
 }
 
+// TODO make it prettier
 export function generateReport(results, lib, dir) {
     generateCSS(dir);
     let html = "";

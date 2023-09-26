@@ -40,6 +40,7 @@ export function pythonAnalysis(root_dir) {
     if (!flask_lib[0] && !django_lib[0]) {
         throw new Error("None of the supported libraries/frameworks is used");
     }
+    fs.writeFileSync(root_dir + "-results/info.txt", "python");
     if (flask_lib[0]) {
         flask_queries = getFlaskQueries();
         for (let [key, value] of Object.entries(flask_queries)) {
@@ -58,6 +59,7 @@ export function pythonAnalysis(root_dir) {
             }
         }
         generateReport(flask_queries, "Flask/Flask-login", root_dir + "-results");
+        fs.appendFileSync(root_dir + "-results/info.txt", ", flask");
     }
     if (django_lib[0]) {
         let session_engine = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Custom-session-engine", "custom_session_engine");
@@ -81,5 +83,6 @@ export function pythonAnalysis(root_dir) {
             }
         }
         generateReport(django_queries, "Django", root_dir + "-results");
+        fs.appendFileSync(root_dir + "-results/info.txt", ", django");
     }
 }

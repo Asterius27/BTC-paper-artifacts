@@ -11,6 +11,11 @@ Launch app:
 ```console
 npm start [-- [-s=<root directory of the application, if not specified the current directory will be used>] [-l=<Language the application was written in, if not specified an attempt will be made to detect it automatically>]]
 ```
+Launch app that generates the stats:
+```console
+npm run stats [-- [-s=<directory of the applications/repositories, if not specified the current directory will be used>] [-l=<Language the applications were written in, if not specified an attempt will be made to detect it automatically>]]
+```
+If you specify the language, all of the applications have to be written in that language. If you don't specify the language, the applications can be written in different languages, but the language detection algorithm might fail. In that case you have to manually analyze the applications that failed one by one using the main app (and then relaunch the stats app to generate the stats).
 
 ## Launch Flask App
 
