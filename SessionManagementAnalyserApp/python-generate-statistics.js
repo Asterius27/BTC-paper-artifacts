@@ -3,11 +3,22 @@ import * as fs from 'fs';
 
 function readQueryResults(outputLocation, queryName) {
     let lines = fs.readFileSync(outputLocation + "/" + queryName + ".txt", 'utf-8').split("\n");
-    lines.pop();
-    if (lines.length > 2) {
-        return true;
+    if (outputLocation.endsWith("HSTS-header-and-cookie-domain") && (queryName === "domain_attribute_session_cookie" || queryName === "domain_attribute_remember_cookie")) {
+        let aux_lines = fs.readFileSync(outputLocation + "/HSTS_header_no_subdomains.txt", 'utf-8').split("\n");
+        aux_lines.pop();
+        lines.pop();
+        if (lines.length > 2 && aux_lines.length > 2) {
+            return true;
+        } else {
+            return false;
+        }
     } else {
-        return false;
+        lines.pop();
+        if (lines.length > 2) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -17,27 +28,29 @@ function countRepos(counter, framework, root_dir) {
         for (let [key, value] of Object.entries(flask_queries)) {
             for (let [dir, files] of Object.entries(value)) {
                 for (let [file, arr] of Object.entries(files)) {
-                    if (readQueryResults(root_dir + "/" + dir, file)) {
-                        if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
-                            counter[key][dir][file]++;
+                    if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
+                        if (readQueryResults(root_dir + "/" + dir, file)) {
+                            if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
+                                counter[key][dir][file]++;
+                            } else {
+                                if (counter[key] === undefined) {
+                                    counter[key] = {}
+                                }
+                                if (counter[key][dir] === undefined) {
+                                    counter[key][dir] = {}
+                                }
+                                counter[key][dir][file] = 1;
+                            }
                         } else {
-                            if (counter[key] === undefined) {
-                                counter[key] = {}
+                            if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
+                                if (counter[key] === undefined) {
+                                    counter[key] = {}
+                                }
+                                if (counter[key][dir] === undefined) {
+                                    counter[key][dir] = {}
+                                }
+                                counter[key][dir][file] = 0;
                             }
-                            if (counter[key][dir] === undefined) {
-                                counter[key][dir] = {}
-                            }
-                            counter[key][dir][file] = 1;
-                        }
-                    } else {
-                        if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
-                            if (counter[key] === undefined) {
-                                counter[key] = {}
-                            }
-                            if (counter[key][dir] === undefined) {
-                                counter[key][dir] = {}
-                            }
-                            counter[key][dir][file] = 0;
                         }
                     }
                 }
@@ -49,27 +62,29 @@ function countRepos(counter, framework, root_dir) {
         for (let [key, value] of Object.entries(django_queries)) {
             for (let [dir, files] of Object.entries(value)) {
                 for (let [file, arr] of Object.entries(files)) {
-                    if (readQueryResults(root_dir + "/" + dir, file)) {
-                        if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
-                            counter[key][dir][file]++;
+                    if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
+                        if (readQueryResults(root_dir + "/" + dir, file)) {
+                            if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
+                                counter[key][dir][file]++;
+                            } else {
+                                if (counter[key] === undefined) {
+                                    counter[key] = {}
+                                }
+                                if (counter[key][dir] === undefined) {
+                                    counter[key][dir] = {}
+                                }
+                                counter[key][dir][file] = 1;
+                            }
                         } else {
-                            if (counter[key] === undefined) {
-                                counter[key] = {}
+                            if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
+                                if (counter[key] === undefined) {
+                                    counter[key] = {}
+                                }
+                                if (counter[key][dir] === undefined) {
+                                    counter[key][dir] = {}
+                                }
+                                counter[key][dir][file] = 0;
                             }
-                            if (counter[key][dir] === undefined) {
-                                counter[key][dir] = {}
-                            }
-                            counter[key][dir][file] = 1;
-                        }
-                    } else {
-                        if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
-                            if (counter[key] === undefined) {
-                                counter[key] = {}
-                            }
-                            if (counter[key][dir] === undefined) {
-                                counter[key][dir] = {}
-                            }
-                            counter[key][dir][file] = 0;
                         }
                     }
                 }
@@ -79,7 +94,7 @@ function countRepos(counter, framework, root_dir) {
     return counter;
 }
 
-// TODO make it prettier, finish it, add django and Flask-login support, fix "HSTS activated without include subdomains and cookie set for a parent domain"
+// TODO make it prettier, finish it, add django and Flask-login support
 function generateStatsPage(counter, total, flask_total, django_total, root_dir) {
     let html = '<html>\
         <head>\
@@ -95,7 +110,7 @@ function generateStatsPage(counter, total, flask_total, django_total, root_dir) 
                     data.addRows([\
                         ["Secure cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie"] + '],\
                         ["HSTS not activated", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header"]["HSTS_header"] + '],\
-                        ["HSTS activated without include subdomains and cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["HSTS_header_no_subdomains"] + '],\
+                        ["HSTS activated without include subdomains and cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_session_cookie"] + '],\
                         ["HTTPOnly cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ']\
                     ]);\
                     var options = {"title":"Session Hijacking","width":1000,"height":300};\
