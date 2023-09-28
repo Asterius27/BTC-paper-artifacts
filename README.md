@@ -31,6 +31,11 @@ python manage.py runserver
 
 ## CodeQL Commands
 
+<br> 0. Install dependencies
+```console
+codeql pack install
+```
+
 <br> 1. Create the database
 ```console
 codeql database create <database> --language=<language-identifier> [--threads=<num>] --source-root <application>
