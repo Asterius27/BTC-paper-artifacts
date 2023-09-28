@@ -51,23 +51,41 @@ if (failed.length > 0) {
     let flask_repos = 0;
     let django_repos = 0;
     let failed_repos = 0;
+    let custom_session_engine_repos = 0;
     for (let i = 0; i < repos.length; i++) {
         let dir = root_dir + "/" + repos[i];
+        let res = "";
+        let info = [];
+        let failed = false;
         try {
-            let res = fs.readdirSync(dir).filter(str => str.endsWith("-results"))[0];
-            let info = fs.readFileSync(dir + "/" + res + "/info.txt", { encoding: 'utf-8' }).split(",");
-            if (info[0] === "python") {
-                if (info[1].includes("flask")) {
-                    flask_repos++;
-                    counter = countRepos(counter, "flask", dir + "/" + res);
-                }
-                if (info[1].includes("django")) {
-                    django_repos++;
-                    counter = countRepos(counter, "django", dir + "/" + res);
-                }
-            }
+            res = fs.readdirSync(dir).filter(str => str.endsWith("-results"))[0];
         } catch(e) {
             failed_repos++;
+            failed = true;
+        }
+        if (!failed) {
+            try {
+                info = fs.readFileSync(dir + "/" + res + "/info.txt", { encoding: 'utf-8' }).split(",");
+                if (info[0] === "python") {
+                    if (info[1].includes("flask")) {
+                        flask_repos++;
+                        counter = countRepos(counter, "flask", dir + "/" + res);
+                    }
+                    if (info[1].includes("django")) {
+                        django_repos++;
+                        counter = countRepos(counter, "django", dir + "/" + res);
+                    }
+                }
+            } catch(e) {
+                failed_repos++;
+                if (fs.existsSync(dir + "/" + res + "/info.txt")) {
+                    if (info.length > 2) {
+                        if (info[2].includes("customsessionengine")) {
+                            custom_session_engine_repos++;
+                        }
+                    }
+                }
+            }
         }
     }
     if (flask_repos === 0) {
@@ -76,5 +94,5 @@ if (failed.length > 0) {
     if (django_repos === 0) {
         counter = initializeCounter(counter, "django");
     }
-    generateStatsPage(counter, repos.length, flask_repos, django_repos, failed_repos, root_dir);
+    generateStatsPage(counter, repos.length, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
 }

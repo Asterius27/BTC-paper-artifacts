@@ -136,13 +136,14 @@ function initializeCounter(counter, framework) {
     return counter;
 }
 
-// TODO make it prettier, finish adding django support
-function generateStatsPage(counter, total, flask_total, django_total, failed_repos, root_dir) {
+// TODO make it prettier
+function generateStatsPage(counter, total, flask_total, django_total, failed_repos, custom_session_engine_repos, root_dir) {
     let html = '<html>\
         <head>\
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>\
             <script type="text/javascript">\
                 google.charts.load("current", {"packages":["corechart"]});\
+                google.charts.setOnLoadCallback(drawPasswordTheftChart);\
                 google.charts.setOnLoadCallback(drawSessionHijackingChart);\
                 google.charts.setOnLoadCallback(drawGeneralRecommendationsChart);\
                 google.charts.setOnLoadCallback(drawSessionFixationChart);\
@@ -151,6 +152,15 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                 google.charts.setOnLoadCallback(drawInsecureSerializationChart);\
                 google.charts.setOnLoadCallback(drawLibraryVulnerabilitiesChart);\
                 google.charts.setOnLoadCallback(drawClientSideSessionIvalidationChart);\
+                function drawPasswordTheftChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["Login page/form sent over HTTP", 0, ' + counter["DJANGO_LOGIN_QUERY"]["Redirect-everything-to-HTTPS"]["secure_ssl_redirect"] + ', ""],\
+                    ]);\
+                    var options = {"title":"Password Theft","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("password_theft"));\
+                    chart.draw(data, options);\
+                }\
                 function drawSessionHijackingChart() {\
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
@@ -212,7 +222,8 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                 function drawInsecureSerializationChart() {\
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
-                        ["Unsafe serializer settings", ' + counter["FLASK_SERIALIZATION_QUERIES"]["Serializer-settings"]["serializer_settings"] + ', 0, ""]\
+                        ["Unsafe serializer settings", ' + counter["FLASK_SERIALIZATION_QUERIES"]["Serializer-settings"]["serializer_settings"] + ', 0, ""],\
+                        ["Using custom or unsafe serializers", 0, ' + counter["DJANGO_SERIALIZATION_QUERIES"]["Session-serializer"]["Session_serializer"] + ', ""]\
                     ]);\
                     var options = {"title":"Insecure Serialization/Deserialization","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
                     var chart = new google.visualization.BarChart(document.getElementById("insecure_serialization_deserialization"));\
@@ -233,7 +244,8 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                 function drawClientSideSessionIvalidationChart() {\
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
-                        ["Session not completely cleared upon logout", ' + counter["FLASK_LOGOUT_QUERIES"]["Clear-permanent-session-on-logout"]["clear_session_on_logout"] + ', 0, ""]\
+                        ["Session not completely cleared upon logout", ' + counter["FLASK_LOGOUT_QUERIES"]["Clear-permanent-session-on-logout"]["clear_session_on_logout"] + ', 0, ""],\
+                        ["Using client side sessions", ' + flask_total + ', ' + counter["DJANGO_LOGOUT_QUERIES"]["Logout-session-invalidation"]["client_side_session"] + ', ""]\
                     ]);\
                     var options = {"title":"Client Side Session Invalidation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
                     var chart = new google.visualization.BarChart(document.getElementById("client_side_session_invalidation"));\
@@ -242,13 +254,13 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
             </script>\
         </head>\
         <body>\
-            <p>Total number of applications/repos: ' + total + '<br/>Number of applications/repos that were not analyzed because of an error: ' + failed_repos + '<br/>\
+            <p>Total number of applications/repos: ' + total + '<br/>Number of applications/repos that were not analyzed because of an error: ' + failed_repos + ', among which ' + custom_session_engine_repos + ' failed because they use a custom session engine (Django)<br/>\
             Total number of Flask/Flask-login applications/repos: ' + flask_total + '<br/>Total number of Django applications/repos: ' + django_total + '<br/>\
             Total number of queries that failed: ' + query_errors + '<br/></p>\
-            <!-- div>\
+            <div>\
                 <h2>Login Security</h2>\
                 <div id="password_theft"></div>\
-            </div -->\
+            </div>\
             <div>\
                 <h2>Post Login Security</h2>\
                 <div id="session_hijacking_chart"></div>\

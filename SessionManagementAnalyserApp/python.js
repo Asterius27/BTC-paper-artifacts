@@ -64,6 +64,7 @@ export function pythonAnalysis(root_dir) {
     if (django_lib[0]) {
         let session_engine = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Custom-session-engine", "custom_session_engine");
         if (session_engine[0]) {
+            fs.appendFileSync(root_dir + "-results/info.txt", ", django, customsessionengine");
             throw new Error("Using a custom session engine, so the analysis won't be run");
         }
         django_queries = getDjangoQueries();
