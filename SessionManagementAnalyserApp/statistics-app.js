@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import { execSync } from "child_process";
-import { countRepos, generateStatsPage } from './python-generate-statistics.js';
+import { countRepos, generateStatsPage, initializeCounter } from './python-generate-statistics.js';
 
 const SUPPORTED_LANGUAGES = ["python"];
 let root_dir = "./";
@@ -50,20 +50,31 @@ if (failed.length > 0) {
     let counter = {}
     let flask_repos = 0;
     let django_repos = 0;
+    let failed_repos = 0;
     for (let i = 0; i < repos.length; i++) {
         let dir = root_dir + "/" + repos[i];
-        let res = fs.readdirSync(dir).filter(str => str.endsWith("-results"))[0];
-        let info = fs.readFileSync(dir + "/" + res + "/info.txt", { encoding: 'utf-8' }).split(",");
-        if (info[0] === "python") {
-            if (info[1].includes("flask")) {
-                flask_repos++;
-                counter = countRepos(counter, "flask", dir + "/" + res);
+        try {
+            let res = fs.readdirSync(dir).filter(str => str.endsWith("-results"))[0];
+            let info = fs.readFileSync(dir + "/" + res + "/info.txt", { encoding: 'utf-8' }).split(",");
+            if (info[0] === "python") {
+                if (info[1].includes("flask")) {
+                    flask_repos++;
+                    counter = countRepos(counter, "flask", dir + "/" + res);
+                }
+                if (info[1].includes("django")) {
+                    django_repos++;
+                    counter = countRepos(counter, "django", dir + "/" + res);
+                }
             }
-            if (info[1].includes("django")) {
-                django_repos++;
-                counter = countRepos(counter, "django", dir + "/" + res);
-            }
+        } catch(e) {
+            failed_repos++;
         }
     }
-    generateStatsPage(counter, repos.length, flask_repos, django_repos, root_dir);
+    if (flask_repos === 0) {
+        counter = initializeCounter(counter, "flask");
+    }
+    if (django_repos === 0) {
+        counter = initializeCounter(counter, "django");
+    }
+    generateStatsPage(counter, repos.length, flask_repos, django_repos, failed_repos, root_dir);
 }

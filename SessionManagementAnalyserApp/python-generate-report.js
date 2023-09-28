@@ -124,7 +124,7 @@ export function generateReport(results, lib, dir) {
 
         html += '<button type="button" class="collapsible">Logout Security</button><div class="content">';
 
-        html += '<button type="button" class="collapsible">Client side session invalidation</button><div class="content"><table class="styled-table"><thead><tr>';
+        html += '<button type="button" class="collapsible">Client Side Session Invalidation</button><div class="content"><table class="styled-table"><thead><tr>';
         html += "<th>Vulnerability</th><th>Flask</th><th>Flask-login</th>";
         html += "</tr></thead><tbody>";
         html += "<tr><td>Session not completely cleared upon logout</td>";
@@ -209,7 +209,7 @@ export function generateReport(results, lib, dir) {
 
         html += '<button type="button" class="collapsible">Logout Security</button><div class="content">';
 
-        html += '<button type="button" class="collapsible">Client side session invalidation</button><div class="content"><table class="styled-table"><thead><tr>';
+        html += '<button type="button" class="collapsible">Client Side Session Invalidation</button><div class="content"><table class="styled-table"><thead><tr>';
         html += "<th>Vulnerability</th><th>Django</th>";
         html += "</tr></thead><tbody>";
         html += "<tr><td>Using client side sessions</td>";

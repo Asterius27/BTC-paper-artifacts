@@ -1,10 +1,24 @@
 import { getFlaskQueries, getDjangoQueries } from './python-datastructures.js';
 import * as fs from 'fs';
 
+let query_errors = 0;
+
 function readQueryResults(outputLocation, queryName) {
-    let lines = fs.readFileSync(outputLocation + "/" + queryName + ".txt", 'utf-8').split("\n");
+    let lines = [];
+    try {
+        lines = fs.readFileSync(outputLocation + "/" + queryName + ".txt", 'utf-8').split("\n");
+    } catch (e) {
+        query_errors++;
+        return false;
+    }
     if (outputLocation.endsWith("HSTS-header-and-cookie-domain") && (queryName === "domain_attribute_session_cookie" || queryName === "domain_attribute_remember_cookie")) {
-        let aux_lines = fs.readFileSync(outputLocation + "/HSTS_header_no_subdomains.txt", 'utf-8').split("\n");
+        let aux_lines = [];
+        try {
+            aux_lines = fs.readFileSync(outputLocation + "/HSTS_header_no_subdomains.txt", 'utf-8').split("\n");
+        } catch(e) {
+            query_errors++;
+            return false;
+        }
         aux_lines.pop();
         lines.pop();
         if (lines.length > 2 && aux_lines.length > 2) {
@@ -94,40 +108,164 @@ function countRepos(counter, framework, root_dir) {
     return counter;
 }
 
-// TODO make it prettier, finish it, add django and Flask-login support
-function generateStatsPage(counter, total, flask_total, django_total, root_dir) {
+function initializeCounter(counter, framework) {
+    if (framework === "flask") {
+        let flask_queries = getFlaskQueries();
+        for (let [key, value] of Object.entries(flask_queries)) {
+            counter[key] = {};
+            for (let [dir, files] of Object.entries(value)) {
+                counter[key][dir] = {};
+                for (let [file, arr] of Object.entries(files)) {
+                    counter[key][dir][file] = 0;
+                }
+            }
+        }
+    }
+    if (framework === "django") {
+        let django_queries = getDjangoQueries();
+        for (let [key, value] of Object.entries(django_queries)) {
+            counter[key] = {};
+            for (let [dir, files] of Object.entries(value)) {
+                counter[key][dir] = {};
+                for (let [file, arr] of Object.entries(files)) {
+                    counter[key][dir][file] = 0;
+                }
+            }
+        }
+    }
+    return counter;
+}
+
+// TODO make it prettier, finish adding django support
+function generateStatsPage(counter, total, flask_total, django_total, failed_repos, root_dir) {
     let html = '<html>\
         <head>\
-        <!--Load the AJAX API-->\
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>\
             <script type="text/javascript">\
                 google.charts.load("current", {"packages":["corechart"]});\
-                google.charts.setOnLoadCallback(drawChart);\
-                function drawChart() {\
-                    var data = new google.visualization.DataTable();\
-                    data.addColumn("string", "Vulnerability");\
-                    data.addColumn("number", "Number of Repos");\
-                    data.addRows([\
-                        ["Secure cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie"] + '],\
-                        ["HSTS not activated", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header"]["HSTS_header"] + '],\
-                        ["HSTS activated without include subdomains and cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_session_cookie"] + '],\
-                        ["HTTPOnly cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ']\
+                google.charts.setOnLoadCallback(drawSessionHijackingChart);\
+                google.charts.setOnLoadCallback(drawGeneralRecommendationsChart);\
+                google.charts.setOnLoadCallback(drawSessionFixationChart);\
+                google.charts.setOnLoadCallback(drawCookieTamperingChart);\
+                google.charts.setOnLoadCallback(drawCSRFChart);\
+                google.charts.setOnLoadCallback(drawInsecureSerializationChart);\
+                google.charts.setOnLoadCallback(drawLibraryVulnerabilitiesChart);\
+                google.charts.setOnLoadCallback(drawClientSideSessionIvalidationChart);\
+                function drawSessionHijackingChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["Secure session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie"] + ', ""],\
+                        ["Secure remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_remember_cookie"] + ', 0, ""],\
+                        ["HSTS not activated", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header"]["HSTS_header"] + ', ' + counter["DJANGO_HSTS_QUERIES"]["HSTS-header"]["HSTS_header"] + ', ""],\
+                        ["HSTS activated without include subdomains and session cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_session_cookie"] + ', ' + counter["DJANGO_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_session_cookie"] + ', ""],\
+                        ["HSTS activated without include subdomains and remember cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_remember_cookie"] + ', 0, ""],\
+                        ["HTTPOnly session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ', ""],\
+                        ["HTTPOnly remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_remember_cookie"] + ', 0, ""]\
                     ]);\
-                    var options = {"title":"Session Hijacking","width":1000,"height":300};\
-                    var chart = new google.visualization.BarChart(document.getElementById("chart_div"));\
+                    var options = {"title":"Session Hijacking","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("session_hijacking_chart"));\
+                    chart.draw(data, options);\
+                }\
+                function drawGeneralRecommendationsChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["Domain session cookie attribute set", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie"] + ', ""],\
+                        ["Domain remember cookie attribute set", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_remember_cookie"] + ', 0, ""],\
+                        ["Expires session cookie attribute set to a duration that is too long (greater than 30 days)", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie"] + ', ""],\
+                        ["Expires remember cookie attribute set to a duration that is too long (greater than 30 days)", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_remember_cookie"] + ', 0, ""]\
+                    ]);\
+                    var options = {"title":"General Recommendations (could allow both hijacking and fixation)","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("general_recommendations"));\
+                    chart.draw(data, options);\
+                }\
+                function drawSessionFixationChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["HSTS not activated or activated without the include subdomains option", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-subdomains"]["HSTS_header_subdomains"] + ', ' + counter["DJANGO_HSTS_QUERIES"]["HSTS-header-subdomains"]["HSTS_header_subdomains"] + ', ""],\
+                        ["Session cookie name does not contain the prefix __Host- or __Secure-", ' + counter["FLASK_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_session_cookie"] + ', ""],\
+                        ["Remember cookie name does not contain the prefix __Host- or __Secure-", ' + counter["FLASK_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_remember_cookie"] + ', 0, ""],\
+                        ["Initially accept a session/user ID generated by the user and use that for the current session", ' + counter["FLASK_SERIALIZATION_QUERIES"]["Cookie-user-ID-serialization"]["cookie_user_id_serialization"] + ', 0, ""]\
+                    ]);\
+                    var options = {"title":"Session Fixation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("session_fixation"));\
+                    chart.draw(data, options);\
+                }\
+                function drawCookieTamperingChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["Secure cookie attribute not set session cookie", ' + counter["FLASK_SECRET_KEY_QUERY"]["Flask-secret-key"]["secret_key"] + ', ' + counter["DJANGO_SECRET_KEY_QUERY"]["Django-secret-key"]["secret_key"] + ', ""]\
+                    ]);\
+                    var options = {"title":"Cookie Tampering/Forging","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("cookie_tampering_forging"));\
+                    chart.draw(data, options);\
+                }\
+                function drawCSRFChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["SameSite session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_session_cookie"] + ', ""],\
+                        ["SameSite remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_remember_cookie"] + ', 0, ""]\
+                    ]);\
+                    var options = {"title":"CSRF","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("csrf"));\
+                    chart.draw(data, options);\
+                }\
+                function drawInsecureSerializationChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["Unsafe serializer settings", ' + counter["FLASK_SERIALIZATION_QUERIES"]["Serializer-settings"]["serializer_settings"] + ', 0, ""]\
+                    ]);\
+                    var options = {"title":"Insecure Serialization/Deserialization","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("insecure_serialization_deserialization"));\
+                    chart.draw(data, options);\
+                }\
+                function drawLibraryVulnerabilitiesChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["Session Protection", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-session-protection"]["session_protection"] + ', 0, ""],\
+                        ["Session Protection Basic", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-session-protection"]["session_protection_basic"] + ', 0, ""],\
+                        ["Open Redirect after Login", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-open-redirect-after-login"]["open_redirect"] + ', 0, ""],\
+                        ["Incorrect Config Changes", ' + counter["FLASK_EXTRA_QUERIES"]["Incorrect-config-changes"]["incorrect_config_changes"] + ', 0, ""]\
+                    ]);\
+                    var options = {"title":"Library Specific Vulnerabilities","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("library_specific_vulnerabilities"));\
+                    chart.draw(data, options);\
+                }\
+                function drawClientSideSessionIvalidationChart() {\
+                    var data = new google.visualization.arrayToDataTable([\
+                        ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["Session not completely cleared upon logout", ' + counter["FLASK_LOGOUT_QUERIES"]["Clear-permanent-session-on-logout"]["clear_session_on_logout"] + ', 0, ""]\
+                    ]);\
+                    var options = {"title":"Client Side Session Invalidation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var chart = new google.visualization.BarChart(document.getElementById("client_side_session_invalidation"));\
                     chart.draw(data, options);\
                 }\
             </script>\
         </head>\
         <body>\
-            <div id="chart_div"></div>\
+            <p>Total number of applications/repos: ' + total + '<br/>Number of applications/repos that were not analyzed because of an error: ' + failed_repos + '<br/>\
+            Total number of Flask/Flask-login applications/repos: ' + flask_total + '<br/>Total number of Django applications/repos: ' + django_total + '<br/>\
+            Total number of queries that failed: ' + query_errors + '<br/></p>\
+            <!-- div>\
+                <h2>Login Security</h2>\
+                <div id="password_theft"></div>\
+            </div -->\
+            <div>\
+                <h2>Post Login Security</h2>\
+                <div id="session_hijacking_chart"></div>\
+                <div id="general_recommendations"></div>\
+                <div id="session_fixation"></div>\
+                <div id="cookie_tampering_forging"></div>\
+                <div id="csrf"></div>\
+                <div id="insecure_serialization_deserialization"></div>\
+                <div id="library_specific_vulnerabilities"></div>\
+            </div>\
+            <div>\
+                <h2>Logout Security</h2>\
+                <div id="client_side_session_invalidation"></div>\
+            </div>\
         </body>\
     </html>';
     fs.writeFileSync(root_dir + '/stats.html', html);
-    console.log(JSON.stringify(counter) + "\n");
-    console.log(total + "\n");
-    console.log(flask_total + "\n");
-    console.log(django_total + "\n");
 }
 
-export { countRepos, generateStatsPage }
+export { countRepos, generateStatsPage, initializeCounter }
