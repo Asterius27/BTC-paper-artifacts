@@ -3,6 +3,7 @@ import * as fs from 'fs';
 
 let query_errors = 0;
 
+// TODO separate django logout query in using client side sessions and logout is called and using server side sessions and logout is called
 function readQueryResults(outputLocation, queryName) {
     let lines = [];
     try {
