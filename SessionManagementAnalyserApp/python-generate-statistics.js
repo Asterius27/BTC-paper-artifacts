@@ -244,6 +244,7 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                 function drawClientSideSessionIvalidationChart() {\
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
+                        ["Logout function is called/used", ' + counter["FLASK_LOGOUT_QUERIES"]["Logout-function-is-called"]["logout_function_is_called"] + ', ' + counter["DJANGO_LOGOUT_QUERIES"]["Logout-function-is-called"]["logout_function_is_called"] + ', ""],\
                         ["Session not completely cleared upon logout", ' + counter["FLASK_LOGOUT_QUERIES"]["Clear-permanent-session-on-logout"]["clear_session_on_logout"] + ', 0, ""],\
                         ["Using client side sessions", ' + flask_total + ', ' + counter["DJANGO_LOGOUT_QUERIES"]["Logout-session-invalidation"]["client_side_session"] + ', ""]\
                     ]);\

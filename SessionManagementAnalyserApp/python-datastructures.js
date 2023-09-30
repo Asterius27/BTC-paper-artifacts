@@ -37,6 +37,9 @@ let flask = {
     "FLASK_LOGOUT_QUERIES": {
         "Clear-permanent-session-on-logout": {
             "clear_session_on_logout": [false, ""]
+        },
+        "Logout-function-is-called": {
+            "logout_function_is_called": [false, ""]
         }
     },
     "FLASK_HSTS_QUERIES": {
@@ -102,6 +105,9 @@ let django = {
     "DJANGO_LOGOUT_QUERIES": {
         "Logout-session-invalidation": {
             "client_side_session": [false, ""]
+        },
+        "Logout-function-is-called": {
+            "logout_function_is_called": [false, ""]
         }
     },
     "DJANGO_HSTS_QUERIES": {
