@@ -215,10 +215,15 @@ export function generateReport(results, lib, dir) {
         html += '<button type="button" class="collapsible">Client Side Session Invalidation</button><div class="content"><table class="styled-table"><thead><tr>';
         html += "<th>Vulnerability</th><th>Django</th>";
         html += "</tr></thead><tbody>";
-        html += "<tr><td>Logout Function is actually called</td>";
-        html += "<td>" + aux("DJANGO_LOGOUT_QUERIES", "Logout-function-is-called", "logout_function_is_called", results, "") + "</td></tr>";
         html += "<tr><td>Using client side sessions</td>";
         html += "<td>" + aux("DJANGO_LOGOUT_QUERIES", "Logout-session-invalidation", "client_side_session", results, "") + "</td></tr>";
+        html += '</tbody></table></div>';
+
+        html += '<button type="button" class="collapsible">Library Specific Vulnerabilities</button><div class="content"><table class="styled-table"><thead><tr>';
+        html += "<th>Vulnerability</th><th>Django</th>";
+        html += "</tr></thead><tbody>";
+        html += "<tr><td>Logout Function is actually called</td>";
+        html += "<td>" + aux("DJANGO_LOGOUT_QUERIES", "Logout-function-is-called", "logout_function_is_called", results, "") + "</td></tr>";
         html += '</tbody></table></div>';
         html += '</div>';
     }
