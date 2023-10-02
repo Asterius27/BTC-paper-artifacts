@@ -1,3 +1,4 @@
+// TODO queries not yet implemented in the report: 
 // true: the query returns a result, false: the query doesn't return a result
 let flask = {
     "FLASK_COOKIE_QUERIES": {
