@@ -62,6 +62,12 @@ app.config.update(SESSION_COOKIE_DOMAIN=".example.com", REMEMBER_COOKIE_SAMESITE
 d = {'REMEMBER_COOKIE_SAMESITE': None}
 app.config.update(d)
 
+# TODO Another way of setting/updating multiple keys
+class ConfigClass(object):
+    # Flask settings
+    SECRET_KEY = 'This is an INSECURE secret!! DO NOT use this in production!!'
+app.config.from_object(__name__+'.ConfigClass')
+
 configuration()
 
 def aux(a):
