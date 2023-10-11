@@ -6,11 +6,13 @@
   "scripts": {
     "test": "node test-app.js",
     "start": "node app.js",
-    "stats": "node statistics-app.js"
+    "stats": "node statistics-app.js",
+    "server": "node server-script.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csv-parser": "^3.0.0",
     "decompress": "^4.2.1",
     "dotenv": "^16.3.1",
     "language-detect": "^1.1.0",
