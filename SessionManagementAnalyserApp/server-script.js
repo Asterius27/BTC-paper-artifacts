@@ -36,7 +36,7 @@ fs.createReadStream('../flask_repos.csv')
                 console.log(e);
                 // skip.push(owner + "_" + data.repo_name);
             }
-            fs.unlinkSync(repos_dir + '/repo' + i + '.zip');
+            fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip");
         });
     }
     i++;
