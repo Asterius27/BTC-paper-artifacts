@@ -18,32 +18,34 @@ if (!fs.existsSync("./repositories/" + framework)){
     fs.mkdirSync("./repositories/" + framework);
 }
 
+process.on('uncaughtException', function (exception) {
+    console.log("Error Caught:\n" + exception);
+});
+
 // Download and extract the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
     if (i < 500) {
         let owner = data.repo_url.split("/")[3];
-        try {
-            octokit.request('GET /repos/{owner}/{repo}/zipball', {
-                owner: owner,
-                repo: data.repo_name,
-                headers: {
-                    'X-GitHub-Api-Version': '2022-11-28'
-                }
-            }).then(async (zip) => {
-                fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip", Buffer.from(zip.data));
-                try {
-                    await decompress('./repositories/' + framework + '/' + owner + "_" + data.repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + data.repo_name);
-                } catch(e) {
-                    console.log("Error Caught:\n" + e);
-                    // skip.push(owner + "_" + data.repo_name);
-                }
-                fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip");
-            });
-        } catch(e) {
-            console.log("Error Caught:\n" + e);
-        }
+        octokit.request('GET /repos/{owner}/{repo}/zipball', {
+            owner: owner,
+            repo: data.repo_name,
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+            }
+        }).then(async (zip) => {
+            /*
+            fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip", Buffer.from(zip.data));
+            try {
+                await decompress('./repositories/' + framework + '/' + owner + "_" + data.repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + data.repo_name);
+            } catch(e) {
+                console.log("Error Caught:\n" + e);
+                // skip.push(owner + "_" + data.repo_name);
+            }
+            fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip");
+            */
+        });
     }
     i++;
 }).on('end', () => {
@@ -59,11 +61,7 @@ fs.createReadStream('../flask_repos.csv')
         let dir = './repositories/' + framework + '/' + owner + "_" + data.repo_name;
         let repo = fs.readdirSync(dir);
         if (repo.length === 1) {
-            try {
-                exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
-            } catch(e) {
-                console.log("Error Caught:\n" + e);
-            }
+            exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
         }
     }
     i++;
