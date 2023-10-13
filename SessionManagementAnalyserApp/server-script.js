@@ -49,30 +49,29 @@ function cleanUpRepos(dir) {
 // Download and extract the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
-  .on('data', (data) => {
+  .on('data', async (data) => {
     // if (i < 500) {
         let owner = data.repo_url.split("/")[3];
-        octokit.request('GET /repos/{owner}/{repo}/zipball', {
+        let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
             owner: owner,
             repo: data.repo_name,
             headers: {
                 'X-GitHub-Api-Version': '2022-11-28'
             }
-        }).then(async (zip) => {
-            fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip", Buffer.from(zip.data));
-            try {
-                await decompress('./repositories/' + framework + '/' + owner + "_" + data.repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + data.repo_name);
-            } catch(e) {
-                console.log("Error Caught:\n" + e);
-                // skip.push(owner + "_" + data.repo_name);
-            }
-            fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip");
-            cleanUpRepos("repositories/" + framework + "/" + owner + "_" + data.repo_name);
         });
+        fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip", Buffer.from(zip.data));
+        try {
+            await decompress('./repositories/' + framework + '/' + owner + "_" + data.repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + data.repo_name);
+        } catch(e) {
+            console.log("Error Caught:\n" + e);
+            // skip.push(owner + "_" + data.repo_name);
+        }
+        fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip");
+        cleanUpRepos("repositories/" + framework + "/" + owner + "_" + data.repo_name);
     // }
     // i++;
 }).on('end', () => {
-    console.log("Finished parsing the csv, waiting for the downloads to finish...\n");
+    console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
 
 /* Create the codeql databases for the repositories
