@@ -23,35 +23,6 @@ process.on('uncaughtException', function (exception) {
     console.log("Error Caught:\n" + exception);
 });
 
-/* Download and extract the repositories
-fs.createReadStream('../flask_repos.csv')
-  .pipe(csvParser())
-  .on('data', (data) => {
-    if (i < 500) {
-        let owner = data.repo_url.split("/")[3];
-        octokit.request('GET /repos/{owner}/{repo}/zipball', {
-            owner: owner,
-            repo: data.repo_name,
-            headers: {
-                'X-GitHub-Api-Version': '2022-11-28'
-            }
-        }).then(async (zip) => {
-            fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip", Buffer.from(zip.data));
-            try {
-                await decompress('./repositories/' + framework + '/' + owner + "_" + data.repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + data.repo_name);
-            } catch(e) {
-                console.log("Error Caught:\n" + e);
-                // skip.push(owner + "_" + data.repo_name);
-            }
-            fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip");
-        });
-    }
-    i++;
-}).on('end', () => {
-    console.log("Finished parsing the csv, waiting for the downloads to finish...\n");
-});
-*/
-
 // Remove unnecessary files
 function cleanUpRepos(dir) {
     let files = fs.readdirSync(dir, { withFileTypes: true }).filter(item => item.isFile()).map(item => item.name);
@@ -73,7 +44,36 @@ function cleanUpRepos(dir) {
         }
     }
 }
-cleanUpRepos("repositories/" + framework);
+// cleanUpRepos("repositories/" + framework);
+
+// Download and extract the repositories
+fs.createReadStream('../flask_repos.csv')
+  .pipe(csvParser())
+  .on('data', (data) => {
+    // if (i < 500) {
+        let owner = data.repo_url.split("/")[3];
+        octokit.request('GET /repos/{owner}/{repo}/zipball', {
+            owner: owner,
+            repo: data.repo_name,
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+            }
+        }).then(async (zip) => {
+            fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip", Buffer.from(zip.data));
+            try {
+                await decompress('./repositories/' + framework + '/' + owner + "_" + data.repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + data.repo_name);
+            } catch(e) {
+                console.log("Error Caught:\n" + e);
+                // skip.push(owner + "_" + data.repo_name);
+            }
+            fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip");
+            cleanUpRepos("repositories/" + framework + "/" + owner + "_" + data.repo_name);
+        });
+    // }
+    // i++;
+}).on('end', () => {
+    console.log("Finished parsing the csv, waiting for the downloads to finish...\n");
+});
 
 /* Create the codeql databases for the repositories
 fs.createReadStream('../flask_repos.csv')
