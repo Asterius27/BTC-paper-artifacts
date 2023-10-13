@@ -58,7 +58,6 @@ function cleanUpRepos(dir) {
     let sub_dirs = fs.readdirSync(dir, { withFileTypes: true }).filter(item => item.isDirectory()).map(item => item.name);
     if (sub_dirs.length === 0) {
         for (let i = 0; i < files.length; i++) {
-            console.log(files[i]);
             if (!extensions.some(e => files[i].endsWith(e))) {
                 fs.unlinkSync(String(dir) + "/" + String(files[i]))
             }
