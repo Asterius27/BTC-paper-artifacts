@@ -7,9 +7,9 @@ import csvParser from 'csv-parser';
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
-let i = 0;
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
+let csv = [];
 // let skip = [];
 
 if (!fs.existsSync("./repositories")){
@@ -49,28 +49,31 @@ function cleanUpRepos(dir) {
 // Download and extract the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
-  .on('data', async (data) => {
-    // if (i < 500) {
-        let owner = data.repo_url.split("/")[3];
-        let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
-            owner: owner,
-            repo: data.repo_name,
-            headers: {
-                'X-GitHub-Api-Version': '2022-11-28'
+  .on('data', (data) => {
+    csv.push(data);
+}).on('end', async () => {
+    console.log("read " + csv.length + " lines\n");
+    for (let i = 0; i < csv.length; i++) {
+        // if (i < 500) {
+            let owner = csv[i].repo_url.split("/")[3];
+            let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
+                owner: owner,
+                repo: csv[i].repo_name,
+                headers: {
+                    'X-GitHub-Api-Version': '2022-11-28'
+                }
+            });
+            fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
+            try {
+                await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
+            } catch(e) {
+                console.log("Error Caught:\n" + e);
+                // skip.push(owner + "_" + csv[i].repo_name);
             }
-        });
-        fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip", Buffer.from(zip.data));
-        try {
-            await decompress('./repositories/' + framework + '/' + owner + "_" + data.repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + data.repo_name);
-        } catch(e) {
-            console.log("Error Caught:\n" + e);
-            // skip.push(owner + "_" + data.repo_name);
-        }
-        fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + data.repo_name + ".zip");
-        cleanUpRepos("repositories/" + framework + "/" + owner + "_" + data.repo_name);
-    // }
-    // i++;
-}).on('end', () => {
+            fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
+            cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
+        // }
+    }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
 
