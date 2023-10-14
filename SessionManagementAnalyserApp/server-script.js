@@ -19,9 +19,11 @@ if (!fs.existsSync("./repositories/" + framework)){
     fs.mkdirSync("./repositories/" + framework);
 }
 
+/*
 process.on('uncaughtException', function (exception) {
     console.log("Error Caught:\n" + exception);
 });
+*/
 
 // Remove unnecessary files
 function cleanUpRepos(dir) {
@@ -54,8 +56,9 @@ fs.createReadStream('../flask_repos.csv')
 }).on('end', async () => {
     console.log("read " + csv.length + " lines\n");
     for (let i = 0; i < csv.length; i++) {
-        // if (i < 500) {
-            let owner = csv[i].repo_url.split("/")[3];
+        let owner = csv[i].repo_url.split("/")[3];
+        let flag = true;
+        try {
             let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
                 owner: owner,
                 repo: csv[i].repo_name,
@@ -64,15 +67,20 @@ fs.createReadStream('../flask_repos.csv')
                 }
             });
             fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
+        } catch(e) {
+            flag = false;
+            console.log("Error Caught:\n" + e);
+        }
+        if (flag) {
             try {
                 await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
+                cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
             } catch(e) {
                 console.log("Error Caught:\n" + e);
                 // skip.push(owner + "_" + csv[i].repo_name);
             }
             fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
-            cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
-        // }
+        }
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
