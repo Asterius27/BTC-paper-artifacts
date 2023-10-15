@@ -58,28 +58,30 @@ fs.createReadStream('../flask_repos.csv')
     for (let i = 0; i < csv.length; i++) {
         let owner = csv[i].repo_url.split("/")[3];
         let flag = true;
-        try {
-            let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
-                owner: owner,
-                repo: csv[i].repo_name,
-                headers: {
-                    'X-GitHub-Api-Version': '2022-11-28'
-                }
-            });
-            fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
-        } catch(e) {
-            flag = false;
-            console.log("Error Caught:\n" + e);
-        }
-        if (flag) {
+        if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip') && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name)) {
             try {
-                await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
-                cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
+                let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
+                    owner: owner,
+                    repo: csv[i].repo_name,
+                    headers: {
+                        'X-GitHub-Api-Version': '2022-11-28'
+                    }
+                });
+                fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
             } catch(e) {
+                flag = false;
                 console.log("Error Caught:\n" + e);
-                // skip.push(owner + "_" + csv[i].repo_name);
             }
-            fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
+            if (flag) {
+                try {
+                    await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
+                    cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
+                } catch(e) {
+                    console.log("Error Caught:\n" + e);
+                    // skip.push(owner + "_" + csv[i].repo_name);
+                }
+                fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
+            }
         }
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
@@ -89,16 +91,19 @@ fs.createReadStream('../flask_repos.csv')
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
-    if (i < 50) {
-        let owner = data.repo_url.split("/")[3];
-        let dir = './repositories/' + framework + '/' + owner + "_" + data.repo_name;
-        let repo = fs.readdirSync(dir);
-        if (repo.length === 1) {
-            exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
+    csv.push(data);
+}).on('end', () => {
+    console.log("read " + csv.length + " lines\n");
+    for (let i = 0; i < csv.length; i++) {
+        if (i < 50) {
+            let owner = csv[i].repo_url.split("/")[3];
+            let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
+            let repo = fs.readdirSync(dir);
+            if (repo.length === 1) {
+                exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
+            }
         }
     }
-    i++;
-}).on('end', () => {
-    console.log("Finished parsing the csv, waiting for the creation of the databases to finish...\n");
+    console.log("Finished parsing the csv and creating the databases\n");
 });
 */
