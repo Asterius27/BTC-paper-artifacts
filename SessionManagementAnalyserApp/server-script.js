@@ -58,9 +58,9 @@ fs.createReadStream('../flask_repos.csv')
     for (let i = 0; i < csv.length; i++) {
         let owner = csv[i].repo_url.split("/")[3];
         let flag = true;
-        console.log('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + "\n");
+        // console.log('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + "\n");
         if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
-            console.log("Starting download...\n");
+            // console.log("Starting download...\n");
             try {
                 let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
                     owner: owner,
