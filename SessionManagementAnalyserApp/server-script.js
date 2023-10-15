@@ -169,3 +169,29 @@ fs.createReadStream('../flask_repos.csv')
     }
 });
 */
+
+// Run library check queries using grep
+fs.createReadStream('../flask_repos.csv')
+  .pipe(csvParser())
+  .on('data', (data) => {
+    csv.push(data);
+}).on('end', () => {
+    console.log("read " + csv.length + " lines\n");
+    for (let i = 0; i < csv.length; i++) {
+        let owner = csv[i].repo_url.split("/")[3];
+        let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
+        if (fs.existsSync(dir)) {
+            let subdirs = fs.readdirSync(dir);
+            for (let j = 0; j < subdirs.length; j++) {
+                if (!subdirs[j].endsWith("-database") && !subdirs[j].endsWith("-results")) {
+                    try {
+                        let stdout = execSync('grep -Eir "^from flask_login" ' + dir + "/" + subdirs[j]);
+                        console.log(stdout);
+                    } catch(e) {
+                        console.log("Error Caught:\n" + e);
+                    }
+                }
+            }
+        }
+    }
+});
