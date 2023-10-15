@@ -2,7 +2,7 @@ import { Octokit } from "octokit";
 import 'dotenv/config';
 import * as fs from 'fs';
 import decompress from "decompress";
-import { exec } from "child_process";
+import { exec, execSync } from "child_process";
 import csvParser from 'csv-parser';
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
@@ -100,9 +100,12 @@ fs.createReadStream('../flask_repos.csv')
         if (i < 50) {
             let owner = csv[i].repo_url.split("/")[3];
             let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
-            let repo = fs.readdirSync(dir);
-            if (repo.length === 1) {
-                exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
+            if (fs.existsSync(dir)) {
+                let repo = fs.readdirSync(dir);
+                if (repo.length === 1) {
+                    // remember to uncomment the process.on uncaughtException callback
+                    exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
+                }
             }
         }
     }
@@ -110,4 +113,59 @@ fs.createReadStream('../flask_repos.csv')
 });
 */
 
-// Run library check queries
+function execQueries(database, outputLocation) {
+    let queryLocation = "../Flask_Queries/Library-is-used-check";
+    let queries = fs.readdirSync(queryLocation);
+    for (let i = 0; i < queries.length; i++) {
+        if (queries[i].endsWith(".ql")) {
+            let queryName = queries[i].slice(0, -3);
+            execSync("codeql query run --database=" + database + " --output=" + outputLocation + "/" + queryName + ".bqrs " + queryLocation + "/" + queryName + ".ql");
+            execSync("codeql bqrs decode --output=" + outputLocation + "/" + queryName + ".json --format=json " + outputLocation + "/" + queryName + ".bqrs");
+        }
+    }
+}
+
+/* Run library check queries
+fs.createReadStream('../flask_repos.csv')
+  .pipe(csvParser())
+  .on('data', (data) => {
+    csv.push(data);
+}).on('end', () => {
+    console.log("read " + csv.length + " lines\n");
+    for (let i = 0; i < csv.length; i++) {
+        let owner = csv[i].repo_url.split("/")[3];
+        let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
+        if (fs.existsSync(dir)) {
+            let subdirs = fs.readdirSync(dir);
+            if (subdirs.length === 1) {
+                try {
+                    execSync("codeql database create " + dir + "/" + subdirs[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + subdirs[0], {timeout: 480000});
+                    fs.mkdirSync(dir + "/" + subdirs[0] + "-results");
+                    execQueries(dir + "/" + subdirs[0] + "-database", dir + "/" + subdirs[0] + "-results");
+                } catch(e) {
+                    console.log("Error Caught:\n" + e);
+                }
+                if (fs.existsSync(dir + "/" + subdirs[0] + "-database")) {
+                    fs.rmSync(dir + "/" + subdirs[0] + "-database", { recursive: true, force: true });
+                }
+            }
+            if (subdirs.length === 2) {
+                if (!subdirs.some(dir => dir.endsWith("-results"))) {
+                    try {
+                        if (!subdirs[0].endsWith("-database")) {
+                            fs.mkdirSync(dir + "/" + subdirs[0] + "-results");
+                            execQueries(dir + "/" + subdirs[0] + "-database", dir + "/" + subdirs[0] + "-results");
+                        }
+                        if (!subdirs[1].endsWith("-database")) {
+                            fs.mkdirSync(dir + "/" + subdirs[0] + "-results");
+                            execQueries(dir + "/" + subdirs[1] + "-database", dir + "/" + subdirs[1] + "-results");
+                        }
+                    } catch(e) {
+                        console.log("Error Caught:\n" + e);
+                    }
+                }
+            }
+        }
+    }
+});
+*/
