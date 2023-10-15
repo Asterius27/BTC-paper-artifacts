@@ -170,7 +170,7 @@ fs.createReadStream('../flask_repos.csv')
 });
 */
 
-// Run library check queries using grep
+/* Run library check queries using grep
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -195,3 +195,4 @@ fs.createReadStream('../flask_repos.csv')
         }
     }
 });
+*/
