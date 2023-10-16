@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import decompress from "decompress";
 import { exec, execSync } from "child_process";
 import csvParser from 'csv-parser';
+import axios from "axios";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
@@ -48,7 +49,7 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-/* Download and extract the repositories
+// Download and extract the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -62,6 +63,7 @@ fs.createReadStream('../flask_repos.csv')
         if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
             // console.log("Starting download...\n");
             try {
+                /*
                 let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
                     owner: owner,
                     repo: csv[i].repo_name,
@@ -70,16 +72,30 @@ fs.createReadStream('../flask_repos.csv')
                     }
                 });
                 fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
+                */
+                let url = "https://" + process.env.TOKEN + "@api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
+                console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
+                axios({
+                    method: 'get',
+                    url: url,
+                    headers: {
+                        'accept': 'application/octet-stream',
+                    },
+                    responseType: 'stream'
+                }).then((response) => {
+                    response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"));
+                    console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n");
+                });
             } catch(e) {
                 flag = false;
-                console.log("Error Caught:\n" + e);
+                console.log("Error caught during download:\n" + e);
             }
             if (flag) {
                 try {
                     await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
                     cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
                 } catch(e) {
-                    console.log("Error Caught:\n" + e);
+                    console.log("Error caught while extracting the zip:\n" + e);
                     // skip.push(owner + "_" + csv[i].repo_name);
                 }
                 fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
@@ -88,7 +104,6 @@ fs.createReadStream('../flask_repos.csv')
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
-*/
 
 /* Create the codeql databases for the repositories
 fs.createReadStream('../flask_repos.csv')
@@ -171,7 +186,7 @@ fs.createReadStream('../flask_repos.csv')
 });
 */
 
-// Run library check queries using grep
+/* Run library check queries using grep
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -255,3 +270,4 @@ fs.createReadStream('../flask_repos.csv')
     }
     // console.log("Total Flask-login usages: " + flask_login_count + "\n");
 });
+*/
