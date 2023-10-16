@@ -79,9 +79,9 @@ fs.createReadStream('../flask_repos.csv')
                     method: 'get',
                     url: url,
                     headers: {
+                        'Accept': 'application/vnd.github+json',
                         'Authorization': 'Bearer ' + process.env.TOKEN,
-                        'X-GitHub-Api-Version': '2022-11-28',
-                        'Accept': 'application/octet-stream',
+                        'X-GitHub-Api-Version': '2022-11-28'
                     },
                     responseType: 'stream'
                 });
