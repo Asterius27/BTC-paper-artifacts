@@ -73,12 +73,14 @@ fs.createReadStream('../flask_repos.csv')
                 });
                 fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
                 */
-                let url = "https://" + process.env.TOKEN + "@api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
+                let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
                 console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
                 let response = await axios({
                     method: 'get',
                     url: url,
                     headers: {
+                        'Authorization': process.env.TOKEN,
+                        'X-GitHub-Api-Version': '2022-11-28',
                         'accept': 'application/octet-stream',
                     },
                     responseType: 'stream'
