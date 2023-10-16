@@ -48,7 +48,7 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-// Download and extract the repositories
+/* Download and extract the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -88,6 +88,7 @@ fs.createReadStream('../flask_repos.csv')
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
+*/
 
 /* Create the codeql databases for the repositories
 fs.createReadStream('../flask_repos.csv')
@@ -170,13 +171,14 @@ fs.createReadStream('../flask_repos.csv')
 });
 */
 
-/* Run library check queries using grep
+// Run library check queries using grep
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
     csv.push(data);
 }).on('end', () => {
     console.log("read " + csv.length + " lines\n");
+    let flask_login_count = 0;
     for (let i = 0; i < csv.length; i++) {
         let owner = csv[i].repo_url.split("/")[3];
         let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
@@ -185,8 +187,10 @@ fs.createReadStream('../flask_repos.csv')
             for (let j = 0; j < subdirs.length; j++) {
                 if (!subdirs[j].endsWith("-database") && !subdirs[j].endsWith("-results")) {
                     try {
-                        let stdout = execSync('grep -Eir "^from flask_login" ' + dir + "/" + subdirs[j]);
+                        let stdout = execSync('grep -Eir "^from flask_login" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                        flask_login_count++;
                         console.log(stdout);
+                        console.log("Flask-login usages: " + flask_login_count + "\n");
                     } catch(e) {
                         console.log("Error Caught:\n" + e);
                     }
@@ -194,5 +198,5 @@ fs.createReadStream('../flask_repos.csv')
             }
         }
     }
+    console.log("Total Flask-login usages: " + flask_login_count + "\n")
 });
-*/
