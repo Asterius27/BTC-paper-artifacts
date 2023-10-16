@@ -63,7 +63,7 @@ fs.createReadStream('../flask_repos.csv')
         if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
             // console.log("Starting download...\n");
             try {
-                /*
+                /* This doesn't allow you to download files that are greater than 4 gb
                 let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
                     owner: owner,
                     repo: csv[i].repo_name,
@@ -73,6 +73,7 @@ fs.createReadStream('../flask_repos.csv')
                 });
                 fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
                 */
+                // This allows you to download files that are greater than 4 gb, though it's asynchronous
                 let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
                 console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
                 let response = await axios({
