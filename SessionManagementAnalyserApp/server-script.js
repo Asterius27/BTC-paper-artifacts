@@ -6,6 +6,7 @@ import { exec, execSync } from "child_process";
 import csvParser from 'csv-parser';
 import axios from "axios";
 import extract from "extract-zip";
+import { resolve } from "path";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
@@ -119,9 +120,13 @@ let zips = fs.readdirSync('./repositories/' + framework, { withFileTypes: true }
 console.log(zips.length);
 for (let i = 0; i < zips.length; i++) {
     console.log('./repositories/' + framework + "/" + zips[i]);
-    console.log('./repositories/' + framework + "/" + zips[i].slice(0, -4));
     try {
-        await extract('./repositories/' + framework + "/" + zips[i], { dir: './repositories/' + framework + "/" + zips[i].slice(0, -4) })
+        if (!fs.existsSync('./repositories/' + framework + "/" + zips[i].slice(0, -4))){
+            fs.mkdirSync('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+        }
+        let target = resolve('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+        console.log(target);
+        await extract('./repositories/' + framework + "/" + zips[i], { dir: target })
         console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + zips[i]);
     } catch (err) {
         console.log('Caught an error:\n' + err);
