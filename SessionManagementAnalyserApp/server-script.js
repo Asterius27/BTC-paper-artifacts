@@ -120,6 +120,11 @@ let zips = fs.readdirSync('./repositories/' + framework, { withFileTypes: true }
 console.log(zips.length);
 for (let i = 0; i < zips.length; i++) {
     console.log('./repositories/' + framework + "/" + zips[i]);
+    fs.unlinkSync('./repositories/' + framework + "/" + zips[i]);
+    if (fs.existsSync('./repositories/' + framework + "/" + zips[i].slice(0, -4))){
+        cleanUpRepos('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+    }
+    /*
     try {
         if (!fs.existsSync('./repositories/' + framework + "/" + zips[i].slice(0, -4))){
             fs.mkdirSync('./repositories/' + framework + "/" + zips[i].slice(0, -4));
@@ -128,9 +133,12 @@ for (let i = 0; i < zips.length; i++) {
         console.log(target);
         await extract('./repositories/' + framework + "/" + zips[i], { dir: target })
         console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + zips[i]);
+        fs.unlinkSync('./repositories/' + framework + "/" + zips[i]);
+        cleanUpRepos('./repositories/' + framework + "/" + zips[i].slice(0, -4));
     } catch (err) {
         console.log('Caught an error:\n' + err);
     }
+    */
 }
 
 /* Create the codeql databases for the repositories
