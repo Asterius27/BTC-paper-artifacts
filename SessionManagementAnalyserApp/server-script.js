@@ -5,7 +5,7 @@ import decompress from "decompress";
 import { exec, execSync } from "child_process";
 import csvParser from 'csv-parser';
 import axios from "axios";
-var DecompressZip = require('decompress-zip');
+import DecompressZip from 'decompress-zip';
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
@@ -116,9 +116,10 @@ fs.createReadStream('../flask_repos.csv')
 
 // Exctract and cleanup repositories
 let zips = fs.readdirSync('./repositories/' + framework, { withFileTypes: true }).filter(item => item.isFile() && item.name.endsWith(".zip")).map(item => item.name);
+console.log(zips.length);
 for (let i = 0; i < zips.length; i++) {
     console.log('./repositories/' + framework + "/" + zips[i]);
-    let unzipper = new DecompressZip('./repositories/' + framework + "/" + zips[i])
+    let unzipper = new DecompressZip('./repositories/' + framework + "/" + zips[i]);
 
     unzipper.on('error', function (err) {
         console.log('Caught an error:\n' + err);
