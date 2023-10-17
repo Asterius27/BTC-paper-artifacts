@@ -22,11 +22,9 @@ if (!fs.existsSync("./repositories/" + framework)){
     fs.mkdirSync("./repositories/" + framework);
 }
 
-/*
 process.on('uncaughtException', function (exception) {
     console.log("Error Caught:\n" + exception);
 });
-*/
 
 // Remove unnecessary files
 function cleanUpRepos(dir) {
@@ -51,7 +49,7 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-/* Download and extract the repositories
+/* Download and extract the repositories (TODO change the decompression library to extract-zip, use axios when octokit fails because the file is too big and try to find a way to synchronize axios)
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -115,16 +113,11 @@ fs.createReadStream('../flask_repos.csv')
 });
 */
 
-// Exctract and cleanup repositories
+/* Exctract and cleanup repositories (this library works better than decompress library)
 let zips = fs.readdirSync('./repositories/' + framework, { withFileTypes: true }).filter(item => item.isFile() && item.name.endsWith(".zip")).map(item => item.name);
 console.log(zips.length);
 for (let i = 0; i < zips.length; i++) {
     console.log('./repositories/' + framework + "/" + zips[i]);
-    fs.unlinkSync('./repositories/' + framework + "/" + zips[i]);
-    if (fs.existsSync('./repositories/' + framework + "/" + zips[i].slice(0, -4))){
-        cleanUpRepos('./repositories/' + framework + "/" + zips[i].slice(0, -4));
-    }
-    /*
     try {
         if (!fs.existsSync('./repositories/' + framework + "/" + zips[i].slice(0, -4))){
             fs.mkdirSync('./repositories/' + framework + "/" + zips[i].slice(0, -4));
@@ -138,10 +131,10 @@ for (let i = 0; i < zips.length; i++) {
     } catch (err) {
         console.log('Caught an error:\n' + err);
     }
-    */
 }
+*/
 
-/* Create the codeql databases for the repositories
+// Create the codeql databases for the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -163,7 +156,6 @@ fs.createReadStream('../flask_repos.csv')
     }
     console.log("Finished parsing the csv and creating the databases\n");
 });
-*/
 
 function execQueries(database, outputLocation) {
     let queryLocation = "../Flask_Queries/Library-is-used-check";
