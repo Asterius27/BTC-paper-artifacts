@@ -142,14 +142,15 @@ fs.createReadStream('../flask_repos.csv')
 }).on('end', () => {
     console.log("read " + csv.length + " lines\n");
     for (let i = 0; i < csv.length; i++) {
-        if (i < 50) {
+        if (i < 1000) {
             let owner = csv[i].repo_url.split("/")[3];
             let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
             if (fs.existsSync(dir)) {
                 let repo = fs.readdirSync(dir);
                 if (repo.length === 1) {
                     // remember to uncomment the process.on uncaughtException callback
-                    exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
+                    exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000}, 
+                    (error, stdout, stderr) => {console.log(stdout);console.log(stderr);console.log(error);});
                 }
             }
         }
