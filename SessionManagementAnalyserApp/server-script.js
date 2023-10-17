@@ -5,7 +5,7 @@ import decompress from "decompress";
 import { exec, execSync } from "child_process";
 import csvParser from 'csv-parser';
 import axios from "axios";
-import DecompressZip from 'decompress-zip';
+import extract from "extract-zip";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
@@ -119,28 +119,13 @@ let zips = fs.readdirSync('./repositories/' + framework, { withFileTypes: true }
 console.log(zips.length);
 for (let i = 0; i < zips.length; i++) {
     console.log('./repositories/' + framework + "/" + zips[i]);
-    let unzipper = new DecompressZip('./repositories/' + framework + "/" + zips[i]);
-
-    unzipper.on('error', function (err) {
+    console.log('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+    try {
+        await extract('./repositories/' + framework + "/" + zips[i], { dir: './repositories/' + framework + "/" + zips[i].slice(0, -4) })
+        console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + zips[i]);
+    } catch (err) {
         console.log('Caught an error:\n' + err);
-    });
-
-    unzipper.on('extract', function (log) {
-        console.log('Finished extracting');
-    });
-
-    unzipper.on('progress', function (fileIndex, fileCount) {
-        // console.log('Extracted file ' + (fileIndex + 1) + ' of ' + fileCount);
-    });
-
-    unzipper.extract({
-        path: './repositories/' + framework + "/" + zips[i].slice(0, -4),
-        filter: function (file) {
-            console.log(file);
-            console.log(file.name);
-            return !extensions.some(e => file.name.endsWith(e));
-        }
-    });
+    }
 }
 
 /* Create the codeql databases for the repositories

@@ -15,8 +15,8 @@
     "axios": "^1.5.1",
     "csv-parser": "^3.0.0",
     "decompress": "^4.2.1",
-    "decompress-zip": "^0.3.3",
     "dotenv": "^16.3.1",
+    "extract-zip": "^2.0.1",
     "language-detect": "^1.1.0",
     "octokit": "^3.1.0"
   },
