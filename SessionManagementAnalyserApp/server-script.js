@@ -22,9 +22,11 @@ if (!fs.existsSync("./repositories/" + framework)){
     fs.mkdirSync("./repositories/" + framework);
 }
 
+/*
 process.on('uncaughtException', function (exception) {
     console.log("Error Caught:\n" + exception);
 });
+*/
 
 // Remove unnecessary files
 function cleanUpRepos(dir) {
@@ -148,9 +150,12 @@ fs.createReadStream('../flask_repos.csv')
             if (fs.existsSync(dir)) {
                 let repo = fs.readdirSync(dir);
                 if (repo.length === 1) {
-                    // remember to uncomment the process.on uncaughtException callback
-                    exec("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000}, 
-                    (error, stdout, stderr) => {console.log(stdout);console.log(stderr);console.log(error);});
+                    try {
+                        console.log(dir + "/" + repo[0]);
+                        execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
+                    } catch(e) {
+                        console.log(e);
+                    }
                 }
             }
         }
