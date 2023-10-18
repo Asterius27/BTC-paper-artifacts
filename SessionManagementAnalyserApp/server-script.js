@@ -7,6 +7,7 @@ import csvParser from 'csv-parser';
 import axios from "axios";
 import extract from "extract-zip";
 import { resolve } from "path";
+import { pipeline } from "stream/promises";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
@@ -88,15 +89,31 @@ fs.createReadStream('../flask_repos.csv')
                     },
                     responseType: 'stream'
                 });
-                // response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
-                //     .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
+                await pipeline(response.data, fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"));
+                console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n");
+                //response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
+                //    .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
             } catch(e) {
                 flag = false;
                 console.log("While trying to download: " + owner + "_" + csv[i].repo_name + "\n");
                 console.log("Error caught during download:\n" + e);
+                fs.appendFileSync('./log.txt', owner + " " + csv[i].repo_name + "\n");
             }
-            /*
             if (flag) {
+                try {
+                    if (!fs.existsSync('./repositories/' + framework + "/" + zips[i].slice(0, -4))){
+                        fs.mkdirSync('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+                    }
+                    let target = resolve('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+                    // console.log(target);
+                    await extract('./repositories/' + framework + "/" + zips[i], { dir: target })
+                    console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + zips[i]);
+                    cleanUpRepos('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+                } catch (err) {
+                    console.log('Caught an error:\n' + err);
+                }
+                fs.unlinkSync('./repositories/' + framework + "/" + zips[i]);
+                /*
                 try {
                     await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
                     cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
@@ -105,8 +122,8 @@ fs.createReadStream('../flask_repos.csv')
                     // skip.push(owner + "_" + csv[i].repo_name);
                 }
                 fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
+                */
             }
-            */
         }
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
