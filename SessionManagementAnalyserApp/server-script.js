@@ -101,19 +101,19 @@ fs.createReadStream('../flask_repos.csv')
             }
             if (flag) {
                 try {
-                    if (!fs.existsSync('./repositories/' + framework + "/" + zips[i].slice(0, -4))){
-                        fs.mkdirSync('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+                    if (!fs.existsSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name)){
+                        fs.mkdirSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
                     }
-                    let target = resolve('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+                    let target = resolve('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
                     // console.log(target);
-                    await extract('./repositories/' + framework + "/" + zips[i], { dir: target })
-                    console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + zips[i]);
-                    cleanUpRepos('./repositories/' + framework + "/" + zips[i].slice(0, -4));
+                    await extract('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip', { dir: target })
+                    console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
+                    cleanUpRepos('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
                 } catch (err) {
                     console.log('Caught an error:\n' + err);
-                    fs.appendFileSync('./log.txt', zips[i] + " " + err + "\n");
+                    fs.appendFileSync('./log.txt', owner + "_" + csv[i].repo_name + " " + err + "\n");
                 }
-                fs.unlinkSync('./repositories/' + framework + "/" + zips[i]);
+                fs.unlinkSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
                 /*
                 try {
                     await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
