@@ -97,7 +97,7 @@ fs.createReadStream('../flask_repos.csv')
                 flag = false;
                 console.log("While trying to download: " + owner + "_" + csv[i].repo_name + "\n");
                 console.log("Error caught during download:\n" + e);
-                fs.appendFileSync('./log.txt', owner + " " + csv[i].repo_name + "\n");
+                fs.appendFileSync('./log.txt', "HTTP Error: " + owner + " " + csv[i].repo_name + "\n");
             }
             if (flag) {
                 try {
@@ -111,6 +111,7 @@ fs.createReadStream('../flask_repos.csv')
                     cleanUpRepos('./repositories/' + framework + "/" + zips[i].slice(0, -4));
                 } catch (err) {
                     console.log('Caught an error:\n' + err);
+                    fs.appendFileSync('./log.txt', zips[i] + " " + err + "\n");
                 }
                 fs.unlinkSync('./repositories/' + framework + "/" + zips[i]);
                 /*
