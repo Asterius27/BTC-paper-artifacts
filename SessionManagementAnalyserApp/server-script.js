@@ -51,7 +51,7 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-/* Download and extract the repositories (TODO change the decompression library to extract-zip, use axios when octokit fails because the file is too big and try to find a way to synchronize axios)
+// Download and extract the repositories (TODO change the decompression library to extract-zip, use axios when octokit fails because the file is too big and try to find a way to synchronize axios)
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -65,7 +65,6 @@ fs.createReadStream('../flask_repos.csv')
         if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
             // console.log("Starting download...\n");
             try {
-                */
                 /* This doesn't allow you to download files that are greater than 4 gb
                 let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
                     owner: owner,
@@ -76,7 +75,7 @@ fs.createReadStream('../flask_repos.csv')
                 });
                 fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
                 */
-                /* This allows you to download files that are greater than 4 gb, though it's asynchronous
+                // This allows you to download files that are greater than 4 gb, though it's asynchronous
                 let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
                 console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
                 let response = await axios({
@@ -89,13 +88,13 @@ fs.createReadStream('../flask_repos.csv')
                     },
                     responseType: 'stream'
                 });
-                response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
-                    .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
+                // response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
+                //     .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
             } catch(e) {
                 flag = false;
+                console.log("While trying to download: " + owner + "_" + csv[i].repo_name + "\n");
                 console.log("Error caught during download:\n" + e);
             }
-            */
             /*
             if (flag) {
                 try {
@@ -108,12 +107,10 @@ fs.createReadStream('../flask_repos.csv')
                 fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
             }
             */
-           /*
         }
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
-*/
 
 /* Exctract and cleanup repositories (this library works better than decompress library)
 let zips = fs.readdirSync('./repositories/' + framework, { withFileTypes: true }).filter(item => item.isFile() && item.name.endsWith(".zip")).map(item => item.name);
@@ -136,7 +133,7 @@ for (let i = 0; i < zips.length; i++) {
 }
 */
 
-// Create the codeql databases for the repositories
+/* Create the codeql databases for the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -162,6 +159,7 @@ fs.createReadStream('../flask_repos.csv')
     }
     console.log("Finished parsing the csv and creating the databases\n");
 });
+*/
 
 function execQueries(database, outputLocation) {
     let queryLocation = "../Flask_Queries/Library-is-used-check";
