@@ -76,7 +76,7 @@ fs.createReadStream('../flask_repos.csv')
                 });
                 fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
                 */
-                // This allows you to download files that are greater than 4 gb, though it's asynchronous
+                // This allows you to download files that are greater than 4 gb
                 let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
                 console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
                 let response = await axios({
@@ -128,6 +128,29 @@ fs.createReadStream('../flask_repos.csv')
         }
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
+});
+
+// TODO try this. Download repos using git clone instead of the api
+fs.createReadStream('../flask_repos.csv')
+  .pipe(csvParser())
+  .on('data', (data) => {
+    csv.push(data);
+}).on('end', async () => {
+    console.log("read " + csv.length + " lines\n");
+    for (let i = 0; i < csv.length; i++) {
+        let owner = csv[i].repo_url.split("/")[3];
+        if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
+            try {
+                fs.mkdirSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
+                fs.mkdirSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + "/repo");
+                execSync("git clone https://github.com/" + owner + "/" + csv[i].repo_name + ' ./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + "/repo");
+                cleanUpRepos('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
+            } catch(e) {
+                console.log('Caught an error:\n' + e);
+                fs.appendFileSync('./log.txt', "Git clone error: " + owner + "_" + csv[i].repo_name + " " + e + "\n");
+            }
+        }
+    }
 });
 
 /* Exctract and cleanup repositories (this library works better than decompress library)
