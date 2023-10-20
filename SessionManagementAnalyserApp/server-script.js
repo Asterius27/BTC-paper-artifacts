@@ -188,6 +188,7 @@ fs.createReadStream('../flask_repos.csv')
   .on('data', (data) => {
     csv.push(data);
 }).on('end', () => {
+    let startTime = new Date();
     console.log("read " + csv.length + " lines\n");
     for (let i = 0; i < csv.length; i++) {
         let flag = true;
@@ -213,7 +214,10 @@ fs.createReadStream('../flask_repos.csv')
             }
         }
     }
-    console.log("Finished parsing the csv and creating the databases\n");
+    let endTime = new Date();
+    let timeElapsed = (endTime - startTime)/1000;
+    console.log("Finished parsing the csv and creating the databases, elapsed time: " + timeElapsed + " seconds\n");
+    fs.appendFileSync('./log.txt', "Time taken to create the databases: " + timeElapsed + " seconds\n");
 });
 
 function execQueries(database, outputLocation) {
