@@ -52,13 +52,16 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-// Download and extract the repositories (TODO change the decompression library to extract-zip, use axios when octokit fails because the file is too big and try to find a way to synchronize axios)
+// Download and extract the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
     csv.push(data);
 }).on('end', async () => {
     console.log("read " + csv.length + " lines\n");
+    if (fs.existsSync('./log.txt')) {
+        fs.unlinkSync('./log.txt');
+    }
     for (let i = 0; i < csv.length; i++) {
         let owner = csv[i].repo_url.split("/")[3];
         let flag = true;
