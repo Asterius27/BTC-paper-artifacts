@@ -35,13 +35,13 @@ function cleanUpRepos(dir) {
     let sub_dirs = fs.readdirSync(dir, { withFileTypes: true }).filter(item => item.isDirectory()).map(item => item.name);
     if (sub_dirs.length === 0) {
         for (let i = 0; i < files.length; i++) {
-            if (!extensions.some(e => files[i].endsWith(e))) {
+            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt") {
                 fs.unlinkSync(String(dir) + "/" + String(files[i]))
             }
         }
     } else {
         for (let i = 0; i < files.length; i++) {
-            if (!extensions.some(e => files[i].endsWith(e))) {
+            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt") {
                 fs.unlinkSync(String(dir) + "/" + String(files[i]))
             }
         }
@@ -78,7 +78,7 @@ fs.createReadStream('../flask_repos.csv')
                 */
                 // This allows you to download files that are greater than 4 gb
                 let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
-                console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
+                // console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
                 let response = await axios({
                     method: 'get',
                     url: url,
@@ -90,7 +90,7 @@ fs.createReadStream('../flask_repos.csv')
                     responseType: 'stream'
                 });
                 await pipeline(response.data, fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"));
-                console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n");
+                // console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n");
                 //response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
                 //    .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
             } catch(e) {
@@ -111,7 +111,7 @@ fs.createReadStream('../flask_repos.csv')
                     cleanUpRepos('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
                 } catch (err) {
                     console.log('Caught an error:\n' + err);
-                    fs.appendFileSync('./log.txt', owner + "_" + csv[i].repo_name + " " + err + "\n");
+                    fs.appendFileSync('./log.txt', "Extraction or Cleanup Error: " + owner + "_" + csv[i].repo_name + " " + err + "\n");
                 }
                 fs.unlinkSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
                 /*
@@ -130,7 +130,7 @@ fs.createReadStream('../flask_repos.csv')
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
 
-// TODO try this. Download repos using git clone instead of the api
+/* TODO try this. Download repos using git clone instead of the api
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -152,6 +152,7 @@ fs.createReadStream('../flask_repos.csv')
         }
     }
 });
+*/
 
 /* Exctract and cleanup repositories (this library works better than decompress library)
 let zips = fs.readdirSync('./repositories/' + framework, { withFileTypes: true }).filter(item => item.isFile() && item.name.endsWith(".zip")).map(item => item.name);
