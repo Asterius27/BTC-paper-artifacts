@@ -52,7 +52,7 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-// Download and extract the repositories
+/* Download and extract the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -69,6 +69,7 @@ fs.createReadStream('../flask_repos.csv')
         if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
             // console.log("Starting download...\n");
             try {
+                */
                 /* This doesn't allow you to download files that are greater than 4 gb
                 let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
                     owner: owner,
@@ -79,7 +80,7 @@ fs.createReadStream('../flask_repos.csv')
                 });
                 fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
                 */
-                // This allows you to download files that are greater than 4 gb
+                /* This allows you to download files that are greater than 4 gb
                 let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
                 // console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
                 let response = await axios({
@@ -117,6 +118,7 @@ fs.createReadStream('../flask_repos.csv')
                     fs.appendFileSync('./log.txt', "Extraction or Cleanup Error: " + owner + "_" + csv[i].repo_name + " " + err + "\n");
                 }
                 fs.unlinkSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
+                */
                 /*
                 try {
                     await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
@@ -127,11 +129,13 @@ fs.createReadStream('../flask_repos.csv')
                 }
                 fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
                 */
+               /*
             }
         }
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
+*/
 
 /* TODO try this. Download repos using git clone instead of the api
 fs.createReadStream('../flask_repos.csv')
@@ -178,7 +182,7 @@ for (let i = 0; i < zips.length; i++) {
 }
 */
 
-/* Create the codeql databases for the repositories
+// Create the codeql databases for the flask-login repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -186,17 +190,24 @@ fs.createReadStream('../flask_repos.csv')
 }).on('end', () => {
     console.log("read " + csv.length + " lines\n");
     for (let i = 0; i < csv.length; i++) {
-        if (i < 1000) {
-            let owner = csv[i].repo_url.split("/")[3];
-            let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
-            if (fs.existsSync(dir)) {
-                let repo = fs.readdirSync(dir);
-                if (repo.length === 1) {
+        let flag = true;
+        let owner = csv[i].repo_url.split("/")[3];
+        let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
+        if (fs.existsSync(dir)) {
+            let repo = fs.readdirSync(dir);
+            if (repo.length === 1) {
+                try {
+                    execSync('grep -Eir "^(import|from) flask_login " ' + dir + "/" + repo[0], { encoding: 'utf8' }).toString();
+                } catch(e) {
+                    flag = false;
+                }
+                if (flag) {
                     try {
-                        console.log(dir + "/" + repo[0]);
+                        console.log("Building database for: " + dir + "/" + repo[0]);
                         execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
                     } catch(e) {
                         console.log(e);
+                        fs.appendFileSync('./log.txt', "Database Creation Error: " + owner + "_" + csv[i].repo_name + " " + e + "\n");
                     }
                 }
             }
@@ -204,7 +215,6 @@ fs.createReadStream('../flask_repos.csv')
     }
     console.log("Finished parsing the csv and creating the databases\n");
 });
-*/
 
 function execQueries(database, outputLocation) {
     let queryLocation = "../Flask_Queries/Library-is-used-check";
