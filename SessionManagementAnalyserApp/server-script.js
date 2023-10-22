@@ -189,6 +189,7 @@ fs.createReadStream('../flask_repos.csv')
     csv.push(data);
 }).on('end', () => {
     let startTime = new Date();
+    let repositories_count = 0;
     console.log("read " + csv.length + " lines\n");
     for (let i = 0; i < csv.length; i++) {
         let flag = true;
@@ -203,11 +204,12 @@ fs.createReadStream('../flask_repos.csv')
                     flag = false;
                 }
                 if (flag) {
+                    repositories_count++;
                     try {
                         console.log("Building database for: " + dir + "/" + repo[0]);
-                        execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 480000});
+                        execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --overwrite --source-root " + dir + "/" + repo[0], {timeout: 480000}); // remove overwrite
                     } catch(e) {
-                        console.log(e);
+                        console.log(e + "\n");
                         fs.appendFileSync('./log.txt', "Database Creation Error: " + owner + "_" + csv[i].repo_name + " " + e + "\n");
                     }
                 }
@@ -217,7 +219,7 @@ fs.createReadStream('../flask_repos.csv')
     let endTime = new Date();
     let timeElapsed = (endTime - startTime)/1000;
     console.log("Finished parsing the csv and creating the databases, elapsed time: " + timeElapsed + " seconds\n");
-    fs.appendFileSync('./log.txt', "Time taken to create the databases: " + timeElapsed + " seconds\n");
+    fs.appendFileSync('./log.txt', "Time taken to create the databases: " + timeElapsed + " seconds. Number of repositories processed: " + repositories_count + "\n");
 });
 
 function execQueries(database, outputLocation) {
