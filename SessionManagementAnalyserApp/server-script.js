@@ -197,20 +197,23 @@ fs.createReadStream('../flask_repos.csv')
         let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
         if (fs.existsSync(dir)) {
             let repo = fs.readdirSync(dir);
-            if (repo.length === 1) {
-                try {
-                    execSync('grep -Eir "^(import|from) flask_login " ' + dir + "/" + repo[0], { encoding: 'utf8' }).toString();
-                } catch(e) {
-                    flag = false;
-                }
-                if (flag) {
-                    repositories_count++;
+            // if (repo.length === 1) {
+            for (let j = 0; j < repo.length; j++) {
+                if (!repo[j].endsWith("-database")) {
                     try {
-                        console.log("Building database for: " + dir + "/" + repo[0]);
-                        execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --overwrite --source-root " + dir + "/" + repo[0], {timeout: 480000}); // remove overwrite
+                        execSync('grep -Eir "^(import|from) flask_login " ' + dir + "/" + repo[j], { encoding: 'utf8' }).toString();
                     } catch(e) {
-                        console.log(e + "\n");
-                        fs.appendFileSync('./log.txt', "Database Creation Error: " + owner + "_" + csv[i].repo_name + " " + e + "\n");
+                        flag = false;
+                    }
+                    if (flag) {
+                        repositories_count++;
+                        try {
+                            console.log("Building database for: " + dir + "/" + repo[j]);
+                            execSync("codeql database create " + dir + "/" + repo[j] + "-database --language=" + lang.toLowerCase() + " --overwrite --source-root " + dir + "/" + repo[j], {timeout: 480000}); // remove overwrite, --ram=80000 add it if needed
+                        } catch(e) {
+                            console.log(e + "\n");
+                            fs.appendFileSync('./log.txt', "Database Creation Error: " + owner + "_" + csv[i].repo_name + " " + e + "\n");
+                        }
                     }
                 }
             }
