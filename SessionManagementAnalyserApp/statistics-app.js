@@ -27,13 +27,17 @@ if (fs.existsSync(root_dir + "/stats.html")) {
 }
 let repos = fs.readdirSync(root_dir);
 let failed = [];
+let startTime = new Date();
 for (let i = 0; i < repos.length; i++) {
     let dir = root_dir + "/" + repos[i];
     let repo = fs.readdirSync(dir);
-    if (repo.length === 2) {
+    if (repo.length === 2 || repo.length === 3) {
         for (let j = 0; j < repo.length; j++) {
             if (!repo[j].endsWith("-database") && !repo[j].endsWith("-results")) {
                 console.log("Starting analysis for: " + dir + "/" + repo[j]);
+                if (fs.existsSync(dir + "/" + repo[j] + "-results")) {
+                    fs.rmSync(dir + "/" + repo[j] + "-results", { recursive: true, force: true });
+                }
                 try {
                     if (lang === "") {
                         execSync("npm start -- -s=" + dir + "/" + repo[j]);
@@ -101,4 +105,8 @@ if (failed.length > 0) {
         counter = initializeCounter(counter, "django");
     }
     generateStatsPage(counter, repos.length, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
+    let endTime = new Date();
+    let timeElapsed = (endTime - startTime)/1000;
+    console.log("Done!");
+    fs.appendFileSync('./log.txt', "Time taken to run the queries and generate the statistics: " + timeElapsed + " seconds.\n");
 }
