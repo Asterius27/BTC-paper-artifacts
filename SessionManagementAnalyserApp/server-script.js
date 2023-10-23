@@ -182,8 +182,8 @@ for (let i = 0; i < zips.length; i++) {
 }
 */
 
-let temp = [ "gil9red_SimplePyScripts", "ryanmrestivo_red-team", "gistable_gistable", "Labs22_BlackServerOS", "Vijay-Yosi_biostack", "Mondego_pyreco", "aliostad_deep-learning-lang-detection", "Python000-class01_Python000-class01",
-    "academic-resources_stared-repos", "cndn_intelligent-code-completion", "shreejitverma_SDE-Interview-Prep", "gustcol_Canivete", "imfht_flaskapps", "LiuFang816_SALSTM_py_data"];
+// let temp = [ "gil9red_SimplePyScripts", "ryanmrestivo_red-team", "gistable_gistable", "Labs22_BlackServerOS", "Vijay-Yosi_biostack", "Mondego_pyreco", "aliostad_deep-learning-lang-detection", "Python000-class01_Python000-class01",
+//     "academic-resources_stared-repos", "cndn_intelligent-code-completion", "shreejitverma_SDE-Interview-Prep", "gustcol_Canivete", "imfht_flaskapps", "LiuFang816_SALSTM_py_data"];
 // Create the codeql databases for the flask-login repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
@@ -197,7 +197,7 @@ fs.createReadStream('../flask_repos.csv')
         let flag = true;
         let owner = csv[i].repo_url.split("/")[3];
         let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
-        if (fs.existsSync(dir) && temp.some(str => str === owner + "_" + csv[i].repo_name)) {
+        if (fs.existsSync(dir)) { // && temp.some(str => str === owner + "_" + csv[i].repo_name)
             let repo = fs.readdirSync(dir);
             // if (repo.length === 1) {
             for (let j = 0; j < repo.length; j++) {

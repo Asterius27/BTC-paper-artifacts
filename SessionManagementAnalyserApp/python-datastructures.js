@@ -1,4 +1,3 @@
-// TODO queries not yet implemented in the report: 
 // true: the query returns a result, false: the query doesn't return a result
 let flask = {
     "FLASK_COOKIE_QUERIES": {
@@ -27,6 +26,7 @@ let flask = {
             "secure_attribute_session_cookie": [false, ""]
         }
     },
+    /*
     "FLASK_SERIALIZATION_QUERIES": {
         "Cookie-user-ID-serialization": {
             "cookie_user_id_serialization": [false, ""]
@@ -35,14 +35,18 @@ let flask = {
             "serializer_settings": [false, ""]
         }
     },
+    */
     "FLASK_LOGOUT_QUERIES": {
+        /*
         "Clear-permanent-session-on-logout": {
             "clear_session_on_logout": [false, ""]
         },
+        */
         "Logout-function-is-called": {
             "logout_function_is_called": [false, ""]
         }
     },
+    /*
     "FLASK_HSTS_QUERIES": {
         "HSTS-header": {
             "HSTS_header": [false, ""]
@@ -56,17 +60,22 @@ let flask = {
             "HSTS_header_subdomains": [false, ""]
         }
     },
+    */
     "FLASK_EXTRA_QUERIES": {
+        /*
         "Flask-login-open-redirect-after-login": {
             "open_redirect": [false, ""]
         },
+        */
         "Flask-login-session-protection": {
             "session_protection": [false, ""],
             "session_protection_basic": [false, ""]
         },
+        /*
         "Incorrect-config-changes": {
             "incorrect_config_changes": [false, ""]
         }
+        */
     },
     "FLASK_SECRET_KEY_QUERY": {
         "Flask-secret-key": {

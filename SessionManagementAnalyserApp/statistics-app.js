@@ -30,16 +30,19 @@ let failed = [];
 for (let i = 0; i < repos.length; i++) {
     let dir = root_dir + "/" + repos[i];
     let repo = fs.readdirSync(dir);
-    if (repo.length === 1) {
-        try {
-            if (lang === "") {
-                execSync("npm start -- -s=" + dir + "/" + repo[0]);
-            } else {
-                execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang);
+    for (let j = 0; j < repo.length; j++) {
+        if (!repo[j].endsWith("-database") && !repo[j].endsWith("-results")) {
+            try {
+                if (lang === "") {
+                    execSync("npm start -- -s=" + dir + "/" + repo[j]);
+                } else {
+                    execSync("npm start -- -s=" + dir + "/" + repo[j] + " -l=" + lang);
+                }
+            } catch (e) {
+                console.log("Analysis failed for: " + dir + "/" + repo[j] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
+                fs.appendFileSync('./log.txt', "Analysis failed for: " + dir + "/" + repo[j] + " Reason: " + e + "\n");
+                failed.push(dir + "/" + repo[j]);
             }
-        } catch (e) {
-            console.log("Analysis failed for: " + dir + "/" + repo[0] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
-            failed.push(dir + "/" + repo[0]);
         }
     }
 }
