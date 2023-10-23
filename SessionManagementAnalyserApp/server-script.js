@@ -211,7 +211,7 @@ fs.createReadStream('../flask_repos.csv')
                         repositories_count++;
                         try {
                             console.log("Building database for: " + dir + "/" + repo[j]);
-                            execSync("codeql database create " + dir + "/" + repo[j] + "-database --language=" + lang.toLowerCase() + " --overwrite --source-root " + dir + "/" + repo[j], {timeout: 480000}); // remove overwrite, --ram=80000 add it if needed
+                            execSync("codeql database create " + dir + "/" + repo[j] + "-database --language=" + lang.toLowerCase() + " --overwrite --source-root " + dir + "/" + repo[j], {timeout: 480000}); // remove overwrite, --ram=80000 add it if needed, add { stdio: 'ignore' } option if you get too many spawnSync /bin/sh ENOBUFS errors
                         } catch(e) {
                             console.log(e + "\n");
                             fs.appendFileSync('./log.txt', "Database Creation Error: " + owner + "_" + csv[i].repo_name + " " + e + "\n");
