@@ -211,7 +211,7 @@ fs.createReadStream('../flask_repos.csv')
                         repositories_count++;
                         try {
                             console.log("Building database for: " + dir + "/" + repo[j]);
-                            execSync("codeql database create " + dir + "/" + repo[j] + "-database --language=" + lang.toLowerCase() + " --overwrite --source-root " + dir + "/" + repo[j], {timeout: 480000}); // remove overwrite, --ram=80000 add it if needed, add { stdio: 'ignore' } option if you get too many spawnSync /bin/sh ENOBUFS errors
+                            execSync("codeql database create " + dir + "/" + repo[j] + "-database --language=" + lang.toLowerCase() + " --overwrite --source-root " + dir + "/" + repo[j], {timeout: 1200000}); // remove overwrite, --ram=80000 add it if needed, add { stdio: 'ignore' } option if you get too many spawnSync /bin/sh ENOBUFS errors
                         } catch(e) {
                             console.log(e + "\n");
                             fs.appendFileSync('./log.txt', "Database Creation Error: " + owner + "_" + csv[i].repo_name + " " + e + "\n");
@@ -253,7 +253,7 @@ fs.createReadStream('../flask_repos.csv')
             let subdirs = fs.readdirSync(dir);
             if (subdirs.length === 1) {
                 try {
-                    execSync("codeql database create " + dir + "/" + subdirs[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + subdirs[0], {timeout: 480000});
+                    execSync("codeql database create " + dir + "/" + subdirs[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + subdirs[0], {timeout: 1200000});
                     fs.mkdirSync(dir + "/" + subdirs[0] + "-results");
                     execQueries(dir + "/" + subdirs[0] + "-database", dir + "/" + subdirs[0] + "-results");
                 } catch(e) {
