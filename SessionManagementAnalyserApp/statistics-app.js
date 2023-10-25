@@ -88,6 +88,7 @@ if (failed.length > 0) {
                 }
             } catch(e) {
                 failed_repos++;
+                fs.appendFileSync('./log.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
                 if (fs.existsSync(dir + "/" + res + "/info.txt")) {
                     if (info.length > 2) {
                         if (info[2].includes("customsessionengine")) {
