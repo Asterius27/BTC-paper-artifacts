@@ -31,7 +31,7 @@ let startTime = new Date();
 for (let i = 0; i < repos.length; i++) {
     let dir = root_dir + "/" + repos[i];
     let repo = fs.readdirSync(dir);
-    if (repo.length === 2 || repo.length === 3) {
+    if (repo.length === 2) { // || repo.length === 3
         for (let j = 0; j < repo.length; j++) {
             if (!repo[j].endsWith("-database") && !repo[j].endsWith("-results")) {
                 console.log("Starting analysis for: " + dir + "/" + repo[j]);
