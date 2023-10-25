@@ -40,9 +40,9 @@ for (let i = 0; i < repos.length; i++) {
                 }
                 try {
                     if (lang === "") {
-                        execSync("npm start -- -s=" + dir + "/" + repo[j]);
+                        execSync("npm start -- -s=" + dir + "/" + repo[j], { timeout: 1200000 });
                     } else {
-                        execSync("npm start -- -s=" + dir + "/" + repo[j] + " -l=" + lang);
+                        execSync("npm start -- -s=" + dir + "/" + repo[j] + " -l=" + lang, { timeout: 1200000 });
                     }
                 } catch (e) {
                     console.log("Analysis failed for: " + dir + "/" + repo[j] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");

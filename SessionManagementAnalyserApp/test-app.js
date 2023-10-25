@@ -103,7 +103,7 @@ if (SUPPORTED_LIBRARIES.some(str => process.argv[process.argv.length - 1] === st
             if(!skip.includes(i)) {
                 let dir = fs.readdirSync(repos_dir + '/repo' + i);
                 try {
-                    execSync("codeql database create ./" + repos_dir + "/repo" + i + "/" + dir[0] + "-database --language=" + lang + " --source-root ./" + repos_dir + "/repo" + i + "/" + dir[0], {timeout: 480000});
+                    execSync("codeql database create ./" + repos_dir + "/repo" + i + "/" + dir[0] + "-database --language=" + lang + " --source-root ./" + repos_dir + "/repo" + i + "/" + dir[0], {timeout: 1200000});
                 } catch(e) {
                     console.log(e);
                     skip.push(i);
