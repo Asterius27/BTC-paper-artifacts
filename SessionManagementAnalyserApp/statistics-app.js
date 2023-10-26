@@ -34,7 +34,7 @@ for (let i = 0; i < repos.length; i++) {
     if (repo.length === 3) {
         for (let j = 0; j < repo.length; j++) {
             if (repo[j].endsWith("-database")) {
-                fs.rmSync(dir + "/" + repo[j] + "-database", { recursive: true, force: true });
+                fs.rmSync(dir + "/" + repo[j], { recursive: true, force: true });
             }
         }
     } 
