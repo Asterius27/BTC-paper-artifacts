@@ -22,7 +22,7 @@ HTTP Error: MicrosoftDocs azure-docs.tr-tr
 HTTP Error: MicrosoftDocs azure-docs.nl-nl
 HTTP Error: robmarkcole satellite-imagery-projects
 
-Space used after downloading, extracting and cleaning up repos: 32 GB, Space used after first run of database creation: 37 GB, Space used after second run of database creation: 138 GB, Space used after manual run of database creation: 141 GB
+Space used after downloading, extracting and cleaning up repos: 32 GB, Space used after first run of database creation: 37 GB, Space used after second run of database creation: 138 GB, Space used after manual run of database creation: 141 GB, the execution of the queries did not complete because there was no space left
 
 Database Creation Error: apache_superset Error: Command failed: codeql database create ./repositories/Flask/apache_superset/apache-superset-75a7431-database --language=python --source-root ./repositories/Flask/apache_superset/apache-superset-75a7431
 Initializing database at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/apache_superset/apache-superset-75a7431-database.

@@ -31,6 +31,13 @@ let startTime = new Date();
 for (let i = 0; i < repos.length; i++) {
     let dir = root_dir + "/" + repos[i];
     let repo = fs.readdirSync(dir);
+    if (repo.length === 3) {
+        for (let j = 0; j < repo.length; j++) {
+            if (repo[j].endsWith("-database")) {
+                fs.rmSync(dir + "/" + repo[j] + "-database", { recursive: true, force: true });
+            }
+        }
+    } 
     if (repo.length === 2) { // || repo.length === 3
         for (let j = 0; j < repo.length; j++) {
             if (!repo[j].endsWith("-database") && !repo[j].endsWith("-results")) {
@@ -53,9 +60,11 @@ for (let i = 0; i < repos.length; i++) {
         }
     }
 }
+/*
 if (failed.length > 0) {
     console.log("Analysis failed for the following applications/repositories: " + failed + "\nPlease manually rerun the analysis for these applications (using the main app) before rerunning the stats app")
 } else {
+    */
     console.log("Analysis completed, now generating the statistics...");
     let counter = {}
     let flask_repos = 0;
@@ -110,4 +119,4 @@ if (failed.length > 0) {
     let timeElapsed = (endTime - startTime)/1000;
     console.log("Done!");
     fs.appendFileSync('./log.txt', "Time taken to run the queries and generate the statistics: " + timeElapsed + " seconds.\n");
-}
+// }
