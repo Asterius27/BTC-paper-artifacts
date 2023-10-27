@@ -25,6 +25,7 @@ if (!SUPPORTED_LANGUAGES.some(str => str.toLowerCase() === lang.toLowerCase()) &
 if (fs.existsSync(root_dir + "/stats.html")) {
     fs.unlinkSync(root_dir + "/stats.html");
 }
+// TODO make it so that it creates the database on the fly and once the analysis is complete, it deletes the database
 let repos = fs.readdirSync(root_dir);
 let failed = [];
 let startTime = new Date();

@@ -52,7 +52,7 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-/* Download and extract the repositories
+/* Download and extract the repositories, TODO make it so it downloads only the repositories that are not already present on the disk
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
