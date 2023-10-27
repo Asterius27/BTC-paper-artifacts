@@ -170,7 +170,7 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
 //                        ["HSTS activated without include subdomains and session cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_session_cookie"] + ', ' + counter["DJANGO_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_session_cookie"] + ', ""],\
 //                        ["HSTS activated without include subdomains and remember cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_remember_cookie"] + ', 0, ""],\
                         '["HTTPOnly session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ', ""],\
-                        ["HTTPOnly remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_remember_cookie"] + ', 0, ""]\
+                        ["HTTPOnly remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_remember_cookie"] + ', 0, ""],\
                         ["Domain session cookie attribute set", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie"] + ', ""],\
                         ["Domain remember cookie attribute set", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_remember_cookie"] + ', 0, ""],\
                         ["Expires session cookie attribute set to a duration that is too long (greater than 30 days)", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie"] + ', ""],\
@@ -195,7 +195,7 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                 function drawCookieTamperingChart() {\
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
-                        ["Secure cookie attribute not set session cookie", ' + counter["FLASK_SECRET_KEY_QUERY"]["Flask-secret-key"]["secret_key"] + ', ' + counter["DJANGO_SECRET_KEY_QUERY"]["Django-secret-key"]["secret_key"] + ', ""]\
+                        ["Secret key is hardcoded", ' + counter["FLASK_SECRET_KEY_QUERY"]["Flask-secret-key"]["secret_key"] + ', ' + counter["DJANGO_SECRET_KEY_QUERY"]["Django-secret-key"]["secret_key"] + ', ""]\
                     ]);\
                     var options = {"title":"Cookie Tampering/Forging","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
                     var chart = new google.visualization.BarChart(document.getElementById("cookie_tampering_forging"));\
