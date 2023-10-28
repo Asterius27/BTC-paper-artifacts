@@ -29,6 +29,45 @@ process.on('uncaughtException', function (exception) {
 });
 */
 
+function findInterestingRepos(queryDirectory, queryName, result) {
+    let dir = './repositories/' + framework;
+    let repos = fs.readdirSync(dir);
+    for (let i = 0; i < repos.length; i++) {
+        let repo = fs.readdirSync(dir + "/" + repos[i]);
+        for (let j = 0; j < repo.length; j++) {
+            if (repo[j].endsWith("-results")) {
+                if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
+                    let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName);
+                    query.pop();
+                    if (query.length > 2 && result) {
+                        fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repo[i] + "\n");
+                    }
+                    if (query.length <= 2 && !result) {
+                        fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repo[i] + "\n");
+                    }
+                }
+            }
+        }
+    }
+}
+// findInterestingRepos("Flask-secret-key", "secret_key.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+
+function deleteEmptyDirsAndDatabases(dir) {
+    let repos = fs.readdirSync(dir);
+    for (let i = 0; i < repos.length; i++) {
+        let repo = fs.readdirSync(dir + "/" + repos[i]);
+        if (repo.length === 0) {
+            fs.rmdirSync(dir + "/" + repos[i]);
+        } else {
+            for (let j = 0; j < repo.length; j++) {
+                if (repo[j].endsWith("-database")) {
+                    fs.rmSync(dir + "/" + repo[j] + "/" + repo[j], { recursive: true, force: true });
+                }
+            }
+        }
+    }
+}
+
 // Remove unnecessary files
 function cleanUpRepos(dir) {
     let files = fs.readdirSync(dir, { withFileTypes: true }).filter(item => item.isFile()).map(item => item.name);
@@ -52,16 +91,14 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-/* Download and extract the repositories, TODO make it so it downloads only the repositories that are not already present on the disk
+// Download and extract the repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
     csv.push(data);
 }).on('end', async () => {
     console.log("read " + csv.length + " lines\n");
-    if (fs.existsSync('./log.txt')) {
-        fs.unlinkSync('./log.txt');
-    }
+    deleteEmptyDirsAndDatabases('./repositories/' + framework);
     for (let i = 0; i < csv.length; i++) {
         let owner = csv[i].repo_url.split("/")[3];
         let flag = true;
@@ -69,7 +106,6 @@ fs.createReadStream('../flask_repos.csv')
         if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
             // console.log("Starting download...\n");
             try {
-                */
                 /* This doesn't allow you to download files that are greater than 4 gb
                 let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
                     owner: owner,
@@ -80,7 +116,7 @@ fs.createReadStream('../flask_repos.csv')
                 });
                 fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
                 */
-                /* This allows you to download files that are greater than 4 gb
+                // This allows you to download files that are greater than 4 gb
                 let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
                 // console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
                 let response = await axios({
@@ -118,7 +154,6 @@ fs.createReadStream('../flask_repos.csv')
                     fs.appendFileSync('./log.txt', "Extraction or Cleanup Error: " + owner + "_" + csv[i].repo_name + " " + err + "\n");
                 }
                 fs.unlinkSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
-                */
                 /*
                 try {
                     await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
@@ -129,13 +164,11 @@ fs.createReadStream('../flask_repos.csv')
                 }
                 fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
                 */
-               /*
             }
         }
     }
     console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
 });
-*/
 
 /* TODO try this. Download repos using git clone instead of the api
 fs.createReadStream('../flask_repos.csv')
@@ -184,7 +217,7 @@ for (let i = 0; i < zips.length; i++) {
 
 // let temp = [ "gil9red_SimplePyScripts", "ryanmrestivo_red-team", "gistable_gistable", "Labs22_BlackServerOS", "Vijay-Yosi_biostack", "Mondego_pyreco", "aliostad_deep-learning-lang-detection", "Python000-class01_Python000-class01",
 //     "academic-resources_stared-repos", "cndn_intelligent-code-completion", "shreejitverma_SDE-Interview-Prep", "gustcol_Canivete", "imfht_flaskapps", "LiuFang816_SALSTM_py_data"];
-// Create the codeql databases for the flask-login repositories
+/* Create the codeql databases for the flask-login repositories
 fs.createReadStream('../flask_repos.csv')
   .pipe(csvParser())
   .on('data', (data) => {
@@ -226,6 +259,7 @@ fs.createReadStream('../flask_repos.csv')
     console.log("Finished parsing the csv and creating the databases, elapsed time: " + timeElapsed + " seconds\n");
     fs.appendFileSync('./log.txt', "Time taken to create the databases: " + timeElapsed + " seconds. Number of repositories processed: " + repositories_count + "\n");
 });
+*/
 
 function execQueries(database, outputLocation) {
     let queryLocation = "../Flask_Queries/Library-is-used-check";

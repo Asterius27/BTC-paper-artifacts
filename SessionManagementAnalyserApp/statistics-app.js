@@ -25,39 +25,38 @@ if (!SUPPORTED_LANGUAGES.some(str => str.toLowerCase() === lang.toLowerCase()) &
 if (fs.existsSync(root_dir + "/stats.html")) {
     fs.unlinkSync(root_dir + "/stats.html");
 }
-// TODO make it so that it creates the database on the fly and once the analysis is complete, it deletes the database
 let repos = fs.readdirSync(root_dir);
 let failed = [];
 let startTime = new Date();
 for (let i = 0; i < repos.length; i++) {
     let dir = root_dir + "/" + repos[i];
     let repo = fs.readdirSync(dir);
+    /*
     if (repo.length === 3) {
         for (let j = 0; j < repo.length; j++) {
             if (repo[j].endsWith("-database")) {
                 fs.rmSync(dir + "/" + repo[j], { recursive: true, force: true });
             }
         }
-    } 
-    if (repo.length === 2) { // || repo.length === 3
-        for (let j = 0; j < repo.length; j++) {
-            if (!repo[j].endsWith("-database") && !repo[j].endsWith("-results")) {
-                console.log("Starting analysis for: " + dir + "/" + repo[j]);
-                if (fs.existsSync(dir + "/" + repo[j] + "-results")) {
-                    fs.rmSync(dir + "/" + repo[j] + "-results", { recursive: true, force: true });
-                }
-                try {
-                    if (lang === "") {
-                        execSync("npm start -- -s=" + dir + "/" + repo[j], { timeout: 1200000 });
-                    } else {
-                        execSync("npm start -- -s=" + dir + "/" + repo[j] + " -l=" + lang, { timeout: 1200000 });
-                    }
-                } catch (e) {
-                    console.log("Analysis failed for: " + dir + "/" + repo[j] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
-                    fs.appendFileSync('./log.txt', "Analysis failed for: " + dir + "/" + repo[j] + " Reason: " + e + "\n");
-                    failed.push(dir + "/" + repo[j]);
-                }
+    }
+    */
+    if (repo.length === 1) {
+        console.log("Starting analysis for: " + dir + "/" + repo[0]);
+        try {
+            if (lang === "") {
+                throw new Error("Please specify a language, language detection is disabled for now"); // TODO
+                execSync("npm start -- -s=" + dir + "/" + repo[0], { timeout: 1800000 });
+            } else {
+                execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 1800000});
+                execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang, { timeout: 1800000 });
             }
+        } catch (e) {
+            console.log("Analysis failed for: " + dir + "/" + repo[0] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
+            fs.appendFileSync('./log.txt', "Analysis failed for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
+            failed.push(dir + "/" + repo[0]);
+        }
+        if (fs.existsSync(dir + "/" + repo[0] + "-database")) {
+            fs.rmSync(dir + "/" + repo[0] + "-database", { recursive: true, force: true });
         }
     }
 }
