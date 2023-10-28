@@ -46,10 +46,25 @@ where ((node = Flask::FlaskApp::instance().getMember("config").getSubscript("SEC
 select node.getLocation(), output(node.asExpr(), kv.getValue())
 */
 
-from DataFlow::Node node, Class cls
-where node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getParameter(0).getAValueReachingSink()
-  and (node.asExpr().(Str).suffix(node.asExpr().(Str).length() - cls.getName().length()) = cls.getName()
-    or node.asExpr().(BinaryExpr).getASubExpression().(Str).matches("%" + cls.getName().toString()))
-  // and cls.getName() = "ConfigClass"
-  // or node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getKeywordParameter("obj").getAValueReachingSink()
-select node, node.getLocation(), cls, cls.getLocation(), cls.getName()
+// TODO also catch the case when an object is passed to the config.from_object(), also if the variable is set in a superclass the query won't work
+bindingset[main, suf]
+int sufcalc(string main, string suf) {
+  result = main.length() - suf.length()
+}
+
+string output2(Expr seckey) {
+  if seckey.(StrConst).getS().length() < 24
+    then result = "The secret key is a hardcoded string and it's too short"
+    else result = "The secret key is a hardcoded string"
+}
+
+from DataFlow::Node node, Class cls, Variable v, AssignStmt asgn
+where (node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getParameter(0).getAValueReachingSink()
+    or node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getKeywordParameter("obj").getAValueReachingSink())
+  and (node.asExpr().(StrConst).getS().suffix(sufcalc(node.asExpr().(StrConst).getS(), cls.getName())) = cls.getName()
+    or node.asExpr().(BinaryExpr).getASubExpression().(StrConst).getS().suffix(sufcalc(node.asExpr().(BinaryExpr).getASubExpression().(StrConst).getS(), cls.getName())) = cls.getName())
+  and asgn = cls.getAStmt().(AssignStmt)
+  and asgn.defines(v)
+  and asgn.getValue() instanceof StrConst
+  and v.getId() = "SECRET_KEY"
+select node, node.getLocation(), cls, cls.getLocation(), cls.getName(), v.getId(), output2(asgn.getValue())

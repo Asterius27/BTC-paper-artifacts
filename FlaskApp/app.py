@@ -66,7 +66,11 @@ app.config.update(d)
 class ConfigClass(object):
     # Flask settings
     SECRET_KEY = 'This is an INSECURE secret!! DO NOT use this in production!!'
-app.config.from_object(__name__+'.ConfigClass'+'ciao'+'bella') # can also pass an imported module as a parameter
+# or .from_object(ConfidClass) or .from_object(ConfidClass())
+app.config.from_object(__name__+'.ConfigClass') # can also pass an imported module as a parameter
+
+# TODO yet another way of setting/updating multiple keys
+app.config.from_pyfile("config.py") # just search if in the file there is, for example, a hardcoded string that gets assigned to a variable named SECRET_KEY
 
 configuration()
 
