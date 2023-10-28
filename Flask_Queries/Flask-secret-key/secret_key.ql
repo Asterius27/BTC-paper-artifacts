@@ -33,7 +33,7 @@ string output(Expr node, Expr value) {
     else result = "The secret key is a hardcoded string"
 }
 
-// It's already interprocedural and takes into account dataflow between variables
+/* It's already interprocedural and takes into account dataflow between variables
 from DataFlow::Node node, KeyValuePair kv
 where ((node = Flask::FlaskApp::instance().getMember("config").getSubscript("SECRET_KEY").getAValueReachingSink()
   or node = Flask::FlaskApp::instance().getMember("secret_key").getAValueReachingSink()
@@ -44,3 +44,12 @@ where ((node = Flask::FlaskApp::instance().getMember("config").getSubscript("SEC
   and kv.getKey().(Str).getText() = "SECRET_KEY"
   and kv.getValue() instanceof StrConst)
 select node.getLocation(), output(node.asExpr(), kv.getValue())
+*/
+
+from DataFlow::Node node, Class cls
+where node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getParameter(0).getAValueReachingSink()
+  and (node.asExpr().(Str).suffix(node.asExpr().(Str).length() - cls.getName().length()) = cls.getName()
+    or node.asExpr().(BinaryExpr).getASubExpression().(Str).matches("%" + cls.getName().toString()))
+  // and cls.getName() = "ConfigClass"
+  // or node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getKeywordParameter("obj").getAValueReachingSink()
+select node, node.getLocation(), cls, cls.getLocation(), cls.getName()
