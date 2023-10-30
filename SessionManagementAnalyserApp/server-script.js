@@ -50,7 +50,6 @@ function findInterestingRepos(queryDirectory, queryName, result) {
         }
     }
 }
-// findInterestingRepos("Flask-secret-key", "secret_key.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 
 function deleteEmptyDirsAndDatabases(dir) {
     let repos = fs.readdirSync(dir);
@@ -92,83 +91,85 @@ function cleanUpRepos(dir) {
 // cleanUpRepos("repositories/" + framework);
 
 // Download and extract the repositories
-fs.createReadStream('../flask_repos.csv')
-  .pipe(csvParser())
-  .on('data', (data) => {
-    csv.push(data);
-}).on('end', async () => {
-    console.log("read " + csv.length + " lines\n");
-    deleteEmptyDirsAndDatabases('./repositories/' + framework);
-    for (let i = 0; i < csv.length; i++) {
-        let owner = csv[i].repo_url.split("/")[3];
-        let flag = true;
-        // console.log('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + "\n");
-        if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
-            // console.log("Starting download...\n");
-            try {
-                /* This doesn't allow you to download files that are greater than 4 gb
-                let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
-                    owner: owner,
-                    repo: csv[i].repo_name,
-                    headers: {
-                        'X-GitHub-Api-Version': '2022-11-28'
-                    }
-                });
-                fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
-                */
-                // This allows you to download files that are greater than 4 gb
-                let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
-                // console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
-                let response = await axios({
-                    method: 'get',
-                    url: url,
-                    headers: {
-                        'Accept': 'application/vnd.github+json',
-                        'Authorization': 'Bearer ' + process.env.TOKEN,
-                        'X-GitHub-Api-Version': '2022-11-28'
-                    },
-                    responseType: 'stream'
-                });
-                await pipeline(response.data, fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"));
-                // console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n");
-                //response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
-                //    .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
-            } catch(e) {
-                flag = false;
-                console.log("While trying to download: " + owner + "_" + csv[i].repo_name + "\n");
-                console.log("Error caught during download:\n" + e);
-                fs.appendFileSync('./log.txt', "HTTP Error: " + owner + " " + csv[i].repo_name + "\n");
-            }
-            if (flag) {
+function downloadAndExtractRepos() {
+    fs.createReadStream('../flask_repos.csv')
+    .pipe(csvParser())
+    .on('data', (data) => {
+        csv.push(data);
+    }).on('end', async () => {
+        console.log("read " + csv.length + " lines\n");
+        deleteEmptyDirsAndDatabases('./repositories/' + framework);
+        for (let i = 0; i < csv.length; i++) {
+            let owner = csv[i].repo_url.split("/")[3];
+            let flag = true;
+            // console.log('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + "\n");
+            if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
+                // console.log("Starting download...\n");
                 try {
-                    if (!fs.existsSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name)){
-                        fs.mkdirSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
-                    }
-                    let target = resolve('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
-                    // console.log(target);
-                    await extract('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip', { dir: target })
-                    console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
-                    cleanUpRepos('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
-                } catch (err) {
-                    console.log('Caught an error:\n' + err);
-                    fs.appendFileSync('./log.txt', "Extraction or Cleanup Error: " + owner + "_" + csv[i].repo_name + " " + err + "\n");
-                }
-                fs.unlinkSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
-                /*
-                try {
-                    await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
-                    cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
+                    /* This doesn't allow you to download files that are greater than 4 gb
+                    let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
+                        owner: owner,
+                        repo: csv[i].repo_name,
+                        headers: {
+                            'X-GitHub-Api-Version': '2022-11-28'
+                        }
+                    });
+                    fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
+                    */
+                    // This allows you to download files that are greater than 4 gb
+                    let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
+                    // console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
+                    let response = await axios({
+                        method: 'get',
+                        url: url,
+                        headers: {
+                            'Accept': 'application/vnd.github+json',
+                            'Authorization': 'Bearer ' + process.env.TOKEN,
+                            'X-GitHub-Api-Version': '2022-11-28'
+                        },
+                        responseType: 'stream'
+                    });
+                    await pipeline(response.data, fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"));
+                    // console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n");
+                    //response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
+                    //    .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
                 } catch(e) {
-                    console.log("Error caught while extracting the zip:\n" + e);
-                    // skip.push(owner + "_" + csv[i].repo_name);
+                    flag = false;
+                    console.log("While trying to download: " + owner + "_" + csv[i].repo_name + "\n");
+                    console.log("Error caught during download:\n" + e);
+                    fs.appendFileSync('./log.txt', "HTTP Error: " + owner + " " + csv[i].repo_name + "\n");
                 }
-                fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
-                */
+                if (flag) {
+                    try {
+                        if (!fs.existsSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name)){
+                            fs.mkdirSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
+                        }
+                        let target = resolve('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
+                        // console.log(target);
+                        await extract('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip', { dir: target })
+                        console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
+                        cleanUpRepos('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
+                    } catch (err) {
+                        console.log('Caught an error:\n' + err);
+                        fs.appendFileSync('./log.txt', "Extraction or Cleanup Error: " + owner + "_" + csv[i].repo_name + " " + err + "\n");
+                    }
+                    fs.unlinkSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
+                    /*
+                    try {
+                        await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
+                        cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
+                    } catch(e) {
+                        console.log("Error caught while extracting the zip:\n" + e);
+                        // skip.push(owner + "_" + csv[i].repo_name);
+                    }
+                    fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
+                    */
+                }
             }
         }
-    }
-    console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
-});
+        console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
+    });
+}
 
 /* TODO try this. Download repos using git clone instead of the api
 fs.createReadStream('../flask_repos.csv')
@@ -403,3 +404,6 @@ fs.createReadStream('../flask_repos.csv')
     // console.log("Total Flask-login usages: " + flask_login_count + "\n");
 });
 */
+
+// downloadAndExtractRepos();
+findInterestingRepos("Flask-secret-key", "secret_key.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
