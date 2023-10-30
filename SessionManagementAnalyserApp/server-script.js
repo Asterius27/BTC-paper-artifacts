@@ -37,7 +37,7 @@ function findInterestingRepos(queryDirectory, queryName, result) {
         for (let j = 0; j < repo.length; j++) {
             if (repo[j].endsWith("-results")) {
                 if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
-                    let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName);
+                    let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName, 'utf-8').split("\n");
                     query.pop();
                     if (query.length > 2 && result) {
                         fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repo[i] + "\n");
