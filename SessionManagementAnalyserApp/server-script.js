@@ -40,10 +40,10 @@ function findInterestingRepos(queryDirectory, queryName, result) {
                     let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName, 'utf-8').split("\n");
                     query.pop();
                     if (query.length > 2 && result) {
-                        fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repo[i] + "\n");
+                        fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
                     }
                     if (query.length <= 2 && !result) {
-                        fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repo[i] + "\n");
+                        fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
                     }
                 }
             }
