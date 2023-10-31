@@ -46,7 +46,7 @@ where ((node = Flask::FlaskApp::instance().getMember("config").getSubscript("SEC
 select node.getLocation(), output(node.asExpr(), kv.getValue())
 */
 
-// TODO also catch the case when an object is passed to the config.from_object(), also if the variable is set in a superclass the query won't work
+// TODO check the whole supertype chain (have to use recursion, it's probably better to only check the direct supertypes, which is what the query currently does, and ignore the rest of the chain because it would make the evaluation much slower and it would just catch a couple more cases (they are corner cases, not used as much))
 bindingset[main, suf]
 int sufcalc(string main, string suf) {
   result = main.length() - suf.length()
@@ -58,13 +58,37 @@ string output2(Expr seckey) {
     else result = "The secret key is a hardcoded string"
 }
 
+/*
 from DataFlow::Node node, Class cls, Variable v, AssignStmt asgn
 where (node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getParameter(0).getAValueReachingSink()
     or node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getKeywordParameter("obj").getAValueReachingSink())
   and (node.asExpr().(StrConst).getS().suffix(sufcalc(node.asExpr().(StrConst).getS(), cls.getName())) = cls.getName()
-    or node.asExpr().(BinaryExpr).getASubExpression().(StrConst).getS().suffix(sufcalc(node.asExpr().(BinaryExpr).getASubExpression().(StrConst).getS(), cls.getName())) = cls.getName())
-  and asgn = cls.getAStmt().(AssignStmt)
+    or node.asExpr().(BinaryExpr).getASubExpression().(StrConst).getS().suffix(sufcalc(node.asExpr().(BinaryExpr).getASubExpression().(StrConst).getS(), cls.getName())) = cls.getName()
+    or node.asCfgNode() = cls.getClassObject().getACall()
+    or node.asExpr().(ClassExpr).getName() = cls.getName())
+  and (asgn = cls.getClassObject().getASuperType().getPyClass().getAStmt().(AssignStmt)
+    or asgn = cls.getAStmt().(AssignStmt))
   and asgn.defines(v)
   and asgn.getValue() instanceof StrConst
   and v.getId() = "SECRET_KEY"
-select node, node.getLocation(), cls, cls.getLocation(), cls.getName(), v.getId(), output2(asgn.getValue())
+select node, node.getLocation(), cls, cls.getLocation(), cls.getName(), v.getId(), v.getScope().getLocation(), output2(asgn.getValue())
+*/
+
+from DataFlow::Node node, Class cls, Variable v, AssignStmt asgn, Module mod
+where (node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getParameter(0).getAValueReachingSink()
+    or node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getKeywordParameter("obj").getAValueReachingSink())
+  and node.asExpr().(ImportMember).getImportedModuleName() = mod.getAnImportedModuleName()
+select node, node.getLocation(), mod
+
+/* This works
+from DataFlow::Node node, AssignStmt asg
+where (node = Flask::FlaskApp::instance().getMember("config").getMember("from_pyfile").getParameter(0).getAValueReachingSink()
+    or node = Flask::FlaskApp::instance().getMember("config").getMember("from_pyfile").getKeywordParameter("obj").getAValueReachingSink())
+  and exists(Variable v, AssignStmt asgn | 
+    asgn.defines(v)
+    and asgn.getValue() instanceof StrConst
+    and v.getId() = "SECRET_KEY"
+    and asgn.getLocation().getFile().getRelativePath().suffix(sufcalc(asgn.getLocation().getFile().getRelativePath(), node.asExpr().(StrConst).getS())) = node.asExpr().(StrConst).getS()
+    and asgn = asg)
+select node, node.getLocation(), asg.getLocation(), asg.getLocation().getFile().getRelativePath()
+*/

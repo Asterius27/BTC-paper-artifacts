@@ -3,6 +3,7 @@ from flask_login import LoginManager, UserMixin, current_user, login_required, l
 from typing import Dict, Optional
 from datetime import timedelta
 import datetime as dt
+from config import FlaskConfig, default_config
 
 def bar():
     return "secret_key"
@@ -62,14 +63,24 @@ app.config.update(SESSION_COOKIE_DOMAIN=".example.com", REMEMBER_COOKIE_SAMESITE
 d = {'REMEMBER_COOKIE_SAMESITE': None}
 app.config.update(d)
 
-# TODO Another way of setting/updating multiple keys
-class ConfigClass(object):
-    # Flask settings
-    SECRET_KEY = 'This is an INSECURE secret!! DO NOT use this in production!!'
-# or .from_object(ConfidClass) or .from_object(ConfidClass())
-app.config.from_object(__name__+'.ConfigClass') # can also pass an imported module as a parameter
+# Another way of setting/updating multiple keys
+class BaseConfigClass(object):
+    SECRET_KEY = "somethingsecret"
 
-# TODO yet another way of setting/updating multiple keys
+class ConfigClass(BaseConfigClass):
+    a = 10
+    # Flask settings
+    # SECRET_KEY = 'This is an INSECURE secret!! DO NOT use this in production!!'
+
+conf = ConfigClass()
+app.config.from_object(__name__+'.ConfigClass') # can also pass an imported module as a parameter
+app.config.from_object(ConfigClass)
+app.config.from_object(ConfigClass())
+app.config.from_object(FlaskConfig) # TODO
+app.config.from_object(default_config) # TODO
+app.config.from_object(conf)
+
+# Yet another way of setting/updating multiple keys
 app.config.from_pyfile("config.py") # just search if in the file there is, for example, a hardcoded string that gets assigned to a variable named SECRET_KEY
 
 configuration()
