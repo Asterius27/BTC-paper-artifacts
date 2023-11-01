@@ -4,4 +4,7 @@ class FlaskConfig():
     SECRET_KEY = "Idontknowsomethingsecret"
 
 def default_config():
-    return FlaskConfig()
+    b = 10
+    test = FlaskConfig()
+    z = "ciao"
+    return test
