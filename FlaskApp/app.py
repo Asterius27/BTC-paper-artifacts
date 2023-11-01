@@ -77,7 +77,7 @@ app.config.from_object(__name__+'.ConfigClass') # can also pass an imported modu
 app.config.from_object(ConfigClass)
 app.config.from_object(ConfigClass())
 app.config.from_object(FlaskConfig)
-app.config.from_object(default_config)
+app.config.from_object(default_config())
 app.config.from_object(conf)
 
 # Yet another way of setting/updating multiple keys
