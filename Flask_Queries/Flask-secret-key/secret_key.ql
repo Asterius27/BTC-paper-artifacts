@@ -84,7 +84,7 @@ Expr getConfigValueFromObject(string config_name) {
 Expr getConfigValueFromPyFile(string config_name) {
   exists(DataFlow::Node node, AssignStmt asg | 
     (node = Flask::FlaskApp::instance().getMember("config").getMember("from_pyfile").getParameter(0).getAValueReachingSink()
-      or node = Flask::FlaskApp::instance().getMember("config").getMember("from_pyfile").getKeywordParameter("obj").getAValueReachingSink())
+      or node = Flask::FlaskApp::instance().getMember("config").getMember("from_pyfile").getKeywordParameter("filename").getAValueReachingSink())
     and exists(Variable v, AssignStmt asgn | 
       asgn.defines(v)
       and asgn.getValue() instanceof StrConst
