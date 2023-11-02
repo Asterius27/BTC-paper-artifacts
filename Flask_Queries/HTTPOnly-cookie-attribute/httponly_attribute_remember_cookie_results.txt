@@ -1,3 +1,4 @@
-|                                     col0                                     |                                      col1                                      |
-+------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| E:/Universita/Tesi_Magistrale/Session-Management-Analyser/FlaskApp/app.py:22 | Remember cookie is accessible via javascript (HTTPOnly attribute set to false) |
+| expr  |                                          col1                                           |                                      col2                                      |
++-------+-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| False | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:30  | Remember cookie is accessible via javascript (HTTPOnly attribute set to false) |
+| False | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:189 | Remember cookie is accessible via javascript (HTTPOnly attribute set to false) |

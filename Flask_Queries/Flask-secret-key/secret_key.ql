@@ -118,7 +118,7 @@ where expr = getConfigValueFromObject("SECRET_KEY")
   or expr = getConfigValueFromPyFile("SECRET_KEY")
   or expr = getConfigValue("SECRET_KEY", "secret_key")
   or expr = getConfigValueFromDictionary("SECRET_KEY")
-select expr, expr.getLocation(), output(expr)
+select expr, expr.getLocation(), output(expr), expr.(StrConst).getS()
 
 /* This works, it's already interprocedural and takes into account dataflow between variables (updating config directly or with a dictionary)
 from DataFlow::Node node, KeyValuePair kv
