@@ -319,91 +319,94 @@ fs.createReadStream('../flask_repos.csv')
 });
 */
 
-/* Run library check queries using grep
-fs.createReadStream('../flask_repos.csv')
-  .pipe(csvParser())
-  .on('data', (data) => {
-    csv.push(data);
-}).on('end', () => {
-    console.log("read " + csv.length + " lines\n");
-    let flask_login_count = 0;
-    let flask_count = 0;
-    let flask_security_too = 0;
-    let flask_user = 0;
-    let flask_oauth = 0;
-    let pyotp = 0;
-    let passwordmeter = 0;
-    let flask_bcrypt = 0;
-    let flask_wtf = 0;
-    let wtforms = 0;
-    let repositories = 0;
-    for (let i = 0; i < csv.length; i++) {
-        let owner = csv[i].repo_url.split("/")[3];
-        let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
-        if (fs.existsSync(dir)) {
-            let subdirs = fs.readdirSync(dir);
-            for (let j = 0; j < subdirs.length; j++) {
-                if (!subdirs[j].endsWith("-database") && !subdirs[j].endsWith("-results")) {
-                    repositories++;
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) flask_login " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        flask_login_count++;
-                        // console.log(stdout);
-                        // console.log("Flask-login usages: " + flask_login_count + "\n");
-                    } catch(e) {
-                        // console.log("Error Caught:\n" + e);
+// Run library check queries using grep
+// regex: "(^import flask_login$|^from flask_login )" or "^(import|from) flask_login "
+function libraryUsagesGrep() {
+    fs.createReadStream('../flask_repos.csv')
+    .pipe(csvParser())
+    .on('data', (data) => {
+        csv.push(data);
+    }).on('end', () => {
+        console.log("read " + csv.length + " lines\n");
+        let flask_login_count = 0;
+        let flask_count = 0;
+        let flask_security_too = 0;
+        let flask_user = 0;
+        let flask_oauth = 0;
+        let pyotp = 0;
+        let passwordmeter = 0;
+        let flask_bcrypt = 0;
+        let flask_wtf = 0;
+        let wtforms = 0;
+        let repositories = 0;
+        for (let i = 0; i < csv.length; i++) {
+            let owner = csv[i].repo_url.split("/")[3];
+            let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
+            if (fs.existsSync(dir)) {
+                let subdirs = fs.readdirSync(dir);
+                for (let j = 0; j < subdirs.length; j++) {
+                    if (!subdirs[j].endsWith("-database") && !subdirs[j].endsWith("-results")) {
+                        repositories++;
+                        try {
+                            let stdout = execSync('grep -Eir "(^import flask_login$|^from flask_login )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            flask_login_count++;
+                            // console.log(stdout);
+                            // console.log("Flask-login usages: " + flask_login_count + "\n");
+                        } catch(e) {
+                            // console.log("Error Caught:\n" + e);
+                        }
+                        try {
+                            let stdout = execSync('grep -Eir "(^import flask$|^from flask )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            flask_count++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "(^import flask_security$|^from flask_security )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            flask_security_too++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "(^import flask_user$|^from flask_user )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            flask_user++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "(^import flask_oauth$|^from flask_oauth )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            flask_oauth++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "(^import pyotp$|^from pyotp )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            pyotp++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "(^import passwordmeter$|^from passwordmeter )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            passwordmeter++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "(^import flask_bcrypt$|^from flask_bcrypt )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            flask_bcrypt++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "(^import flask_wtf$|^from flask_wtf )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            flask_wtf++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "(^import wtforms$|^from wtforms )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            wtforms++;
+                        } catch(e) {}
                     }
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) flask " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        flask_count++;
-                    } catch(e) {}
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) flask_security " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        flask_security_too++;
-                    } catch(e) {}
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) flask_user " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        flask_user++;
-                    } catch(e) {}
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) flask_oauth " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        flask_oauth++;
-                    } catch(e) {}
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) pyotp " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        pyotp++;
-                    } catch(e) {}
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) passwordmeter " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        passwordmeter++;
-                    } catch(e) {}
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) flask_bcrypt " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        flask_bcrypt++;
-                    } catch(e) {}
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) flask_wtf " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        flask_wtf++;
-                    } catch(e) {}
-                    try {
-                        let stdout = execSync('grep -Eir "^(import|from) wtforms " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
-                        wtforms++;
-                    } catch(e) {}
                 }
             }
         }
-    }
-    try {
-        let content = "Total repositories: " + repositories + "\nTotal Flask usages: " + flask_count + "\nTotal Flask-login usages: " + flask_login_count + "\nTotal Flask-Security-Too usages: " + flask_security_too + "\nTotal Flask-User usages: " + 
-            flask_user + "\nTotal Flask-Oauth usages: " + flask_oauth + "\nTotal PyOTP usages: " + pyotp + "\nTotal PasswordMeter usages: " + passwordmeter + "\nTotal Flask-Bcrypt usages: " + flask_bcrypt + "\nTotal Flask-WTF usages: " + flask_wtf + 
-            "\nTotal WTForms usages: " + wtforms;
-        fs.writeFileSync('./library_usages.txt', content);
-    } catch (err) {
-        console.log(err);
-    }
-    // console.log("Total Flask-login usages: " + flask_login_count + "\n");
-});
-*/
+        try {
+            let content = "\nTotal repositories: " + repositories + "\nTotal Flask usages: " + flask_count + "\nTotal Flask-login usages: " + flask_login_count + "\nTotal Flask-Security-Too usages: " + flask_security_too + "\nTotal Flask-User usages: " + 
+                flask_user + "\nTotal Flask-Oauth usages: " + flask_oauth + "\nTotal PyOTP usages: " + pyotp + "\nTotal PasswordMeter usages: " + passwordmeter + "\nTotal Flask-Bcrypt usages: " + flask_bcrypt + "\nTotal Flask-WTF usages: " + flask_wtf + 
+                "\nTotal WTForms usages: " + wtforms;
+            fs.appendFileSync('./library_usages.txt', content);
+        } catch (err) {
+            console.log(err);
+        }
+        // console.log("Total Flask-login usages: " + flask_login_count + "\n");
+    });
+}
 
 // downloadAndExtractRepos();
-findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+// findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+libraryUsagesGrep();
