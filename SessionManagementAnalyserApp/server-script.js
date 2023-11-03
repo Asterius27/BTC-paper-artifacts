@@ -406,4 +406,4 @@ fs.createReadStream('../flask_repos.csv')
 */
 
 // downloadAndExtractRepos();
-findInterestingRepos("Flask-secret-key", "secret_key.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
