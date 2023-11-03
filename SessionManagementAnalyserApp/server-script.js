@@ -348,7 +348,7 @@ function libraryUsagesGrep() {
                     if (!subdirs[j].endsWith("-database") && !subdirs[j].endsWith("-results")) {
                         repositories++;
                         try {
-                            let stdout = execSync('grep -Eir "(^import flask_login$|^from flask_login )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) flask_login " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_login_count++;
                             // console.log(stdout);
                             // console.log("Flask-login usages: " + flask_login_count + "\n");
@@ -356,39 +356,39 @@ function libraryUsagesGrep() {
                             // console.log("Error Caught:\n" + e);
                         }
                         try {
-                            let stdout = execSync('grep -Eir "(^import flask$|^from flask )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) flask " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_count++;
                         } catch(e) {}
                         try {
-                            let stdout = execSync('grep -Eir "(^import flask_security$|^from flask_security )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) flask_security " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_security_too++;
                         } catch(e) {}
                         try {
-                            let stdout = execSync('grep -Eir "(^import flask_user$|^from flask_user )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) flask_user " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_user++;
                         } catch(e) {}
                         try {
-                            let stdout = execSync('grep -Eir "(^import flask_oauth$|^from flask_oauth )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) flask_oauth " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_oauth++;
                         } catch(e) {}
                         try {
-                            let stdout = execSync('grep -Eir "(^import pyotp$|^from pyotp )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) pyotp " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             pyotp++;
                         } catch(e) {}
                         try {
-                            let stdout = execSync('grep -Eir "(^import passwordmeter$|^from passwordmeter )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) passwordmeter " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             passwordmeter++;
                         } catch(e) {}
                         try {
-                            let stdout = execSync('grep -Eir "(^import flask_bcrypt$|^from flask_bcrypt )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) flask_bcrypt " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_bcrypt++;
                         } catch(e) {}
                         try {
-                            let stdout = execSync('grep -Eir "(^import flask_wtf$|^from flask_wtf )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) flask_wtf " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_wtf++;
                         } catch(e) {}
                         try {
-                            let stdout = execSync('grep -Eir "(^import wtforms$|^from wtforms )" ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            let stdout = execSync('grep -Eir "^(import|from) wtforms " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             wtforms++;
                         } catch(e) {}
                     }
