@@ -1,24 +1,21 @@
 import python
+import CodeQL_Library.InterproceduralControlFlow
 import semmle.python.ApiGraphs
 
 // TODO might want to check if session cookies are disabled as part of the query
-// TODO this might lead to infite recursion, have to put a time limit (or something) when running this query
-// TODO also check that session.clear() is called, since if the developer adds stuff to the session cookie (using session["..."] = ...), the cookie doesn't get deleted and that stuff remains in the cookie. (only the _user_id, _fresh, _id, _remember fields get deleted)
-// The session cookie gets deleted only if the session dictionary (session["..."]) is empty.
-// This query isn't that useful, if the developer doesn't remove the permanent key then it might remain and be used in the next session
+// This checks that session.clear() is called, since if the developer adds stuff to the session cookie (using session["..."] = ...), the cookie doesn't get deleted and that stuff remains in the cookie. (only the _user_id, _fresh, _id, _remember fields get deleted)
+// The session cookie gets deleted only if the session dictionary (session["..."]) is empty
 // It basically just checks that the developer correctly cleans up the session upon logout
-predicate reaches(ControlFlowNode source, ControlFlowNode sink) {
-    source.strictlyReaches(sink)
-    and exists(sink.getLocation().getFile().getRelativePath())
-    and exists(source.getLocation().getFile().getRelativePath())
-    or exists(Call c, Function f | 
-        source.strictlyReaches(c.getAFlowNode())
-        and c.getFunc().toString() = f.getName()
-        and exists(c.getLocation().getFile().getRelativePath())
-        and exists(f.getLocation().getFile().getRelativePath())
-        and reaches(f.getAFlowNode(), sink))
+predicate aux(DataFlow::Node logout) {
+    exists(API::moduleImport("flask").getMember("session").getASubscript().getAValueReachingSink())
+    and exists(DataFlow::Node invalidate | 
+        invalidate = API::moduleImport("flask").getMember("session").getMember("clear").getAValueReachableFromSource()
+        and exists(invalidate.getLocation().getFile().getRelativePath())
+        and exists(invalidate.asCfgNode())
+        and not InterproceduralControlFlow::reaches(invalidate.asCfgNode(), logout.asCfgNode()))
 }
 
+/* Old version
 predicate aux(DataFlow::Node logout) {
     if API::moduleImport("flask").getMember("session").getMember("pop").getParameter(0).getAValueReachingSink().asExpr().(StrConst).getText().matches("\\_permanent")
     then exists (DataFlow::Node invalidate | 
@@ -28,6 +25,7 @@ predicate aux(DataFlow::Node logout) {
         and not reaches(invalidate.asCfgNode(), logout.asCfgNode()))
     else any()
 }
+*/
 
 from DataFlow::Node logout
 where exists(DataFlow::Node perma | 
@@ -39,7 +37,7 @@ where exists(DataFlow::Node perma |
     and exists(logout.asCfgNode())
     and exists(logout.getLocation().getFile().getRelativePath())
     and aux(logout)
-select "Session cookie is set to permanent and isn't invalidated upon logout"
+select logout.getLocation(), "Session cookie is set to permanent and isn't invalidated upon logout"
 
 /* This works
 from DataFlow::Node perma

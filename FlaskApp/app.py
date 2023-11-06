@@ -168,7 +168,7 @@ def login(id, password):
 @login_required
 def logout():
     session.pop("_permanent")
-    # session.clear()
+    session.clear()
     logout_user()
     return redirect(url_for("index"))
 
@@ -210,3 +210,4 @@ def open_redirect_new_new(user):
         x = 5
     z = 9
     login_user(user, remember=True, duration=dt.timedelta(weeks=10))
+    session["ciao"] = "bella"
