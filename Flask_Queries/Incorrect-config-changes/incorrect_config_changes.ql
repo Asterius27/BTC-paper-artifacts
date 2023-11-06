@@ -3,6 +3,7 @@ import semmle.python.ApiGraphs
 import semmle.python.frameworks.Flask
 import semmle.python.dataflow.new.DataFlow2
 import CodeQL_Library.InterproceduralControlFlow
+import CodeQL_Library.FlaskLogin
 
 /* This doesn't work
 class LoginDataFlowConfiguration extends DataFlow2::Configuration {
@@ -41,13 +42,26 @@ where config.hasFlow(source, sink)
 select source, source.getLocation(), sink, sink.getLocation()
 */
 
-// TODO only check for the config changes we are interested in: SESSION_COOKIE_HTTPONLY, REMEMBER_COOKIE_SECURE, SESSION_COOKIE_DOMAIN...
+// can extend this list
+DataFlow::Node aux() {
+    result = FlaskLogin::getConfigSource("SESSION_COOKIE_SECURE")
+    or result = FlaskLogin::getConfigSource("REMEMBER_COOKIE_SECURE")
+    or result = FlaskLogin::getConfigSource("SESSION_COOKIE_HTTPONLY")
+    or result = FlaskLogin::getConfigSource("REMEMBER_COOKIE_HTTPONLY")
+    or result = FlaskLogin::getConfigSource("SESSION_COOKIE_DOMAIN")
+    or result = FlaskLogin::getConfigSource("REMEMBER_COOKIE_DOMAIN")
+    or result = FlaskLogin::getConfigSource("SESSION_COOKIE_SAMESITE")
+    or result = FlaskLogin::getConfigSource("REMEMBER_COOKIE_SAMESITE")
+    or result = FlaskLogin::getConfigSource("SECRET_KEY", "secret_key")
+}
+
 from DataFlow::Node source, DataFlow::Node sink
 where source = API::moduleImport("flask").getMember("Flask").getAValueReachableFromSource()
     and not source.asExpr() instanceof ImportMember
     and exists(source.getLocation().getFile().getRelativePath())
     and exists(source.asCfgNode())
-    and sink = Flask::FlaskApp::instance().getMember("config").getAValueReachableFromSource()
+    and sink = aux()
+    // and not sink.asExpr() instanceof ImportMember // don't think this is needed
     and exists(sink.getLocation().getFile().getRelativePath())
     and exists(sink.asCfgNode())
     and not InterproceduralControlFlow::reaches(source.asCfgNode(), sink.asCfgNode())
