@@ -29,10 +29,10 @@ module FlaskLogin {
             and result = cls)
     }
 
-    Expr getConfigValueFromObject(string config_name) {
+    Expr getConfigValueFromObject(string config_name, API::Node config) {
         exists(DataFlow::Node node, Class cls, Variable v, AssignStmt asgn | 
-            (node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getParameter(0).getAValueReachingSink()
-                or node = Flask::FlaskApp::instance().getMember("config").getMember("from_object").getKeywordParameter("obj").getAValueReachingSink())
+            (node = config.getMember("from_object").getParameter(0).getAValueReachingSink()
+                or node = config.getMember("from_object").getKeywordParameter("obj").getAValueReachingSink())
             and (cls = getConfigClassNoModules(node)
                 or cls = getConfigClassOnlyModules(node))
             and (asgn = cls.getClassObject().getASuperType().getPyClass().getAStmt().(AssignStmt)
@@ -42,10 +42,10 @@ module FlaskLogin {
             and result = asgn.getValue())
     }
 
-    Expr getConfigValueFromPyFile(string config_name) {
+    Expr getConfigValueFromPyFile(string config_name, API::Node config) {
         exists(DataFlow::Node node, AssignStmt asg | 
-            (node = Flask::FlaskApp::instance().getMember("config").getMember("from_pyfile").getParameter(0).getAValueReachingSink()
-                or node = Flask::FlaskApp::instance().getMember("config").getMember("from_pyfile").getKeywordParameter("filename").getAValueReachingSink())
+            (node = config.getMember("from_pyfile").getParameter(0).getAValueReachingSink()
+                or node = config.getMember("from_pyfile").getKeywordParameter("filename").getAValueReachingSink())
             and exists(Variable v, AssignStmt asgn | 
                 asgn.defines(v)
                 and v.getId() = config_name
@@ -55,10 +55,10 @@ module FlaskLogin {
     }
 
     bindingset[config_name]
-    Expr getConfigValueFromAssignment(string config_name) {
+    Expr getConfigValueFromAssignment(string config_name, API::Node config) {
         exists(DataFlow::Node node | 
-            (node = Flask::FlaskApp::instance().getMember("config").getSubscript(config_name).getAValueReachingSink()
-                or node = Flask::FlaskApp::instance().getMember("config").getMember("update").getKeywordParameter(config_name).getAValueReachingSink())
+            (node = config.getSubscript(config_name).getAValueReachingSink()
+                or node = config.getMember("update").getKeywordParameter(config_name).getAValueReachingSink())
             and result = node.asExpr())
     }
 
@@ -68,9 +68,9 @@ module FlaskLogin {
             and result = node.asExpr())
     }
 
-    Expr getConfigValueFromDictionary(string config_name) {
+    Expr getConfigValueFromDictionary(string config_name, API::Node config) {
         exists(DataFlow::Node node, KeyValuePair kv | 
-            node = Flask::FlaskApp::instance().getMember("config").getMember("update").getParameter(0).getAValueReachingSink()
+            node = config.getMember("update").getParameter(0).getAValueReachingSink()
             and kv = node.asExpr().(Dict).getAnItem()
             and kv.getKey().(Str).getText() = config_name
             and result = kv.getValue())
@@ -78,11 +78,12 @@ module FlaskLogin {
 
     bindingset[config_name]
     Expr getConfigValue(string config_name) {
-        exists(Expr expr | 
-            (expr = getConfigValueFromObject(config_name)
-                or expr = getConfigValueFromPyFile(config_name)
-                or expr = getConfigValueFromAssignment(config_name)
-                or expr = getConfigValueFromDictionary(config_name))
+        exists(Expr expr, API::Node config | 
+            config = Flask::FlaskApp::instance().getMember("config")
+            and (expr = getConfigValueFromObject(config_name, config)
+                or expr = getConfigValueFromPyFile(config_name, config)
+                or expr = getConfigValueFromAssignment(config_name, config)
+                or expr = getConfigValueFromDictionary(config_name, config))
             and result = expr)
     }
 
@@ -94,64 +95,19 @@ module FlaskLogin {
             and result = expr)
     }
 
-    // TODO all of the following functions can be refactored to improve code reuse (pass config to the previously defined functions and check if they return a value or not (exists))
-    DataFlow::Node getConfigSourceFromObject(string config_name) {
-        exists(DataFlow::Node node, Class cls, Variable v, AssignStmt asgn, API::Node config | 
-            config = Flask::FlaskApp::instance().getMember("config")
-            and (node = config.getMember("from_object").getParameter(0).getAValueReachingSink()
-                or node = config.getMember("from_object").getKeywordParameter("obj").getAValueReachingSink())
-            and (cls = getConfigClassNoModules(node)
-                or cls = getConfigClassOnlyModules(node))
-            and (asgn = cls.getClassObject().getASuperType().getPyClass().getAStmt().(AssignStmt)
-                or asgn = cls.getAStmt().(AssignStmt))
-            and asgn.defines(v)
-            and v.getId() = config_name
-            and result = config.getAValueReachableFromSource())
-    }
-
-    DataFlow::Node getConfigSourceFromPyFile(string config_name) {
-        exists(DataFlow::Node node, AssignStmt asg, API::Node config | 
-            config = Flask::FlaskApp::instance().getMember("config")
-            and (node = config.getMember("from_pyfile").getParameter(0).getAValueReachingSink()
-                or node = config.getMember("from_pyfile").getKeywordParameter("filename").getAValueReachingSink())
-            and exists(Variable v, AssignStmt asgn | 
-                asgn.defines(v)
-                and v.getId() = config_name
-                and asgn.getLocation().getFile().getRelativePath().suffix(sufcalc(asgn.getLocation().getFile().getRelativePath(), node.asExpr().(StrConst).getS())) = node.asExpr().(StrConst).getS()
-                and asgn = asg)
-            and result = config.getAValueReachableFromSource())
-    }
-
-    bindingset[config_name]
-    DataFlow::Node getConfigSourceFromAssignment(string config_name) {
-        exists(API::Node config | 
-            config = Flask::FlaskApp::instance().getMember("config")
-            and (exists(config.getSubscript(config_name).getAValueReachingSink())
-                or exists(config.getMember("update").getKeywordParameter(config_name).getAValueReachingSink()))
-            and result = config.getAValueReachableFromSource())
-    }
-
     DataFlow::Node getConfigSourceFromAttribute(string attribute_name) {
         result = Flask::FlaskApp::instance().getMember(attribute_name).getAValueReachableFromSource()
     }
 
-    DataFlow::Node getConfigSourceFromDictionary(string config_name) {
-        exists(DataFlow::Node node, API::Node config, KeyValuePair kv | 
-            config = Flask::FlaskApp::instance().getMember("config")
-            and node = config.getMember("update").getParameter(0).getAValueReachingSink()
-            and kv = node.asExpr().(Dict).getAnItem()
-            and kv.getKey().(Str).getText() = config_name
-            and result = config.getAValueReachableFromSource())
-    }
-
     bindingset[config_name]
     DataFlow::Node getConfigSource(string config_name) {
-        exists(DataFlow::Node node | 
-            (node = getConfigSourceFromObject(config_name)
-                or node = getConfigSourceFromPyFile(config_name)
-                or node = getConfigSourceFromAssignment(config_name)
-                or node = getConfigSourceFromDictionary(config_name))
-            and result = node)
+        exists(API::Node config | 
+            config = Flask::FlaskApp::instance().getMember("config")
+            and (exists(getConfigValueFromObject(config_name, config))
+                or exists(getConfigValueFromPyFile(config_name, config))
+                or exists(getConfigValueFromAssignment(config_name, config))
+                or exists(getConfigValueFromDictionary(config_name, config)))
+            and result = config.getAValueReachableFromSource())
     }
 
     bindingset[config_name, attribute_name]
