@@ -42,6 +42,7 @@ for (let i = 0; i < repos.length; i++) {
     */
     if (repo.length === 1) {
         console.log("Starting analysis for: " + dir + "/" + repo[0]);
+        let repoStartTime = new Date();
         try {
             if (lang === "") {
                 throw new Error("Please specify a language, language detection is disabled for now"); // TODO
@@ -58,6 +59,9 @@ for (let i = 0; i < repos.length; i++) {
         if (fs.existsSync(dir + "/" + repo[0] + "-database")) {
             fs.rmSync(dir + "/" + repo[0] + "-database", { recursive: true, force: true });
         }
+        let repoEndTime = new Date();
+        let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
+        fs.appendFileSync('./log.txt', "Time taken to run the queries on " + dir + "/" + repo[0] + ": " + repoTimeElapsed + " seconds.\n");
     }
 }
 /*

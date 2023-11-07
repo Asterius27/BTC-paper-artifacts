@@ -1,4 +1,5 @@
 // true: the query returns a result, false: the query doesn't return a result
+// TODO
 let flask = {
     "FLASK_COOKIE_QUERIES": {
         "Cookie-name-prefixes": {

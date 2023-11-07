@@ -36,7 +36,8 @@ if (!SUPPORTED_LANGUAGES.some(str => str.toLowerCase() === lang.toLowerCase())) 
 
 console.log("Starting the analysis...");
 if (!fs.existsSync(root_dir + "-database")) {
-    execSync("codeql database create " + root_dir + "-database --language=" + lang.toLowerCase() + " --source-root " + root_dir, {timeout: 1800000});
+    // execSync("codeql database create " + root_dir + "-database --language=" + lang.toLowerCase() + " --source-root " + root_dir, {timeout: 1800000});
+    throw new Error("The database doesn't exist");
 }
 if (lang.toLowerCase() === "python") {
     pythonAnalysis(root_dir);
