@@ -1,18 +1,23 @@
 // true: the query returns a result, false: the query doesn't return a result
-// TODO
 let flask = {
     "FLASK_COOKIE_QUERIES": {
         "Cookie-name-prefixes": {
             "name_prefix_remember_cookie": [false, ""],
-            "name_prefix_session_cookie": [false, ""]
+            "name_prefix_session_cookie": [false, ""],
+            "name_session_cookie_manually_set": [false, ""],
+            "name_remember_cookie_manually_set": [false, ""]
         },
         "Domain-cookie-attribute": {
             "domain_attribute_remember_cookie": [false, ""],
-            "domain_attribute_session_cookie": [false, ""]
+            "domain_attribute_remember_cookie_manually_disabled": [false, ""],
+            "domain_attribute_session_cookie": [false, ""],
+            "domain_attribute_session_cookie_manually_disabled": [false, ""]
         },
         "Expires-cookie-attribute": {
             "expires_attribute_remember_cookie": [false, ""],
-            "expires_attribute_session_cookie": [false, ""]
+            "expires_attribute_remember_cookie_manually_set": [false, ""],
+            "expires_attribute_session_cookie": [false, ""],
+            "expires_attribute_session_cookie_manually_set": [false, ""]
         },
         "HTTPOnly-cookie-attribute": {
             "httponly_attribute_remember_cookie": [false, ""],
@@ -20,11 +25,15 @@ let flask = {
         },
         "Samesite-cookie-attribute": {
             "samesite_attribute_remember_cookie": [false, ""],
-            "samesite_attribute_session_cookie": [false, ""]
+            "samesite_attribute_remember_cookie_manually_set": [false, ""],
+            "samesite_attribute_session_cookie": [false, ""],
+            "samesite_attribute_session_cookie_manually_set": [false, ""]
         },
         "Secure-cookie-attribute": {
             "secure_attribute_remember_cookie": [false, ""],
-            "secure_attribute_session_cookie": [false, ""]
+            "secure_attribute_remember_cookie_manually_disabled": [false, ""],
+            "secure_attribute_session_cookie": [false, ""],
+            "secure_attribute_session_cookie_manually_disabled": [false, ""]
         }
     },
     /*
@@ -38,11 +47,9 @@ let flask = {
     },
     */
     "FLASK_LOGOUT_QUERIES": {
-        /*
         "Clear-permanent-session-on-logout": {
             "clear_session_on_logout": [false, ""]
         },
-        */
         "Logout-function-is-called": {
             "logout_function_is_called": [false, ""]
         }
@@ -70,13 +77,12 @@ let flask = {
         */
         "Flask-login-session-protection": {
             "session_protection": [false, ""],
-            "session_protection_basic": [false, ""]
+            "session_protection_basic": [false, ""],
+            "session_protection_strong": [false, ""]
         },
-        /*
         "Incorrect-config-changes": {
             "incorrect_config_changes": [false, ""]
         }
-        */
     },
     "FLASK_SECRET_KEY_QUERY": {
         "Flask-secret-key": {

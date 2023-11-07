@@ -166,17 +166,23 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                 function drawSessionHijackingChart() {\
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
-                        ["Secure session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie"] + ', ""],\
-                        ["Secure remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_remember_cookie"] + ', 0, ""],' +
+                        ["Secure session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie"] + ', ""],'+
+                        '["Secure session cookie attribute manually disabled", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_session_cookie_manually_disabled"] + ', 0, ""],' +
+                        '["Secure remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_remember_cookie"] + ', 0, ""],' +
+                        '["Secure remember cookie attribute manually disabled", ' + counter["FLASK_COOKIE_QUERIES"]["Secure-cookie-attribute"]["secure_attribute_remember_cookie_manually_disabled"] + ', 0, ""],' +
 //                        ["HSTS not activated", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header"]["HSTS_header"] + ', ' + counter["DJANGO_HSTS_QUERIES"]["HSTS-header"]["HSTS_header"] + ', ""],\
 //                        ["HSTS activated without include subdomains and session cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_session_cookie"] + ', ' + counter["DJANGO_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_session_cookie"] + ', ""],\
 //                        ["HSTS activated without include subdomains and remember cookie set for a parent domain", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-and-cookie-domain"]["domain_attribute_remember_cookie"] + ', 0, ""],\
-                        '["HTTPOnly session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ', ""],\
-                        ["HTTPOnly remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_remember_cookie"] + ', 0, ""],\
-                        ["Domain session cookie attribute set", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie"] + ', ""],\
-                        ["Domain remember cookie attribute set", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_remember_cookie"] + ', 0, ""],\
-                        ["Expires session cookie attribute set to a duration that is too long (greater than 30 days)", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie"] + ', ""],\
-                        ["Expires remember cookie attribute set to a duration that is too long (greater than 30 days)", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_remember_cookie"] + ', 0, ""]\
+                        '["HTTPOnly session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_session_cookie"] + ', ""],'+
+                        '["HTTPOnly remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["HTTPOnly-cookie-attribute"]["httponly_attribute_remember_cookie"] + ', 0, ""],'+
+                        '["Domain session cookie attribute set", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie"] + ', ""],'+
+                        '["Domain session cookie attribute set manually disabled", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_session_cookie_manually_disabled"] + ', 0, ""],'+
+                        '["Domain remember cookie attribute set", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_remember_cookie"] + ', 0, ""],'+
+                        '["Domain remember cookie attribute set manually disabled", ' + counter["FLASK_COOKIE_QUERIES"]["Domain-cookie-attribute"]["domain_attribute_remember_cookie_manually_disabled"] + ', 0, ""],'+
+                        '["Expires session cookie attribute set to a duration that is too long (greater than 30 days)", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie"] + ', ""],'+
+                        '["Expires session cookie attribute is manually set", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_session_cookie_manually_set"] + ', 0, ""],'+
+                        '["Expires remember cookie attribute set to a duration that is too long (greater than 30 days)", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_remember_cookie"] + ', 0, ""],'+
+                        '["Expires remember cookie attribute is manually set", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_remember_cookie_manually_set"] + ', 0, ""]\
                     ]);\
                     var options = {"title":"Session Hijacking","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
                     var chart = new google.visualization.BarChart(document.getElementById("session_hijacking_chart"));\
@@ -186,8 +192,10 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],' +
 //                        ["HSTS not activated or activated without the include subdomains option", ' + counter["FLASK_HSTS_QUERIES"]["HSTS-header-subdomains"]["HSTS_header_subdomains"] + ', ' + counter["DJANGO_HSTS_QUERIES"]["HSTS-header-subdomains"]["HSTS_header_subdomains"] + ', ""],\
-                        '["Session cookie name does not contain the prefix __Host- or __Secure-", ' + counter["FLASK_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_session_cookie"] + ', ""],\
-                        ["Remember cookie name does not contain the prefix __Host- or __Secure-", ' + counter["FLASK_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_remember_cookie"] + ', 0, ""],' +
+                        '["Session cookie name does not contain the prefix __Host- or __Secure-", ' + counter["FLASK_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_session_cookie"] + ', ""],'+
+                        '["Session cookie name is manually set", ' + counter["FLASK_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_session_cookie_manually_set"] + ', 0, ""],' +
+                        '["Remember cookie name does not contain the prefix __Host- or __Secure-", ' + counter["FLASK_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_prefix_remember_cookie"] + ', 0, ""],' +
+                        '["Remember cookie name is manually set", ' + counter["FLASK_COOKIE_QUERIES"]["Cookie-name-prefixes"]["name_remember_cookie_manually_set"] + ', 0, ""],' +
 //                        ["Initially accept a session/user ID generated by the user and use that for the current session", ' + counter["FLASK_SERIALIZATION_QUERIES"]["Cookie-user-ID-serialization"]["cookie_user_id_serialization"] + ', 0, ""]\
                     ']);\
                     var options = {"title":"Session Fixation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
@@ -206,8 +214,10 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                 function drawCSRFChart() {\
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
-                        ["SameSite session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_session_cookie"] + ', ""],\
-                        ["SameSite remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_remember_cookie"] + ', 0, ""]\
+                        ["SameSite session cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_session_cookie"] + ', ' + counter["DJANGO_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_session_cookie"] + ', ""],'+
+                        '["SameSite session cookie attribute is manually set", ' + counter["FLASK_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_session_cookie_manually_set"] + ', 0, ""],'+
+                        '["SameSite remember cookie attribute not set", ' + counter["FLASK_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_remember_cookie"] + ', 0, ""],'+
+                        '["SameSite remember cookie attribute is manually set", ' + counter["FLASK_COOKIE_QUERIES"]["Samesite-cookie-attribute"]["samesite_attribute_remember_cookie_manually_set"] + ', 0, ""]\
                     ]);\
                     var options = {"title":"CSRF","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
                     var chart = new google.visualization.BarChart(document.getElementById("csrf"));\
@@ -226,10 +236,11 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                 function drawLibraryVulnerabilitiesChart() {\
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
-                        ["Session Protection", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-session-protection"]["session_protection"] + ', 0, ""],\
-                        ["Session Protection Basic", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-session-protection"]["session_protection_basic"] + ', 0, ""],' +
+                        ["Session Protection is manually disabled", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-session-protection"]["session_protection"] + ', 0, ""],\
+                        ["Session Protection is set to basic but no fresh login required found", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-session-protection"]["session_protection_basic"] + ', 0, ""],' +
+                        '["Session Protection is set to strong", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-session-protection"]["session_protection_strong"] + ', 0, ""],' +
 //                        ["Open Redirect after Login", ' + counter["FLASK_EXTRA_QUERIES"]["Flask-login-open-redirect-after-login"]["open_redirect"] + ', 0, ""],\
-//                        ["Incorrect Config Changes", ' + counter["FLASK_EXTRA_QUERIES"]["Incorrect-config-changes"]["incorrect_config_changes"] + ', 0, ""]\
+                        '["Incorrect Config Changes", ' + counter["FLASK_EXTRA_QUERIES"]["Incorrect-config-changes"]["incorrect_config_changes"] + ', 0, ""]'+
                     ']);\
                     var options = {"title":"Library Specific Vulnerabilities","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
                     var chart = new google.visualization.BarChart(document.getElementById("library_specific_vulnerabilities"));\
@@ -239,7 +250,7 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],\
                         ["Logout function is called/used", ' + counter["FLASK_LOGOUT_QUERIES"]["Logout-function-is-called"]["logout_function_is_called"] + ', ' + counter["DJANGO_LOGOUT_QUERIES"]["Logout-function-is-called"]["logout_function_is_called"] + ', ""],' +
-//                        ["Session not completely cleared upon logout", ' + counter["FLASK_LOGOUT_QUERIES"]["Clear-permanent-session-on-logout"]["clear_session_on_logout"] + ', 0, ""],\
+                        '["Session not completely cleared upon logout", ' + counter["FLASK_LOGOUT_QUERIES"]["Clear-permanent-session-on-logout"]["clear_session_on_logout"] + ', 0, ""],'+
                         '["Using client side sessions", ' + flask_total + ', ' + counter["DJANGO_LOGOUT_QUERIES"]["Logout-session-invalidation"]["client_side_session"] + ', ""]\
                     ]);\
                     var options = {"title":"Client Side Session Invalidation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
