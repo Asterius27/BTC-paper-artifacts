@@ -93,82 +93,97 @@ function cleanUpRepos(dir) {
 
 // Download and extract the repositories
 function downloadAndExtractRepos() {
-    fs.createReadStream('../flask_repos.csv')
+    let startTime = new Date();
+    fs.createReadStream('../flask_login_list.csv')
     .pipe(csvParser())
     .on('data', (data) => {
         csv.push(data);
     }).on('end', async () => {
         console.log("read " + csv.length + " lines\n");
         deleteEmptyDirsAndDatabases('./repositories/' + framework);
+        let filtered_repos = 0;
+        let number_of_repos = 0;
         for (let i = 0; i < csv.length; i++) {
-            let owner = csv[i].repo_url.split("/")[3];
-            let flag = true;
-            // console.log('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + "\n");
-            if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip')) {
-                // console.log("Starting download...\n");
-                try {
-                    /* This doesn't allow you to download files that are greater than 4 gb
-                    let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
-                        owner: owner,
-                        repo: csv[i].repo_name,
-                        headers: {
-                            'X-GitHub-Api-Version': '2022-11-28'
-                        }
-                    });
-                    fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
-                    */
-                    // This allows you to download files that are greater than 4 gb
-                    let url = "https://api.github.com/repos/" + owner + "/" + csv[i].repo_name + "/zipball";
-                    // console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
-                    let response = await axios({
-                        method: 'get',
-                        url: url,
-                        headers: {
-                            'Accept': 'application/vnd.github+json',
-                            'Authorization': 'Bearer ' + process.env.TOKEN,
-                            'X-GitHub-Api-Version': '2022-11-28'
-                        },
-                        responseType: 'stream'
-                    });
-                    await pipeline(response.data, fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"));
-                    // console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n");
-                    //response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
-                    //    .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
-                } catch(e) {
-                    flag = false;
-                    console.log("While trying to download: " + owner + "_" + csv[i].repo_name + "\n");
-                    console.log("Error caught during download:\n" + e);
-                    fs.appendFileSync('./log.txt', "HTTP Error: " + owner + " " + csv[i].repo_name + "\n");
-                }
-                if (flag) {
+            if (csv[i].stars >= 10) {
+                number_of_repos++;
+                let owner = csv[i].repo_url.split("/")[3];
+                let repoName = csv[i].repo_url.split("/")[4];
+                let flag = true;
+                // console.log('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + "\n");
+                if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName + '.zip') && !blacklist_terms.some(str => repoName.toLowerCase().includes(str))) {
+                    // console.log("Starting download...\n");
                     try {
-                        if (!fs.existsSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name)){
-                            fs.mkdirSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
-                        }
-                        let target = resolve('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
-                        // console.log(target);
-                        await extract('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip', { dir: target })
-                        console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
-                        cleanUpRepos('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name);
-                    } catch (err) {
-                        console.log('Caught an error:\n' + err);
-                        fs.appendFileSync('./log.txt', "Extraction or Cleanup Error: " + owner + "_" + csv[i].repo_name + " " + err + "\n");
-                    }
-                    fs.unlinkSync('./repositories/' + framework + "/" + owner + "_" + csv[i].repo_name + '.zip');
-                    /*
-                    try {
-                        await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
-                        cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
+                        /* This doesn't allow you to download files that are greater than 4 gb
+                        let zip = await octokit.request('GET /repos/{owner}/{repo}/zipball', {
+                            owner: owner,
+                            repo: csv[i].repo_name,
+                            headers: {
+                                'X-GitHub-Api-Version': '2022-11-28'
+                            }
+                        });
+                        fs.appendFileSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip", Buffer.from(zip.data));
+                        */
+                        // This allows you to download files that are greater than 4 gb
+                        let url = "https://api.github.com/repos/" + owner + "/" + repoName + "/zipball";
+                        // console.log("Downloading: " + owner + "_" + csv[i].repo_name + "\n");
+                        let response = await axios({
+                            method: 'get',
+                            url: url,
+                            headers: {
+                                'Accept': 'application/vnd.github+json',
+                                'Authorization': 'Bearer ' + process.env.TOKEN,
+                                'X-GitHub-Api-Version': '2022-11-28'
+                            },
+                            responseType: 'stream'
+                        });
+                        await pipeline(response.data, fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + repoName + ".zip"));
+                        // console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n");
+                        //response.data.pipe(fs.createWriteStream("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip"))
+                        //    .on('end', () => console.log("Downloaded: " + owner + "_" + csv[i].repo_name + ".zip\n"));
                     } catch(e) {
-                        console.log("Error caught while extracting the zip:\n" + e);
-                        // skip.push(owner + "_" + csv[i].repo_name);
+                        flag = false;
+                        console.log("While trying to download: " + owner + "_" + repoName + "\n");
+                        console.log("Error caught during download:\n" + e);
+                        fs.appendFileSync('./log.txt', "HTTP Error: " + owner + " " + repoName + "\n");
                     }
-                    fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
-                    */
+                    if (flag) {
+                        try {
+                            if (!fs.existsSync('./repositories/' + framework + "/" + owner + "_" + repoName)){
+                                fs.mkdirSync('./repositories/' + framework + "/" + owner + "_" + repoName);
+                            }
+                            let target = resolve('./repositories/' + framework + "/" + owner + "_" + repoName);
+                            // console.log(target);
+                            await extract('./repositories/' + framework + "/" + owner + "_" + repoName + '.zip', { dir: target })
+                            console.log('Extraction complete of:\n' + './repositories/' + framework + "/" + owner + "_" + repoName + '.zip');
+                            cleanUpRepos('./repositories/' + framework + "/" + owner + "_" + repoName);
+                        } catch (err) {
+                            console.log('Caught an error:\n' + err);
+                            fs.appendFileSync('./log.txt', "Extraction or Cleanup Error: " + owner + "_" + repoName + " " + err + "\n");
+                        }
+                        fs.unlinkSync('./repositories/' + framework + "/" + owner + "_" + repoName + '.zip');
+                        /*
+                        try {
+                            await decompress('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + '.zip', './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name);
+                            cleanUpRepos("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name);
+                        } catch(e) {
+                            console.log("Error caught while extracting the zip:\n" + e);
+                            // skip.push(owner + "_" + csv[i].repo_name);
+                        }
+                        fs.unlinkSync("repositories/" + framework + "/" + owner + "_" + csv[i].repo_name + ".zip");
+                        */
+                    }
+                }
+                if (blacklist_terms.some(str => repoName.toLowerCase().includes(str))) {
+                    filtered_repos++;
+                    fs.appendFileSync('./log.txt', "The repo " + repoName + " was filtered out because it contained a blacklisted term (owner: " + owner + ")\n");
                 }
             }
         }
+        fs.appendFileSync('./log.txt', "Number of processed repos: " + number_of_repos + ". Of which " + filtered_repos + " were filtered out.\n");
         console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
+        let endTime = new Date();
+        let timeElapsed = (endTime - startTime)/1000;
+        fs.appendFileSync('./log.txt', "Time taken to download and extract the repositories: " + timeElapsed + " seconds.\n");
     });
 }
 
