@@ -13,6 +13,7 @@ const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
+let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge"]; // TODO add more, have to make it more precise
 let csv = [];
 // let skip = [];
 
@@ -407,6 +408,6 @@ function libraryUsagesGrep() {
     });
 }
 
-// downloadAndExtractRepos();
+downloadAndExtractRepos();
 // findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
-libraryUsagesGrep();
+// libraryUsagesGrep();
