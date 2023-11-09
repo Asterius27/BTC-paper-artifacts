@@ -13,7 +13,7 @@ const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
-let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge"]; // TODO add more, have to make it more precise
+let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge"]; // TODO add more, have to make it more precise. Add flask as word to filter out?
 let csv = [];
 // let skip = [];
 
@@ -29,6 +29,43 @@ process.on('uncaughtException', function (exception) {
     console.log("Error Caught:\n" + exception);
 });
 */
+
+function listMostCommonKeywordsAndUsers() {
+    fs.createReadStream('../flask_login_list.csv')
+    .pipe(csvParser())
+    .on('data', (data) => {
+        csv.push(data);
+    }).on('end', () => {
+        let owner_counter = {}
+        let repo_counter = {}
+        for (let i = 0; i < csv.length; i++) {
+            let owner = csv[i].repo_url.split("/")[3];
+            let repoName = csv[i].repo_url.split("/")[4];
+            if (owner_counter[owner] === undefined) {
+                owner_counter[owner] = 1;
+            } else {
+                owner_counter[owner]++;
+            }
+            let keywords = repoName.split(/-|_/);
+            for (let j = 0; j < keywords.length; j++) {
+                if (repo_counter[keywords[j]] === undefined) {
+                    repo_counter[keywords[j]] = 1;
+                } else {
+                    repo_counter[keywords[j]]++;
+                }   
+            }
+        }
+        fs.writeFileSync("./most_common_repo_keywords.json", JSON.stringify(repo_counter, null, 4));
+        fs.writeFileSync("./most_common_users.json", JSON.stringify(owner_counter, null, 4));
+        let owner_entries = Object.entries(owner_counter);
+        let repo_entries = Object.entries(repo_counter);
+        // TODO sort doesn't work
+        owner_entries.sort((x, y) => y[1] - x[1]);
+        repo_entries.sort((x, y) => y[1] - x[1]);
+        fs.writeFileSync("./most_common_repo_keywords_sorted.json", JSON.stringify(Object.fromEntries(repo_entries), null, 4));
+        fs.writeFileSync("./most_common_users_sorted.json", JSON.stringify(Object.fromEntries(owner_entries), null, 4));
+    });
+}
 
 function findInterestingRepos(queryDirectory, queryName, result) {
     let dir = './repositories/' + framework;
@@ -423,6 +460,7 @@ function libraryUsagesGrep() {
     });
 }
 
-downloadAndExtractRepos();
+// downloadAndExtractRepos();
 // findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
+listMostCommonKeywordsAndUsers();
