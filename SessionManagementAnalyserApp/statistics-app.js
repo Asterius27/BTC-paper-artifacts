@@ -57,7 +57,11 @@ for (let i = 0; i < repos.length; i++) {
             failed.push(dir + "/" + repo[0]);
         }
         if (fs.existsSync(dir + "/" + repo[0] + "-database")) {
-            fs.rmSync(dir + "/" + repo[0] + "-database", { recursive: true, force: true });
+            try {
+                fs.rmSync(dir + "/" + repo[0] + "-database", { recursive: true, force: true });
+            } catch(e) {
+                fs.appendFileSync('./log.txt', "Could not delete database for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
+            }
         }
         let repoEndTime = new Date();
         let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
