@@ -13,7 +13,8 @@ const octokit = new Octokit({ auth: process.env.TOKEN });
 const framework = "Flask";
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
-let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge"]; // TODO add more, have to make it more precise. Add flask as word to filter out?
+let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course"]; // TODO add more, have to make it more precise
+let blacklist_term_groups = [["learn", "python"], ["learn", "flask"]]
 let csv = [];
 // let skip = [];
 
