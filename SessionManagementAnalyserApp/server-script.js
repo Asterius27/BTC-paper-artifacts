@@ -48,18 +48,26 @@ function listMostCommonKeywordsAndUsers() {
             }
             let keywords = repoName.split(/-|_/);
             for (let j = 0; j < keywords.length; j++) {
-                if (repo_counter[keywords[j]] === undefined) {
-                    repo_counter[keywords[j]] = 1;
+                if (keywords[j] === "constructor") {
+                    if (repo_counter["constructorr"] === undefined) {
+                        repo_counter["constructorr"] = 1;
+                    } else {
+                        repo_counter["constructorr"]++;
+                    }
                 } else {
-                    repo_counter[keywords[j]]++;
-                }   
+                    if (repo_counter[keywords[j]] === undefined) {
+                        repo_counter[keywords[j]] = 1;
+                    } else {
+                        repo_counter[keywords[j]]++;
+                    }
+                }
             }
         }
         fs.writeFileSync("./most_common_repo_keywords.json", JSON.stringify(repo_counter, null, 4));
         fs.writeFileSync("./most_common_users.json", JSON.stringify(owner_counter, null, 4));
         let owner_entries = Object.entries(owner_counter);
         let repo_entries = Object.entries(repo_counter);
-        // TODO sort doesn't work
+        // TODO sort doesn't work, if the key of the dictionary is composed by only numbers it will be placed on top
         owner_entries.sort((x, y) => y[1] - x[1]);
         repo_entries.sort((x, y) => y[1] - x[1]);
         fs.writeFileSync("./most_common_repo_keywords_sorted.json", JSON.stringify(Object.fromEntries(repo_entries), null, 4));
