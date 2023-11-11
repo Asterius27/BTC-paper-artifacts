@@ -7,13 +7,15 @@ from pathlib import Path
 from collections import Counter
 
 # nltk.download('stopwords')
-path = Path(__file__).parent / '../flask_login_list_2.csv'
-outputk_path = Path(__file__).parent / './most_common_repo_keywords_2.json'
-outputo_path = Path(__file__).parent / './most_common_users_2.json'
+path = Path(__file__).parent / '../flask_login_list.csv'
+outputk_path = Path(__file__).parent / './most_common_repo_keywords.json'
+outputo_path = Path(__file__).parent / './most_common_users.json'
+outputs_path = Path(__file__).parent / './most_common_substring_keywords.json'
 with path.open() as csv_file:
     reader = csv.DictReader(csv_file)
     owner_counter = Counter()
     keywords_counter = Counter()
+    substring_keywords_counter = {}
 
     for row in reader:
         owner = row["repo_url"].split("/")[3]
@@ -22,8 +24,18 @@ with path.open() as csv_file:
         owner_counter.update([owner])
         keywords_counter.update(filtered_keywords)
         
+for substring in list(keywords_counter.keys()):
+    if len(substring) > 2:
+        substring_keywords_counter[substring] = keywords_counter[substring]
+        for key in list(keywords_counter.keys()):
+            if substring != key and substring in key:
+                substring_keywords_counter[substring] += keywords_counter[key]
+
 with outputk_path.open('w', encoding='utf-8') as f:
     json.dump(keywords_counter.most_common(), f, ensure_ascii=False, indent=4)
 
 with outputo_path.open('w', encoding='utf-8') as f:
     json.dump(owner_counter.most_common(), f, ensure_ascii=False, indent=4)
+
+with outputs_path.open('w', encoding='utf-8') as f:
+    json.dump(sorted(substring_keywords_counter.items(), key=lambda x:x[1], reverse=True), f, ensure_ascii=False, indent=4)
