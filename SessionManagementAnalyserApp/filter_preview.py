@@ -1,6 +1,8 @@
 import csv
 from pathlib import Path
 
+# Number of repos: 1408 (with 10 or more stars), of which 92 (6.53%) where filtered out
+
 blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]
 blacklist_term_groups = [["learn", "python"], ["learn", "flask"]]
 blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf"]
