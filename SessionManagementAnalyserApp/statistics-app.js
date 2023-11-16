@@ -48,7 +48,7 @@ for (let i = 0; i < repos.length; i++) {
                 throw new Error("Please specify a language, language detection is disabled for now"); // TODO
                 execSync("npm start -- -s=" + dir + "/" + repo[0], { timeout: 1800000 });
             } else {
-                execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0], {timeout: 1800000});
+                execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0] + " --threads=0", {timeout: 1800000});
                 execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang, { timeout: 1800000 });
             }
         } catch (e) {
