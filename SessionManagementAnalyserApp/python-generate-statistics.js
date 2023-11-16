@@ -184,7 +184,7 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                         '["Expires remember cookie attribute set to a duration that is too long (greater than 30 days)", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_remember_cookie"] + ', 0, ""],'+
                         '["Expires remember cookie attribute is manually set", ' + counter["FLASK_COOKIE_QUERIES"]["Expires-cookie-attribute"]["expires_attribute_remember_cookie_manually_set"] + ', 0, ""]\
                     ]);\
-                    var options = {"title":"Session Hijacking","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
+                    var options = {"title":"Session Hijacking","width":1500,"height":1500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
                     var chart = new google.visualization.BarChart(document.getElementById("session_hijacking_chart"));\
                     chart.draw(data, options);\
                 }\
