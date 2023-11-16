@@ -88,9 +88,11 @@ function findInterestingRepos(queryDirectory, queryName, result) {
                     query.pop();
                     if (query.length > 2 && result) {
                         fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
+                        fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query + "\n");
                     }
                     if (query.length <= 2 && !result) {
                         fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
+                        fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query + "\n");
                     }
                 }
             }
@@ -470,6 +472,6 @@ function libraryUsagesGrep() {
 }
 
 // downloadAndExtractRepos();
-// findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
-listMostCommonKeywordsAndUsers();
+// listMostCommonKeywordsAndUsers();
