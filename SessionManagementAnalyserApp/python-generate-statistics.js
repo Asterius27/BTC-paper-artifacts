@@ -227,7 +227,7 @@ function generateStatsPage(counter, total, flask_total, django_total, failed_rep
                     var data = new google.visualization.arrayToDataTable([\
                         ["Framework/Library", "Flask/Flask-login", "Django", {role: "annotation"}],' +
 //                        ["Unsafe serializer settings", ' + counter["FLASK_SERIALIZATION_QUERIES"]["Serializer-settings"]["serializer_settings"] + ', 0, ""],\
-                        '["Using custom or unsafe serializers", 0, ' + counter["DJANGO_SERIALIZATION_QUERIES"]["Session-serializer"]["Session_serializer"] + ', ""]\
+                        '["Using custom or unsafe serializers", 0, ' + counter["DJANGO_SERIALIZATION_QUERIES"]["Session-serializer"]["session_serializer"] + ', ""]\
                     ]);\
                     var options = {"title":"Insecure Serialization/Deserialization","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\
                     var chart = new google.visualization.BarChart(document.getElementById("insecure_serialization_deserialization"));\
