@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import { execSync } from "child_process";
 import { countRepos, generateStatsPage, initializeCounter } from './python-generate-statistics.js';
+import csvParser from 'csv-parser';
 
 const SUPPORTED_LANGUAGES = ["python"];
 let root_dir = "./";
