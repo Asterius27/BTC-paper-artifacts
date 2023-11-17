@@ -30,7 +30,7 @@ let repos = fs.readdirSync(root_dir);
 let failed = [];
 let startTime = new Date();
 let csv = {};
-let stars = 10;
+let stars = 200;
 await new Promise((resolve, reject) => {
     fs.createReadStream('../flask_login_list.csv')
         .pipe(csvParser())
@@ -43,11 +43,9 @@ await new Promise((resolve, reject) => {
             resolve("Done!");
         });
 });
-/*
 for (let i = 0; i < repos.length; i++) {
     let dir = root_dir + "/" + repos[i];
     let repo = fs.readdirSync(dir);
-    */
     /*
     if (repo.length === 3) {
         for (let j = 0; j < repo.length; j++) {
@@ -57,7 +55,6 @@ for (let i = 0; i < repos.length; i++) {
         }
     }
     */
-   /*
     if (repo.length === 1) {
         console.log("Starting analysis for: " + dir + "/" + repo[0]);
         let repoStartTime = new Date();
@@ -86,7 +83,6 @@ for (let i = 0; i < repos.length; i++) {
         fs.appendFileSync('./log.txt', "Time taken to run the queries on " + dir + "/" + repo[0] + ": " + repoTimeElapsed + " seconds.\n");
     }
 }
-*/
 /*
 if (failed.length > 0) {
     console.log("Analysis failed for the following applications/repositories: " + failed + "\nPlease manually rerun the analysis for these applications (using the main app) before rerunning the stats app")

@@ -11,7 +11,7 @@ function readQueryResults(outputLocation, queryName) {
     } catch (e) {
         query_errors++;
         fs.appendFileSync('./log.txt', "Failed to read query results for: " + outputLocation + "/" + queryName + ".txt" + " Reason: " + e + "\n");
-        return false;
+        return [false, true];
     }
     if (outputLocation.endsWith("HSTS-header-and-cookie-domain") && (queryName === "domain_attribute_session_cookie" || queryName === "domain_attribute_remember_cookie")) {
         let aux_lines = [];
@@ -20,21 +20,21 @@ function readQueryResults(outputLocation, queryName) {
         } catch(e) {
             query_errors++;
             fs.appendFileSync('./log.txt', "Failed to read query results for: " + outputLocation + "/HSTS_header_no_subdomains.txt" + " Reason: " + e + "\n");
-            return false;
+            return [false, true];
         }
         aux_lines.pop();
         lines.pop();
         if (lines.length > 2 && aux_lines.length > 2) {
-            return true;
+            return [true, false];
         } else {
-            return false;
+            return [false, false];
         }
     } else {
         lines.pop();
         if (lines.length > 2) {
-            return true;
+            return [true, false];
         } else {
-            return false;
+            return [false, false];
         }
     }
 }
@@ -46,7 +46,8 @@ function countRepos(counter, error_counter, framework, root_dir) {
             for (let [dir, files] of Object.entries(value)) {
                 for (let [file, arr] of Object.entries(files)) {
                     if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
-                        if (readQueryResults(root_dir + "/" + dir, file)) {
+                        let query_result = readQueryResults(root_dir + "/" + dir, file);
+                        if (query_result[0]) {
                             if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
                                 counter[key][dir][file]++;
                             } else {
@@ -72,9 +73,15 @@ function countRepos(counter, error_counter, framework, root_dir) {
                                     error_counter[key][dir] = {};
                                 }
                                 counter[key][dir][file] = 0;
-                                error_counter[key][dir][file] = 1;
+                                if (query_result[1]) {
+                                    error_counter[key][dir][file] = 1;
+                                } else {
+                                    error_counter[key][dir][file] = 0;
+                                }
                             } else {
-                                error_counter[key][dir][file]++
+                                if (query_result[1]) {
+                                    error_counter[key][dir][file]++;
+                                }
                             }
                         }
                     }
@@ -88,7 +95,8 @@ function countRepos(counter, error_counter, framework, root_dir) {
             for (let [dir, files] of Object.entries(value)) {
                 for (let [file, arr] of Object.entries(files)) {
                     if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
-                        if (readQueryResults(root_dir + "/" + dir, file)) {
+                        let query_result = readQueryResults(root_dir + "/" + dir, file);
+                        if (query_result[0]) {
                             if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
                                 counter[key][dir][file]++;
                             } else {
@@ -115,9 +123,15 @@ function countRepos(counter, error_counter, framework, root_dir) {
                                     error_counter[key][dir] = {};
                                 }
                                 counter[key][dir][file] = 0;
-                                error_counter[key][dir][file] = 1;
+                                if (query_result[1]) {
+                                    error_counter[key][dir][file] = 1;
+                                } else {
+                                    error_counter[key][dir][file] = 0;
+                                }
                             } else {
-                                error_counter[key][dir][file]++
+                                if (query_result[1]) {
+                                    error_counter[key][dir][file]++;
+                                }
                             }
                         }
                     }
