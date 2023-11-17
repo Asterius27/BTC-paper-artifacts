@@ -88,11 +88,15 @@ function findInterestingRepos(queryDirectory, queryName, result) {
                     query.pop();
                     if (query.length > 2 && result) {
                         fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
-                        fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query + "\n");
+                        // TODO for some reason some directories are read 2 times
+                        for (let j = 1; j < query.length; j++) {
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[j] + "\n");
+                        }
+                        fs.appendFileSync('./repos_with_interesting_results.txt', "\n");
                     }
                     if (query.length <= 2 && !result) {
                         fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
-                        fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query + "\n");
+                        fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[query.length - 1] + "\n");
                     }
                 }
             }
