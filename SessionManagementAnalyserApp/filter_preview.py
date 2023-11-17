@@ -14,7 +14,7 @@ with path.open() as csv_file:
     reader = csv.DictReader(csv_file)
 
     for row in reader:
-        if int(row["stars"]) >= 10:
+        if int(row["stars"]) >= 1:
             number_of_repos += 1
             repo = row["repo_url"].split("/")[4]
             owner = row["repo_url"].split("/")[3]

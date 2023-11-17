@@ -15,6 +15,7 @@ let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
 let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]; // TODO add more, have to make it more precise
 let blacklist_term_groups = [["learn", "python"], ["learn", "flask"]]
+let blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf"]
 let csv = [];
 // let skip = [];
 
@@ -88,7 +89,6 @@ function findInterestingRepos(queryDirectory, queryName, result) {
                     query.pop();
                     if (query.length > 2 && result) {
                         fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
-                        // TODO for some reason some directories are read 2 times
                         for (let j = 1; j < query.length; j++) {
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[j] + "\n");
                         }
@@ -146,23 +146,30 @@ function cleanUpRepos(dir) {
 // Download and extract the repositories
 function downloadAndExtractRepos() {
     let startTime = new Date();
-    fs.createReadStream('../flask_login_list.csv')
+    fs.createReadStream('../flask_login_merged_list.csv')
     .pipe(csvParser())
     .on('data', (data) => {
         csv.push(data);
     }).on('end', async () => {
         console.log("read " + csv.length + " lines\n");
-        deleteEmptyDirsAndDatabases('./repositories/' + framework);
+        // deleteEmptyDirsAndDatabases('./repositories/' + framework);
         let filtered_repos = 0;
         let number_of_repos = 0;
         for (let i = 0; i < csv.length; i++) {
-            if (csv[i].stars >= 10) {
+            if (csv[i].stars >= 1) {
                 number_of_repos++;
                 let owner = csv[i].repo_url.split("/")[3];
                 let repoName = csv[i].repo_url.split("/")[4];
                 let flag = true;
+                let blacklist_flag = true;
+                for (let h = 0; h < blacklist_term_groups.length; h++) {
+                    if (blacklist_term_groups[h].every(str => repoName.toLowerCase().includes(str))) {
+                        blacklist_flag = false;
+                    }
+                }
                 // console.log('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + "\n");
-                if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName + '.zip') && !blacklist_terms.some(str => repoName.toLowerCase().includes(str))) {
+                if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName + '.zip') 
+                && !blacklist_terms.some(str => repoName.toLowerCase().includes(str)) && !blacklist_users.some(str => owner.toLowerCase() === str) && blacklist_flag) {
                     // console.log("Starting download...\n");
                     try {
                         /* This doesn't allow you to download files that are greater than 4 gb
@@ -225,9 +232,16 @@ function downloadAndExtractRepos() {
                         */
                     }
                 }
-                if (blacklist_terms.some(str => repoName.toLowerCase().includes(str))) {
+                if (blacklist_terms.some(str => repoName.toLowerCase().includes(str)) || blacklist_users.some(str => owner.toLowerCase() === str) || !blacklist_flag) {
                     filtered_repos++;
-                    fs.appendFileSync('./log.txt', "The repo " + repoName + " was filtered out because it contained a blacklisted term (owner: " + owner + ")\n");
+                    fs.appendFileSync('./log.txt', "The repo " + repoName + " was filtered out because it contained a blacklisted term or username (owner: " + owner + ")\n");
+                    if (fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName)) {
+                        try {
+                            fs.rmSync('./repositories/' + framework + '/' + owner + "_" + repoName, { recursive: true, force: true });
+                        } catch(e) {
+                            fs.appendFileSync('./log.txt', "Could not delete " + repoName + " (owner: " + owner + ")\n");
+                        }
+                    }
                 }
             }
         }
@@ -475,7 +489,7 @@ function libraryUsagesGrep() {
     });
 }
 
-// downloadAndExtractRepos();
-findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+downloadAndExtractRepos();
+// findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
