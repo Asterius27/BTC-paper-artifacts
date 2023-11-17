@@ -6,7 +6,7 @@ from pathlib import Path
 blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]
 blacklist_term_groups = [["learn", "python"], ["learn", "flask"]]
 blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf"]
-path = Path(__file__).parent / '../flask_login_list.csv'
+path = Path(__file__).parent / '../flask_login_merged_list.csv'
 filtered_repos = 0
 number_of_repos = 0
 

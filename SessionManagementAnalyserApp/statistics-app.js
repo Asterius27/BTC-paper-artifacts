@@ -29,7 +29,7 @@ let repos = fs.readdirSync(root_dir);
 let failed = [];
 let startTime = new Date();
 let csv = {};
-let stars = 0;
+let stars = 200;
 await new Promise((resolve, reject) => {
     fs.createReadStream('../flask_login_list.csv')
         .pipe(csvParser())

@@ -155,6 +155,7 @@ function downloadAndExtractRepos() {
         // deleteEmptyDirsAndDatabases('./repositories/' + framework);
         let filtered_repos = 0;
         let number_of_repos = 0;
+        let http_errors = 0;
         for (let i = 0; i < csv.length; i++) {
             if (csv[i].stars >= 1) {
                 number_of_repos++;
@@ -204,6 +205,7 @@ function downloadAndExtractRepos() {
                         console.log("While trying to download: " + owner + "_" + repoName + "\n");
                         console.log("Error caught during download:\n" + e);
                         fs.appendFileSync('./log.txt', "HTTP Error: " + owner + " " + repoName + "\n");
+                        http_errors++;
                     }
                     if (flag) {
                         try {
@@ -235,6 +237,7 @@ function downloadAndExtractRepos() {
                 if (blacklist_terms.some(str => repoName.toLowerCase().includes(str)) || blacklist_users.some(str => owner.toLowerCase() === str) || !blacklist_flag) {
                     filtered_repos++;
                     fs.appendFileSync('./log.txt', "The repo " + repoName + " was filtered out because it contained a blacklisted term or username (owner: " + owner + ")\n");
+                    /*
                     if (fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName)) {
                         try {
                             fs.rmSync('./repositories/' + framework + '/' + owner + "_" + repoName, { recursive: true, force: true });
@@ -242,10 +245,11 @@ function downloadAndExtractRepos() {
                             fs.appendFileSync('./log.txt', "Could not delete " + repoName + " (owner: " + owner + ")\n");
                         }
                     }
+                    */
                 }
             }
         }
-        fs.appendFileSync('./log.txt', "Number of processed repos: " + number_of_repos + ". Of which " + filtered_repos + " were filtered out.\n");
+        fs.appendFileSync('./log.txt', "Number of processed repos: " + number_of_repos + ". Of which " + filtered_repos + " were filtered out and " + http_errors + " repos weren't downloaded because of an HTTP Error.\n");
         console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
         let endTime = new Date();
         let timeElapsed = (endTime - startTime)/1000;
