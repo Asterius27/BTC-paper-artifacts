@@ -39,7 +39,7 @@ function readQueryResults(outputLocation, queryName) {
     }
 }
 
-function countRepos(counter, framework, root_dir) {
+function countRepos(counter, error_counter, framework, root_dir) {
     if (framework === "flask") {
         let flask_queries = getFlaskQueries();
         for (let [key, value] of Object.entries(flask_queries)) {
@@ -51,22 +51,30 @@ function countRepos(counter, framework, root_dir) {
                                 counter[key][dir][file]++;
                             } else {
                                 if (counter[key] === undefined) {
-                                    counter[key] = {}
+                                    counter[key] = {};
+                                    error_counter[key] = {};
                                 }
                                 if (counter[key][dir] === undefined) {
-                                    counter[key][dir] = {}
+                                    counter[key][dir] = {};
+                                    error_counter[key][dir] = {};
                                 }
                                 counter[key][dir][file] = 1;
+                                error_counter[key][dir][file] = 0;
                             }
                         } else {
                             if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
                                 if (counter[key] === undefined) {
-                                    counter[key] = {}
+                                    counter[key] = {};
+                                    error_counter[key] = {};
                                 }
                                 if (counter[key][dir] === undefined) {
-                                    counter[key][dir] = {}
+                                    counter[key][dir] = {};
+                                    error_counter[key][dir] = {};
                                 }
                                 counter[key][dir][file] = 0;
+                                error_counter[key][dir][file] = 1;
+                            } else {
+                                error_counter[key][dir][file]++
                             }
                         }
                     }
@@ -85,22 +93,31 @@ function countRepos(counter, framework, root_dir) {
                                 counter[key][dir][file]++;
                             } else {
                                 if (counter[key] === undefined) {
-                                    counter[key] = {}
+                                    counter[key] = {};
+                                    error_counter[key] = {};
                                 }
                                 if (counter[key][dir] === undefined) {
-                                    counter[key][dir] = {}
+                                    counter[key][dir] = {};
+                                    error_counter[key][dir] = {};
+
                                 }
                                 counter[key][dir][file] = 1;
+                                error_counter[key][dir][file] = 0;
                             }
                         } else {
                             if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
                                 if (counter[key] === undefined) {
-                                    counter[key] = {}
+                                    counter[key] = {};
+                                    error_counter[key] = {};
                                 }
                                 if (counter[key][dir] === undefined) {
-                                    counter[key][dir] = {}
+                                    counter[key][dir] = {};
+                                    error_counter[key][dir] = {};
                                 }
                                 counter[key][dir][file] = 0;
+                                error_counter[key][dir][file] = 1;
+                            } else {
+                                error_counter[key][dir][file]++
                             }
                         }
                     }
@@ -108,18 +125,21 @@ function countRepos(counter, framework, root_dir) {
             }
         }
     }
-    return counter;
+    return [counter, error_counter];
 }
 
-function initializeCounter(counter, framework) {
+function initializeCounter(counter, error_counter, framework) {
     if (framework === "flask") {
         let flask_queries = getFlaskQueries();
         for (let [key, value] of Object.entries(flask_queries)) {
             counter[key] = {};
+            error_counter[key] = {};
             for (let [dir, files] of Object.entries(value)) {
                 counter[key][dir] = {};
+                error_counter[key][dir] = {};
                 for (let [file, arr] of Object.entries(files)) {
                     counter[key][dir][file] = 0;
+                    error_counter[key][dir][file] = 0;
                 }
             }
         }
@@ -128,18 +148,21 @@ function initializeCounter(counter, framework) {
         let django_queries = getDjangoQueries();
         for (let [key, value] of Object.entries(django_queries)) {
             counter[key] = {};
+            error_counter[key] = {};
             for (let [dir, files] of Object.entries(value)) {
                 counter[key][dir] = {};
+                error_counter[key][dir] = {};
                 for (let [file, arr] of Object.entries(files)) {
                     counter[key][dir][file] = 0;
+                    error_counter[key][dir][file] = 0;
                 }
             }
         }
     }
-    return counter;
+    return [counter, error_counter];
 }
 
-// TODO make it prettier
+// TODO make it prettier, add error counter to the graphs
 function generateStatsPage(counter, total, flask_total, django_total, failed_repos, custom_session_engine_repos, root_dir) {
     let html = '<html>\
         <head>\

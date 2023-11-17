@@ -28,6 +28,20 @@ if (fs.existsSync(root_dir + "/stats.html")) {
 let repos = fs.readdirSync(root_dir);
 let failed = [];
 let startTime = new Date();
+let csv = {};
+let stars = 0;
+await new Promise((resolve, reject) => {
+    fs.createReadStream('../flask_login_list.csv')
+        .pipe(csvParser())
+        .on('data', (data) => {
+            let owner = data.repo_url.split("/")[3];
+            let repoName = data.repo_url.split("/")[4];
+            csv[owner + "_" + repoName] = data.stars
+        }).on('end', () => {
+            console.log("Finished reading the csv")
+            resolve("Done!");
+        });
+});
 for (let i = 0; i < repos.length; i++) {
     let dir = root_dir + "/" + repos[i];
     let repo = fs.readdirSync(dir);
@@ -75,41 +89,45 @@ if (failed.length > 0) {
     */
     console.log("Analysis completed, now generating the statistics...");
     let counter = {}
+    let error_counter = {}
     let flask_repos = 0;
     let django_repos = 0;
     let failed_repos = 0;
     let custom_session_engine_repos = 0;
     for (let i = 0; i < repos.length; i++) {
-        let dir = root_dir + "/" + repos[i];
-        let res = "";
-        let info = [];
-        let failed = false;
-        try {
-            res = fs.readdirSync(dir).filter(str => str.endsWith("-results"))[0];
-        } catch(e) {
-            failed_repos++;
-            failed = true;
-        }
-        if (!failed) {
+        if (csv[repos[i]] >= stars) {
+            let dir = root_dir + "/" + repos[i];
+            let res = "";
+            let info = [];
+            let failed = false;
             try {
-                info = fs.readFileSync(dir + "/" + res + "/info.txt", { encoding: 'utf-8' }).split(",");
-                if (info[0] === "python") {
-                    if (info[1].includes("flask")) {
-                        flask_repos++;
-                        counter = countRepos(counter, "flask", dir + "/" + res);
-                    }
-                    if (info[1].includes("django")) {
-                        django_repos++;
-                        counter = countRepos(counter, "django", dir + "/" + res);
-                    }
-                }
+                res = fs.readdirSync(dir).filter(str => str.endsWith("-results"))[0];
             } catch(e) {
                 failed_repos++;
-                fs.appendFileSync('./log.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
-                if (fs.existsSync(dir + "/" + res + "/info.txt")) {
-                    if (info.length > 2) {
-                        if (info[2].includes("customsessionengine")) {
-                            custom_session_engine_repos++;
+                fs.appendFileSync('./log.txt', "Failed to read the results directory for: " + dir + " Reason: " + e + "\n");
+                failed = true;
+            }
+            if (!failed) {
+                try {
+                    info = fs.readFileSync(dir + "/" + res + "/info.txt", { encoding: 'utf-8' }).split(",");
+                    if (info[0] === "python") {
+                        if (info[1].includes("flask")) {
+                            flask_repos++;
+                            [counter, error_counter] = countRepos(counter, error_counter, "flask", dir + "/" + res);
+                        }
+                        if (info[1].includes("django")) {
+                            django_repos++;
+                            [counter, error_counter] = countRepos(counter, error_counter, "django", dir + "/" + res);
+                        }
+                    }
+                } catch(e) {
+                    failed_repos++;
+                    fs.appendFileSync('./log.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
+                    if (fs.existsSync(dir + "/" + res + "/info.txt")) {
+                        if (info.length > 2) {
+                            if (info[2].includes("customsessionengine")) {
+                                custom_session_engine_repos++;
+                            }
                         }
                     }
                 }
@@ -117,12 +135,12 @@ if (failed.length > 0) {
         }
     }
     if (flask_repos === 0) {
-        counter = initializeCounter(counter, "flask");
+        [counter, error_counter] = initializeCounter(counter, error_counter, "flask");
     }
     if (django_repos === 0) {
-        counter = initializeCounter(counter, "django");
+        [counter, error_counter] = initializeCounter(counter, error_counter, "django");
     }
-    generateStatsPage(counter, repos.length, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
+    generateStatsPage(counter, error_counter, repos.length, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
     let endTime = new Date();
     let timeElapsed = (endTime - startTime)/1000;
     console.log("Done!");
