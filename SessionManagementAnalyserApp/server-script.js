@@ -157,6 +157,7 @@ function downloadAndExtractRepos() {
         let filtered_repos = 0;
         let number_of_repos = 0;
         let http_errors = 0;
+        let duplicates = 0;
         for (let i = 0; i < csv.length; i++) {
             if (csv[i].stars >= 1) {
                 number_of_repos++;
@@ -167,6 +168,7 @@ function downloadAndExtractRepos() {
                 if (temp[owner + "_" + repoName] === undefined) {
                     temp[owner + "_" + repoName] = 0
                 } else {
+                    duplicates++;
                     fs.appendFileSync('./log.txt', "Found a duplicate: " + owner + " " + repoName + "\n");
                 }
                 for (let h = 0; h < blacklist_term_groups.length; h++) {
@@ -255,7 +257,7 @@ function downloadAndExtractRepos() {
                 }
             }
         }
-        fs.appendFileSync('./log.txt', "Number of processed repos: " + number_of_repos + ". Of which " + filtered_repos + " were filtered out and " + http_errors + " repos weren't downloaded because of an HTTP Error.\n");
+        fs.appendFileSync('./log.txt', "Number of processed repos: " + number_of_repos + ". Of which " + filtered_repos + " were filtered out, " + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
         console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
         let endTime = new Date();
         let timeElapsed = (endTime - startTime)/1000;

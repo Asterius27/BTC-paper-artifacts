@@ -64,7 +64,7 @@ for (let i = 0; i < repos.length; i++) {
                 execSync("npm start -- -s=" + dir + "/" + repo[0], { timeout: 1800000 });
             } else {
                 execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0] + " --threads=0", {timeout: 1800000});
-                execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang, { timeout: 1800000 });
+                execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang); // , { timeout: 1800000 }
             }
         } catch (e) {
             console.log("Analysis failed for: " + dir + "/" + repo[0] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");

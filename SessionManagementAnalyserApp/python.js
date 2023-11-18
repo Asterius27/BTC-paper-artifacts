@@ -8,7 +8,7 @@ const DJANGO_QUERIES_DIR = "../Django_Queries";
 
 function execBoolQuery(database, outputLocation, queryLocation, queryName) {
     // comment the following two lines to re-generate the html report without re-running the queries (have to run the queries at least once before generating the html report)
-    execSync("codeql query run --database=" + database + " --output=" + outputLocation + "/" + queryName + ".bqrs --threads=0 " + queryLocation + "/" + queryName + ".ql");
+    execSync("codeql query run --database=" + database + " --output=" + outputLocation + "/" + queryName + ".bqrs --threads=0 " + queryLocation + "/" + queryName + ".ql", { timeout: 1200000 });
     execSync("codeql bqrs decode --output=" + outputLocation + "/" + queryName + ".txt --format=text " + outputLocation + "/" + queryName + ".bqrs"); // TODO change this to JSON
     let lines = fs.readFileSync(outputLocation + "/" + queryName + ".txt", 'utf-8').split("\n");
     lines.pop();
@@ -33,9 +33,13 @@ export function pythonAnalysis(root_dir) {
     let django_queries = {};
     try {
         flask_lib = execBoolQuery(root_dir + "-database", root_dir + "-results", FLASK_QUERIES_DIR + "/Flask-login-is-used-check", "flask_library_used_check");
+    } catch(e) {
+        flask_lib = [false, ""];
+    }
+    try {
         django_lib = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Django-auth-is-used-check", "django_library_used_check");
     } catch(e) {
-        throw new Error("None of the supported libraries/frameworks is used");
+        django_lib = [false, ""];
     }
     if (!flask_lib[0] && !django_lib[0]) {
         throw new Error("None of the supported libraries/frameworks is used");
@@ -53,7 +57,8 @@ export function pythonAnalysis(root_dir) {
                         let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, FLASK_QUERIES_DIR + "/" + dir, file);
                         flask_queries[key][dir][file] = res;
                     } catch(e) {
-                        flask_queries[key][dir][file] = [true, "The query threw an execution error and didn't complete"];
+                        flask_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];
+                        fs.appendFileSync('./log.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
                     }
                 }
             }
@@ -78,7 +83,8 @@ export function pythonAnalysis(root_dir) {
                         let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, DJANGO_QUERIES_DIR + "/" + dir, file);
                         django_queries[key][dir][file] = res;
                     } catch(e) {
-                        django_queries[key][dir][file] = [true, "The query threw an execution error and didn't complete"];
+                        django_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];
+                        fs.appendFileSync('./log.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
                     }
                 }
             }
