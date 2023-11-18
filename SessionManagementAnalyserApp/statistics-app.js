@@ -32,7 +32,7 @@ let startTime = new Date();
 let csv = {};
 let stars = 200;
 await new Promise((resolve, reject) => {
-    fs.createReadStream('../flask_login_list.csv')
+    fs.createReadStream('../flask_login_merged_list.csv')
         .pipe(csvParser())
         .on('data', (data) => {
             let owner = data.repo_url.split("/")[3];
