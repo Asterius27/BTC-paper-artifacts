@@ -44,43 +44,45 @@ await new Promise((resolve, reject) => {
         });
 });
 for (let i = 0; i < repos.length; i++) {
-    let dir = root_dir + "/" + repos[i];
-    let repo = fs.readdirSync(dir);
-    /*
-    if (repo.length === 3) {
-        for (let j = 0; j < repo.length; j++) {
-            if (repo[j].endsWith("-database")) {
-                fs.rmSync(dir + "/" + repo[j], { recursive: true, force: true });
+    if (csv[repos[i]] >= stars) {
+        let dir = root_dir + "/" + repos[i];
+        let repo = fs.readdirSync(dir);
+        /*
+        if (repo.length === 3) {
+            for (let j = 0; j < repo.length; j++) {
+                if (repo[j].endsWith("-database")) {
+                    fs.rmSync(dir + "/" + repo[j], { recursive: true, force: true });
+                }
             }
         }
-    }
-    */
-    if (repo.length === 1) {
-        console.log("Starting analysis for: " + dir + "/" + repo[0]);
-        let repoStartTime = new Date();
-        try {
-            if (lang === "") {
-                throw new Error("Please specify a language, language detection is disabled for now"); // TODO
-                execSync("npm start -- -s=" + dir + "/" + repo[0], { timeout: 1800000 });
-            } else {
-                execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0] + " --threads=0", {timeout: 1800000});
-                execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang); // , { timeout: 1800000 }
-            }
-        } catch (e) {
-            console.log("Analysis failed for: " + dir + "/" + repo[0] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
-            fs.appendFileSync('./log.txt', "Analysis failed for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
-            failed.push(dir + "/" + repo[0]);
-        }
-        if (fs.existsSync(dir + "/" + repo[0] + "-database")) {
+        */
+        if (repo.length === 1) {
+            console.log("Starting analysis for: " + dir + "/" + repo[0]);
+            let repoStartTime = new Date();
             try {
-                fs.rmSync(dir + "/" + repo[0] + "-database", { recursive: true, force: true });
-            } catch(e) {
-                fs.appendFileSync('./log.txt', "Could not delete database for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
+                if (lang === "") {
+                    throw new Error("Please specify a language, language detection is disabled for now"); // TODO
+                    execSync("npm start -- -s=" + dir + "/" + repo[0], { timeout: 1800000 });
+                } else {
+                    execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0] + " --threads=0", {timeout: 1800000});
+                    execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang); // , { timeout: 1800000 }
+                }
+            } catch (e) {
+                console.log("Analysis failed for: " + dir + "/" + repo[0] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
+                fs.appendFileSync('./log.txt', "Analysis failed for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
+                failed.push(dir + "/" + repo[0]);
             }
+            if (fs.existsSync(dir + "/" + repo[0] + "-database")) {
+                try {
+                    fs.rmSync(dir + "/" + repo[0] + "-database", { recursive: true, force: true });
+                } catch(e) {
+                    fs.appendFileSync('./log.txt', "Could not delete database for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
+                }
+            }
+            let repoEndTime = new Date();
+            let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
+            fs.appendFileSync('./log.txt', "Time taken to run the queries on " + dir + "/" + repo[0] + ": " + repoTimeElapsed + " seconds.\n");
         }
-        let repoEndTime = new Date();
-        let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
-        fs.appendFileSync('./log.txt', "Time taken to run the queries on " + dir + "/" + repo[0] + ": " + repoTimeElapsed + " seconds.\n");
     }
 }
 /*
