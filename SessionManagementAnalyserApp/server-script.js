@@ -151,6 +151,7 @@ function downloadAndExtractRepos() {
     .on('data', (data) => {
         csv.push(data);
     }).on('end', async () => {
+        let temp = {}
         console.log("read " + csv.length + " lines\n");
         // deleteEmptyDirsAndDatabases('./repositories/' + framework);
         let filtered_repos = 0;
@@ -163,6 +164,11 @@ function downloadAndExtractRepos() {
                 let repoName = csv[i].repo_url.split("/")[4];
                 let flag = true;
                 let blacklist_flag = true;
+                if (temp[owner + "_" + repoName] === undefined) {
+                    temp[owner + "_" + repoName] = 0
+                } else {
+                    fs.appendFileSync('./log.txt', "Found a duplicate: " + owner + " " + repoName + "\n");
+                }
                 for (let h = 0; h < blacklist_term_groups.length; h++) {
                     if (blacklist_term_groups[h].every(str => repoName.toLowerCase().includes(str))) {
                         blacklist_flag = false;
