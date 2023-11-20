@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node test-app.js",
     "start": "node app.js",
-    "stats": "node statistics-app.js",
+    "worker": "node multiple-analysis-worker.js",
+    "stats": "node stats-report.js",
     "server": "node server-script.js"
   },
   "author": "",
