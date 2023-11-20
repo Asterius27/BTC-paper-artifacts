@@ -31,7 +31,7 @@ let failed = [];
 let startTime = new Date();
 let csv = {};
 let starsl = 10;
-let starsu = 20;
+let starsu = 12;
 await new Promise((resolve, reject) => {
     fs.createReadStream('../flask_login_merged_list.csv')
         .pipe(csvParser())
