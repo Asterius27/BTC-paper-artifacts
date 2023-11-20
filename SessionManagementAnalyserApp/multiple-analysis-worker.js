@@ -87,7 +87,7 @@ for (let i = 0; i < repos.length; i++) {
             } catch (e) {
                 console.log("Analysis failed for: " + dir + "/" + repo[0] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
                 fs.appendFileSync('./log.txt', "Analysis failed for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
-                failed.push(dir + "/" + repo[0]);
+                // failed.push(dir + "/" + repo[0]);
             }
             if (fs.existsSync(dir + "/" + repo[0] + "-database")) {
                 try {
