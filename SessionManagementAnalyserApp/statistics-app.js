@@ -30,7 +30,8 @@ let repos = fs.readdirSync(root_dir);
 let failed = [];
 let startTime = new Date();
 let csv = {};
-let stars = 200;
+let starsl = 10;
+let starsu = 20;
 await new Promise((resolve, reject) => {
     fs.createReadStream('../flask_login_merged_list.csv')
         .pipe(csvParser())
@@ -44,7 +45,7 @@ await new Promise((resolve, reject) => {
         });
 });
 for (let i = 0; i < repos.length; i++) {
-    if (csv[repos[i]] >= stars) {
+    if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
         let dir = root_dir + "/" + repos[i];
         let repo = fs.readdirSync(dir);
         /*
@@ -98,7 +99,7 @@ if (failed.length > 0) {
     let failed_repos = 0;
     let custom_session_engine_repos = 0;
     for (let i = 0; i < repos.length; i++) {
-        if (csv[repos[i]] >= stars) {
+        if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
             let dir = root_dir + "/" + repos[i];
             let res = "";
             let info = [];
