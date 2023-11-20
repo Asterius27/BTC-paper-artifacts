@@ -153,4 +153,8 @@ let django = {
 
 function getDjangoQueries() { return django; }
 
-export { getFlaskQueries, getDjangoQueries }
+let flask_descriptions = {}
+
+function getFlaskDescriptions() { return flask_descriptions; }
+
+export { getFlaskQueries, getDjangoQueries, getFlaskDescriptions }

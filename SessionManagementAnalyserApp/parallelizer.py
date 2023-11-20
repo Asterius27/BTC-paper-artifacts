@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 from multiprocessing import cpu_count, Pool
 import os
 import shutil
+from pathlib import Path
 
 parser = ArgumentParser()
 parser.add_argument("-s", dest="root_dir", help="Root directory of the repositories", default="./")
@@ -15,24 +16,25 @@ def runner(threads, current_thread):
     # os.system('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + threads + " -sl=" + args.starsl + " -su=" + args.starsu)
     print('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + threads + " -sl=" + args.starsl + " -su=" + args.starsu)
 
-# TODO paths may be wrong
+# TODO paths may be wrong, have to test the whole script
 if __name__ == '__main__':
     # codeql_threads = cpu_count() // args.threads
     codeql_threads = 1
     j = 0
     current_thread = 0
-    repos_dir = os.listdir(args.root_dir)
+    full_path = Path(__file__).parent / args.root_dir
+    repos_dir = os.listdir(full_path)
     repo_per_thread = len(repos_dir) // args.threads
     for repo_dir in repos_dir:
         if j < repo_per_thread:
-            if not os.path.exists(args.root_dir + "/thread" + str(current_thread)):
-                os.mkdir(args.root_dir + "/thread" + str(current_thread))
-            shutil.move(args.root_dir + "/" + repo_dir, args.root_dir + "/thread" + str(current_thread))
+            if not os.path.exists(full_path + "/thread" + str(current_thread)):
+                os.mkdir(full_path + "/thread" + str(current_thread))
+            shutil.move(full_path + "/" + repo_dir, full_path + "/thread" + str(current_thread) + "/" + repo_dir)
             j += 1
         else:
-            if not os.path.exists(args.root_dir + "/thread" + str(current_thread)):
-                os.mkdir(args.root_dir + "/thread" + str(current_thread))
-            shutil.move(args.root_dir + "/" + repo_dir, args.root_dir + "/thread" + str(current_thread))
+            if not os.path.exists(full_path + "/thread" + str(current_thread)):
+                os.mkdir(full_path + "/thread" + str(current_thread))
+            shutil.move(full_path + "/" + repo_dir, full_path + "/thread" + str(current_thread) + "/" + repo_dir)
             current_thread += 1
             if current_thread < args.threads:
                 j = 0
@@ -44,8 +46,8 @@ if __name__ == '__main__':
         pool.close()
         pool.join()
     for i in range(args.threads):
-        repos = os.listdir(args.root_dir + "/thread" + str(i))
+        repos = os.listdir(full_path + "/thread" + str(i))
         for repo in repos:
-            shutil.move(args.root_dir + "/thread" + str(i) + "/" + repo, args.root_dir + "/" + repo)
+            shutil.move(full_path + "/thread" + str(i) + "/" + repo, full_path + "/" + repo)
     # os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + args.starsl + " -su=" + args.starsu)
     print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + args.starsl + " -su=" + args.starsu)
