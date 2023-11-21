@@ -23,6 +23,39 @@ function execBoolQuery(database, outputLocation, queryLocation, queryName, threa
     }
 }
 
+// TODO This might break if the query names differ too much (if the shortest name has more than one different word at the end)
+function getUnskippableCounterpart(skippableQueryName, queryObj) {
+    let actualSkipQueryName = skippableQueryName.slice(2);
+    for (let [queryName, arr] of Object.entries(queryObj)) {
+        if (queryName.startsWith("u")) {
+            let actualQueryName = queryName.slice(3);
+            if (actualQueryName.length > actualSkipQueryName.length) {
+                if (actualQueryName.includes(actualSkipQueryName)) {
+                    fs.appendFileSync('./log.txt', "Skippable Query: " + skippableQueryName + ", Unskippable counterpart: " + queryName + "\n");
+                    return queryName;
+                }
+                let shortSkipQueryName = actualSkipQueryName.substring(0, actualSkipQueryName.lastIndexOf("_"));
+                if (actualQueryName.includes(shortSkipQueryName)) {
+                    fs.appendFileSync('./log.txt', "Skippable Query: " + skippableQueryName + ", Unskippable counterpart: " + queryName + "\n");
+                    return queryName;
+                }
+            } else {
+                if (actualSkipQueryName.includes(actualQueryName)) {
+                    fs.appendFileSync('./log.txt', "Skippable Query: " + skippableQueryName + ", Unskippable counterpart: " + queryName + "\n");
+                    return queryName;
+                }
+                let shortQueryName = actualQueryName.substring(0, actualQueryName.lastIndexOf("_"));
+                if (actualSkipQueryName.includes(shortQueryName)) {
+                    fs.appendFileSync('./log.txt', "Skippable Query: " + skippableQueryName + ", Unskippable counterpart: " + queryName + "\n");
+                    return queryName;
+                }
+            }
+        }
+    }
+    fs.appendFileSync('./log.txt', "Error when trying to find the unskippable counterpart to the query: " + skippableQueryName + "\n");
+    throw new Error("Something went wrong when trying to find the unskippable counterpart to a skippable query");
+}
+
 export function pythonAnalysis(root_dir, threads) {
     if (!fs.existsSync(root_dir + "-results")){
         fs.mkdirSync(root_dir + "-results");
@@ -53,12 +86,27 @@ export function pythonAnalysis(root_dir, threads) {
                     fs.mkdirSync(root_dir + "-results/" + dir);
                 }
                 for (let [file, arr] of Object.entries(files)) {
-                    try {
-                        let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, FLASK_QUERIES_DIR + "/" + dir, file, threads);
-                        flask_queries[key][dir][file] = res;
-                    } catch(e) {
-                        flask_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];
-                        fs.appendFileSync('./log.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
+                    if (file.startsWith("u")) {
+                        try {
+                            let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, FLASK_QUERIES_DIR + "/" + dir, file, threads);
+                            flask_queries[key][dir][file] = res;
+                        } catch(e) {
+                            flask_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];
+                            fs.appendFileSync('./log.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
+                        }
+                    } else {
+                        let twin = getUnskippableCounterpart(file, files);
+                        if ((twin.startsWith("uf") && !flask_queries[key][dir][twin][0]) || (twin.startsWith("ut") && flask_queries[key][dir][twin][0])) {
+                            try {
+                                let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, FLASK_QUERIES_DIR + "/" + dir, file, threads);
+                                flask_queries[key][dir][file] = res;
+                            } catch(e) {
+                                flask_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];
+                                fs.appendFileSync('./log.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
+                            }
+                        } else {
+                            // TODO generate the fake/deduced results, both the txt file and the dictionary entry (flask_queries)
+                        }
                     }
                 }
             }

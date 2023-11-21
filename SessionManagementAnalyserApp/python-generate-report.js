@@ -26,7 +26,7 @@ function aux(key1, key2, key3, obj, output) {
     }
 }
 
-// TODO make it prettier
+// TODO fix it, either just update the query names and locations or make it dynamic (remove all hardcoded query names and locations and cycle through python datastructure instead). Make it prettier
 export function generateReport(results, lib, dir) {
     generateCSS(dir);
     let html = "";

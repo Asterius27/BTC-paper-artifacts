@@ -1,4 +1,5 @@
 // true: the query returns a result, false: the query doesn't return a result
+// The shortest query name (among the pair of skippable and unskippable queries) cannot have more than one different word at the end, e.g. the pair (ut_session_cookie_name_manually_set, s_session_cookie_name_prefix_something) would break everything
 // un = unskippable query, no skippable equivalent
 // ut = unskippable query, if true also execute the skippable equivalent
 // uf = unskippable query, if false also execute the skippable equivalent
