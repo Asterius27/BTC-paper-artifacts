@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 from multiprocessing import cpu_count, Pool
 import os
 import shutil
+import time
 from pathlib import Path
 
 parser = ArgumentParser()
@@ -19,6 +20,7 @@ def runner(threads, current_thread):
 # TODO paths may be wrong, have to test the whole script
 if __name__ == '__main__':
     # codeql_threads = cpu_count() // args.threads
+    start = time.time()
     codeql_threads = 1
     j = 0
     current_thread = 0
@@ -45,9 +47,13 @@ if __name__ == '__main__':
             pool.apply_async(runner, (codeql_threads, i))
         pool.close()
         pool.join()
+    """
     for i in range(args.threads):
         repos = os.listdir(full_path + "/thread" + str(i))
         for repo in repos:
             shutil.move(full_path + "/thread" + str(i) + "/" + repo, full_path + "/" + repo)
+    """
     # os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + args.starsl + " -su=" + args.starsu)
     print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + args.starsl + " -su=" + args.starsu)
+    end = time.time()
+    print('Elapsed time: ' + str(round((end - start) / 60, 2)) + " minutes")
