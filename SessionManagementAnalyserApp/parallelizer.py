@@ -29,7 +29,7 @@ if __name__ == '__main__':
     repo_per_thread = len(repos_dir) // args.threads
     for repo_dir in repos_dir:
         if j < repo_per_thread:
-            if not os.path.exists(full_path + "/thread" + str(current_thread)):
+            if not os.path.exists(full_path + "/thread" + str(current_thread)): # TODO have to convert full_path to string
                 os.mkdir(full_path + "/thread" + str(current_thread))
             shutil.move(full_path + "/" + repo_dir, full_path + "/thread" + str(current_thread) + "/" + repo_dir)
             j += 1
