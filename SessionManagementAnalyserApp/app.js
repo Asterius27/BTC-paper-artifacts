@@ -2,11 +2,12 @@ import 'dotenv/config';
 import * as fs from 'fs';
 import { execSync } from "child_process";
 import * as detect from "language-detect";
-import { pythonAnalysis } from "./python.js";
+import { pythonAnalysis } from "./python-single-analysis.js";
 
 const SUPPORTED_LANGUAGES = ["python"];
 let root_dir = "./";
 let lang = "";
+let threads = 0;
 
 // Root directory of the project/repository/application, if not specified the current directory will be used
 if (process.argv.some(str => str.startsWith("-s="))) {
@@ -30,6 +31,12 @@ if (process.argv.some(str => str.startsWith("-l="))) {
     console.log(lang + "\n");
 }
 
+// Number of threads, if not specified defaults to 1 per core
+if (process.argv.some(str => str.startsWith("-t="))) {
+    threads = parseInt(process.argv.filter(str => str.startsWith("-t="))[0].slice(3));
+    console.log(threads + "\n");
+}
+
 if (!SUPPORTED_LANGUAGES.some(str => str.toLowerCase() === lang.toLowerCase())) {
     throw new Error("Either wasn't able to detect the language automatically, so you should try to specify it manually\n or the language is not supported");
 }
@@ -40,7 +47,7 @@ if (!fs.existsSync(root_dir + "-database")) {
     throw new Error("The database doesn't exist");
 }
 if (lang.toLowerCase() === "python") {
-    pythonAnalysis(root_dir);
+    pythonAnalysis(root_dir, threads);
 }
 
 // TODO need to try and improve it because right now it tries to detect the language the application was written in based only on the number of files written in that language (maybe try and use this: https://github.com/github-linguist/linguist)

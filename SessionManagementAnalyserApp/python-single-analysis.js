@@ -6,9 +6,9 @@ import { generateReport } from './python-generate-report.js';
 const FLASK_QUERIES_DIR = "../Flask_Queries";
 const DJANGO_QUERIES_DIR = "../Django_Queries";
 
-function execBoolQuery(database, outputLocation, queryLocation, queryName) {
+function execBoolQuery(database, outputLocation, queryLocation, queryName, threads) {
     // comment the following two lines to re-generate the html report without re-running the queries (have to run the queries at least once before generating the html report)
-    execSync("codeql query run --database=" + database + " --output=" + outputLocation + "/" + queryName + ".bqrs --threads=0 " + queryLocation + "/" + queryName + ".ql", { timeout: 1200000 });
+    execSync("codeql query run --database=" + database + " --output=" + outputLocation + "/" + queryName + ".bqrs --threads=" + threads + " " + queryLocation + "/" + queryName + ".ql", { timeout: 1200000 });
     execSync("codeql bqrs decode --output=" + outputLocation + "/" + queryName + ".txt --format=text " + outputLocation + "/" + queryName + ".bqrs"); // TODO change this to JSON
     let lines = fs.readFileSync(outputLocation + "/" + queryName + ".txt", 'utf-8').split("\n");
     lines.pop();
@@ -23,7 +23,7 @@ function execBoolQuery(database, outputLocation, queryLocation, queryName) {
     }
 }
 
-export function pythonAnalysis(root_dir) {
+export function pythonAnalysis(root_dir, threads) {
     if (!fs.existsSync(root_dir + "-results")){
         fs.mkdirSync(root_dir + "-results");
     }
@@ -32,12 +32,12 @@ export function pythonAnalysis(root_dir) {
     let flask_queries = {};
     let django_queries = {};
     try {
-        flask_lib = execBoolQuery(root_dir + "-database", root_dir + "-results", FLASK_QUERIES_DIR + "/Flask-login-is-used-check", "flask_library_used_check");
+        flask_lib = execBoolQuery(root_dir + "-database", root_dir + "-results", FLASK_QUERIES_DIR + "/Flask-login-is-used-check", "flask_library_used_check", threads);
     } catch(e) {
         flask_lib = [false, ""];
     }
     try {
-        django_lib = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Django-auth-is-used-check", "django_library_used_check");
+        django_lib = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Django-auth-is-used-check", "django_library_used_check", threads);
     } catch(e) {
         django_lib = [false, ""];
     }
@@ -54,7 +54,7 @@ export function pythonAnalysis(root_dir) {
                 }
                 for (let [file, arr] of Object.entries(files)) {
                     try {
-                        let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, FLASK_QUERIES_DIR + "/" + dir, file);
+                        let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, FLASK_QUERIES_DIR + "/" + dir, file, threads);
                         flask_queries[key][dir][file] = res;
                     } catch(e) {
                         flask_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];
@@ -67,7 +67,7 @@ export function pythonAnalysis(root_dir) {
         fs.appendFileSync(root_dir + "-results/info.txt", ", flask");
     }
     if (django_lib[0]) {
-        let session_engine = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Custom-session-engine", "custom_session_engine");
+        let session_engine = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Custom-session-engine", "custom_session_engine", threads);
         if (session_engine[0]) {
             fs.appendFileSync(root_dir + "-results/info.txt", ", django, customsessionengine");
             throw new Error("Using a custom session engine, so the analysis won't be run");
@@ -80,7 +80,7 @@ export function pythonAnalysis(root_dir) {
                 }
                 for (let [file, arr] of Object.entries(files)) {
                     try {
-                        let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, DJANGO_QUERIES_DIR + "/" + dir, file);
+                        let res = execBoolQuery(root_dir + "-database", root_dir + "-results/" + dir, DJANGO_QUERIES_DIR + "/" + dir, file, threads);
                         django_queries[key][dir][file] = res;
                     } catch(e) {
                         django_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];

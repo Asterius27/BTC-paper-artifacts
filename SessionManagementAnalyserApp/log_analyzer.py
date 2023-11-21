@@ -13,8 +13,8 @@ Total repos that timed out: 15 (1.11 %)
 Total repos where the database could not be deleted: 12 (0.89 %)
 """
 
-path = Path(__file__).parent / './log_10_or_more_stars.txt'
-output = Path(__file__).parent / './log_analysis_10_or_more_stars.txt'
+path = Path(__file__).parent / './old_logs/3 - log_200_or_more_stars_flask_login_merged.txt'
+output = Path(__file__).parent / './old_logs/3 - log_analysis_200_or_more_stars_flask_login_merged.txt'
 csv_path = Path(__file__).parent / '../flask_login_merged_list.csv'
 times = []
 failed_repos = []
