@@ -8,6 +8,7 @@ const SUPPORTED_LANGUAGES = ["python"];
 let root_dir = "./";
 let lang = "";
 let threads = 0;
+let current_thread = 0;
 
 // Root directory of the project/repository/application, if not specified the current directory will be used
 if (process.argv.some(str => str.startsWith("-s="))) {
@@ -37,6 +38,12 @@ if (process.argv.some(str => str.startsWith("-t="))) {
     console.log(threads + "\n");
 }
 
+// Current thread id, if not specified defaults to 0 (running single threaded)
+if (process.argv.some(str => str.startsWith("-ct="))) {
+    current_thread = parseInt(process.argv.filter(str => str.startsWith("-ct="))[0].slice(4));
+    console.log(current_thread + "\n");
+}
+
 if (!SUPPORTED_LANGUAGES.some(str => str.toLowerCase() === lang.toLowerCase())) {
     throw new Error("Either wasn't able to detect the language automatically, so you should try to specify it manually\n or the language is not supported");
 }
@@ -47,7 +54,7 @@ if (!fs.existsSync(root_dir + "-database")) {
     throw new Error("The database doesn't exist");
 }
 if (lang.toLowerCase() === "python") {
-    pythonAnalysis(root_dir, threads);
+    pythonAnalysis(root_dir, threads, current_thread);
 }
 
 // TODO need to try and improve it because right now it tries to detect the language the application was written in based only on the number of files written in that language (maybe try and use this: https://github.com/github-linguist/linguist)

@@ -14,8 +14,8 @@ parser.add_argument("-su", dest="starsl", help="Lower bound on the number of sta
 args = parser.parse_args()
 
 def runner(threads, current_thread):
-    # os.system('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + str(threads) + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
-    print('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + str(threads) + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
+    os.system('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + str(threads) + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu) + " -ct=" + str(current_thread))
+    # print('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + str(threads) + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu) + " -ct=" + str(current_thread))
 
 # TODO have to test the whole script
 if __name__ == '__main__':
@@ -28,6 +28,7 @@ if __name__ == '__main__':
     # print(str(full_path.absolute()))
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
+    # TODO improve this: it's not 100% balanced (the first n-1 threads will have repo_per_thread + 1 repos while the last will have repo_per_thread minus the extra ones that the other threads took instead)
     for repo_dir in repos_dir:
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
@@ -38,13 +39,13 @@ if __name__ == '__main__':
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
                 os.mkdir(str(full_path.absolute()) + "/thread" + str(current_thread))
             shutil.move(str(full_path.absolute()) + "/" + repo_dir, str(full_path.absolute()) + "/thread" + str(current_thread) + "/" + repo_dir)
-            print(current_thread)
+            # print(current_thread)
             current_thread += 1
             if current_thread < args.threads:
-                print("Resetting j... " + str(current_thread))
+                # print("Resetting j... " + str(current_thread))
                 j = 0
             else:
-                print(current_thread)
+                # print(current_thread)
                 current_thread -= 1
     print("Now starting the thread workers...")
     with Pool(processes=args.threads) as pool:
@@ -57,7 +58,9 @@ if __name__ == '__main__':
         for repo in repos:
             shutil.move(str(full_path.absolute()) + "/thread" + str(i) + "/" + repo, str(full_path.absolute()) + "/" + repo)
         os.rmdir(str(full_path.absolute()) + "/thread" + str(i))
-    # os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
-    print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
+    os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
+    # print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     end = time.time()
     print('Elapsed time: ' + str(end - start) + " seconds")
+    with open("log_parallelizer.txt", "a") as f:
+        f.write('Elapsed time: ' + str(end - start) + " seconds")

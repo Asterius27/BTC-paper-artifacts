@@ -9,6 +9,7 @@ let threads = 0;
 let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let csv_file = '../flask_login_merged_list.csv';
+let current_thread = 0;
 
 // Root directory of the projects/repositories/applications, if not specified the current directory will be used
 if (process.argv.some(str => str.startsWith("-s="))) {
@@ -38,6 +39,12 @@ if (process.argv.some(str => str.startsWith("-sl="))) {
 if (process.argv.some(str => str.startsWith("-su="))) {
     starsu = parseInt(process.argv.filter(str => str.startsWith("-su="))[0].slice(4));
     console.log(starsu + "\n");
+}
+
+// Current thread id, if not specified defaults to 0 (running single threaded)
+if (process.argv.some(str => str.startsWith("-ct="))) {
+    current_thread = parseInt(process.argv.filter(str => str.startsWith("-ct="))[0].slice(4));
+    console.log(current_thread + "\n");
 }
 
 if (!SUPPORTED_LANGUAGES.some(str => str.toLowerCase() === lang.toLowerCase()) && lang !== "") {
@@ -82,23 +89,23 @@ for (let i = 0; i < repos.length; i++) {
                     execSync("npm start -- -s=" + dir + "/" + repo[0], { timeout: 1800000 });
                 } else {
                     execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0] + " --threads=" + threads, {timeout: 1800000});
-                    execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang + " -t=" + threads); // , { timeout: 1800000 }
+                    execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang + " -t=" + threads + " -ct=" + current_thread); // , { timeout: 1800000 }
                 }
             } catch (e) {
                 console.log("Analysis failed for: " + dir + "/" + repo[0] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
-                fs.appendFileSync('./log.txt', "Analysis failed for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
+                fs.appendFileSync('./log' + current_thread + '.txt', "Analysis failed for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
                 // failed.push(dir + "/" + repo[0]);
             }
             if (fs.existsSync(dir + "/" + repo[0] + "-database")) {
                 try {
                     fs.rmSync(dir + "/" + repo[0] + "-database", { recursive: true, force: true });
                 } catch(e) {
-                    fs.appendFileSync('./log.txt', "Could not delete database for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
+                    fs.appendFileSync('./log' + current_thread + '.txt', "Could not delete database for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
                 }
             }
             let repoEndTime = new Date();
             let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
-            fs.appendFileSync('./log.txt', "Time taken to run the queries on " + dir + "/" + repo[0] + ": " + repoTimeElapsed + " seconds.\n");
+            fs.appendFileSync('./log' + current_thread + '.txt', "Time taken to run the queries on " + dir + "/" + repo[0] + ": " + repoTimeElapsed + " seconds.\n");
         }
     }
 }
@@ -112,4 +119,4 @@ if (failed.length > 0) {
 let endTime = new Date();
 let timeElapsed = (endTime - startTime)/1000;
 console.log("Done!");
-fs.appendFileSync('./log.txt', "Time taken to run the queries and generate the statistics: " + timeElapsed + " seconds.\n");
+fs.appendFileSync('./log' + current_thread + '.txt', "Time taken to run the queries and generate the statistics: " + timeElapsed + " seconds.\n");

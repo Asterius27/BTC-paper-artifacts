@@ -23,7 +23,7 @@ function execBoolQuery(database, outputLocation, queryLocation, queryName, threa
     }
 }
 
-export function pythonAnalysis(root_dir, threads) {
+export function pythonAnalysis(root_dir, threads, current_thread) {
     if (!fs.existsSync(root_dir + "-results")){
         fs.mkdirSync(root_dir + "-results");
     }
@@ -58,7 +58,7 @@ export function pythonAnalysis(root_dir, threads) {
                         flask_queries[key][dir][file] = res;
                     } catch(e) {
                         flask_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];
-                        fs.appendFileSync('./log.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
+                        fs.appendFileSync('./log' + current_thread + '.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
                     }
                 }
             }
@@ -84,7 +84,7 @@ export function pythonAnalysis(root_dir, threads) {
                         django_queries[key][dir][file] = res;
                     } catch(e) {
                         django_queries[key][dir][file] = [true, "The query threw an exception error and didn't complete"];
-                        fs.appendFileSync('./log.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
+                        fs.appendFileSync('./log' + current_thread + '.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
                     }
                 }
             }
