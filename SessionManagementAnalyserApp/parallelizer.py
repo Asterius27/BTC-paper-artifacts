@@ -28,6 +28,7 @@ if __name__ == '__main__':
     # print(str(full_path.absolute()))
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
+    print(repo_per_thread)
     for repo_dir in repos_dir:
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
