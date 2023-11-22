@@ -17,18 +17,17 @@ def runner(threads, current_thread):
     # os.system('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + str(threads) + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     print('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + str(threads) + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
 
-# TODO paths may be wrong, have to test the whole script
+# TODO have to test the whole script
 if __name__ == '__main__':
-    # codeql_threads = cpu_count() // args.threads
     start = time.time()
-    codeql_threads = 1
+    # codeql_threads = 1
+    codeql_threads = (cpu_count() // args.threads) - 1
     j = 0
     current_thread = 0
     full_path = Path(__file__).parent / args.root_dir
     # print(str(full_path.absolute()))
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
-    """
     for repo_dir in repos_dir:
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
@@ -44,16 +43,19 @@ if __name__ == '__main__':
                 j = 0
             else:
                 current_thread -= 1
-    """
+    print("Now starting the thread workers...")
     with Pool(processes=args.threads) as pool:
         for i in range(args.threads):
             pool.apply_async(runner, (codeql_threads, i))
         pool.close()
         pool.join()
+    """
     for i in range(args.threads):
         repos = os.listdir(str(full_path.absolute()) + "/thread" + str(i))
         for repo in repos:
             shutil.move(str(full_path.absolute()) + "/thread" + str(i) + "/" + repo, str(full_path.absolute()) + "/" + repo)
+        os.rmdir(str(full_path.absolute()) + "/thread" + str(i))
+    """
     # os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     end = time.time()
