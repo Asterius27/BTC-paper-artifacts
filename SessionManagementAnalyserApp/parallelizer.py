@@ -28,7 +28,6 @@ if __name__ == '__main__':
     # print(str(full_path.absolute()))
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
-    """
     for repo_dir in repos_dir:
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
@@ -48,7 +47,6 @@ if __name__ == '__main__':
                 print(current_thread)
                 current_thread -= 1
     print("Now starting the thread workers...")
-    """
     with Pool(processes=args.threads) as pool:
         for i in range(args.threads):
             pool.apply_async(runner, (codeql_threads, i))
