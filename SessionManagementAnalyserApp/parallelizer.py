@@ -9,8 +9,8 @@ parser = ArgumentParser()
 parser.add_argument("-s", dest="root_dir", help="Root directory of the repositories", default="./")
 parser.add_argument("-l", dest="language", help="Language the repositories are written in", default="", required=True) # TODO for now language detection is not supported
 parser.add_argument("-t", dest="threads", help="Number of threads to be used", default=1, type=int)
-parser.add_argument("-sl", dest="starsu", help="Upper bound on the number of stars for each repository", default=1000000000000, type=int)
-parser.add_argument("-su", dest="starsl", help="Lower bound on the number of stars for each repository", default=0, type=int)
+parser.add_argument("-su", dest="starsu", help="Upper bound on the number of stars for each repository", default=1000000000000, type=int)
+parser.add_argument("-sl", dest="starsl", help="Lower bound on the number of stars for each repository", default=0, type=int)
 args = parser.parse_args()
 
 def runner(threads, current_thread):
