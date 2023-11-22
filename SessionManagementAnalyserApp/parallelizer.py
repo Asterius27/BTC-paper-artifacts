@@ -64,4 +64,4 @@ if __name__ == '__main__':
     print('Elapsed time: ' + str(end - start) + " seconds")
     with open("log_parallelizer.txt", "a") as f:
         f.write('Elapsed time: ' + str(end - start) + " seconds\n")
-        f.write('Params used: dir: ' + args.root_dir + ", lang: " + args.language + ", threads: " + args.threads + ", stars lower bound: " + args.starsl + ", stars upper bound: " + args.starsu + "\n")
+        f.write('Params used: dir: ' + args.root_dir + ", lang: " + args.language + ", threads: " + str(args.threads) + ", stars lower bound: " + str(args.starsl) + ", stars upper bound: " + str(args.starsu) + "\n")
