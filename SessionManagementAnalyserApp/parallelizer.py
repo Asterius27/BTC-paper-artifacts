@@ -25,20 +25,19 @@ if __name__ == '__main__':
     j = 0
     current_thread = 0
     full_path = Path(__file__).parent / args.root_dir
-    print(full_path.absolute())
-    """
+    print(str(full_path.absolute()))
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
     for repo_dir in repos_dir:
         if j < repo_per_thread:
-            if not os.path.exists(full_path.absolute() + "/thread" + str(current_thread)):
-                os.mkdir(full_path.absolute() + "/thread" + str(current_thread))
-            shutil.move(full_path.absolute() + "/" + repo_dir, full_path.absolute() + "/thread" + str(current_thread) + "/" + repo_dir)
+            if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
+                os.mkdir(str(full_path.absolute()) + "/thread" + str(current_thread))
+            shutil.move(str(full_path.absolute()) + "/" + repo_dir, str(full_path.absolute()) + "/thread" + str(current_thread) + "/" + repo_dir)
             j += 1
         else:
-            if not os.path.exists(full_path.absolute() + "/thread" + str(current_thread)):
-                os.mkdir(full_path.absolute() + "/thread" + str(current_thread))
-            shutil.move(full_path.absolute() + "/" + repo_dir, full_path.absolute() + "/thread" + str(current_thread) + "/" + repo_dir)
+            if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
+                os.mkdir(str(full_path.absolute()) + "/thread" + str(current_thread))
+            shutil.move(str(full_path.absolute()) + "/" + repo_dir, str(full_path.absolute()) + "/thread" + str(current_thread) + "/" + repo_dir)
             current_thread += 1
             if current_thread < args.threads:
                 j = 0
@@ -49,7 +48,6 @@ if __name__ == '__main__':
             pool.apply_async(runner, (codeql_threads, i))
         pool.close()
         pool.join()
-    """
     """
     for i in range(args.threads):
         repos = os.listdir(full_path + "/thread" + str(i))
