@@ -53,6 +53,7 @@ if __name__ == '__main__':
             pool.apply_async(runner, (codeql_threads, i))
         pool.close()
         pool.join()
+    print("Thread workers are done!")
     for i in range(args.threads):
         repos = os.listdir(str(full_path.absolute()) + "/thread" + str(i))
         for repo in repos:
