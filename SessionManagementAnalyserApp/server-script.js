@@ -77,26 +77,41 @@ function listMostCommonKeywordsAndUsers() {
     });
 }
 
-function findInterestingRepos(queryDirectory, queryName, result) {
+async function findInterestingRepos(queryDirectory, queryName, result, starsl, starsu) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
+    let csv = {};
+    await new Promise((resolve, reject) => {
+        fs.createReadStream('../flask_login_merged_list.csv')
+            .pipe(csvParser())
+            .on('data', (data) => {
+                let owner = data.repo_url.split("/")[3];
+                let repoName = data.repo_url.split("/")[4];
+                csv[owner + "_" + repoName] = data.stars
+            }).on('end', () => {
+                console.log("Finished reading the csv")
+                resolve("Done!");
+            });
+    });
     for (let i = 0; i < repos.length; i++) {
-        let repo = fs.readdirSync(dir + "/" + repos[i]);
-        for (let j = 0; j < repo.length; j++) {
-            if (repo[j].endsWith("-results")) {
-                if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
-                    let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName, 'utf-8').split("\n");
-                    query.pop();
-                    if (query.length > 2 && result) {
-                        fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
-                        for (let j = 1; j < query.length; j++) {
-                            fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[j] + "\n");
+        if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
+            let repo = fs.readdirSync(dir + "/" + repos[i]);
+            for (let j = 0; j < repo.length; j++) {
+                if (repo[j].endsWith("-results")) {
+                    if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
+                        let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName, 'utf-8').split("\n");
+                        query.pop();
+                        if (query.length > 2 && result) {
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
+                            for (let j = 1; j < query.length; j++) {
+                                fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[j] + "\n");
+                            }
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "\n");
                         }
-                        fs.appendFileSync('./repos_with_interesting_results.txt', "\n");
-                    }
-                    if (query.length <= 2 && !result) {
-                        fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
-                        fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[query.length - 1] + "\n");
+                        if (query.length <= 2 && !result) {
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[query.length - 1] + "\n");
+                        }
                     }
                 }
             }
@@ -502,6 +517,6 @@ function libraryUsagesGrep() {
 }
 
 // downloadAndExtractRepos();
-findInterestingRepos("Flask-login-session-protection", "session_protection.txt", true); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+findInterestingRepos("Flask-secret-key", "secret_key.txt", true, 200, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
