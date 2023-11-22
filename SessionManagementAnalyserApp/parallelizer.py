@@ -26,6 +26,7 @@ if __name__ == '__main__':
     current_thread = 0
     full_path = Path(__file__).parent / args.root_dir
     print(full_path.absolute())
+    """
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
     for repo_dir in repos_dir:
@@ -48,6 +49,7 @@ if __name__ == '__main__':
             pool.apply_async(runner, (codeql_threads, i))
         pool.close()
         pool.join()
+    """
     """
     for i in range(args.threads):
         repos = os.listdir(full_path + "/thread" + str(i))
