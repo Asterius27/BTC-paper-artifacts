@@ -56,7 +56,7 @@ if __name__ == '__main__':
         for repo in repos:
             shutil.move(full_path + "/thread" + str(i) + "/" + repo, full_path + "/" + repo)
     """
-    # os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + args.starsl + " -su=" + args.starsu)
-    print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + args.starsl + " -su=" + args.starsu)
+    # os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
+    print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     end = time.time()
     print('Elapsed time: ' + str(round((end - start) / 60, 2)) + " minutes")
