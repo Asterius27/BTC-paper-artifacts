@@ -17,7 +17,6 @@ def runner(threads, current_thread):
     os.system('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + str(threads) + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu) + " -ct=" + str(current_thread))
     # print('npm run worker -- -s=' + args.root_dir + "/thread" + str(current_thread) + " -l=" + args.language + " -t=" + str(threads) + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu) + " -ct=" + str(current_thread))
 
-# TODO have to test the whole script
 if __name__ == '__main__':
     start = time.time()
     # codeql_threads = 1
@@ -29,6 +28,7 @@ if __name__ == '__main__':
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
     # TODO improve this: it's not 100% balanced (the first n-1 threads will have repo_per_thread + 1 repos while the last will have repo_per_thread minus the extra ones that the other threads took instead)
+    # have to use the remainder of repo_per_thread division
     for repo_dir in repos_dir:
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
