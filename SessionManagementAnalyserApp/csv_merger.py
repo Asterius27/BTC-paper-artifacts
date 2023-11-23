@@ -8,6 +8,7 @@ output = Path(__file__).parent / '../flask_login_merged_list.csv'
 df1=pd.read_csv(path1)
 df2=pd.read_csv(path2)
 
+# if the same repo has a different number of stars (because the two csv lists where generated at different points in time) then it won't be seen as a duplicate
 full_df = pd.concat([df1,df2])
 unique_df = full_df.drop_duplicates(keep='last')
 unique_df.to_csv(output, index=False)
