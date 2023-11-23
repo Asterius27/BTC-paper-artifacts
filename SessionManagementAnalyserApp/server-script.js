@@ -517,6 +517,6 @@ function libraryUsagesGrep() {
 }
 
 // downloadAndExtractRepos();
-findInterestingRepos("Samesite-cookie-attribute", "samesite_attribute_session_cookie_manually_set.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+findInterestingRepos("Cookie-name-prefixes", "name_session_cookie_manually_set.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
