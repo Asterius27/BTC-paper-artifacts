@@ -1,0 +1,43 @@
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: CIRCL_AIL-framework
+Result: +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | Attribute() | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/CIRCL_AIL-framework/CIRCL-AIL-framework-bcaf704/var/www/Flask_server.py:114 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: Crossoufire_MyLists
+Result: +----------+-------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | BoolExpr | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Crossoufire_MyLists/Crossoufire-MyLists-8daabae/config.py:43 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: Lookyloo_lookyloo
+Result: +------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | Str  | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Lookyloo_lookyloo/Lookyloo-lookyloo-11a3b6b/website/web/__init__.py:60 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: Vaniog_QueueHere
+Result: +------+-----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | Str  | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Vaniog_QueueHere/Vaniog-QueueHere-99eaf51/app/config.py:20 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: ail-project_ail-framework
+Result: +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | Attribute() | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/ail-project_ail-framework/ail-project-ail-framework-bcaf704/var/www/Flask_server.py:114 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: cabalamat_meowcat2
+Result: +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | BinaryExpr | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/cabalamat_meowcat2/cabalamat-meowcat2-bbb4b33/app/allpages.py:12 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: mertcangokgoz_QSNMP
+Result: +------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | Str  | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/mertcangokgoz_QSNMP/mertcangokgoz-QSNMP-d7d9e12/app.py:14 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: pandora-analysis_pandora
+Result: +------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | Str  | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/pandora-analysis_pandora/pandora-analysis-pandora-c47b06c/website/web/__init__.py:65 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: quay_quay
+Result: +------+------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | Str  | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/quay_quay/quay-quay-0c08bff/config.py:179 | Session cookie name is manually set |
+
+Query: Cookie-name-prefixes/name_session_cookie_manually_set.txt Repo: simple-login_app
+Result: +---------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+Result: | Str                 | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/simple-login_app/simple-login-app-627ad30/app/config.py:172 | Session cookie name is manually set |
+Result: | ImportMember        | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/simple-login_app/simple-login-app-627ad30/server.py:62      | Session cookie name is manually set |
+Result: | SESSION_COOKIE_NAME | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/simple-login_app/simple-login-app-627ad30/server.py:62      | Session cookie name is manually set |
+Result: | SESSION_COOKIE_NAME | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/simple-login_app/simple-login-app-627ad30/server.py:167     | Session cookie name is manually set |
+
