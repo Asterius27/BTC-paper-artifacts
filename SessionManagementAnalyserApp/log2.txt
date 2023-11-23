@@ -1,0 +1,223 @@
+Time taken to run the queries and generate the statistics: 0.143 seconds.
+Time taken to run the queries and generate the statistics: 0.118 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/52ludama_linode_panel/52ludama-linode_panel-83bef96: 728.085 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/BrunoTeixeira1996_Apontamentos-ISEC/BrunoTeixeira1996-Apontamentos-ISEC-a47686d: 470.293 seconds.
+Analysis failed for: ./repositories/Flask/thread2/CERNDocumentServer_cds-videos/CERNDocumentServer-cds-videos-2323972 Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/CERNDocumentServer_cds-videos/CERNDocumentServer-cds-videos-2323972 -l=python -t=4 -ct=2
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 29.5s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/CERNDocumentServer_cds-videos/CERNDocumentServer-cds-videos-2323972-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 4s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/CERNDocumentServer_cds-videos/CERNDocumentServer-cds-videos-2323972-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/CERNDocumentServer_cds-videos/CERNDocumentServer-cds-videos-2323972: 75.793 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/CSPF-Founder_DodoVulnerableBank/CSPF-Founder-DodoVulnerableBank-8b9ac17: 617.584 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/Diluka_nas-tools-unlock/Diluka-nas-tools-unlock-20ce515: 1088.486 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/FormatFa_zhsz_backend/FormatFa-zhsz_backend-1bcf68f: 443.056 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/H3C_baas/H3C-baas-df878f0: 917.754 seconds.
+Analysis failed for: ./repositories/Flask/thread2/JaviMJ_OCTOPUS/JaviMJ-OCTOPUS-caac086 Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/JaviMJ_OCTOPUS/JaviMJ-OCTOPUS-caac086 -l=python -t=4 -ct=2
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 19.8s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/JaviMJ_OCTOPUS/JaviMJ-OCTOPUS-caac086-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 2.7s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/JaviMJ_OCTOPUS/JaviMJ-OCTOPUS-caac086-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/JaviMJ_OCTOPUS/JaviMJ-OCTOPUS-caac086: 54.605 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/Lazytangent_Qwerkey/Lazytangent-Qwerkey-f6a6607: 719.696 seconds.
+Analysis failed for: ./repositories/Flask/thread2/Mondego_pyreco/Mondego-pyreco-0ac6653 Reason: Error: spawnSync /bin/sh ENOBUFS
+Could not delete database for: ./repositories/Flask/thread2/Mondego_pyreco/Mondego-pyreco-0ac6653 Reason: Error: ENOTEMPTY: directory not empty, rmdir './repositories/Flask/thread2/Mondego_pyreco/Mondego-pyreco-0ac6653-database/src/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/Mondego_pyreco/Mondego-pyreco-0ac6653/repoData'
+Time taken to run the queries on ./repositories/Flask/thread2/Mondego_pyreco/Mondego-pyreco-0ac6653: 420.297 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/Muxi-X_muxi_site/Muxi-X-muxi_site-295b3d2: 755.239 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/PacktPublishing_Hands-on-Microservices-with-Python-User-Service/PacktPublishing-Hands-on-Microservices-with-Python-User-Service-a90585c: 703.76 seconds.
+Analysis failed for: ./repositories/Flask/thread2/SNIA_Swordfish-API-Emulator/SNIA-Swordfish-API-Emulator-6946f1c Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/SNIA_Swordfish-API-Emulator/SNIA-Swordfish-API-Emulator-6946f1c -l=python -t=4 -ct=2
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 4m12s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/SNIA_Swordfish-API-Emulator/SNIA-Swordfish-API-Emulator-6946f1c-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 5.5s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/SNIA_Swordfish-API-Emulator/SNIA-Swordfish-API-Emulator-6946f1c-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/SNIA_Swordfish-API-Emulator/SNIA-Swordfish-API-Emulator-6946f1c: 328.19 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/Salamek_blacklist/Salamek-blacklist-6d7bd2f: 854.056 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/ScenK_Dev_Blog2/ScenK-Dev_Blog2-237cfd5: 443.684 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/UnilabEdu_UnilabPythonInternship/UnilabEdu-UnilabPythonInternship-a773897: 1065.387 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/Virusmater_togger/Virusmater-togger-64444f2: 479.144 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/abhayshah0305_RiskAssess/abhayshah0305-RiskAssess-20d43fe: 942.405 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/alan-turing-institute_AnnotateChange/alan-turing-institute-AnnotateChange-fb87073: 685.892 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/allyourbankarebelongtous_pleb-vpn/allyourbankarebelongtous-pleb-vpn-1db6ab3: 685.68 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/arbeitszeit_arbeitszeitapp/arbeitszeit-arbeitszeitapp-7dc5be6: 699.18 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/arkprocoder_StudentManagement-System-dbms-miniproject/arkprocoder-StudentManagement-System-dbms-miniproject-d164c68: 405.977 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/bderstine_WebsiteMixer-App-Base/bderstine-WebsiteMixer-App-Base-4428825: 455.962 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/bmweiner_crumby/bmweiner-crumby-a1c26ef: 486.726 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/burakkcoder_100DaysOfCode_Python/burakkcoder-100DaysOfCode_Python-f967747: 693.924 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/cactool_cactool/cactool-cactool-75e0af8: 716.589 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/chriswilson1982_flask-mongo-app/chriswilson1982-flask-mongo-app-38b405c: 454.008 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/codigofacilito_primera-app-flask/codigofacilito-primera-app-flask-da5024a: 468.235 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/dchen284_artifacts/dchen284-artifacts-7f85f67: 445.904 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/dchen284_chocolate-box-game/dchen284-chocolate-box-game-6f4bf18: 438.089 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/ddxygq_PyCode/ddxygq-PyCode-63fcbae: 1160.184 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/enwawerueli_flask-skeleton/enwawerueli-flask-skeleton-f6e296c: 528.841 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/ethen8181_programming/ethen8181-programming-393d1f8: 1605.18 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/govau_notify/govau-notify-6660cee: 1426.087 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/hschickdevs_100-Days-of-Code-Python/hschickdevs-100-Days-of-Code-Python-ced2fca: 1169.28 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/iagcl_data_pipeline/iagcl-data_pipeline-b9b965d: 790.432 seconds.
+Analysis failed for: ./repositories/Flask/thread2/intel_tcf/intel-tcf-442362a Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/intel_tcf/intel-tcf-442362a -l=python -t=4 -ct=2
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 44.6s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/intel_tcf/intel-tcf-442362a-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 4.6s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/intel_tcf/intel-tcf-442362a-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/intel_tcf/intel-tcf-442362a: 97.797 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/kaivalya98_hacktoberfest2022/kaivalya98-hacktoberfest2022-2179631: 1067.089 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/katjawittfoth_Aligned_Yoga_App/katjawittfoth-Aligned_Yoga_App-d1c25da: 963.804 seconds.
+Analysis failed for: ./repositories/Flask/thread2/kawa-kokosowa_urlink/kawa-kokosowa-urlink-f240e18 Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/kawa-kokosowa_urlink/kawa-kokosowa-urlink-f240e18 -l=python -t=4 -ct=2
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 23.1s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/kawa-kokosowa_urlink/kawa-kokosowa-urlink-f240e18-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 3.1s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/kawa-kokosowa_urlink/kawa-kokosowa-urlink-f240e18-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/kawa-kokosowa_urlink/kawa-kokosowa-urlink-f240e18: 63.975 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/keshao728_Varorant/keshao728-Varorant-940264c: 428.532 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/keva161_Docket/keva161-Docket-00d7304: 407.177 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/klokantech_jekylledit/klokantech-jekylledit-98a710a: 755.103 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/magrco_zsky/magrco-zsky-4087cea: 395.257 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/mcchae_Flask-Login/mcchae-Flask-Login-81330a1: 620.614 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/metafy-social_py-scripts/metafy-social-py-scripts-a072051: 1066.67 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/mjshuff23_evernote-clone/mjshuff23-evernote-clone-849400e: 420.412 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/nhucleus_serenity-app/nhucleus-serenity-app-c97f31c: 684.09 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/nttcom_n-isucon-2019/nttcom-n-isucon-2019-b07d0a3: 396.482 seconds.
+Analysis failed for: ./repositories/Flask/thread2/onecodex_chrononaut/onecodex-chrononaut-147a572 Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/onecodex_chrononaut/onecodex-chrononaut-147a572 -l=python -t=4 -ct=2
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 18.3s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/onecodex_chrononaut/onecodex-chrononaut-147a572-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 2.6s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/onecodex_chrononaut/onecodex-chrononaut-147a572-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:45:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/onecodex_chrononaut/onecodex-chrononaut-147a572: 50.21 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/onlyphantom_pedagogy/onlyphantom-pedagogy-769901c: 572.1 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/peterzheng98_Compiler-2020/peterzheng98-Compiler-2020-6507b8b: 615.169 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/ptyin_sqloj/ptyin-sqloj-ed56879: 359.325 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/rmountjoy92_VectorCloud2/rmountjoy92-VectorCloud2-ba68f77: 576.635 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/salgozino_KlerosJurorDashboard/salgozino-KlerosJurorDashboard-b14c78c: 614.557 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/selfedu-rus_flasksite-16/selfedu-rus-flasksite-16-f2f5f7d: 399.841 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/simonzhoup_flask-blog/simonzhoup-flask-blog-8ba61dd: 400.34 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/simonzhoup_flask-v2ex/simonzhoup-flask-v2ex-85887b7: 627.299 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/singingwolfboy_flask-dance-multi-provider/singingwolfboy-flask-dance-multi-provider-4a2dc0a: 390.048 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/smeea_vdb/smeea-vdb-4d2e562: 609.508 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/stefaneichert_thanados/stefaneichert-thanados-1a046b0: 644.501 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/tj-oconnor_cyber-open-2022/tj-oconnor-cyber-open-2022-b4328c7: 612.197 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/vigneshshettyin_Bulk-Mailer/vigneshshettyin-Bulk-Mailer-ae14453: 640.913 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/weivis_Mahouo/weivis-Mahouo-81fd691: 585.472 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/wiwa1978_blog-hugo-netlify-code/wiwa1978-blog-hugo-netlify-code-b0fee02: 820.271 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/wxnacy_study/wxnacy-study-7bca9dc: 996.942 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/xiaopeng163_twittor/xiaopeng163-twittor-c9e5d9f: 489.744 seconds.
+Time taken to run the queries on ./repositories/Flask/thread2/zwdcdu_is_analysis/zwdcdu-is_analysis-4498348: 546.794 seconds.
+Time taken to run the queries and generate the statistics: 42342.68 seconds.
