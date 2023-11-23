@@ -517,6 +517,6 @@ function libraryUsagesGrep() {
 }
 
 // downloadAndExtractRepos();
-findInterestingRepos("Flask-secret-key", "secret_key.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+findInterestingRepos("Flask-login-session-protection", "session_protection_strong.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();

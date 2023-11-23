@@ -77,7 +77,7 @@ for (let i = 0; i < repos.length; i++) {
             res = fs.readdirSync(dir).filter(str => str.endsWith("-results"))[0];
         } catch(e) {
             failed_repos++;
-            fs.appendFileSync('./log.txt', "Failed to read the results directory for: " + dir + " Reason: " + e + "\n");
+            fs.appendFileSync('./log_stats_generator.txt', "Failed to read the results directory for: " + dir + " Reason: " + e + "\n");
             failed = true;
         }
         if (!failed) {
@@ -95,7 +95,7 @@ for (let i = 0; i < repos.length; i++) {
                 }
             } catch(e) {
                 failed_repos++;
-                fs.appendFileSync('./log.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
+                fs.appendFileSync('./log_stats_generator.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
                 if (fs.existsSync(dir + "/" + res + "/info.txt")) {
                     if (info.length > 2) {
                         if (info[2].includes("customsessionengine")) {

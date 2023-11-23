@@ -10,7 +10,7 @@ function readQueryResults(outputLocation, queryName) {
         lines = fs.readFileSync(outputLocation + "/" + queryName + ".txt", 'utf-8').split("\n");
     } catch (e) {
         query_errors++;
-        fs.appendFileSync('./log.txt', "Failed to read query results for: " + outputLocation + "/" + queryName + ".txt" + " Reason: " + e + "\n");
+        fs.appendFileSync('./log_stats_generator.txt', "Failed to read query results for: " + outputLocation + "/" + queryName + ".txt" + " Reason: " + e + "\n");
         return [false, true];
     }
     if (outputLocation.endsWith("HSTS-header-and-cookie-domain") && (queryName === "domain_attribute_session_cookie" || queryName === "domain_attribute_remember_cookie")) {
@@ -19,7 +19,7 @@ function readQueryResults(outputLocation, queryName) {
             aux_lines = fs.readFileSync(outputLocation + "/HSTS_header_no_subdomains.txt", 'utf-8').split("\n");
         } catch(e) {
             query_errors++;
-            fs.appendFileSync('./log.txt', "Failed to read query results for: " + outputLocation + "/HSTS_header_no_subdomains.txt" + " Reason: " + e + "\n");
+            fs.appendFileSync('./log_stats_generator.txt', "Failed to read query results for: " + outputLocation + "/HSTS_header_no_subdomains.txt" + " Reason: " + e + "\n");
             return [false, true];
         }
         aux_lines.pop();
