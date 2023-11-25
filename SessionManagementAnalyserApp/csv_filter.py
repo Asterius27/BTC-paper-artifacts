@@ -3,33 +3,41 @@ from pathlib import Path
 
 # Number of repos: 1408 (with 10 or more stars), of which 92 (6.53%) where filtered out
 
-# TODO create a filtered_repo_list csv file to then use in the server script to download the repos (also save the results of the filter in a log (number of repos: y of which x where filtered))
-# TODO improve the filter by lookin at the repos with interesting results files
 blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "esercizi", "internship", "programming"]
 blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["youtube", "code"], ["python", "code"]]
 blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
 path = Path(__file__).parent / '../flask_login_merged_list.csv'
+path_o = Path(__file__).parent / '../flask_login_filtered_merged_list_1_or_more_stars.csv'
+log_path = Path(__file__).parent / './filter_logs/flask_login_filtered_merged_list_1_or_more_stars.txt'
 filtered_repos = 0
 number_of_repos = 0
 
 with path.open() as csv_file:
     reader = csv.DictReader(csv_file)
-
-    for row in reader:
-        if int(row["stars"]) >= 1:
-            number_of_repos += 1
-            repo = row["repo_url"].split("/")[4].lower()
-            owner = row["repo_url"].split("/")[3].lower()
-            if any(user.lower() == owner for user in blacklist_users):
-                # print(owner + " " + repo)
-                filtered_repos += 1
-            else:
-                if any(term.lower() in repo for term in blacklist_terms):
+    with path_o.open("w") as csv_filtered:
+        writer = csv.writer(csv_filtered)
+        writer.writerow(["repo_url", "stars", "forks"])
+        for row in reader:
+            if int(row["stars"]) >= 1:
+                number_of_repos += 1
+                repo = row["repo_url"].split("/")[4].lower()
+                owner = row["repo_url"].split("/")[3].lower()
+                if any(user.lower() == owner for user in blacklist_users):
+                    # print(owner + " " + repo)
                     filtered_repos += 1
                 else:
-                    if any(all(term.lower() in repo for term in groups) for groups in blacklist_term_groups):
+                    if any(term.lower() in repo for term in blacklist_terms):
                         # print(repo)
                         filtered_repos += 1
+                    else:
+                        if any(all(term.lower() in repo for term in groups) for groups in blacklist_term_groups):
+                            # print(repo)
+                            filtered_repos += 1
+                        else:
+                            writer.writerow(list(row.values()))
 
 print("Number of repos: " + str(number_of_repos))
 print("Of which " + str(filtered_repos) + " (" + str(round(filtered_repos * 100 / number_of_repos, 2)) + "%) where filtered out")
+with log_path.open("a") as file:
+    file.write("Number of repos: " + str(number_of_repos) + "\n")
+    file.write("Of which " + str(filtered_repos) + " (" + str(round(filtered_repos * 100 / number_of_repos, 2)) + "%) where filtered out\n")

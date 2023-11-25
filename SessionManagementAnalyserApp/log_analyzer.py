@@ -69,7 +69,7 @@ print("Total false positives (not actually using flask_login): " + str(unsupport
 print("Total repos that timed out: " + str(analysis_timedout) + " (" + str(round(analysis_timedout * 100 / len(times), 2)) + " %)")
 print("Total repos where the database could not be deleted: " + str(database_deletion_error) + " (" + str(round(database_deletion_error * 100 / len(times), 2)) + " %)")
 
-with output.open("w") as file:
+with output.open("a") as file:
     for item in failed_repos:
         file.write(item[0] + ", Failed Repo: " + item[1] + " " + item[2] + "\n")
     file.write("\n" + total_repos[:-1] + "\n")
