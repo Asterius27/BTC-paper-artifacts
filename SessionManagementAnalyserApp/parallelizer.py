@@ -27,8 +27,8 @@ if __name__ == '__main__':
     # print(str(full_path.absolute()))
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
-    # TODO improve this: it's not 100% balanced (the first n-1 threads will have repo_per_thread + 1 repos while the last will have repo_per_thread minus the extra ones that the other threads took instead)
-    # have to use the remainder of repo_per_thread division
+    leftover_repos = len(repos_dir) % args.threads
+    # TODO check that the following cycle now works (check that the repos per thread are correctly balanced)
     for repo_dir in repos_dir:
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
@@ -38,15 +38,16 @@ if __name__ == '__main__':
         else:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
                 os.mkdir(str(full_path.absolute()) + "/thread" + str(current_thread))
-            shutil.move(str(full_path.absolute()) + "/" + repo_dir, str(full_path.absolute()) + "/thread" + str(current_thread) + "/" + repo_dir)
-            # print(current_thread)
-            current_thread += 1
-            if current_thread < args.threads:
-                # print("Resetting j... " + str(current_thread))
+            if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread + 1)):
+                os.mkdir(str(full_path.absolute()) + "/thread" + str(current_thread + 1))
+            if current_thread < leftover_repos:
+                shutil.move(str(full_path.absolute()) + "/" + repo_dir, str(full_path.absolute()) + "/thread" + str(current_thread) + "/" + repo_dir)
                 j = 0
             else:
-                # print(current_thread)
-                current_thread -= 1
+                shutil.move(str(full_path.absolute()) + "/" + repo_dir, str(full_path.absolute()) + "/thread" + str(current_thread + 1) + "/" + repo_dir)
+                j = 1
+            # print(current_thread)
+            current_thread += 1
     print("Now starting the thread workers...")
     with Pool(processes=args.threads) as pool:
         for i in range(args.threads):
