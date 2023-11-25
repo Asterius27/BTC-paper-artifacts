@@ -5,9 +5,9 @@ from pathlib import Path
 
 # TODO create a filtered_repo_list csv file to then use in the server script to download the repos (also save the results of the filter in a log (number of repos: y of which x where filtered))
 # TODO improve the filter by lookin at the repos with interesting results files
-blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]
-blacklist_term_groups = [["learn", "python"], ["learn", "flask"]]
-blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf"]
+blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "esercizi", "internship", "programming"]
+blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["youtube", "code"], ["python", "code"]]
+blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
 path = Path(__file__).parent / '../flask_login_merged_list.csv'
 filtered_repos = 0
 number_of_repos = 0
@@ -18,16 +18,16 @@ with path.open() as csv_file:
     for row in reader:
         if int(row["stars"]) >= 1:
             number_of_repos += 1
-            repo = row["repo_url"].split("/")[4]
-            owner = row["repo_url"].split("/")[3]
-            if any(user == owner for user in blacklist_users):
+            repo = row["repo_url"].split("/")[4].lower()
+            owner = row["repo_url"].split("/")[3].lower()
+            if any(user.lower() == owner for user in blacklist_users):
                 # print(owner + " " + repo)
                 filtered_repos += 1
             else:
-                if any(term in repo for term in blacklist_terms):
+                if any(term.lower() in repo for term in blacklist_terms):
                     filtered_repos += 1
                 else:
-                    if any(all(term in repo for term in groups) for groups in blacklist_term_groups):
+                    if any(all(term.lower() in repo for term in groups) for groups in blacklist_term_groups):
                         # print(repo)
                         filtered_repos += 1
 

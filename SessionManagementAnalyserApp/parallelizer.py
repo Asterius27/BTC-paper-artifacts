@@ -54,6 +54,7 @@ if __name__ == '__main__':
         pool.close()
         pool.join()
     print("Thread workers are done!")
+    # TODO have to check that the following cycle actually works
     for i in range(args.threads):
         repos = os.listdir(str(full_path.absolute()) + "/thread" + str(i))
         for repo in repos:
