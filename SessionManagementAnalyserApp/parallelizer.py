@@ -48,6 +48,7 @@ if __name__ == '__main__':
                 j = 1
             # print(current_thread)
             current_thread += 1
+    """
     print("Now starting the thread workers...")
     with Pool(processes=args.threads) as pool:
         for i in range(args.threads):
@@ -55,7 +56,6 @@ if __name__ == '__main__':
         pool.close()
         pool.join()
     print("Thread workers are done!")
-    # TODO have to check that the following cycle actually works
     for i in range(args.threads):
         repos = os.listdir(str(full_path.absolute()) + "/thread" + str(i))
         for repo in repos:
@@ -68,3 +68,4 @@ if __name__ == '__main__':
     with open("log_parallelizer.txt", "a") as f:
         f.write('Elapsed time: ' + str(end - start) + " seconds\n")
         f.write('Params used: dir: ' + args.root_dir + ", lang: " + args.language + ", threads: " + str(args.threads) + ", stars lower bound: " + str(args.starsl) + ", stars upper bound: " + str(args.starsu) + "\n")
+    """
