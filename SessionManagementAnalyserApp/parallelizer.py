@@ -28,7 +28,6 @@ if __name__ == '__main__':
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
     leftover_repos = len(repos_dir) % args.threads
-    """
     for repo_dir in repos_dir:
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
@@ -55,13 +54,11 @@ if __name__ == '__main__':
         pool.close()
         pool.join()
     print("Thread workers are done!")
-    """
     for i in range(args.threads):
         repos = os.listdir(str(full_path.absolute()) + "/thread" + str(i))
         for repo in repos:
             shutil.move(str(full_path.absolute()) + "/thread" + str(i) + "/" + repo, str(full_path.absolute()) + "/" + repo)
         os.rmdir(str(full_path.absolute()) + "/thread" + str(i))
-    """
     os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     # print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     end = time.time()
@@ -69,4 +66,3 @@ if __name__ == '__main__':
     with open("log_parallelizer.txt", "a") as f:
         f.write('Elapsed time: ' + str(end - start) + " seconds\n")
         f.write('Params used: dir: ' + args.root_dir + ", lang: " + args.language + ", threads: " + str(args.threads) + ", stars lower bound: " + str(args.starsl) + ", stars upper bound: " + str(args.starsu) + "\n")
-    """
