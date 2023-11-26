@@ -28,7 +28,7 @@ if __name__ == '__main__':
     repos_dir = os.listdir(full_path.absolute())
     repo_per_thread = len(repos_dir) // args.threads
     leftover_repos = len(repos_dir) % args.threads
-    # TODO check that the following cycle now works (check that the repos per thread are correctly balanced)
+    """
     for repo_dir in repos_dir:
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
@@ -48,7 +48,6 @@ if __name__ == '__main__':
                 j = 1
             # print(current_thread)
             current_thread += 1
-    """
     print("Now starting the thread workers...")
     with Pool(processes=args.threads) as pool:
         for i in range(args.threads):
@@ -56,11 +55,13 @@ if __name__ == '__main__':
         pool.close()
         pool.join()
     print("Thread workers are done!")
+    """
     for i in range(args.threads):
         repos = os.listdir(str(full_path.absolute()) + "/thread" + str(i))
         for repo in repos:
             shutil.move(str(full_path.absolute()) + "/thread" + str(i) + "/" + repo, str(full_path.absolute()) + "/" + repo)
         os.rmdir(str(full_path.absolute()) + "/thread" + str(i))
+    """
     os.system('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     # print('npm run stats -- -s=' + args.root_dir + " -l=" + args.language + " -sl=" + str(args.starsl) + " -su=" + str(args.starsu))
     end = time.time()
