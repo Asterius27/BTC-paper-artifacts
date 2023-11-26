@@ -159,9 +159,9 @@ function cleanUpRepos(dir) {
 // cleanUpRepos("repositories/" + framework);
 
 // Download and extract the repositories
-function downloadAndExtractRepos() {
+function downloadAndExtractRepos(csv_file) {
     let startTime = new Date();
-    fs.createReadStream('../flask_login_merged_list.csv')
+    fs.createReadStream(csv_file)
     .pipe(csvParser())
     .on('data', (data) => {
         csv.push(data);
@@ -169,31 +169,33 @@ function downloadAndExtractRepos() {
         let temp = {}
         console.log("read " + csv.length + " lines\n");
         // deleteEmptyDirsAndDatabases('./repositories/' + framework);
-        let filtered_repos = 0;
+        // let filtered_repos = 0;
         let number_of_repos = 0;
         let http_errors = 0;
         let duplicates = 0;
         for (let i = 0; i < csv.length; i++) {
-            if (csv[i].stars >= 1) {
+            // if (csv[i].stars >= 1) {
                 number_of_repos++;
                 let owner = csv[i].repo_url.split("/")[3];
                 let repoName = csv[i].repo_url.split("/")[4];
                 let flag = true;
-                let blacklist_flag = true;
+                // let blacklist_flag = true;
                 if (temp[owner + "_" + repoName] === undefined) {
                     temp[owner + "_" + repoName] = 0
                 } else {
                     duplicates++;
                     fs.appendFileSync('./log.txt', "Found a duplicate: " + owner + " " + repoName + "\n");
                 }
+                /*
                 for (let h = 0; h < blacklist_term_groups.length; h++) {
                     if (blacklist_term_groups[h].every(str => repoName.toLowerCase().includes(str))) {
                         blacklist_flag = false;
                     }
                 }
+                */
                 // console.log('./repositories/' + framework + '/' + owner + "_" + csv[i].repo_name + "\n");
-                if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName + '.zip') 
-                && !blacklist_terms.some(str => repoName.toLowerCase().includes(str)) && !blacklist_users.some(str => owner.toLowerCase() === str) && blacklist_flag) {
+                if (!fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName) && !fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName + '.zip')) {
+                // && !blacklist_terms.some(str => repoName.toLowerCase().includes(str)) && !blacklist_users.some(str => owner.toLowerCase() === str) && blacklist_flag) {
                     // console.log("Starting download...\n");
                     try {
                         /* This doesn't allow you to download files that are greater than 4 gb
@@ -257,9 +259,11 @@ function downloadAndExtractRepos() {
                         */
                     }
                 }
+                /*
                 if (blacklist_terms.some(str => repoName.toLowerCase().includes(str)) || blacklist_users.some(str => owner.toLowerCase() === str) || !blacklist_flag) {
                     filtered_repos++;
                     fs.appendFileSync('./log.txt', "The repo " + repoName + " was filtered out because it contained a blacklisted term or username (owner: " + owner + ")\n");
+                    */
                     /*
                     if (fs.existsSync('./repositories/' + framework + '/' + owner + "_" + repoName)) {
                         try {
@@ -269,10 +273,10 @@ function downloadAndExtractRepos() {
                         }
                     }
                     */
-                }
-            }
+                // }
+            // }
         }
-        fs.appendFileSync('./log.txt', "Number of processed repos: " + number_of_repos + ". Of which " + filtered_repos + " were filtered out, " + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
+        fs.appendFileSync('./log.txt', "Number of processed repos: " + number_of_repos + ". " /*+ "Of which " + filtered_repos + " were filtered out, "*/ + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
         console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
         let endTime = new Date();
         let timeElapsed = (endTime - startTime)/1000;
@@ -516,7 +520,7 @@ function libraryUsagesGrep() {
     });
 }
 
-// downloadAndExtractRepos();
+// downloadAndExtractRepos('../flask_login_filtered_merged_list_1_or_more_stars.csv');
 findInterestingRepos("Cookie-name-prefixes", "name_session_cookie_manually_set.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
