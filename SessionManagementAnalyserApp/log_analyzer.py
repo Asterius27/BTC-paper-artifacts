@@ -14,7 +14,6 @@ Total repos that timed out: 15 (1.11 %)
 Total repos where the database could not be deleted: 12 (0.89 %)
 """
 
-# TODO add analysis of single query time taken (averages and standard deviation per query type)
 # TODO add number of failures (and reasons) per query type
 path = Path(__file__).parent / './old_logs/6 - log_5_or_more_stars_flask_login_merged'
 output = Path(__file__).parent / './old_logs/6 - log_5_or_more_stars_flask_login_merged/log_analysis_merged.txt'
@@ -24,6 +23,7 @@ thread_times = []
 failed_repos = []
 failed_queries = []
 csv_dict = {}
+query_dict = {}
 unsupported_library = 0
 analysis_timedout = 0
 database_deletion_error = 0
@@ -37,6 +37,13 @@ with csv_path.open() as csv_file:
 
 log_dir = os.listdir(path.absolute())
 for file_name in log_dir:
+    if file_name.endswith("_queries.txt"):
+        with open(str(path.absolute()) + "/" + file_name) as file:
+            for line in file:
+                # query_dir = line.split(" ")[6]
+                query_name = line.split(" ")[8]
+                time_elapsed = line.split(" ")[10]
+                query_dict[query_name] = query_dict.get(query_name, []).append(float(time_elapsed))
     if len(file_name.split("_")) == 1:
         # print(file_name)
         with open(str(path.absolute()) + "/" + file_name) as file:
@@ -102,3 +109,6 @@ with output.open("a") as file:
     file.write("Total false positives (not actually using flask_login): " + str(unsupported_library) + " (" + str(round(unsupported_library * 100 / len(times), 2)) + " %)\n")
     file.write("Total repos that timed out: " + str(analysis_timedout) + " (" + str(round(analysis_timedout * 100 / len(times), 2)) + " %)\n")
     file.write("Total repos where the database could not be deleted: " + str(database_deletion_error) + " (" + str(round(database_deletion_error * 100 / len(times), 2)) + " %)\n")
+    file.write("\n\n")
+    for query in query_dict:
+        file.write("The " + query + " 's execution times had an average of " + str(round(statistics.fmean(query_dict[query]), 2)) + " seconds and a standard deviation of " + str(round(statistics.stdev(query_dict[query]), 2)) + " seconds\n")
