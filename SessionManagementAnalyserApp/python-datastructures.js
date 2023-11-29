@@ -3,26 +3,27 @@
 // un = unskippable query, no skippable equivalent
 // ut = unskippable query, if true also execute the skippable equivalent
 // uf = unskippable query, if false also execute the skippable equivalent
-// s = skippable query
+// st = skippable query, if skipped the default result of the query is true
+// sf = skippable query, if skipped the default result of the query is false
 let flask = {
     "COOKIE_QUERIES": {
         "Cookie-name-prefixes": {
             "ut_session_cookie_name_manually_set": [false, ""],
             "ut_remember_cookie_name_manually_set": [false, ""],
-            "s_remember_cookie_name_prefix": [false, ""],
-            "s_session_cookie_name_prefix": [false, ""]
+            "sf_remember_cookie_name_prefix": [false, ""],
+            "sf_session_cookie_name_prefix": [false, ""]
         },
         "Domain-cookie-attribute": {
             "uf_domain_attribute_remember_cookie": [false, ""],
             "uf_domain_attribute_session_cookie": [false, ""],
-            "s_domain_attribute_remember_cookie_manually_disabled": [false, ""],
-            "s_domain_attribute_session_cookie_manually_disabled": [false, ""]
+            "sf_domain_attribute_remember_cookie_manually_disabled": [false, ""],
+            "sf_domain_attribute_session_cookie_manually_disabled": [false, ""]
         },
         "Expires-cookie-attribute": {
             "ut_expires_attribute_remember_cookie_manually_set": [false, ""],
             "ut_expires_attribute_session_cookie_manually_set": [false, ""],
-            "s_expires_attribute_remember_cookie": [false, ""],
-            "s_expires_attribute_session_cookie": [false, ""],
+            "st_expires_attribute_remember_cookie": [false, ""],
+            "sf_expires_attribute_session_cookie": [false, ""],
         },
         "HTTPOnly-cookie-attribute": {
             "un_httponly_attribute_remember_cookie": [false, ""],
@@ -31,14 +32,14 @@ let flask = {
         "Samesite-cookie-attribute": {
             "ut_samesite_attribute_remember_cookie_manually_set": [false, ""],
             "ut_samesite_attribute_session_cookie_manually_set": [false, ""],
-            "s_samesite_attribute_remember_cookie": [false, ""],
-            "s_samesite_attribute_session_cookie": [false, ""]
+            "st_samesite_attribute_remember_cookie": [false, ""],
+            "st_samesite_attribute_session_cookie": [false, ""]
         },
         "Secure-cookie-attribute": {
             "ut_secure_attribute_remember_cookie": [false, ""],
             "ut_secure_attribute_session_cookie": [false, ""],
-            "s_secure_attribute_remember_cookie_manually_disabled": [false, ""],
-            "s_secure_attribute_session_cookie_manually_disabled": [false, ""]
+            "sf_secure_attribute_remember_cookie_manually_disabled": [false, ""],
+            "sf_secure_attribute_session_cookie_manually_disabled": [false, ""]
         }
     },
     /*
@@ -82,8 +83,8 @@ let flask = {
         */
         "Flask-login-session-protection": {
             "uf_session_protection_basic": [false, ""],
-            "s_session_protection": [false, ""],
-            "s_session_protection_strong": [false, ""]
+            "sf_session_protection": [false, ""],
+            "sf_session_protection_strong": [false, ""]
         },
         "Incorrect-config-changes": {
             "un_incorrect_config_changes": [false, ""]
