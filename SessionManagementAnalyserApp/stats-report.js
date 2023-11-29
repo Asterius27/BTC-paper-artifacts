@@ -60,8 +60,10 @@ await new Promise((resolve, reject) => {
 let repos = fs.readdirSync(root_dir);
 
 console.log("Now generating the statistics...");
-let counter = {}
-let error_counter = {}
+let flask_counter = {}
+let flask_error_counter = {}
+let django_counter = {}
+let django_error_counter = {}
 let flask_repos = 0;
 let django_repos = 0;
 let failed_repos = 0;
@@ -85,11 +87,11 @@ for (let i = 0; i < repos.length; i++) {
                 if (info[0] === "python") {
                     if (info[1].includes("flask")) {
                         flask_repos++;
-                        [counter, error_counter] = countRepos(counter, error_counter, "flask", dir + "/" + res);
+                        [flask_counter, flask_error_counter] = countRepos(flask_counter, flask_error_counter, "flask", dir + "/" + res);
                     }
                     if (info[1].includes("django")) {
                         django_repos++;
-                        [counter, error_counter] = countRepos(counter, error_counter, "django", dir + "/" + res);
+                        [django_counter, django_error_counter] = countRepos(django_counter, django_error_counter, "django", dir + "/" + res);
                     }
                 }
             } catch(e) {
@@ -107,9 +109,9 @@ for (let i = 0; i < repos.length; i++) {
     }
 }
 if (flask_repos === 0) {
-    [counter, error_counter] = initializeCounter(counter, error_counter, "flask");
+    [flask_counter, flask_error_counter] = initializeCounter(flask_counter, flask_error_counter, "flask");
 }
 if (django_repos === 0) {
-    [counter, error_counter] = initializeCounter(counter, error_counter, "django");
+    [django_counter, django_error_counter] = initializeCounter(django_counter, django_error_counter, "django");
 }
-generateStatsPage(counter, error_counter, repos.length, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
+generateStatsPage(flask_counter, flask_error_counter, django_counter, django_error_counter, repos.length, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
