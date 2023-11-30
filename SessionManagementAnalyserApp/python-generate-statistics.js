@@ -187,7 +187,15 @@ function getCounterKey(counter, key, dir, file) {
     return "keyNotFound";
 }
 
-// TODO make it prettier, add percentages to the resulting charts
+function getTooltip(value, total, type) {
+    let percentage = 0;
+    if (total !== 0) {
+        percentage =  value * 100 / total;
+    }
+    return type + ": " + value + " (" + percentage + " %)";
+}
+
+// TODO make it prettier
 function generateStatsPage(flask_counter, flask_error_counter, django_counter, django_error_counter, total, flask_total, django_total, failed_repos, custom_session_engine_repos, root_dir) {
     let html = '<html>\n'+
         '<head>\n'+
@@ -200,12 +208,14 @@ function generateStatsPage(flask_counter, flask_error_counter, django_counter, d
         html += 'google.charts.setOnLoadCallback(draw' + key + 'Chart);\n';
         html += 'function draw' + key + 'Chart() {\n';
         html += 'var data = new google.visualization.arrayToDataTable([\n';
-        html += '["Framework/Library", "Flask/Flask-login", "Failed Flask Queries", "Django", "Failed Django Queries", {role: "annotation"}],';
+        html += '["Framework/Library", "Flask/Flask-login", {type: "string", role: "tooltip"}, "Failed Flask Queries", {type: "string", role: "tooltip"}, "Django", {type: "string", role: "tooltip"}, "Failed Django Queries", {type: "string", role: "tooltip"}, {role: "annotation"}],';
         for (let [dir, files] of Object.entries(value)) {
             for (let [file, arr] of Object.entries(files)) {
                 let flask_file = getCounterKey(flask_counter, key, dir, file);
                 let django_file = getCounterKey(django_counter, key, dir, file);
-                html += '["' + queries_desc[key][dir][file] + '", ' + (flask_counter[key][dir]?.[flask_file]|0) + ', ' + (flask_error_counter[key][dir]?.[flask_file]|0) + ', ' + (django_counter[key][dir]?.[django_file]|0) + ', ' + (django_error_counter[key][dir]?.[django_file]|0) + ', ""],\n';
+                html += '["' + queries_desc[key][dir][file] + '", ' + (flask_counter[key][dir]?.[flask_file]|0) + ', "' + getTooltip((flask_counter[key][dir]?.[flask_file]|0), flask_total, "Flask/Flask-login") + '", ' + 
+                    (flask_error_counter[key][dir]?.[flask_file]|0) + ', "' + getTooltip((flask_error_counter[key][dir]?.[flask_file]|0), flask_total, "Failed Flask Queries") + '", ' + (django_counter[key][dir]?.[django_file]|0) + ', "' + 
+                    getTooltip((django_counter[key][dir]?.[django_file]|0), django_total, "Django") + '", ' + (django_error_counter[key][dir]?.[django_file]|0) + ', "' + getTooltip((django_error_counter[key][dir]?.[django_file]|0), django_total, "Failed Django Queries") + '", ""],\n';
             }
         }
         html += ']);\n';
