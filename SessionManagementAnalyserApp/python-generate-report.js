@@ -26,7 +26,7 @@ function aux(key1, key2, key3, obj, output) {
     }
 }
 
-// TODO fix it, either just update the query names and locations or make it dynamic (remove all hardcoded query names and locations and cycle through python datastructure instead). Make it prettier
+// TODO Make it dynamic (remove all hardcoded query names and locations and cycle through python datastructure instead). Make it prettier. Add the new queries. Fix Django.
 export function generateReport(results, lib, dir) {
     generateCSS(dir);
     let html = "";
@@ -38,8 +38,8 @@ export function generateReport(results, lib, dir) {
         html += "<th>Vulnerability</th><th>Flask</th><th>Flask-login</th>";
         html += "</tr></thead><tbody>";
         html += "<tr><td>Secure cookie attribute not set</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Secure-cookie-attribute", "secure_attribute_session_cookie", results, "") + "</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Secure-cookie-attribute", "secure_attribute_remember_cookie", results, "") + "</td></tr>";
+        html += "<td>" + aux("SessionHijacking", "Secure-cookie-attribute", "ut_secure_attribute_session_cookie", results, "") + "</td>";
+        html += "<td>" + aux("SessionHijacking", "Secure-cookie-attribute", "ut_secure_attribute_remember_cookie", results, "") + "</td></tr>";
         /*
         html += "<tr><td>HSTS not activated</td>";
         html += "<td>" + aux("FLASK_HSTS_QUERIES", "HSTS-header", "HSTS_header", results, "") + "</td>";
@@ -53,14 +53,14 @@ export function generateReport(results, lib, dir) {
         } else { html += "<td></td></tr>"; }
         */
         html += "<tr><td>HTTPOnly cookie attribute not set</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "HTTPOnly-cookie-attribute", "httponly_attribute_session_cookie", results, "Session cookie is accessible via javascript (HTTPOnly attribute set to false) (for more information see ./HTTPOnly-cookie-attribute)") + "</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "HTTPOnly-cookie-attribute", "httponly_attribute_remember_cookie", results, "Remember cookie is accessible via javascript (HTTPOnly attribute set to false) (for more information see ./HTTPOnly-cookie-attribute)") + "</td></tr>";
+        html += "<td>" + aux("SessionHijacking", "HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie", results, "Session cookie is accessible via javascript (HTTPOnly attribute set to false) (for more information see ./HTTPOnly-cookie-attribute)") + "</td>";
+        html += "<td>" + aux("SessionHijacking", "HTTPOnly-cookie-attribute", "un_httponly_attribute_remember_cookie", results, "Remember cookie is accessible via javascript (HTTPOnly attribute set to false) (for more information see ./HTTPOnly-cookie-attribute)") + "</td></tr>";
         html += "<tr><td>Domain cookie attribute set</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Domain-cookie-attribute", "domain_attribute_session_cookie", results, "Session cookie domain attribute is set (for more information see ./Domain-cookie-attribute)") + "</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Domain-cookie-attribute", "domain_attribute_remember_cookie", results, "Remember cookie domain attribute is set (for more information see ./Domain-cookie-attribute)") + "</td></tr>";
+        html += "<td>" + aux("SessionHijacking", "Domain-cookie-attribute", "uf_domain_attribute_session_cookie", results, "Session cookie domain attribute is set (for more information see ./Domain-cookie-attribute)") + "</td>";
+        html += "<td>" + aux("SessionHijacking", "Domain-cookie-attribute", "uf_domain_attribute_remember_cookie", results, "Remember cookie domain attribute is set (for more information see ./Domain-cookie-attribute)") + "</td></tr>";
         html += "<tr><td>Expires cookie attribute set to a duration that is too long (greater than 30 days)</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Expires-cookie-attribute", "expires_attribute_session_cookie", results, "") + "</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Expires-cookie-attribute", "expires_attribute_remember_cookie", results, "") + "</td></tr>";
+        html += "<td>" + aux("SessionHijacking", "Expires-cookie-attribute", "sf_expires_attribute_session_cookie", results, "") + "</td>";
+        html += "<td>" + aux("SessionHijacking", "Expires-cookie-attribute", "st_expires_attribute_remember_cookie", results, "") + "</td></tr>";
         html += '</tbody></table></div>';
 
         html += '<button type="button" class="collapsible">Session Fixation</button><div class="content"><table class="styled-table"><thead><tr>';
@@ -72,8 +72,8 @@ export function generateReport(results, lib, dir) {
         html += "<td>N/A</td></tr>";
         */
         html += "<tr><td>Cookie name does not contain the prefix __Host- or __Secure-</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Cookie-name-prefixes", "name_prefix_session_cookie", results, "") + "</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Cookie-name-prefixes", "name_prefix_remember_cookie", results, "") + "</td></tr>";
+        html += "<td>" + aux("SessionFixation", "Cookie-name-prefixes", "sf_name_prefix_session_cookie", results, "") + "</td>";
+        html += "<td>" + aux("SessionFixation", "Cookie-name-prefixes", "sf_name_prefix_remember_cookie", results, "") + "</td></tr>";
         /*
         html += "<tr><td>Initially accept a session/user ID generated by the user and use that for the current session</td>";
         html += "<td>N/A</td>";
@@ -85,7 +85,7 @@ export function generateReport(results, lib, dir) {
         html += "<th>Vulnerability</th><th>Flask</th><th>Flask-login</th>";
         html += "</tr></thead><tbody>";
         html += "<tr><td>Weak Signature</td>";
-        html += "<td>" + aux("FLASK_SECRET_KEY_QUERY", "Flask-secret-key", "secret_key", results, "The secret key is hardcoded (for more information see ./Flask-secret-key)") + "</td>";
+        html += "<td>" + aux("CookieTampering", "Secret-key", "un_secret_key", results, "The secret key is hardcoded (for more information see ./Flask-secret-key)") + "</td>";
         html += "<td>N/A</td></tr>";
         html += '</tbody></table></div>';
 
@@ -93,8 +93,8 @@ export function generateReport(results, lib, dir) {
         html += "<th>Vulnerability</th><th>Flask</th><th>Flask-login</th>";
         html += "</tr></thead><tbody>";
         html += "<tr><td>SameSite cookie attribute not set</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Samesite-cookie-attribute", "samesite_attribute_session_cookie", results, "") + "</td>";
-        html += "<td>" + aux("FLASK_COOKIE_QUERIES", "Samesite-cookie-attribute", "samesite_attribute_remember_cookie", results, "") + "</td></tr>";
+        html += "<td>" + aux("CSRF", "Samesite-cookie-attribute", "st_samesite_attribute_session_cookie", results, "") + "</td>";
+        html += "<td>" + aux("CSRF", "Samesite-cookie-attribute", "st_samesite_attribute_remember_cookie", results, "") + "</td></tr>";
         html += '</tbody></table></div>';
 
         /*
@@ -112,10 +112,10 @@ export function generateReport(results, lib, dir) {
         html += "</tr></thead><tbody>";
         html += "<tr><td>Session Protection</td>";
         html += "<td>N/A</td>";
-        html += "<td>" + aux("FLASK_EXTRA_QUERIES", "Flask-login-session-protection", "session_protection", results, "Session protection is disabled, there is no way to know if the cookies are stolen or not (for more information see ./Flask-login-session-protection)") + "</td></tr>";
+        html += "<td>" + aux("LibraryVulnerabilities", "Flask-login-session-protection", "sf_session_protection", results, "Session protection is disabled, there is no way to know if the cookies are stolen or not (for more information see ./Flask-login-session-protection)") + "</td></tr>";
         html += "<tr><td>Session Protection Basic</td>";
         html += "<td>N/A</td>";
-        html += "<td>" + aux("FLASK_EXTRA_QUERIES", "Flask-login-session-protection", "session_protection_basic", results, "") + "</td></tr>";
+        html += "<td>" + aux("LibraryVulnerabilities", "Flask-login-session-protection", "uf_session_protection_basic", results, "") + "</td></tr>";
         /*
         html += "<tr><td>Open Redirect after Login</td>";
         html += "<td>N/A</td>";
@@ -134,7 +134,7 @@ export function generateReport(results, lib, dir) {
         html += "</tr></thead><tbody>";
         html += "<tr><td>Logout Function is actually called</td>";
         html += "<td>N/A</td>";
-        html += "<td>" + aux("FLASK_LOGOUT_QUERIES", "Logout-function-is-called", "logout_function_is_called", results, "The logout function is called at least once (for more information see ./Logout-function-is-called)") + "</td></tr>";
+        html += "<td>" + aux("ClientSideSessionIvalidation", "Logout-function-is-called", "un_logout_function_is_called", results, "The logout function is called at least once (for more information see ./Logout-function-is-called)") + "</td></tr>";
         /*
         html += "<tr><td>Session not completely cleared upon logout</td>";
         html += "<td>" + aux("FLASK_LOGOUT_QUERIES", "Clear-permanent-session-on-logout", "clear_session_on_logout", results, "") + "</td>";
@@ -143,7 +143,7 @@ export function generateReport(results, lib, dir) {
         html += '</tbody></table></div>';
         html += '</div>';
     }
-    
+    /*
     if (lib === "Django") {
         if (results["DJANGO_LOGOUT_QUERIES"]["Logout-session-invalidation"]["client_side_session"][0]) {
             html += '<html><head><link rel="stylesheet" href="style.css"></head><body><div class="header"><h1>' + lib + " Report - Client Side Sessions (It will be prettier)</h1></div>";
@@ -234,6 +234,7 @@ export function generateReport(results, lib, dir) {
         html += '</tbody></table></div>';
         html += '</div>';
     }
+    */
     html += '<script> \
     var coll = document.getElementsByClassName("collapsible"); \
     var i; \
