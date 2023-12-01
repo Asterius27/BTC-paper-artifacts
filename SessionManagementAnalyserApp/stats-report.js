@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import { countRepos, generateStatsPage, initializeCounter } from './python-generate-statistics.js';
+import csvParser from 'csv-parser';
 
 const SUPPORTED_LANGUAGES = ["python"];
 let root_dir = "./";
@@ -68,8 +69,10 @@ let flask_repos = 0;
 let django_repos = 0;
 let failed_repos = 0;
 let custom_session_engine_repos = 0;
+let number_of_repos = 0;
 for (let i = 0; i < repos.length; i++) {
     if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
+        number_of_repos++;
         let dir = root_dir + "/" + repos[i];
         let res = "";
         let info = [];
@@ -78,25 +81,30 @@ for (let i = 0; i < repos.length; i++) {
             res = fs.readdirSync(dir).filter(str => str.endsWith("-results"))[0];
         } catch(e) {
             failed_repos++;
-            fs.appendFileSync('./log.txt', "Failed to read the results directory for: " + dir + " Reason: " + e + "\n");
+            fs.appendFileSync('./log_stats_generator.txt', "Failed to read the results directory for: " + dir + " Reason: " + e + "\n");
             failed = true;
         }
         if (!failed) {
             try {
                 info = fs.readFileSync(dir + "/" + res + "/info.txt", { encoding: 'utf-8' }).split(",");
                 if (info[0] === "python") {
-                    if (info[1].includes("flask")) {
+                    if (info.some(str => str.includes("flask"))) {
                         flask_repos++;
                         [flask_counter, flask_error_counter] = countRepos(flask_counter, flask_error_counter, "flask", dir + "/" + res);
                     }
-                    if (info[1].includes("django")) {
+                    if (info.some(str => str.includes("django"))) {
                         django_repos++;
                         [django_counter, django_error_counter] = countRepos(django_counter, django_error_counter, "django", dir + "/" + res);
                     }
+                    if (!info.some(str => str.includes("flask")) && !info.some(str => str.includes("django"))) {
+                        fs.appendFileSync('./log_stats_generator.txt', "Read info file, but it doesn't contain either flask nor django, repo directory: " + dir + "\n");
+                    }
+                } else {
+                    fs.appendFileSync('./log_stats_generator.txt', "Read info file, but it doesn't contain python, repo directory: " + dir + "\n");
                 }
             } catch(e) {
                 failed_repos++;
-                fs.appendFileSync('./log.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
+                fs.appendFileSync('./log_stats_generator.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
                 if (fs.existsSync(dir + "/" + res + "/info.txt")) {
                     if (info.length > 2) {
                         if (info[2].includes("customsessionengine")) {
@@ -114,4 +122,4 @@ if (flask_repos === 0) {
 if (django_repos === 0) {
     [django_counter, django_error_counter] = initializeCounter(django_counter, django_error_counter, "django");
 }
-generateStatsPage(flask_counter, flask_error_counter, django_counter, django_error_counter, repos.length, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
+generateStatsPage(flask_counter, flask_error_counter, django_counter, django_error_counter, number_of_repos, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
