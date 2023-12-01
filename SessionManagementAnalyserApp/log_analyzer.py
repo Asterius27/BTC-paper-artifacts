@@ -15,8 +15,8 @@ Total repos where the database could not be deleted: 12 (0.89 %)
 """
 
 # TODO add number of failures (and reasons) per query type
-path = Path(__file__).parent / './old_logs/6 - log_5_or_more_stars_flask_login_merged'
-output = Path(__file__).parent / './old_logs/6 - log_5_or_more_stars_flask_login_merged/log_analysis_merged.txt'
+path = Path(__file__).parent / './old_logs/7 - log_1_or_more_stars_flask_login_merged'
+output = Path(__file__).parent / './old_logs/7 - log_1_or_more_stars_flask_login_merged/log_analysis_merged.txt'
 csv_path = Path(__file__).parent / '../flask_login_merged_list.csv'
 times = []
 thread_times = []
@@ -43,7 +43,10 @@ for file_name in log_dir:
                 # query_dir = line.split(" ")[6]
                 query_name = line.split(" ")[8]
                 time_elapsed = line.split(" ")[10]
-                query_dict[query_name] = query_dict.get(query_name, []).append(float(time_elapsed))
+                if query_name in query_dict:
+                    query_dict[query_name].append(float(time_elapsed))
+                else:
+                    query_dict[query_name] = []
     if len(file_name.split("_")) == 1:
         # print(file_name)
         with open(str(path.absolute()) + "/" + file_name) as file:
@@ -107,7 +110,7 @@ with output.open("a") as file:
     file.write("Average time taken per repository: " + str(round(statistics.fmean(times) / 60.0, 2)) + " minutes\n")
     file.write("Standard Deviation: " + str(round(statistics.stdev(times) / 60.0, 2)) + " minutes\n")
     file.write("Total false positives (not actually using flask_login): " + str(unsupported_library) + " (" + str(round(unsupported_library * 100 / len(times), 2)) + " %)\n")
-    file.write("Total repos that timed out: " + str(analysis_timedout) + " (" + str(round(analysis_timedout * 100 / len(times), 2)) + " %)\n")
+    file.write("Total timeouts (either database creation or query execution): " + str(analysis_timedout) + " (" + str(round(analysis_timedout * 100 / len(times), 2)) + " %)\n")
     file.write("Total repos where the database could not be deleted: " + str(database_deletion_error) + " (" + str(round(database_deletion_error * 100 / len(times), 2)) + " %)\n")
     file.write("\n\n")
     for query in query_dict:

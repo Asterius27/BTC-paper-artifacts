@@ -13,7 +13,7 @@ function execBoolQuery(database, outputLocation, queryLocation, queryName, threa
     execSync("codeql bqrs decode --output=" + outputLocation + "/" + queryName + ".txt --format=text " + outputLocation + "/" + queryName + ".bqrs"); // TODO change this to JSON
     let endTime = new Date();
     let timeElapsed = (endTime - startTime)/1000;
-    fs.appendFileSync('./log' + current_thread + '_queries.txt', "Time taken to run the query " + queryLocation + " - " + queryName + " : " + timeElapsed + " seconds.\n");
+    fs.appendFileSync('./log' + current_thread + '_queries.txt', "Time taken to run the query " + queryLocation + " - " + queryName + " : " + timeElapsed + " seconds. Repo: " + outputLocation + "\n");
     let lines = fs.readFileSync(outputLocation + "/" + queryName + ".txt", 'utf-8').split("\n");
     lines.pop();
     if (lines.length > 2) {

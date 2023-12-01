@@ -159,6 +159,7 @@ function cleanUpRepos(dir) {
 // cleanUpRepos("repositories/" + framework);
 
 // Download and extract the repositories
+// TODO delete repos that were filtered out, so the repos that are not in the filtered csv but were downloaded previously
 function downloadAndExtractRepos(csv_file) {
     let startTime = new Date();
     fs.createReadStream(csv_file)
@@ -521,6 +522,6 @@ function libraryUsagesGrep() {
 }
 
 // downloadAndExtractRepos('../flask_login_filtered_merged_list_1_or_more_stars.csv');
-findInterestingRepos("Cookie-name-prefixes", "name_session_cookie_manually_set.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+findInterestingRepos("Secure-cookie-attribute", "secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
