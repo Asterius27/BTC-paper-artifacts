@@ -1,39 +1,49 @@
 // true: the query returns a result, false: the query doesn't return a result
+// The shortest query name (among the pair of skippable and unskippable queries) cannot have more than one different word at the end, e.g. the pair (ut_session_cookie_name_manually_set, s_session_cookie_name_prefix_something) would break everything
+// un = unskippable query, no skippable equivalent
+// ut = unskippable query, if true also execute the skippable equivalent
+// uf = unskippable query, if false also execute the skippable equivalent
+// st = skippable query, if skipped the default result of the query is true
+// sf = skippable query, if skipped the default result of the query is false
 let flask = {
-    "FLASK_COOKIE_QUERIES": {
-        "Cookie-name-prefixes": {
-            "name_prefix_remember_cookie": [false, ""],
-            "name_prefix_session_cookie": [false, ""],
-            "name_session_cookie_manually_set": [false, ""],
-            "name_remember_cookie_manually_set": [false, ""]
-        },
+    "SessionHijacking": {
         "Domain-cookie-attribute": {
-            "domain_attribute_remember_cookie": [false, ""],
-            "domain_attribute_remember_cookie_manually_disabled": [false, ""],
-            "domain_attribute_session_cookie": [false, ""],
-            "domain_attribute_session_cookie_manually_disabled": [false, ""]
+            "uf_domain_attribute_remember_cookie": [false, ""],
+            "uf_domain_attribute_session_cookie": [false, ""],
+            "sf_domain_attribute_remember_cookie_manually_disabled": [false, ""],
+            "sf_domain_attribute_session_cookie_manually_disabled": [false, ""]
         },
         "Expires-cookie-attribute": {
-            "expires_attribute_remember_cookie": [false, ""],
-            "expires_attribute_remember_cookie_manually_set": [false, ""],
-            "expires_attribute_session_cookie": [false, ""],
-            "expires_attribute_session_cookie_manually_set": [false, ""]
+            "ut_expires_attribute_remember_cookie_manually_set": [false, ""],
+            "ut_expires_attribute_session_cookie_manually_set": [false, ""],
+            "st_expires_attribute_remember_cookie": [false, ""],
+            "sf_expires_attribute_session_cookie": [false, ""],
         },
         "HTTPOnly-cookie-attribute": {
-            "httponly_attribute_remember_cookie": [false, ""],
-            "httponly_attribute_session_cookie": [false, ""]
-        },
-        "Samesite-cookie-attribute": {
-            "samesite_attribute_remember_cookie": [false, ""],
-            "samesite_attribute_remember_cookie_manually_set": [false, ""],
-            "samesite_attribute_session_cookie": [false, ""],
-            "samesite_attribute_session_cookie_manually_set": [false, ""]
+            "un_httponly_attribute_remember_cookie": [false, ""],
+            "un_httponly_attribute_session_cookie": [false, ""]
         },
         "Secure-cookie-attribute": {
-            "secure_attribute_remember_cookie": [false, ""],
-            "secure_attribute_remember_cookie_manually_disabled": [false, ""],
-            "secure_attribute_session_cookie": [false, ""],
-            "secure_attribute_session_cookie_manually_disabled": [false, ""]
+            "ut_secure_attribute_remember_cookie": [false, ""],
+            "ut_secure_attribute_session_cookie": [false, ""],
+            "sf_secure_attribute_remember_cookie_manually_disabled": [false, ""],
+            "sf_secure_attribute_session_cookie_manually_disabled": [false, ""]
+        }
+    },
+    "SessionFixation": {
+        "Cookie-name-prefixes": {
+            "ut_session_cookie_name_manually_set": [false, ""],
+            "ut_remember_cookie_name_manually_set": [false, ""],
+            "sf_remember_cookie_name_prefix": [false, ""],
+            "sf_session_cookie_name_prefix": [false, ""]
+        }
+    },
+    "CSRF": {
+        "Samesite-cookie-attribute": {
+            "ut_samesite_attribute_remember_cookie_manually_set": [false, ""],
+            "ut_samesite_attribute_session_cookie_manually_set": [false, ""],
+            "st_samesite_attribute_remember_cookie": [false, ""],
+            "st_samesite_attribute_session_cookie": [false, ""]
         }
     },
     /*
@@ -46,12 +56,12 @@ let flask = {
         }
     },
     */
-    "FLASK_LOGOUT_QUERIES": {
+    "ClientSideSessionIvalidation": {
         "Clear-permanent-session-on-logout": {
-            "clear_session_on_logout": [false, ""]
+            "un_clear_session_on_logout": [false, ""]
         },
         "Logout-function-is-called": {
-            "logout_function_is_called": [false, ""]
+            "un_logout_function_is_called": [false, ""]
         }
     },
     /*
@@ -69,24 +79,24 @@ let flask = {
         }
     },
     */
-    "FLASK_EXTRA_QUERIES": {
+    "LibraryVulnerabilities": {
         /*
         "Flask-login-open-redirect-after-login": {
             "open_redirect": [false, ""]
         },
         */
         "Flask-login-session-protection": {
-            "session_protection": [false, ""],
-            "session_protection_basic": [false, ""],
-            "session_protection_strong": [false, ""]
+            "uf_session_protection_basic": [false, ""],
+            "sf_session_protection": [false, ""],
+            "sf_session_protection_strong": [false, ""]
         },
         "Incorrect-config-changes": {
-            "incorrect_config_changes": [false, ""]
+            "un_incorrect_config_changes": [false, ""]
         }
     },
-    "FLASK_SECRET_KEY_QUERY": {
-        "Flask-secret-key": {
-            "secret_key": [false, ""]
+    "CookieTampering": {
+        "Secret-key": {
+            "un_secret_key": [false, ""]
         }
     }
 }
@@ -94,39 +104,44 @@ let flask = {
 function getFlaskQueries() { return flask; }
 
 let django = {
-    "DJANGO_COOKIE_QUERIES": {
-        "Cookie-name-prefixes": {
-            "name_prefix_session_cookie": [false, ""]
-        },
+    "SessionHijacking": {
         "Domain-cookie-attribute": {
-            "domain_attribute_session_cookie": [false, ""]
+            "un_domain_attribute_session_cookie": [false, ""]
         },
         "Expires-cookie-attribute": {
-            "expires_attribute_session_cookie": [false, ""]
+            "un_expires_attribute_session_cookie": [false, ""]
         },
         "HTTPOnly-cookie-attribute": {
-            "httponly_attribute_session_cookie": [false, ""]
-        },
-        "Samesite-cookie-attribute": {
-            "samesite_attribute_session_cookie": [false, ""]
+            "un_httponly_attribute_session_cookie": [false, ""]
         },
         "Secure-cookie-attribute": {
-            "secure_attribute_session_cookie": [false, ""]
+            "un_secure_attribute_session_cookie": [false, ""]
         }
     },
-    "DJANGO_SERIALIZATION_QUERIES": {
+    "SessionFixation": {
+        "Cookie-name-prefixes": {
+            "un_session_cookie_name_prefix": [false, ""]
+        }
+    },
+    "CSRF": {
+        "Samesite-cookie-attribute": {
+            "un_samesite_attribute_session_cookie": [false, ""]
+        }
+    },
+    "InsecureSerialization": {
         "Session-serializer": {
-            "session_serializer": [false, ""]
+            "un_session_serializer": [false, ""]
         }
     },
-    "DJANGO_LOGOUT_QUERIES": {
+    "ClientSideSessionIvalidation": {
         "Logout-session-invalidation": {
-            "client_side_session": [false, ""]
+            "un_client_side_session": [false, ""]
         },
         "Logout-function-is-called": {
-            "logout_function_is_called": [false, ""]
+            "un_logout_function_is_called": [false, ""]
         }
     },
+    /*
     "DJANGO_HSTS_QUERIES": {
         "HSTS-header": {
             "HSTS_header": [false, ""]
@@ -139,22 +154,137 @@ let django = {
             "HSTS_header_subdomains": [false, ""]
         }
     },
-    "DJANGO_SECRET_KEY_QUERY": {
-        "Django-secret-key": {
-            "secret_key": [false, ""]
+    */
+    "CookieTampering": {
+        "Secret-key": {
+            "un_secret_key": [false, ""]
         }
     },
-    "DJANGO_LOGIN_QUERY": {
+    "PasswordTheft": {
         "Redirect-everything-to-HTTPS": {
-            "secure_ssl_redirect": [false, ""]
+            "un_secure_ssl_redirect": [false, ""]
         }
     }
 }
 
 function getDjangoQueries() { return django; }
 
-let flask_descriptions = {}
+let descriptions = {
+    "SessionHijacking": {
+        "Domain-cookie-attribute": {
+            "domain_attribute_remember_cookie": "Domain remember cookie attribute set",
+            "domain_attribute_session_cookie": "Domain session cookie attribute set",
+            "domain_attribute_remember_cookie_manually_disabled": "Domain remember cookie attribute manually disabled",
+            "domain_attribute_session_cookie_manually_disabled": "Domain session cookie attribute manually disabled"
+        },
+        "Expires-cookie-attribute": {
+            "expires_attribute_remember_cookie_manually_set": "Expires remember cookie attribute is manually set",
+            "expires_attribute_session_cookie_manually_set": "Expires session cookie attribute is manually set",
+            "expires_attribute_remember_cookie": "Expires remember cookie attribute set to a duration that is too long (greater than 30 days)",
+            "expires_attribute_session_cookie": "Expires session cookie attribute set to a duration that is too long (greater than 30 days)",
+        },
+        "HTTPOnly-cookie-attribute": {
+            "httponly_attribute_remember_cookie": "HTTPOnly remember cookie attribute not set",
+            "httponly_attribute_session_cookie": "HTTPOnly session cookie attribute not set"
+        },
+        "Secure-cookie-attribute": {
+            "secure_attribute_remember_cookie": "Secure remember cookie attribute not set",
+            "secure_attribute_session_cookie": "Secure session cookie attribute not set",
+            "secure_attribute_remember_cookie_manually_disabled": "Secure remember cookie attribute manually disabled",
+            "secure_attribute_session_cookie_manually_disabled": "Secure session cookie attribute manually disabled"
+        }
+    },
+    "SessionFixation": {
+        "Cookie-name-prefixes": {
+            "session_cookie_name_manually_set": "Session cookie name is manually set",
+            "remember_cookie_name_manually_set": "Remember cookie name is manually set",
+            "remember_cookie_name_prefix": "Remember cookie name does not contain the prefix __Host- or __Secure-",
+            "session_cookie_name_prefix": "Session cookie name does not contain the prefix __Host- or __Secure-"
+        }
+    },
+    "CSRF": {
+        "Samesite-cookie-attribute": {
+            "samesite_attribute_remember_cookie_manually_set": "SameSite remember cookie attribute is manually set",
+            "samesite_attribute_session_cookie_manually_set": "SameSite session cookie attribute is manually set",
+            "samesite_attribute_remember_cookie": "SameSite remember cookie attribute not set",
+            "samesite_attribute_session_cookie": "SameSite session cookie attribute not set"
+        }
+    },
+    "ClientSideSessionIvalidation": {
+        "Clear-permanent-session-on-logout": {
+            "clear_session_on_logout": "Session not completely cleared upon logout"
+        },
+        "Logout-function-is-called": {
+            "logout_function_is_called": "Logout function is called/used"
+        },
+        "Logout-session-invalidation": {
+            "client_side_session": "Using client side sessions"
+        }
+    },
+    "LibraryVulnerabilities": {
+        "Flask-login-session-protection": {
+            "session_protection_basic": "Session Protection is set to basic but no fresh login required found",
+            "session_protection": "Session Protection is manually disabled",
+            "session_protection_strong": "Session Protection is set to strong"
+        },
+        "Incorrect-config-changes": {
+            "incorrect_config_changes": "Incorrect Config Changes"
+        }
+    },
+    "CookieTampering": {
+        "Secret-key": {
+            "secret_key": "Secret key is hardcoded"
+        }
+    },
+    "InsecureSerialization": {
+        "Session-serializer": {
+            "session_serializer": "Using custom or unsafe serializers"
+        }
+    },
+    "PasswordTheft": {
+        "Redirect-everything-to-HTTPS": {
+            "secure_ssl_redirect": "Login page/form sent over HTTP"
+        }
+    }
+}
 
-function getFlaskDescriptions() { return flask_descriptions; }
+function getDescriptions() { return descriptions; }
 
-export { getFlaskQueries, getDjangoQueries, getFlaskDescriptions }
+let config = {
+    "SessionHijacking": {
+        "options": 'var options = {"title":"Session Hijacking","width":1500,"height":1500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'session_hijacking_chart'
+    },
+    "SessionFixation": {
+        "options": 'var options = {"title":"Session Fixation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'session_fixation'
+    },
+    "CSRF": {
+        "options": 'var options = {"title":"CSRF","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'csrf'
+    },
+    "ClientSideSessionIvalidation": {
+        "options": 'var options = {"title":"Client Side Session Invalidation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'client_side_session_invalidation'
+    },
+    "LibraryVulnerabilities": {
+        "options": 'var options = {"title":"Library Specific Vulnerabilities","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'library_specific_vulnerabilities'
+    },
+    "CookieTampering": {
+        "options": 'var options = {"title":"Cookie Tampering/Forging","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'cookie_tampering_forging'
+    },
+    "InsecureSerialization": {
+        "options": 'var options = {"title":"Insecure Serialization/Deserialization","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'insecure_serialization_deserialization'
+    },
+    "PasswordTheft": {
+        "options": 'var options = {"title":"Password Theft","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'password_theft'
+    }
+}
+
+function getConfig() { return config; }
+
+export { getFlaskQueries, getDjangoQueries, getDescriptions, getConfig }

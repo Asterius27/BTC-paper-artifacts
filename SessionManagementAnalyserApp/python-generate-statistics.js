@@ -1,4 +1,4 @@
-import { getFlaskQueries, getDjangoQueries } from './python-datastructures.js';
+import { getFlaskQueries, getDjangoQueries, getDescriptions, getConfig } from './python-datastructures.js';
 import * as fs from 'fs';
 
 let query_errors = 0;
@@ -176,7 +176,83 @@ function initializeCounter(counter, error_counter, framework) {
     return [counter, error_counter];
 }
 
+function getCounterKey(counter, key, dir, file) {
+    if (counter[key][dir] !== undefined) {
+        for (let [counter_key, res] of Object.entries(counter[key][dir])) {
+            if (counter_key.includes(file)) {
+                return counter_key;
+            }
+        }
+    }
+    return "keyNotFound";
+}
+
+function getTooltip(value, total, type) {
+    let percentage = 0;
+    if (total !== 0) {
+        percentage =  value * 100 / total;
+    }
+    return type + ": " + value + " (" + percentage + " %)";
+}
+
 // TODO make it prettier
+function generateStatsPage(flask_counter, flask_error_counter, django_counter, django_error_counter, total, flask_total, django_total, failed_repos, custom_session_engine_repos, root_dir) {
+    let html = '<html>\n'+
+        '<head>\n'+
+            '<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>\n'+
+            '<script type="text/javascript">\n'+
+                'google.charts.load("current", {"packages":["corechart"]});\n';
+    let queries_desc = getDescriptions();
+    let config = getConfig();
+    for (let [key, value] of Object.entries(queries_desc)) {
+        html += 'google.charts.setOnLoadCallback(draw' + key + 'Chart);\n';
+        html += 'function draw' + key + 'Chart() {\n';
+        html += 'var data = new google.visualization.arrayToDataTable([\n';
+        html += '["Framework/Library", "Flask/Flask-login", {type: "string", role: "tooltip"}, "Failed Flask Queries", {type: "string", role: "tooltip"}, "Django", {type: "string", role: "tooltip"}, "Failed Django Queries", {type: "string", role: "tooltip"}, {role: "annotation"}],';
+        for (let [dir, files] of Object.entries(value)) {
+            for (let [file, arr] of Object.entries(files)) {
+                let flask_file = getCounterKey(flask_counter, key, dir, file);
+                let django_file = getCounterKey(django_counter, key, dir, file);
+                html += '["' + queries_desc[key][dir][file] + '", ' + (flask_counter[key][dir]?.[flask_file]|0) + ', "' + getTooltip((flask_counter[key][dir]?.[flask_file]|0), flask_total, "Flask/Flask-login") + '", ' + 
+                    (flask_error_counter[key][dir]?.[flask_file]|0) + ', "' + getTooltip((flask_error_counter[key][dir]?.[flask_file]|0), flask_total, "Failed Flask Queries") + '", ' + (django_counter[key][dir]?.[django_file]|0) + ', "' + 
+                    getTooltip((django_counter[key][dir]?.[django_file]|0), django_total, "Django") + '", ' + (django_error_counter[key][dir]?.[django_file]|0) + ', "' + getTooltip((django_error_counter[key][dir]?.[django_file]|0), django_total, "Failed Django Queries") + '", ""],\n';
+            }
+        }
+        html += ']);\n';
+        html += config[key]["options"];
+        html += 'var chart = new google.visualization.BarChart(document.getElementById("' + config[key]["element_id"] + '"));\n';
+        html += 'chart.draw(data, options);\n}\n'
+    }
+    let html_end = '</script>\n'+
+            '</head>\n'+
+            '<body>\n'+
+                '<p>Total number of applications/repos: ' + total + '<br/>Number of applications/repos that were not analyzed because of an error: ' + failed_repos + ', among which ' + custom_session_engine_repos + ' failed because they use a custom session engine (Django)<br/>'+
+                'Total number of Flask/Flask-login applications/repos: ' + flask_total + '<br/>Total number of Django applications/repos: ' + django_total + '<br/>'+
+                'Total number of queries that failed: ' + query_errors + '<br/></p>\n'+
+                '<div>\n'+
+                    '<h2>Login Security</h2>\n'+
+                    '<div id="password_theft"></div>\n'+
+                '</div>\n'+
+                '<div>\n'+
+                    '<h2>Post Login Security</h2>\n'+
+                    '<div id="session_hijacking_chart"></div>\n'+
+                    '<div id="session_fixation"></div>\n'+
+                    '<div id="cookie_tampering_forging"></div>\n'+
+                    '<div id="csrf"></div>\n'+
+                    '<div id="insecure_serialization_deserialization"></div>\n'+
+                    '<div id="library_specific_vulnerabilities"></div>\n'+
+                '</div>\n'+
+                '<div>\n'+
+                    '<h2>Logout Security</h2>\n'+
+                    '<div id="client_side_session_invalidation"></div>\n'+
+                '</div>\n'+
+            '</body>\n'+
+        '</html>';
+    html += html_end;
+    fs.writeFileSync(root_dir + '/stats.html', html);
+}
+
+/*
 function generateStatsPage(counter, error_counter, total, flask_total, django_total, failed_repos, custom_session_engine_repos, root_dir) {
     let html = '<html>\
         <head>\
@@ -329,5 +405,6 @@ function generateStatsPage(counter, error_counter, total, flask_total, django_to
     </html>';
     fs.writeFileSync(root_dir + '/stats.html', html);
 }
+*/
 
 export { countRepos, generateStatsPage, initializeCounter }
