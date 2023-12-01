@@ -20,7 +20,7 @@ def runner(threads, current_thread):
 if __name__ == '__main__':
     start = time.time()
     # codeql_threads = 1
-    codeql_threads = cpu_count() // args.threads
+    codeql_threads = (cpu_count() // args.threads) + 5
     j = 0
     current_thread = 0
     full_path = Path(__file__).parent / args.root_dir
