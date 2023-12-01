@@ -80,7 +80,7 @@ for file_name in log_dir:
                     if not line.endswith("ENOBUFS\n") and not line.endswith("ETIMEDOUT\n"):
                         item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
                         item.append(line.split(" ")[3])
-                        item.append("Reason: Repo doesn't use the login function from the flask login library")
+                        item.append("Reason: Repo doesn't use the login function from the flask login library or the built in django auth system")
                     failed_repos.append(item)
                 if line == "Error: None of the supported libraries/frameworks is used\n":
                     unsupported_library += 1
