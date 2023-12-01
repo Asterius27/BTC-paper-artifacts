@@ -15,6 +15,7 @@ Total repos where the database could not be deleted: 12 (0.89 %)
 """
 
 # TODO add number of failures (and reasons) per query type
+# TODO improve the stats, make them clearer and more precise
 path = Path(__file__).parent / './old_logs/7 - log_1_or_more_stars_flask_login_merged'
 output = Path(__file__).parent / './old_logs/7 - log_1_or_more_stars_flask_login_merged/log_analysis_merged.txt'
 csv_path = Path(__file__).parent / '../flask_login_merged_list.csv'
