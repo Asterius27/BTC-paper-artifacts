@@ -117,4 +117,21 @@ module FlaskLogin {
                 or node = getConfigSourceFromAttribute(attribute_name))
             and result = node)
     }
+
+    // TODO need to test it and refine it
+    DataFlow::Node getConfigSourceFromEnvFile(API::Node config) {
+        exists(DataFlow::Node node | 
+            (node = config.getMember("from_envvar").getAValueReachingSink()
+                or node = config.getMember("from_prefixed_env").getAValueReachingSink())
+            and result = node)
+    }
+
+    // TODO
+    bindingset[config_name]
+    DataFlow::Node getConfigSourceFromEnvVar(string config_name, API::Node config) {
+        exists(DataFlow::Node node | 
+            node = config.getSubscript(config_name).getAValueReachingSink()
+            // and node = os.environ.get(), os.environ, os.getenv ... need to look more into it (the different ways of getting an environment variable)
+            and result = node)
+    }
 }
