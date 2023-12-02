@@ -159,7 +159,6 @@ function cleanUpRepos(dir) {
 // cleanUpRepos("repositories/" + framework);
 
 // Download and extract the repositories
-// TODO delete repos that were filtered out, so the repos that are not in the filtered csv but were downloaded previously
 function downloadAndExtractRepos(csv_file) {
     let startTime = new Date();
     fs.createReadStream(csv_file)
