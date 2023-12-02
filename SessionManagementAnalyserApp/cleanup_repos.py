@@ -6,7 +6,7 @@ import shutil
 csv_path = Path(__file__).parent / '../flask_login_filtered_merged_list_1_or_more_stars.csv'
 repos_path = Path(__file__).parent / './repositories/Flask'
 repos = []
-temp = 0
+# temp = 0
 
 with csv_path.open() as csv_file:
     reader = csv.DictReader(csv_file)
@@ -18,8 +18,8 @@ with csv_path.open() as csv_file:
 repos_dir = os.listdir(repos_path.absolute())
 for dir_name in repos_dir:
     if dir_name not in repos:
-        temp += 1
-        print(str(repos_path.absolute()) + "/" + dir_name)
-        # shutil.rmtree(str(repos_path.absolute()) + "/" + dir_name)
+        # temp += 1
+        # print(str(repos_path.absolute()) + "/" + dir_name)
+        shutil.rmtree(str(repos_path.absolute()) + "/" + dir_name)
 
-print(temp)
+# print(temp)
