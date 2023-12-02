@@ -216,9 +216,9 @@ function generateStatsPage(flask_counter, flask_error_counter, django_counter, d
             for (let [file, arr] of Object.entries(files)) {
                 let flask_file = getCounterKey(flask_counter, key, dir, file);
                 let django_file = getCounterKey(django_counter, key, dir, file);
-                html += '["' + queries_desc[key][dir][file] + '", ' + (flask_counter[key][dir]?.[flask_file]|0) + ', "' + getTooltip((flask_counter[key][dir]?.[flask_file]|0), flask_total, "Flask/Flask-login") + '", ' + 
-                    (flask_error_counter[key][dir]?.[flask_file]|0) + ', "' + getTooltip((flask_error_counter[key][dir]?.[flask_file]|0), flask_total, "Failed Flask Queries") + '", ' + (django_counter[key][dir]?.[django_file]|0) + ', "' + 
-                    getTooltip((django_counter[key][dir]?.[django_file]|0), django_total, "Django") + '", ' + (django_error_counter[key][dir]?.[django_file]|0) + ', "' + getTooltip((django_error_counter[key][dir]?.[django_file]|0), django_total, "Failed Django Queries") + '", ""],\n';
+                html += '["' + queries_desc[key][dir][file] + '", ' + (flask_counter[key]?.[dir]?.[flask_file]|0) + ', "' + getTooltip((flask_counter[key]?.[dir]?.[flask_file]|0), flask_total, "Flask/Flask-login") + '", ' + 
+                    (flask_error_counter[key]?.[dir]?.[flask_file]|0) + ', "' + getTooltip((flask_error_counter[key]?.[dir]?.[flask_file]|0), flask_total, "Failed Flask Queries") + '", ' + (django_counter[key]?.[dir]?.[django_file]|0) + ', "' + 
+                    getTooltip((django_counter[key]?.[dir]?.[django_file]|0), django_total, "Django") + '", ' + (django_error_counter[key]?.[dir]?.[django_file]|0) + ', "' + getTooltip((django_error_counter[key]?.[dir]?.[django_file]|0), django_total, "Failed Django Queries") + '", ""],\n';
             }
         }
         html += ']);\n';
