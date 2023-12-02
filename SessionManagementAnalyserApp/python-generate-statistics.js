@@ -177,10 +177,12 @@ function initializeCounter(counter, error_counter, framework) {
 }
 
 function getCounterKey(counter, key, dir, file) {
-    if (counter[key][dir] !== undefined) {
-        for (let [counter_key, res] of Object.entries(counter[key][dir])) {
-            if (counter_key.includes(file)) {
-                return counter_key;
+    if (counter[key] !== undefined) {
+        if (counter[key][dir] !== undefined) {
+            for (let [counter_key, res] of Object.entries(counter[key][dir])) {
+                if (counter_key.includes(file)) {
+                    return counter_key;
+                }
             }
         }
     }
