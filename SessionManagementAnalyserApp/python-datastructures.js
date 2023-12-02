@@ -252,7 +252,7 @@ function getDescriptions() { return descriptions; }
 
 let config = {
     "SessionHijacking": {
-        "options": 'var options = {"title":"Session Hijacking","width":1500,"height":1500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "options": 'var options = {"title":"Session Hijacking","width":1500,"height":1800,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'session_hijacking_chart'
     },
     "SessionFixation": {

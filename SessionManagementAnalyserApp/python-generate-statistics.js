@@ -189,7 +189,6 @@ function getCounterKey(counter, key, dir, file) {
     return "keyNotFound";
 }
 
-// TODO test this
 function getTooltip(value, total, type) {
     let percentage = 0;
     if (total !== 0) {
