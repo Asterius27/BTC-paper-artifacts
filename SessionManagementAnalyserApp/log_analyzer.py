@@ -3,22 +3,10 @@ import csv
 import os
 from pathlib import Path
 
-"""
-Number of processed repos: 1408. Of which 60 were filtered out.
-Total time taken: 177.17 hours
-On average: 7.89 minutes per repository
-Standard Deviation: 5.55 minutes
-
-Total false positives (not actually using flask_login): 216 (16.04 %)
-Total repos that timed out: 15 (1.11 %)
-Total repos where the database could not be deleted: 12 (0.89 %)
-"""
-
 # TODO add number of failures (and reasons) per query type
-# TODO improve the stats, make them clearer and more precise
 path = Path(__file__).parent / './old_logs/7 - log_1_or_more_stars_flask_login_merged'
 output = Path(__file__).parent / './old_logs/7 - log_1_or_more_stars_flask_login_merged/log_analysis_merged.txt'
-csv_path = Path(__file__).parent / '../flask_login_merged_list.csv'
+csv_path = Path(__file__).parent / '../flask_login_filtered_merged_list_1_or_more_stars.csv'
 times = []
 thread_times = []
 failed_repos = []
@@ -26,7 +14,10 @@ failed_queries = []
 csv_dict = {}
 query_dict = {}
 unsupported_library = 0
-analysis_timedout = 0
+query_timeouts = 0
+query_command_failed = 0
+database_timeouts = 0
+analysis_buffer_error = 0
 database_deletion_error = 0
 
 with csv_path.open() as csv_file:
@@ -58,10 +49,12 @@ for file_name in log_dir:
                         item.append(line.split(" ")[5])
                         item.append("Repo: " + line.split(" ")[8])
                         item.append("Reason: Timedout")
+                        query_timeouts += 1
                     if "Error: Command failed:" in line:
                         item.append(line.split(" ")[5])
                         item.append("Repo: " + line.split(" ")[8])
                         item.append("Reason: Command failed")
+                        query_command_failed += 1
                     failed_queries.append(item)
                 if line.startswith("Time taken to run the queries and generate the statistics: "):
                     thread_times.append(float(line.split(" ")[-2]))
@@ -73,10 +66,12 @@ for file_name in log_dir:
                         item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
                         item.append(line.split(" ")[3])
                         item.append("Reason: Timedout")
+                        database_timeouts += 1
                     if line.endswith("ENOBUFS\n"):
                         item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
                         item.append(line.split(" ")[3])
                         item.append("Reason: Filled up buffer space")
+                        analysis_buffer_error += 1
                     if not line.endswith("ENOBUFS\n") and not line.endswith("ETIMEDOUT\n"):
                         item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
                         item.append(line.split(" ")[3])
@@ -84,8 +79,6 @@ for file_name in log_dir:
                     failed_repos.append(item)
                 if line == "Error: None of the supported libraries/frameworks is used\n":
                     unsupported_library += 1
-                if line.endswith("ETIMEDOUT\n"):
-                    analysis_timedout += 1
                 if line.startswith("Could not delete database for: "):
                     database_deletion_error += 1
 
@@ -105,14 +98,18 @@ with output.open("a") as file:
     file.write("\n\n")
     for item in failed_queries:
         file.write("Failed Query: " + item[0] + " " + item[1] + " " + item[2] + "\n")
+    file.write("\n\n")
+    for query in query_dict:
+        file.write("The " + query + " 's execution times had an average of " + str(round(statistics.fmean(query_dict[query]), 2)) + " seconds and a standard deviation of " + str(round(statistics.stdev(query_dict[query]), 2)) + " seconds\n")
+    file.write("\n\n")
     file.write("\nNumber of processed repos: " + str(len(times)) + "\n")
     file.write("Average time taken per thread: " + str(round(statistics.fmean(thread_times) / 3600.0, 2)) + " hours\n")
     file.write("Standard Deviation: " + str(round(statistics.stdev(thread_times) / 3600.0, 2)) + " hours\n")
     file.write("Average time taken per repository: " + str(round(statistics.fmean(times) / 60.0, 2)) + " minutes\n")
     file.write("Standard Deviation: " + str(round(statistics.stdev(times) / 60.0, 2)) + " minutes\n")
     file.write("Total false positives (not actually using flask_login): " + str(unsupported_library) + " (" + str(round(unsupported_library * 100 / len(times), 2)) + " %)\n")
-    file.write("Total timeouts (either database creation or query execution): " + str(analysis_timedout) + " (" + str(round(analysis_timedout * 100 / len(times), 2)) + " %)\n")
+    file.write("Total query errors because of timeouts: " + str(query_timeouts) + " (" + str(round(query_timeouts * 100 / len(times), 2)) + " %)\n")
+    file.write("Total query errors because the command failed: " + str(query_command_failed) + " (" + str(round(query_command_failed * 100 / len(times), 2)) + " %)\n")
+    file.write("Total analysis errors because of database creation timeouts: " + str(database_timeouts) + " (" + str(round(database_timeouts * 100 / len(times), 2)) + " %)\n")
+    file.write("Total analysis errors because of buffer errors: " + str(analysis_buffer_error) + " (" + str(round(analysis_buffer_error * 100 / len(times), 2)) + " %)\n")
     file.write("Total repos where the database could not be deleted: " + str(database_deletion_error) + " (" + str(round(database_deletion_error * 100 / len(times), 2)) + " %)\n")
-    file.write("\n\n")
-    for query in query_dict:
-        file.write("The " + query + " 's execution times had an average of " + str(round(statistics.fmean(query_dict[query]), 2)) + " seconds and a standard deviation of " + str(round(statistics.stdev(query_dict[query]), 2)) + " seconds\n")
