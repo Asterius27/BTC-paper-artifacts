@@ -118,20 +118,46 @@ module FlaskLogin {
             and result = node)
     }
 
-    // TODO need to test it and refine it
-    DataFlow::Node getConfigSourceFromEnvFile(API::Node config) {
-        exists(DataFlow::Node node | 
-            (node = config.getMember("from_envvar").getAValueReachingSink()
-                or node = config.getMember("from_prefixed_env").getAValueReachingSink())
-            and result = node)
+    predicate configSetFromEnvVar(Expr value) {
+        exists(DataFlow::Node env | 
+            (env = API::moduleImport("os").getMember("getenv").getACall()
+                or env = API::moduleImport("os").getMember("environ").getASubscript().getAValueReachableFromSource()
+                or env = API::moduleImport("os").getMember("environ").getMember("get").getAValueReachableFromSource())
+            and exists(env.getLocation().getFile().getRelativePath())
+            and exists(value.getLocation().getFile().getRelativePath())
+            and value.getAFlowNode() = env.asCfgNode())
     }
 
-    // TODO
     bindingset[config_name]
-    DataFlow::Node getConfigSourceFromEnvVar(string config_name, API::Node config) {
-        exists(DataFlow::Node node | 
-            node = config.getSubscript(config_name).getAValueReachingSink()
-            // and node = os.environ.get(), os.environ, os.getenv ... need to look more into it (the different ways of getting an environment variable)
-            and result = node)
+    Expr getConfigSinkFromEnvVar(string config_name) {
+        exists(Expr value | 
+            value = getConfigValue(config_name)
+            and configSetFromEnvVar(value)
+            and result = value)
+    }
+
+    bindingset[config_name, attribute_name]
+    Expr getConfigSinkFromEnvVar(string config_name, string attribute_name) {
+        exists(Expr value | 
+            value = getConfigValue(config_name, attribute_name)
+            and configSetFromEnvVar(value)
+            and result = value)
+    }
+
+    DataFlow::Node getConfigSourceFromEnvFile() {
+        result = Flask::FlaskApp::instance().getMember("config").getMember("from_envvar").getAValueReachableFromSource()
+        or result = Flask::FlaskApp::instance().getMember("config").getMember("from_prefixed_env").getAValueReachableFromSource()
+    }
+
+    DataFlow::Node getConfigSourceFromFile() {
+        result = Flask::FlaskApp::instance().getMember("config").getMember("from_file").getAValueReachableFromSource()
+    }
+
+    DataFlow::Node getConfigSourceFromMapping() {
+        result = Flask::FlaskApp::instance().getMember("config").getMember("from_mapping").getAValueReachableFromSource()
+    }
+
+    DataFlow::Node getConfigSourceFromKeys() {
+        result = Flask::FlaskApp::instance().getMember("config").getMember("fromkeys").getAValueReachableFromSource()
     }
 }

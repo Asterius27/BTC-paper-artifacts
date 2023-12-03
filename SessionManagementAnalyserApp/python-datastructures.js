@@ -98,6 +98,13 @@ let flask = {
         "Secret-key": {
             "un_secret_key": [false, ""]
         }
+    },
+    "ExplorativeQueries": {
+        "Explorative-queries": {
+            "un_config_set_from_env_var": [false, ""],
+            "un_config_set_from_file_mapping_keys": [false, ""],
+            "un_list_config_settings_from_env_var": [false, ""]
+        }
     }
 }
 
@@ -245,6 +252,13 @@ let descriptions = {
         "Redirect-everything-to-HTTPS": {
             "secure_ssl_redirect": "Login page/form sent over HTTP"
         }
+    },
+    "ExplorativeQueries": {
+        "Explorative-queries": {
+            "un_config_set_from_env_var": "How many repos set the whole flask config object from an environment variable",
+            "un_config_set_from_file_mapping_keys": "How many repos set the whole flask config object using the from_file or from_mapping or fromkeys functions",
+            "un_list_config_settings_from_env_var": "How many repos set one or more config settings from environment variables (using for example os.environ.get())"
+        }
     }
 }
 
@@ -282,6 +296,10 @@ let config = {
     "PasswordTheft": {
         "options": 'var options = {"title":"Password Theft","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'password_theft'
+    },
+    "ExplorativeQueries": {
+        "options": 'var options = {"title":"Explorative Queries","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'explorative_queries'
     }
 }
 

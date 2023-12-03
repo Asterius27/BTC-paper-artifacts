@@ -77,6 +77,8 @@ function listMostCommonKeywordsAndUsers() {
     });
 }
 
+// TODO improve this so that it also incorporates the results of list_config_settings_from_env_var
+// for example, when extracting repos with hardcoded secret keys, also show if there is another point in the program where the secret key was set from an env var (this can be found by looking at the results of list_config_settings_from_env_var)
 async function findInterestingRepos(queryDirectory, queryName, result, starsl, starsu) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);

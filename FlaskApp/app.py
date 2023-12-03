@@ -4,6 +4,7 @@ from typing import Dict, Optional
 from datetime import timedelta
 import datetime as dt
 from config import FlaskConfig, default_config
+import os
 
 def bar():
     return "secret_key"
@@ -85,8 +86,24 @@ app.config.from_pyfile("config.py") # just search if in the file there is, for e
 
 configuration()
 
+# Set config from environment
+app.config.from_prefixed_env()
+app.config.from_envvar('AN_ENV_VAR')
+app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY")
+app.config["SECRET_KEY"] = os.environ["ENVIRON_KEY"]
+app.config["SECRET_KEY"] = os.getenv("ENVIRON_KEY")
+app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY") or "Thisisasecret"
+app.config["SESSION_COOKIE_SAMESITE"] = os.environ.get("ENVIRON_SAMESITE")
+
+# TODO Other ways of setting config (don't think these are very used, just need to check how many repos use these and then decide whether to include them or not)
+app.config.from_mapping()
+app.config.from_file()
+app.config.fromkeys()
+
 def aux(a):
     return a
+
+testing = os.environ.get("ENVIRON_KEY")
 
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):

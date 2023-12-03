@@ -7,7 +7,7 @@ predicate valueCheck(Expr expr) {
 }
 
 where not exists(Expr expr | 
-  expr = FlaskLogin::getConfigValue("SESSION_COOKIE_NAME")
+  expr = FlaskLogin::getConfigValue("REMEMBER_COOKIE_NAME")
   and valueCheck(expr))
 select "Remember cookie doesn't use either the __Host- or __Secure- prefixes"
 

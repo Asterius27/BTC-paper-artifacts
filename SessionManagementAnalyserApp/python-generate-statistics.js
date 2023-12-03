@@ -198,6 +198,8 @@ function getTooltip(value, total, type) {
 }
 
 // TODO make it prettier
+// TODO parse the results of list_config_settings_from_env_var and create a chart or something that tells for every query that returned true if it was also set from an environment variable in another point of the program
+// for example number of repos that have the secret key hardcoded but also set to an env var in another point of the program
 function generateStatsPage(flask_counter, flask_error_counter, django_counter, django_error_counter, total, flask_total, django_total, failed_repos, custom_session_engine_repos, root_dir) {
     let html = '<html>\n'+
         '<head>\n'+
@@ -247,6 +249,10 @@ function generateStatsPage(flask_counter, flask_error_counter, django_counter, d
                 '<div>\n'+
                     '<h2>Logout Security</h2>\n'+
                     '<div id="client_side_session_invalidation"></div>\n'+
+                '</div>\n'+
+                '<div>\n'+
+                    '<h2>Explorative Queries</h2>\n'+
+                    '<div id="explorative_queries"></div>\n'+
                 '</div>\n'+
             '</body>\n'+
         '</html>';
