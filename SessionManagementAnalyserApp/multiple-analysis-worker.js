@@ -80,6 +80,7 @@ for (let i = 0; i < repos.length; i++) {
             }
         }
         */
+        // TODO instead of skipping the whole repo only skip the queries that were already executed
         if (repo.length === 1) {
             console.log("Starting analysis for: " + dir + "/" + repo[0]);
             let repoStartTime = new Date();
