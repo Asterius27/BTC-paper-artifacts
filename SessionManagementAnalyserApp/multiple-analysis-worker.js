@@ -70,7 +70,8 @@ await new Promise((resolve, reject) => {
 for (let i = 0; i < repos.length; i++) {
     if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
         let dir = root_dir + "/" + repos[i];
-        let repo = fs.readdirSync(dir);
+        let repo_subdir = fs.readdirSync(dir);
+        let repo = "";
         /*
         if (repo.length === 3) {
             for (let j = 0; j < repo.length; j++) {
@@ -80,34 +81,38 @@ for (let i = 0; i < repos.length; i++) {
             }
         }
         */
-        // TODO instead of skipping the whole repo only skip the queries that were already executed
-        if (repo.length === 1) {
-            console.log("Starting analysis for: " + dir + "/" + repo[0]);
+        for (let j = 0; j < repo_subdir.length; j++) {
+            if (!repo_subdir[j].endsWith("-results") && !repo_subdir[j].endsWith("-database")) {
+                repo = repo_subdir[j];
+            }
+        }
+        // if (repo.length === 1) {
+            console.log("Starting analysis for: " + dir + "/" + repo);
             let repoStartTime = new Date();
             try {
                 if (lang === "") {
                     throw new Error("Please specify a language, language detection is disabled for now"); // TODO
-                    execSync("npm start -- -s=" + dir + "/" + repo[0], { timeout: 1800000 });
+                    execSync("npm start -- -s=" + dir + "/" + repo, { timeout: 1800000 });
                 } else {
-                    execSync("codeql database create " + dir + "/" + repo[0] + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo[0] + " --threads=" + threads, {timeout: 1800000});
-                    execSync("npm start -- -s=" + dir + "/" + repo[0] + " -l=" + lang + " -t=" + threads + " -ct=" + current_thread); // , { timeout: 1800000 }
+                    execSync("codeql database create " + dir + "/" + repo + "-database --language=" + lang.toLowerCase() + " --source-root " + dir + "/" + repo + " --threads=" + threads, {timeout: 1800000});
+                    execSync("npm start -- -s=" + dir + "/" + repo + " -l=" + lang + " -t=" + threads + " -ct=" + current_thread); // , { timeout: 1800000 }
                 }
             } catch (e) {
-                console.log("Analysis failed for: " + dir + "/" + repo[0] + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
-                fs.appendFileSync('./log' + current_thread + '.txt', "Analysis failed for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
-                // failed.push(dir + "/" + repo[0]);
+                console.log("Analysis failed for: " + dir + "/" + repo + "\nReason: " + e + "\nPlease retry the analysis manually using the main app");
+                fs.appendFileSync('./log' + current_thread + '.txt', "Analysis failed for: " + dir + "/" + repo + " Reason: " + e + "\n");
+                // failed.push(dir + "/" + repo);
             }
-            if (fs.existsSync(dir + "/" + repo[0] + "-database")) {
+            if (fs.existsSync(dir + "/" + repo + "-database")) {
                 try {
-                    fs.rmSync(dir + "/" + repo[0] + "-database", { recursive: true, force: true });
+                    fs.rmSync(dir + "/" + repo + "-database", { recursive: true, force: true });
                 } catch(e) {
-                    fs.appendFileSync('./log' + current_thread + '.txt', "Could not delete database for: " + dir + "/" + repo[0] + " Reason: " + e + "\n");
+                    fs.appendFileSync('./log' + current_thread + '.txt', "Could not delete database for: " + dir + "/" + repo + " Reason: " + e + "\n");
                 }
             }
             let repoEndTime = new Date();
             let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
-            fs.appendFileSync('./log' + current_thread + '.txt', "Time taken to run the queries on " + dir + "/" + repo[0] + ": " + repoTimeElapsed + " seconds.\n");
-        }
+            fs.appendFileSync('./log' + current_thread + '.txt', "Time taken to run the queries on " + dir + "/" + repo + ": " + repoTimeElapsed + " seconds.\n");
+        // }
     }
 }
 /*
