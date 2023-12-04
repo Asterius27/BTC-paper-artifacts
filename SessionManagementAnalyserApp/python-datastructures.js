@@ -34,8 +34,8 @@ let flask = {
         "Cookie-name-prefixes": {
             "ut_session_cookie_name_manually_set": [false, ""],
             "ut_remember_cookie_name_manually_set": [false, ""],
-            "sf_remember_cookie_name_prefix": [false, ""],
-            "sf_session_cookie_name_prefix": [false, ""]
+            "st_remember_cookie_name_prefix": [false, ""],
+            "st_session_cookie_name_prefix": [false, ""]
         }
     },
     "CSRF": {
