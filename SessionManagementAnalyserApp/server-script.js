@@ -77,8 +77,7 @@ function listMostCommonKeywordsAndUsers() {
     });
 }
 
-// TODO improve this so that it also incorporates the results of list_config_settings_from_env_var
-// for example, when extracting repos with hardcoded secret keys, also show if there is another point in the program where the secret key was set from an env var (this can be found by looking at the results of list_config_settings_from_env_var)
+// TODO test this
 async function findInterestingRepos(queryDirectory, queryName, result, starsl, starsu) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
@@ -102,17 +101,44 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                 if (repo[j].endsWith("-results")) {
                     if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
                         let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName, 'utf-8').split("\n");
+                        let set_from_env = false;
+                        let set_from_env_locations = [];
+                        if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/Explorative-queries/un_list_config_settings_from_env_var.txt")) {
+                            let query_name = queryName.split(".")[0];
+                            set_from_env = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/Explorative-queries/un_list_config_settings_from_env_var.txt", 'utf-8').includes(query_name);
+                            if (set_from_env) {
+                                let env_results = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/Explorative-queries/un_list_config_settings_from_env_var.txt", 'utf-8').split("\n");
+                                for (let h = 0; h < env_results.length; h++) {
+                                    if (env_results[h].includes(query_name)) {
+                                        set_from_env_locations.push(env_results[h].split(" ")[2]);
+                                    }
+                                }
+                            }
+                        }
                         query.pop();
                         if (query.length > 2 && result) {
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
                             for (let j = 1; j < query.length; j++) {
                                 fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[j] + "\n");
                             }
+                            if (set_from_env) {
+                                fs.appendFileSync('./repos_with_interesting_results.txt', "And it was also set from an environment variable at the following locations: \n");
+                                for (let j = 0; j < set_from_env_locations; j++) {
+                                    fs.appendFileSync('./repos_with_interesting_results.txt', set_from_env_locations[j] + "\n");
+                                }
+                            }
                             fs.appendFileSync('./repos_with_interesting_results.txt', "\n");
                         }
                         if (query.length <= 2 && !result) {
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[query.length - 1] + "\n");
+                            if (set_from_env) {
+                                fs.appendFileSync('./repos_with_interesting_results.txt', "And it was also set from an environment variable at the following locations: \n");
+                                for (let j = 0; j < set_from_env_locations; j++) {
+                                    fs.appendFileSync('./repos_with_interesting_results.txt', set_from_env_locations[j] + "\n");
+                                }
+                            }
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "\n");
                         }
                     }
                 }
