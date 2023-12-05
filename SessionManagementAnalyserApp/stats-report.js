@@ -65,6 +65,8 @@ let flask_counter = {}
 let flask_error_counter = {}
 let django_counter = {}
 let django_error_counter = {}
+let false_positives_counter_flask = {}
+let false_positives_counter_django = {}
 let flask_repos = 0;
 let django_repos = 0;
 let failed_repos = 0;
@@ -90,11 +92,11 @@ for (let i = 0; i < repos.length; i++) {
                 if (info[0] === "python") {
                     if (info.some(str => str.includes("flask"))) {
                         flask_repos++;
-                        [flask_counter, flask_error_counter] = countRepos(flask_counter, flask_error_counter, "flask", dir + "/" + res);
+                        [flask_counter, flask_error_counter, false_positives_counter_flask] = countRepos(flask_counter, flask_error_counter, false_positives_counter_flask, "flask", dir + "/" + res);
                     }
                     if (info.some(str => str.includes("django"))) {
                         django_repos++;
-                        [django_counter, django_error_counter] = countRepos(django_counter, django_error_counter, "django", dir + "/" + res);
+                        [django_counter, django_error_counter, false_positives_counter_django] = countRepos(django_counter, django_error_counter, false_positives_counter_django, "django", dir + "/" + res);
                     }
                     if (!info.some(str => str.includes("flask")) && !info.some(str => str.includes("django"))) {
                         fs.appendFileSync('./log_stats_generator.txt', "Read info file, but it doesn't contain either flask nor django, repo directory: " + dir + "\n");
@@ -117,9 +119,9 @@ for (let i = 0; i < repos.length; i++) {
     }
 }
 if (flask_repos === 0) {
-    [flask_counter, flask_error_counter] = initializeCounter(flask_counter, flask_error_counter, "flask");
+    [flask_counter, flask_error_counter, false_positives_counter_flask] = initializeCounter(flask_counter, flask_error_counter, false_positives_counter_flask, "flask");
 }
 if (django_repos === 0) {
-    [django_counter, django_error_counter] = initializeCounter(django_counter, django_error_counter, "django");
+    [django_counter, django_error_counter, false_positives_counter_django] = initializeCounter(django_counter, django_error_counter, false_positives_counter_django, "django");
 }
-generateStatsPage(flask_counter, flask_error_counter, django_counter, django_error_counter, number_of_repos, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);
+generateStatsPage(flask_counter, flask_error_counter, false_positives_counter_flask, django_counter, django_error_counter, false_positives_counter_django, number_of_repos, flask_repos, django_repos, failed_repos, custom_session_engine_repos, root_dir);

@@ -1,6 +1,8 @@
 import { getFlaskQueries, getDjangoQueries, getDescriptions, getConfig } from './python-datastructures.js';
 import * as fs from 'fs';
 
+// TODO refactor eliminating duplicate code
+
 let query_errors = 0;
 
 // TODO separate django logout query in using client side sessions and logout is called and using server side sessions and logout is called
@@ -39,121 +41,167 @@ function readQueryResults(outputLocation, queryName) {
     }
 }
 
-function countRepos(counter, error_counter, framework, root_dir) {
-    if (framework === "flask") {
-        let flask_queries = getFlaskQueries();
-        for (let [key, value] of Object.entries(flask_queries)) {
-            for (let [dir, files] of Object.entries(value)) {
-                for (let [file, arr] of Object.entries(files)) {
-                    if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
-                        let query_result = readQueryResults(root_dir + "/" + dir, file);
-                        if (query_result[0]) {
-                            if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
-                                counter[key][dir][file]++;
-                            } else {
-                                if (counter[key] === undefined) {
-                                    counter[key] = {};
-                                    error_counter[key] = {};
-                                }
-                                if (counter[key][dir] === undefined) {
-                                    counter[key][dir] = {};
-                                    error_counter[key][dir] = {};
-                                }
-                                counter[key][dir][file] = 1;
-                                error_counter[key][dir][file] = 0;
-                            }
-                        } else {
-                            if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
-                                if (counter[key] === undefined) {
-                                    counter[key] = {};
-                                    error_counter[key] = {};
-                                }
-                                if (counter[key][dir] === undefined) {
-                                    counter[key][dir] = {};
-                                    error_counter[key][dir] = {};
-                                }
-                                counter[key][dir][file] = 0;
-                                if (query_result[1]) {
-                                    error_counter[key][dir][file] = 1;
-                                } else {
-                                    error_counter[key][dir][file] = 0;
-                                }
-                            } else {
-                                if (query_result[1]) {
-                                    error_counter[key][dir][file]++;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+function readSetFromEnvResults(outputLocation, queryName) {
+    try {
+        let lines = fs.readFileSync(outputLocation + "/un_list_config_settings_from_env_var.txt", 'utf-8');
+        if (lines.includes(queryName)) {
+            return true;
+        } else {
+            return false;
         }
+    } catch (e) {
+        query_errors++;
+        fs.appendFileSync('./log_stats_generator.txt', "Failed to read query results for: " + outputLocation + "/un_list_config_settings_from_env_var.txt" + " Reason: " + e + "\n");
+        return false;
     }
-    if (framework === "django") {
-        let django_queries = getDjangoQueries();
-        for (let [key, value] of Object.entries(django_queries)) {
-            for (let [dir, files] of Object.entries(value)) {
-                for (let [file, arr] of Object.entries(files)) {
-                    if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
-                        let query_result = readQueryResults(root_dir + "/" + dir, file);
-                        if (query_result[0]) {
-                            if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
-                                counter[key][dir][file]++;
-                            } else {
-                                if (counter[key] === undefined) {
-                                    counter[key] = {};
-                                    error_counter[key] = {};
-                                }
-                                if (counter[key][dir] === undefined) {
-                                    counter[key][dir] = {};
-                                    error_counter[key][dir] = {};
-
-                                }
-                                counter[key][dir][file] = 1;
-                                error_counter[key][dir][file] = 0;
-                            }
-                        } else {
-                            if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
-                                if (counter[key] === undefined) {
-                                    counter[key] = {};
-                                    error_counter[key] = {};
-                                }
-                                if (counter[key][dir] === undefined) {
-                                    counter[key][dir] = {};
-                                    error_counter[key][dir] = {};
-                                }
-                                counter[key][dir][file] = 0;
-                                if (query_result[1]) {
-                                    error_counter[key][dir][file] = 1;
-                                } else {
-                                    error_counter[key][dir][file] = 0;
-                                }
-                            } else {
-                                if (query_result[1]) {
-                                    error_counter[key][dir][file]++;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return [counter, error_counter];
 }
 
-function initializeCounter(counter, error_counter, framework) {
+function countRepos(counter, error_counter, false_positives_counter, framework, root_dir) {
+    if (framework === "flask") {
+        let flask_queries = getFlaskQueries();
+        for (let [key, value] of Object.entries(flask_queries)) {
+            for (let [dir, files] of Object.entries(value)) {
+                for (let [file, arr] of Object.entries(files)) {
+                    if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
+                        let query_result = readQueryResults(root_dir + "/" + dir, file);
+                        if (query_result[0]) {
+                            let isAlsoSetFromEnv = readSetFromEnvResults(root_dir + "/Explorative-queries", file);
+                            if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
+                                counter[key][dir][file]++;
+                                if (isAlsoSetFromEnv) {
+                                    false_positives_counter[key][dir][file]++;
+                                }
+                            } else {
+                                if (counter[key] === undefined) {
+                                    counter[key] = {};
+                                    error_counter[key] = {};
+                                    false_positives_counter[key] = {};
+                                }
+                                if (counter[key][dir] === undefined) {
+                                    counter[key][dir] = {};
+                                    error_counter[key][dir] = {};
+                                    false_positives_counter[key][dir] = {};
+                                }
+                                counter[key][dir][file] = 1;
+                                error_counter[key][dir][file] = 0;
+                                if (isAlsoSetFromEnv) {
+                                    false_positives_counter[key][dir][file] = 1;
+                                } else {
+                                    false_positives_counter[key][dir][file] = 0;
+                                }
+                            }
+                        } else {
+                            if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
+                                if (counter[key] === undefined) {
+                                    counter[key] = {};
+                                    error_counter[key] = {};
+                                    false_positives_counter[key] = {};
+                                }
+                                if (counter[key][dir] === undefined) {
+                                    counter[key][dir] = {};
+                                    error_counter[key][dir] = {};
+                                    false_positives_counter[key][dir] = {};
+                                }
+                                counter[key][dir][file] = 0;
+                                false_positives_counter[key][dir][file] = 0;
+                                if (query_result[1]) {
+                                    error_counter[key][dir][file] = 1;
+                                } else {
+                                    error_counter[key][dir][file] = 0;
+                                }
+                            } else {
+                                if (query_result[1]) {
+                                    error_counter[key][dir][file]++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if (framework === "django") {
+        let django_queries = getDjangoQueries();
+        for (let [key, value] of Object.entries(django_queries)) {
+            for (let [dir, files] of Object.entries(value)) {
+                for (let [file, arr] of Object.entries(files)) {
+                    if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
+                        let query_result = readQueryResults(root_dir + "/" + dir, file);
+                        if (query_result[0]) {
+                            let isAlsoSetFromEnv = readSetFromEnvResults(root_dir + "/Explorative-queries", file); // TODO the query doesn't exists yet
+                            if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
+                                counter[key][dir][file]++;
+                                if (isAlsoSetFromEnv) {
+                                    false_positives_counter[key][dir][file]++;
+                                }
+                            } else {
+                                if (counter[key] === undefined) {
+                                    counter[key] = {};
+                                    error_counter[key] = {};
+                                    false_positives_counter[key] = {};
+                                }
+                                if (counter[key][dir] === undefined) {
+                                    counter[key][dir] = {};
+                                    error_counter[key][dir] = {};
+                                    false_positives_counter[key][dir] = {};
+
+                                }
+                                counter[key][dir][file] = 1;
+                                error_counter[key][dir][file] = 0;
+                                if (isAlsoSetFromEnv) {
+                                    false_positives_counter[key][dir][file] = 1;
+                                } else {
+                                    false_positives_counter[key][dir][file] = 0;
+                                }
+                            }
+                        } else {
+                            if (counter[key] === undefined || counter[key][dir] === undefined || counter[key][dir][file] === undefined) {
+                                if (counter[key] === undefined) {
+                                    counter[key] = {};
+                                    error_counter[key] = {};
+                                    false_positives_counter[key] = {};
+                                }
+                                if (counter[key][dir] === undefined) {
+                                    counter[key][dir] = {};
+                                    error_counter[key][dir] = {};
+                                    false_positives_counter[key][dir] = {};
+                                }
+                                counter[key][dir][file] = 0;
+                                false_positives_counter[key][dir][file] = 0;
+                                if (query_result[1]) {
+                                    error_counter[key][dir][file] = 1;
+                                } else {
+                                    error_counter[key][dir][file] = 0;
+                                }
+                            } else {
+                                if (query_result[1]) {
+                                    error_counter[key][dir][file]++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return [counter, error_counter, false_positives_counter];
+}
+
+function initializeCounter(counter, error_counter, false_positives_counter, framework) {
     if (framework === "flask") {
         let flask_queries = getFlaskQueries();
         for (let [key, value] of Object.entries(flask_queries)) {
             counter[key] = {};
             error_counter[key] = {};
+            false_positives_counter[key] = {};
             for (let [dir, files] of Object.entries(value)) {
                 counter[key][dir] = {};
                 error_counter[key][dir] = {};
+                false_positives_counter[key][dir] = {};
                 for (let [file, arr] of Object.entries(files)) {
                     counter[key][dir][file] = 0;
                     error_counter[key][dir][file] = 0;
+                    false_positives_counter[key][dir][file] = 0;
                 }
             }
         }
@@ -163,17 +211,20 @@ function initializeCounter(counter, error_counter, framework) {
         for (let [key, value] of Object.entries(django_queries)) {
             counter[key] = {};
             error_counter[key] = {};
+            false_positives_counter[key] = {};
             for (let [dir, files] of Object.entries(value)) {
                 counter[key][dir] = {};
                 error_counter[key][dir] = {};
+                false_positives_counter[key][dir] = {};
                 for (let [file, arr] of Object.entries(files)) {
                     counter[key][dir][file] = 0;
                     error_counter[key][dir][file] = 0;
+                    false_positives_counter[key][dir][file] = 0;
                 }
             }
         }
     }
-    return [counter, error_counter];
+    return [counter, error_counter, false_positives_counter];
 }
 
 function getCounterKey(counter, key, dir, file) {
@@ -189,18 +240,25 @@ function getCounterKey(counter, key, dir, file) {
     return "keyNotFound";
 }
 
-function getTooltip(value, total, type) {
+// TODO test this
+function getTooltip(value, total, type, false_positives = 0) {
     let percentage = 0;
     if (total !== 0) {
         percentage =  value * 100 / total;
     }
-    return type + ": " + value + " (" + percentage + " %)";
+    if (false_positives === 0) {
+        return type + ": " + value + " (" + percentage.toFixed(2) + " %)";
+    } else {
+        let false_positives_percentage = 0;
+        if (value !== 0) {
+            false_positives_percentage =  false_positives * 100 / value;
+        }
+        return type + ": " + value + " (" + percentage.toFixed(2) + " %)\nNumber of potential false positives, meaning it\'s also set from an env var (" + type + "): " + false_positives + " (" + false_positives_percentage.toFixed(2) + " %)";
+    }
 }
 
 // TODO make it prettier
-// TODO parse the results of list_config_settings_from_env_var and create a chart or something that tells for every query that returned true if it was also set from an environment variable in another point of the program
-// for example number of repos that have the secret key hardcoded but also set to an env var in another point of the program
-function generateStatsPage(flask_counter, flask_error_counter, django_counter, django_error_counter, total, flask_total, django_total, failed_repos, custom_session_engine_repos, root_dir) {
+function generateStatsPage(flask_counter, flask_error_counter, false_positives_counter_flask, django_counter, django_error_counter, false_positives_counter_django, total, flask_total, django_total, failed_repos, custom_session_engine_repos, root_dir) {
     let html = '<html>\n'+
         '<head>\n'+
             '<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>\n'+
@@ -217,9 +275,10 @@ function generateStatsPage(flask_counter, flask_error_counter, django_counter, d
             for (let [file, arr] of Object.entries(files)) {
                 let flask_file = getCounterKey(flask_counter, key, dir, file);
                 let django_file = getCounterKey(django_counter, key, dir, file);
-                html += '["' + queries_desc[key][dir][file] + '", ' + (flask_counter[key]?.[dir]?.[flask_file]|0) + ', "' + getTooltip((flask_counter[key]?.[dir]?.[flask_file]|0), flask_total, "Flask/Flask-login") + '", ' + 
-                    (flask_error_counter[key]?.[dir]?.[flask_file]|0) + ', "' + getTooltip((flask_error_counter[key]?.[dir]?.[flask_file]|0), flask_total, "Failed Flask Queries") + '", ' + (django_counter[key]?.[dir]?.[django_file]|0) + ', "' + 
-                    getTooltip((django_counter[key]?.[dir]?.[django_file]|0), django_total, "Django") + '", ' + (django_error_counter[key]?.[dir]?.[django_file]|0) + ', "' + getTooltip((django_error_counter[key]?.[dir]?.[django_file]|0), django_total, "Failed Django Queries") + '", ""],\n';
+                html += '["' + queries_desc[key][dir][file] + '", ' + (flask_counter[key]?.[dir]?.[flask_file]|0) + ', "' + getTooltip((flask_counter[key]?.[dir]?.[flask_file]|0), flask_total, "Flask/Flask-login", (false_positives_counter_flask[key]?.[dir]?.[flask_file]|0)) + 
+                    '", ' + (flask_error_counter[key]?.[dir]?.[flask_file]|0) + ', "' + getTooltip((flask_error_counter[key]?.[dir]?.[flask_file]|0), flask_total, "Failed Flask Queries") + '", ' + (django_counter[key]?.[dir]?.[django_file]|0) + ', "' + 
+                    getTooltip((django_counter[key]?.[dir]?.[django_file]|0), django_total, "Django", (false_positives_counter_django[key]?.[dir]?.[django_file]|0)) + '", ' + (django_error_counter[key]?.[dir]?.[django_file]|0) + ', "' + 
+                    getTooltip((django_error_counter[key]?.[dir]?.[django_file]|0), django_total, "Failed Django Queries") + '", ""],\n';
             }
         }
         html += ']);\n';
