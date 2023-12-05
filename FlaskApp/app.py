@@ -125,6 +125,9 @@ class User(UserMixin):
         resu = 8
         x = 5
         return self.id
+    
+    def is_active(self):
+        return True
 
 users: Dict[str, "User"] = {
     '1': User(1, 'mario', '1234'),
@@ -226,5 +229,5 @@ def open_redirect_new_new(user):
     else:
         x = 5
     z = 9
-    login_user(user, remember=True, duration=dt.timedelta(weeks=10))
+    login_user(user, remember=True, duration=dt.timedelta(weeks=10), force=True)
     session["ciao"] = "bella"
