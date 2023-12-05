@@ -2,14 +2,15 @@ import python
 import semmle.python.ApiGraphs
 
 predicate defaultDeactivation() {
-    not exists(Function f, Class cls | 
+    exists (Class cls | 
         cls.getClassObject().getASuperType().getPyClass().getName() = "UserMixin"
-        and cls.getAMethod() = f
-        and f.getName() = "is_active")
+        and not exists(Function f | 
+            cls.getAMethod() = f
+            and f.getName() = "is_active"))
 }
 
-from DataFlow::Node node
-where ((node = API::moduleImport("flask_login").getMember("login_user").getKeywordParameter("force").getAValueReachingSink()
+where exists(DataFlow::Node node | 
+        (node = API::moduleImport("flask_login").getMember("login_user").getKeywordParameter("force").getAValueReachingSink()
             or node = API::moduleImport("flask_login").getMember("login_user").getParameter(3).getAValueReachingSink())
         and node.asExpr().(ImmutableLiteral).booleanValue() = false)
     or not exists(DataFlow::Node force | 
