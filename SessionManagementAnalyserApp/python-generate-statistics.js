@@ -310,8 +310,9 @@ function generateStatsPage(flask_counter, flask_error_counter, false_positives_c
                     '<div id="client_side_session_invalidation"></div>\n'+
                 '</div>\n'+
                 '<div>\n'+
-                    '<h2>Signup Security</h2>\n'+
+                    '<h2>Signup/Account Management Security</h2>\n'+
                     '<div id="password_hashing"></div>\n'+
+                    '<div id="account_deactivation"></div>\n'+
                 '</div>\n'+
                 '<div>\n'+
                     '<h2>Explorative Queries</h2>\n'+

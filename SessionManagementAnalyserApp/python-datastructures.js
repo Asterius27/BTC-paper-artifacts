@@ -113,6 +113,14 @@ let flask = {
             "sf_password_hashing_algorithm": [false, ""],
             "sf_password_hashing_rounds": [false, ""]
         }
+    },
+    "AccountDeactivation": {
+        "Accounte-deactivation": {
+            "un_deactivation_not_used": [false, ""],
+            "ut_deactivated_accounts_login": [false, ""],
+            "sf_deactivated_accounts_default": [false, ""],
+            "sf_deactivated_accounts_handling": [false, ""]
+        }
     }
 }
 
@@ -275,6 +283,14 @@ let descriptions = {
             "sf_password_hashing_algorithm": "Using a bugged hashing algorithm",
             "sf_password_hashing_rounds": "Using less than 12 rounds (default and recommended value) for hashing"
         }
+    },
+    "AccountDeactivation": {
+        "Accounte-deactivation": {
+            "un_deactivation_not_used": "Deactivated accounts are not allowed to login, but is_active behaviour is left as default (always returns true)",
+            "ut_deactivated_accounts_login": "Deactivated accounts are allowed to login",
+            "sf_deactivated_accounts_default": "Deactivated accounts are allowed to login and is_active behaviour is left as default (always returns true)",
+            "sf_deactivated_accounts_handling": "Deactivated accounts are allowed to login and user class overrides is_active default behaviour with some custom logic"
+        }
     }
 }
 
@@ -320,6 +336,10 @@ let config = {
     "PasswordHashing": {
         "options": 'var options = {"title":"Password Hashing","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'password_hashing'
+    },
+    "AccountDeactivation": {
+        "options": 'var options = {"title":"Account Deactivation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'account_deactivation'
     }
 }
 
