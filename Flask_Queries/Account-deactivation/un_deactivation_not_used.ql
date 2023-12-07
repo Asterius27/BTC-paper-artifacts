@@ -4,9 +4,13 @@ import semmle.python.ApiGraphs
 predicate defaultDeactivation() {
     exists (Class cls | 
         cls.getClassObject().getASuperType().getPyClass().getName() = "UserMixin"
-        and not exists(Function f | 
-            cls.getAMethod() = f
-            and f.getName() = "is_active"))
+        and (not exists(Function f | 
+                cls.getAMethod() = f
+                and f.getName() = "is_active")
+            or exists(Function f | 
+                cls.getAMethod() = f
+                and f.getName() = "is_active"
+                and f.getReturnNode().isLiteral())))
 }
 
 where exists(DataFlow::Node node | 
