@@ -5,6 +5,7 @@ from datetime import timedelta
 import datetime as dt
 from config import FlaskConfig, default_config
 import os
+from flask_bcrypt import Bcrypt
 
 def bar():
     return "secret_key"
@@ -13,6 +14,7 @@ def configuration():
     app.config["SESSION_COOKIE_HTTPONLY"] = False
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 key = bar()
 
 # Hardcoded and short secret key
@@ -183,6 +185,12 @@ def login(id, password):
         
         return redirect(url_for("index"))
     return "<h1>Invalid user id or password</h1>"
+
+@app.get("/signup")
+def signup():
+    # Default is 12 rounds, shouldn't be lowered, default prefix (algorithm) is 2b, other prefixes should not be used since they are bugged
+    pw_hash = bcrypt.generate_password_hash("password", rounds=10, prefix='2a')
+    return "Signup"
 
 @app.get("/logout")
 @login_required

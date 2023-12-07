@@ -105,6 +105,14 @@ let flask = {
             "un_config_set_from_file_mapping_keys": [false, ""],
             "un_list_config_settings_from_env_var": [false, ""]
         }
+    },
+    "PasswordHashing": {
+        "Password-hashing": {
+            "ut_password_hashing_algorithm_manually_set": [false, ""],
+            "ut_password_hashing_rounds_manually_set": [false, ""],
+            "sf_password_hashing_algorithm": [false, ""],
+            "sf_password_hashing_rounds": [false, ""]
+        }
     }
 }
 
@@ -235,7 +243,7 @@ let descriptions = {
             "session_protection_strong": "Session Protection is set to strong"
         },
         "Incorrect-config-changes": {
-            "incorrect_config_changes": "Incorrect Config Changes"
+            "incorrect_config_changes": "Some config changes are made after the user has logged in"
         }
     },
     "CookieTampering": {
@@ -258,6 +266,14 @@ let descriptions = {
             "un_config_set_from_env_var": "How many repos set the whole flask config object from an environment variable",
             "un_config_set_from_file_mapping_keys": "How many repos set the whole flask config object using the from_file or from_mapping or fromkeys functions",
             "un_list_config_settings_from_env_var": "How many repos set one or more config settings from environment variables (using for example os.environ.get())"
+        }
+    },
+    "PasswordHashing": {
+        "Password-hashing": {
+            "ut_password_hashing_algorithm_manually_set": "The password hashing algorithm is manually set",
+            "ut_password_hashing_rounds_manually_set": "The number of rounds of the hashing algorithm is manually set",
+            "sf_password_hashing_algorithm": "Using a bugged hashing algorithm",
+            "sf_password_hashing_rounds": "Using less than 12 rounds (default and recommended value) for hashing"
         }
     }
 }
@@ -300,6 +316,10 @@ let config = {
     "ExplorativeQueries": {
         "options": 'var options = {"title":"Explorative Queries","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'explorative_queries'
+    },
+    "PasswordHashing": {
+        "options": 'var options = {"title":"Password Hashing","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'password_hashing'
     }
 }
 
