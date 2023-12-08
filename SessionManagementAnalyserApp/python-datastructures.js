@@ -108,6 +108,7 @@ let flask = {
     },
     "PasswordHashing": {
         "Password-hashing": {
+            "un_flask_bcrypt_is_used": [false, ""],
             "ut_password_hashing_algorithm_manually_set": [false, ""],
             "ut_password_hashing_rounds_manually_set": [false, ""],
             "sf_password_hashing_algorithm": [false, ""],
@@ -278,6 +279,7 @@ let descriptions = {
     },
     "PasswordHashing": {
         "Password-hashing": {
+            "un_flask_bcrypt_is_used": "Flask-Bcrypt is being used by the application",
             "ut_password_hashing_algorithm_manually_set": "The password hashing algorithm is manually set",
             "ut_password_hashing_rounds_manually_set": "The number of rounds of the hashing algorithm is manually set",
             "sf_password_hashing_algorithm": "Using a bugged hashing algorithm",
