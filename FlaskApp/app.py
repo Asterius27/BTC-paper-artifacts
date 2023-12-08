@@ -129,6 +129,8 @@ class User(UserMixin):
         return self.id
     
     def is_active(self):
+        if self.id:
+            return False
         return True
 
 users: Dict[str, "User"] = {

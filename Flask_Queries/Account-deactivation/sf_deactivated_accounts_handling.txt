@@ -1,0 +1,3 @@
+|    cls     |                                          col1                                           |                                                        col2                                                        |
++------------+-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Class User | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:110 | Deactivated users are allowed to log in and deactivation is handled by overriding the is_active UserMixin property |
