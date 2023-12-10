@@ -6,6 +6,9 @@ import datetime as dt
 from config import FlaskConfig, default_config
 import os
 from flask_bcrypt import Bcrypt
+from wtforms import Form, PasswordField, ValidationError, BaseForm
+from wtforms.validators import Length, Regexp, length
+from flask_wtf import FlaskForm
 
 def bar():
     return "secret_key"
@@ -139,6 +142,14 @@ users: Dict[str, "User"] = {
     '3': User(3, 'giovanni', 'abcd')
 }
 
+class TestForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
+    # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
+    pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User()])
+    # another way to define custom validators
+    def validate_pwd(form, field):
+        if field.data < 16:
+            raise ValidationError("Password is too short")
+
 def helper():
     h = 'max-age=31536000; includeSubDomains' # 1 year
     return h
@@ -190,8 +201,15 @@ def login(id, password):
 
 @app.get("/signup")
 def signup():
-    # Default is 12 rounds, shouldn't be lowered, default prefix (algorithm) is 2b, other prefixes should not be used since they are bugged
-    pw_hash = bcrypt.generate_password_hash("password", rounds=10, prefix='2a')
+    form = TestForm(request.POST)
+    # check that form.validate() is called on all forms that have the password field with validators (TODO extra_validators aren't checked for now)
+    # TODO can also validate single fields instead of the whole form (not checked for now)
+    if request.POST and form.validate():
+        # Default is 12 rounds, shouldn't be lowered, default prefix (algorithm) is 2b, other prefixes should not be used since they are bugged
+        pw_hash = bcrypt.generate_password_hash("password", rounds=10, prefix='2a')
+    # When using flask_wtf's FlaskForm you can also call validate_on_submit()
+    if form.validate_on_submit():
+        return redirect('/success')
     return "Signup"
 
 @app.get("/logout")
