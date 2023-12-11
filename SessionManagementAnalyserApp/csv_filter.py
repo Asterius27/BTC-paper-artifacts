@@ -4,7 +4,7 @@ from pathlib import Path
 # Number of repos: 1408 (with 10 or more stars), of which 92 (6.53%) where filtered out
 
 blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "esercizi", "internship", "programming"]
-blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["youtube", "code"], ["python", "code"]]
+blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"]]
 blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
 path = Path(__file__).parent / '../flask_login_merged_list.csv'
 path_o = Path(__file__).parent / '../flask_login_filtered_merged_list_1_or_more_stars.csv'
