@@ -9,6 +9,11 @@ from flask_bcrypt import Bcrypt
 from wtforms import Form, PasswordField, ValidationError, BaseForm
 from wtforms.validators import Length, Regexp, length
 from flask_wtf import FlaskForm
+from passlib.hash import pbkdf2_sha256
+from argon2 import PasswordHasher
+import hashlib
+import bcrypt as bcr
+from werkzeug import security
 
 def bar():
     return "secret_key"
@@ -104,6 +109,14 @@ app.config["SESSION_COOKIE_SAMESITE"] = os.environ.get("ENVIRON_SAMESITE")
 app.config.from_mapping()
 app.config.from_file()
 app.config.fromkeys()
+
+# Other password hashing libraries
+hash = pbkdf2_sha256.hash("password")
+ph = PasswordHasher()
+hash = ph.hash("correct horse battery staple")
+hashed = hashlib.md5("password")
+hashed = bcr.hashpw("password", bcr.gensalt())
+hash = security.generate_password_hash("password")
 
 def aux(a):
     return a
