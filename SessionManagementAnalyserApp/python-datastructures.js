@@ -109,6 +109,11 @@ let flask = {
     "PasswordHashing": {
         "Password-hashing": {
             "un_flask_bcrypt_is_used": [false, ""],
+            "un_argon2_is_used": [false, ""],
+            "un_bcrypt_is_used": [false, ""],
+            "un_hashlib_is_used": [false, ""],
+            "un_passlib_is_used": [false, ""],
+            "un_werkzeug_is_used": [false, ""],
             "ut_password_hashing_algorithm_manually_set": [false, ""],
             "ut_password_hashing_rounds_manually_set": [false, ""],
             "sf_password_hashing_algorithm": [false, ""],
@@ -121,6 +126,16 @@ let flask = {
             "ut_deactivated_accounts_login": [false, ""],
             "sf_deactivated_accounts_default": [false, ""],
             "sf_deactivated_accounts_handling": [false, ""]
+        }
+    },
+    "PasswordStrength": {
+        "Password-strength": {
+            "un_flask_wtf_is_used": [false, ""],
+            "un_wtforms_is_used": [false, ""],
+            "un_form_with_password_field_is_validated": [false, ""],
+            "un_password_custom_checks": [false, ""],
+            "un_password_length_check": [false, ""],
+            "un_password_regexp_check": [false, ""]
         }
     }
 }
@@ -280,6 +295,11 @@ let descriptions = {
     "PasswordHashing": {
         "Password-hashing": {
             "un_flask_bcrypt_is_used": "Flask-Bcrypt is being used by the application",
+            "un_argon2_is_used": "Argon2 is being used by the application",
+            "un_bcrypt_is_used": "Bcrypt is being used by the application",
+            "un_hashlib_is_used": "Hashlib is being used by the application",
+            "un_passlib_is_used": "Passlib is being used by the application",
+            "un_werkzeug_is_used": "Werkzeug is being used by the application",
             "ut_password_hashing_algorithm_manually_set": "The password hashing algorithm is manually set",
             "ut_password_hashing_rounds_manually_set": "The number of rounds of the hashing algorithm is manually set",
             "sf_password_hashing_algorithm": "Using a bugged hashing algorithm",
@@ -292,6 +312,16 @@ let descriptions = {
             "ut_deactivated_accounts_login": "Deactivated accounts are allowed to login",
             "sf_deactivated_accounts_default": "Deactivated accounts are allowed to login and is_active behaviour is left as default (always returns true)",
             "sf_deactivated_accounts_handling": "Deactivated accounts are allowed to login and user class overrides is_active default behaviour with some custom logic"
+        }
+    },
+    "PasswordStrength": {
+        "Password-strength": {
+            "un_flask_wtf_is_used": "Flask-WTF is being used by the application",
+            "un_wtforms_is_used": "WTForms is being used by the application",
+            "un_form_with_password_field_is_validated": "Some forms with a password field (that has some validators) are not being validated",
+            "un_password_custom_checks": "Using a custom validator to check password strength",
+            "un_password_length_check": "Length checks are being performed on the password field",
+            "un_password_regexp_check": "The password is being checked using a regexp"
         }
     }
 }
@@ -342,6 +372,10 @@ let config = {
     "AccountDeactivation": {
         "options": 'var options = {"title":"Account Deactivation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'account_deactivation'
+    },
+    "PasswordStrength": {
+        "options": 'var options = {"title":"Password Strength","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'password_strength'
     }
 }
 
