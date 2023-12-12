@@ -7,6 +7,10 @@ predicate inlineCustomValidators() {
         and (cls.getABase().toString() = "Form"
             or cls.getABase().toString() = "BaseForm"
             or cls.getABase().toString() = "FlaskForm")
+        and exists(DataFlow::Node node | 
+            node = API::moduleImport("wtforms").getMember("PasswordField").getAValueReachableFromSource()
+            and exists(cls.getLocation().getFile().getRelativePath())
+            and cls.getAStmt().(AssignStmt).getValue().(Call).getFunc() = node.asExpr())
         and cls.getAMethod().getName().prefix(9) = "validate_")
 }
 
