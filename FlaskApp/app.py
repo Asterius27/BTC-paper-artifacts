@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, request, session
-from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user, fresh_login_required
+from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user, fresh_login_required, login_fresh
 from typing import Dict, Optional
 from datetime import timedelta
 import datetime as dt
@@ -246,12 +246,16 @@ def sec():
 # Write a general query that just checks if the application does some config changes in places where it shouldn't (or one query for every config change we are interested in? TODO)
 @app.get("/cookiesfalse")
 def attributest():
+    if not current_user.is_authenticated:
+        return login_manager.unauthorized()
     app.config["SESSION_COOKIE_HTTPONLY"] = False
     app.config["REMEMBER_COOKIE_HTTPONLY"] = False
     return "<p>Trying to change cookie attributes to false...</p>"
 
 @app.get("/cookiestrue")
 def attributesf():
+    if not login_fresh():
+        return "Login is not fresh"
     app.config["SESSION_COOKIE_HTTPONLY"] = True
     app.config["REMEMBER_COOKIE_HTTPONLY"] = True
     return "<p>Trying to change cookie attributes to true...</p>"
