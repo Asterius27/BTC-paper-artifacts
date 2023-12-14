@@ -7,10 +7,10 @@ from pathlib import Path
 from collections import Counter
 
 # nltk.download('stopwords')
-path = Path(__file__).parent / '../flask_login_list.csv'
-outputk_path = Path(__file__).parent / './most_common_repo_keywords.json'
-outputo_path = Path(__file__).parent / './most_common_users.json'
-outputs_path = Path(__file__).parent / './most_common_substring_keywords.json'
+path = Path(__file__).parent / '../django_list_3.csv'
+outputk_path = Path(__file__).parent / './various_info_files/most_common_django_repo_keywords.json'
+outputo_path = Path(__file__).parent / './various_info_files/most_common_django_users.json'
+outputs_path = Path(__file__).parent / './various_info_files/most_common_django_substring_keywords.json'
 with path.open() as csv_file:
     reader = csv.DictReader(csv_file)
     owner_counter = Counter()

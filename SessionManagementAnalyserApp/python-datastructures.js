@@ -92,6 +92,12 @@ let flask = {
         },
         "Incorrect-config-changes": {
             "un_incorrect_config_changes": [false, ""]
+        },
+        "Fresh-login-restrictions": {
+            "un_no_fresh_login_checks": [false, ""]
+        },
+        "Login-restrictions": {
+            "un_no_authentication_checks": [false, ""]
         }
     },
     "CookieTampering": {
@@ -268,6 +274,12 @@ let descriptions = {
         },
         "Incorrect-config-changes": {
             "incorrect_config_changes": "Some config changes are made after the user has logged in"
+        },
+        "Fresh-login-restrictions": {
+            "un_no_fresh_login_checks": "The application never checks whether the current login is fresh or not (no fresh login restricted areas of the app)"
+        },
+        "Login-restrictions": {
+            "un_no_authentication_checks": "The application never checks whether the user is authenticated or not (no login restricted areas of the app)"
         }
     },
     "CookieTampering": {
