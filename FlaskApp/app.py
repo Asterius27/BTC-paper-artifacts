@@ -170,6 +170,9 @@ def helper():
 def set_headers(res, header):
     res.headers['Strict-Transport-Security'] = header
 
+def some_check(next):
+    return next == "bella"
+
 @app.after_request
 def add_headers(response):
     x = helper()
@@ -208,8 +211,14 @@ def login(id, password):
         next = request.args.get('next')
         if next:
             return redirect(next)
+        if some_check(next):
+            return redirect(next)
+        if next == "ciao":
+            return redirect(next)
+        if not next == "ehi":
+            return redirect(url_for("index"))
         
-        return redirect(url_for("index"))
+        return redirect(next or url_for("index"))
     return "<h1>Invalid user id or password</h1>"
 
 @app.get("/signup")

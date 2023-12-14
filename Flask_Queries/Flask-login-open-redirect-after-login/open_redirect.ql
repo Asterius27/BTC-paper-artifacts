@@ -2,6 +2,7 @@ import python
 import semmle.python.security.dataflow.UrlRedirectQuery
 import semmle.python.ApiGraphs
 import semmle.python.dataflow.new.DataFlow2
+import semmle.python.dataflow.new.DataFlow3
 // import semmle.python.frameworks.Flask
 // import DataFlow::PathGraph // (used to print the edges)
 // import semmle.python.dataflow.new.internal.DataFlowDispatch
@@ -103,6 +104,50 @@ class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   }
 }
 
+class SourceToBarrierConfiguration extends DataFlow3::Configuration {
+  SourceToBarrierConfiguration() { this = "SourceToBarrierConfiguration" }
+
+  override predicate isSource(DataFlow2::Node source) {
+    source instanceof Source
+  }
+
+  override predicate isSink(DataFlow2::Node sink) {
+    // TODO find a function inside an if statement that takes next as one of its parameters, probably have to do this in the main query and just return true here
+  }
+
+  override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
+    fromNode.asCfgNode().getASuccessor() = toNode.asCfgNode()
+    or exists(Function f, Call c | 
+      f = fromNode.getScope()
+      and c.getFunc().toString() = f.getName()
+      and c.getAFlowNode() = toNode.asCfgNode()
+      and exists(c.getLocation().getFile().getRelativePath())
+      and exists(f.getLocation().getFile().getRelativePath()))
+  }
+}
+
+class BarrierToSinkConfiguration extends DataFlow3::Configuration {
+  BarrierToSinkConfiguration() { this = "BarrierToSinkConfiguration" }
+
+  override predicate isSource(DataFlow2::Node source) {
+    // TODO find a function inside an if statement that takes next as one of its parameters, probably have to do this in the main query and just return true here
+  }
+
+  override predicate isSink(DataFlow2::Node sink) {
+    sink instanceof Sink
+  }
+
+  override predicate isAdditionalFlowStep(DataFlow2::Node fromNode, DataFlow2::Node toNode) {
+    fromNode.asCfgNode().getASuccessor() = toNode.asCfgNode()
+    or exists(Function f, Call c | 
+      f = fromNode.getScope()
+      and c.getFunc().toString() = f.getName()
+      and c.getAFlowNode() = toNode.asCfgNode()
+      and exists(c.getLocation().getFile().getRelativePath())
+      and exists(f.getLocation().getFile().getRelativePath()))
+  }
+}
+
 /* This selects the login_user call
 from DataFlow::Node node
 where node = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
@@ -167,6 +212,11 @@ where
   config.hasFlowPath(source, sink)
   and sink.getNode() = redirect.getNode()
   and lconfig.hasFlowPath(login, redirect)
+  and not exists(SourceToBarrierConfiguration sbconfig, BarrierToSinkConfiguration bsconfig, DataFlow3::PathNode barrier, DataFlow3::PathNode source3, DataFlow3::PathNode sink3 | 
+    sink.getNode() = sink3.getNode()
+    and source.getNode() = source3.getNode()
+    and sbconfig.hasFlowPath(source3, barrier)
+    and bsconfig.hasFlowPath(barrier, sink3))
   // getLoginGraph(source, sink)
   // source = API::moduleImport("flask_login").getMember("login_user").getAValueReachableFromSource()
   // and source.asExpr().toString() = "login_user"
