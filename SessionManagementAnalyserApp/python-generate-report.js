@@ -15,6 +15,9 @@ function generateCSS(dir) {
 }
 
 function aux(key1, key2, key3, obj, output) {
+    if (obj[key1][key2][key3][0] === undefined) { // TODO fix this error, don't know what is happening
+        console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3);
+    }
     if (obj[key1][key2][key3][0]) {
         if (output === "") {
             return obj[key1][key2][key3][1].slice(2, -4);
