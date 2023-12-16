@@ -127,7 +127,7 @@ let flask = {
         }
     },
     "AccountDeactivation": {
-        "Accounte-deactivation": {
+        "Account-deactivation": {
             "un_deactivation_not_used": [false, ""],
             "ut_deactivated_accounts_login": [false, ""],
             "sf_deactivated_accounts_default": [false, ""],
@@ -319,7 +319,7 @@ let descriptions = {
         }
     },
     "AccountDeactivation": {
-        "Accounte-deactivation": {
+        "Account-deactivation": {
             "un_deactivation_not_used": "Deactivated accounts are not allowed to login, but is_active behaviour is left as default (always returns true)",
             "ut_deactivated_accounts_login": "Deactivated accounts are allowed to login",
             "sf_deactivated_accounts_default": "Deactivated accounts are allowed to login and is_active behaviour is left as default (always returns true)",
