@@ -15,8 +15,12 @@ function generateCSS(dir) {
 }
 
 function aux(key1, key2, key3, obj, output) {
-    if (obj[key1][key2][key3][0] === undefined) { // TODO fix this error, don't know what is happening
-        console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3);
+    try {
+        if (obj[key1][key2][key3][0] === undefined) { // TODO fix this error, don't know what is happening
+            console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3);
+        }
+    } catch(e) {
+        console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3 + "\nREASON: " + e);
     }
     if (obj[key1][key2][key3][0]) {
         if (output === "") {
