@@ -14,6 +14,8 @@ let flask = {
             "sf_domain_attribute_session_cookie_manually_disabled": [false, ""]
         },
         "Expires-cookie-attribute": {
+            "un_refresh_each_request_remember_cookie": [false, ""],
+            "un_refresh_each_request_session_cookie": [false, ""],
             "ut_expires_attribute_remember_cookie_manually_set": [false, ""],
             "ut_expires_attribute_session_cookie_manually_set": [false, ""],
             "st_expires_attribute_remember_cookie": [false, ""],
@@ -223,6 +225,8 @@ let descriptions = {
             "domain_attribute_session_cookie_manually_disabled": "Domain session cookie attribute manually disabled"
         },
         "Expires-cookie-attribute": {
+            "refresh_each_request_remember_cookie": "Remember cookie lifetime is refreshed at each request",
+            "refresh_each_request_session_cookie": "Session is set to permanent and session cookie lifetime is refreshed at each request",
             "expires_attribute_remember_cookie_manually_set": "Expires remember cookie attribute is manually set",
             "expires_attribute_session_cookie_manually_set": "Expires session cookie attribute is manually set",
             "expires_attribute_remember_cookie": "Expires remember cookie attribute set to a duration that is too long (greater than 30 days)",
@@ -276,10 +280,10 @@ let descriptions = {
             "incorrect_config_changes": "Some config changes are made after the user has logged in"
         },
         "Fresh-login-restrictions": {
-            "un_no_fresh_login_checks": "The application never checks whether the current login is fresh or not (no fresh login restricted areas of the app)"
+            "no_fresh_login_checks": "The application never checks whether the current login is fresh or not (no fresh login restricted areas of the app)"
         },
         "Login-restrictions": {
-            "un_no_authentication_checks": "The application never checks whether the user is authenticated or not (no login restricted areas of the app)"
+            "no_authentication_checks": "The application never checks whether the user is authenticated or not (no login restricted areas of the app)"
         }
     },
     "CookieTampering": {
@@ -299,41 +303,41 @@ let descriptions = {
     },
     "ExplorativeQueries": {
         "Explorative-queries": {
-            "un_config_set_from_env_var": "How many repos set the whole flask config object from an environment variable",
-            "un_config_set_from_file_mapping_keys": "How many repos set the whole flask config object using the from_file or from_mapping or fromkeys functions",
-            "un_list_config_settings_from_env_var": "How many repos set one or more config settings from environment variables (using for example os.environ.get())"
+            "config_set_from_env_var": "How many repos set the whole flask config object from an environment variable",
+            "config_set_from_file_mapping_keys": "How many repos set the whole flask config object using the from_file or from_mapping or fromkeys functions",
+            "list_config_settings_from_env_var": "How many repos set one or more config settings from environment variables (using for example os.environ.get())"
         }
     },
     "PasswordHashing": {
         "Password-hashing": {
-            "un_flask_bcrypt_is_used": "Flask-Bcrypt is being used by the application",
-            "un_argon2_is_used": "Argon2 is being used by the application",
-            "un_bcrypt_is_used": "Bcrypt is being used by the application",
-            "un_hashlib_is_used": "Hashlib is being used by the application",
-            "un_passlib_is_used": "Passlib is being used by the application",
-            "un_werkzeug_is_used": "Werkzeug is being used by the application",
-            "ut_password_hashing_algorithm_manually_set": "The password hashing algorithm is manually set",
-            "ut_password_hashing_rounds_manually_set": "The number of rounds of the hashing algorithm is manually set",
-            "sf_password_hashing_algorithm": "Using a bugged hashing algorithm",
-            "sf_password_hashing_rounds": "Using less than 12 rounds (default and recommended value) for hashing"
+            "flask_bcrypt_is_used": "Flask-Bcrypt is being used by the application",
+            "argon2_is_used": "Argon2 is being used by the application",
+            "bcrypt_is_used": "Bcrypt is being used by the application",
+            "hashlib_is_used": "Hashlib is being used by the application",
+            "passlib_is_used": "Passlib is being used by the application",
+            "werkzeug_is_used": "Werkzeug is being used by the application",
+            "password_hashing_algorithm_manually_set": "The password hashing algorithm is manually set",
+            "password_hashing_rounds_manually_set": "The number of rounds of the hashing algorithm is manually set",
+            "password_hashing_algorithm": "Using a bugged hashing algorithm",
+            "password_hashing_rounds": "Using less than 12 rounds (default and recommended value) for hashing"
         }
     },
     "AccountDeactivation": {
         "Account-deactivation": {
-            "un_deactivation_not_used": "Deactivated accounts are not allowed to login, but is_active behaviour is left as default (always returns true)",
-            "ut_deactivated_accounts_login": "Deactivated accounts are allowed to login",
-            "sf_deactivated_accounts_default": "Deactivated accounts are allowed to login and is_active behaviour is left as default (always returns true)",
-            "sf_deactivated_accounts_handling": "Deactivated accounts are allowed to login and user class overrides is_active default behaviour with some custom logic"
+            "deactivation_not_used": "Deactivated accounts are not allowed to login, but is_active behaviour is left as default (always returns true)",
+            "deactivated_accounts_login": "Deactivated accounts are allowed to login",
+            "deactivated_accounts_default": "Deactivated accounts are allowed to login and is_active behaviour is left as default (always returns true)",
+            "deactivated_accounts_handling": "Deactivated accounts are allowed to login and user class overrides is_active default behaviour with some custom logic"
         }
     },
     "PasswordStrength": {
         "Password-strength": {
-            "un_flask_wtf_is_used": "Flask-WTF is being used by the application",
-            "un_wtforms_is_used": "WTForms is being used by the application",
-            "un_form_with_password_field_is_validated": "Some forms with a password field (that has some validators) are not being validated",
-            "un_password_custom_checks": "Using a custom validator to check password strength",
-            "un_password_length_check": "Length checks are being performed on the password field",
-            "un_password_regexp_check": "The password is being checked using a regexp"
+            "flask_wtf_is_used": "Flask-WTF is being used by the application",
+            "wtforms_is_used": "WTForms is being used by the application",
+            "form_with_password_field_is_validated": "Some forms with a password field (that has some validators) are not being validated",
+            "password_custom_checks": "Using a custom validator to check password strength",
+            "password_length_check": "Length checks are being performed on the password field",
+            "password_regexp_check": "The password is being checked using a regexp"
         }
     }
 }
