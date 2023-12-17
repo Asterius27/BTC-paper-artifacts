@@ -20,7 +20,8 @@ function aux(key1, key2, key3, obj, output) {
             console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3);
         }
     } catch(e) {
-        console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3 + "\nREASON: " + e);
+        // console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3 + "\nREASON: " + e);
+        fs.appendFileSync('./temp.txt', "READING UNDEFINED: " + key1 + " " + key2 + " " + key3 + "\nREASON: " + e);
     }
     if (obj[key1][key2][key3][0]) {
         if (output === "") {
