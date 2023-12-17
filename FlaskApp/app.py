@@ -55,6 +55,9 @@ session.permanent = True # default is false
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(2) # works only if session.permanent is true, default is 31 days
 # or 
 app.permanent_session_lifetime = dt.timedelta(weeks=6, days=2)
+# Bump/refresh cookie expiration at each request
+app.config["REMEMBER_COOKIE_REFRESH_EACH_REQUEST"] = True # default is False
+app.config["SESSION_REFRESH_EACH_REQUEST"] = False # default is True
 
 # Cookie prefixes
 app.config["REMEMBER_COOKIE_NAME"] = "__Secure-remember" # default is remember_token
