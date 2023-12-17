@@ -15,14 +15,6 @@ function generateCSS(dir) {
 }
 
 function aux(key1, key2, key3, obj, output) {
-    try {
-        if (obj[key1][key2][key3][0] === undefined) { // TODO fix this error, don't know what is happening
-            console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3);
-        }
-    } catch(e) {
-        // console.log("READING UNDEFINED: " + key1 + " " + key2 + " " + key3 + "\nREASON: " + e);
-        fs.appendFileSync('./temp.txt', "READING UNDEFINED: " + key1 + " " + key2 + " " + key3 + "\nREASON: " + e + "\n");
-    }
     if (obj[key1][key2][key3][0]) {
         if (output === "") {
             return obj[key1][key2][key3][1].slice(2, -4);
