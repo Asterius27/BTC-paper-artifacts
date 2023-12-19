@@ -138,6 +138,9 @@ let flask = {
     },
     "PasswordStrength": {
         "Password-strength": {
+            "un_deform_is_used": [false, ""],
+            "un_passwordmeter_is_used": [false, ""],
+            "un_passwordstrength_is_used": [false, ""],
             "un_flask_wtf_is_used": [false, ""],
             "un_wtforms_is_used": [false, ""],
             "un_form_with_password_field_is_validated": [false, ""],
@@ -332,6 +335,9 @@ let descriptions = {
     },
     "PasswordStrength": {
         "Password-strength": {
+            "deform_is_used": "Deform is being used by the application",
+            "passwordmeter_is_used": "passwordmeter is being used by the application",
+            "passwordstrength_is_used": "password-strength is being used by the application",
             "flask_wtf_is_used": "Flask-WTF is being used by the application",
             "wtforms_is_used": "WTForms is being used by the application",
             "form_with_password_field_is_validated": "Some forms with a password field (that has some validators) are not being validated",
