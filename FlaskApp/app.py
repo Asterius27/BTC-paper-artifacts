@@ -17,7 +17,7 @@ from werkzeug import security
 import passwordmeter
 from password_strength import PasswordStats, PasswordPolicy
 import deform
-from deform import Form
+from deform import Form as de_form
 import colander
 
 def bar():
@@ -139,7 +139,7 @@ res = policy.test("password")
 res = policy.password("password").test()
 res = policy.password("password").strength()
 stats = PasswordStats('G00dPassw0rd?!').strength()
-myform = Form(deform.schema.CSRFSchema, buttons=('submit',))
+myform = de_form(deform.schema.CSRFSchema, buttons=('submit',))
 class ExampleSchema(deform.schema.CSRFSchema):
 
     name = colander.SchemaNode(
