@@ -31,7 +31,7 @@ function execBoolQuery(database, outputLocation, queryLocation, queryName, threa
 
 function execFakeBoolQuery(outputLocation, queryName, current_thread) {
     if (queryName[1] === "t") {
-        fs.writeFileSync(outputLocation + "/" + queryName + ".txt", "The unskippable counterpart of this query returned something that made the analysis skip this query, so\n\nThe query wasn't executed, but the result would have been true\n\n");
+        fs.writeFileSync(outputLocation + "/" + queryName + ".txt", "The unskippable counterpart of this query returned something that made the analysis skip this query, so\n+-----+\nThe query wasn't executed, but the result would have been true\njust an extra line\n");
         return [true, "The query wasn't executed, but the result would have been true"];
     }
     if (queryName[1] === "f") {

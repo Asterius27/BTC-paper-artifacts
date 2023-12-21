@@ -26,6 +26,9 @@ function readQueryResults(outputLocation, queryName) {
         }
         aux_lines.pop();
         lines.pop();
+        if (queryName.startsWith("s")) {
+            console.log(queryName + ": " + lines[0] + " LENGTH: " + lines.length);
+        }
         if (lines.length > 2 && aux_lines.length > 2) {
             return [true, false];
         } else {
@@ -240,7 +243,6 @@ function getCounterKey(counter, key, dir, file) {
     return "keyNotFound";
 }
 
-// TODO test this
 function getTooltip(value, total, type, false_positives = 0) {
     let percentage = 0;
     if (total !== 0) {

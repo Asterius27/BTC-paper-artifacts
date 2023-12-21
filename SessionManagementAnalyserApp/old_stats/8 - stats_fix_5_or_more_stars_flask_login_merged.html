@@ -10,6 +10,8 @@ var data = new google.visualization.arrayToDataTable([
 ["Domain session cookie attribute set", 3, "Flask/Flask-login: 3 (0.17 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Domain remember cookie attribute manually disabled", 3, "Flask/Flask-login: 3 (0.17 %)", 0, "Failed Flask Queries: 0 (0.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Domain session cookie attribute manually disabled", 0, "Flask/Flask-login: 0 (0.00 %)", 0, "Failed Flask Queries: 0 (0.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Remember cookie lifetime is refreshed at each request", 0, "Flask/Flask-login: 0 (0.00 %)", 1765, "Failed Flask Queries: 1765 (100.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Session is set to permanent and session cookie lifetime is refreshed at each request", 0, "Flask/Flask-login: 0 (0.00 %)", 1765, "Failed Flask Queries: 1765 (100.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Expires remember cookie attribute is manually set", 42, "Flask/Flask-login: 42 (2.38 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Expires session cookie attribute is manually set", 100, "Flask/Flask-login: 100 (5.67 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Expires remember cookie attribute set to a duration that is too long (greater than 30 days)", 42, "Flask/Flask-login: 42 (2.38 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
@@ -17,12 +19,11 @@ var data = new google.visualization.arrayToDataTable([
 ["HTTPOnly remember cookie attribute not set", 3, "Flask/Flask-login: 3 (0.17 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["HTTPOnly session cookie attribute not set", 4, "Flask/Flask-login: 4 (0.23 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Secure remember cookie attribute not set", 1753, "Flask/Flask-login: 1753 (99.32 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
-["Secure session cookie attribute not set", 1727, "Flask/Flask-login: 1727 (97.85 %)
-Number of potential false positives, meaning it's also set from an env var (Flask/Flask-login): 1 (0.06 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 3, "Django: 3 (75.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Secure session cookie attribute not set", 1727, "Flask/Flask-login: 1727 (97.85 %)\nNumber of potential false positives, meaning it's also set from an env var (Flask/Flask-login): 1 (0.06 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 3, "Django: 3 (75.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Secure remember cookie attribute manually disabled", 4, "Flask/Flask-login: 4 (0.23 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Secure session cookie attribute manually disabled", 6, "Flask/Flask-login: 6 (0.34 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ]);
-var options = {"title":"Session Hijacking","width":1500,"height":1800,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
+var options = {"title":"Session Hijacking","width":1500,"height":2000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
 var chart = new google.visualization.BarChart(document.getElementById("session_hijacking_chart"));
 chart.draw(data, options);
 }
@@ -32,8 +33,7 @@ var data = new google.visualization.arrayToDataTable([
 ["Framework/Library", "Flask/Flask-login", {type: "string", role: "tooltip"}, "Failed Flask Queries", {type: "string", role: "tooltip"}, "Django", {type: "string", role: "tooltip"}, "Failed Django Queries", {type: "string", role: "tooltip"}, {role: "annotation"}],["Session cookie name is manually set", 26, "Flask/Flask-login: 26 (1.47 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Remember cookie name is manually set", 12, "Flask/Flask-login: 12 (0.68 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Remember cookie name does not contain the prefix __Host- or __Secure-", 1764, "Flask/Flask-login: 1764 (99.94 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
-["Session cookie name does not contain the prefix __Host- or __Secure-", 1764, "Flask/Flask-login: 1764 (99.94 %)
-Number of potential false positives, meaning it's also set from an env var (Flask/Flask-login): 1 (0.06 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 4, "Django: 4 (100.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Session cookie name does not contain the prefix __Host- or __Secure-", 1764, "Flask/Flask-login: 1764 (99.94 %)\nNumber of potential false positives, meaning it's also set from an env var (Flask/Flask-login): 1 (0.06 %)", 1, "Failed Flask Queries: 1 (0.06 %)", 4, "Django: 4 (100.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ]);
 var options = {"title":"Session Fixation","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
 var chart = new google.visualization.BarChart(document.getElementById("session_fixation"));
@@ -79,9 +79,7 @@ chart.draw(data, options);
 google.charts.setOnLoadCallback(drawCookieTamperingChart);
 function drawCookieTamperingChart() {
 var data = new google.visualization.arrayToDataTable([
-["Framework/Library", "Flask/Flask-login", {type: "string", role: "tooltip"}, "Failed Flask Queries", {type: "string", role: "tooltip"}, "Django", {type: "string", role: "tooltip"}, "Failed Django Queries", {type: "string", role: "tooltip"}, {role: "annotation"}],["Secret key is hardcoded", 528, "Flask/Flask-login: 528 (29.92 %)
-Number of potential false positives, meaning it's also set from an env var (Flask/Flask-login): 40 (7.58 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 4, "Django: 4 (100.00 %)
-Number of potential false positives, meaning it's also set from an env var (Django): 1 (25.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Framework/Library", "Flask/Flask-login", {type: "string", role: "tooltip"}, "Failed Flask Queries", {type: "string", role: "tooltip"}, "Django", {type: "string", role: "tooltip"}, "Failed Django Queries", {type: "string", role: "tooltip"}, {role: "annotation"}],["Secret key is hardcoded", 528, "Flask/Flask-login: 528 (29.92 %)\nNumber of potential false positives, meaning it's also set from an env var (Flask/Flask-login): 40 (7.58 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 4, "Django: 4 (100.00 %)\nNumber of potential false positives, meaning it's also set from an env var (Django): 1 (25.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ]);
 var options = {"title":"Cookie Tampering/Forging","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
 var chart = new google.visualization.BarChart(document.getElementById("cookie_tampering_forging"));
@@ -121,14 +119,14 @@ function drawPasswordHashingChart() {
 var data = new google.visualization.arrayToDataTable([
 ["Framework/Library", "Flask/Flask-login", {type: "string", role: "tooltip"}, "Failed Flask Queries", {type: "string", role: "tooltip"}, "Django", {type: "string", role: "tooltip"}, "Failed Django Queries", {type: "string", role: "tooltip"}, {role: "annotation"}],["Flask-Bcrypt is being used by the application", 221, "Flask/Flask-login: 221 (12.52 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Argon2 is being used by the application", 4, "Flask/Flask-login: 4 (0.23 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
-["Bcrypt is being used by the application", 68, "Flask/Flask-login: 68 (3.85 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Bcrypt is being used by the application", 221, "Flask/Flask-login: 221 (12.52 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Hashlib is being used by the application", 593, "Flask/Flask-login: 593 (33.60 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Passlib is being used by the application", 36, "Flask/Flask-login: 36 (2.04 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Werkzeug is being used by the application", 841, "Flask/Flask-login: 841 (47.65 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["The password hashing algorithm is manually set", 0, "Flask/Flask-login: 0 (0.00 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["The number of rounds of the hashing algorithm is manually set", 7, "Flask/Flask-login: 7 (0.40 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Using a bugged hashing algorithm", 0, "Flask/Flask-login: 0 (0.00 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
-["Using less than 12 rounds (default and recommended value) for hashing", 0, "Flask/Flask-login: 0 (0.00 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Using less than 12 rounds (default and recommended value) for hashing", 7, "Flask/Flask-login: 7 (0.40 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ]);
 var options = {"title":"Password Hashing","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
 var chart = new google.visualization.BarChart(document.getElementById("password_hashing"));
@@ -149,7 +147,10 @@ chart.draw(data, options);
 google.charts.setOnLoadCallback(drawPasswordStrengthChart);
 function drawPasswordStrengthChart() {
 var data = new google.visualization.arrayToDataTable([
-["Framework/Library", "Flask/Flask-login", {type: "string", role: "tooltip"}, "Failed Flask Queries", {type: "string", role: "tooltip"}, "Django", {type: "string", role: "tooltip"}, "Failed Django Queries", {type: "string", role: "tooltip"}, {role: "annotation"}],["Flask-WTF is being used by the application", 982, "Flask/Flask-login: 982 (55.64 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Framework/Library", "Flask/Flask-login", {type: "string", role: "tooltip"}, "Failed Flask Queries", {type: "string", role: "tooltip"}, "Django", {type: "string", role: "tooltip"}, "Failed Django Queries", {type: "string", role: "tooltip"}, {role: "annotation"}],["Deform is being used by the application", 0, "Flask/Flask-login: 0 (0.00 %)", 1765, "Failed Flask Queries: 1765 (100.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["passwordmeter is being used by the application", 0, "Flask/Flask-login: 0 (0.00 %)", 1765, "Failed Flask Queries: 1765 (100.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["password-strength is being used by the application", 0, "Flask/Flask-login: 0 (0.00 %)", 1765, "Failed Flask Queries: 1765 (100.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
+["Flask-WTF is being used by the application", 982, "Flask/Flask-login: 982 (55.64 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["WTForms is being used by the application", 96, "Flask/Flask-login: 96 (5.44 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Some forms with a password field (that has some validators) are not being validated", 168, "Flask/Flask-login: 168 (9.52 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Using a custom validator to check password strength", 686, "Flask/Flask-login: 686 (38.87 %)", 10, "Failed Flask Queries: 10 (0.57 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
@@ -163,7 +164,7 @@ chart.draw(data, options);
 </script>
 </head>
 <body>
-<p>Total number of applications/repos: 2136<br/>Number of applications/repos that were not analyzed because of an error: 371, among which 0 failed because they use a custom session engine (Django)<br/>Total number of Flask/Flask-login applications/repos: 1765<br/>Total number of Django applications/repos: 4<br/>Total number of queries that failed: 380<br/></p>
+<p>Total number of applications/repos: 2136<br/>Number of applications/repos that were not analyzed because of an error: 371, among which 0 failed because they use a custom session engine (Django)<br/>Total number of Flask/Flask-login applications/repos: 1765<br/>Total number of Django applications/repos: 4<br/>Total number of queries that failed: 9205<br/></p>
 <div>
 <h2>Login Security</h2>
 <div id="password_theft"></div>
