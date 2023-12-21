@@ -26,9 +26,6 @@ function readQueryResults(outputLocation, queryName) {
         }
         aux_lines.pop();
         lines.pop();
-        if (queryName.startsWith("s")) {
-            console.log(queryName + ": " + lines[0] + " LENGTH: " + lines.length);
-        }
         if (lines.length > 2 && aux_lines.length > 2) {
             return [true, false];
         } else {
@@ -36,6 +33,9 @@ function readQueryResults(outputLocation, queryName) {
         }
     } else {
         lines.pop();
+        if (queryName.startsWith("s")) {
+            console.log(queryName + ": " + lines[0] + " LENGTH: " + lines.length);
+        }
         if (lines.length > 2) {
             return [true, false];
         } else {
