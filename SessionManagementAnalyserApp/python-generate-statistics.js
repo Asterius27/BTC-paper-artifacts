@@ -33,9 +33,6 @@ function readQueryResults(outputLocation, queryName) {
         }
     } else {
         lines.pop();
-        if (queryName.startsWith("s")) {
-            console.log(queryName + ": " + lines[0] + " LENGTH: " + lines.length);
-        }
         if (lines.length > 2) {
             return [true, false];
         } else {
@@ -234,7 +231,7 @@ function getCounterKey(counter, key, dir, file) {
     if (counter[key] !== undefined) {
         if (counter[key][dir] !== undefined) {
             for (let [counter_key, res] of Object.entries(counter[key][dir])) {
-                if (counter_key.includes(file)) {
+                if (counter_key.slice(3) === file) {
                     return counter_key;
                 }
             }
