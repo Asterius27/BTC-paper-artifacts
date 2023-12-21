@@ -253,7 +253,7 @@ function getTooltip(value, total, type, false_positives = 0) {
         if (value !== 0) {
             false_positives_percentage =  false_positives * 100 / value;
         }
-        return type + ": " + value + " (" + percentage.toFixed(2) + " %)\nNumber of potential false positives, meaning it\'s also set from an env var (" + type + "): " + false_positives + " (" + false_positives_percentage.toFixed(2) + " %)";
+        return type + ": " + value + " (" + percentage.toFixed(2) + " %)\n\\Number of potential false positives, meaning it\'s also set from an env var (" + type + "): " + false_positives + " (" + false_positives_percentage.toFixed(2) + " %)";
     }
 }
 
