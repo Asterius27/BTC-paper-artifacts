@@ -78,6 +78,20 @@ string auxrcn(Expr node) {
     else none()
 }
 
+string auxrcrer(Expr node) {
+    if  exists(FlaskLogin::getConfigSinkFromEnvVar("REMEMBER_COOKIE_REFRESH_EACH_REQUEST"))
+    then node = FlaskLogin::getConfigSinkFromEnvVar("REMEMBER_COOKIE_REFRESH_EACH_REQUEST")
+        and result = "un_refresh_each_request_remember_cookie " + node.getLocation()
+    else none()
+}
+
+string auxscrer(Expr node) {
+    if  exists(FlaskLogin::getConfigSinkFromEnvVar("SESSION_REFRESH_EACH_REQUEST"))
+    then node = FlaskLogin::getConfigSinkFromEnvVar("SESSION_REFRESH_EACH_REQUEST")
+        and result = "un_refresh_each_request_session_cookie " + node.getLocation()
+    else none()
+}
+
 string aux(Expr node) {
     result = auxsk(node)
     or result = auxrcs(node)
@@ -90,6 +104,8 @@ string aux(Expr node) {
     or result = auxscss(node)
     or result = auxscn(node)
     or result = auxrcn(node)
+    or result = auxscrer(node)
+    or result = auxrcrer(node)
 }
 
 from Expr node

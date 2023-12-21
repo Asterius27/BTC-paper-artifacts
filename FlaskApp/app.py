@@ -14,6 +14,11 @@ from argon2 import PasswordHasher
 import hashlib
 import bcrypt as bcr
 from werkzeug import security
+import passwordmeter
+from password_strength import PasswordStats, PasswordPolicy
+import deform
+from deform import Form as de_form
+import colander
 
 def bar():
     return "secret_key"
@@ -55,6 +60,9 @@ session.permanent = True # default is false
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(2) # works only if session.permanent is true, default is 31 days
 # or 
 app.permanent_session_lifetime = dt.timedelta(weeks=6, days=2)
+# Bump/refresh cookie expiration at each request
+app.config["REMEMBER_COOKIE_REFRESH_EACH_REQUEST"] = True # default is False
+app.config["SESSION_REFRESH_EACH_REQUEST"] = False # default is True
 
 # Cookie prefixes
 app.config["REMEMBER_COOKIE_NAME"] = "__Secure-remember" # default is remember_token
@@ -117,6 +125,32 @@ hash = ph.hash("correct horse battery staple")
 hashed = hashlib.md5("password")
 hashed = bcr.hashpw("password", bcr.gensalt())
 hash = security.generate_password_hash("password")
+
+# other password strenght libraries
+strength, improvements = passwordmeter.test("password")
+policy = PasswordPolicy.from_names(
+    length=8,  # min length: 8
+    uppercase=2,  # need min. 2 uppercase letters
+    numbers=2,  # need min. 2 digits
+    special=2,  # need min. 2 special characters
+    nonletters=2,  # need min. 2 non-letter characters (digits, specials, anything)
+)
+res = policy.test("password")
+res = policy.password("password").test()
+res = policy.password("password").strength()
+stats = PasswordStats('G00dPassw0rd?!').strength()
+myform = de_form(deform.schema.CSRFSchema, buttons=('submit',))
+class ExampleSchema(deform.schema.CSRFSchema):
+
+    name = colander.SchemaNode(
+        colander.String(),
+        title="Name")
+
+    age = colander.SchemaNode(
+        colander.Int(),
+        default=18,
+        title="Age",
+        description="Your age in years")
 
 def aux(a):
     return a

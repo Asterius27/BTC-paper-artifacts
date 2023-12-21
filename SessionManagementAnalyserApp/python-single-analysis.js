@@ -29,7 +29,7 @@ function execBoolQuery(database, outputLocation, queryLocation, queryName, threa
     }
 }
 
-function execFakeBoolQuery(outputLocation, queryName) {
+function execFakeBoolQuery(outputLocation, queryName, current_thread) {
     if (queryName[1] === "t") {
         fs.writeFileSync(outputLocation + "/" + queryName + ".txt", "The unskippable counterpart of this query returned something that made the analysis skip this query, so\n\nThe query wasn't executed, but the result would have been true\n\n");
         return [true, "The query wasn't executed, but the result would have been true"];
@@ -38,6 +38,8 @@ function execFakeBoolQuery(outputLocation, queryName) {
         fs.writeFileSync(outputLocation + "/" + queryName + ".txt", "The query wasn't executed, but the result would have been false");
         return [false, ""];
     }
+    fs.appendFileSync('./log' + current_thread + '.txt', "Error when trying to generate the results for the skipped query: " + outputLocation + "/" + queryName + "\n");
+    throw new Error("Something went wrong when generating skipped query results");
 }
 
 // TODO This might break if the query names differ too much (if the shortest name has more than one different word at the end)
@@ -122,7 +124,7 @@ export function pythonAnalysis(root_dir, threads, current_thread) {
                                 fs.appendFileSync('./log' + current_thread + '.txt', "Failed to execute the query: " + dir + "/" + file + " on repository: " + root_dir + " Reason: " + e + "\n");
                             }
                         } else {
-                            let res = execFakeBoolQuery(root_dir + "-results/" + dir, file);
+                            let res = execFakeBoolQuery(root_dir + "-results/" + dir, file, current_thread);
                             flask_queries[key][dir][file] = res;
                             fs.appendFileSync('./log' + current_thread + '.txt', "Skipped the query: " + dir + "/" + file + " in the repository: " + root_dir + "\n");
                         }
