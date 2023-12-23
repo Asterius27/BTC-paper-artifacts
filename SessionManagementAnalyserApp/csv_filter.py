@@ -4,19 +4,19 @@ from pathlib import Path
 # Number of repos: 1408 (with 10 or more stars), of which 92 (6.53%) where filtered out
 
 blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "esercizi", "internship", "programming"]
-blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"]]
+blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"], ["python", "100", "days"]]
 blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
-path = Path(__file__).parent / '../flask_login_merged_list.csv'
-path_o = Path(__file__).parent / '../flask_login_filtered_merged_list_1_or_more_stars.csv'
-log_path = Path(__file__).parent / './filter_logs/flask_login_filtered_merged_list_1_or_more_stars.txt'
+path = Path(__file__).parent / '../django_list_final.csv'
+path_o = Path(__file__).parent / '../django_filtered_list_final.csv'
+log_path = Path(__file__).parent / './filter_logs/django_filtered_list_final.txt'
 filtered_repos = 0
 number_of_repos = 0
 
 with path.open() as csv_file:
     reader = csv.DictReader(csv_file)
-    with path_o.open("w") as csv_filtered:
+    with path_o.open("w", newline='') as csv_filtered:
         writer = csv.writer(csv_filtered)
-        writer.writerow(["repo_url", "stars", "forks"])
+        writer.writerow(["repo_name", "repo_url", "stars", "contributors", "commits", "update_date", "forks"])
         for row in reader:
             if int(row["stars"]) >= 1:
                 number_of_repos += 1
