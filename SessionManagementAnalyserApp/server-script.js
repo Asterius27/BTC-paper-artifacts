@@ -10,7 +10,7 @@ import { resolve } from "path";
 import { pipeline } from "stream/promises";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
-const framework = "Django"; // "Flask"
+const framework = "Flask"; // "Django"
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
 let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]; // TODO add more, have to make it more precise
@@ -548,7 +548,7 @@ function libraryUsagesGrep() {
     });
 }
 
-downloadAndExtractRepos('../django_filtered_list_final.csv');
+downloadAndExtractRepos('../flask_list_final.csv');
 // findInterestingRepos("Secure-cookie-attribute", "secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
