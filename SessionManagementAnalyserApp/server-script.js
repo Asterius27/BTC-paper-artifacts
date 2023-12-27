@@ -463,7 +463,7 @@ fs.createReadStream('../flask_repos.csv')
 // Run library check queries using grep
 // regex: "(^import flask_login$|^from flask_login )" or "^(import|from) flask_login "
 function libraryUsagesGrep() {
-    fs.createReadStream('../flask_repos.csv')
+    fs.createReadStream('../flask_list_final.csv')
     .pipe(csvParser())
     .on('data', (data) => {
         csv.push(data);
@@ -548,7 +548,7 @@ function libraryUsagesGrep() {
     });
 }
 
-downloadAndExtractRepos('../flask_list_final.csv');
+// downloadAndExtractRepos('../flask_list_final.csv');
 // findInterestingRepos("Secure-cookie-attribute", "secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
-// libraryUsagesGrep();
+libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
