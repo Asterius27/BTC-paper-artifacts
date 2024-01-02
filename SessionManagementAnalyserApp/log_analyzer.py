@@ -39,6 +39,7 @@ for file_name in log_dir:
                     query_dict[query_name].append(float(time_elapsed))
                 else:
                     query_dict[query_name] = []
+                    query_dict[query_name].append(float(time_elapsed))
     if len(file_name.split("_")) == 1:
         # print(file_name)
         with open(str(path.absolute()) + "/" + file_name) as file:
@@ -108,8 +109,8 @@ with output.open("a") as file:
     file.write("Average time taken per repository: " + str(round(statistics.fmean(times) / 60.0, 2)) + " minutes\n")
     file.write("Standard Deviation: " + str(round(statistics.stdev(times) / 60.0, 2)) + " minutes\n")
     file.write("Total false positives (not actually using flask_login): " + str(unsupported_library) + " (" + str(round(unsupported_library * 100 / len(times), 2)) + " %)\n")
-    file.write("Total query errors because of timeouts: " + str(query_timeouts) + " (" + str(round(query_timeouts * 100 / len(times), 2)) + " %)\n")
-    file.write("Total query errors because the command failed: " + str(query_command_failed) + " (" + str(round(query_command_failed * 100 / len(times), 2)) + " %)\n")
+    file.write("Total query errors because of timeouts: " + str(query_timeouts) + " (" + str(round(query_timeouts * 100 / (len(times) * len(query_dict)), 2)) + " %)\n")
+    file.write("Total query errors because the command failed: " + str(query_command_failed) + " (" + str(round(query_command_failed * 100 / (len(times) * len(query_dict)), 2)) + " %)\n")
     file.write("Total analysis errors because of database creation timeouts: " + str(database_timeouts) + " (" + str(round(database_timeouts * 100 / len(times), 2)) + " %)\n")
     file.write("Total analysis errors because of buffer errors: " + str(analysis_buffer_error) + " (" + str(round(analysis_buffer_error * 100 / len(times), 2)) + " %)\n")
     file.write("Total repos where the database could not be deleted: " + str(database_deletion_error) + " (" + str(round(database_deletion_error * 100 / len(times), 2)) + " %)\n")
