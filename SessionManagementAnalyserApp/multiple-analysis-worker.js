@@ -68,7 +68,7 @@ await new Promise((resolve, reject) => {
         });
 });
 for (let i = 0; i < repos.length; i++) {
-    if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
+    // if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
         let dir = root_dir + "/" + repos[i];
         let repo_subdir = fs.readdirSync(dir);
         let repo = "";
@@ -118,7 +118,7 @@ for (let i = 0; i < repos.length; i++) {
             let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
             fs.appendFileSync('./log' + current_thread + '.txt', "Time taken to run the queries on " + dir + "/" + repo + ": " + repoTimeElapsed + " seconds.\n");
         // }
-    }
+    // }
 }
 /*
 if (failed.length > 0) {

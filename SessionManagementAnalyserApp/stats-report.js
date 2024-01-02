@@ -73,7 +73,7 @@ let failed_repos = 0;
 let custom_session_engine_repos = 0;
 let number_of_repos = 0;
 for (let i = 0; i < repos.length; i++) {
-    if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
+    // if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
         number_of_repos++;
         let dir = root_dir + "/" + repos[i];
         let res = "";
@@ -116,7 +116,7 @@ for (let i = 0; i < repos.length; i++) {
                 }
             }
         }
-    }
+    // }
 }
 if (flask_repos === 0) {
     [flask_counter, flask_error_counter, false_positives_counter_flask] = initializeCounter(flask_counter, flask_error_counter, false_positives_counter_flask, "flask");
