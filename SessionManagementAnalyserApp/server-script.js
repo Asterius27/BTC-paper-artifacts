@@ -109,9 +109,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                             if (set_from_env) {
                                 let env_results = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/Explorative-queries/un_list_config_settings_from_env_var.txt", 'utf-8').split("\n");
                                 for (let h = 0; h < env_results.length; h++) {
-                                    console.log(env_results[h]);
                                     if (env_results[h].includes(query_name)) {
-                                        console.log("TRUE")
                                         set_from_env_locations.push(env_results[h]); // .split(" ")[2]
                                     }
                                 }
@@ -120,13 +118,14 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                         query.pop();
                         if (query.length > 2 && result) {
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
-                            for (let j = 1; j < query.length; j++) {
-                                fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[j] + "\n");
+                            for (let h = 1; h < query.length; h++) {
+                                fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[h] + "\n");
                             }
                             if (set_from_env) {
                                 fs.appendFileSync('./repos_with_interesting_results.txt', "And it was also set from an environment variable at the following locations: \n");
-                                for (let j = 0; j < set_from_env_locations; j++) {
-                                    fs.appendFileSync('./repos_with_interesting_results.txt', set_from_env_locations[j] + "\n");
+                                for (let h = 0; h < set_from_env_locations; h++) {
+                                    console.log("output: " + set_from_env_locations[h]);
+                                    fs.appendFileSync('./repos_with_interesting_results.txt', set_from_env_locations[h] + "\n");
                                 }
                             }
                             fs.appendFileSync('./repos_with_interesting_results.txt', "\n");
@@ -136,8 +135,8 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[query.length - 1] + "\n");
                             if (set_from_env) {
                                 fs.appendFileSync('./repos_with_interesting_results.txt', "And it was also set from an environment variable at the following locations: \n");
-                                for (let j = 0; j < set_from_env_locations; j++) {
-                                    fs.appendFileSync('./repos_with_interesting_results.txt', set_from_env_locations[j] + "\n");
+                                for (let h = 0; h < set_from_env_locations; h++) {
+                                    fs.appendFileSync('./repos_with_interesting_results.txt', set_from_env_locations[h] + "\n");
                                 }
                             }
                             fs.appendFileSync('./repos_with_interesting_results.txt', "\n");
