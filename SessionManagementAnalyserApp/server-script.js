@@ -109,7 +109,9 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                             if (set_from_env) {
                                 let env_results = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/Explorative-queries/un_list_config_settings_from_env_var.txt", 'utf-8').split("\n");
                                 for (let h = 0; h < env_results.length; h++) {
+                                    console.log(env_results[h]);
                                     if (env_results[h].includes(query_name)) {
+                                        console.log("TRUE")
                                         set_from_env_locations.push(env_results[h]); // .split(" ")[2]
                                     }
                                 }
