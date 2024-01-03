@@ -83,7 +83,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
     let repos = fs.readdirSync(dir);
     let csv = {};
     await new Promise((resolve, reject) => {
-        fs.createReadStream('../flask_login_merged_list.csv')
+        fs.createReadStream('../flask_login_final_filtered_merged_list.csv')
             .pipe(csvParser())
             .on('data', (data) => {
                 let owner = data.repo_url.split("/")[3];
@@ -95,7 +95,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
             });
     });
     for (let i = 0; i < repos.length; i++) {
-        if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
+        // if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) { // TODO stars filtering temporarily disabled
             let repo = fs.readdirSync(dir + "/" + repos[i]);
             for (let j = 0; j < repo.length; j++) {
                 if (repo[j].endsWith("-results")) {
@@ -143,7 +143,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                     }
                 }
             }
-        }
+        // }
     }
 }
 
@@ -549,6 +549,6 @@ function libraryUsagesGrep() {
 }
 
 // downloadAndExtractRepos('../flask_login_final_filtered_merged_list.csv');
-findInterestingRepos("Secure-cookie-attribute", "secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE); // if last parameter is set to true will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+findInterestingRepos("Secret-key", "un_secret_key.txt", true, 0, Number.MAX_VALUE); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();

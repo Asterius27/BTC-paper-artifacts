@@ -4,8 +4,8 @@ import os
 from pathlib import Path
 
 # TODO add number of failures (and reasons) per query type
-path = Path(__file__).parent / './old_logs/9 - log_flask_login_final_filtered_merged'
-output = Path(__file__).parent / './old_logs/9 - log_flask_login_final_filtered_merged/log_analysis_merged.txt'
+path = Path(__file__).parent / './old_logs/9bis - log_flask_login_final_filtered_merged'
+output = Path(__file__).parent / './old_logs/9bis - log_flask_login_final_filtered_merged/log_analysis_merged.txt'
 csv_path = Path(__file__).parent / '../flask_login_final_filtered_merged_list.csv'
 times = []
 thread_times = []
@@ -101,7 +101,10 @@ with output.open("a") as file:
         file.write("Failed Query: " + item[0] + " " + item[1] + " " + item[2] + "\n")
     file.write("\n\n")
     for query in query_dict:
-        file.write("The " + query + " 's execution times had an average of " + str(round(statistics.fmean(query_dict[query]), 2)) + " seconds and a standard deviation of " + str(round(statistics.stdev(query_dict[query]), 2)) + " seconds\n")
+        try:
+            file.write("The " + query + " 's execution times had an average of " + str(round(statistics.fmean(query_dict[query]), 2)) + " seconds and a standard deviation of " + str(round(statistics.stdev(query_dict[query]), 2)) + " seconds\n")
+        except Exception:
+            file.write("The " + query + " 's execution times had an average of " + str(round(statistics.fmean(query_dict[query]), 2)) + " seconds\n")
     file.write("\n\n")
     file.write("\nNumber of processed repos: " + str(len(times)) + "\n")
     file.write("Average time taken per thread: " + str(round(statistics.fmean(thread_times) / 3600.0, 2)) + " hours\n")
