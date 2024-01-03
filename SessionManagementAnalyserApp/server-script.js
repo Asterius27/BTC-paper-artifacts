@@ -77,7 +77,6 @@ function listMostCommonKeywordsAndUsers() {
     });
 }
 
-// TODO test this
 async function findInterestingRepos(queryDirectory, queryName, result, starsl, starsu) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
@@ -123,8 +122,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                             }
                             if (set_from_env) {
                                 fs.appendFileSync('./repos_with_interesting_results.txt', "And it was also set from an environment variable at the following locations: \n");
-                                for (let h = 0; h < set_from_env_locations; h++) {
-                                    console.log("output: " + set_from_env_locations[h]);
+                                for (let h = 0; h < set_from_env_locations.length; h++) {
                                     fs.appendFileSync('./repos_with_interesting_results.txt', set_from_env_locations[h] + "\n");
                                 }
                             }
@@ -135,7 +133,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[query.length - 1] + "\n");
                             if (set_from_env) {
                                 fs.appendFileSync('./repos_with_interesting_results.txt', "And it was also set from an environment variable at the following locations: \n");
-                                for (let h = 0; h < set_from_env_locations; h++) {
+                                for (let h = 0; h < set_from_env_locations.length; h++) {
                                     fs.appendFileSync('./repos_with_interesting_results.txt', set_from_env_locations[h] + "\n");
                                 }
                             }
