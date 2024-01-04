@@ -81,6 +81,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
     let csv = {};
+    let csv_urls = {};
     await new Promise((resolve, reject) => {
         fs.createReadStream('../flask_login_final_filtered_merged_list.csv')
             .pipe(csvParser())
@@ -88,6 +89,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                 let owner = data.repo_url.split("/")[3];
                 let repoName = data.repo_url.split("/")[4];
                 csv[owner + "_" + repoName] = data.stars
+                csv_urls[owner + "_" + repoName] = data.repo_url
             }).on('end', () => {
                 console.log("Finished reading the csv")
                 resolve("Done!");
@@ -117,6 +119,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                         query.pop();
                         if (query.length > 2 && result) {
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "URL: " + csv_urls[repos[i]] + "\n");
                             for (let h = 1; h < query.length; h++) {
                                 fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[h] + "\n");
                             }
@@ -130,6 +133,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                         }
                         if (query.length <= 2 && !result) {
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "URL: " + csv_urls[repos[i]] + "\n");
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[query.length - 1] + "\n");
                             if (set_from_env) {
                                 fs.appendFileSync('./repos_with_interesting_results.txt', "And it was also set from an environment variable at the following locations: \n");
