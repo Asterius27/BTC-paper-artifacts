@@ -1,0 +1,31 @@
+Query: Secure-cookie-attribute/sf_secure_attribute_session_cookie_manually_disabled.txt Repo: ScilifelabDataCentre_dds_web Stars: 7
+URL: https://github.com/ScilifelabDataCentre/dds_web
+Result: +-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/ScilifelabDataCentre_dds_web/ScilifelabDataCentre-dds_web-78cb8b8/dds_web/config.py:43 | Session cookie secure attribute set to false |
+
+Query: Secure-cookie-attribute/sf_secure_attribute_session_cookie_manually_disabled.txt Repo: dkashin_pipencoder-base Stars: 6
+URL: https://github.com/dkashin/pipencoder-base
+Result: +-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/dkashin_pipencoder-base/dkashin-pipencoder-base-15a2ef5/app/main/common/config.py:20 | Session cookie secure attribute set to false |
+
+Query: Secure-cookie-attribute/sf_secure_attribute_session_cookie_manually_disabled.txt Repo: mertcangokgoz_QSNMP Stars: 11
+URL: https://github.com/mertcangokgoz/QSNMP
+Result: +-------+------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread6/mertcangokgoz_QSNMP/mertcangokgoz-QSNMP-d7d9e12/app.py:16 | Session cookie secure attribute set to false |
+
+Query: Secure-cookie-attribute/sf_secure_attribute_session_cookie_manually_disabled.txt Repo: nutechsoftware_alarmdecoder-webapp Stars: 48
+URL: https://github.com/nutechsoftware/alarmdecoder-webapp
+Result: +-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/nutechsoftware_alarmdecoder-webapp/nutechsoftware-alarmdecoder-webapp-c75031b/ad2web/config.py:76 | Session cookie secure attribute set to false |
+
+Query: Secure-cookie-attribute/sf_secure_attribute_session_cookie_manually_disabled.txt Repo: paracrawl_corset Stars: 16
+URL: https://github.com/paracrawl/corset
+Result: +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/paracrawl_corset/paracrawl-corset-bd2e1d8/back/api/config.py:24  | Session cookie secure attribute set to false |
+Result: | False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/paracrawl_corset/paracrawl-corset-bd2e1d8/front/app/config.py:38 | Session cookie secure attribute set to false |
+
+Query: Secure-cookie-attribute/sf_secure_attribute_session_cookie_manually_disabled.txt Repo: teknologkoren_flasquelistan Stars: 5
+URL: https://github.com/teknologkoren/flasquelistan
+Result: +-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/teknologkoren_flasquelistan/teknologkoren-flasquelistan-34f94a0/config.py:9 | Session cookie secure attribute set to false |
+
