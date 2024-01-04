@@ -118,7 +118,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                         }
                         query.pop();
                         if (query.length > 2 && result) {
-                            fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + " Stars: " + csv[repos[i]] + "\n");
                             fs.appendFileSync('./repos_with_interesting_results.txt', "URL: " + csv_urls[repos[i]] + "\n");
                             for (let h = 1; h < query.length; h++) {
                                 fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[h] + "\n");
@@ -132,7 +132,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
                             fs.appendFileSync('./repos_with_interesting_results.txt', "\n");
                         }
                         if (query.length <= 2 && !result) {
-                            fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + "\n");
+                            fs.appendFileSync('./repos_with_interesting_results.txt', "Query: " + queryDirectory + "/" + queryName + " Repo: " + repos[i] + " Stars: " + csv[repos[i]] + "\n");
                             fs.appendFileSync('./repos_with_interesting_results.txt', "URL: " + csv_urls[repos[i]] + "\n");
                             fs.appendFileSync('./repos_with_interesting_results.txt', "Result: " + query[query.length - 1] + "\n");
                             if (set_from_env) {
