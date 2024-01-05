@@ -77,6 +77,57 @@ function listMostCommonKeywordsAndUsers() {
     });
 }
 
+// TODO need to test this
+async function findOverlappingResultsInRepos(queries, result, output_path) {
+    let dir = './repositories/' + framework;
+    let repos = fs.readdirSync(dir);
+    let csv = {};
+    let csv_urls = {};
+    await new Promise((resolve, reject) => {
+        fs.createReadStream('../flask_login_final_filtered_merged_list.csv')
+            .pipe(csvParser())
+            .on('data', (data) => {
+                let owner = data.repo_url.split("/")[3];
+                let repoName = data.repo_url.split("/")[4];
+                csv[owner + "_" + repoName] = data.stars
+                csv_urls[owner + "_" + repoName] = data.repo_url
+            }).on('end', () => {
+                console.log("Finished reading the csv")
+                resolve("Done!");
+            });
+    });
+    for (let i = 0; i < repos.length; i++) {
+        let repo = fs.readdirSync(dir + "/" + repos[i]);
+        for (let j = 0; j < repo.length; j++) {
+            if (repo[j].endsWith("-results")) {
+                let flag = true
+                for (queryDirectory in queries) {
+                    for (let h = 0; h < queries[queryDirectory].length; h++) {
+                        let queryName = queries[queryDirectory][h];
+                        if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
+                            let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName, 'utf-8').split("\n");
+                            query.pop();
+                            if (query.length <= 2 && result) {
+                                flag = false;
+                            }
+                            if (query.length > 2 && !result) {
+                                flag = false;
+                            }
+                        } else {
+                            flag = false;
+                        }
+                    }
+                }
+                if (flag) {
+                    fs.appendFileSync(output_path, "Repo: " + repos[i] + " Stars: " + csv[repos[i]] + "\n");
+                    fs.appendFileSync(output_path, "URL: " + csv_urls[repos[i]] + "\n");
+                    fs.appendFileSync(output_path, "\n");
+                }
+            }
+        }
+    }
+}
+
 async function findInterestingRepos(queryDirectory, queryName, result, starsl, starsu, output_path) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
@@ -552,13 +603,14 @@ function libraryUsagesGrep() {
 }
 
 // downloadAndExtractRepos('../flask_login_final_filtered_merged_list.csv');
-findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
-findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
-findInterestingRepos("Cookie-name-prefixes", "ut_session_cookie_name_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_session_cookie_name_flask_login_final_filtered_merged_list.txt');
-findInterestingRepos("Samesite-cookie-attribute", "ut_sameseite_attribute_session_cookie_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_samesite_session_cookie_flask_login_final_filtered_merged_list.txt');
-findInterestingRepos("Login-restrictions", "un_no_authentication_checks.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_no_auth_checks_flask_login_final_filtered_merged_list.txt');
-findInterestingRepos("Logout-function-is-called", "un_logout_function_is_called.txt", false, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_no_logout_flask_login_final_filtered_merged_list.txt');
-findInterestingRepos("Account-deactivation", "ut_deactivated_accounts_login.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_that_allow_deactivated_accounts_to_login_flask_login_final_filtered_merged_list.txt');
-findInterestingRepos("Password-strength", "un_form_with_password_field_is_validated.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_unvalidated_forms_with_password_fields_flask_login_final_filtered_merged_list.txt');
+// findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
+// findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
+// findInterestingRepos("Cookie-name-prefixes", "ut_session_cookie_name_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_session_cookie_name_flask_login_final_filtered_merged_list.txt');
+// findInterestingRepos("Samesite-cookie-attribute", "ut_sameseite_attribute_session_cookie_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_samesite_session_cookie_flask_login_final_filtered_merged_list.txt');
+// findInterestingRepos("Login-restrictions", "un_no_authentication_checks.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_no_auth_checks_flask_login_final_filtered_merged_list.txt');
+// findInterestingRepos("Logout-function-is-called", "un_logout_function_is_called.txt", false, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_no_logout_flask_login_final_filtered_merged_list.txt');
+// findInterestingRepos("Account-deactivation", "ut_deactivated_accounts_login.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_that_allow_deactivated_accounts_to_login_flask_login_final_filtered_merged_list.txt');
+// findInterestingRepos("Password-strength", "un_form_with_password_field_is_validated.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_unvalidated_forms_with_password_fields_flask_login_final_filtered_merged_list.txt');
+findOverlappingResultsInRepos({"Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_werkzeug_is_used.txt"]}, true, './repos_with_interesting_results/9bis - repos_that_use_both_flask_bcrypt_and_werkzeug_flask_login_final_filtered_merged_list.txt'); // looks for repos where the specified set of queries all returned true (or false depending on the second parameter)
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
