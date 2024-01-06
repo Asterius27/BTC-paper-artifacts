@@ -77,7 +77,6 @@ function listMostCommonKeywordsAndUsers() {
     });
 }
 
-// TODO need to test this
 async function findOverlappingResultsInRepos(queries, result, output_path) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
@@ -127,7 +126,7 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
                 if (flag) {
                     fs.appendFileSync(output_path, "Repo: " + repos[i] + " Stars: " + csv[repos[i]] + "\n");
                     fs.appendFileSync(output_path, "URL: " + csv_urls[repos[i]] + "\n");
-                    for (let l = 1; l < results.length; l++) {
+                    for (let l = 0; l < results.length; l++) {
                         fs.appendFileSync(output_path, results[l]);
                     }
                     fs.appendFileSync(output_path, "\n");
