@@ -101,7 +101,7 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
         for (let j = 0; j < repo.length; j++) {
             if (repo[j].endsWith("-results")) {
                 let flag = true
-                for (queryDirectory in queries) {
+                for (let queryDirectory in queries) {
                     for (let h = 0; h < queries[queryDirectory].length; h++) {
                         let queryName = queries[queryDirectory][h];
                         if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
