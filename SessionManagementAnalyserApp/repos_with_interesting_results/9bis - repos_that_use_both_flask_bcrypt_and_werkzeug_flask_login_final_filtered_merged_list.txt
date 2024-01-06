@@ -1,0 +1,109 @@
+Repo: BrightDaniel_Code9ja Stars: 6
+URL: https://github.com/BrightDaniel/Code9ja
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread6/BrightDaniel_Code9ja/BrightDaniel-Code9ja-eeb2075/app.py:75 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread6/BrightDaniel_Code9ja/BrightDaniel-Code9ja-eeb2075/app.py:178 | Werkzeug is being used |
+
+Repo: Digital-Signage-Slideshow_DS_Slideshow Stars: 6
+URL: https://github.com/Digital-Signage-Slideshow/DS_Slideshow
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/Digital-Signage-Slideshow_DS_Slideshow/Digital-Signage-Slideshow-DS_Slideshow-8781044/slideshow/extensions.py:16 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/Digital-Signage-Slideshow_DS_Slideshow/Digital-Signage-Slideshow-DS_Slideshow-8781044/slideshow/user/models.py:22 | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/Digital-Signage-Slideshow_DS_Slideshow/Digital-Signage-Slideshow-DS_Slideshow-8781044/slideshow/user/views.py:68  | Werkzeug is being used |
+
+Repo: MantsSk_CA_Python Stars: 5
+URL: https://github.com/MantsSk/CA_Python
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/70-Flask-Struktura/biudzetas_blueprints/biudzetas/__init__.py:10 | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/70-Flask-Struktura/biudzetas_package/biudzetas/__init__.py:23    | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/70-Flask-Package-Structure/irasai/__init__.py:15                                 | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/Konsultacija-Flask-budget-app/app.py:17                                          | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/67-Flask-Naudotojai/app.py:17                                                    | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/70-Flask-Struktura/biudzetas_modulis/app.py:67                   | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/69-Flask-SlaptazodzioKeitimas/app.py:22                                          | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/69-Flask-SlaptazodzioKeitimas/naujesnis_variantas_2023/app.py:22 | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/69-Flask-SlaptazodzioKeitimas/senesnis_variantas_2022/app.py:24  | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/68-Flask-Nuotraukos-Admin-Puslapiavimas/app.py:21                                | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/68-Flask-Nuotraukos-Admin-Puslapiavimas/myApp/app.py:97              | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/69-SlaptazodzioKeitimas-old/myApp/app.py:138                         | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/69-SlaptazodzioKeitimas-old/myApp/app.py:205                         | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/67-Flask-Naudotojai/myApp/app.py:87                                  | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/70-Flask-Struktura/biudzetas_blueprints/biudzetas/users/routes.py:19 | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/MantsSk_CA_Python/MantsSk-CA_Python-6cb9602/LegacyCodeCAPT3/70-Flask-Struktura/biudzetas_blueprints/biudzetas/users/routes.py:93 | Werkzeug is being used |
+
+Repo: Starscream-11813_CpZen Stars: 14
+URL: https://github.com/Starscream-11813/CpZen
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread6/Starscream-11813_CpZen/Starscream-11813-CpZen-829fb57/app/__init__.py:18 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread6/Starscream-11813_CpZen/Starscream-11813-CpZen-829fb57/app/models.py:46 | Werkzeug is being used |
+
+Repo: Tejas1510_Awesome-Javascript-and-React-Project Stars: 70
+URL: https://github.com/Tejas1510/Awesome-Javascript-and-React-Project
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/Tejas1510_Awesome-Javascript-and-React-Project/Tejas1510-Awesome-Javascript-and-React-Project-cb69061/Invoice-generator/invoicegenerate/__init__.py:9 | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/Tejas1510_Awesome-Javascript-and-React-Project/Tejas1510-Awesome-Javascript-and-React-Project-cb69061/Blogify/app/__init__.py:15                      | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/Tejas1510_Awesome-Javascript-and-React-Project/Tejas1510-Awesome-Javascript-and-React-Project-cb69061/Enrollment Project/application/models.py:13 | Werkzeug is being used |
+
+Repo: bansalkanav_python_notes Stars: 155
+URL: https://github.com/bansalkanav/python_notes
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/bansalkanav_python_notes/bansalkanav-python_notes-02f4f58/23. flask_demo_prog/12. pass_hash/Using-Bcrypt.py:5 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/bansalkanav_python_notes/bansalkanav-python_notes-02f4f58/23. flask_demo_prog/12. pass_hash/Using-Werkzeug.py:4     | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/bansalkanav_python_notes/bansalkanav-python_notes-02f4f58/23. flask_demo_prog/13. user_login/myproject/models.py:31 | Werkzeug is being used |
+
+Repo: meolu_walle-web Stars: 11727
+URL: https://github.com/meolu/walle-web
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/walle/service/extensions.py:13 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/tests/factories.py:25     | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/tests/test_00_base.py:549 | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/tests/test_00_base.py:555 | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/walle/form/user.py:42     | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/walle/api/user.py:179     | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/walle/model/user.py:119   | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/walle/model/user.py:127   | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/meolu_walle-web/meolu-walle-web-f96dc41/walle/model/user.py:128   | Werkzeug is being used |
+
+Repo: microsoft_Oryx Stars: 649
+URL: https://github.com/microsoft/Oryx
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/microsoft_Oryx/microsoft-Oryx-c3e6e90/tests/SampleApps/python/Flask-React-Postgres/app/__init__.py:15 | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/microsoft_Oryx/microsoft-Oryx-c3e6e90/tests/SampleApps/python/React-Redux-Flask-app/index.py:9        | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/microsoft_Oryx/microsoft-Oryx-c3e6e90/tests/SampleApps/python/microblog/app/models.py:121 | Werkzeug is being used |
+
+Repo: mohitarora3_Fashion-Store Stars: 17
+URL: https://github.com/mohitarora3/Fashion-Store
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/mohitarora3_Fashion-Store/mohitarora3-Fashion-Store-0ea5658/ecommerce/__init__.py:16 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/mohitarora3_Fashion-Store/mohitarora3-Fashion-Store-0ea5658/ecommerce/users/routes.py:33  | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/mohitarora3_Fashion-Store/mohitarora3-Fashion-Store-0ea5658/ecommerce/users/routes.py:130 | Werkzeug is being used |
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/mohitarora3_Fashion-Store/mohitarora3-Fashion-Store-0ea5658/ecommerce/users/routes.py:580 | Werkzeug is being used |
+
+Repo: tmthyjames_Achoo Stars: 211
+URL: https://github.com/tmthyjames/Achoo
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread9/tmthyjames_Achoo/tmthyjames-Achoo-cf7168d/app/models/models.py:9 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread9/tmthyjames_Achoo/tmthyjames-Achoo-cf7168d/app/models/models.py:25 | Werkzeug is being used |
+
+Repo: victory-sokolov_personal-expenses-accounting Stars: 7
+URL: https://github.com/victory-sokolov/personal-expenses-accounting
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/victory-sokolov_personal-expenses-accounting/victory-sokolov-personal-expenses-accounting-17ae16c/app/services/server/app/__init__.py:16 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/victory-sokolov_personal-expenses-accounting/victory-sokolov-personal-expenses-accounting-17ae16c/app/services/server/app/models/User.py:35 | Werkzeug is being used |
+
+Repo: wearablebiosensing_tex-tronics Stars: 5
+URL: https://github.com/wearablebiosensing/tex-tronics
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/wearablebiosensing_tex-tronics/wearablebiosensing-tex-tronics-7315c09/fognode/kaya_flaskapp/flaskapp/__init__.py:22 | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/wearablebiosensing_tex-tronics/wearablebiosensing-tex-tronics-7315c09/fognode/wblblog/app/models.py:38 | Werkzeug is being used |
+
+Repo: xctf-io_chalgen Stars: 6
+URL: https://github.com/xctf-io/chalgen
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/xctf-io_chalgen/xctf-io-chalgen-94e8846/competitions/mcpshsf-2023/chals/twitter_flask/twitter/project/__init__.py:10 | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/xctf-io_chalgen/xctf-io-chalgen-94e8846/chal_types/templates/twitter_flask/project/__init__.py:10                    | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/xctf-io_chalgen/xctf-io-chalgen-94e8846/chal_types/templates/secret_chat/app.py:23                                   | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/xctf-io_chalgen/xctf-io-chalgen-94e8846/competitions/mcpshsf-2023/chals/Secret Chat/chat/app.py:23                   | Flask-Bcrypt is being used |
+Result: | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/xctf-io_chalgen/xctf-io-chalgen-94e8846/examples/secret_chat/chat/app.py:22                                          | Flask-Bcrypt is being used |
+Result: +--------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+Result: | ControlFlowNode for generate_password_hash | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/xctf-io_chalgen/xctf-io-chalgen-94e8846/chal_types/templates/forum_flask/forum/database.py:43 | Werkzeug is being used |
+
