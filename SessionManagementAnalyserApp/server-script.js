@@ -101,6 +101,7 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
         for (let j = 0; j < repo.length; j++) {
             if (repo[j].endsWith("-results")) {
                 let flag = true
+                let results = []
                 for (let queryDirectory in queries) {
                     for (let h = 0; h < queries[queryDirectory].length; h++) {
                         let queryName = queries[queryDirectory][h];
@@ -113,6 +114,11 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
                             if (query.length > 2 && !result) {
                                 flag = false;
                             }
+                            if (flag) {
+                                for (let l = 1; l < query.length; l++) {
+                                    results.push("Result: " + query[l] + "\n");
+                                }
+                            }
                         } else {
                             flag = false;
                         }
@@ -121,6 +127,9 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
                 if (flag) {
                     fs.appendFileSync(output_path, "Repo: " + repos[i] + " Stars: " + csv[repos[i]] + "\n");
                     fs.appendFileSync(output_path, "URL: " + csv_urls[repos[i]] + "\n");
+                    for (let l = 1; l < results.length; l++) {
+                        fs.appendFileSync(output_path, results[l]);
+                    }
                     fs.appendFileSync(output_path, "\n");
                 }
             }
