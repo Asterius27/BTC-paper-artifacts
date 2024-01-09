@@ -1,7 +1,7 @@
 import python
 import semmle.python.ApiGraphs
 
-predicate inlineCustomValidators() {
+DataFlow::Node inlineCustomValidators() {
     exists(Class cls | 
         exists(cls.getLocation().getFile().getRelativePath())
         and (cls.getABase().toString() = "Form"
@@ -10,11 +10,12 @@ predicate inlineCustomValidators() {
         and exists(DataFlow::Node node | 
             node = API::moduleImport("wtforms").getMember("PasswordField").getAValueReachableFromSource()
             and exists(cls.getLocation().getFile().getRelativePath())
-            and cls.getAStmt().(AssignStmt).getValue().(Call).getFunc() = node.asExpr())
+            and cls.getAStmt().(AssignStmt).getValue().(Call).getFunc() = node.asExpr()
+            and result = node)
         and cls.getAMethod().getName().prefix(9) = "validate_")
 }
 
-predicate customValidators() {
+DataFlow::Node customValidators() {
     exists(DataFlow::Node node | 
         (node = API::moduleImport("wtforms").getMember("PasswordField").getParameter(1).getAValueReachingSink()
             or node = API::moduleImport("wtforms").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink())
@@ -22,8 +23,11 @@ predicate customValidators() {
             element = node.asExpr().(List).getAnElt().getAFlowNode() | 
             forall(API::Node validator | 
                 validator = API::moduleImport("wtforms").getMember("validators").getAMember() |
-                validator.getReturn().getAValueReachableFromSource().asCfgNode() != element)))
+                validator.getReturn().getAValueReachableFromSource().asCfgNode() != element))
+        and result = node)
 }
 
-where customValidators() or inlineCustomValidators()
-select "Using a custom validator to check password strength"
+from DataFlow::Node passfield
+where passfield = customValidators()
+    or passfield = inlineCustomValidators()
+select passfield, passfield.getLocation(), "Using a custom validator to check password strength"
