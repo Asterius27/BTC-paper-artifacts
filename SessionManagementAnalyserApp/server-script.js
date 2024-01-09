@@ -77,6 +77,60 @@ function listMostCommonKeywordsAndUsers() {
     });
 }
 
+// TODO test this
+async function getSetFromEnvStats(output_path) {
+    let dir = './repositories/' + framework;
+    let repos = fs.readdirSync(dir);
+    let csv = {};
+    let csv_urls = {};
+    let counter = {
+        "un_secret_key": ["SECRET_KEY", 0],
+        "ut_secure_attribute_remember_cookie": ["REMEMBER_COOKIE_SECURE", 0],
+        "ut_secure_attribute_session_cookie": ["SESSION_COOKIE_SECURE", 0],
+        "un_httponly_attribute_session_cookie": ["SESSION_COOKIE_HTTPONLY", 0],
+        "un_httponly_attribute_rememeber_cookie": ["REMEMBER_COOKIE_HTTPONLY", 0],
+        "uf_domain_attribute_session_cookie": ["SESSION_COOKIE_DOMAIN", 0],
+        "uf_domain_attribute_remember_cookie": ["REMEMBER_COOKIE_DOMAIN", 0],
+        "st_samesite_attribute_session_cookie": ["SESSION_COOKIE_SAMESITE", 0],
+        "st_samesite_attribute_remember_cookie": ["REMEMBER_COOKIE_SAMESITE", 0],
+        "st_session_cookie_name_prefix": ["SESSION_COOKIE_NAME", 0],
+        "st_remember_cookie_name_prefix": ["REMEMBER_COOKIE_NAME", 0],
+        "un_refresh_each_request_remember_cookie": ["REMEMBER_COOKIE_REFRESH_EACH_REQUEST", 0],
+        "un_refresh_each_request_session_cookie": ["SESSION_REFRESH_EACH_REQUEST", 0]
+    }
+    await new Promise((resolve, reject) => {
+        fs.createReadStream('../flask_login_final_filtered_merged_list.csv')
+            .pipe(csvParser())
+            .on('data', (data) => {
+                let owner = data.repo_url.split("/")[3];
+                let repoName = data.repo_url.split("/")[4];
+                csv[owner + "_" + repoName] = data.stars
+                csv_urls[owner + "_" + repoName] = data.repo_url
+            }).on('end', () => {
+                console.log("Finished reading the csv");
+                resolve("Done!");
+            });
+    });
+    for (let i = 0; i < repos.length; i++) {
+        let repo = fs.readdirSync(dir + "/" + repos[i]);
+        for (let j = 0; j < repo.length; j++) {
+            if (repo[j].endsWith("-results")) {
+                if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/Explorative-queries/un_list_config_settings_from_env_var.txt")) {
+                    for (let key in counter) {
+                        if (fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/Explorative-queries/un_list_config_settings_from_env_var.txt", 'utf-8').includes(key)) {
+                            counter[key][1]++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    fs.appendFileSync(output_path, "Number of times the following config settings were set from an env variable:\n\n");
+    for (let key in counter) {
+        fs.appendFileSync(output_path, counter[key][0] + ": " + counter[key][1] + "\n");
+    }
+}
+
 async function findOverlappingResultsInRepos(queries, result, output_path) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
@@ -619,6 +673,7 @@ function libraryUsagesGrep() {
 // findInterestingRepos("Logout-function-is-called", "un_logout_function_is_called.txt", false, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_no_logout_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Account-deactivation", "ut_deactivated_accounts_login.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_that_allow_deactivated_accounts_to_login_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Password-strength", "un_form_with_password_field_is_validated.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_unvalidated_forms_with_password_fields_flask_login_final_filtered_merged_list.txt');
-findOverlappingResultsInRepos({"Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_werkzeug_is_used.txt"]}, true, './repos_with_interesting_results/9bis - repos_that_use_both_flask_bcrypt_and_werkzeug_flask_login_final_filtered_merged_list.txt'); // looks for repos where the specified set of queries all returned true (or false depending on the second parameter)
+// findOverlappingResultsInRepos({"Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_werkzeug_is_used.txt"]}, true, './repos_with_interesting_results/9bis - repos_that_use_both_flask_bcrypt_and_werkzeug_flask_login_final_filtered_merged_list.txt'); // looks for repos where the specified set of queries all returned true (or false depending on the second parameter)
+getSetFromEnvStats('./repos_with_interesting_results/9bis - stats_of_config_settings_that_were_set_from_env_variable.txt'); // retrieves the number of times each config setting was set from an env variable, to find the most popular one for example
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
