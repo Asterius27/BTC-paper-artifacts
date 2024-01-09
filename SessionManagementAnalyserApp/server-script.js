@@ -77,7 +77,6 @@ function listMostCommonKeywordsAndUsers() {
     });
 }
 
-// TODO test this
 async function getSetFromEnvStats(output_path) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
