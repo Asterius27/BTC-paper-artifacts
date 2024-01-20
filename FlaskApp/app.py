@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request, session
+from flask import Flask, redirect, url_for, request, session, g
 from flask.sessions import SecureCookieSessionInterface
 from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user, fresh_login_required, login_fresh
 from typing import Dict, Optional
@@ -158,6 +158,16 @@ def aux(a):
 
 testing = os.environ.get("ENVIRON_KEY")
 
+# Custom session interface
+class CustomSessionInterface(SecureCookieSessionInterface):
+    """Prevent creating session from API requests."""
+    def save_session(self, *args, **kwargs):
+        if g.get('login_via_request'):
+            return
+        return super(CustomSessionInterface, self).save_session(*args, **kwargs)
+    
+app.session_interface = CustomSessionInterface()
+
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):
         self.id = aux(id)
@@ -193,6 +203,7 @@ users: Dict[str, "User"] = {
 class TestForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
     # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
     pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User()])
+    confirm_pwd = PasswordField('conf_pwd')
     # another way to define custom validators
     def validate_pwd(form, field):
         if field.data < 16:
