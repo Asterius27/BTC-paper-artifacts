@@ -130,7 +130,29 @@ async function getSetFromEnvStats(output_path) {
     }
 }
 
-// TODO test this new version
+function deleteQueriesResults(queries) {
+    let dir = './repositories/' + framework;
+    let repos = fs.readdirSync(dir);
+    for (let i = 0; i < repos.length; i++) {
+        let repo = fs.readdirSync(dir + "/" + repos[i]);
+        for (let j = 0; j < repo.length; j++) {
+            if (repo[j].endsWith("-results")) {
+                for (let queryDirectory in queries) {
+                    for (let h = 0; h < queries[queryDirectory].length; h++) {
+                        let queryName = queries[queryDirectory][h];
+                        if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName + ".txt")) {
+                            fs.rmSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName + ".txt", {force: true});
+                        }
+                        if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName + ".bqrs")) {
+                            fs.rmSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName + ".bqrs", {force: true});
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 async function findOverlappingResultsInRepos(queries, result, output_path) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
@@ -677,5 +699,6 @@ function libraryUsagesGrep() {
 // findInterestingRepos("Password-strength", "un_form_with_password_field_is_validated.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_unvalidated_forms_with_password_fields_flask_login_final_filtered_merged_list.txt');
 findOverlappingResultsInRepos({"Password-hashing": ["un_form_with_password_filed.txt", "un_form_with_password_filed_and_validators.txt"]}, [true, false], './repos_with_interesting_results/9bis - repos_that_have_all_password_fields_without_validators_flask_login_final_filtered_merged_list.txt'); // looks for repos where the specified set of queries return the results specified by the list (that is the second parameter). The order of the queries corresponds to the order of the results in the list.
 // getSetFromEnvStats('./repos_with_interesting_results/9bis - stats_of_config_settings_that_were_set_from_env_variable.txt'); // retrieves the number of times each config setting was set from an env variable, to find the most popular one for example
+deleteQueriesResults({"Password-hashing": ["un_flask_bcrypt_is_used"], "Password-strength": ["un_password_custom_checks"]});
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
