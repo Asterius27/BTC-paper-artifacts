@@ -130,6 +130,7 @@ async function getSetFromEnvStats(output_path) {
     }
 }
 
+// TODO test this new version
 async function findOverlappingResultsInRepos(queries, result, output_path) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);
@@ -154,16 +155,17 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
             if (repo[j].endsWith("-results")) {
                 let flag = true
                 let results = []
+                let result_counter = 0;
                 for (let queryDirectory in queries) {
                     for (let h = 0; h < queries[queryDirectory].length; h++) {
                         let queryName = queries[queryDirectory][h];
                         if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
                             let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName, 'utf-8').split("\n");
                             query.pop();
-                            if (query.length <= 2 && result) {
+                            if (query.length <= 2 && result[result_counter]) {
                                 flag = false;
                             }
-                            if (query.length > 2 && !result) {
+                            if (query.length > 2 && !result[result_counter]) {
                                 flag = false;
                             }
                             if (flag) {
@@ -174,6 +176,7 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
                         } else {
                             flag = false;
                         }
+                        result_counter++;
                     }
                 }
                 if (flag) {
@@ -672,7 +675,7 @@ function libraryUsagesGrep() {
 // findInterestingRepos("Logout-function-is-called", "un_logout_function_is_called.txt", false, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_no_logout_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Account-deactivation", "ut_deactivated_accounts_login.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_that_allow_deactivated_accounts_to_login_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Password-strength", "un_form_with_password_field_is_validated.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_unvalidated_forms_with_password_fields_flask_login_final_filtered_merged_list.txt');
-// findOverlappingResultsInRepos({"Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_werkzeug_is_used.txt"]}, true, './repos_with_interesting_results/9bis - repos_that_use_both_flask_bcrypt_and_werkzeug_flask_login_final_filtered_merged_list.txt'); // looks for repos where the specified set of queries all returned true (or false depending on the second parameter)
-getSetFromEnvStats('./repos_with_interesting_results/9bis - stats_of_config_settings_that_were_set_from_env_variable.txt'); // retrieves the number of times each config setting was set from an env variable, to find the most popular one for example
+findOverlappingResultsInRepos({"Password-hashing": ["un_form_with_password_filed.txt", "un_form_with_password_filed_and_validators.txt"]}, [true, false], './repos_with_interesting_results/9bis - repos_that_have_all_password_fields_without_validators_flask_login_final_filtered_merged_list.txt'); // looks for repos where the specified set of queries return the results specified by the list (that is the second parameter). The order of the queries corresponds to the order of the results in the list.
+// getSetFromEnvStats('./repos_with_interesting_results/9bis - stats_of_config_settings_that_were_set_from_env_variable.txt'); // retrieves the number of times each config setting was set from an env variable, to find the most popular one for example
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();

@@ -1,4 +1,5 @@
 from flask import Flask, redirect, url_for, request, session
+from flask.sessions import SecureCookieSessionInterface
 from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user, fresh_login_required, login_fresh
 from typing import Dict, Optional
 from datetime import timedelta
