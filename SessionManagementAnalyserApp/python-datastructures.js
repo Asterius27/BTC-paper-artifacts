@@ -132,6 +132,15 @@ let flask = {
     },
     "AccountDeactivation": {
         "Account-deactivation": {
+            "un_deactivation_left_as_default": [false, ""],
+            "un_deactivation_manually_set": [false, ""],
+            "un_user_class_does_not_override_is_active": [false, ""],
+            "un_user_class_extends_usermixin": [false, ""],
+            "un_user_class_overrides_is_active": [false, ""],
+            "un_user_class_overrides_is_active_always_returns_false": [false, ""],
+            "un_user_class_overrides_is_active_always_returns_true": [false, ""],
+            "un_user_class_overrides_is_active_custom_boolean_return": [false, ""],
+            "un_user_class_overrides_is_active_non_boolean_return": [false, ""],
             "un_deactivation_not_used": [false, ""],
             "ut_deactivated_accounts_login": [false, ""],
             "sf_deactivated_accounts_default": [false, ""],
@@ -334,10 +343,19 @@ let descriptions = {
     },
     "AccountDeactivation": {
         "Account-deactivation": {
-            "deactivation_not_used": "Deactivated accounts are not allowed to login, but is_active behaviour is left as default (always returns true)",
-            "deactivated_accounts_login": "Deactivated accounts are allowed to login",
-            "deactivated_accounts_default": "Deactivated accounts are allowed to login and is_active behaviour is left as default (always returns true)",
-            "deactivated_accounts_handling": "Deactivated accounts are allowed to login and user class overrides is_active default behaviour with some custom logic"
+            "deactivation_left_as_default": "Force parameter (of the login function) is not set, default value is false so deactivated users are not allowed to log in",
+            "deactivation_manually_set": "Deactivated users are not allowed to log in (force is manually set to false and not left as default)",
+            "user_class_does_not_override_is_active": "There are one or more user classes (in the repo) that don't override is_active (default behaviour is to always return true)",
+            "user_class_extends_usermixin": "There are one or more classes (in the repo) that extend Flask-Login's UserMixin",
+            "user_class_overrides_is_active": "There are one or more classes (in the repo) that override is_active property (and extend UserMixin)",
+            "user_class_overrides_is_active_always_returns_false": "There are one or more classes (in the repo) that override is_active with a property that always returns false",
+            "user_class_overrides_is_active_always_returns_true": "There are one or more classes (in the repo) that override is_active with a property that always returns true",
+            "user_class_overrides_is_active_custom_boolean_return": "There are one or more classes (in the repo) that override is_active with a property that has some custom logic but always returns a literal (either true or false)",
+            "user_class_overrides_is_active_non_boolean_return": "There are one or more classes (in the repo) that override is_active with a property that has some custom logic and might return a boolean that is not a literal",
+            "deactivation_not_used": "Deactivated accounts are not allowed to login, but (there exists at least one user class where) is_active behaviour is left as default (always returns true)",
+            "deactivated_accounts_login": "Deactivated accounts are allowed to login (force set to true)",
+            "deactivated_accounts_default": "Deactivated accounts are allowed to login and (there exists at least one user class where) is_active behaviour is left as default (always returns true)",
+            "deactivated_accounts_handling": "Deactivated accounts are allowed to login and (there exists at least one) user class overrides is_active default behaviour with some custom logic"
         }
     },
     "PasswordStrength": {
