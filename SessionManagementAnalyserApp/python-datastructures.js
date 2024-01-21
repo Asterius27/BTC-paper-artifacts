@@ -99,7 +99,8 @@ let flask = {
             "un_no_fresh_login_checks": [false, ""]
         },
         "Login-restrictions": {
-            "un_no_authentication_checks": [false, ""]
+            "un_no_authentication_checks": [false, ""],
+            "un_no_authentication_checks_general": [false, ""]
         }
     },
     "CookieTampering": {
@@ -109,6 +110,7 @@ let flask = {
     },
     "ExplorativeQueries": {
         "Explorative-queries": {
+            "un_custom_session_interface": [false, ""],
             "un_config_set_from_env_var": [false, ""],
             "un_config_set_from_file_mapping_keys": [false, ""],
             "un_list_config_settings_from_env_var": [false, ""]
@@ -144,6 +146,7 @@ let flask = {
             "un_flask_wtf_is_used": [false, ""],
             "un_wtforms_is_used": [false, ""],
             "un_form_with_password_field": [false, ""],
+            "un_form_with_two_password_fields": [false, ""],
             "un_form_with_password_field_and_validators": [false, ""],
             "un_form_with_password_field_is_validated": [false, ""],
             "un_password_custom_checks": [false, ""],
@@ -288,7 +291,8 @@ let descriptions = {
             "no_fresh_login_checks": "The application never checks whether the current login is fresh or not (no fresh login restricted areas of the app)"
         },
         "Login-restrictions": {
-            "no_authentication_checks": "The application never checks whether the user is authenticated or not (no login restricted areas of the app)"
+            "no_authentication_checks": "The application never checks whether the user is authenticated or not (no login restricted areas of the app)",
+            "no_authentication_checks_general": "The application never accesses the current_user object and never uses the @login_required decorator"
         }
     },
     "CookieTampering": {
@@ -308,6 +312,7 @@ let descriptions = {
     },
     "ExplorativeQueries": {
         "Explorative-queries": {
+            "custom_session_interface": "Using a custom session interface",
             "config_set_from_env_var": "How many repos set the whole flask config object from an environment variable",
             "config_set_from_file_mapping_keys": "How many repos set the whole flask config object using the from_file or from_mapping or fromkeys functions",
             "list_config_settings_from_env_var": "How many repos set one or more config settings from environment variables (using for example os.environ.get())"
@@ -342,7 +347,8 @@ let descriptions = {
             "passwordstrength_is_used": "password-strength is being used by the application",
             "flask_wtf_is_used": "Flask-WTF is being used by the application",
             "wtforms_is_used": "WTForms is being used by the application",
-            "form_with_password_field": "Number of forms with a password field",
+            "form_with_password_field": "Number of repos with at least one form with a password field",
+            "form_with_two_password_fields": "Number of repos with at least one form with two password fields",
             "form_with_password_field_and_validators": "Number of forms with a password field that also has some validators",
             "form_with_password_field_is_validated": "Some forms with a password field (that has some validators) are not being validated",
             "password_custom_checks": "Using a custom validator to check password strength",
