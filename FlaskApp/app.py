@@ -189,10 +189,15 @@ class User(UserMixin):
         x = 5
         return self.id
     
+    @property
     def is_active(self):
         if self.id:
             return False
         return True
+    
+    @property
+    def is_active(self):
+        return False
 
 users: Dict[str, "User"] = {
     '1': User(1, 'mario', '1234'),
