@@ -153,7 +153,6 @@ function deleteQueriesResults(queries) {
     }
 }
 
-// TODO test this new version
 async function findOverlappingResultsInRepos(queries, result, output_path) {
     let dir = './repositories/' + framework;
     let repos = fs.readdirSync(dir);

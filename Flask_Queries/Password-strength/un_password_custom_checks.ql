@@ -15,6 +15,7 @@ DataFlow::Node inlineCustomValidators() {
         and cls.getAMethod().getName().prefix(9) = "validate_")
 }
 
+// TODO doesn't seem to be working correctly
 DataFlow::Node customValidators() {
     exists(DataFlow::Node node | 
         (node = API::moduleImport("wtforms").getMember("PasswordField").getParameter(1).getAValueReachingSink()
