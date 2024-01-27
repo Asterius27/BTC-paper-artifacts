@@ -8,7 +8,7 @@ from config import FlaskConfig, default_config
 import os
 from flask_bcrypt import Bcrypt
 from wtforms import Form, PasswordField, ValidationError, BaseForm
-from wtforms.validators import Length, Regexp, length
+from wtforms.validators import Length, Regexp, length, DataRequired, Email, EqualTo
 from flask_wtf import FlaskForm
 from passlib.hash import pbkdf2_sha256, argon2, scrypt
 from argon2 import PasswordHasher, Type
@@ -212,11 +212,15 @@ users: Dict[str, "User"] = {
 class TestForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
     # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
     pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User()])
+    test = PasswordField('pwd', validators=[DataRequired()])
     confirm_pwd = PasswordField('conf_pwd')
     # another way to define custom validators
     def validate_pwd(form, field):
         if field.data < 16:
             raise ValidationError("Password is too short")
+        
+class NoCustomValidators(FlaskForm):
+    test = PasswordField('pwd', validators=[DataRequired()])
 
 def helper():
     h = 'max-age=31536000; includeSubDomains' # 1 year
