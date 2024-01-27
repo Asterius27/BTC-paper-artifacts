@@ -9,6 +9,46 @@ let starsu = Number.MAX_VALUE;
 let lang = "";
 let csv_file = '../flask_login_merged_list.csv';
 
+// TODO test this
+function repoUsesRequiredLibraries(resDir) {
+    let filterQueries = {
+        "Password-strength": {
+            "un_flask_wtf_is_used": true,
+            "un_wtforms_is_used": true,
+        },
+        "Password-hashing": {
+            "un_flask_bcrypt_is_used": true,
+            "un_argon2_is_used": true,
+            "un_bcrypt_is_used": true,
+            "un_hashlib_is_used": true,
+            "un_passlib_is_used": true,
+            "un_werkzeug_is_used": true
+        }
+    }
+    for (let [dir, files] of Object.entries(filterQueries)) {
+        let result = false;
+        for (let [query, value] of Object.entries(files)) {
+            let lines = [];
+            try {
+                lines = fs.readFileSync(resDir + "/" + dir + "/" + query + ".txt", 'utf-8').split("\n");
+                lines.pop();
+                if (lines.length > 2 && value) {
+                    result = true;
+                }
+                if (lines.length <= 2 && !value) {
+                    result = true;
+                }
+            } catch (e) {
+                fs.appendFileSync('./log_stats_generator.txt', "Failed to read query results for: " + resDir + "/" + dir + "/" + query + ".txt" + " Reason: " + e + "\n");
+            }
+        }
+        if (!result) {
+            return false;
+        }
+    }
+    return true;
+}
+
 // Root directory of the projects/repositories/applications, if not specified the current directory will be used
 if (process.argv.some(str => str.startsWith("-s="))) {
     root_dir = process.argv.filter(str => str.startsWith("-s="))[0].slice(3);
@@ -91,8 +131,10 @@ for (let i = 0; i < repos.length; i++) {
                 info = fs.readFileSync(dir + "/" + res + "/info.txt", { encoding: 'utf-8' }).split(",");
                 if (info[0] === "python") {
                     if (info.some(str => str.includes("flask"))) {
-                        flask_repos++;
-                        [flask_counter, flask_error_counter, false_positives_counter_flask] = countRepos(flask_counter, flask_error_counter, false_positives_counter_flask, "flask", dir + "/" + res);
+                        if (repoUsesRequiredLibraries(dir + "/" + res)) {
+                            flask_repos++;
+                            [flask_counter, flask_error_counter, false_positives_counter_flask] = countRepos(flask_counter, flask_error_counter, false_positives_counter_flask, "flask", dir + "/" + res);
+                        }
                     }
                     if (info.some(str => str.includes("django"))) {
                         django_repos++;
