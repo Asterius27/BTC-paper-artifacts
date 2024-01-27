@@ -21,7 +21,9 @@ string getMaxValue(API::Node validator) {
 
 from DataFlow::Node node, API::Node validator
 where (node = API::moduleImport("wtforms").getMember("PasswordField").getParameter(1).getAValueReachingSink()
-        or node = API::moduleImport("wtforms").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink())
+        or node = API::moduleImport("flask_wtf").getMember("PasswordField").getParameter(1).getAValueReachingSink()
+        or node = API::moduleImport("wtforms").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink()
+        or node = API::moduleImport("flask_wtf").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink())
     and (validator = API::moduleImport("wtforms").getMember("validators").getMember("Length")
         or validator = API::moduleImport("wtforms").getMember("validators").getMember("length"))
     and node.asExpr().(List).getAnElt().getAFlowNode() = validator.getReturn().getAValueReachableFromSource().asCfgNode()

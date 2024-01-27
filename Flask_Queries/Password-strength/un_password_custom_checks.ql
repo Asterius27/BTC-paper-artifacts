@@ -19,7 +19,9 @@ DataFlow::Node inlineCustomValidators() {
 DataFlow::Node customValidators() {
     exists(DataFlow::Node node | 
         (node = API::moduleImport("wtforms").getMember("PasswordField").getParameter(1).getAValueReachingSink()
-            or node = API::moduleImport("wtforms").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink())
+            or node = API::moduleImport("flask_wtf").getMember("PasswordField").getParameter(1).getAValueReachingSink()
+            or node = API::moduleImport("wtforms").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink()
+            or node = API::moduleImport("flask_wtf").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink())
         and exists(ControlFlowNode element | 
             element = node.asExpr().(List).getAnElt().getAFlowNode() | 
             forall(API::Node validator | 

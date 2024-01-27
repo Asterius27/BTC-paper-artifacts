@@ -7,8 +7,10 @@ where exists(cls.getLocation().getFile().getRelativePath())
         or cls.getABase().toString() = "BaseForm"
         or cls.getABase().toString() = "FlaskForm")
     and exists(DataFlow::Node node1, DataFlow::Node node2 | 
-        node1 = API::moduleImport("wtforms").getMember("PasswordField").getAValueReachableFromSource()
-        and node2 = API::moduleImport("wtforms").getMember("PasswordField").getAValueReachableFromSource()
+        (node1 = API::moduleImport("wtforms").getMember("PasswordField").getAValueReachableFromSource()
+            or node1 = API::moduleImport("flask_wtf").getMember("PasswordField").getAValueReachableFromSource())
+        and (node2 = API::moduleImport("wtforms").getMember("PasswordField").getAValueReachableFromSource()
+            or node2 = API::moduleImport("flask_wtf").getMember("PasswordField").getAValueReachableFromSource())
         and cls.getAStmt().(AssignStmt).getValue().(Call).getFunc() = node1.asExpr()
         and cls.getAStmt().(AssignStmt).getValue().(Call).getFunc() = node2.asExpr()
         and node1 != node2)

@@ -20,7 +20,7 @@ function repoUsesRequiredLibraries(resDir) {
             "un_flask_bcrypt_is_used": true,
             "un_argon2_is_used": true,
             "un_bcrypt_is_used": true,
-            "un_hashlib_is_used": true,
+            // "un_hashlib_is_used": true,
             "un_passlib_is_used": true,
             "un_werkzeug_is_used": true
         }

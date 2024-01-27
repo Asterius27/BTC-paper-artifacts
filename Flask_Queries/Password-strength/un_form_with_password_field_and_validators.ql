@@ -7,7 +7,8 @@ where exists(cls.getLocation().getFile().getRelativePath())
         or cls.getABase().toString() = "BaseForm"
         or cls.getABase().toString() = "FlaskForm")
     and exists(API::Node node | 
-        node = API::moduleImport("wtforms").getMember("PasswordField")
+        (node = API::moduleImport("wtforms").getMember("PasswordField")
+            or node = API::moduleImport("flask_wtf").getMember("PasswordField"))
         and (exists(node.getParameter(1).getAValueReachingSink())
             or exists(node.getKeywordParameter("validators").getAValueReachingSink())
             or cls.getAMethod().getName().prefix(9) = "validate_")
