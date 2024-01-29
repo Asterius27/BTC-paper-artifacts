@@ -158,6 +158,7 @@ let flask = {
             "un_form_with_two_password_fields": [false, ""],
             "un_form_with_password_field_and_validators": [false, ""],
             "un_form_with_password_field_is_validated": [false, ""],
+            "un_form_with_password_field_uses_extra_validators_in_validate_method": [false, ""],
             "un_password_custom_checks": [false, ""],
             "un_password_length_check": [false, ""],
             "un_password_regexp_check": [false, ""]
@@ -369,6 +370,7 @@ let descriptions = {
             "form_with_two_password_fields": "Number of repos with at least one form with two password fields",
             "form_with_password_field_and_validators": "Number of forms with a password field that also has some validators",
             "form_with_password_field_is_validated": "Some forms with a password field (that has some validators) are not being validated",
+            "form_with_password_field_uses_extra_validators_in_validate_method": "Some forms have a password field and pass extra validators when calling the validate or validate_on_submit method",
             "password_custom_checks": "Using a custom validator to check password strength",
             "password_length_check": "Length checks are being performed on the password field",
             "password_regexp_check": "The password is being checked using a regexp"
@@ -420,11 +422,11 @@ let config = {
         "element_id": 'password_hashing'
     },
     "AccountDeactivation": {
-        "options": 'var options = {"title":"Account Deactivation","width":1500,"height":1500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "options": 'var options = {"title":"Account Deactivation","width":1500,"height":1600,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'account_deactivation'
     },
     "PasswordStrength": {
-        "options": 'var options = {"title":"Password Strength","width":1500,"height":1500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "options": 'var options = {"title":"Password Strength","width":1500,"height":1800,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'password_strength'
     }
 }

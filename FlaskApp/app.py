@@ -8,6 +8,7 @@ from config import FlaskConfig, default_config
 import os
 from flask_bcrypt import Bcrypt
 from wtforms import Form, PasswordField, ValidationError, BaseForm
+from wtforms import validators
 from wtforms.validators import Length, Regexp, length, DataRequired, Email, EqualTo
 from flask_wtf import FlaskForm
 from passlib.hash import pbkdf2_sha256, argon2, scrypt
@@ -221,6 +222,9 @@ class TestForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
         
 class NoCustomValidators(FlaskForm):
     test = PasswordField('pwd', validators=[DataRequired()])
+    
+    def validate_whatever(form, field):
+        raise ValidationError("Test")
 
 def helper():
     h = 'max-age=31536000; includeSubDomains' # 1 year
