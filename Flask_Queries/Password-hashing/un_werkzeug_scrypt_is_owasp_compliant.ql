@@ -2,16 +2,11 @@ import python
 import semmle.python.ApiGraphs
 
 DataFlow::Node libraryIsUsed() {
-    exists(API::Node node | 
-        node = API::moduleImport("werkzeug").getMember("security").getMember("generate_password_hash")
-        and (exists(DataFlow::Node method |
-                (method = node.getKeywordParameter("method").getAValueReachingSink()
-                    or method = node.getParameter(1).getAValueReachingSink())
-                and method.asExpr().(StrConst).getS().prefix(6) = "scrypt")
-            or not exists(DataFlow::Node method | 
-                (method = node.getKeywordParameter("method").getAValueReachingSink()
-                    or method = node.getParameter(1).getAValueReachingSink())))
-        and result = node.getAValueReachableFromSource())
+    exists(DataFlow::Node node | 
+        (node = API::moduleImport("werkzeug").getMember("security").getMember("generate_password_hash").getKeywordParameter("method").getAValueReachingSink()
+            or node =API::moduleImport("werkzeug").getMember("security").getMember("generate_password_hash").getParameter(1).getAValueReachingSink())
+        and node.asExpr().(StrConst).getS().prefix(6) = "scrypt"
+        and result = node)
 }
 
 bindingset[n, r, p]
