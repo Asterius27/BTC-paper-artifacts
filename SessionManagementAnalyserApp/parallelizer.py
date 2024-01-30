@@ -47,7 +47,7 @@ if __name__ == '__main__':
                 j = 1
             # print(current_thread)
             current_thread += 1
-    print("Now starting the thread workers...")
+    print("Now starting the thread workers...") # TODO maybe add a sleep timer before this? sometimes some folders (e.g. thread4/) disappear only to reappear at the end of the analysis, don't know why
     with Pool(processes=args.threads) as pool:
         for i in range(args.threads):
             pool.apply_async(runner, (codeql_threads, i))
