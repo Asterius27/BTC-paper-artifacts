@@ -11,7 +11,7 @@ from wtforms import Form, PasswordField, ValidationError, BaseForm
 from wtforms import validators
 from wtforms.validators import Length, Regexp, length, DataRequired, Email, EqualTo
 from flask_wtf import FlaskForm
-from passlib.hash import pbkdf2_sha256, argon2, scrypt
+from passlib.hash import pbkdf2_sha256, argon2, scrypt, bcrypt_sha256, pbkdf2_sha512
 from argon2 import PasswordHasher, Type
 from passlib.context import CryptContext
 import hashlib
@@ -122,9 +122,11 @@ app.config.from_file()
 app.config.fromkeys()
 
 # Other password hashing libraries
-hash = pbkdf2_sha256.hash("password")
-alg = argon2("ID", memory_cost=2)
+hash = pbkdf2_sha256.using().hash("password")
+pbk = pbkdf2_sha512.using().hash("wow")
+alg = argon2.using().hash("bella")
 scr = scrypt.using().hash("test")
+bcryptt = bcrypt_sha256.using().hash("ciao")
 ctx = CryptContext(schemes=[])
 ph = PasswordHasher(type=Type.ID)
 hash = ph.hash("correct horse battery staple")
