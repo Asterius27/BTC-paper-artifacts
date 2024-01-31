@@ -1,7 +1,6 @@
 import python
 import semmle.python.ApiGraphs
 
-// TODO test this, check that the output for https://github.com/Ak500k/Passwd-Manager is correct (and also have a look at the other repos)
 DataFlow::Node inlineCustomValidators() {
     exists(Class cls, DataFlow::Node node, AssignStmt asgn | 
         exists(cls.getLocation().getFile().getRelativePath())
