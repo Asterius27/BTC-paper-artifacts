@@ -32,6 +32,10 @@ if __name__ == '__main__':
         if j < repo_per_thread:
             if not os.path.exists(str(full_path.absolute()) + "/thread" + str(current_thread)):
                 os.mkdir(str(full_path.absolute()) + "/thread" + str(current_thread))
+            else: 
+                with open("log_parallelizer.txt", "a") as f:
+                    f.write('Could not create the following folder because it already existed: ' + "/thread" + str(current_thread) + "\n")
+                    print('Could not create the following folder because it already existed: ' + "/thread" + str(current_thread) + "\n")
             shutil.move(str(full_path.absolute()) + "/" + repo_dir, str(full_path.absolute()) + "/thread" + str(current_thread) + "/" + repo_dir)
             j += 1
         else:
