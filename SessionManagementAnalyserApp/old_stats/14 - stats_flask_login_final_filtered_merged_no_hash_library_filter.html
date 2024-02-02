@@ -147,7 +147,7 @@ var data = new google.visualization.arrayToDataTable([
 ["Using a bugged hashing algorithm", 0, "Flask/Flask-login: 0 (0.00 %)", 0, "Failed Flask Queries: 0 (0.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["Using less than 12 rounds (default and recommended value) for hashing", 0, "Flask/Flask-login: 0 (0.00 %)", 0, "Failed Flask Queries: 0 (0.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ]);
-var options = {"title":"Password Hashing","width":1500,"height":2500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
+var options = {"title":"Password Hashing","width":1500,"height":3300,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
 var chart = new google.visualization.BarChart(document.getElementById("password_hashing"));
 chart.draw(data, options);
 }

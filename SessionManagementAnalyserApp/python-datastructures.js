@@ -452,7 +452,7 @@ let config = {
         "element_id": 'explorative_queries'
     },
     "PasswordHashing": {
-        "options": 'var options = {"title":"Password Hashing","width":1500,"height":2500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "options": 'var options = {"title":"Password Hashing","width":1500,"height":3300,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'password_hashing'
     },
     "AccountDeactivation": {
