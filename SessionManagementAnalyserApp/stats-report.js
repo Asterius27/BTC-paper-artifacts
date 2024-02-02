@@ -16,6 +16,7 @@ function repoUsesRequiredLibraries(resDir) {
             "un_flask_wtf_is_used": true,
             "un_wtforms_is_used": true,
         },
+        /*
         "Password-hashing": {
             "un_flask_bcrypt_is_used": true,
             "un_argon2_is_used": true,
@@ -24,6 +25,7 @@ function repoUsesRequiredLibraries(resDir) {
             "un_passlib_is_used": true,
             "un_werkzeug_is_used": true
         }
+        */
     }
     for (let [dir, files] of Object.entries(filterQueries)) {
         let result = false;
