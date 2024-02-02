@@ -9,7 +9,6 @@ let starsu = Number.MAX_VALUE;
 let lang = "";
 let csv_file = '../flask_login_merged_list.csv';
 
-// TODO test this
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
         "Password-strength": {
