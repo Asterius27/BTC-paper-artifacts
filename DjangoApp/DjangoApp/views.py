@@ -1,6 +1,10 @@
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.views import View
+from django.views.generic import TemplateView
 import datetime
 
+@login_required
 def current_datetime(request):
     x = 10
     now = datetime.datetime.now()
@@ -12,6 +16,21 @@ def current_datetime(request):
     # If value is None, the session reverts to using the global session expiry policy.
     request.session.set_expiry(value=datetime.timedelta(2))
     request.session.set_expiry(x)
-    
+    user_check(request)
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
+
+def another_view(rq):
+    return HttpResponse("No auth checks")
+
+def user_check(req):
+    if req.user.is_authenticated:
+        return True
+    else:
+        return False
+    
+class ViewClass(View):
+
+    def idk(self, request):
+        user_check(request)
+        return HttpResponse("Hello world!")
