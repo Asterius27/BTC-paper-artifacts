@@ -688,7 +688,7 @@ function libraryUsagesGrep() {
     });
 }
 
-// downloadAndExtractRepos('../flask_login_final_filtered_merged_list.csv');
+downloadAndExtractRepos('../flask_login_final_v2_filtered_merged_list.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Cookie-name-prefixes", "ut_session_cookie_name_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_session_cookie_name_flask_login_final_filtered_merged_list.txt');
@@ -697,7 +697,7 @@ function libraryUsagesGrep() {
 // findInterestingRepos("Logout-function-is-called", "un_logout_function_is_called.txt", false, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_no_logout_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Account-deactivation", "ut_deactivated_accounts_login.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_that_allow_deactivated_accounts_to_login_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Password-strength", "un_form_with_password_field_is_validated.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_unvalidated_forms_with_password_fields_flask_login_final_filtered_merged_list.txt');
-findInterestingRepos("Password-strength", "un_password_custom_checks.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/12 - repos_with_custom_password_strength_checks_flask_login_final_filtered_merged_list.txt');
+// findInterestingRepos("Password-strength", "un_password_custom_checks.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/12 - repos_with_custom_password_strength_checks_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Login-restrictions", "un_no_authentication_checks_general.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/10 - repos_without_login_restrictions_flask_login_final_filtered_merged_list.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_and_validators.txt"]}, [true, false], './repos_with_interesting_results/10 - repos_that_have_all_password_fields_without_validators_flask_login_final_filtered_merged_list.txt'); // looks for repos where the specified set of queries return the results specified by the list (that is the second parameter). The order of the queries corresponds to the order of the results in the list.
 // getSetFromEnvStats('./repos_with_interesting_results/9bis - stats_of_config_settings_that_were_set_from_env_variable.txt'); // retrieves the number of times each config setting was set from an env variable, to find the most popular one for example

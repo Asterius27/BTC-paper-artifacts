@@ -3,7 +3,7 @@ import csv
 import os
 import shutil
 
-csv_path = Path(__file__).parent / '../flask_login_final_filtered_merged_list.csv'
+csv_path = Path(__file__).parent / '../flask_login_final_v2_filtered_merged_list.csv'
 repos_path = Path(__file__).parent / './repositories/Flask'
 repos = []
 # temp = 0
