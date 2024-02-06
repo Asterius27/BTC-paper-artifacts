@@ -1,5 +1,7 @@
 import python
 import semmle.python.ApiGraphs
+import semmle.python.dataflow.new.DataFlow3
+import semmle.python.dataflow.new.DataFlow2
 
 module DjangoSession {
 
@@ -17,6 +19,40 @@ module DjangoSession {
                 atr.getName() = "user"
                 and atr.getObject() = sink.asExpr()
                 and exists(sink.getLocation().getFile().getRelativePath()))
+        }
+    }
+
+    // TODO there might be other ways to set the password hashers (not sure because they are constants, so the only way to set them should be in the settings.py file (which is what this query checks))
+    class PasswordHashersConfiguration extends DataFlow3::Configuration {
+        PasswordHashersConfiguration() { this = "PasswordHashersConfiguration" }
+
+        override predicate isSource(DataFlow3::Node source) {
+            exists(source.getLocation().getFile().getRelativePath())
+            and source.asExpr() instanceof List
+        }
+
+        override predicate isSink(DataFlow3::Node sink) {
+            exists(AssignStmt asgn, Name name | 
+                name.getId() = "PASSWORD_HASHERS"
+                and asgn.getATarget() = name
+                and exists(asgn.getLocation().getFile().getRelativePath())
+                and asgn.getValue().getAFlowNode() = sink.asCfgNode()
+            )
+        }
+    }
+
+    class PasswordHashersListConfiguration extends DataFlow2::Configuration {
+        PasswordHashersListConfiguration() { this = "PasswordHashersListConfiguration" }
+
+        override predicate isSource(DataFlow2::Node source) {
+            exists(source.getLocation().getFile().getRelativePath())
+            and source.asExpr() instanceof StrConst
+        }
+
+        override predicate isSink(DataFlow2::Node sink) {
+            exists(sink.getLocation().getFile().getRelativePath())
+            and exists(List lst | 
+                lst.getElt(0) = sink.asExpr())
         }
     }
 
@@ -68,6 +104,32 @@ module DjangoSession {
             and atr.getObject().getAFlowNode() = getAUserObject()
             and exists(atr.getLocation().getFile().getRelativePath())
             and result = atr.getAFlowNode())
+    }
+
+    StrConst getDefaultHashingAlg() {
+        exists(DataFlow3::Node source, DataFlow3::Node sink, DataFlow2::Node source2, DataFlow2::Node sink2, PasswordHashersConfiguration config, PasswordHashersListConfiguration config2 |
+            config.hasFlow(source, sink)
+            and config2.hasFlow(source2, sink2)
+            and source.asExpr().(List).getElt(0) = sink2.asExpr()
+            and result = sink2.asExpr().(StrConst))
+    }
+
+    bindingset[alg]
+    StrConst defaultImplOfHashingAlgIsUsed(string alg) {
+        exists(StrConst str | 
+            str = getDefaultHashingAlg()
+            and str.getS() = alg
+            and result = str)
+    }
+
+    bindingset[alg]
+    Class overridenImplOfHashingAlgIsUsed(string alg) {
+        exists (Class cls, StrConst str | 
+            str = getDefaultHashingAlg()
+            and cls.getName() = str.getS().splitAt(".") // TODO have to test this
+            and cls.getABase() = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("hashers").getMember(alg).getAValueReachableFromSource().asExpr() // TODO have to test this
+            and str.getS().prefix(28) != "django.contrib.auth.hashers."
+            and result = cls)
     }
 
 }

@@ -25,6 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7jbr66(3gcuj=%p(^9r_8)-p)_4rhcjzs^xq^1p_f5_e3lxw@d'
 SECRET_KEY_FALLBACKS = ["secret-key", "older_secret_key"]
 
+# Password hashing
+PASSWORD_HASHERS = [
+    "hashers.MyArgon2PasswordHasher",
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
+]
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
