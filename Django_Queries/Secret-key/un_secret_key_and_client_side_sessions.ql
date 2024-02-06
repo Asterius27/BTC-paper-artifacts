@@ -2,7 +2,24 @@ import python
 import semmle.python.dataflow.new.DataFlow
 import semmle.python.dataflow.new.DataFlow2
 
-// TODO there might be other ways to set the secret key (not sure because they are constants, so the only way to set them should be in the settings.py file (which is what this query checks))
+// TODO there might be other ways to change the session engine and set the secret key (not sure because they are constants, so the only way to set them should be in the settings.py file (which is what this query checks))
+class ClientSideSessionConfiguration extends DataFlow::Configuration {
+    ClientSideSessionConfiguration() { this = "ClientSideSessionConfiguration" }
+
+    override predicate isSource(DataFlow::Node source) {
+        source.asExpr().(StrConst).getText() = "django.contrib.sessions.backends.signed_cookies"
+    }
+
+    override predicate isSink(DataFlow::Node sink) {
+        exists(AssignStmt asgn, Name name | 
+            name.getId() = "SESSION_ENGINE"
+            and asgn.getATarget() = name
+            and exists(asgn.getLocation().getFile().getRelativePath())
+            and asgn.getValue().getAFlowNode() = sink.asCfgNode()
+        )
+    }
+}
+
 class SecretKeyConfiguration extends DataFlow2::Configuration {
     SecretKeyConfiguration() { this = "SecretKeyConfiguration" }
 
@@ -34,5 +51,7 @@ string output2(StrConst key) {
 }
 
 from DataFlow2::Node secsource, DataFlow2::Node key, SecretKeyConfiguration sconfig
-where sconfig.hasFlow(secsource, key)
+where exists(DataFlow::Node source, DataFlow::Node sink, ClientSideSessionConfiguration config | 
+    config.hasFlow(source, sink))
+    and sconfig.hasFlow(secsource, key)
 select key.getLocation(), output(key.asExpr()), output2(key.asExpr())

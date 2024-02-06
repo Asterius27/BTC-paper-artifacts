@@ -46,16 +46,27 @@ module DjangoSession {
     }
 
     ControlFlowNode getAUserObject() {
-        exists(DataFlow::Node src, DataFlow::Node sink, RequestObjectConfiguration config |
+        exists(DataFlow::Node src, DataFlow::Node sink, RequestObjectConfiguration config, Attribute atr |
             config.hasFlow(src, sink)
-            and result = sink.asCfgNode())
+            and atr.getName() = "user"
+            and atr.getObject() = sink.asExpr()
+            and exists(atr.getLocation().getFile().getRelativePath())
+            and result = atr.getAFlowNode())
     }
 
-    // TODO doesn't work
     ControlFlowNode getUserIsAuthenticatedAccess() {
         exists(Attribute atr |
             atr.getName() = "is_authenticated"
             and atr.getObject().getAFlowNode() = getAUserObject()
+            and exists(atr.getLocation().getFile().getRelativePath())
+            and result = atr.getAFlowNode())
+    }
+
+    ControlFlowNode getUserLastLoginAccess() {
+        exists(Attribute atr |
+            atr.getName() = "last_login"
+            and atr.getObject().getAFlowNode() = getAUserObject()
+            and exists(atr.getLocation().getFile().getRelativePath())
             and result = atr.getAFlowNode())
     }
 

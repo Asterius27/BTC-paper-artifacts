@@ -22,6 +22,6 @@ class SessionEngineConfiguration extends DataFlow::Configuration {
     }
 }
 
-where exists(DataFlow::Node source, DataFlow::Node sink, SessionEngineConfiguration config | 
-    config.hasFlow(source, sink))
-select "Using a custom session engine"
+from DataFlow::Node source, DataFlow::Node sink, SessionEngineConfiguration config
+where config.hasFlow(source, sink)
+select source, sink, source.getLocation(), sink.getLocation(), "Using a custom session engine"

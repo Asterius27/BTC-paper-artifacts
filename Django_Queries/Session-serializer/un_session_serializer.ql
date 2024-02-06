@@ -27,4 +27,4 @@ string output(DataFlow::Node source) {
 
 from DataFlow::Node source, DataFlow::Node sink, SamesiteConfiguration config
 where config.hasFlow(source, sink)
-select output(source)
+select source, sink, source.getLocation(), sink.getLocation(), output(source)
