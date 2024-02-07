@@ -126,10 +126,18 @@ module DjangoSession {
     Class overridenImplOfHashingAlgIsUsed(string alg) {
         exists (Class cls, StrConst str | 
             str = getDefaultHashingAlg()
-            and cls.getName() = str.getS().splitAt(".") // TODO have to test this
+            and cls.getName() = str.getS().splitAt(".")
             and cls.getABase() = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("hashers").getMember(alg).getAValueReachableFromSource().asExpr() // TODO have to test this
             and str.getS().prefix(28) != "django.contrib.auth.hashers."
             and result = cls)
+    }
+
+    bindingset[attrName]
+    Expr getAttrValue(Class cls, string attrName) {
+        exists(AssignStmt asgn | 
+            asgn = cls.getAStmt()
+            and asgn.getATarget().(Name).getId() = attrName
+            and result = asgn.getValue())
     }
 
 }

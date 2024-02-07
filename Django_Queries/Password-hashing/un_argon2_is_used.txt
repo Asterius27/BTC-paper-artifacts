@@ -1,4 +1,3 @@
-|                     cfn                     |                                                 col1                                                 |                          col2                          |
-+---------------------------------------------+------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
-| Entry node for Class MyArgon2PasswordHasher | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/DjangoApp/DjangoApp/hashers.py:3 | Argon2 is being used as the password hashing algorithm |
-| Exit node for Class MyArgon2PasswordHasher  | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/DjangoApp/DjangoApp/hashers.py:3 | Argon2 is being used as the password hashing algorithm |
+|              cfn              |                                                 col1                                                 |                          col2                          |
++-------------------------------+------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for ClassExpr | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/DjangoApp/DjangoApp/hashers.py:3 | Argon2 is being used as the password hashing algorithm |
