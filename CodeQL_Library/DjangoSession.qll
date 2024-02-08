@@ -128,7 +128,9 @@ module DjangoSession {
             str = getDefaultHashingAlg()
             and cls.getName() = str.getS().splitAt(".")
             and cls.getABase() = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("hashers").getMember(alg).getAValueReachableFromSource().asExpr() // TODO have to test this
-            and str.getS().prefix(28) != "django.contrib.auth.hashers."
+            and (if exists(str.getS().prefix(28))
+                then str.getS().prefix(28) != "django.contrib.auth.hashers."
+                else any())
             and result = cls)
     }
 

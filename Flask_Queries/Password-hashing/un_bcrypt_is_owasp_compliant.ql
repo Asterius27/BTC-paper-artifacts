@@ -11,8 +11,8 @@ DataFlow::Node libraryIsUsed() {
 
 predicate workFactor() {
     exists(DataFlow::Node node |
-        (node = API::moduleImport("bcrypt").getMember("gensalt").getParameter(0).getAValueReachableFromSource()
-            or node = API::moduleImport("bcrypt").getMember("gensalt").getKeywordParameter("rounds").getAValueReachableFromSource())
+        (node = API::moduleImport("bcrypt").getMember("gensalt").getParameter(0).getAValueReachingSink()
+            or node = API::moduleImport("bcrypt").getMember("gensalt").getKeywordParameter("rounds").getAValueReachingSink())
         and node.asExpr().(IntegerLiteral).getValue() < 10) // owasp recommendation minimum
 }
 

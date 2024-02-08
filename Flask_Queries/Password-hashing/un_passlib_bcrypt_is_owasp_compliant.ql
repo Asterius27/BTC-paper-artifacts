@@ -2,6 +2,7 @@ import python
 import semmle.python.ApiGraphs
 import CodeQL_Library.Passlib
 
+// TODO fix this query
 predicate workFactor(API::Node node) {
     exists(DataFlow::Node param |
         param = node.getKeywordParameter("rounds").getAValueReachingSink()
@@ -33,7 +34,7 @@ string output() {
         else result = outputs()
     else if exists(outputl())
         then result = outputl()
-        else result = ""
+        else none()
 }
 
 select output()

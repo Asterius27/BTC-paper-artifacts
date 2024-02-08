@@ -27,7 +27,7 @@ SECRET_KEY_FALLBACKS = ["secret-key", "older_secret_key"]
 
 # Password hashing
 PASSWORD_HASHERS = [
-    "hashers.CustomHasher"
+    "hashers.CustomHasher",
     "hashers.MyBcryptPasswordHasher",
     "hashers.MyPBKDF2SHA1PasswordHasher",
     "django.contrib.auth.hashers.ScryptPasswordHasher",
