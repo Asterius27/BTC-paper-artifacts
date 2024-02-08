@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.views.generic import TemplateView
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.password_validation import validate_password
 import datetime
 
 @login_required
@@ -19,6 +20,7 @@ def current_datetime(request):
     request.session.set_expiry(x)
     user_check(request)
     pwd = make_password("password", hasher="pbkdf2_sha1")
+    validate_password(pwd)
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
 
