@@ -311,7 +311,9 @@ function generateStatsPage(flask_counter, flask_error_counter, false_positives_c
                 '<div>\n'+
                     '<h2>Signup/Account Management Security</h2>\n'+
                     '<div id="password_hashing"></div>\n'+
+                    '<div id="password_hashing_django"></div>\n'+
                     '<div id="password_strength"></div>\n'+
+                    '<div id="password_strength_django"></div>\n'+
                     '<div id="account_deactivation"></div>\n'+
                 '</div>\n'+
                 '<div>\n'+

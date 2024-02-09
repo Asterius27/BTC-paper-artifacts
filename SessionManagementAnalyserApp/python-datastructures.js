@@ -239,12 +239,56 @@ let django = {
     */
     "CookieTampering": {
         "Secret-key": {
+            "un_secret_key_and_client_side_sessions": [false, ""],
+            "un_secret_key_fallbacks_are_used": [false, ""],
             "un_secret_key": [false, ""]
         }
     },
     "PasswordTheft": {
         "Redirect-everything-to-HTTPS": {
             "un_secure_ssl_redirect": [false, ""]
+        }
+    },
+    "AccountDeactivation": {
+        "Account-deactivation": {
+            "un_custom_auth_backends": [false, ""]
+        }
+    },
+    "LibraryVulnerabilities": {
+        "Login-restrictions": {
+            "un_no_authentication_checks": [false, ""],
+            "un_no_authentication_checks_general": [false, ""],
+            "un_no_last_login_check": [false, ""]
+        }
+    },
+    "PasswordStrengthDjango": {
+        "Password-strength": {
+            "un_using_common_password_validator": [false, ""],
+            "un_using_numeric_password_validator": [false, ""],
+            "un_using_length_validator": [false, ""],
+            "un_using_similarity_validator": [false, ""],
+            "un_using_custom_forms_with_custom_validators": [false, ""],
+            "un_using_custom_forms_with_validators": [false, ""],
+            "un_using_custom_validators": [false, ""],
+            "un_using_django_built_in_forms": [false, ""],
+            "un_using_password_validators": [false, ""]
+        }
+    },
+    "PasswordHashingDjango": {
+        "Password-hashing": {
+            "un_argon2_is_used": [false, ""],
+            "un_argon2_is_owasp_compliant": [false, ""],
+            "un_bcrypt_is_used": [false, ""],
+            "un_bcrypt_is_owasp_compliant": [false, ""],
+            "un_pbkdf2_is_used": [false, ""],
+            "un_pbkdf2_is_owasp_compliant": [false, ""],
+            "un_scrypt_is_used": [false, ""],
+            "un_scrypt_is_owasp_compliant": [false, ""],
+            "un_md5_is_used": [false, ""],
+            "un_hash_password_function_is_used": [false, ""],
+            "un_manually_set_password_hashers": [false, ""],
+            "un_using_custom_password_hasher": [false, ""],
+            "un_setting_algorithm_from_hash_password_function": [false, ""]
         }
     }
 }
@@ -319,12 +363,15 @@ let descriptions = {
         },
         "Login-restrictions": {
             "no_authentication_checks": "The application never checks whether the user is authenticated or not (no login restricted areas of the app)",
-            "no_authentication_checks_general": "The application never accesses the current_user object and never uses the @login_required decorator"
+            "no_authentication_checks_general": "The application never accesses the current_user object and never uses the @login_required decorator",
+            "no_last_login_check": "The application never checks how long ago the user last logged in"
         }
     },
     "CookieTampering": {
         "Secret-key": {
-            "secret_key": "Secret key is hardcoded"
+            "secret_key": "Secret key is hardcoded",
+            "secret_key_and_client_side_sessions": "Secret key is hardcoded and app is using client side sessions",
+            "secret_key_fallbacks_are_used": "Secret key fallbacks are being used"
         }
     },
     "InsecureSerialization": {
@@ -376,8 +423,26 @@ let descriptions = {
             "password_hashing_rounds": "Using less than 12 rounds (default and recommended value) for hashing"
         }
     },
+    "PasswordHashingDjango": {
+        "Password-hashing": {
+            "argon2_is_used": "Argon2 is the algorithm being used to hash the passwords",
+            "argon2_is_owasp_compliant": "Argon2 is the algorithm being used to hash the passwords and it's owasp compliant",
+            "bcrypt_is_used": "Bcrypt is the algorithm being used to hash the passwords",
+            "bcrypt_is_owasp_compliant": "Bcrypt is the algorithm being used to hash the passwords and it's owasp compliant",
+            "pbkdf2_is_used": "PBKDF2 is the algorithm being used to hash the passwords",
+            "pbkdf2_is_owasp_compliant": "PBKDF2 is the algorithm being used to hash the passwords and it's owasp compliant",
+            "scrypt_is_used": "Scrypt is the algorithm being used to hash the passwords",
+            "scrypt_is_owasp_compliant": "Scrypt is the algorithm being used to hash the passwords and it's owasp compliant",
+            "md5_is_used": "MD5 is the algorithm being used to hash the passwords",
+            "hash_password_function_is_used": "The function that hashes the passwords is actually used",
+            "manually_set_password_hashers": "Manually setting the PASSWORD_HASHERS config variable",
+            "using_custom_password_hasher": "Using a custom algorithm to hash the passwords",
+            "setting_algorithm_from_hash_password_function": "Setting the hashing algorithm 'on the fly' meaning it's passed as parameter to the hash password function"
+        }
+    },
     "AccountDeactivation": {
         "Account-deactivation": {
+            "custom_auth_backends": "Using a custom authentication backend (Django)",
             "deactivation_left_as_default": "Force parameter (of the login function) is not set, default value is false so deactivated users are not allowed to log in",
             "deactivation_manually_set": "Deactivated users are not allowed to log in (force is manually set to false and not left as default)",
             "user_class_does_not_override_is_active": "There are one or more user classes (in the repo) that don't override is_active (default behaviour is to always return true)",
@@ -408,6 +473,19 @@ let descriptions = {
             "password_custom_checks": "Using a custom validator to check password strength",
             "password_length_check": "Length checks are being performed on the password field",
             "password_regexp_check": "The password is being checked using a regexp"
+        }
+    },
+    "PasswordStrengthDjango": {
+        "Password-strength": {
+            "un_using_common_password_validator": "Using Django's 'common passwords' validator",
+            "un_using_numeric_password_validator": "Using Django's 'numeric passwords' validator",
+            "un_using_length_validator": "Using Django's length validator",
+            "un_using_similarity_validator": "Using Django's similarity validator",
+            "un_using_custom_forms_with_custom_validators": "Using Django's 'validate password' function to validate the password in custom forms and passing extra validators to the function",
+            "un_using_custom_forms_with_validators": "Using Django's 'validate password' function to validate the password in custom forms",
+            "un_using_custom_validators": "Using custom password validators",
+            "un_using_django_built_in_forms": "Using Django's built in forms for the signup form",
+            "un_using_password_validators": "Manually setting the AUTH_PASSWORD_VALIDATORS config variable in order to use Django's password validation"
         }
     }
 }
@@ -455,6 +533,10 @@ let config = {
         "options": 'var options = {"title":"Password Hashing","width":1500,"height":3300,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'password_hashing'
     },
+    "PasswordHashingDjango": {
+        "options": 'var options = {"title":"Password Hashing","width":1500,"height":2000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'password_hashing_django'
+    },
     "AccountDeactivation": {
         "options": 'var options = {"title":"Account Deactivation","width":1500,"height":1600,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'account_deactivation'
@@ -462,6 +544,10 @@ let config = {
     "PasswordStrength": {
         "options": 'var options = {"title":"Password Strength","width":1500,"height":1800,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'password_strength'
+    },
+    "PasswordStrengthDjango": {
+        "options": 'var options = {"title":"Password Strength","width":1500,"height":1800,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "element_id": 'password_strength_django'
     }
 }
 
