@@ -39,6 +39,9 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
 ]
 
+# Account deactivation
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
