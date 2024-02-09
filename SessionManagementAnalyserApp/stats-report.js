@@ -7,7 +7,7 @@ let root_dir = "./";
 let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let lang = "";
-let csv_file = '../flask_login_merged_list.csv';
+let csv_file = '../django_filtered_list_final_v2.csv';
 
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
