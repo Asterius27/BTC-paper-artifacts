@@ -2,7 +2,7 @@ import os
 import shutil
 from pathlib import Path
 
-full_path = Path(__file__).parent / "./repositories/Flask"
+full_path = Path(__file__).parent / "./repositories/Django"
 threads = 10
 for i in range(threads):
     repos = os.listdir(str(full_path.absolute()) + "/thread" + str(i))
