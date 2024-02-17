@@ -4,9 +4,9 @@ import os
 from pathlib import Path
 
 # TODO add number of failures (and reasons) per query type
-path = Path(__file__).parent / './old_logs/13 - log_flask_login_final_filtered_merged'
-output = Path(__file__).parent / './old_logs/13 - log_flask_login_final_filtered_merged/log_analysis_merged.txt'
-csv_path = Path(__file__).parent / '../flask_login_final_filtered_merged_list.csv'
+path = Path(__file__).parent / './old_logs/15 - log_django_filtered_list_final_v2'
+output = Path(__file__).parent / './old_logs/15 - log_django_filtered_list_final_v2/log_analysis_merged.txt'
+csv_path = Path(__file__).parent / '../django_filtered_list_final_v2.csv'
 times = []
 thread_times = []
 failed_repos = []
@@ -30,58 +30,64 @@ with csv_path.open() as csv_file:
 log_dir = os.listdir(path.absolute())
 for file_name in log_dir:
     if file_name.endswith("_queries.txt"):
-        with open(str(path.absolute()) + "/" + file_name) as file:
+        with open(str(path.absolute()) + "/" + file_name, encoding="utf-8") as file:
             for line in file:
-                # query_dir = line.split(" ")[6]
-                query_name = line.split(" ")[8]
-                time_elapsed = line.split(" ")[10]
-                if query_name in query_dict:
-                    query_dict[query_name].append(float(time_elapsed))
-                else:
-                    query_dict[query_name] = []
-                    query_dict[query_name].append(float(time_elapsed))
+                try:
+                    # query_dir = line.split(" ")[6]
+                    query_name = line.split(" ")[8]
+                    time_elapsed = line.split(" ")[10]
+                    if query_name in query_dict:
+                        query_dict[query_name].append(float(time_elapsed))
+                    else:
+                        query_dict[query_name] = []
+                        query_dict[query_name].append(float(time_elapsed))
+                except:
+                    print("Could not read line...")
     if len(file_name.split("_")) == 1:
         # print(file_name)
-        with open(str(path.absolute()) + "/" + file_name) as file:
+        with open(str(path.absolute()) + "/" + file_name, encoding="utf-8") as file:
             for line in file:
-                if line.startswith("Failed to execute the query: "):
-                    item = []
-                    if line.endswith("ETIMEDOUT\n"):
-                        item.append(line.split(" ")[5])
-                        item.append("Repo: " + line.split(" ")[8])
-                        item.append("Reason: Timedout")
-                        query_timeouts += 1
-                    if "Error: Command failed:" in line:
-                        item.append(line.split(" ")[5])
-                        item.append("Repo: " + line.split(" ")[8])
-                        item.append("Reason: Command failed")
-                        query_command_failed += 1
-                    failed_queries.append(item)
-                if line.startswith("Time taken to run the queries and generate the statistics: "):
-                    thread_times.append(float(line.split(" ")[-2]))
-                if line.startswith("Time taken to run the queries on "):
-                    times.append(float(line.split(" ")[-2]))
-                if line.startswith("Analysis failed for: "):
-                    item = []
-                    if line.endswith("ETIMEDOUT\n"):
-                        item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
-                        item.append(line.split(" ")[3])
-                        item.append("Reason: Timedout")
-                        database_timeouts += 1
-                    if line.endswith("ENOBUFS\n"):
-                        item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
-                        item.append(line.split(" ")[3])
-                        item.append("Reason: Filled up buffer space")
-                        analysis_buffer_error += 1
-                    if not line.endswith("ENOBUFS\n") and not line.endswith("ETIMEDOUT\n"):
-                        item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
-                        item.append(line.split(" ")[3])
-                        item.append("Reason: Repo doesn't use the login function from the flask login library or the built in django auth system")
-                    failed_repos.append(item)
-                if line == "Error: None of the supported libraries/frameworks is used\n":
-                    unsupported_library += 1
-                if line.startswith("Could not delete database for: "):
-                    database_deletion_error += 1
+                try:
+                    if line.startswith("Failed to execute the query: "):
+                        item = []
+                        if line.endswith("ETIMEDOUT\n"):
+                            item.append(line.split(" ")[5])
+                            item.append("Repo: " + line.split(" ")[8])
+                            item.append("Reason: Timedout")
+                            query_timeouts += 1
+                        if "Error: Command failed:" in line:
+                            item.append(line.split(" ")[5])
+                            item.append("Repo: " + line.split(" ")[8])
+                            item.append("Reason: Command failed")
+                            query_command_failed += 1
+                        failed_queries.append(item)
+                    if line.startswith("Time taken to run the queries and generate the statistics: "):
+                        thread_times.append(float(line.split(" ")[-2]))
+                    if line.startswith("Time taken to run the queries on "):
+                        times.append(float(line.split(" ")[-2]))
+                    if line.startswith("Analysis failed for: "):
+                        item = []
+                        if line.endswith("ETIMEDOUT\n"):
+                            item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
+                            item.append(line.split(" ")[3])
+                            item.append("Reason: Timedout")
+                            database_timeouts += 1
+                        if line.endswith("ENOBUFS\n"):
+                            item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
+                            item.append(line.split(" ")[3])
+                            item.append("Reason: Filled up buffer space")
+                            analysis_buffer_error += 1
+                        if not line.endswith("ENOBUFS\n") and not line.endswith("ETIMEDOUT\n"):
+                            item.append("Stars: " + str(csv_dict[line.split(" ")[3].split("/")[4]]))
+                            item.append(line.split(" ")[3])
+                            item.append("Reason: Repo doesn't use the login function from the flask login library or the built in django auth system")
+                        failed_repos.append(item)
+                    if line == "Error: None of the supported libraries/frameworks is used\n":
+                        unsupported_library += 1
+                    if line.startswith("Could not delete database for: "):
+                        database_deletion_error += 1
+                except:
+                    print("Could not read line...")
 
 """
 print(len(times))
