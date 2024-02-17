@@ -1,12 +1,13 @@
 import python
 import semmle.python.ApiGraphs
 
-where exists(DataFlow::Node auth, DataFlow::Node login | 
+where exists(DataFlow::Node auth | 
         auth = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("authenticate").getAValueReachableFromSource()
         and not auth.asExpr() instanceof ImportMember
         and exists(auth.asCfgNode())
-        and exists(auth.getLocation().getFile().getRelativePath())
-        and login = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("login").getAValueReachableFromSource()
+        and exists(auth.getLocation().getFile().getRelativePath()))
+    or exists(DataFlow::Node login |
+        login = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("login").getAValueReachableFromSource()
         and not login.asExpr() instanceof ImportMember
         and exists(login.asCfgNode())
         and exists(login.getLocation().getFile().getRelativePath()))

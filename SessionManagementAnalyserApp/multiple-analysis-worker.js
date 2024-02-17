@@ -86,6 +86,7 @@ for (let i = 0; i < repos.length; i++) {
                 repo = repo_subdir[j];
             }
         }
+        // if (!fs.existsSync(dir + "/" + repo + "-results") || fs.readdirSync(dir + "/" + repo + "-results", { withFileTypes: true }).filter(elem => elem.isDirectory()).length === 0) {}
         // if (repo.length === 1) {
             console.log("Starting analysis for: " + dir + "/" + repo);
             let repoStartTime = new Date();

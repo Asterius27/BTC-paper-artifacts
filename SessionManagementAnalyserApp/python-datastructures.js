@@ -258,7 +258,8 @@ let django = {
         "Login-restrictions": {
             "un_no_authentication_checks": [false, ""],
             "un_no_authentication_checks_general": [false, ""],
-            "un_no_last_login_check": [false, ""]
+            "un_no_last_login_check": [false, ""],
+            "un_both_login_and_authenticate_are_used": [false, ""]
         }
     },
     "PasswordStrengthDjango": {
@@ -364,7 +365,8 @@ let descriptions = {
         "Login-restrictions": {
             "no_authentication_checks": "The application never checks whether the user is authenticated or not (no login restricted areas of the app)",
             "no_authentication_checks_general": "The application never accesses the current_user object and never uses the @login_required decorator",
-            "no_last_login_check": "The application never checks how long ago the user last logged in"
+            "no_last_login_check": "The application never checks how long ago the user last logged in",
+            "both_login_and_authenticate_are_used": "Both the login and authenticate functions (from django) are being used"
         }
     },
     "CookieTampering": {
@@ -477,15 +479,15 @@ let descriptions = {
     },
     "PasswordStrengthDjango": {
         "Password-strength": {
-            "un_using_common_password_validator": "Using Django's 'common passwords' validator",
-            "un_using_numeric_password_validator": "Using Django's 'numeric passwords' validator",
-            "un_using_length_validator": "Using Django's length validator",
-            "un_using_similarity_validator": "Using Django's similarity validator",
-            "un_using_custom_forms_with_custom_validators": "Using Django's 'validate password' function to validate the password in custom forms and passing extra validators to the function",
-            "un_using_custom_forms_with_validators": "Using Django's 'validate password' function to validate the password in custom forms",
-            "un_using_custom_validators": "Using custom password validators",
-            "un_using_django_built_in_forms": "Using Django's built in forms for the signup form",
-            "un_using_password_validators": "Manually setting the AUTH_PASSWORD_VALIDATORS config variable in order to use Django's password validation"
+            "using_common_password_validator": "Using Django's 'common passwords' validator",
+            "using_numeric_password_validator": "Using Django's 'numeric passwords' validator",
+            "using_length_validator": "Using Django's length validator",
+            "using_similarity_validator": "Using Django's similarity validator",
+            "using_custom_forms_with_custom_validators": "Using Django's 'validate password' function to validate the password in custom forms and passing extra validators to the function",
+            "using_custom_forms_with_validators": "Using Django's 'validate password' function to validate the password in custom forms",
+            "using_custom_validators": "Using custom password validators",
+            "using_django_built_in_forms": "Using Django's built in forms for the signup form",
+            "using_password_validators": "Manually setting the AUTH_PASSWORD_VALIDATORS config variable in order to use Django's password validation"
         }
     }
 }
