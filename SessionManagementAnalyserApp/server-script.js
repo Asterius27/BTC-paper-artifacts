@@ -710,5 +710,6 @@ findInterestingRepos(".", "custom_session_engine.txt", true, 0, Number.MAX_VALUE
 findInterestingRepos("Account-deactivation", "un_custom_auth_backends.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_custom_authentication_backends_django_filtered_list_final_v2.txt');
 findInterestingRepos("Password-strength", "un_using_custom_validators.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_custom_password_validators_django_filtered_list_final_v2.txt');
 deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
+deleteQueriesResults({".": ["django_library_used_check"]});
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
