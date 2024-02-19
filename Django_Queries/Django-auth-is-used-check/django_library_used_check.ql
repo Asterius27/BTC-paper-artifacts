@@ -12,6 +12,7 @@ where exists(DataFlow::Node auth |
         and exists(login.asCfgNode())
         and exists(login.getLocation().getFile().getRelativePath()))
     or exists(StrConst str | str.getText() = "django.contrib.auth.urls")
+    or exists(API::moduleImport("django").getMember("contrib").getMember("auth").getMember("urls"))
     or exists(DataFlow::Node views | 
         views = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("views").getMember("LoginView").getAValueReachableFromSource()
         and not views.asExpr() instanceof ImportMember
