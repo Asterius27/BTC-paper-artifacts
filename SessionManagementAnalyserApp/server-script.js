@@ -704,6 +704,11 @@ findInterestingRepos(".", "django_library_used_check.txt", false, 0, Number.MAX_
 // getSetFromEnvStats('./repos_with_interesting_results/9bis - stats_of_config_settings_that_were_set_from_env_variable.txt'); // retrieves the number of times each config setting was set from an env variable, to find the most popular one for example
 // findInterestingRepos("Secret-key", "un_secret_key.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/15 - repos_with_hardcoded_secret_key_django_filtered_list_final_v2.txt');
 findInterestingRepos("Login-restrictions", "un_no_authentication_checks_general.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_with_no_auth_checks_django_filtered_list_final_v2.txt');
-// deleteQueriesResults({".": ["django_library_used_check"]});
+findInterestingRepos("Logout-function-is-called", "un_logout_function_is_called.txt", false, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_with_no_logout_django_filtered_list_final_v2.txt');
+findInterestingRepos("Password-hashing", "un_md5_is_used.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_md5_to_hash_passwords_django_filtered_list_final_v2.txt');
+findInterestingRepos(".", "custom_session_engine.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_custom_session_engine_django_filtered_list_final_v2.txt');
+findInterestingRepos("Account-deactivation", "un_custom_auth_backends.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_custom_authentication_backends_django_filtered_list_final_v2.txt');
+findInterestingRepos("Password-strength", "un_using_custom_validators.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_custom_password_validators_django_filtered_list_final_v2.txt');
+deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
