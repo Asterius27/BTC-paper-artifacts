@@ -51,6 +51,9 @@ function repoUsesRequiredLibraries(resDir) {
 }
 
 function usesDjangoForEverything(resDir) {
+    let lines = [];
+    let hashing = [];
+    let strength = [];
     try {
         lines = fs.readFileSync(resDir + "/Password-strength/un_using_django_built_in_forms.txt", 'utf-8').split("\n");
         lines.pop();
@@ -162,9 +165,11 @@ for (let i = 0; i < repos.length; i++) {
                             django_repos++;
                             [django_counter, django_error_counter, false_positives_counter_django] = countRepos(django_counter, django_error_counter, false_positives_counter_django, "django", dir + "/" + res);
                         }
+                        /*
                         if (info.some(str => str.includes("customsessionengine"))) {
                             custom_session_engine_repos++;
                         }
+                        */
                     }
                     if (!info.some(str => str.includes("flask")) && !info.some(str => str.includes("django"))) {
                         fs.appendFileSync('./log_stats_generator.txt', "Read info file, but it doesn't contain either flask nor django, repo directory: " + dir + "\n");
