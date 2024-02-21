@@ -165,11 +165,10 @@ for (let i = 0; i < repos.length; i++) {
                             django_repos++;
                             [django_counter, django_error_counter, false_positives_counter_django] = countRepos(django_counter, django_error_counter, false_positives_counter_django, "django", dir + "/" + res);
                         }
-                        /*
                         if (info.some(str => str.includes("customsessionengine"))) {
                             custom_session_engine_repos++;
+                            failed_repos++;
                         }
-                        */
                     }
                     if (!info.some(str => str.includes("flask")) && !info.some(str => str.includes("django"))) {
                         fs.appendFileSync('./log_stats_generator.txt', "Read info file, but it doesn't contain either flask nor django, repo directory: " + dir + "\n");
@@ -180,11 +179,13 @@ for (let i = 0; i < repos.length; i++) {
             } catch(e) {
                 failed_repos++;
                 fs.appendFileSync('./log_stats_generator.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
+                /*
                 if (fs.existsSync(dir + "/" + res + "/info.txt")) {
                     if (info.some(str => str.includes("customsessionengine"))) {
                         custom_session_engine_repos++;
                     }
                 }
+                */
             }
         }
     // }
