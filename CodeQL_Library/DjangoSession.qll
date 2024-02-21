@@ -68,6 +68,8 @@ module DjangoSession {
             and result = f.getArg(0))
     }
 
+    // TODO request object can also be accessed from self (self.request.user) and self is parameter in position 0 of the method
+    // TODO https://github.com/asifpy/django-crudbuilder/blob/9c73cab0014614f9d96a09eb2e71b4394bbfc9f7/crudbuilder/mixins.py#L34 doesn't work
     Parameter getARequestObjectFromClassViews() {
         exists(AssignStmt asgn, Expr name, Keyword k, Class cls | 
             (name = asgn.getValue().(List).getAnElt().(Call).getPositionalArg(1)
