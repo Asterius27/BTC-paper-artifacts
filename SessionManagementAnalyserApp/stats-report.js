@@ -9,6 +9,8 @@ let starsu = Number.MAX_VALUE;
 let lang = "";
 let csv_file = '../django_filtered_list_final_v2.csv';
 
+// TODO do the same for django, so consider only the repos that use django's forms and/or the make_password function and/or the validate password function (in order to reduce false positives)
+// TODO custom session engine counter doesn't work
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
         "Password-strength": {
@@ -152,7 +154,7 @@ for (let i = 0; i < repos.length; i++) {
                 fs.appendFileSync('./log_stats_generator.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
                 if (fs.existsSync(dir + "/" + res + "/info.txt")) {
                     if (info.length > 2) {
-                        if (info[2].includes("customsessionengine")) {
+                        if (info[2].includes("customsessionengine")) { // TODO this doesn't work
                             custom_session_engine_repos++;
                         }
                     }
