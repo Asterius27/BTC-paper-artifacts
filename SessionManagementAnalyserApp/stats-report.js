@@ -9,8 +9,6 @@ let starsu = Number.MAX_VALUE;
 let lang = "";
 let csv_file = '../django_filtered_list_final_v2.csv';
 
-// TODO do the same for django, so consider only the repos that use django's forms and/or the make_password function and/or the validate password function (in order to reduce false positives)
-// TODO custom session engine counter doesn't work
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
         "Password-strength": {
@@ -50,6 +48,26 @@ function repoUsesRequiredLibraries(resDir) {
         }
     }
     return true;
+}
+
+function usesDjangoForEverything(resDir) {
+    try {
+        lines = fs.readFileSync(resDir + "/Password-strength/un_using_django_built_in_forms.txt", 'utf-8').split("\n");
+        lines.pop();
+        if (lines.length > 2) {
+            return true;
+        }
+        hashing = fs.readFileSync(resDir + "/Password-hashing/un_hash_password_function_is_used.txt", 'utf-8').split("\n");
+        strength = fs.readFileSync(resDir + "/Password-strength/un_using_custom_forms_with_validators.txt", 'utf-8').split("\n");
+        hashing.pop();
+        strength.pop();
+        if (hashing.length > 2 && strength.length > 2) {
+            return true;
+        }
+    } catch (e) {
+        fs.appendFileSync('./log_stats_generator.txt', "Failed to read query results for: " + resDir + " Reason: " + e + "\n");
+    }
+    return false;
 }
 
 // Root directory of the projects/repositories/applications, if not specified the current directory will be used
@@ -140,8 +158,13 @@ for (let i = 0; i < repos.length; i++) {
                         }
                     }
                     if (info.some(str => str.includes("django"))) {
-                        django_repos++;
-                        [django_counter, django_error_counter, false_positives_counter_django] = countRepos(django_counter, django_error_counter, false_positives_counter_django, "django", dir + "/" + res);
+                        if (usesDjangoForEverything(dir + "/" + res) && !info.some(str => str.includes("customsessionengine"))) {
+                            django_repos++;
+                            [django_counter, django_error_counter, false_positives_counter_django] = countRepos(django_counter, django_error_counter, false_positives_counter_django, "django", dir + "/" + res);
+                        }
+                        if (info.some(str => str.includes("customsessionengine"))) {
+                            custom_session_engine_repos++;
+                        }
                     }
                     if (!info.some(str => str.includes("flask")) && !info.some(str => str.includes("django"))) {
                         fs.appendFileSync('./log_stats_generator.txt', "Read info file, but it doesn't contain either flask nor django, repo directory: " + dir + "\n");
@@ -153,10 +176,8 @@ for (let i = 0; i < repos.length; i++) {
                 failed_repos++;
                 fs.appendFileSync('./log_stats_generator.txt', "Failed to read the results for: " + dir + " Reason: " + e + "\n");
                 if (fs.existsSync(dir + "/" + res + "/info.txt")) {
-                    if (info.length > 2) {
-                        if (info[2].includes("customsessionengine")) { // TODO this doesn't work
-                            custom_session_engine_repos++;
-                        }
+                    if (info.some(str => str.includes("customsessionengine"))) {
+                        custom_session_engine_repos++;
                     }
                 }
             }
