@@ -159,7 +159,7 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
     let csv = {};
     let csv_urls = {};
     await new Promise((resolve, reject) => {
-        fs.createReadStream('../flask_login_final_filtered_merged_list.csv')
+        fs.createReadStream('../django_filtered_list_final_v2.csv')
             .pipe(csvParser())
             .on('data', (data) => {
                 let owner = data.repo_url.split("/")[3];
