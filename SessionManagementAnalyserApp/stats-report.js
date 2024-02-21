@@ -54,7 +54,13 @@ function usesDjangoForEverything(resDir) {
     let lines = [];
     let hashing = [];
     let strength = [];
+    let auth = [];
     try {
+        auth = fs.readFileSync(resDir + "/Account-deactivation/un_custom_auth_backends.txt", 'utf-8').split("\n");
+        auth.pop();
+        if (auth.length > 2) {
+            return false;
+        }
         lines = fs.readFileSync(resDir + "/Password-strength/un_using_django_built_in_forms.txt", 'utf-8').split("\n");
         lines.pop();
         if (lines.length > 2) {
