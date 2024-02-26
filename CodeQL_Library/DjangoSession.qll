@@ -144,4 +144,14 @@ module DjangoSession {
             and result = asgn.getValue())
     }
 
+    predicate configSetFromEnvVar(Expr value) {
+        exists(DataFlow::Node env | 
+            (env = API::moduleImport("os").getMember("getenv").getACall()
+                or env = API::moduleImport("os").getMember("environ").getASubscript().getAValueReachableFromSource()
+                or env = API::moduleImport("os").getMember("environ").getMember("get").getAValueReachableFromSource())
+            and exists(env.getLocation().getFile().getRelativePath())
+            and exists(value.getLocation().getFile().getRelativePath())
+            and value.getAFlowNode() = env.asCfgNode())
+    }
+
 }

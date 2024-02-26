@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 # User: paolo
 # Password: password
 
@@ -23,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-7jbr66(3gcuj=%p(^9r_8)-p)_4rhcjzs^xq^1p_f5_e3lxw@d'
+SECRET_KEY = os.environ.get("secret_key")
 SECRET_KEY_FALLBACKS = ["secret-key", "older_secret_key"]
 
 # Password hashing
