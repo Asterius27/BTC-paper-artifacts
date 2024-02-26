@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.urls import urlpatterns
 from django.contrib.auth.views import LoginView
+from django.utils.decorators import method_decorator
 import datetime
 
 @login_required
@@ -37,6 +38,7 @@ def user_check(req):
     else:
         return False
     
+@method_decorator(login_required, name='dispatch')
 class ViewClass(View):
 
     def idk(self, request):
