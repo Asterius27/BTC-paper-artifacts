@@ -9,6 +9,7 @@ let threads = 0;
 let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let csv_file = '../django_filtered_list_final_v2.csv';
+let csv_filter_file = './whitelist_filtered_repos.csv'
 let current_thread = 0;
 
 // Root directory of the projects/repositories/applications, if not specified the current directory will be used
@@ -55,6 +56,7 @@ let repos = fs.readdirSync(root_dir);
 let failed = [];
 let startTime = new Date();
 let csv = {};
+let whitelist = []
 await new Promise((resolve, reject) => {
     fs.createReadStream(csv_file)
         .pipe(csvParser())
@@ -67,8 +69,21 @@ await new Promise((resolve, reject) => {
             resolve("Done!");
         });
 });
+await new Promise((resolve, reject) => {
+    fs.createReadStream(csv_filter_file)
+        .pipe(csvParser())
+        .on('data', (data) => {
+            let owner = data.repo_url.split("/")[3];
+            let repoName = data.repo_url.split("/")[4];
+            whitelist.push(owner + "_" + repoName)
+        }).on('end', () => {
+            console.log("Finished reading the filter csv")
+            resolve("Done!");
+        });
+});
 for (let i = 0; i < repos.length; i++) {
-    // if (csv[repos[i]] >= starsl && csv[repos[i]] <= starsu) {
+    // TODO test this
+    if (whitelist.includes(repos[i])) { // csv[repos[i]] >= starsl && csv[repos[i]] <= starsu
         let dir = root_dir + "/" + repos[i];
         let repo_subdir = fs.readdirSync(dir);
         let repo = "";
@@ -119,7 +134,7 @@ for (let i = 0; i < repos.length; i++) {
             let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
             fs.appendFileSync('./log' + current_thread + '.txt', "Time taken to run the queries on " + dir + "/" + repo + ": " + repoTimeElapsed + " seconds.\n");
         // }
-    // }
+    }
 }
 /*
 if (failed.length > 0) {
