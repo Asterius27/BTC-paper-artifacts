@@ -55,8 +55,8 @@ for repo_dir in repos_dir:
 
     with open('log_whitelist_readme_filter.txt', 'r+', encoding='UTF8') as log:
         if readme_dir != "" and readme_dir not in log.read():
-            with open(readme_dir, 'r') as f: # '../README_test_translate.md'
-                try:
+            try:
+                with open(readme_dir, 'r') as f: # '../README_test_translate.md'
                     htmlmarkdown = markdown.markdown(f.read())
                     texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
                     text = ' '.join(texts)
@@ -117,12 +117,12 @@ for repo_dir in repos_dir:
                         with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                             writer = csv.writer(output)
                             writer.writerow(csv_dict[readme_dir.split("/")[-3]].values())
-                except Exception as e:
-                    exceptions += 1
-                    print(e)
-                    with open('log_exceptions_whitelist_readme_filter.txt', 'a', encoding='UTF8') as exception_log:
-                        exception_log.write(readme_dir + "\n")
-                        exception_log.write(str(e) + "\n")
+            except Exception as e:
+                exceptions += 1
+                print(e)
+                with open('log_exceptions_whitelist_readme_filter.txt', 'a', encoding='UTF8') as exception_log:
+                    exception_log.write(readme_dir + "\n")
+                    exception_log.write(str(e) + "\n")
 
 """
 with open('whitelist_filtered_repos.csv', 'w', encoding='UTF8') as f:
