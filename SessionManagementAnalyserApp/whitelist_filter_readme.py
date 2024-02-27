@@ -46,56 +46,66 @@ for repo_dir in repos_dir:
             readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0] + "/" + file
     # print(readme_dir)
 
-    if readme_dir != "":
-        with open(readme_dir, 'r') as f: # '../README_test_translate.md'
-            htmlmarkdown = markdown.markdown(f.read())
-            texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
-            text = ' '.join(texts)
-            split_text = [text[i:i+4000] for i in range(0, len(text), 4000)] # 499 for mymemory translator, 4000 for google translator (4999 gives an error for some reason)
-            translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
-            # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
-            # print(translated)
-            # print(text)
-            # print(len(split_text))
+    with open('log_whitelist_readme_filter.txt', 'r+', encoding='UTF8') as log:
+        if readme_dir != "" and readme_dir not in log.read():
+            with open(readme_dir, 'r') as f: # '../README_test_translate.md'
+                htmlmarkdown = markdown.markdown(f.read())
+                texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
+                text = ' '.join(texts)
+                split_text = [text[i:i+4000] for i in range(0, len(text), 4000)] # 499 for mymemory translator, 4000 for google translator (4999 gives an error for some reason)
+                try:
+                    translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
+                except:
+                    print("Google translate api exception")
+                # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
+                # print(translated)
+                # print(text)
+                # print(len(split_text))
 
-            tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
-            # stemmed_tokens = [stemmer.stem(token) for token in tokens]
-            # translated = [GoogleTranslator(source='auto', target='en').translate(token) for token in tokens]
-            # translated = GoogleTranslator(source='auto', target='en').translate(htmlmarkdown[:4000])
-            # print(translated)
-            processed_tokens = set([s.replace('-', '').lower() for s in tokens])
-            # print(processed_tokens)
-            stemmed_tokens = set([stemmer.stem(token) for token in processed_tokens])
-            # print(stemmed_tokens)
-            intersection1 = whitelist.intersection(processed_tokens)
-            intersection2 = whitelist.intersection(stemmed_tokens)
-            # print(intersection1)
-            # print(intersection2)
-            # print(len(intersection1))
-            # print(len(intersection2))
-            if len(intersection1) != 0:
-                flag = True
-            if len(intersection2) != 0:
-                flag = True
-            for whitelst in group_whitelist:
-                set_whitelst = set(whitelst)
-                intersect1 = set_whitelst.intersection(processed_tokens)
-                intersect2 = set_whitelst.intersection(stemmed_tokens)
-                if len(intersect1) == len(set_whitelst):
+                tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
+                # stemmed_tokens = [stemmer.stem(token) for token in tokens]
+                # translated = [GoogleTranslator(source='auto', target='en').translate(token) for token in tokens]
+                # translated = GoogleTranslator(source='auto', target='en').translate(htmlmarkdown[:4000])
+                # print(translated)
+                processed_tokens = set([s.replace('-', '').lower() for s in tokens])
+                # print(processed_tokens)
+                stemmed_tokens = set([stemmer.stem(token) for token in processed_tokens])
+                # print(stemmed_tokens)
+                intersection1 = whitelist.intersection(processed_tokens)
+                intersection2 = whitelist.intersection(stemmed_tokens)
+                # print(intersection1)
+                # print(intersection2)
+                # print(len(intersection1))
+                # print(len(intersection2))
+                if len(intersection1) != 0:
                     flag = True
-                if len(intersect2) == len(set_whitelst):
+                if len(intersection2) != 0:
                     flag = True
-                # print(set_whitelst)
-                # print(len(intersect1))
-                # print(len(intersect2))
+                debug_list1 = []
+                debug_list2 = []
+                for whitelst in group_whitelist:
+                    set_whitelst = set(whitelst)
+                    intersect1 = set_whitelst.intersection(processed_tokens)
+                    intersect2 = set_whitelst.intersection(stemmed_tokens)
+                    if len(intersect1) == len(set_whitelst):
+                        debug_list1.append(intersect1)
+                        flag = True
+                    if len(intersect2) == len(set_whitelst):
+                        debug_list2.append(intersect2)
+                        flag = True
+                    # print(set_whitelst)
+                    # print(len(intersect1))
+                    # print(len(intersect2))
         
-        with open('log_whitelist_readme_filter.txt', 'a', encoding='UTF8') as f:
-            f.write(readme_dir + "\n")
-            f.write(str(processed_tokens) + "\n")
-            f.write(str(stemmed_tokens) + "\n")
-            f.write(str(intersection1) + "\n")
-            f.write(str(intersection2) + "\n")
-            f.write(str(flag) + "\n\n\n")
+        
+            log.write(readme_dir + "\n")
+            log.write(str(processed_tokens) + "\n")
+            log.write(str(stemmed_tokens) + "\n")
+            log.write(str(intersection1) + "\n")
+            log.write(str(intersection2) + "\n")
+            log.write(str(debug_list1) + "\n")
+            log.write(str(debug_list2) + "\n")
+            log.write(str(flag) + "\n\n\n")
         
         # print(flag)
         if flag:
