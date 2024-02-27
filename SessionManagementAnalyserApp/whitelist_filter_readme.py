@@ -10,8 +10,8 @@ import csv
 
 nltk.download('punkt')
 # TODO see if these lists are good enough, there still seem to be a lot of false positives, need to restrict the list
-whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce"]) # "cloud"
-group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"]]
+whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud"]) # to add: "platform", "cms"
+group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"]] # to add: ["content", "management", "system"]
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
 root_dir = "./repositories/Django"

@@ -82,7 +82,6 @@ await new Promise((resolve, reject) => {
         });
 });
 for (let i = 0; i < repos.length; i++) {
-    // TODO test this
     if (whitelist.includes(repos[i])) { // csv[repos[i]] >= starsl && csv[repos[i]] <= starsu
         let dir = root_dir + "/" + repos[i];
         let repo_subdir = fs.readdirSync(dir);
