@@ -21,6 +21,13 @@ csv_dict = {}
 # output_list = []
 exceptions = 0
 
+file = open('log_whitelist_readme_filter.txt', 'a')
+file.close()
+
+if not os.path.isfile('./whitelist_filtered_repos.csv'):
+    with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks\n")
+
 with open("../django_filtered_list_final_v2.csv") as csv_file:
     reader = csv.DictReader(csv_file, delimiter=',')
     for row in reader:
