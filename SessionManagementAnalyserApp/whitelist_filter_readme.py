@@ -18,7 +18,7 @@ root_dir = "./repositories/Django"
 full_path = Path(__file__).parent / root_dir
 repos_dir = os.listdir(full_path.absolute())
 csv_dict = {}
-output_list = []
+# output_list = []
 exceptions = 0
 
 with open("../django_filtered_list_final_v2.csv") as csv_file:
@@ -49,11 +49,11 @@ for repo_dir in repos_dir:
     with open('log_whitelist_readme_filter.txt', 'r+', encoding='UTF8') as log:
         if readme_dir != "" and readme_dir not in log.read():
             with open(readme_dir, 'r') as f: # '../README_test_translate.md'
-                htmlmarkdown = markdown.markdown(f.read())
-                texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
-                text = ' '.join(texts)
-                split_text = [text[i:i+4000] for i in range(0, len(text), 4000)] # 499 for mymemory translator, 4000 for google translator (4999 gives an error for some reason)
                 try:
+                    htmlmarkdown = markdown.markdown(f.read())
+                    texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
+                    text = ' '.join(texts)
+                    split_text = [text[i:i+4000] for i in range(0, len(text), 4000)] # 499 for mymemory translator, 4000 for google translator (4999 gives an error for some reason)
                     translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
                     # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
                     # print(translated)
@@ -106,18 +106,23 @@ for repo_dir in repos_dir:
                     if flag:
                         print(readme_dir.split("/")[-3])
                         # print(csv_dict[readme_dir.split("/")[-3]])
-                        output_list.append(csv_dict[readme_dir.split("/")[-3]].values())
+                        # output_list.append(csv_dict[readme_dir.split("/")[-3]].values())
+                        with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+                            writer = csv.writer(output)
+                            writer.writerow(csv_dict[readme_dir.split("/")[-3]].values())
                 except Exception as e:
                     exceptions += 1
-                    print("Google translate api exception")
                     print(e)
-                    with open('log_exceptions_whitelist_readme_filter.csv', 'a', encoding='UTF8') as exception_log:
+                    with open('log_exceptions_whitelist_readme_filter.txt', 'a', encoding='UTF8') as exception_log:
                         exception_log.write(readme_dir + "\n")
-    
+                        exception_log.write(e + "\n")
+
+"""
 with open('whitelist_filtered_repos.csv', 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
     for row in output_list:
         writer.writerow(row)
+"""
 
-with open('log_exceptions_whitelist_readme_filter.csv', 'a', encoding='UTF8') as exception_log:
+with open('log_exceptions_whitelist_readme_filter.txt', 'a', encoding='UTF8') as exception_log:
     exception_log.write("Total number of exceptions: " + str(exceptions))
