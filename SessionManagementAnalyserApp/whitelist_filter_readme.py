@@ -115,7 +115,7 @@ for repo_dir in repos_dir:
                     print(e)
                     with open('log_exceptions_whitelist_readme_filter.txt', 'a', encoding='UTF8') as exception_log:
                         exception_log.write(readme_dir + "\n")
-                        exception_log.write(e + "\n")
+                        exception_log.write(str(e) + "\n")
 
 """
 with open('whitelist_filtered_repos.csv', 'w', encoding='UTF8') as f:
