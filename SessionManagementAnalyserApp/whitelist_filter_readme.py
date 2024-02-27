@@ -18,6 +18,7 @@ full_path = Path(__file__).parent / root_dir
 repos_dir = os.listdir(full_path.absolute())
 csv_dict = {}
 output_list = []
+exceptions = 0
 
 with open("../django_filtered_list_final_v2.csv") as csv_file:
     reader = csv.DictReader(csv_file, delimiter=',')
@@ -30,12 +31,12 @@ with open("../django_filtered_list_final_v2.csv") as csv_file:
 # to_translate = "Hello how is it going?"
 # translated = GoogleTranslator(source='auto', target='en').translate(to_translate)
 # print(translated)
-flag = False
 
 # translated = GoogleTranslator(source='auto', target='english').translate_file('../README_test_translate.md')
 # print(translated)
 
 for repo_dir in repos_dir:
+    flag = False
     readme_dir = ""
     subdir = os.listdir(str(full_path.absolute()) + "/" + repo_dir)
     repodir = os.listdir(str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0])
@@ -106,10 +107,16 @@ for repo_dir in repos_dir:
                         # print(csv_dict[readme_dir.split("/")[-3]])
                         output_list.append(csv_dict[readme_dir.split("/")[-3]].values())
                 except Exception as e:
+                    exceptions += 1
                     print("Google translate api exception")
                     print(e)
+                    with open('log_exceptions_whitelist_readme_filter.csv', 'a', encoding='UTF8') as exception_log:
+                        exception_log.write(readme_dir + "\n")
     
 with open('whitelist_filtered_repos.csv', 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
     for row in output_list:
         writer.writerow(row)
+
+with open('log_exceptions_whitelist_readme_filter.csv', 'a', encoding='UTF8') as exception_log:
+    exception_log.write("Total number of exceptions: " + str(exceptions))
