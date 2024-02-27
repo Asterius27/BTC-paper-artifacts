@@ -24,4 +24,4 @@ class PasswordValidatorsConfiguration extends DataFlow::Configuration {
 from DataFlow::Node source, DataFlow::Node sink, PasswordValidatorsConfiguration config
 where config.hasFlow(source, sink)
     and exists(source.asExpr().(List).getAnElt())
-select source, sink, source.getLocation(), sink.getLocation(), "Using a Django's password validation"
+select source, sink, source.getLocation(), sink.getLocation(), "Using Django's password validation"

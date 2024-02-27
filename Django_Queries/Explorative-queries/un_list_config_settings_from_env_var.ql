@@ -1,7 +1,7 @@
 import python
 import CodeQL_Library.DjangoSession
 
-// TODO finish it and see if there are other ways to set config variables from env, in general have a look at the results to see what the developers are doing
+// TODO see if there are other ways to set config variables from env, in general have a look at the results to see what the developers are doing
 
 class ConfigValueConfiguration extends DataFlow::Configuration {
     ConfigValueConfiguration() { this = "ConfigValueConfiguration" }
@@ -11,33 +11,30 @@ class ConfigValueConfiguration extends DataFlow::Configuration {
     }
 
     override predicate isSink(DataFlow::Node sink) {
-        exists(AssignStmt asgn, Name name | 
-            name.getId() = "SECRET_KEY" // TODO find a way to pass this as a variable
-            and asgn.getATarget() = name
-            and exists(asgn.getLocation().getFile().getRelativePath())
+        exists(AssignStmt asgn |
+            exists(asgn.getLocation().getFile().getRelativePath())
             and asgn.getValue().getAFlowNode() = sink.asCfgNode()
         )
     }
 }
 
-string auxsk(Expr node) {
-    if  exists(FlaskLogin::getConfigSinkFromEnvVar("SECRET_KEY", "secret_key"))
-    then node = FlaskLogin::getConfigSinkFromEnvVar("SECRET_KEY", "secret_key")
-        and result = "un_secret_key " + node.getLocation()
-    else none()
+bindingset[configsetting, queryname]
+string aux(string configsetting, string queryname) {
+    exists(Name name, AssignStmt asgn, DataFlow::Node source, DataFlow::Node sink, ConfigValueConfiguration config |
+        config.hasFlow(source, sink)
+        and name.getId() = configsetting
+        and asgn.getATarget() = name
+        and asgn.getValue().getAFlowNode() = sink.asCfgNode()
+        and result = queryname + " " + source.getLocation())
 }
 
-string auxrcss(Expr node) {
-    if  exists(FlaskLogin::getConfigSinkFromEnvVar("REMEMBER_COOKIE_SAMESITE"))
-    then node = FlaskLogin::getConfigSinkFromEnvVar("REMEMBER_COOKIE_SAMESITE")
-        and result = "st_samesite_attribute_remember_cookie " + node.getLocation()
-    else none()
+string output() {
+    result = aux("SECRET_KEY", "un_secret_key")
+    or result = aux("SESSION_SERIALIZER", "un_session_serializer")
+    or result = aux("AUTH_PASSWORD_VALIDATORS", "un_using_password_validators")
+    or result = aux("PASSWORD_HASHERS", "un_manually_set_password_hashers")
+    or result = aux("AUTHENTICATION_BACKENDS", "un_custom_auth_backends")
+    or result = aux("SESSION_ENGINE", "custom_session_engine")
 }
 
-string aux(Expr node) {
-    result = auxsk(node)
-    or result = auxrcss(node)
-}
-
-from Expr node
-select aux(node)
+select output()

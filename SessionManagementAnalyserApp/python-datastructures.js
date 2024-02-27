@@ -249,6 +249,11 @@ let django = {
             "un_secure_ssl_redirect": [false, ""]
         }
     },
+    "ExplorativeQueries": {
+        "Explorative-queries": {
+            "un_list_config_settings_from_env_var": [false, ""]
+        }
+    },
     "AccountDeactivation": {
         "Account-deactivation": {
             "un_custom_auth_backends": [false, ""]

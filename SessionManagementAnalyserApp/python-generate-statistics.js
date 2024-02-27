@@ -128,7 +128,7 @@ function countRepos(counter, error_counter, false_positives_counter, framework, 
                     if (dir + "/" + file !== "HSTS-header-and-cookie-domain/HSTS_header_no_subdomains") {
                         let query_result = readQueryResults(root_dir + "/" + dir, file);
                         if (query_result[0]) {
-                            let isAlsoSetFromEnv = readSetFromEnvResults(root_dir + "/Explorative-queries", file); // TODO the query doesn't exists yet
+                            let isAlsoSetFromEnv = readSetFromEnvResults(root_dir + "/Explorative-queries", file);
                             if (counter[key] !== undefined && counter[key][dir] !== undefined && counter[key][dir][file] !== undefined) {
                                 counter[key][dir][file]++;
                                 if (isAlsoSetFromEnv) {

@@ -9,6 +9,7 @@ import os
 import csv
 
 nltk.download('punkt')
+# TODO see if these lists are good enough
 whitelist = set(["backend", "frontend", "fullstack", "selfhost", "cloud", "ecommerce"])
 group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"]]
 stemmer = PorterStemmer()
