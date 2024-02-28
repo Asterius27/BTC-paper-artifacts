@@ -25,5 +25,6 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('view', views.current_datetime, name='view'),
     path('anotherview', view=views.another_view, name="idk"),
-    path('classview', views.ViewClass.as_view(), name='classview')
+    path('classview', views.ViewClass.as_view(), name='classview'),
+    path('classViewNoMixin', views.ViewClassNoMixin.as_view(), name='whatever')
 ]

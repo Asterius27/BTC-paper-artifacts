@@ -10,6 +10,7 @@ from django.contrib.auth.urls import urlpatterns
 from django.contrib.auth.views import LoginView
 from django.utils.decorators import method_decorator
 import datetime
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 @login_required
 def current_datetime(request):
@@ -23,7 +24,7 @@ def current_datetime(request):
     # If value is None, the session reverts to using the global session expiry policy.
     request.session.set_expiry(value=datetime.timedelta(2))
     request.session.set_expiry(x)
-    user_check(request)
+    user_check3(request)
     pwd = make_password("password", hasher="pbkdf2_sha1")
     validate_password(pwd)
     html = "<html><body>It is now %s.</body></html>" % now
@@ -38,9 +39,36 @@ def user_check(req):
     else:
         return False
     
+def user_check2(req):
+    if req.user.is_authenticated:
+        return True
+    else:
+        return False
+    
+def user_check3(req):
+    if req.user.is_authenticated:
+        return True
+    else:
+        return False
+    
+class Mixin:
+    def dispatch(self, request):
+        if not request.user.is_authenticated:
+            return "Error!"
+
 @method_decorator(login_required, name='dispatch')
-class ViewClass(View):
+class ViewClass(View, Mixin):
 
     def idk(self, request):
         user_check(request)
+        if self.request.user:
+            user_check2(self.request)
+            return HttpResponse("User authenticated!")
+        return HttpResponse("Hello world!")
+    
+class ViewClassNoMixin(View):
+
+    def idk(self, request):
+        if request.user.is_authenticated:
+            return HttpResponse("User authenticated!")
         return HttpResponse("Hello world!")

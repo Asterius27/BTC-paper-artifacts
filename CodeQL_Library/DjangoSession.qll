@@ -9,8 +9,9 @@ module DjangoSession {
         RequestObjectConfiguration() { this = "RequestObjectConfiguration" }
     
         override predicate isSource(DataFlow::Node source) {
-            (source.asExpr() = DjangoSession::getARequestObjectFromClassViews()
-                or source.asExpr() = DjangoSession::getARequestObjectFromFunctionViews())
+            (source.asExpr() = DjangoSession::getARequestObjectFromClassViews(1)
+                or source.asExpr() = DjangoSession::getARequestObjectFromFunctionViews()
+                or source.asExpr() = DjangoSession::getARequestObjectFromClassViewsUsingSelf())
             and exists(source.getLocation().getFile().getRelativePath())
         }
     
@@ -68,9 +69,8 @@ module DjangoSession {
             and result = f.getArg(0))
     }
 
-    // TODO request object can also be accessed from self (self.request.user) and self is parameter in position 0 of the method
-    // TODO https://github.com/asifpy/django-crudbuilder/blob/9c73cab0014614f9d96a09eb2e71b4394bbfc9f7/crudbuilder/mixins.py#L34 doesn't work
-    Parameter getARequestObjectFromClassViews() {
+    bindingset[pos]
+    Parameter getARequestObjectFromClassViews(int pos) {
         exists(AssignStmt asgn, Expr name, Keyword k, Class cls | 
             (name = asgn.getValue().(List).getAnElt().(Call).getPositionalArg(1)
                 or (k = asgn.getValue().(List).getAnElt().(Call).getANamedArg().(Keyword)
@@ -80,7 +80,24 @@ module DjangoSession {
             and (cls.getName() = name.(Call).getFunc().(Attribute).getObject().(Name).getId()
                 or cls.getName() = name.(Call).getFunc().(Attribute).getObject().(Attribute).getName())
             and exists(name.getLocation().getFile().getRelativePath())
-            and result = cls.getAMethod().getArg(1))
+            and (result = cls.getAMethod().getArg(pos)
+                or result = getARequestObjectFromSuperClassOfClassViews(pos, cls)))
+    }
+
+    // TODO have to make this recursive
+    Parameter getARequestObjectFromSuperClassOfClassViews(int pos, Class cls) {
+        exists(Class supercls | 
+            supercls.getName() = cls.getABase().toString()
+            and exists(supercls.getLocation().getFile().getRelativePath())
+            and result = supercls.getAMethod().getArg(pos))
+    }
+
+    Attribute getARequestObjectFromClassViewsUsingSelf() {
+        exists(Parameter param, Attribute attr |
+            param = getARequestObjectFromClassViews(0)
+            and attr.getName() = "request"
+            and attr.getObject().getAFlowNode() = param.getVariable().getAUse().getNode().getAFlowNode()
+            and result = attr)
     }
 
     ControlFlowNode getAUserObject() {
