@@ -7,6 +7,7 @@ import nltk
 from pathlib import Path
 import os
 import csv
+import time
 
 nltk.download('punkt')
 # TODO see if these lists are good enough, there still seem to be a lot of false positives, need to restrict the list
@@ -21,6 +22,26 @@ repos_dir = os.listdir(full_path.absolute())
 csv_dict = {}
 # output_list = []
 exceptions = 0
+
+"""
+with open("../test_READMEs/README_to_fix_2.md", 'r') as f:
+    htmlmarkdown = markdown.markdown(f.read())
+    texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
+    text = ' '.join(texts)
+    # print(text)
+    split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
+    # for i in range(len(split_text)):
+    #     translated = GoogleTranslator(source='auto', target='en').translate(split_text[i])
+    #     print(translated)
+    #     print(i)
+    #     time.sleep(90)
+    # print(split_text[2])
+    # translated = GoogleTranslator(source='auto', target='en').translate(split_text[2])
+    translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text)
+    print(' '.join(translated))
+    print(len(split_text))
+"""
+
 
 file = open('log_whitelist_readme_filter.txt', 'a')
 file.close()
@@ -61,7 +82,7 @@ for repo_dir in repos_dir:
                     htmlmarkdown = markdown.markdown(f.read())
                     texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
                     text = ' '.join(texts)
-                    split_text = [text[i:i+4000] for i in range(0, len(text), 4000)] # 499 for mymemory translator, 4000 for google translator (4999 gives an error for some reason)
+                    split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
                     translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
                     # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
                     # print(translated)
