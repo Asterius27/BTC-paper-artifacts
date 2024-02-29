@@ -9,7 +9,7 @@ let threads = 0;
 let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let csv_file = '../django_filtered_list_final_v2.csv';
-let csv_filter_file = './whitelist_filtered_repos.csv'
+let csv_filter_file = './whitelist_filtered_repos.csv';
 let current_thread = 0;
 
 // Root directory of the projects/repositories/applications, if not specified the current directory will be used

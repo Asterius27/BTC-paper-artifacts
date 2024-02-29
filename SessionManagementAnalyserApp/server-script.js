@@ -688,7 +688,7 @@ function libraryUsagesGrep() {
     });
 }
 
-downloadAndExtractRepos('../django_filtered_list_final_v2.csv');
+// downloadAndExtractRepos('../django_filtered_list_final_v2.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Cookie-name-prefixes", "ut_session_cookie_name_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_session_cookie_name_flask_login_final_filtered_merged_list.txt');
@@ -711,7 +711,8 @@ downloadAndExtractRepos('../django_filtered_list_final_v2.csv');
 // findInterestingRepos("Password-strength", "un_using_custom_validators.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_custom_password_validators_django_filtered_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Account-deactivation": ["un_custom_auth_backends.txt"]}, [true, true], './repos_with_interesting_results/18 - repos_that_use_a_custom_auth_backend_django_filtered_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/18 - repos_with_no_logout_django_filtered_list_final_v2.txt');
-// findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/18 - repos_with_no_auth_checks_django_filtered_list_final_v2.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/19 - repos_with_no_auth_checks_django_whitelist_filter_list.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Account-deactivation": ["un_custom_auth_backends.txt"]}, [true, false], './repos_with_interesting_results/19 - repos_that_were_analysed_django_whitelist_filter_list.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({".": ["django_library_used_check"]});
 // libraryUsagesGrep();
