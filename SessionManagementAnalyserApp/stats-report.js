@@ -56,6 +56,7 @@ function usesDjangoForEverything(resDir) {
     let hashing = [];
     let strength = [];
     let auth = [];
+    let login = [];
     try {
         auth = fs.readFileSync(resDir + "/Account-deactivation/un_custom_auth_backends.txt", 'utf-8').split("\n");
         auth.pop();
@@ -64,7 +65,7 @@ function usesDjangoForEverything(resDir) {
         }
         login = fs.readFileSync(resDir + "/Login-restrictions/un_no_authentication_checks_general.txt", 'utf-8').split("\n");
         login.pop();
-        if (auth.length > 2) {
+        if (login.length > 2) {
             return false;
         }
         lines = fs.readFileSync(resDir + "/Password-strength/un_using_django_built_in_forms.txt", 'utf-8').split("\n");
