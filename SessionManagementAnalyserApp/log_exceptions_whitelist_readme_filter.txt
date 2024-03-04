@@ -274,7 +274,11 @@ Request exception can happen due to an api connection error. Please check your c
 Request exception can happen due to an api connection error. Please check your connection and try again
 /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/fangaofeng_trainserver/fangaofeng-trainserver-da5db04/README.md
 Request exception can happen due to an api connection error. Please check your connection and try again
-Total number of exceptions: 138/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/momosecurity_bombus/momosecurity-bombus-44e7052/README.md
+Total number of exceptions: 138
+
+
+
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/momosecurity_bombus/momosecurity-bombus-44e7052/README.md
 Request exception can happen due to an api connection error. Please check your connection and try again
 /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/aryabartar_sNeeds-API/aryabartar-sNeeds-API-c51f8c7/README.md
 Enter your text list that you want to translate
