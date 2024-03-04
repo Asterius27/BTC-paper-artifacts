@@ -51,6 +51,7 @@ function repoUsesRequiredLibraries(resDir) {
     return true;
 }
 
+// TODO filter the repos by repos that use django password hashing and repos that use django password strength to get more precise results for password hashing and password strength separately
 function usesDjangoForEverything(resDir) {
     let lines = [];
     let hashing = [];

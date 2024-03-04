@@ -7,7 +7,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.urls import urlpatterns
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, logout_then_login
 from django.utils.decorators import method_decorator
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -51,6 +51,10 @@ def user_check3(req):
         return True
     else:
         return False
+    
+def custom_logout(request):
+    response = logout_then_login(request)
+    return response
     
 class Mixin:
     def dispatch(self, request):

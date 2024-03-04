@@ -12,4 +12,9 @@ where exists(DataFlow::Node login |
         and not views.asExpr() instanceof ImportMember
         and exists(views.asCfgNode())
         and exists(views.getLocation().getFile().getRelativePath()))
+    or exists(DataFlow::Node views | 
+        views = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("views").getMember("logout_then_login").getAValueReachableFromSource()
+        and not views.asExpr() instanceof ImportMember
+        and exists(views.asCfgNode())
+        and exists(views.getLocation().getFile().getRelativePath()))
 select "The logout function is called at least once"
