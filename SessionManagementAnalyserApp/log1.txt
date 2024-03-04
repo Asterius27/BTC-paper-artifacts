@@ -1,0 +1,4 @@
+Analysis failed for: ./repositories/Django/thread1/openedx_edx-platform/openedx-edx-platform-c0020a8 Reason: Error: spawnSync /bin/sh ENOBUFS
+Could not delete database for: ./repositories/Django/thread1/openedx_edx-platform/openedx-edx-platform-c0020a8 Reason: Error: ENOTEMPTY: directory not empty, rmdir './repositories/Django/thread1/openedx_edx-platform/openedx-edx-platform-c0020a8-database/src/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread1/openedx_edx-platform/openedx-edx-platform-c0020a8/openedx/core/djangoapps'
+Time taken to run the queries on ./repositories/Django/thread1/openedx_edx-platform/openedx-edx-platform-c0020a8: 234.385 seconds.
+Time taken to run the queries and generate the statistics: 234.462 seconds.

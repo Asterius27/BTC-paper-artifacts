@@ -1,0 +1,18 @@
+Time taken to run the queries on ./repositories/Django/thread10/GreaterWMS_GreaterWMS/GreaterWMS-GreaterWMS-dd96e8f: 501.213 seconds.
+Analysis failed for: ./repositories/Django/thread10/zulip_zulip/zulip-zulip-3a03e14 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread10/zulip_zulip/zulip-zulip-3a03e14 -l=python -t=11 -ct=10
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:144
+            throw new Error("Using a custom session engine, so the analysis won't be run");
+                  ^
+
+Error: Using a custom session engine, so the analysis won't be run
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:144:19)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread10/zulip_zulip/zulip-zulip-3a03e14: 144.984 seconds.
+Time taken to run the queries and generate the statistics: 646.299 seconds.
