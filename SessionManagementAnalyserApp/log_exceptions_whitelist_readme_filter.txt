@@ -274,4 +274,66 @@ Request exception can happen due to an api connection error. Please check your c
 Request exception can happen due to an api connection error. Please check your connection and try again
 /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/fangaofeng_trainserver/fangaofeng-trainserver-da5db04/README.md
 Request exception can happen due to an api connection error. Please check your connection and try again
-Total number of exceptions: 138
+Total number of exceptions: 138/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/momosecurity_bombus/momosecurity-bombus-44e7052/README.md
+Request exception can happen due to an api connection error. Please check your connection and try again
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/aryabartar_sNeeds-API/aryabartar-sNeeds-API-c51f8c7/README.md
+Enter your text list that you want to translate
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/imvu_bluesteel/imvu-bluesteel-ab52133/README.md
+'utf-8' codec can't decode byte 0xb4 in position 934: invalid start byte
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/nixrajput_nixlab-blog-api-django/nixrajput-nixlab-blog-api-django-9934ee9/README.md
+'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/illacceptanything_illacceptanything/illacceptanything-illacceptanything-6bb6a3e/README.md
+sequence item 6: expected str instance, NoneType found
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/pranjal198_event_scheduler/pranjal198-event_scheduler-351f94b/README.md
+Enter your text list that you want to translate
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/Xilinx_poky/Xilinx-poky-4c4b7f4/README.hardware
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/Xilinx_poky/Xilinx-poky-4c4b7f4/README.hardware'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/mityasun_api_yamdb/mityasun-api_yamdb-09b7a64/README.md
+'utf-8' codec can't decode byte 0xfe in position 0: invalid start byte
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/mudouble_FaceForensics-Detection_Website/mudouble-FaceForensics-Detection_Website-a5e2bc3/README.md
+Request exception can happen due to an api connection error. Please check your connection and try again
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/nottrobin_ubuntu-cve-tracker/nottrobin-ubuntu-cve-tracker-36e4112/README.golang
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/nottrobin_ubuntu-cve-tracker/nottrobin-ubuntu-cve-tracker-36e4112/README.golang'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/lgirdk_poky/lgirdk-poky-0e3bcc5/README.md
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/lgirdk_poky/lgirdk-poky-0e3bcc5/README.md'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/HappyBeautysmile_Car-rent-api/HappyBeautysmile-Car-rent-api-05b015b/README.md
+'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/nickmccullum_stockalerts/nickmccullum-stockalerts-dcb0666/README.md
+Enter your text list that you want to translate
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/yourlabs_django-autocomplete-light/yourlabs-django-autocomplete-light-45a9ff6/README.rst
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/yourlabs_django-autocomplete-light/yourlabs-django-autocomplete-light-45a9ff6/README.rst'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/uktrade_django-workflow-engine/uktrade-django-workflow-engine-343c267/README.md
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/uktrade_django-workflow-engine/uktrade-django-workflow-engine-343c267/README.md'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/ltfred_blog_website/ltfred-blog_website-9cd0e1a/README.md
+Enter your text list that you want to translate
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/tangowithcode_tango_with_django_4_code/tangowithcode-tango_with_django_4_code-d801ca2/README.md
+Enter your text list that you want to translate
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/dwagon_Hostinfo/dwagon-Hostinfo-75a0b87/README.md
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/dwagon_Hostinfo/dwagon-Hostinfo-75a0b87/README.md'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/mbschenkel_bioco-intranet/mbschenkel-bioco-intranet-931886a/README.md
+'utf-8' codec can't decode byte 0xfc in position 37: invalid start byte
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/TencentBlueKing_bk-goods-application/TencentBlueKing-bk-goods-application-8744f85/README.imgs
+[Errno 21] Is a directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/TencentBlueKing_bk-goods-application/TencentBlueKing-bk-goods-application-8744f85/README.imgs'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/amourao_effortly/amourao-effortly-0b7314d/README.md
+Enter your text list that you want to translate
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/Hirochon_Shappar/Hirochon-Shappar-053b200/README.md
+Request exception can happen due to an api connection error. Please check your connection and try again
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/hong1835_OathBreaker/hong1835-OathBreaker-6d7418d/README.md
+'utf-8' codec can't decode byte 0xca in position 595: invalid continuation byte
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/hyphanet_pyFreenet/hyphanet-pyFreenet-b177e8e/README.md
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/hyphanet_pyFreenet/hyphanet-pyFreenet-b177e8e/README.md'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/apache_fineract-credit-scorecard/apache-fineract-credit-scorecard-fdb3d65/README.md
+'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/yoctoproject_poky/yoctoproject-poky-6b356b7/README.md
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/yoctoproject_poky/yoctoproject-poky-6b356b7/README.md'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/Micjoey_Unique-Cover-Letter-Helper/Micjoey-Unique-Cover-Letter-Helper-6d23e42/README.md
+Enter your text list that you want to translate
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/shuhongfan_PythonBlogSystem/shuhongfan-PythonBlogSystem-b38acf4/Readme.assets
+[Errno 21] Is a directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/shuhongfan_PythonBlogSystem/shuhongfan-PythonBlogSystem-b38acf4/Readme.assets'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/MyWishPlatform_mywill_backend/MyWishPlatform-mywill_backend-abe6c95/README.md
+Enter your text list that you want to translate
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/YoeDistro_poky-old/YoeDistro-poky-old-5127df1/README.md
+[Errno 2] No such file or directory: '/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/YoeDistro_poky-old/YoeDistro-poky-old-5127df1/README.md'
+/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/qxren7_gearbull/qxren7-gearbull-8336a4e/README.md
+'utf-8' codec can't decode byte 0xb3 in position 11: invalid start byte
+Total number of exceptions: 31
