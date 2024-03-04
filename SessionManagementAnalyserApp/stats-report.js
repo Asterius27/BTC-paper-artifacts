@@ -8,7 +8,7 @@ let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let lang = "";
 let csv_file = '../django_filtered_list_final_v2.csv';
-let csv_filter_file = './django_manually_filtered_dataset_v1.csv';
+let csv_filter_file = './whitelist_filtered_repos.csv';
 
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
