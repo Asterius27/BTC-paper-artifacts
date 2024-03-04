@@ -1,2 +1,4 @@
-| col0 |
-+------+
+|                 form                 |                                                col1                                                 |                     col2                     |
++--------------------------------------+-----------------------------------------------------------------------------------------------------+----------------------------------------------+
+| ControlFlowNode for UserCreationForm | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/DjangoApp/DjangoApp/views.py:30 | Django's built in user creation form is used |
+| ControlFlowNode for UserCreationForm | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/DjangoApp/DjangoApp/views.py:77 | Django's built in user creation form is used |

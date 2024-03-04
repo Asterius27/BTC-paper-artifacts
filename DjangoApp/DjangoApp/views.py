@@ -27,6 +27,7 @@ def current_datetime(request):
     user_check3(request)
     pwd = make_password("password", hasher="pbkdf2_sha1")
     validate_password(pwd)
+    form = UserCreationForm()
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
 
@@ -72,3 +73,7 @@ class ViewClassNoMixin(View):
         if request.user.is_authenticated:
             return HttpResponse("User authenticated!")
         return HttpResponse("Hello world!")
+    
+class SignupForm(UserCreationForm):
+    class Meta:
+        fields = ['username', 'password1', 'password2']
