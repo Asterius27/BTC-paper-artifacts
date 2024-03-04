@@ -1,0 +1,59 @@
+Analysis failed for: ./repositories/Django/thread18/TandoorRecipes_recipes/TandoorRecipes-recipes-c15bd66 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread18/TandoorRecipes_recipes/TandoorRecipes-recipes-c15bd66 -l=python -t=11 -ct=18
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread18/TandoorRecipes_recipes/TandoorRecipes-recipes-c15bd66: 189.935 seconds.
+Analysis failed for: ./repositories/Django/thread18/doccano_doccano/doccano-doccano-6387097 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread18/doccano_doccano/doccano-doccano-6387097 -l=python -t=11 -ct=18
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m0s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/doccano_doccano/doccano-doccano-6387097-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 8.8s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/doccano_doccano/doccano-doccano-6387097-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread18/doccano_doccano/doccano-doccano-6387097: 228.763 seconds.
+Analysis failed for: ./repositories/Django/thread18/openspug_spug/openspug-spug-4666795 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread18/openspug_spug/openspug-spug-4666795 -l=python -t=11 -ct=18
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread18/openspug_spug/openspug-spug-4666795: 45.552 seconds.
+Time taken to run the queries and generate the statistics: 464.333 seconds.
