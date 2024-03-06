@@ -1,0 +1,327 @@
+Repo: Akash1362000_News-Web-App Stars: 26
+URL: https://github.com/Akash1362000/News-Web-App
+Result: +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread1/Akash1362000_News-Web-App/Akash1362000-News-Web-App-af991bc/newsapp/forms.py:6 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: BetaCatPro_HouseAnalysisWeb Stars: 16
+URL: https://github.com/BetaCatPro/HouseAnalysisWeb
+Result: +--------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread12/BetaCatPro_HouseAnalysisWeb/BetaCatPro-HouseAnalysisWeb-8a619c7/HouseAnalysis/extra_app/xadmin/xadmin/plugins/auth.py:78 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: CloudStationTeam_cloud_station_web Stars: 12
+URL: https://github.com/CloudStationTeam/cloud_station_web
+Result: +--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/CloudStationTeam_cloud_station_web/CloudStationTeam-cloud_station_web-079c437/flightmonitor/forms.py:26 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: ELVIS-Project_elvis-database Stars: 14
+URL: https://github.com/ELVIS-Project/elvis-database
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread15/ELVIS-Project_elvis-database/ELVIS-Project-elvis-database-3df64dd/elvis/forms/user.py:8 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: Escaflowne1985_NovelAIUser Stars: 39
+URL: https://github.com/Escaflowne1985/NovelAIUser
+Result: +--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread14/Escaflowne1985_NovelAIUser/Escaflowne1985-NovelAIUser-039f740/extra_apps/xadmin/plugins/auth.py:78 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: Gnitch_Progressive-Face-Aging Stars: 5
+URL: https://github.com/Gnitch/Progressive-Face-Aging
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/Gnitch_Progressive-Face-Aging/Gnitch-Progressive-Face-Aging-cf1ca22/accounts/forms.py:5 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: JSv4_OpenContracts Stars: 32
+URL: https://github.com/JSv4/OpenContracts
+Result: +-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for Attribute | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread0/JSv4_OpenContracts/JSv4-OpenContracts-be3de1c/opencontractserver/users/forms.py:14 | Django's built in user creation form is used |
+Result: | ControlFlowNode for Attribute | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread0/JSv4_OpenContracts/JSv4-OpenContracts-be3de1c/opencontractserver/users/forms.py:13 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: JaniceWuo_MovieRecommend Stars: 570
+URL: https://github.com/JaniceWuo/MovieRecommend
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread3/JaniceWuo_MovieRecommend/JaniceWuo-MovieRecommend-450d506/movierecommend/users/forms.py:5 | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread3/JaniceWuo_MovieRecommend/JaniceWuo-MovieRecommend-450d506/movierecommend/users/forms.py:4 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: Leofighting_Django-Web-Shopping-Mall-V2.0 Stars: 14
+URL: https://github.com/Leofighting/Django-Web-Shopping-Mall-V2.0
+Result: +--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread15/Leofighting_Django-Web-Shopping-Mall-V2.0/Leofighting-Django-Web-Shopping-Mall-V2.0-c75fbeb/extra_apps/xadmin/plugins/auth.py:78 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: MansiBreja_MoodieFoodie Stars: 11
+URL: https://github.com/MansiBreja/MoodieFoodie
+Result: +--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread13/MansiBreja_MoodieFoodie/MansiBreja-MoodieFoodie-d14d17c/foody_1/forms.py:5 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: NatLee_streaming-player Stars: 6
+URL: https://github.com/NatLee/streaming-player
+Result: +--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread7/NatLee_streaming-player/NatLee-streaming-player-5f42a9a/backend/userprofile/forms.py:7 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: PythonWebProject_Django_Fresh_Ecommerce Stars: 6
+URL: https://github.com/PythonWebProject/Django_Fresh_Ecommerce
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread17/PythonWebProject_Django_Fresh_Ecommerce/PythonWebProject-Django_Fresh_Ecommerce-413accc/extra_apps/xadmin/plugins/auth.py:78 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: Superbsco_weibo-analysis-system Stars: 307
+URL: https://github.com/Superbsco/weibo-analysis-system
+Result: +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread6/Superbsco_weibo-analysis-system/Superbsco-weibo-analysis-system-f49dea8/extra_apps/xadmin/plugins/auth.py:78 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: TheLittleMister_dualnback Stars: 30
+URL: https://github.com/TheLittleMister/dualnback
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread8/TheLittleMister_dualnback/TheLittleMister-dualnback-e9c2af3/users/forms.py:10 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: UlugbekMuslitdinov_djancommerce Stars: 7
+URL: https://github.com/UlugbekMuslitdinov/djancommerce
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread17/UlugbekMuslitdinov_djancommerce/UlugbekMuslitdinov-djancommerce-fd2770b/users/forms.py:7 | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread17/UlugbekMuslitdinov_djancommerce/UlugbekMuslitdinov-djancommerce-fd2770b/users/forms.py:5 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: ahmed-devolper6_django3_e-commrece Stars: 6
+URL: https://github.com/ahmed-devolper6/django3_e-commrece
+Result: +--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread12/ahmed-devolper6_django3_e-commrece/ahmed-devolper6-django3_e-commrece-86c1d5e/accounts/forms.py:6 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: andwang1_BrainSurfaceTK Stars: 11
+URL: https://github.com/andwang1/BrainSurfaceTK
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread13/andwang1_BrainSurfaceTK/andwang1-BrainSurfaceTK-d043d5b/GUI/main/forms.py:9 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: app-generator_django-admin-adminlte Stars: 17
+URL: https://github.com/app-generator/django-admin-adminlte
+Result: +--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread9/app-generator_django-admin-adminlte/app-generator-django-admin-adminlte-5d59f2b/admin_adminlte/forms.py:6 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: app-generator_django-admin-material-dashboard Stars: 25
+URL: https://github.com/app-generator/django-admin-material-dashboard
+Result: +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread19/app-generator_django-admin-material-dashboard/app-generator-django-admin-material-dashboard-2bbf01c/admin_material/forms.py:7 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: app-generator_django-admin-soft-dashboard Stars: 28
+URL: https://github.com/app-generator/django-admin-soft-dashboard
+Result: +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread12/app-generator_django-admin-soft-dashboard/app-generator-django-admin-soft-dashboard-0f927a2/admin_soft/forms.py:7 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: coronasafe_care Stars: 187
+URL: https://github.com/coronasafe/care
+Result: +-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for Attribute | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread14/coronasafe_care/coronasafe-care-411e89c/care/users/forms.py:14 | Django's built in user creation form is used |
+Result: | ControlFlowNode for Attribute | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread14/coronasafe_care/coronasafe-care-411e89c/care/users/forms.py:18 | Django's built in user creation form is used |
+Result: | ControlFlowNode for Attribute | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread14/coronasafe_care/coronasafe-care-411e89c/care/users/forms.py:13 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: desaimihir12_11-tagged-news Stars: 7
+URL: https://github.com/desaimihir12/11-tagged-news
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread8/desaimihir12_11-tagged-news/desaimihir12-11-tagged-news-d423a56/project/src/account/forms.py:8 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: developer-student-club-thapar_thapar_app Stars: 10
+URL: https://github.com/developer-student-club-thapar/thapar_app
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread5/developer-student-club-thapar_thapar_app/developer-student-club-thapar-thapar_app-43364bb/hashx/users/forms.py:8 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: gbourniq_django-on-aws Stars: 16
+URL: https://github.com/gbourniq/django-on-aws
+Result: +--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread11/gbourniq_django-on-aws/gbourniq-django-on-aws-1fc500e/app/main/forms.py:29 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: grai-io_grai-core Stars: 239
+URL: https://github.com/grai-io/grai-core
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread3/grai-io_grai-core/grai-io-grai-core-65e4805/grai-server/app/users/forms.py:7 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: gthole_drink-stash Stars: 9
+URL: https://github.com/gthole/drink-stash
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread10/gthole_drink-stash/gthole-drink-stash-d0b4aa9/api/drinks/admin.py:114 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: hao222_drf-rowshop Stars: 5
+URL: https://github.com/hao222/drf-rowshop
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread6/hao222_drf-rowshop/hao222-drf-rowshop-dbd496d/online/extra_apps/xadmin/plugins/auth.py:78 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: heyrict_cindy-realtime Stars: 11
+URL: https://github.com/heyrict/cindy-realtime
+Result: +--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/heyrict_cindy-realtime/heyrict-cindy-realtime-d166af6/sui_hei/admin.py:17 | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/heyrict_cindy-realtime/heyrict-cindy-realtime-d166af6/sui_hei/admin.py:15 | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/heyrict_cindy-realtime/heyrict-cindy-realtime-d166af6/sui_hei/admin.py:23 | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/heyrict_cindy-realtime/heyrict-cindy-realtime-d166af6/sui_hei/admin.py:14 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: hikarine3_docker-django-postgresql Stars: 27
+URL: https://github.com/hikarine3/docker-django-postgresql
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/hikarine3_docker-django-postgresql/hikarine3-docker-django-postgresql-d196c5e/djangopj/accounts/views.py:7 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: iopsgroup_Jcrontab Stars: 25
+URL: https://github.com/iopsgroup/Jcrontab
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread13/iopsgroup_Jcrontab/iopsgroup-Jcrontab-8b7adea/extra_apps/xadmin/plugins/auth.py:75 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: itsvinayak_user_login_and_register Stars: 83
+URL: https://github.com/itsvinayak/user_login_and_register
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread11/itsvinayak_user_login_and_register/itsvinayak-user_login_and_register-7a6e8ce/user/forms.py:6 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: jacksun01_zeus-workflow Stars: 18
+URL: https://github.com/jacksun01/zeus-workflow
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread10/jacksun01_zeus-workflow/jacksun01-zeus-workflow-2220fdf/backend/extra_apps/xadmin/plugins/auth.py:78 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: joetho786_SEC_file_analyzer Stars: 6
+URL: https://github.com/joetho786/SEC_file_analyzer
+Result: +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread6/joetho786_SEC_file_analyzer/joetho786-SEC_file_analyzer-afa102b/sec_analyzer/apps/authentication/forms.py:28 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: johnthedebs_basicproject Stars: 10
+URL: https://github.com/johnthedebs/basicproject
+Result: +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread6/johnthedebs_basicproject/johnthedebs-basicproject-3f14a0d/accounts/admin.py:38 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: kaleidos-ventures_taiga-back Stars: 454
+URL: https://github.com/kaleidos-ventures/taiga-back
+Result: +--------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for DjangoUserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread1/kaleidos-ventures_taiga-back/kaleidos-ventures-taiga-back-8170f08/taiga/users/forms.py:16 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: leprikon-cz_leprikon Stars: 7
+URL: https://github.com/leprikon-cz/leprikon
+Result: +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for _UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread1/leprikon-cz_leprikon/leprikon-cz-leprikon-f83cb92/leprikon/forms/user.py:55 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: nature1995_Vue-Django-Shop-Website Stars: 7
+URL: https://github.com/nature1995/Vue-Django-Shop-Website
+Result: +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread0/nature1995_Vue-Django-Shop-Website/nature1995-Vue-Django-Shop-Website-80d7317/extra_apps/xadmin/plugins/auth.py:78 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: paulo-campos-57_Projetos3 Stars: 5
+URL: https://github.com/paulo-campos-57/Projetos3
+Result: +--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/paulo-campos-57_Projetos3/paulo-campos-57-Projetos3-7596cae/eden_project/gestor/views.py:80 | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/paulo-campos-57_Projetos3/paulo-campos-57-Projetos3-7596cae/eden_project/gestor/views.py:90 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: peternish_OpenChat Stars: 10
+URL: https://github.com/peternish/OpenChat
+Result: +--------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread11/peternish_OpenChat/peternish-OpenChat-10f86a1/dj_backend_server/api/views/views_auth.py:20 | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread11/peternish_OpenChat/peternish-OpenChat-10f86a1/dj_backend_server/api/views/views_auth.py:26 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: pivotal-energy-solutions_django-appsearch Stars: 8
+URL: https://github.com/pivotal-energy-solutions/django-appsearch
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread15/pivotal-energy-solutions_django-appsearch/pivotal-energy-solutions-django-appsearch-d2a3b55/demo_app/users/forms.py:9 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: pythonitalia_pycon Stars: 73
+URL: https://github.com/pythonitalia/pycon
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread7/pythonitalia_pycon/pythonitalia-pycon-bf7480b/backend/users/admin.py:9 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: repeating_PoputchikiInno Stars: 20
+URL: https://github.com/repeating/PoputchikiInno
+Result: +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/repeating_PoputchikiInno/repeating-PoputchikiInno-8f70a0a/backend/user/forms.py:9 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: synw_django-spaninja Stars: 10
+URL: https://github.com/synw/django-spaninja
+Result: +--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread15/synw_django-spaninja/synw-django-spaninja-99028cb/docsite/public/doc/base_app/schemas/ex/FormInvalidResponseContract.py:16 | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread15/synw_django-spaninja/synw-django-spaninja-99028cb/docsite/dist/doc/base_app/schemas/ex/FormInvalidResponseContract.py:16   | Django's built in user creation form is used |
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread15/synw_django-spaninja/synw-django-spaninja-99028cb/apps/account/forms/registration.py:9                                     | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: th3r00t_pyShelf Stars: 523
+URL: https://github.com/th3r00t/pyShelf
+Result: +--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread17/th3r00t_pyShelf/th3r00t-pyShelf-aef30f3/src/interface/forms.py:6 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
+Repo: zuri-training_WF-PriceCompare-24 Stars: 18
+URL: https://github.com/zuri-training/WF-PriceCompare-24
+Result: +--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+Result: | ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread2/zuri-training_WF-PriceCompare-24/zuri-training-WF-PriceCompare-24-3c9128d/WalletFriendlyRoot/PriceCompare/forms.py:46 | Django's built in user creation form is used |
+Result: +-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+Result: | The application never accesses the user object and never uses the @login_required decorator and never uses the LoginRequiredMixin (for class based views) |
+
