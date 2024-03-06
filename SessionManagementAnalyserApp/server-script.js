@@ -603,7 +603,7 @@ fs.createReadStream('../flask_repos.csv')
 // Run library check queries using grep
 // regex: "(^import flask_login$|^from flask_login )" or "^(import|from) flask_login "
 function libraryUsagesGrep() {
-    fs.createReadStream('../flask_list_final.csv')
+    fs.createReadStream('../django_filtered_list_final_v2.csv')
     .pipe(csvParser())
     .on('data', (data) => {
         csv.push(data);
@@ -620,6 +620,11 @@ function libraryUsagesGrep() {
         let flask_wtf = 0;
         let wtforms = 0;
         let repositories = 0;
+        let argon2 = 0;
+        let bcrypt = 0;
+        let hashlib = 0;
+        let passlib = 0;
+        let werkzeug = 0;
         for (let i = 0; i < csv.length; i++) {
             let owner = csv[i].repo_url.split("/")[3];
             let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
@@ -628,6 +633,7 @@ function libraryUsagesGrep() {
                 for (let j = 0; j < subdirs.length; j++) {
                     if (!subdirs[j].endsWith("-database") && !subdirs[j].endsWith("-results")) {
                         repositories++;
+                        /*
                         try {
                             let stdout = execSync('grep -Eir "^(import|from) flask_login " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_login_count++;
@@ -660,6 +666,7 @@ function libraryUsagesGrep() {
                             let stdout = execSync('grep -Eir "^(import|from) passwordmeter " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             passwordmeter++;
                         } catch(e) {}
+                        */
                         try {
                             let stdout = execSync('grep -Eir "^(import|from) flask_bcrypt " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             flask_bcrypt++;
@@ -671,6 +678,26 @@ function libraryUsagesGrep() {
                         try {
                             let stdout = execSync('grep -Eir "^(import|from) wtforms " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             wtforms++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) argon2 " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            argon2++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) bcrypt " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            bcrypt++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) hashlib " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            hashlib++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) passlib " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            passlib++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) werkzeug " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            werkzeug++;
                         } catch(e) {}
                     }
                 }
@@ -712,10 +739,10 @@ function libraryUsagesGrep() {
 // findInterestingRepos("Password-strength", "un_using_custom_validators.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_custom_password_validators_django_filtered_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Account-deactivation": ["un_custom_auth_backends.txt"]}, [true, true], './repos_with_interesting_results/18 - repos_that_use_a_custom_auth_backend_django_filtered_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/18 - repos_with_no_logout_django_filtered_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/24 - repos_with_no_auth_checks_django_whitelist_filter_list.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/24 - repos_with_no_auth_checks_django_whitelist_filter_list.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Account-deactivation": ["un_custom_auth_backends.txt"]}, [true, false], './repos_with_interesting_results/19 - repos_that_were_analysed_django_whitelist_filter_list.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
 // deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]});
-// libraryUsagesGrep();
+libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
