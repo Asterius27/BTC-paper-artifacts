@@ -706,7 +706,7 @@ function libraryUsagesGrep() {
         try {
             let content = "\nTotal repositories: " + repositories + "\nTotal Flask usages: " + flask_count + "\nTotal Flask-login usages: " + flask_login_count + "\nTotal Flask-Security-Too usages: " + flask_security_too + "\nTotal Flask-User usages: " + 
                 flask_user + "\nTotal Flask-Oauth usages: " + flask_oauth + "\nTotal PyOTP usages: " + pyotp + "\nTotal PasswordMeter usages: " + passwordmeter + "\nTotal Flask-Bcrypt usages: " + flask_bcrypt + "\nTotal Flask-WTF usages: " + flask_wtf + 
-                "\nTotal WTForms usages: " + wtforms;
+                "\nTotal WTForms usages: " + wtforms + "\nTotal Argon2 usages: " + argon2 + "\nTotal Bcrypt usages: " + bcrypt + "\nTotal Hashlib usages: " + hashlib + "\nTotal Passlib usages: " + passlib + "\nTotal Werkzeug usages: " + werkzeug;
             fs.appendFileSync('./library_usages.txt', content);
         } catch (err) {
             console.log(err);
