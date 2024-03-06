@@ -13,7 +13,7 @@ nltk.download('punkt')
 # TODO see if these lists are good enough, there still seem to be a lot of false positives, need to restrict the list
 whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud"]) # to add: "platform", "cms" not too sure about platform
 group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"]] # to add: ["content", "management", "system"]
-# to add: blacklist = ["api", "library", "tutorial", "example"] these might introduce false negatives
+# to add: blacklist = ["api", "library", "tutorial", "example", "assignment"] these might introduce false negatives, use the blacklist from the javascript script (server-script.js)
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
 root_dir = "./repositories/Django"
