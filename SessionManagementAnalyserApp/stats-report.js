@@ -59,12 +59,12 @@ function usesDjangoForEverything(resDir) {
     let auth = [];
     let login = [];
     try {
-        /*
         auth = fs.readFileSync(resDir + "/Account-deactivation/un_custom_auth_backends.txt", 'utf-8').split("\n");
         auth.pop();
         if (auth.length > 2) {
             return false;
         }
+        /*
         login = fs.readFileSync(resDir + "/Login-restrictions/un_no_authentication_checks_general.txt", 'utf-8').split("\n");
         login.pop();
         if (login.length > 2) {
@@ -190,10 +190,10 @@ for (let i = 0; i < repos.length; i++) {
                         }
                     }
                     if (info.some(str => str.includes("django"))) {
-                        // if (usesDjangoForEverything(dir + "/" + res) && !info.some(str => str.includes("customsessionengine"))) {
+                        if (usesDjangoForEverything(dir + "/" + res) && !info.some(str => str.includes("customsessionengine"))) {
                             django_repos++;
                             [django_counter, django_error_counter, false_positives_counter_django] = countRepos(django_counter, django_error_counter, false_positives_counter_django, "django", dir + "/" + res);
-                        // }
+                        }
                         if (info.some(str => str.includes("customsessionengine"))) {
                             custom_session_engine_repos++;
                             failed_repos++;
