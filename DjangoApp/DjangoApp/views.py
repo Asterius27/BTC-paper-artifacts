@@ -11,6 +11,7 @@ from django.contrib.auth.views import LoginView, logout_then_login
 from django.utils.decorators import method_decorator
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django import forms
 
 @login_required
 def current_datetime(request):
@@ -79,5 +80,6 @@ class ViewClassNoMixin(View):
         return HttpResponse("Hello world!")
     
 class SignupForm(UserCreationForm):
+    password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         fields = ['username', 'password1', 'password2']

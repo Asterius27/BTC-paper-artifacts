@@ -58,13 +58,14 @@ function usesDjangoForEverything(resDir) {
     let strength = [];
     let auth = [];
     let login = [];
+    let passfield = [];
     try {
+        /*
         auth = fs.readFileSync(resDir + "/Account-deactivation/un_custom_auth_backends.txt", 'utf-8').split("\n");
         auth.pop();
         if (auth.length > 2) {
             return false;
         }
-        /*
         login = fs.readFileSync(resDir + "/Login-restrictions/un_no_authentication_checks_general.txt", 'utf-8').split("\n");
         login.pop();
         if (login.length > 2) {
@@ -76,6 +77,12 @@ function usesDjangoForEverything(resDir) {
         if (lines.length > 2) {
             return true;
         }
+        passfield = fs.readFileSync(resDir + "/Password-strength/un_using_django_password_field.txt", 'utf-8').split("\n");
+        passfield.pop();
+        if (passfield.length > 2) {
+            return true;
+        }
+        /*
         hashing = fs.readFileSync(resDir + "/Password-hashing/un_hash_password_function_is_used.txt", 'utf-8').split("\n");
         strength = fs.readFileSync(resDir + "/Password-strength/un_using_custom_forms_with_validators.txt", 'utf-8').split("\n");
         hashing.pop();
@@ -83,6 +90,7 @@ function usesDjangoForEverything(resDir) {
         if (hashing.length > 2 && strength.length > 2) {
             return true;
         }
+        */
     } catch (e) {
         fs.appendFileSync('./log_stats_generator.txt', "Failed to read query results for: " + resDir + " Reason: " + e + "\n");
     }
