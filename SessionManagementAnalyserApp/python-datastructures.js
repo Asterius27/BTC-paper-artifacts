@@ -277,6 +277,7 @@ let django = {
             "un_using_custom_forms_with_validators": [false, ""],
             "un_using_custom_validators": [false, ""],
             "un_using_django_built_in_forms": [false, ""],
+            "un_using_django_password_field": [false, ""],
             "un_using_password_validators": [false, ""]
         }
     },
@@ -492,6 +493,7 @@ let descriptions = {
             "using_custom_forms_with_validators": "Using Django's 'validate password' function to validate the password in custom forms",
             "using_custom_validators": "Using custom password validators",
             "using_django_built_in_forms": "Using Django's built in forms for the signup form",
+            "using_django_password_field": "Django's built in password fields are being used for some forms",
             "using_password_validators": "Manually setting the AUTH_PASSWORD_VALIDATORS config variable in order to use Django's password validation"
         }
     }
