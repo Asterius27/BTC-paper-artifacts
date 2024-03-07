@@ -625,6 +625,10 @@ function libraryUsagesGrep() {
         let hashlib = 0;
         let passlib = 0;
         let werkzeug = 0;
+        let django_rest_framework = 0;
+        let django_xadmin = 0;
+        let dj_rest_auth = 0;
+        let allauth = 0;
         for (let i = 0; i < csv.length; i++) {
             let owner = csv[i].repo_url.split("/")[3];
             let dir = './repositories/' + framework + '/' + owner + "_" + csv[i].repo_name;
@@ -699,6 +703,22 @@ function libraryUsagesGrep() {
                             let stdout = execSync('grep -Eir "^(import|from) werkzeug " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
                             werkzeug++;
                         } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) rest_framework " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            django_rest_framework++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) xadmin " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            django_xadmin++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) dj_rest_auth " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            dj_rest_auth++;
+                        } catch(e) {}
+                        try {
+                            let stdout = execSync('grep -Eir "^(import|from) allauth " ' + dir + "/" + subdirs[j], { encoding: 'utf8' }).toString();
+                            allauth++;
+                        } catch(e) {}
                     }
                 }
             }
@@ -706,7 +726,8 @@ function libraryUsagesGrep() {
         try {
             let content = "\nTotal repositories: " + repositories + "\nTotal Flask usages: " + flask_count + "\nTotal Flask-login usages: " + flask_login_count + "\nTotal Flask-Security-Too usages: " + flask_security_too + "\nTotal Flask-User usages: " + 
                 flask_user + "\nTotal Flask-Oauth usages: " + flask_oauth + "\nTotal PyOTP usages: " + pyotp + "\nTotal PasswordMeter usages: " + passwordmeter + "\nTotal Flask-Bcrypt usages: " + flask_bcrypt + "\nTotal Flask-WTF usages: " + flask_wtf + 
-                "\nTotal WTForms usages: " + wtforms + "\nTotal Argon2 usages: " + argon2 + "\nTotal Bcrypt usages: " + bcrypt + "\nTotal Hashlib usages: " + hashlib + "\nTotal Passlib usages: " + passlib + "\nTotal Werkzeug usages: " + werkzeug;
+                "\nTotal WTForms usages: " + wtforms + "\nTotal Argon2 usages: " + argon2 + "\nTotal Bcrypt usages: " + bcrypt + "\nTotal Hashlib usages: " + hashlib + "\nTotal Passlib usages: " + passlib + "\nTotal Werkzeug usages: " + werkzeug +
+                "\nTotal Django_rest_framework usages: " + django_rest_framework + "\nTotal xadmin usages: " + django_xadmin + "\nTotal dj-rest-auth usages: " + dj_rest_auth + "\nTotal allauth usages: " + allauth;
             fs.appendFileSync('./library_usages.txt', content);
         } catch (err) {
             console.log(err);
