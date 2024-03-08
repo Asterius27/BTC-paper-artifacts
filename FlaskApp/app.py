@@ -6,7 +6,7 @@ from datetime import timedelta
 import datetime as dt
 from config import FlaskConfig, default_config
 import os
-from flask_bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt, generate_password_hash
 from wtforms import Form, PasswordField, ValidationError, BaseForm
 from wtforms import validators
 from wtforms.validators import Length, Regexp, length, DataRequired, Email, EqualTo
