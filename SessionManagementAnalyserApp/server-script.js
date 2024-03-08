@@ -10,7 +10,7 @@ import { resolve } from "path";
 import { pipeline } from "stream/promises";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
-const framework = "Django"; // "Flask"
+const framework = "Flask"; // "Django"
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
 let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]; // TODO add more, have to make it more precise
@@ -757,7 +757,7 @@ function libraryUsagesGrep() {
 // findInterestingRepos(".", "custom_session_engine.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/16 - repos_using_custom_session_engine_django_filtered_list_final_v2.txt');
 // findInterestingRepos("Account-deactivation", "un_custom_auth_backends.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/22bis - repos_using_custom_authentication_backends_django_manually_filtered_list_v1.txt');
 // findInterestingRepos("Explorative-queries", "un_list_config_settings_from_env_var.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/22bis - repos_using_env_vars_django_manually_filtered_list_v1.txt');
-findInterestingRepos("Password-strength", "un_using_django_password_field.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/26 - repos_using_password_field_django_whitelist_filter_list.txt');
+// findInterestingRepos("Password-strength", "un_using_django_password_field.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/26 - repos_using_password_field_django_whitelist_filter_list.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Account-deactivation": ["un_custom_auth_backends.txt"]}, [true, true], './repos_with_interesting_results/18 - repos_that_use_a_custom_auth_backend_django_filtered_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/18 - repos_with_no_logout_django_filtered_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/24 - repos_with_no_auth_checks_django_whitelist_filter_list.txt');
@@ -765,6 +765,7 @@ findInterestingRepos("Password-strength", "un_using_django_password_field.txt", 
 // findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_no_auth_checks_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Secret-key": ["un_secret_key.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_logout_not_called_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_argon2_is_used.txt", "un_bcrypt_is_used.txt", "un_hashlib_is_used.txt", "un_passlib_is_used.txt", "un_werkzeug_is_used.txt"]}, [false, false, false, false, false, false], './repos_with_interesting_results/14 - repos_with_no_hashing_library_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
 // deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]});
