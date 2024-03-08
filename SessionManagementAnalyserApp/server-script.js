@@ -10,7 +10,7 @@ import { resolve } from "path";
 import { pipeline } from "stream/promises";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
-const framework = "Django"; // "Flask"
+const framework = "Flask"; // "Django"
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
 let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]; // TODO add more, have to make it more precise
@@ -159,7 +159,7 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
     let csv = {};
     let csv_urls = {};
     await new Promise((resolve, reject) => {
-        fs.createReadStream('../django_filtered_list_final_v2.csv')
+        fs.createReadStream('../flask_login_final_v2_filtered_merged_list.csv')
             .pipe(csvParser())
             .on('data', (data) => {
                 let owner = data.repo_url.split("/")[3];
@@ -762,8 +762,11 @@ function libraryUsagesGrep() {
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/18 - repos_with_no_logout_django_filtered_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/24 - repos_with_no_auth_checks_django_whitelist_filter_list.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Account-deactivation": ["un_custom_auth_backends.txt"]}, [true, false], './repos_with_interesting_results/19 - repos_that_were_analysed_django_whitelist_filter_list.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_no_auth_checks_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Secret-key": ["un_secret_key.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
 // deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]});
-libraryUsagesGrep();
+// libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
