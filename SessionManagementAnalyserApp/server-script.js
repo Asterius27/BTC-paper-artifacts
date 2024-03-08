@@ -764,7 +764,7 @@ function libraryUsagesGrep() {
 // findOverlappingResultsInRepos({"Password-strength": ["un_using_django_built_in_forms.txt"], "Account-deactivation": ["un_custom_auth_backends.txt"]}, [true, false], './repos_with_interesting_results/19 - repos_that_were_analysed_django_whitelist_filter_list.txt');
 findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_no_auth_checks_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Secret-key": ["un_secret_key.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_logout_not_called_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
 // deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]});
