@@ -11,6 +11,7 @@ import time
 
 nltk.download('punkt')
 # TODO see if these lists are good enough, there still seem to be a lot of false positives, need to restrict the list
+# TODO save the translated readme so that you only translate new ones
 whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud"]) # to add: "platform", "cms" not too sure about platform
 group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"]] # to add: ["content", "management", "system"]
 # to add: blacklist = ["api", "library", "tutorial", "example", "assignment"] these might introduce false negatives, use the blacklist from the javascript script (server-script.js)
