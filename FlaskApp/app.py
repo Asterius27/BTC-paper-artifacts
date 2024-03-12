@@ -6,6 +6,7 @@ from datetime import timedelta
 import datetime as dt
 from config import FlaskConfig, default_config
 import os
+"""
 from flask_bcrypt import Bcrypt, generate_password_hash
 from wtforms import Form, PasswordField, ValidationError, BaseForm
 from wtforms import validators
@@ -22,7 +23,7 @@ from password_strength import PasswordStats, PasswordPolicy
 import deform
 from deform import Form as de_form
 import colander
-
+"""
 def bar():
     return "secret_key"
 
@@ -30,7 +31,7 @@ def configuration():
     app.config["SESSION_COOKIE_HTTPONLY"] = False
 
 app = Flask(__name__)
-bcrypt = Bcrypt(app)
+# bcrypt = Bcrypt(app)
 key = bar()
 
 # Hardcoded and short secret key
@@ -44,46 +45,49 @@ login_manager.init_app(app)
 login_manager.session_protection = "basic"
 
 # Javascript access to cookies (insecure) (HTTPOnly attribute), default is True
-z = app.config
-z["SESSION_COOKIE_HTTPONLY"] = False
-app.config["REMEMBER_COOKIE_HTTPONLY"] = False
+# z = app.config
+# z["SESSION_COOKIE_HTTPONLY"] = False
+# app.config["REMEMBER_COOKIE_HTTPONLY"] = False
 # app.config["SESSION_COOKIE_HTTPONLY"] = False
 
 # Cookies not accessible via HTTP, default is False
-app.config["REMEMBER_COOKIE_SECURE"] = True
+# app.config["REMEMBER_COOKIE_SECURE"] = True
 # app.config["SESSION_COOKIE_SECURE"] = True
 
 # Cookie shared with subdomains, default is None
 # app.config["REMEMBER_COOKIE_DOMAIN"] = ".example.com"
-app.config["SESSION_COOKIE_DOMAIN"] = ".example.com"
+# app.config["SESSION_COOKIE_DOMAIN"] = ".example.com"
 
 # Cookie expiration, can be set using integers (to express seconds), or using the datetime.timedelta object
-app.config["REMEMBER_COOKIE_DURATION"] = 6000 # can also be set as a parameter of the login_user function (duration=...), default is 365 days
-session.permanent = True # default is false
-app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(2) # works only if session.permanent is true, default is 31 days
+# app.config["REMEMBER_COOKIE_DURATION"] = 6000 # can also be set as a parameter of the login_user function (duration=...), default is 365 days
+# @app.before_request
+def make_session_permanent():
+    session.permanent = True
+# session.permanent = True # default is false
+# app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(2) # works only if session.permanent is true, default is 31 days
 # or 
-app.permanent_session_lifetime = dt.timedelta(weeks=6, days=2)
+# app.permanent_session_lifetime = dt.timedelta(weeks=6, days=2)
 # Bump/refresh cookie expiration at each request
-app.config["REMEMBER_COOKIE_REFRESH_EACH_REQUEST"] = True # default is False
+# app.config["REMEMBER_COOKIE_REFRESH_EACH_REQUEST"] = True # default is False
 app.config["SESSION_REFRESH_EACH_REQUEST"] = False # default is True
 
 # Cookie prefixes
-app.config["REMEMBER_COOKIE_NAME"] = "__Secure-remember" # default is remember_token
-app.config["SESSION_COOKIE_NAME"] = "__Host-session" # default is session
+# app.config["REMEMBER_COOKIE_NAME"] = "__Secure-remember" # default is remember_token
+# app.config["SESSION_COOKIE_NAME"] = "__Host-session" # default is session
 
 # CSRF (Samesite attribute)
-app.config["REMEMBER_COOKIE_SAMESITE"] = 'Lax' # default is None
-app.config["SESSION_COOKIE_SAMESITE"] = None # default is None
+#app.config["REMEMBER_COOKIE_SAMESITE"] = 'Lax' # default is None
+# app.config["SESSION_COOKIE_SAMESITE"] = None # default is None
 
 # JSON serializer options, can only use the default json serializer in flask
 # Serialize objects to ASCII-encoded JSON. If this is disabled, the JSON will be returned as a Unicode string, or encoded as UTF-8 by jsonify. 
 # This has security implications when rendering the JSON into JavaScript in templates, and should typically remain enabled.
-app.config["JSON_AS_ASCII"] = False # default is True
+# app.config["JSON_AS_ASCII"] = False # default is True
 
 # Another way of setting/updating multiple keys
-app.config.update(SESSION_COOKIE_DOMAIN=".example.com", REMEMBER_COOKIE_SAMESITE="Strict")
-d = {'REMEMBER_COOKIE_SAMESITE': None}
-app.config.update(d)
+# app.config.update(SESSION_COOKIE_DOMAIN=".example.com", REMEMBER_COOKIE_SAMESITE="Strict")
+# d = {'REMEMBER_COOKIE_SAMESITE': None}
+# app.config.update(d)
 
 # Another way of setting/updating multiple keys
 class BaseConfigClass(object):
@@ -94,34 +98,35 @@ class ConfigClass(BaseConfigClass):
     # Flask settings
     # SECRET_KEY = 'This is an INSECURE secret!! DO NOT use this in production!!'
 
-conf = ConfigClass()
-app.config.from_object(__name__+'.ConfigClass') # can also pass an imported module as a parameter
-app.config.from_object(ConfigClass)
-app.config.from_object(ConfigClass())
-app.config.from_object(FlaskConfig)
-app.config.from_object(default_config())
-app.config.from_object(conf)
+# conf = ConfigClass()
+# app.config.from_object(__name__+'.ConfigClass') # can also pass an imported module as a parameter
+# app.config.from_object(ConfigClass)
+# app.config.from_object(ConfigClass())
+# app.config.from_object(FlaskConfig)
+# app.config.from_object(default_config())
+# app.config.from_object(conf)
 
 # Yet another way of setting/updating multiple keys
-app.config.from_pyfile("config.py") # just search if in the file there is, for example, a hardcoded string that gets assigned to a variable named SECRET_KEY
+# app.config.from_pyfile("config.py") # just search if in the file there is, for example, a hardcoded string that gets assigned to a variable named SECRET_KEY
 
-configuration()
+# configuration()
 
 # Set config from environment
-app.config.from_prefixed_env()
-app.config.from_envvar('AN_ENV_VAR')
-app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY")
-app.config["SECRET_KEY"] = os.environ["ENVIRON_KEY"]
-app.config["SECRET_KEY"] = os.getenv("ENVIRON_KEY")
-app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY") or "Thisisasecret"
-app.config["SESSION_COOKIE_SAMESITE"] = os.environ.get("ENVIRON_SAMESITE")
+# app.config.from_prefixed_env()
+# app.config.from_envvar('AN_ENV_VAR')
+# app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY")
+# app.config["SECRET_KEY"] = os.environ["ENVIRON_KEY"]
+# app.config["SECRET_KEY"] = os.getenv("ENVIRON_KEY")
+# app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY") or "Thisisasecret"
+# app.config["SESSION_COOKIE_SAMESITE"] = os.environ.get("ENVIRON_SAMESITE")
 
 # TODO Other ways of setting config (don't think these are very used, just need to check how many repos use these and then decide whether to include them or not)
-app.config.from_mapping()
-app.config.from_file()
-app.config.fromkeys()
+# app.config.from_mapping()
+# app.config.from_file()
+# app.config.fromkeys()
 
 # Other password hashing libraries
+"""
 hash = pbkdf2_sha256.using().hash("password")
 pbk = pbkdf2_sha512.using().hash("wow")
 alg = argon2.using().hash("bella")
@@ -162,11 +167,11 @@ class ExampleSchema(deform.schema.CSRFSchema):
         default=18,
         title="Age",
         description="Your age in years")
-
+"""
 def aux(a):
     return a
 
-testing = os.environ.get("ENVIRON_KEY")
+# testing = os.environ.get("ENVIRON_KEY")
 
 # Custom session interface
 class CustomSessionInterface(SecureCookieSessionInterface):
@@ -176,7 +181,7 @@ class CustomSessionInterface(SecureCookieSessionInterface):
             return
         return super(CustomSessionInterface, self).save_session(*args, **kwargs)
     
-app.session_interface = CustomSessionInterface()
+# app.session_interface = CustomSessionInterface()
 
 class User(UserMixin):
     def __init__(self, id: str, username: str, password: str):
@@ -198,7 +203,7 @@ class User(UserMixin):
         resu = 8
         x = 5
         return self.id
-    
+    """
     @property
     def is_active(self):
         if self.id:
@@ -208,13 +213,13 @@ class User(UserMixin):
     @property
     def is_active(self):
         return False
-
+    """
 users: Dict[str, "User"] = {
     '1': User(1, 'mario', '1234'),
     '2': User(2, 'paolo', 'password'),
     '3': User(3, 'giovanni', 'abcd')
 }
-
+"""
 class TestForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
     # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
     pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User()])
@@ -230,7 +235,7 @@ class NoCustomValidators(FlaskForm):
     
     def validate_whatever(form, field):
         raise ValidationError("Test")
-
+"""
 def helper():
     h = 'max-age=31536000; includeSubDomains' # 1 year
     return h
@@ -240,7 +245,7 @@ def set_headers(res, header):
 
 def some_check(next):
     return next == "bella"
-
+"""
 @app.after_request
 def add_headers(response):
     x = helper()
@@ -248,7 +253,7 @@ def add_headers(response):
     z = x
     set_headers(response, z)
     return response
-
+"""
 @login_manager.user_loader
 def load_user(user_id: str) -> Optional[User]:
     return User.get(user_id)
@@ -271,6 +276,7 @@ def index():
 @app.get("/login/<id>/<password>")
 def login(id, password):
     user = User.get(id)
+    # make_session_permanent()
     if user and user.password == password:
         open_redirect_new(user)
         next = open_redirect(request.args.get('next'))
@@ -288,7 +294,7 @@ def login(id, password):
         
         return redirect(next or url_for("index"))
     return "<h1>Invalid user id or password</h1>"
-
+"""
 @app.get("/signup")
 def signup():
     form = TestForm(request.POST)
@@ -301,12 +307,12 @@ def signup():
     if form.validate_on_submit():
         return redirect('/success')
     return "Signup"
-
+"""
 @app.get("/logout")
 @login_required
 def logout():
-    session.pop("_permanent")
-    session.clear()
+    # session.pop("_permanent")
+    # session.clear()
     logout_user()
     return redirect(url_for("index"))
 
@@ -351,5 +357,5 @@ def open_redirect_new_new(user):
     else:
         x = 5
     z = 9
-    login_user(user, remember=True, duration=dt.timedelta(weeks=10), force=True)
-    session["ciao"] = "bella"
+    login_user(user, remember=True) # duration=dt.timedelta(weeks=10)
+    # session["ciao"] = "bella"
