@@ -309,13 +309,13 @@ function cleanUpRepos(dir) {
     let sub_dirs = fs.readdirSync(dir, { withFileTypes: true }).filter(item => item.isDirectory()).map(item => item.name);
     if (sub_dirs.length === 0) {
         for (let i = 0; i < files.length; i++) {
-            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt" && files[i] !== "README.md") {
+            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt" && files[i] !== "README.md") { // TODO generalize this to allow for other readme formats
                 fs.unlinkSync(String(dir) + "/" + String(files[i]))
             }
         }
     } else {
         for (let i = 0; i < files.length; i++) {
-            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt" && files[i] !== "README.md") {
+            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt" && files[i] !== "README.md") { // TODO generalize this to allow for other readme formats
                 fs.unlinkSync(String(dir) + "/" + String(files[i]))
             }
         }
@@ -766,11 +766,11 @@ function libraryUsagesGrep() {
 // findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Secret-key": ["un_secret_key.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_logout_not_called_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_argon2_is_used.txt", "un_bcrypt_is_used.txt", "un_hashlib_is_used.txt", "un_passlib_is_used.txt", "un_werkzeug_is_used.txt"]}, [true, false, false, false, false, false, false], './repos_with_interesting_results/14 - repos_with_no_hashing_library_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Secret-key": ["un_secret_key.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Flask-login-session-protection": ["sf_session_protection_strong.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_strong_session_protection_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Flask-login-session-protection": ["sf_session_protection.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_without_session_protection_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_no_login_required_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_no_logout_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Secret-key": ["un_secret_key.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Flask-login-session-protection": ["sf_session_protection_strong.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_strong_session_protection_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Flask-login-session-protection": ["sf_session_protection.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_without_session_protection_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_no_login_required_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_no_logout_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_and_validators.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_no_password_validators_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_length_check.txt", "un_password_regexp_check.txt", "un_password_custom_checks.txt"]}, [true, false, false, false], './repos_with_interesting_results/14 - repos_with_no_password_strength_validators_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_custom_checks.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_custom_password_strength_checks_flask_login_and_password_field_filtered_merged_list_final_v2.txt');

@@ -66,13 +66,15 @@ with open("../django_filtered_list_final_v2.csv") as csv_file:
 # translated = GoogleTranslator(source='auto', target='english').translate_file('../README_test_translate.md')
 # print(translated)
 
+# TODO might want to get all possible readmes that a repo has and not only the last one found
+# TODO ignoring readmes that are in subdirectories should be fine
 for repo_dir in repos_dir:
     flag = False
     readme_dir = ""
     subdir = os.listdir(str(full_path.absolute()) + "/" + repo_dir)
     repodir = os.listdir(str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0])
     for file in repodir:
-        if "readme." in file.lower():
+        if "readme." in file.lower(): # TODO update this to startswith instead of contains?
             readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0] + "/" + file
     # print(readme_dir)
 
@@ -80,7 +82,7 @@ for repo_dir in repos_dir:
         if readme_dir != "" and readme_dir not in log.read():
             try:
                 with open(readme_dir, 'r') as f: # '../README_test_translate.md'
-                    htmlmarkdown = markdown.markdown(f.read())
+                    htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
                     texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
                     text = ' '.join(texts)
                     split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
