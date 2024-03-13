@@ -49,8 +49,14 @@ Class getFormClasses() {
         and result = cls)
 }
 
-from DataFlow::Node source
-where not exists(DataFlow::Node sink, FormConfiguration config |
-    config.hasFlow(source, sink))
-    and source.asCfgNode() = getFormClasses().getClassObject().getACall()
-select source, source.getLocation(), "This form with a password field (that has some validators) is never validated"
+predicate formIsValidated(Class c) {
+    exists(DataFlow::Node source, DataFlow::Node sink, FormConfiguration config |
+        config.hasFlow(source, sink)
+        and source.asCfgNode() = c.getClassObject().getACall())
+}
+
+from Class cls
+where cls = getFormClasses()
+    and exists(cls.getClassObject().getACall())
+    // and not formIsValidated(cls)
+select cls, cls.getLocation(), "This form with a password field (that has some validators) is never validated"

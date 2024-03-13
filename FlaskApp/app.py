@@ -33,7 +33,7 @@ def configuration():
     app.config["SESSION_COOKIE_HTTPONLY"] = False
 
 app = Flask(__name__)
-# bcrypt = Bcrypt(app)
+bcrypt = Bcrypt(app)
 key = bar()
 
 # Hardcoded and short secret key
@@ -224,7 +224,8 @@ users: Dict[str, "User"] = {
     '2': User(2, 'paolo', 'password'),
     '3': User(3, 'giovanni', 'abcd')
 }
-"""
+
+
 class TestForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
     # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
     pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User()])
@@ -240,7 +241,10 @@ class NoCustomValidators(FlaskForm):
     
     def validate_whatever(form, field):
         raise ValidationError("Test")
-"""
+
+class NoValidators(FlaskForm):
+    test = PasswordField('pwd')
+
 def helper():
     h = 'max-age=31536000; includeSubDomains' # 1 year
     return h
@@ -299,23 +303,29 @@ def login(id, password):
         
         return redirect(next or url_for("index"))
     return "<h1>Invalid user id or password</h1>"
-"""
+
+
 @app.get("/signup")
 def signup():
     form = TestForm(request.POST)
     # check that form.validate() is called on all forms that have the password field with validators (TODO extra_validators aren't checked for now)
     # TODO can also validate single fields instead of the whole form (not checked for now)
-    if request.POST and form.validate():
+    # if request.POST and form.validate():
         # Default is 12 rounds, shouldn't be lowered, default prefix (algorithm) is 2b, other prefixes should not be used since they are bugged
-        pw_hash = bcrypt.generate_password_hash("password", rounds=10, prefix='2a')
+        # pw_hash = bcrypt.generate_password_hash("password", rounds=10, prefix='2a')
     # When using flask_wtf's FlaskForm you can also call validate_on_submit()
-    if form.validate_on_submit():
-        return redirect('/success')
+    if request.POST:
+        if form.validate_on_submit():
+            return redirect('/success')
     return "Signup"
-"""
+
+
 @app.get("/logout")
 @login_required
 def logout():
+    form = TestForm(request.POST)
+    form2 = NoCustomValidators()
+    form3 = NoValidators()
     # session.pop("_permanent")
     # session.clear()
     logout_user()
