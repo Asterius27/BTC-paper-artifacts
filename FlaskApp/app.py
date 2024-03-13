@@ -6,13 +6,14 @@ from datetime import timedelta
 import datetime as dt
 from config import FlaskConfig, default_config
 import os
-"""
+
 from flask_bcrypt import Bcrypt, generate_password_hash
 from wtforms import Form, PasswordField, ValidationError, BaseForm
 from wtforms import validators
 from wtforms.validators import Length, Regexp, length, DataRequired, Email, EqualTo
 from flask_wtf import FlaskForm
-from passlib.hash import pbkdf2_sha256, argon2, scrypt, bcrypt_sha256, pbkdf2_sha512
+from passlib.hash import pbkdf2_sha256, argon2, scrypt, bcrypt_sha256, pbkdf2_sha512, sha256_crypt
+from passlib.handlers.bcrypt import bcrypt as bcrpt
 from argon2 import PasswordHasher, Type
 from passlib.context import CryptContext
 import hashlib
@@ -23,7 +24,8 @@ from password_strength import PasswordStats, PasswordPolicy
 import deform
 from deform import Form as de_form
 import colander
-"""
+
+
 def bar():
     return "secret_key"
 
@@ -126,8 +128,10 @@ class ConfigClass(BaseConfigClass):
 # app.config.fromkeys()
 
 # Other password hashing libraries
-"""
+
 hash = pbkdf2_sha256.using().hash("password")
+testss = sha256_crypt.encrypt("ma dai")
+comeon = bcrpt.encrypt("comeon")
 pbk = pbkdf2_sha512.using().hash("wow")
 alg = argon2.using().hash("bella")
 scr = scrypt.using().hash("test")
@@ -167,7 +171,8 @@ class ExampleSchema(deform.schema.CSRFSchema):
         default=18,
         title="Age",
         description="Your age in years")
-"""
+
+
 def aux(a):
     return a
 
@@ -319,6 +324,7 @@ def logout():
 @app.get("/secureroute")
 @fresh_login_required
 def sec():
+    utils.logout_user()
     return "This route requires a fresh login in order to be accessed"
 
 # Cookie attributes have to be set before login occurs, and if they are changed after the login, then if the user logs out and logs in 

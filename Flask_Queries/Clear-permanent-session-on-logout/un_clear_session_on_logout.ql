@@ -32,7 +32,8 @@ where exists(DataFlow::Node perma |
         perma = API::moduleImport("flask").getMember("session").getMember("permanent").getAValueReachingSink()
         and perma.asExpr().(ImmutableLiteral).booleanValue() = true
         and exists(perma.getLocation().getFile().getRelativePath()))
-    and logout = API::moduleImport("flask_login").getMember("logout_user").getAValueReachableFromSource()
+    and (logout = API::moduleImport("flask_login").getMember("logout_user").getAValueReachableFromSource()
+        or logout = API::moduleImport("flask_login").getMember("utils").getMember("logout_user").getAValueReachableFromSource())
     and not logout.asExpr() instanceof ImportMember
     and exists(logout.asCfgNode())
     and exists(logout.getLocation().getFile().getRelativePath())

@@ -16,6 +16,7 @@ predicate expires_duration(Expr expr) {
         and Timedelta::getSecondsFromTimedeltaCall(timedelta) < 2592000)
 }
 
+// TODO fix moduleImport("flask_login").getMember("utils")
 where not exists(Expr expr | 
         not exists(DataFlow::Node duration |
             duration = API::moduleImport("flask_login").getMember("login_user").getKeywordParameter("duration").getAValueReachingSink()

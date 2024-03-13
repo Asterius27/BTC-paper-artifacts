@@ -4,7 +4,8 @@ import CodeQL_Library.FlaskLogin
 
 DataFlow::Node libraryIsUsed() {
     exists(DataFlow::Node node | 
-        node = API::moduleImport("flask_bcrypt").getMember("Bcrypt").getReturn().getMember("generate_password_hash").getAValueReachableFromSource()
+        (node = API::moduleImport("flask_bcrypt").getMember("Bcrypt").getReturn().getMember("generate_password_hash").getAValueReachableFromSource()
+            or node = API::moduleImport("flask_bcrypt").getMember("generate_password_hash").getAValueReachableFromSource())
         and exists(node.asCfgNode())
         and not node.asExpr() instanceof ImportMember
         and result = node)
@@ -13,7 +14,9 @@ DataFlow::Node libraryIsUsed() {
 predicate workFactor() {
     exists(DataFlow::Node node |
         (node = API::moduleImport("flask_bcrypt").getMember("Bcrypt").getReturn().getMember("generate_password_hash").getKeywordParameter("rounds").getAValueReachingSink()
-            or node = API::moduleImport("flask_bcrypt").getMember("Bcrypt").getReturn().getMember("generate_password_hash").getParameter(1).getAValueReachingSink())
+            or node = API::moduleImport("flask_bcrypt").getMember("Bcrypt").getReturn().getMember("generate_password_hash").getParameter(1).getAValueReachingSink()
+            or node = API::moduleImport("flask_bcrypt").getMember("generate_password_hash").getKeywordParameter("rounds").getAValueReachingSink()
+            or node = API::moduleImport("flask_bcrypt").getMember("generate_password_hash").getParameter(1).getAValueReachingSink())
         and node.asExpr().(IntegerLiteral).getValue() < 10) // owasp recommendation minimum
     or exists(Expr expr | 
         expr = FlaskLogin::getConfigValue("BCRYPT_LOG_ROUNDS")

@@ -1,6 +1,7 @@
 import python
 import semmle.python.ApiGraphs
 
+// TODO fix moduleImport("flask_login").getMember("utils")
 predicate defaultDeactivation() {
     exists (Class cls | 
         exists(cls.getLocation().getFile().getRelativePath())

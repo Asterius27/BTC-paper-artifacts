@@ -11,6 +11,8 @@ import semmle.python.dataflow.new.DataFlow3
 // only works if the variable is explicitly checked inside the if (with a == or others)
 // source: https://github.com/github/codeql/blob/main/python/ql/src/Security/CWE-601/UrlRedirect.ql
 
+// TODO fix moduleImport("flask_login").getMember("utils")
+
 class LoginDataFlowConfiguration extends DataFlow2::Configuration {
   LoginDataFlowConfiguration() { this = "LoginDataFlowConfiguration" }
 
