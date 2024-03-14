@@ -228,7 +228,7 @@ users: Dict[str, "User"] = {
 
 class TestForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
     # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
-    pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User()])
+    pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User(), aux(8)])
     test = PasswordField('pwd', validators=[DataRequired()])
     confirm_pwd = PasswordField('conf_pwd')
     # another way to define custom validators
@@ -241,6 +241,15 @@ class NoCustomValidators(FlaskForm):
     
     def validate_whatever(form, field):
         raise ValidationError("Test")
+
+class AnotherForm(BaseForm):
+    test = PasswordField('pwd')
+
+    def validate_test(form, field):
+        raise ValidationError("Test")
+
+class CustomValidators(FlaskForm):
+    test = PasswordField('pwd', validators=[aux(10)])
 
 class NoValidators(FlaskForm):
     test = PasswordField('pwd')
@@ -315,7 +324,7 @@ def signup():
         # pw_hash = bcrypt.generate_password_hash("password", rounds=10, prefix='2a')
     # When using flask_wtf's FlaskForm you can also call validate_on_submit()
     if request.POST:
-        if form.validate_on_submit():
+        if form.validate_on_submit(): # aux(30)
             return redirect('/success')
     return "Signup"
 
@@ -326,6 +335,7 @@ def logout():
     form = TestForm(request.POST)
     form2 = NoCustomValidators()
     form3 = NoValidators()
+    form4 = AnotherForm()
     # session.pop("_permanent")
     # session.clear()
     logout_user()
