@@ -1,9 +1,9 @@
 import pandas as pd
 from pathlib import Path
 
-path1 = Path(__file__).parent / '../from_flask_login-400d0b19-bb27-4475-a2fd-a061aab75320.csv'
-path2 = Path(__file__).parent / '../import_flask_login-030b70fd-015a-46af-b12a-f86fa2fc27c2.csv'
-output = Path(__file__).parent / '../flask_login_final_v2_merged_list.csv'
+path1 = Path(__file__).parent / '../from_flask_login_w_lang_and_readme.csv'
+path2 = Path(__file__).parent / '../import_flask_login_w_lang_and_readme.csv'
+output = Path(__file__).parent / '../flask_login_final_merged_list_w_lang_and_readme.csv'
 
 df1=pd.read_csv(path1)
 df2=pd.read_csv(path2)

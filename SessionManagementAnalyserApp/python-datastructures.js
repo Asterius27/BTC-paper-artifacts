@@ -113,7 +113,8 @@ let flask = {
             "un_custom_session_interface": [false, ""],
             "un_config_set_from_env_var": [false, ""],
             "un_config_set_from_file_mapping_keys": [false, ""],
-            "un_list_config_settings_from_env_var": [false, ""]
+            "un_list_config_settings_from_env_var": [false, ""],
+            "un_potential_false_positives": [false, ""]
         }
     },
     "PasswordHashing": {
@@ -397,7 +398,8 @@ let descriptions = {
             "custom_session_interface": "Using a custom session interface",
             "config_set_from_env_var": "How many repos set the whole flask config object from an environment variable",
             "config_set_from_file_mapping_keys": "How many repos set the whole flask config object using the from_file or from_mapping or fromkeys functions",
-            "list_config_settings_from_env_var": "How many repos set one or more config settings from environment variables (using for example os.environ.get())"
+            "list_config_settings_from_env_var": "How many repos set one or more config settings from environment variables (using for example os.environ.get())",
+            "potential_false_positives": "The repo sets some config settings (e.g. the secret key) multiple times at different points of the codebase"
         }
     },
     "PasswordHashing": {

@@ -326,7 +326,28 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
+function testCSV(csv_file) {
+    let repo_urls = [];
+    let repo_languages = [];
+    let repo_readme_urls = [];
+    fs.createReadStream(csv_file)
+    .pipe(csvParser())
+    .on('data', (data) => {
+        repo_urls.push(data.repo_url)
+        repo_languages.push(JSON.parse(data.jsonb_agg_lang)[0])
+        repo_readme_urls.push(JSON.parse(data.jsonb_agg_readme)[0].download_url)
+    }).on('end', async () => {
+        console.log(repo_readme_urls.length);
+        console.log(repo_languages.length);
+        console.log(repo_urls.length);
+        console.log(repo_readme_urls[763]);
+        console.log(repo_languages[763]);
+        console.log(repo_urls[763]);
+    })
+}
+
 // Download and extract the repositories
+// TODO download readmes using new list
 function downloadAndExtractRepos(csv_file) {
     let startTime = new Date();
     fs.createReadStream(csv_file)
@@ -736,7 +757,8 @@ function libraryUsagesGrep() {
     });
 }
 
-// downloadAndExtractRepos('../django_filtered_list_final_v2.csv');
+// downloadAndExtractRepos('../flask_login_final_filtered_merged_list_w_lang_and_readme.csv');
+testCSV('../flask_login_final_filtered_merged_list_w_lang_and_readme.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Cookie-name-prefixes", "ut_session_cookie_name_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_session_cookie_name_flask_login_final_filtered_merged_list.txt');
@@ -771,11 +793,11 @@ function libraryUsagesGrep() {
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Flask-login-session-protection": ["sf_session_protection.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_without_session_protection_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_no_login_required_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_no_logout_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_and_validators.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_no_password_validators_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_length_check.txt", "un_password_regexp_check.txt", "un_password_custom_checks.txt"]}, [true, false, false, false], './repos_with_interesting_results/14 - repos_with_no_password_strength_validators_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_custom_checks.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_custom_password_strength_checks_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_is_validated.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_password_form_never_validated_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Explorative-queries": ["un_custom_session_interface.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_custom_session_interface_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_and_validators.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_no_password_validators_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_length_check.txt", "un_password_regexp_check.txt", "un_password_custom_checks.txt"]}, [true, false, false, false], './repos_with_interesting_results/14 - repos_with_no_password_strength_validators_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_custom_checks.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_custom_password_strength_checks_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_is_validated.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_password_form_never_validated_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Explorative-queries": ["un_custom_session_interface.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_custom_session_interface_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
 // deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]});
