@@ -38,13 +38,14 @@ key = bar()
 
 # Hardcoded and short secret key
 app.config["SECRET_KEY"] = key
-# or app.secret_key = "ciao"
+app.secret_key = "ciao"
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 # Session protection with fresh_login_required (in sec() function) (secure implementation)
 login_manager.session_protection = "basic"
+login_manager.session_protection = None
 
 # Javascript access to cookies (insecure) (HTTPOnly attribute), default is True
 # z = app.config
@@ -118,8 +119,8 @@ class ConfigClass(BaseConfigClass):
 # app.config.from_envvar('AN_ENV_VAR')
 # app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY")
 # app.config["SECRET_KEY"] = os.environ["ENVIRON_KEY"]
-# app.config["SECRET_KEY"] = os.getenv("ENVIRON_KEY")
-# app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY") or "Thisisasecret"
+app.config["SECRET_KEY"] = os.getenv("ENVIRON_KEY")
+app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY") or "Thisisasecret"
 # app.config["SESSION_COOKIE_SAMESITE"] = os.environ.get("ENVIRON_SAMESITE")
 
 # TODO Other ways of setting config (don't think these are very used, just need to check how many repos use these and then decide whether to include them or not)

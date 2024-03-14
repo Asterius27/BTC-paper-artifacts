@@ -309,13 +309,13 @@ function cleanUpRepos(dir) {
     let sub_dirs = fs.readdirSync(dir, { withFileTypes: true }).filter(item => item.isDirectory()).map(item => item.name);
     if (sub_dirs.length === 0) {
         for (let i = 0; i < files.length; i++) {
-            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt" && files[i] !== "README.md") { // TODO generalize this to allow for other readme formats
+            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt") {
                 fs.unlinkSync(String(dir) + "/" + String(files[i]))
             }
         }
     } else {
         for (let i = 0; i < files.length; i++) {
-            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt" && files[i] !== "README.md") { // TODO generalize this to allow for other readme formats
+            if (!extensions.some(e => files[i].endsWith(e)) && files[i] !== "requirements.txt") {
                 fs.unlinkSync(String(dir) + "/" + String(files[i]))
             }
         }
