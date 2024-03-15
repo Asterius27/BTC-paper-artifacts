@@ -8,16 +8,25 @@ from pathlib import Path
 import os
 import csv
 import time
+import sys
+
+maxInt = sys.maxsize
+while True:
+    # decrease the maxInt value by factor 10 
+    # as long as the OverflowError occurs.
+    try:
+        csv.field_size_limit(maxInt)
+        break
+    except OverflowError:
+        maxInt = int(maxInt/10)
 
 nltk.download('punkt')
-# TODO see if these lists are good enough, there still seem to be a lot of false positives, need to restrict the list
-# TODO save the translated readme so that you only translate new ones
-whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud"]) # to add: "platform", "cms" not too sure about platform
-group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"]] # to add: ["content", "management", "system"]
-# to add: blacklist = ["api", "library", "tutorial", "example", "assignment"] these might introduce false negatives, use the blacklist from the javascript script (server-script.js)
+whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud", "platform", "cms", "localhost"])
+group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"], ["content", "management", "system"]]
+blacklist = set(["api", "library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship"])
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
-root_dir = "./repositories/Django"
+root_dir = "./repositories/Flask_READMEs"
 full_path = Path(__file__).parent / root_dir
 repos_dir = os.listdir(full_path.absolute())
 csv_dict = {}
@@ -49,9 +58,15 @@ file.close()
 
 if not os.path.isfile('./whitelist_filtered_repos.csv'):
     with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
-        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks\n")
+        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme\n")
+if not os.path.isfile('./blacklist_filtered_repos.csv'):
+    with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme\n")
+if not os.path.isfile('./whitelist_and_blacklist_filtered_repos.csv'):
+    with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme\n")
 
-with open("../django_filtered_list_final_v2.csv") as csv_file:
+with open("../flask_login_final_filtered_only_terms_merged_list_w_lang_and_readme.csv") as csv_file:
     reader = csv.DictReader(csv_file, delimiter=',')
     for row in reader:
         owner = row["repo_url"].split("/")[3]
@@ -66,22 +81,26 @@ with open("../django_filtered_list_final_v2.csv") as csv_file:
 # translated = GoogleTranslator(source='auto', target='english').translate_file('../README_test_translate.md')
 # print(translated)
 
-# TODO might want to get all possible readmes that a repo has and not only the last one found
-# TODO ignoring readmes that are in subdirectories should be fine
 for repo_dir in repos_dir:
-    flag = False
+    flag_whitelist = False
+    flag_blacklist = False
     readme_dir = ""
-    subdir = os.listdir(str(full_path.absolute()) + "/" + repo_dir)
-    repodir = os.listdir(str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0])
-    for file in repodir:
-        if "readme." in file.lower(): # TODO update this to startswith instead of contains?
-            readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0] + "/" + file
-    # print(readme_dir)
+    # subdir = os.listdir(str(full_path.absolute()) + "/" + repo_dir)
+    # repodir = os.listdir(str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0])
+    if len(repo_dir) == 1:
+        for file in repo_dir:
+            readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + file
+    else:
+        for file in repo_dir:
+            if "translated" in file:
+                readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + file
+    print(readme_dir)
 
     with open('log_whitelist_readme_filter.txt', 'r+', encoding='UTF8') as log:
         if readme_dir != "" and readme_dir not in log.read():
             try:
                 with open(readme_dir, 'r') as f: # '../README_test_translate.md'
+                    # if "translated" not in readme_dir.split("/")[-1]: TODO save the translated readme so that you only translate new ones
                     htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
                     texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
                     text = ' '.join(texts)
@@ -103,14 +122,16 @@ for repo_dir in repos_dir:
                     # print(stemmed_tokens)
                     intersection1 = whitelist.intersection(processed_tokens)
                     intersection2 = whitelist.intersection(stemmed_tokens)
+                    intersection3 = blacklist.intersection(processed_tokens)
+                    intersection4 = blacklist.intersection(stemmed_tokens)
                     # print(intersection1)
                     # print(intersection2)
                     # print(len(intersection1))
                     # print(len(intersection2))
                     if len(intersection1) != 0:
-                        flag = True
+                        flag_whitelist = True
                     if len(intersection2) != 0:
-                        flag = True
+                        flag_whitelist = True
                     debug_list1 = []
                     debug_list2 = []
                     for whitelst in group_whitelist:
@@ -119,29 +140,44 @@ for repo_dir in repos_dir:
                         intersect2 = set_whitelst.intersection(stemmed_tokens)
                         if len(intersect1) == len(set_whitelst):
                             debug_list1.append(intersect1)
-                            flag = True
+                            flag_whitelist = True
                         if len(intersect2) == len(set_whitelst):
                             debug_list2.append(intersect2)
-                            flag = True
+                            flag_whitelist = True
                         # print(set_whitelst)
                         # print(len(intersect1))
                         # print(len(intersect2))
+                    if len(intersection3) != 0:
+                        flag_blacklist = True
+                    if len(intersection4) != 0:
+                        flag_blacklist = True
                     log.write(readme_dir + "\n")
                     log.write(str(processed_tokens) + "\n")
                     log.write(str(stemmed_tokens) + "\n")
-                    log.write(str(intersection1) + "\n")
-                    log.write(str(intersection2) + "\n")
+                    log.write("Whitelist intersection: " + str(intersection1) + "\n")
+                    log.write("Whitelist intersection: " + str(intersection2) + "\n")
                     log.write(str(debug_list1) + "\n")
                     log.write(str(debug_list2) + "\n")
-                    log.write(str(flag) + "\n\n\n")
+                    log.write("Blacklist intersection: " + str(intersection3) + "\n")
+                    log.write("Blacklist intersection: " + str(intersection4) + "\n")
+                    log.write("Whitelist flag: " + str(flag_whitelist) + "\n")
+                    log.write("Blacklist flag: " + str(flag_blacklist) + "\n\n\n")
                     # print(flag)
-                    if flag:
-                        print(readme_dir.split("/")[-3])
+                    if flag_whitelist and not flag_blacklist:
+                        print(readme_dir.split("/")[-2])
                         # print(csv_dict[readme_dir.split("/")[-3]])
                         # output_list.append(csv_dict[readme_dir.split("/")[-3]].values())
+                        with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+                            writer = csv.writer(output)
+                            writer.writerow(csv_dict[readme_dir.split("/")[-2]].values())
+                    elif flag_whitelist:
                         with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                             writer = csv.writer(output)
-                            writer.writerow(csv_dict[readme_dir.split("/")[-3]].values())
+                            writer.writerow(csv_dict[readme_dir.split("/")[-2]].values())
+                    elif not flag_blacklist:
+                        with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+                            writer = csv.writer(output)
+                            writer.writerow(csv_dict[readme_dir.split("/")[-2]].values())
             except Exception as e:
                 exceptions += 1
                 print(e)

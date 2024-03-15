@@ -4,7 +4,8 @@ from pathlib import Path
 
 # Number of repos: 1408 (with 10 or more stars), of which 92 (6.53%) where filtered out
 
-blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming"] # "esercizi"
+# TODO rerun this for flask
+blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "flask"] # "django", "esercizi"
 # blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"], ["python", "100", "days"]]
 # blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
 path = Path(__file__).parent / '../flask_login_final_merged_list_w_lang_and_readme.csv'

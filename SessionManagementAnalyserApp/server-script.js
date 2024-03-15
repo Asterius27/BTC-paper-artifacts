@@ -391,7 +391,6 @@ function downloadREADMEs(csv_file) {
 }
 
 // Download and extract the repositories
-// TODO download readmes using new list
 function downloadAndExtractRepos(csv_file) {
     let startTime = new Date();
     fs.createReadStream(csv_file)
