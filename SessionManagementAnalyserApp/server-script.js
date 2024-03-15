@@ -336,9 +336,13 @@ function downloadREADMEs(csv_file) {
     .pipe(csvParser())
     .on('data', (data) => {
         // if (limit < 100) {
-            repo_urls.push(data.repo_url)
-            // repo_languages.push(JSON.parse(data.jsonb_agg_lang)[0])
-            repo_readme_urls.push(JSON.parse(data.jsonb_agg_readme)[0].download_url)
+            try {
+                repo_readme_urls.push(JSON.parse(data.jsonb_agg_readme)[0].download_url)
+                repo_urls.push(data.repo_url)
+                // repo_languages.push(JSON.parse(data.jsonb_agg_lang)[0])
+            } catch(e) {
+                fs.appendFileSync('./log_READMEs.txt', "Could not parse csv row: " + data + "\n");
+            }
             // limit = limit + 1;
         // }
     }).on('end', async () => {
