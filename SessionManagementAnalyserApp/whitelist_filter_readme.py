@@ -23,7 +23,7 @@ while True:
 nltk.download('punkt')
 whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud", "platform", "cms", "localhost"])
 group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"], ["content", "management", "system"]]
-blacklist = set(["api", "library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship"])
+blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship"]) # "api"
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
 root_dir = "./repositories/Flask_READMEs"
@@ -58,13 +58,13 @@ file.close()
 
 if not os.path.isfile('./whitelist_filtered_repos.csv'):
     with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
-        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme\n")
+        output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
 if not os.path.isfile('./blacklist_filtered_repos.csv'):
     with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
-        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme\n")
+        output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
 if not os.path.isfile('./whitelist_and_blacklist_filtered_repos.csv'):
     with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
-        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme\n")
+        output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
 
 with open("../flask_login_final_filtered_only_terms_merged_list_w_lang_and_readme.csv") as csv_file:
     reader = csv.DictReader(csv_file, delimiter=',')
@@ -85,13 +85,13 @@ for repo_dir in repos_dir:
     flag_whitelist = False
     flag_blacklist = False
     readme_dir = ""
-    # subdir = os.listdir(str(full_path.absolute()) + "/" + repo_dir)
+    subdir = os.listdir(str(full_path.absolute()) + "/" + repo_dir)
     # repodir = os.listdir(str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0])
-    if len(repo_dir) == 1:
-        for file in repo_dir:
+    if len(subdir) == 1:
+        for file in subdir:
             readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + file
     else:
-        for file in repo_dir:
+        for file in subdir:
             if "translated" in file:
                 readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + file
     print(readme_dir)
@@ -169,15 +169,15 @@ for repo_dir in repos_dir:
                         # output_list.append(csv_dict[readme_dir.split("/")[-3]].values())
                         with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                             writer = csv.writer(output)
-                            writer.writerow(csv_dict[readme_dir.split("/")[-2]].values())
+                            writer.writerow(csv_dict[readme_dir.split("/")[-2]]["repo_url"]) # TODO .values()
                     elif flag_whitelist:
                         with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                             writer = csv.writer(output)
-                            writer.writerow(csv_dict[readme_dir.split("/")[-2]].values())
+                            writer.writerow(csv_dict[readme_dir.split("/")[-2]]["repo_url"]) # TODO .values()
                     elif not flag_blacklist:
                         with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                             writer = csv.writer(output)
-                            writer.writerow(csv_dict[readme_dir.split("/")[-2]].values())
+                            writer.writerow(csv_dict[readme_dir.split("/")[-2]]["repo_url"]) # TODO .values()
             except Exception as e:
                 exceptions += 1
                 print(e)
