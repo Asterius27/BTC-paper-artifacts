@@ -336,6 +336,7 @@ function downloadREADMEs(csv_file) {
     .pipe(csvParser())
     .on('data', (data) => {
         // if (limit < 100) {
+            console.log(data);
             try {
                 repo_readme_urls.push(JSON.parse(data.jsonb_agg_readme)[0].download_url)
                 repo_urls.push(data.repo_url)
