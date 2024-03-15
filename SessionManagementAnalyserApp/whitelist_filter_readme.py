@@ -100,18 +100,26 @@ for repo_dir in repos_dir:
         if readme_dir != "" and readme_dir not in log.read():
             try:
                 with open(readme_dir, 'r') as f: # '../README_test_translate.md'
-                    # if "translated" not in readme_dir.split("/")[-1]: TODO save the translated readme so that you only translate new ones
-                    htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
-                    texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
-                    text = ' '.join(texts)
-                    split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
-                    translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
-                    # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
-                    # print(translated)
-                    # print(text)
-                    # print(len(split_text))
+                    if "translated" not in readme_dir.split("/")[-1]:
+                        htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
+                        texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
+                        text = ' '.join(texts)
+                        split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
+                        translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
+                        # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
+                        # print(translated)
+                        # print(text)
+                        # print(len(split_text))
 
-                    tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
+                        tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
+                        readme_subdir = readme_dir.split("/")
+                        readme_name = readme_subdir.pop(-1).split(".")
+                        translated_readme_dir = '/'.join(readme_subdir) + "/" + readme_name[0] + "_translated." + ''.join(readme_name[1:])
+                        print(translated_readme_dir)
+                        with open(translated_readme_dir, 'w') as translated_file:
+                            translated_file.write(' '.join(translated))
+                    else:
+                        tokens = word_tokenize(f.read())
                     # stemmed_tokens = [stemmer.stem(token) for token in tokens]
                     # translated = [GoogleTranslator(source='auto', target='en').translate(token) for token in tokens]
                     # translated = GoogleTranslator(source='auto', target='en').translate(htmlmarkdown[:4000])
@@ -169,15 +177,15 @@ for repo_dir in repos_dir:
                         # output_list.append(csv_dict[readme_dir.split("/")[-3]].values())
                         with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                             writer = csv.writer(output)
-                            writer.writerow(csv_dict[readme_dir.split("/")[-2]]["repo_url"]) # TODO .values()
+                            writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
                     elif flag_whitelist:
                         with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                             writer = csv.writer(output)
-                            writer.writerow(csv_dict[readme_dir.split("/")[-2]]["repo_url"]) # TODO .values()
+                            writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
                     elif not flag_blacklist:
                         with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                             writer = csv.writer(output)
-                            writer.writerow(csv_dict[readme_dir.split("/")[-2]]["repo_url"]) # TODO .values()
+                            writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
             except Exception as e:
                 exceptions += 1
                 print(e)
