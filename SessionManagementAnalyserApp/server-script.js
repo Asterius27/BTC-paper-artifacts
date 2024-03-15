@@ -335,12 +335,12 @@ function downloadREADMEs(csv_file) {
     fs.createReadStream(csv_file)
     .pipe(csvParser())
     .on('data', (data) => {
-        if (limit < 100) { // TODO remove this limit
+        // if (limit < 100) {
             repo_urls.push(data.repo_url)
             // repo_languages.push(JSON.parse(data.jsonb_agg_lang)[0])
             repo_readme_urls.push(JSON.parse(data.jsonb_agg_readme)[0].download_url)
-            limit = limit + 1;
-        }
+            // limit = limit + 1;
+        // }
     }).on('end', async () => {
         // console.log(repo_readme_urls.length);
         // console.log(repo_urls.length);

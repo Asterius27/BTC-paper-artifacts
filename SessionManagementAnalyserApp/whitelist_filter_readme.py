@@ -10,6 +10,9 @@ import csv
 import time
 import sys
 
+# TODO add languages and github about in the filter
+# TODO remove repos that have a readme that is too short
+
 maxInt = sys.maxsize
 while True:
     # decrease the maxInt value by factor 10 
@@ -21,9 +24,9 @@ while True:
         maxInt = int(maxInt/10)
 
 nltk.download('punkt')
-whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud", "platform", "cms", "localhost"])
+whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud", "platform", "cms", "localhost", "forum", "collaborative", "bulletin"])
 group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"], ["content", "management", "system"]]
-blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship"]) # "api"
+blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "book"]) # "api"
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
 root_dir = "./repositories/Flask_READMEs"
