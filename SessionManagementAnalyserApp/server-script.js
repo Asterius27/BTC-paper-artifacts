@@ -358,7 +358,7 @@ function downloadREADMEs(csv_file) {
                 temp[owner + "_" + repoName] = 0
             } else {
                 duplicates++;
-                fs.appendFileSync('./log.txt', "Found a duplicate: " + owner + " " + repoName + "\n");
+                fs.appendFileSync('./log_READMEs.txt', "Found a duplicate: " + owner + " " + repoName + "\n");
             }
             if (!fs.existsSync('./repositories/' + framework + '_READMEs/' + owner + "_" + repoName)) {
                 try {
@@ -377,7 +377,7 @@ function downloadREADMEs(csv_file) {
                     flag = false;
                     console.log("While trying to download: " + owner + "_" + repoName);
                     console.log("Error caught during download:\n" + e + "\n");
-                    fs.appendFileSync('./log.txt', "HTTP Error: " + owner + " " + repoName + "\n");
+                    fs.appendFileSync('./log_READMEs.txt', "HTTP Error: " + owner + " " + repoName + "\n");
                     http_errors++;
                 }
             }
@@ -386,7 +386,7 @@ function downloadREADMEs(csv_file) {
         console.log("Finished parsing the csv and downloading all READMEs\n");
         let endTime = new Date();
         let timeElapsed = (endTime - startTime)/1000;
-        fs.appendFileSync('./log.txt', "Time taken to download and extract the repositories: " + timeElapsed + " seconds.\n");
+        fs.appendFileSync('./log_READMEs.txt', "Time taken to download and extract the repositories: " + timeElapsed + " seconds.\n");
     })
 }
 
