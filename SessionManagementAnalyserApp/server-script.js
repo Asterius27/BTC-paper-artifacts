@@ -326,23 +326,67 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
-function testCSV(csv_file) {
+function downloadREADMEs(csv_file) {
+    let startTime = new Date();
     let repo_urls = [];
-    let repo_languages = [];
+    // let repo_languages = [];
     let repo_readme_urls = [];
+    let limit = 0;
     fs.createReadStream(csv_file)
     .pipe(csvParser())
     .on('data', (data) => {
-        repo_urls.push(data.repo_url)
-        repo_languages.push(JSON.parse(data.jsonb_agg_lang)[0])
-        repo_readme_urls.push(JSON.parse(data.jsonb_agg_readme)[0].download_url)
+        if (limit < 100) { // TODO remove this limit
+            repo_urls.push(data.repo_url)
+            // repo_languages.push(JSON.parse(data.jsonb_agg_lang)[0])
+            repo_readme_urls.push(JSON.parse(data.jsonb_agg_readme)[0].download_url)
+            limit = limit + 1;
+        }
     }).on('end', async () => {
-        console.log(repo_readme_urls.length);
-        console.log(repo_languages.length);
-        console.log(repo_urls.length);
-        console.log(repo_readme_urls[763]);
-        console.log(repo_languages[763]);
-        console.log(repo_urls[763]);
+        // console.log(repo_readme_urls.length);
+        // console.log(repo_urls.length);
+        let temp = {}
+        console.log("read " + repo_readme_urls.length + " lines\n");
+        let number_of_repos = 0;
+        let http_errors = 0;
+        let duplicates = 0;
+        for (let i = 0; i < repo_readme_urls.length; i++) {
+            number_of_repos++;
+            let owner = repo_urls[i].split("/")[3];
+            let repoName = repo_urls[i].split("/")[4];
+            let flag = true;
+            if (temp[owner + "_" + repoName] === undefined) {
+                temp[owner + "_" + repoName] = 0
+            } else {
+                duplicates++;
+                fs.appendFileSync('./log.txt', "Found a duplicate: " + owner + " " + repoName + "\n");
+            }
+            if (!fs.existsSync('./repositories/' + framework + '_READMEs/' + owner + "_" + repoName)) {
+                try {
+                    if (!fs.existsSync('./repositories/' + framework + "_READMEs/" + owner + "_" + repoName)){
+                        fs.mkdirSync('./repositories/' + framework + "_READMEs/" + owner + "_" + repoName);
+                    }
+                    let file_name_temp = repo_readme_urls[i].split("/")
+                    let file_name = file_name_temp[file_name_temp.length - 1]
+                    let response = await axios({
+                        method: 'get',
+                        url: repo_readme_urls[i],
+                        responseType: 'stream'
+                    });
+                    await pipeline(response.data, fs.createWriteStream("repositories/" + framework + "_READMEs/" + owner + "_" + repoName + "/" + file_name));
+                } catch(e) {
+                    flag = false;
+                    console.log("While trying to download: " + owner + "_" + repoName);
+                    console.log("Error caught during download:\n" + e + "\n");
+                    fs.appendFileSync('./log.txt', "HTTP Error: " + owner + " " + repoName + "\n");
+                    http_errors++;
+                }
+            }
+        }
+        fs.appendFileSync('./log_READMEs.txt', "Number of processed repos: " + number_of_repos + ". " /*+ "Of which " + filtered_repos + " were filtered out, "*/ + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
+        console.log("Finished parsing the csv and downloading all READMEs\n");
+        let endTime = new Date();
+        let timeElapsed = (endTime - startTime)/1000;
+        fs.appendFileSync('./log.txt', "Time taken to download and extract the repositories: " + timeElapsed + " seconds.\n");
     })
 }
 
@@ -757,8 +801,8 @@ function libraryUsagesGrep() {
     });
 }
 
-// downloadAndExtractRepos('../flask_login_final_filtered_merged_list_w_lang_and_readme.csv');
-testCSV('../flask_login_final_filtered_merged_list_w_lang_and_readme.csv');
+// downloadAndExtractRepos('../flask_login_final_filtered_only_terms_merged_list_w_lang_and_readme.csv');
+downloadREADMEs('../flask_login_final_filtered_only_terms_merged_list_w_lang_and_readme.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Cookie-name-prefixes", "ut_session_cookie_name_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_session_cookie_name_flask_login_final_filtered_merged_list.txt');
