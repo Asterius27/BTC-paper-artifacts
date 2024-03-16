@@ -29,7 +29,7 @@ group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"], ["c
 blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "book"]) # "api"
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
-root_dir = "./repositories/Flask_READMEs"
+root_dir = "./repositories/Django_READMEs"
 full_path = Path(__file__).parent / root_dir
 repos_dir = os.listdir(full_path.absolute())
 csv_dict = {}
@@ -69,7 +69,7 @@ if not os.path.isfile('./whitelist_and_blacklist_filtered_repos.csv'):
     with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
         output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
 
-with open("../flask_login_final_filtered_only_terms_merged_list_w_lang_and_readme.csv") as csv_file:
+with open("../django_final_filtered_list_w_lang_and_readme_and_desc.csv", encoding='utf8') as csv_file:
     reader = csv.DictReader(csv_file, delimiter=',')
     for row in reader:
         owner = row["repo_url"].split("/")[3]
@@ -102,7 +102,7 @@ for repo_dir in repos_dir:
     with open('log_whitelist_readme_filter.txt', 'r+', encoding='UTF8') as log:
         if readme_dir != "" and readme_dir not in log.read():
             try:
-                with open(readme_dir, 'r') as f: # '../README_test_translate.md'
+                with open(readme_dir, 'r') as f: # '../README_test_translate.md' , encoding='utf8'
                     if "translated" not in readme_dir.split("/")[-1]:
                         htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
                         texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
