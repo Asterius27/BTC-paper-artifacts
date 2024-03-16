@@ -3,7 +3,7 @@ from pathlib import Path
 
 path1 = Path(__file__).parent / '../from_flask_login_w_lang_and_readme.csv'
 path2 = Path(__file__).parent / '../import_flask_login_w_lang_and_readme.csv'
-output = Path(__file__).parent / '../flask_login_final_merged_list_w_lang_and_readme.csv'
+output = Path(__file__).parent / '../flask_login_final_merged_list_w_lang_and_readme_and_desc.csv'
 
 df1=pd.read_csv(path1)
 df2=pd.read_csv(path2)

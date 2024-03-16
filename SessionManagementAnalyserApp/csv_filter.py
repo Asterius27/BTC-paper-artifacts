@@ -8,8 +8,8 @@ blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "exam
 # blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"], ["python", "100", "days"]]
 # blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
 path = Path(__file__).parent / '../django_contrib_auth_w_lang_and_readme.csv'
-path_o = Path(__file__).parent / '../django_final_filtered_only_terms_list_w_lang_and_readme.csv'
-log_path = Path(__file__).parent / './filter_logs/django_final_filtered_only_terms_list_w_lang_and_readme.txt'
+path_o = Path(__file__).parent / '../django_final_filtered_list_w_lang_and_readme_and_desc.csv'
+log_path = Path(__file__).parent / './filter_logs/django_final_filtered_list_w_lang_and_readme_and_desc.txt'
 filtered_repos = 0
 number_of_repos = 0
 
@@ -23,11 +23,11 @@ while True:
     except OverflowError:
         maxInt = int(maxInt/10)
 
-with path.open() as csv_file:
+with path.open(encoding="utf8") as csv_file:
     reader = csv.DictReader(csv_file)
-    with path_o.open("w", newline='') as csv_filtered:
+    with path_o.open("w", newline='', encoding="utf8") as csv_filtered:
         writer = csv.writer(csv_filtered)
-        writer.writerow(["repo_name", "repo_url", "stars", "contributors", "commits", "update_date", "forks", "jsonb_agg_lang", "jsonb_agg_readme"])
+        writer.writerow(["repo_name", "repo_url", "stars", "contributors", "commits", "update_date", "forks", "jsonb_agg_lang", "jsonb_agg_readme", "description"])
         for row in reader:
             if int(row["stars"]) >= 1:
                 number_of_repos += 1
