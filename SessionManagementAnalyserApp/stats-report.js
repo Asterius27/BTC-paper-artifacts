@@ -8,7 +8,7 @@ let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let lang = "";
 let csv_file = '../flask_login_final_whitelist_filtered_merged_list.csv';
-let csv_filter_file = './flask_login_final_whitelist_filtered_merged_list.csv';
+let csv_filter_file = '../flask_login_final_whitelist_filtered_merged_list.csv';
 
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
