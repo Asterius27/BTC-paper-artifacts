@@ -10,7 +10,7 @@ import { resolve } from "path";
 import { pipeline } from "stream/promises";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
-const framework = "Django"; // "Flask"
+const framework = "Flask"; // "Django"
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
 let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]; // TODO add more, have to make it more precise
@@ -326,6 +326,15 @@ function cleanUpRepos(dir) {
 }
 // cleanUpRepos("repositories/" + framework);
 
+function deleteExtraDirs(repos_list) {
+    let repos = fs.readdirSync('./repositories/' + framework + "_READMEs/");
+    for (let i = 0; i < repos.length; i++) {
+        if (!repos_list.includes(repos[i])) {
+            fs.rmSync('./repositories/' + framework + "_READMEs/" + repos[i], { recursive: true, force: true });
+        }
+    }
+}
+
 function downloadREADMEs(csv_file) {
     let startTime = new Date();
     let repo_urls = [];
@@ -386,6 +395,7 @@ function downloadREADMEs(csv_file) {
                 }
             }
         }
+        deleteExtraDirs(Object.keys(temp));
         fs.appendFileSync('./log_READMEs.txt', "Number of processed repos: " + number_of_repos + ". " /*+ "Of which " + filtered_repos + " were filtered out, "*/ + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
         console.log("Finished parsing the csv and downloading all READMEs\n");
         let endTime = new Date();

@@ -25,7 +25,7 @@ while True:
 nltk.download('punkt')
 whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud", "platform", "cms", "localhost", "forum", "collaborative", "bulletin"])
 group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"], ["content", "management", "system"]]
-# blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "book"]) # "api"
+blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "book", "cybersecurity", "100daysofcode"]) # "api"
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
 root_dir = "./repositories/Flask_READMEs"
@@ -110,7 +110,7 @@ for repo_dir in repos_dir:
                             htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
                             texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
                             text = ' '.join(texts)
-                            split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
+                            split_text = [text[i:i+1700] for i in range(0, len(text), 1700)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
                             translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
                             # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
                             # print(translated)
@@ -130,6 +130,10 @@ for repo_dir in repos_dir:
                         # translated = [GoogleTranslator(source='auto', target='en').translate(token) for token in tokens]
                         # translated = GoogleTranslator(source='auto', target='en').translate(htmlmarkdown[:4000])
                         # print(translated)
+                        about = csv_dict[readme_dir.split("/")[-2]]["description"]
+                        tokens_about = word_tokenize(about)
+                        processed_tokens_about = set([s.replace('-', '').lower() for s in tokens_about])
+                        stemmed_tokens_about = set([stemmer.stem(token) for token in processed_tokens_about])
                         processed_tokens = set([s.replace('-', '').lower() for s in tokens])
                         # print(processed_tokens)
                         stemmed_tokens = set([stemmer.stem(token) for token in processed_tokens])
@@ -175,9 +179,6 @@ for repo_dir in repos_dir:
                         log.write(str(debug_list1) + "\n")
                         log.write(str(debug_list2) + "\n")
                         if not flag_whitelist:
-                            tokens_about = word_tokenize(csv_dict[readme_dir.split("/")[-2]]["description"])
-                            processed_tokens_about = set([s.replace('-', '').lower() for s in tokens_about])
-                            stemmed_tokens_about = set([stemmer.stem(token) for token in processed_tokens_about])
                             intersection1b = whitelist.intersection(processed_tokens_about)
                             intersection2b = whitelist.intersection(stemmed_tokens_about)
                             if len(intersection1b) != 0:
@@ -205,9 +206,20 @@ for repo_dir in repos_dir:
                             log.write(str(debug_list2b) + "\n")
                         # log.write("Blacklist intersection: " + str(intersection3) + "\n")
                         # log.write("Blacklist intersection: " + str(intersection4) + "\n")
-                        log.write("Whitelist flag: " + str(flag_whitelist) + "\n")
                         # log.write("Blacklist flag: " + str(flag_blacklist) + "\n\n\n")
                         # print(flag)
+                        intersection3b = blacklist.intersection(processed_tokens)
+                        intersection4b = blacklist.intersection(stemmed_tokens)
+                        if len(intersection3b) != 0:
+                            flag_whitelist = False
+                        if len(intersection4b) != 0:
+                            flag_whitelist = False
+                        log.write("Blacklist intersection in the about section: " + str(intersection3b) + "\n")
+                        log.write("Blacklist intersection in the about section: " + str(intersection4b) + "\n")
+                        if len(about) == 0:
+                            flag_whitelist = False
+                            log.write("Description length: " + str(len(about)) + "\n")
+                        log.write("Whitelist flag: " + str(flag_whitelist) + "\n\n\n")
                         """
                         if flag_whitelist and not flag_blacklist:
                             print(readme_dir.split("/")[-2])
