@@ -233,7 +233,6 @@ for repo_dir in repos_dir:
                             print(readme_dir.split("/")[-2])
                             with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                                 writer = csv.writer(output)
-                                """ TODO
                                 writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_name"],
                                                  csv_dict[readme_dir.split("/")[-2]]["repo_url"],
                                                  csv_dict[readme_dir.split("/")[-2]]["stars"],
@@ -241,8 +240,7 @@ for repo_dir in repos_dir:
                                                  csv_dict[readme_dir.split("/")[-2]]["commits"],
                                                  csv_dict[readme_dir.split("/")[-2]]["update_date"],
                                                  csv_dict[readme_dir.split("/")[-2]]["forks"]])
-                                """
-                                writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]])
+                                # writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]])
                         """
                         elif not flag_blacklist:
                             with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
