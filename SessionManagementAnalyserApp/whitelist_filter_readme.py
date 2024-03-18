@@ -233,8 +233,7 @@ for repo_dir in repos_dir:
                             print(readme_dir.split("/")[-2])
                             with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                                 writer = csv.writer(output)
-                                # repo_name,repo_url,stars,contributors,commits,update_date,forks
-                                """
+                                """ TODO
                                 writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_name"],
                                                  csv_dict[readme_dir.split("/")[-2]]["repo_url"],
                                                  csv_dict[readme_dir.split("/")[-2]]["stars"],
