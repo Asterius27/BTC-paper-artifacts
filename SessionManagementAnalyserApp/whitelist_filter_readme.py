@@ -208,8 +208,8 @@ for repo_dir in repos_dir:
                         # log.write("Blacklist intersection: " + str(intersection4) + "\n")
                         # log.write("Blacklist flag: " + str(flag_blacklist) + "\n\n\n")
                         # print(flag)
-                        intersection3b = blacklist.intersection(processed_tokens)
-                        intersection4b = blacklist.intersection(stemmed_tokens)
+                        intersection3b = blacklist.intersection(processed_tokens_about)
+                        intersection4b = blacklist.intersection(stemmed_tokens_about)
                         if len(intersection3b) != 0:
                             flag_whitelist = False
                         if len(intersection4b) != 0:
@@ -234,6 +234,7 @@ for repo_dir in repos_dir:
                             with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
                                 writer = csv.writer(output)
                                 # repo_name,repo_url,stars,contributors,commits,update_date,forks
+                                """
                                 writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_name"],
                                                  csv_dict[readme_dir.split("/")[-2]]["repo_url"],
                                                  csv_dict[readme_dir.split("/")[-2]]["stars"],
@@ -241,6 +242,8 @@ for repo_dir in repos_dir:
                                                  csv_dict[readme_dir.split("/")[-2]]["commits"],
                                                  csv_dict[readme_dir.split("/")[-2]]["update_date"],
                                                  csv_dict[readme_dir.split("/")[-2]]["forks"]])
+                                """
+                                writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]])
                         """
                         elif not flag_blacklist:
                             with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
