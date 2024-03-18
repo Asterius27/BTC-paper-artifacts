@@ -10,8 +10,7 @@ import csv
 import time
 import sys
 
-# TODO add languages and github about in the filter
-# TODO remove repos that have a readme that is too short
+# TODO add languages in the filter
 
 maxInt = sys.maxsize
 while True:
@@ -26,10 +25,10 @@ while True:
 nltk.download('punkt')
 whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud", "platform", "cms", "localhost", "forum", "collaborative", "bulletin"])
 group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"], ["content", "management", "system"]]
-blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "book"]) # "api"
+# blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "book"]) # "api"
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
-root_dir = "./repositories/Django_READMEs"
+root_dir = "./repositories/Flask_READMEs"
 full_path = Path(__file__).parent / root_dir
 repos_dir = os.listdir(full_path.absolute())
 csv_dict = {}
@@ -61,15 +60,17 @@ file.close()
 
 if not os.path.isfile('./whitelist_filtered_repos.csv'):
     with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
-        output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
+        output.write("repo_name,repo_url,stars,contributors,commits,update_date,forks\n") # TODO jsonb_agg_lang,jsonb_agg_readme
+"""
 if not os.path.isfile('./blacklist_filtered_repos.csv'):
     with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
         output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
 if not os.path.isfile('./whitelist_and_blacklist_filtered_repos.csv'):
     with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
         output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
+"""
 
-with open("../django_final_filtered_list_w_lang_and_readme_and_desc.csv", encoding='utf8') as csv_file:
+with open("../flask_login_final_filtered_merged_list_w_lang_and_readme_and_desc.csv", encoding='utf8') as csv_file:
     reader = csv.DictReader(csv_file, delimiter=',')
     for row in reader:
         owner = row["repo_url"].split("/")[3]
@@ -86,7 +87,7 @@ with open("../django_final_filtered_list_w_lang_and_readme_and_desc.csv", encodi
 
 for repo_dir in repos_dir:
     flag_whitelist = False
-    flag_blacklist = False
+    # flag_blacklist = False
     readme_dir = ""
     subdir = os.listdir(str(full_path.absolute()) + "/" + repo_dir)
     # repodir = os.listdir(str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0])
@@ -103,92 +104,137 @@ for repo_dir in repos_dir:
         if readme_dir != "" and readme_dir not in log.read():
             try:
                 with open(readme_dir, 'r') as f: # '../README_test_translate.md' , encoding='utf8'
-                    if "translated" not in readme_dir.split("/")[-1]:
-                        htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
-                        texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
-                        text = ' '.join(texts)
-                        split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
-                        translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
-                        # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
-                        # print(translated)
-                        # print(text)
-                        # print(len(split_text))
+                    if len(f.readlines()) > 3:
+                        f.seek(0) # not sure if this is needed
+                        if "translated" not in readme_dir.split("/")[-1]:
+                            htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
+                            texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
+                            text = ' '.join(texts)
+                            split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
+                            translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
+                            # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
+                            # print(translated)
+                            # print(text)
+                            # print(len(split_text))
 
-                        tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
-                        readme_subdir = readme_dir.split("/")
-                        readme_name = readme_subdir.pop(-1).split(".")
-                        translated_readme_dir = '/'.join(readme_subdir) + "/" + readme_name[0] + "_translated." + ''.join(readme_name[1:])
-                        print(translated_readme_dir)
-                        with open(translated_readme_dir, 'w') as translated_file:
-                            translated_file.write(' '.join(translated))
-                    else:
-                        tokens = word_tokenize(f.read())
-                    # stemmed_tokens = [stemmer.stem(token) for token in tokens]
-                    # translated = [GoogleTranslator(source='auto', target='en').translate(token) for token in tokens]
-                    # translated = GoogleTranslator(source='auto', target='en').translate(htmlmarkdown[:4000])
-                    # print(translated)
-                    processed_tokens = set([s.replace('-', '').lower() for s in tokens])
-                    # print(processed_tokens)
-                    stemmed_tokens = set([stemmer.stem(token) for token in processed_tokens])
-                    # print(stemmed_tokens)
-                    intersection1 = whitelist.intersection(processed_tokens)
-                    intersection2 = whitelist.intersection(stemmed_tokens)
-                    intersection3 = blacklist.intersection(processed_tokens)
-                    intersection4 = blacklist.intersection(stemmed_tokens)
-                    # print(intersection1)
-                    # print(intersection2)
-                    # print(len(intersection1))
-                    # print(len(intersection2))
-                    if len(intersection1) != 0:
-                        flag_whitelist = True
-                    if len(intersection2) != 0:
-                        flag_whitelist = True
-                    debug_list1 = []
-                    debug_list2 = []
-                    for whitelst in group_whitelist:
-                        set_whitelst = set(whitelst)
-                        intersect1 = set_whitelst.intersection(processed_tokens)
-                        intersect2 = set_whitelst.intersection(stemmed_tokens)
-                        if len(intersect1) == len(set_whitelst):
-                            debug_list1.append(intersect1)
+                            tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
+                            readme_subdir = readme_dir.split("/")
+                            readme_name = readme_subdir.pop(-1).split(".")
+                            translated_readme_dir = '/'.join(readme_subdir) + "/" + readme_name[0] + "_translated." + ''.join(readme_name[1:])
+                            print(translated_readme_dir)
+                            with open(translated_readme_dir, 'w') as translated_file:
+                                translated_file.write(' '.join(translated))
+                        else:
+                            tokens = word_tokenize(f.read())
+                        # stemmed_tokens = [stemmer.stem(token) for token in tokens]
+                        # translated = [GoogleTranslator(source='auto', target='en').translate(token) for token in tokens]
+                        # translated = GoogleTranslator(source='auto', target='en').translate(htmlmarkdown[:4000])
+                        # print(translated)
+                        processed_tokens = set([s.replace('-', '').lower() for s in tokens])
+                        # print(processed_tokens)
+                        stemmed_tokens = set([stemmer.stem(token) for token in processed_tokens])
+                        # print(stemmed_tokens)
+                        intersection1 = whitelist.intersection(processed_tokens)
+                        intersection2 = whitelist.intersection(stemmed_tokens)
+                        # intersection3 = blacklist.intersection(processed_tokens)
+                        # intersection4 = blacklist.intersection(stemmed_tokens)
+                        # print(intersection1)
+                        # print(intersection2)
+                        # print(len(intersection1))
+                        # print(len(intersection2))
+                        if len(intersection1) != 0:
                             flag_whitelist = True
-                        if len(intersect2) == len(set_whitelst):
-                            debug_list2.append(intersect2)
+                        if len(intersection2) != 0:
                             flag_whitelist = True
-                        # print(set_whitelst)
-                        # print(len(intersect1))
-                        # print(len(intersect2))
-                    if len(intersection3) != 0:
-                        flag_blacklist = True
-                    if len(intersection4) != 0:
-                        flag_blacklist = True
-                    log.write(readme_dir + "\n")
-                    log.write(str(processed_tokens) + "\n")
-                    log.write(str(stemmed_tokens) + "\n")
-                    log.write("Whitelist intersection: " + str(intersection1) + "\n")
-                    log.write("Whitelist intersection: " + str(intersection2) + "\n")
-                    log.write(str(debug_list1) + "\n")
-                    log.write(str(debug_list2) + "\n")
-                    log.write("Blacklist intersection: " + str(intersection3) + "\n")
-                    log.write("Blacklist intersection: " + str(intersection4) + "\n")
-                    log.write("Whitelist flag: " + str(flag_whitelist) + "\n")
-                    log.write("Blacklist flag: " + str(flag_blacklist) + "\n\n\n")
-                    # print(flag)
-                    if flag_whitelist and not flag_blacklist:
-                        print(readme_dir.split("/")[-2])
-                        # print(csv_dict[readme_dir.split("/")[-3]])
-                        # output_list.append(csv_dict[readme_dir.split("/")[-3]].values())
-                        with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
-                            writer = csv.writer(output)
-                            writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
-                    elif flag_whitelist:
-                        with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
-                            writer = csv.writer(output)
-                            writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
-                    elif not flag_blacklist:
-                        with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
-                            writer = csv.writer(output)
-                            writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
+                        debug_list1 = []
+                        debug_list2 = []
+                        for whitelst in group_whitelist:
+                            set_whitelst = set(whitelst)
+                            intersect1 = set_whitelst.intersection(processed_tokens)
+                            intersect2 = set_whitelst.intersection(stemmed_tokens)
+                            if len(intersect1) == len(set_whitelst):
+                                debug_list1.append(intersect1)
+                                flag_whitelist = True
+                            if len(intersect2) == len(set_whitelst):
+                                debug_list2.append(intersect2)
+                                flag_whitelist = True
+                            # print(set_whitelst)
+                            # print(len(intersect1))
+                            # print(len(intersect2))
+                        """
+                        if len(intersection3) != 0:
+                            flag_blacklist = True
+                        if len(intersection4) != 0:
+                            flag_blacklist = True
+                        """
+                        log.write(readme_dir + "\n")
+                        log.write(str(processed_tokens) + "\n")
+                        log.write(str(stemmed_tokens) + "\n")
+                        log.write("Whitelist intersection: " + str(intersection1) + "\n")
+                        log.write("Whitelist intersection: " + str(intersection2) + "\n")
+                        log.write(str(debug_list1) + "\n")
+                        log.write(str(debug_list2) + "\n")
+                        if not flag_whitelist:
+                            tokens_about = word_tokenize(csv_dict[readme_dir.split("/")[-2]]["description"])
+                            processed_tokens_about = set([s.replace('-', '').lower() for s in tokens_about])
+                            stemmed_tokens_about = set([stemmer.stem(token) for token in processed_tokens_about])
+                            intersection1b = whitelist.intersection(processed_tokens_about)
+                            intersection2b = whitelist.intersection(stemmed_tokens_about)
+                            if len(intersection1b) != 0:
+                                flag_whitelist = True
+                            if len(intersection2b) != 0:
+                                flag_whitelist = True
+                            debug_list1b = []
+                            debug_list2b = []
+                            for whitelst in group_whitelist:
+                                set_whitelst = set(whitelst)
+                                intersect1b = set_whitelst.intersection(processed_tokens_about)
+                                intersect2b = set_whitelst.intersection(stemmed_tokens_about)
+                                if len(intersect1b) == len(set_whitelst):
+                                    debug_list1b.append(intersect1b)
+                                    flag_whitelist = True
+                                if len(intersect2b) == len(set_whitelst):
+                                    debug_list2b.append(intersect2b)
+                                    flag_whitelist = True
+                            log.write("About Section: ---------------------------------------\n")
+                            log.write(str(processed_tokens_about) + "\n")
+                            log.write(str(stemmed_tokens_about) + "\n")
+                            log.write("Whitelist intersection: " + str(intersection1b) + "\n")
+                            log.write("Whitelist intersection: " + str(intersection2b) + "\n")
+                            log.write(str(debug_list1b) + "\n")
+                            log.write(str(debug_list2b) + "\n")
+                        # log.write("Blacklist intersection: " + str(intersection3) + "\n")
+                        # log.write("Blacklist intersection: " + str(intersection4) + "\n")
+                        log.write("Whitelist flag: " + str(flag_whitelist) + "\n")
+                        # log.write("Blacklist flag: " + str(flag_blacklist) + "\n\n\n")
+                        # print(flag)
+                        """
+                        if flag_whitelist and not flag_blacklist:
+                            print(readme_dir.split("/")[-2])
+                            # print(csv_dict[readme_dir.split("/")[-3]])
+                            # output_list.append(csv_dict[readme_dir.split("/")[-3]].values())
+                            with open('whitelist_and_blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+                                writer = csv.writer(output)
+                                writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
+                        """
+                        if flag_whitelist: # elif
+                            print(readme_dir.split("/")[-2])
+                            with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+                                writer = csv.writer(output)
+                                # repo_name,repo_url,stars,contributors,commits,update_date,forks
+                                writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_name"],
+                                                 csv_dict[readme_dir.split("/")[-2]]["repo_url"],
+                                                 csv_dict[readme_dir.split("/")[-2]]["stars"],
+                                                 csv_dict[readme_dir.split("/")[-2]]["contributors"],
+                                                 csv_dict[readme_dir.split("/")[-2]]["commits"],
+                                                 csv_dict[readme_dir.split("/")[-2]]["update_date"],
+                                                 csv_dict[readme_dir.split("/")[-2]]["forks"]])
+                        """
+                        elif not flag_blacklist:
+                            with open('blacklist_filtered_repos.csv', 'a', encoding='UTF8') as output:
+                                writer = csv.writer(output)
+                                writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
+                        """
             except Exception as e:
                 exceptions += 1
                 print(e)
