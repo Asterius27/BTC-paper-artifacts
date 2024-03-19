@@ -404,6 +404,89 @@ function downloadREADMEs(csv_file) {
     })
 }
 
+function downloadAndExtractOldCommits(csv_file, commits_file) {
+    let startTime = new Date();
+    let repo_urls = []
+    fs.createReadStream(csv_file)
+    .pipe(csvParser())
+    .on('data', (data) => {
+        repo_urls.push(data.repo_url)
+    }).on('end', async () => {
+        fs.createReadStream(commits_file)
+        .pipe(csvParser())
+        .on('data', (dt) => {
+            if (repo_urls.includes(dt.repo_url)) {
+                csv.push({
+                    "repo_url": dt.repo_url,
+                    "sha": JSON.parse(dt.data)[0].sha
+                })
+            }
+        }).on('end', async () => {
+            let temp = {}
+            console.log("read " + csv.length + " lines\n");
+            let number_of_repos = 0;
+            let http_errors = 0;
+            let duplicates = 0;
+            for (let i = 0; i < csv.length; i++) {
+                // if (csv[i].stars >= 1) {
+                    number_of_repos++;
+                    let owner = csv[i].repo_url.split("/")[3];
+                    let repoName = csv[i].repo_url.split("/")[4];
+                    let flag = true;
+                    if (temp[owner + "_" + repoName] === undefined) {
+                        temp[owner + "_" + repoName] = 0
+                    } else {
+                        duplicates++;
+                        fs.appendFileSync('./log_commits.txt', "Found a duplicate: " + owner + " " + repoName + "\n");
+                    }
+                    if (!fs.existsSync('./repositories/' + framework + '_old_commits/' + owner + "_" + repoName) && !fs.existsSync('./repositories/' + framework + '_old_commits/' + owner + "_" + repoName + '.zip')) {
+                        try {
+                            let url = "https://api.github.com/repos/" + owner + "/" + repoName + "/zipball/" + csv[i].sha;
+                            let response = await axios({
+                                method: 'get',
+                                url: url,
+                                headers: {
+                                    'Accept': 'application/vnd.github+json',
+                                    'Authorization': 'Bearer ' + process.env.TOKEN,
+                                    'X-GitHub-Api-Version': '2022-11-28'
+                                },
+                                responseType: 'stream'
+                            });
+                            await pipeline(response.data, fs.createWriteStream("repositories/" + framework + "_old_commits/" + owner + "_" + repoName + ".zip"));
+                        } catch(e) {
+                            flag = false;
+                            console.log("While trying to download: " + owner + "_" + repoName + "\n");
+                            console.log("Error caught during download:\n" + e);
+                            fs.appendFileSync('./log_commits.txt', "HTTP Error: " + owner + " " + repoName + "\n");
+                            http_errors++;
+                        }
+                        if (flag) {
+                            try {
+                                if (!fs.existsSync('./repositories/' + framework + "_old_commits/" + owner + "_" + repoName)){
+                                    fs.mkdirSync('./repositories/' + framework + "_old_commits/" + owner + "_" + repoName);
+                                }
+                                let target = resolve('./repositories/' + framework + "_old_commits/" + owner + "_" + repoName);
+                                await extract('./repositories/' + framework + "_old_commits/" + owner + "_" + repoName + '.zip', { dir: target })
+                                console.log('Extraction complete of:\n' + './repositories/' + framework + "_old_commits/" + owner + "_" + repoName + '.zip');
+                                cleanUpRepos('./repositories/' + framework + "_old_commits/" + owner + "_" + repoName);
+                            } catch (err) {
+                                console.log('Caught an error:\n' + err);
+                                fs.appendFileSync('./log_commits.txt', "Extraction or Cleanup Error: " + owner + "_" + repoName + " " + err + "\n");
+                            }
+                            fs.unlinkSync('./repositories/' + framework + "_old_commits/" + owner + "_" + repoName + '.zip');
+                        }
+                    }
+                // }
+            }
+            fs.appendFileSync('./log_commits.txt', "Number of processed repos: " + number_of_repos + ". " /*+ "Of which " + filtered_repos + " were filtered out, "*/ + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
+            console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
+            let endTime = new Date();
+            let timeElapsed = (endTime - startTime)/1000;
+            fs.appendFileSync('./log_commits.txt', "Time taken to download and extract the repositories: " + timeElapsed + " seconds.\n");
+        });
+    });
+}
+
 // Download and extract the repositories
 function downloadAndExtractRepos(csv_file) {
     let startTime = new Date();
@@ -814,7 +897,8 @@ function libraryUsagesGrep() {
     });
 }
 
-downloadAndExtractRepos('../flask_login_final_whitelist_filtered_merged_list.csv');
+// downloadAndExtractRepos('../flask_login_final_whitelist_filtered_merged_list.csv');
+downloadAndExtractOldCommits('../flask_login_final_whitelist_filtered_merged_list.csv', '../mid_commits.csv')
 // downloadREADMEs('../django_final_filtered_list_w_lang_and_readme_and_desc.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');

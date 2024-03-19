@@ -297,18 +297,16 @@ function generateStatsPage(flask_counter, flask_error_counter, false_positives_c
                 '<p>Total number of applications/repos: ' + total + '<br/>Number of applications/repos that were not analyzed because of an error: ' + failed_repos + ', among which ' + custom_session_engine_repos + ' failed because they use a custom session engine (Django)<br/>'+
                 'Total number of Flask/Flask-login applications/repos: ' + flask_total + '<br/>Total number of Django applications/repos: ' + django_total + '<br/>'+
                 'Total number of queries that failed: ' + query_errors + '<br/></p>\n'+
-                /*
                 '<div>\n'+
                     '<h2>Login Security</h2>\n'+
                     '<div id="password_theft"></div>\n'+
                 '</div>\n'+
-                */
                 '<div>\n'+
                     '<h2>Post Login Security</h2>\n'+
-                    // '<div id="session_hijacking_chart"></div>\n'+
-                    // '<div id="session_fixation"></div>\n'+
+                    '<div id="session_hijacking_chart"></div>\n'+
+                    '<div id="session_fixation"></div>\n'+
                     '<div id="cookie_tampering_forging"></div>\n'+
-                    // '<div id="csrf"></div>\n'+
+                    '<div id="csrf"></div>\n'+
                     '<div id="insecure_serialization_deserialization"></div>\n'+
                     '<div id="library_specific_vulnerabilities"></div>\n'+
                 '</div>\n'+
@@ -322,7 +320,7 @@ function generateStatsPage(flask_counter, flask_error_counter, false_positives_c
                     '<div id="password_hashing_django"></div>\n'+
                     '<div id="password_strength"></div>\n'+
                     '<div id="password_strength_django"></div>\n'+
-                    // '<div id="account_deactivation"></div>\n'+
+                    '<div id="account_deactivation"></div>\n'+
                 '</div>\n'+
                 '<div>\n'+
                     '<h2>Explorative Queries</h2>\n'+
