@@ -2,7 +2,6 @@ import python
 import semmle.python.ApiGraphs
 import CodeQL_Library.Passlib
 
-// TODO fix this query
 predicate workFactor(API::Node node) {
     exists(DataFlow::Node param |
         param = node.getKeywordParameter("rounds").getAValueReachingSink()
