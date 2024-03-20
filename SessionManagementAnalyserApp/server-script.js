@@ -416,12 +416,15 @@ function downloadAndExtractOldCommits(csv_file, commits_file) {
         .pipe(csvParser())
         .on('data', (dt) => {
             if (repo_urls.includes(dt.repo_url)) {
+                console.log(JSON.parse(dt.data)[0])
+                /*
                 csv.push({
                     "repo_url": dt.repo_url,
                     "sha": JSON.parse(dt.data)[0].sha
                 })
+                */
             }
-        }).on('end', async () => {
+        })/*.on('end', async () => {
             let temp = {}
             console.log("read " + csv.length + " lines\n");
             let number_of_repos = 0;
@@ -478,12 +481,12 @@ function downloadAndExtractOldCommits(csv_file, commits_file) {
                     }
                 // }
             }
-            fs.appendFileSync('./log_commits.txt', "Number of processed repos: " + number_of_repos + ". " /*+ "Of which " + filtered_repos + " were filtered out, "*/ + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
+            fs.appendFileSync('./log_commits.txt', "Number of processed repos: " + number_of_repos + ". " + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
             console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
             let endTime = new Date();
             let timeElapsed = (endTime - startTime)/1000;
             fs.appendFileSync('./log_commits.txt', "Time taken to download and extract the repositories: " + timeElapsed + " seconds.\n");
-        });
+        });*/
     });
 }
 
