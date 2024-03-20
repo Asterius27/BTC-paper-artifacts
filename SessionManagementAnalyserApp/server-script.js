@@ -286,7 +286,7 @@ async function findInterestingRepos(queryDirectory, queryName, result, starsl, s
     let csv = {};
     let csv_urls = {};
     await new Promise((resolve, reject) => {
-        fs.createReadStream('../django_filtered_list_final_v2.csv')
+        fs.createReadStream('../flask_login_final_whitelist_filtered_merged_list.csv')
             .pipe(csvParser())
             .on('data', (data) => {
                 let owner = data.repo_url.split("/")[3];
