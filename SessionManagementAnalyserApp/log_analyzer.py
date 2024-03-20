@@ -2,11 +2,12 @@ import statistics
 import csv
 import os
 from pathlib import Path
+import sys
 
 # TODO add number of failures (and reasons) per query type
-path = Path(__file__).parent / './old_logs/26 - log_repos_using_login_and_forms_django_whitelist_filtered_list_v1'
-output = Path(__file__).parent / './old_logs/26 - log_repos_using_login_and_forms_django_whitelist_filtered_list_v1/log_analysis_merged.txt'
-csv_path = Path(__file__).parent / '../django_filtered_list_final_v2.csv'
+path = Path(__file__).parent / './old_logs/27 - log_repos_flask_login_whitelist_filtered_list'
+output = Path(__file__).parent / './old_logs/27 - log_repos_flask_login_whitelist_filtered_list/log_analysis_merged.txt'
+csv_path = Path(__file__).parent / '../flask_login_final_filtered_merged_list_w_lang_and_readme_and_desc.csv'
 times = []
 thread_times = []
 failed_repos = []
@@ -19,6 +20,16 @@ query_command_failed = 0
 database_timeouts = 0
 analysis_buffer_error = 0
 database_deletion_error = 0
+
+maxInt = sys.maxsize
+while True:
+    # decrease the maxInt value by factor 10 
+    # as long as the OverflowError occurs.
+    try:
+        csv.field_size_limit(maxInt)
+        break
+    except OverflowError:
+        maxInt = int(maxInt/10)
 
 with csv_path.open() as csv_file:
     reader = csv.DictReader(csv_file)
