@@ -252,7 +252,8 @@ let django = {
     },
     "ExplorativeQueries": {
         "Explorative-queries": {
-            "un_list_config_settings_from_env_var": [false, ""]
+            "un_list_config_settings_from_env_var": [false, ""],
+            "un_potential_false_positives": [false, ""]
         }
     },
     "AccountDeactivation": {
