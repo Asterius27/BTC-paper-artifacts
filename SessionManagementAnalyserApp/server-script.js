@@ -159,7 +159,7 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
     let csv = {};
     let csv_urls = {};
     await new Promise((resolve, reject) => {
-        fs.createReadStream('../flask_login_final_v2_filtered_merged_list.csv')
+        fs.createReadStream('../flask_login_final_whitelist_filtered_merged_list.csv')
             .pipe(csvParser())
             .on('data', (data) => {
                 let owner = data.repo_url.split("/")[3];
@@ -202,6 +202,72 @@ async function findOverlappingResultsInRepos(queries, result, output_path) {
                     }
                 }
                 if (flag) {
+                    fs.appendFileSync(output_path, "Repo: " + repos[i] + " Stars: " + csv[repos[i]] + "\n");
+                    fs.appendFileSync(output_path, "URL: " + csv_urls[repos[i]] + "\n");
+                    for (let l = 0; l < results.length; l++) {
+                        fs.appendFileSync(output_path, results[l]);
+                    }
+                    fs.appendFileSync(output_path, "\n");
+                }
+            }
+        }
+    }
+}
+
+async function findOverlappingResultsInReposOr(queries, result, output_path) {
+    let dir = './repositories/' + framework;
+    let repos = fs.readdirSync(dir);
+    let csv = {};
+    let csv_urls = {};
+    await new Promise((resolve, reject) => {
+        fs.createReadStream('../flask_login_final_whitelist_filtered_merged_list.csv')
+            .pipe(csvParser())
+            .on('data', (data) => {
+                let owner = data.repo_url.split("/")[3];
+                let repoName = data.repo_url.split("/")[4];
+                csv[owner + "_" + repoName] = data.stars
+                csv_urls[owner + "_" + repoName] = data.repo_url
+            }).on('end', () => {
+                console.log("Finished reading the csv")
+                resolve("Done!");
+            });
+    });
+    for (let i = 0; i < repos.length; i++) {
+        let repo = fs.readdirSync(dir + "/" + repos[i]);
+        for (let j = 0; j < repo.length; j++) {
+            if (repo[j].endsWith("-results")) {
+                let flag = false
+                let overlap = false
+                let results = []
+                let result_counter = 0;
+                for (let queryDirectory in queries) {
+                    for (let h = 0; h < queries[queryDirectory].length; h++) {
+                        let queryName = queries[queryDirectory][h];
+                        if (fs.existsSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName)) {
+                            let query = fs.readFileSync(dir + "/" + repos[i] + "/" + repo[j] + "/" + queryDirectory + "/" + queryName, 'utf-8').split("\n");
+                            query.pop();
+                            if (query.length <= 2 && result[result_counter]) {
+                                if (flag) {
+                                    overlap = true
+                                }
+                                flag = true;
+                            }
+                            if (query.length > 2 && !result[result_counter]) {
+                                if (flag) {
+                                    overlap = true
+                                }
+                                flag = true;
+                            }
+                            if (flag) {
+                                for (let l = 1; l < query.length; l++) {
+                                    results.push("Result: " + query[l] + "\n");
+                                }
+                            }
+                        }
+                        result_counter++;
+                    }
+                }
+                if (flag && overlap) {
                     fs.appendFileSync(output_path, "Repo: " + repos[i] + " Stars: " + csv[repos[i]] + "\n");
                     fs.appendFileSync(output_path, "URL: " + csv_urls[repos[i]] + "\n");
                     for (let l = 0; l < results.length; l++) {
@@ -902,7 +968,7 @@ function libraryUsagesGrep() {
 }
 
 // downloadAndExtractRepos('../flask_login_final_whitelist_filtered_merged_list.csv');
-downloadAndExtractOldCommits('../flask_login_final_whitelist_filtered_merged_list.csv', '../mid_commits.csv')
+// downloadAndExtractOldCommits('../flask_login_final_whitelist_filtered_merged_list.csv', '../mid_commits.csv')
 // downloadREADMEs('../django_final_filtered_list_w_lang_and_readme_and_desc.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
@@ -932,17 +998,18 @@ downloadAndExtractOldCommits('../flask_login_final_whitelist_filtered_merged_lis
 // findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_no_auth_checks_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Secret-key": ["un_secret_key.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_flask_wtf_is_used.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_logout_not_called_flask_login_flask_wtf_filtered_merged_list_final_v2.txt');
-// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_argon2_is_used.txt", "un_bcrypt_is_used.txt", "un_hashlib_is_used.txt", "un_passlib_is_used.txt", "un_werkzeug_is_used.txt"]}, [true, false, false, false, false, false, false], './repos_with_interesting_results/14 - repos_with_no_hashing_library_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Secret-key": ["un_secret_key.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_hardcoded_secret_key_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_argon2_is_used.txt", "un_bcrypt_is_used.txt", "un_hashlib_is_used.txt", "un_passlib_is_used.txt", "un_werkzeug_is_used.txt"]}, [true, false, false, false, false, false, false], './repos_with_interesting_results/27 - repos_with_no_hashing_library_flask_login_and_password_field_whitelist_filtered_list.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Secret-key": ["un_secret_key.txt"], "Explorative-queries": ["un_potential_false_positives.txt"]}, [true, true, false], './repos_with_interesting_results/27 - repos_with_hardcoded_secret_key_flask_login_and_password_field_whitelist_filtered_list.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Flask-login-session-protection": ["sf_session_protection_strong.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_strong_session_protection_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Flask-login-session-protection": ["sf_session_protection.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_without_session_protection_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Login-restrictions": ["un_no_authentication_checks_general.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_no_login_required_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_no_logout_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Logout-function-is-called": ["un_logout_function_is_called.txt"]}, [true, false], './repos_with_interesting_results/27 - repos_with_no_logout_flask_login_and_password_field_whitelist_filtered_list.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_and_validators.txt"]}, [true, false], './repos_with_interesting_results/14 - repos_with_no_password_validators_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_length_check.txt", "un_password_regexp_check.txt", "un_password_custom_checks.txt"]}, [true, false, false, false], './repos_with_interesting_results/14 - repos_with_no_password_strength_validators_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_custom_checks.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_custom_password_strength_checks_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_is_validated.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_password_form_never_validated_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
-// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Explorative-queries": ["un_custom_session_interface.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_custom_session_interface_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
+findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_is_validated.txt"]}, [true, true], './repos_with_interesting_results/27 - repos_with_password_form_never_validated_flask_login_and_password_field_whitelist_filtered_list.txt');
+findOverlappingResultsInReposOr({"Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_argon2_is_used.txt", "un_bcrypt_is_used.txt", "un_hashlib_is_used.txt", "un_passlib_is_used.txt", "un_werkzeug_is_used.txt"]}, [true, true, true, true, true, true], './repos_with_interesting_results/27 - repos_with_more_than_one_hashing_library_flask_login_and_password_field_whitelist_filtered_list.txt');
+// findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt"], "Explorative-queries": ["un_custom_session_interface.txt"]}, [true, true], './repos_with_interesting_results/27 - repos_with_custom_session_interface_flask_login_and_password_field_whitelist_filtered_list.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
 // deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]});
