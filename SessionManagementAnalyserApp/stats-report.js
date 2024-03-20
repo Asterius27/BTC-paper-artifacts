@@ -12,11 +12,11 @@ let csv_filter_file = '../flask_login_final_whitelist_filtered_merged_list.csv';
 
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
-        /*
         "Password-strength": {
             "un_flask_wtf_is_used": true,
             "un_wtforms_is_used": true,
         },
+        /*
         "Login-restrictions": {
             "un_no_authentication_checks_general": false
         },
@@ -32,6 +32,7 @@ function repoUsesRequiredLibraries(resDir) {
         }
         */
     }
+    return true;
     for (let [dir, files] of Object.entries(filterQueries)) {
         let result = false;
         for (let [query, value] of Object.entries(files)) {
