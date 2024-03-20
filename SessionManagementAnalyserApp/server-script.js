@@ -416,15 +416,16 @@ function downloadAndExtractOldCommits(csv_file, commits_file) {
         .pipe(csvParser())
         .on('data', (dt) => {
             if (repo_urls.includes(dt.repo_url)) {
-                console.log(JSON.parse(dt.data)[0])
-                /*
-                csv.push({
-                    "repo_url": dt.repo_url,
-                    "sha": JSON.parse(dt.data)[0].sha
-                })
-                */
+                try {
+                    csv.push({
+                        "sha": JSON.parse(dt.data)[0].sha,
+                        "repo_url": dt.repo_url
+                    });
+                } catch(e) {
+                    fs.appendFileSync('./log_commits.txt', "No commit found for repo: " + dt.repo_url + "\n");
+                }
             }
-        })/*.on('end', async () => {
+        }).on('end', async () => {
             let temp = {}
             console.log("read " + csv.length + " lines\n");
             let number_of_repos = 0;
@@ -486,7 +487,7 @@ function downloadAndExtractOldCommits(csv_file, commits_file) {
             let endTime = new Date();
             let timeElapsed = (endTime - startTime)/1000;
             fs.appendFileSync('./log_commits.txt', "Time taken to download and extract the repositories: " + timeElapsed + " seconds.\n");
-        });*/
+        });
     });
 }
 
