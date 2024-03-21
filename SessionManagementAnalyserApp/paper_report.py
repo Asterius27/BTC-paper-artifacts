@@ -60,16 +60,38 @@ def buildResultsDict(resultRepos, subDicts):
                     result[key]["result"] += resultDict[key]["result"]
     return result
 
+def saveDictsToFile(fileNames, dicts):
+    for i, dct in enumerate(dicts):
+        with open(fileNames[i] + '.txt', 'w', encoding='UTF8') as file:
+            for key in dct:
+                if "url" in dct[key]:
+                    file.write("URL: " + str(dct[key]["url"]) + "\n")
+                file.write("FILE: " + str(dct[key]["file"]) + "\n")
+                file.write(str(dct[key]["result"]) + "\n\n")
+
+def getPercentage(value, total):
+    if total == 0:
+        return 0
+    return (value / total) * 100
+
 csv_dict = loadCSV(Path(__file__).parent / '../flask_login_final_whitelist_filtered_merged_list.csv')
-resultDict1 = extractResults("Flask", "Flask-secret-key", "secret_key", False, csv_dict)
-resultDict2 = extractResults("Flask", "Cookie-name-prefixes", "name_prefix_session_cookie", True, csv_dict)
-resultDict3 = extractResults("Flask", "Flask-login-session-protection", "session_protection_basic", True, csv_dict)
-keys1 = set(resultDict1)
-keys2 = set(resultDict2)
-keys3 = set(resultDict3)
-intersect = keys1.intersection(keys2)
-union = intersect.union(keys3)
-results = buildResultsDict(union, [resultDict1, resultDict2, resultDict3])
-counter = len(results)
-print(counter)
-print(results)
+flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", True, csv_dict)
+bcrypt_usage = extractResults("Flask", "Password-hashing", "un_bcrypt_is_used", True, csv_dict)
+bcrypt_owasp_compliant = extractResults("Flask", "Password-hashing", "un_bcrypt_is_owasp_compliant", True, csv_dict)
+keys1 = set(flask_login_usage)
+keys2 = set(bcrypt_usage)
+keys3 = set(bcrypt_owasp_compliant)
+# intersect = keys1.intersection(keys2)
+# results = buildResultsDict(union, [resultDict1, resultDict2, resultDict3])
+counter_flask = len(flask_login_usage)
+counter_bcrypt = len(bcrypt_usage)
+counter_bcrypt_owasp = len(bcrypt_owasp_compliant)
+# TODO test the following
+saveDictsToFile(["bcrypt_usages", "bcrypt_owasp_compliant_usages"], [bcrypt_usage, bcrypt_owasp_compliant])
+report = """
+<p>There were <a href="{}">{}</a> bcrypt usages ({} %)<br>
+Among which <a href="{}">{}</a> bcrypt usages were compliant with owasp guidelines ({} %)</p>
+"""
+report_html = report.format("./bcrypt_usages.txt", str(counter_bcrypt), str(getPercentage(counter_bcrypt, counter_flask)), "./bcrypt_owasp_compliant_usages.txt", str(counter_bcrypt_owasp), str(getPercentage(counter_bcrypt_owasp, counter_bcrypt)))
+with open("report.html", "w") as file:
+    file.write(report_html)
