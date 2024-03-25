@@ -30,6 +30,7 @@ function repoUsesRequiredLibraries(resDir) {
         }
         */
     }
+    return true;
     for (let [dir, files] of Object.entries(filterQueries)) {
         let result = false;
         for (let [query, value] of Object.entries(files)) {
