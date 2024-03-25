@@ -23,7 +23,7 @@ while True:
         maxInt = int(maxInt/10)
 
 nltk.download('punkt')
-# TODO check and improve language filter
+# TODO check and improve language filter, don't know if it is needed
 # require that more than one term is present? probably no
 # removed: forum, collaborative, cloud
 whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "platform", "cms", "localhost", "bulletin", "127.0.0.1"])
