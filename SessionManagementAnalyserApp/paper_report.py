@@ -91,7 +91,7 @@ no_session_protection = repos.intersection(temp)
 counter_flask = len(repos)
 counter_no_session_protection = len(no_session_protection)
 # TODO test the following
-saveDictsToFile(["no_session_protection"], [no_session_protection])
+# saveDictsToFile(["no_session_protection"], [no_session_protection])
 report = """
 <p>There were <a href="{}">{}</a> bcrypt usages ({} %)<br>
 Among which <a href="{}">{}</a> bcrypt usages were compliant with owasp guidelines ({} %)</p>
