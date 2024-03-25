@@ -79,22 +79,31 @@ flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", Tru
 flask_login_required_usage = extractResults("Flask", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
 session_protection_none = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection", True, csv_dict)
 no_fresh_login = extractResults("Flask", "Flask-login-session-protection", "uf_session_protection_basic", True, csv_dict)
+session_protection_strong = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection_strong", True, csv_dict)
 keys1 = set(flask_login_usage)
 keys2 = set(flask_login_required_usage)
 keys3 = set(session_protection_none)
 keys4 = set(no_fresh_login)
+keys5 = set(session_protection_strong)
 repos = keys1.intersection(keys2)
 temp = keys3.union(keys4)
+tempp = keys5.union(temp)
 no_session_protection = repos.intersection(temp)
+session_protection_basic = repos.difference(tempp)
+session_protection_strong_set = repos.intersection(keys5)
 # intersect = keys1.intersection(keys2)
 # results = buildResultsDict(union, [resultDict1, resultDict2, resultDict3])
 counter_flask = len(repos)
 counter_no_session_protection = len(no_session_protection)
+counter_session_protection_basic = len(session_protection_basic)
+counter_session_protection_strong = len(session_protection_strong_set)
 # TODO test the following
 # saveDictsToFile(["no_session_protection"], [no_session_protection])
 report = """
-<p>There were {} flask repos, of which {} didn't use session protection ({} &)</p>
+<p>There were {} flask repos, of which {} didn't use session protection ({} %), {} used basic session protection ({} %) and {} used strong sessoin protection ({} %)</p>
 """
-report_html = report.format(str(counter_flask), str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)))
+report_html = report.format(str(counter_flask), str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)), 
+                            str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
+                            str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)))
 with open("report.html", "w") as file:
     file.write(report_html)
