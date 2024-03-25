@@ -967,8 +967,6 @@ function libraryUsagesGrep() {
     });
 }
 
-// TODO download and extract the new lists (new_lists folder) and delete the ones that are not in the new lists
-
 // downloadAndExtractRepos('../flask_login_final_whitelist_filtered_merged_list.csv');
 // downloadAndExtractOldCommits('../flask_login_final_whitelist_filtered_merged_list.csv', '../mid_commits.csv')
 downloadREADMEs('../new_lists/django_filtered.csv');

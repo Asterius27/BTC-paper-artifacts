@@ -3,8 +3,8 @@ import csv
 import os
 import shutil
 
-csv_path = Path(__file__).parent / '../django_filtered_list_final_v2.csv'
-repos_path = Path(__file__).parent / './repositories/Django'
+csv_path = Path(__file__).parent / '../new_lists/django_filtered.csv'
+repos_path = Path(__file__).parent / './repositories/Django_READMEs'
 repos = []
 # temp = 0
 
