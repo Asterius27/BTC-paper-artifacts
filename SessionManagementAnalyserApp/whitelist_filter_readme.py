@@ -9,8 +9,8 @@ import os
 import csv
 import time
 import sys
-
-# TODO add languages in the filter
+import re
+import json
 
 maxInt = sys.maxsize
 while True:
@@ -23,9 +23,14 @@ while True:
         maxInt = int(maxInt/10)
 
 nltk.download('punkt')
-whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "cloud", "platform", "cms", "localhost", "forum", "collaborative", "bulletin"])
-group_whitelist = [["web", "application"], ["web", "app"], ["self", "host"], ["content", "management", "system"]]
-blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "book", "cybersecurity", "100daysofcode"]) # "api"
+# TODO check and improve language filter
+# require that more than one term is present? probably no
+# removed: forum, collaborative, cloud
+whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "platform", "cms", "localhost", "bulletin", "127.0.0.1"])
+# removed: web app
+group_whitelist = [["web", "application"], ["self", "host"], ["content", "management", "system"]]
+# add: cheat sheet (?)
+blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "book", "cybersecurity", "100daysofcode", "orm", "vulnerability", "vulnerabilities"]) # "api"
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
 root_dir = "./repositories/Django_READMEs"
@@ -34,26 +39,6 @@ repos_dir = os.listdir(full_path.absolute())
 csv_dict = {}
 # output_list = []
 exceptions = 0
-
-"""
-with open("../test_READMEs/README_to_fix_2.md", 'r') as f:
-    htmlmarkdown = markdown.markdown(f.read())
-    texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
-    text = ' '.join(texts)
-    # print(text)
-    split_text = [text[i:i+2000] for i in range(0, len(text), 2000)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
-    # for i in range(len(split_text)):
-    #     translated = GoogleTranslator(source='auto', target='en').translate(split_text[i])
-    #     print(translated)
-    #     print(i)
-    #     time.sleep(90)
-    # print(split_text[2])
-    # translated = GoogleTranslator(source='auto', target='en').translate(split_text[2])
-    translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text)
-    print(' '.join(translated))
-    print(len(split_text))
-"""
-
 
 file = open('log_whitelist_readme_filter.txt', 'a')
 file.close()
@@ -77,18 +62,11 @@ with open("../django_final_filtered_list_w_lang_and_readme_and_desc.csv", encodi
         repoName = row["repo_url"].split("/")[4]
         csv_dict[owner + "_" + repoName] = row
 
-# to_translate = 'JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。'
-# to_translate = "Hello how is it going?"
-# translated = GoogleTranslator(source='auto', target='en').translate(to_translate)
-# print(translated)
-
-# translated = GoogleTranslator(source='auto', target='english').translate_file('../README_test_translate.md')
-# print(translated)
-
 for repo_dir in repos_dir:
     flag_whitelist = False
     # flag_blacklist = False
     readme_dir = ""
+    about_dir = ""
     subdir = os.listdir(str(full_path.absolute()) + "/" + repo_dir)
     # repodir = os.listdir(str(full_path.absolute()) + "/" + repo_dir + "/" + subdir[0])
     if len(subdir) == 1:
@@ -97,6 +75,12 @@ for repo_dir in repos_dir:
     else:
         for file in subdir:
             if "translated" in file:
+                readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + file
+            if "about" in file:
+                about_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + file
+    if readme_dir == "":
+        for file in subdir:
+            if "translated" not in file and "about" not in file:
                 readme_dir = str(full_path.absolute()) + "/" + repo_dir + "/" + file
     print(readme_dir)
 
@@ -107,15 +91,12 @@ for repo_dir in repos_dir:
                     if len(f.readlines()) > 3:
                         f.seek(0) # not sure if this is needed
                         if "translated" not in readme_dir.split("/")[-1]:
-                            htmlmarkdown = markdown.markdown(f.read()) # TODO test to see if this works even with rst or other non md files
+                            htmlmarkdown = markdown.markdown(f.read())
                             texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
                             text = ' '.join(texts)
                             split_text = [text[i:i+1700] for i in range(0, len(text), 1700)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
-                            translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # TODO there might be an API limit, don't know if we will hit it
+                            translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # there might be an API limit, don't know if we will hit it
                             # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
-                            # print(translated)
-                            # print(text)
-                            # print(len(split_text))
 
                             tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
                             readme_subdir = readme_dir.split("/")
@@ -129,23 +110,38 @@ for repo_dir in repos_dir:
                         # stemmed_tokens = [stemmer.stem(token) for token in tokens]
                         # translated = [GoogleTranslator(source='auto', target='en').translate(token) for token in tokens]
                         # translated = GoogleTranslator(source='auto', target='en').translate(htmlmarkdown[:4000])
-                        # print(translated)
-                        about = csv_dict[readme_dir.split("/")[-2]]["description"]
-                        tokens_about = word_tokenize(about)
-                        processed_tokens_about = set([s.replace('-', '').lower() for s in tokens_about])
+                        if "about" not in about_dir.split("/")[-1]:
+                            about = csv_dict[readme_dir.split("/")[-2]]["description"]
+                            split_text_about = [about[i:i+1700] for i in range(0, len(about), 1700)]
+                            translated_about = GoogleTranslator(source='auto', target='en').translate_batch(split_text_about)
+                            tokens_about = word_tokenize(' '.join(translated_about))
+                            readme_subdir = readme_dir.split("/")
+                            readme_name = readme_subdir.pop(-1).split(".")
+                            translated_readme_dir = '/'.join(readme_subdir) + "/" + readme_name[0] + "_about." + ''.join(readme_name[1:])
+                            print(translated_readme_dir)
+                            with open(translated_readme_dir, 'w') as translated_file:
+                                translated_file.write(' '.join(translated_about))
+                        else:
+                            with open(about_dir, 'r') as about_file:
+                                tokens_about = word_tokenize(about_file.read())
+
+                        replaced_tokens_about = [s.replace('-', '').lower() for s in tokens_about]
+                        processed_tokens_about = set([word for line in replaced_tokens_about for word in re.split(':|/', line)])
                         stemmed_tokens_about = set([stemmer.stem(token) for token in processed_tokens_about])
-                        processed_tokens = set([s.replace('-', '').lower() for s in tokens])
-                        # print(processed_tokens)
+
+                        replaced_tokens = [s.replace('-', '').lower() for s in tokens]
+                        processed_tokens = set([word for line in replaced_tokens for word in re.split(':|/', line)])
                         stemmed_tokens = set([stemmer.stem(token) for token in processed_tokens])
-                        # print(stemmed_tokens)
+
+                        languages = json.loads(csv_dict[readme_dir.split("/")[-2]]["jsonb_agg_lang"])
+
+                        log.write(readme_dir + "\n")
+                        log.write(about_dir + "\n")
+
                         intersection1 = whitelist.intersection(processed_tokens)
                         intersection2 = whitelist.intersection(stemmed_tokens)
                         # intersection3 = blacklist.intersection(processed_tokens)
                         # intersection4 = blacklist.intersection(stemmed_tokens)
-                        # print(intersection1)
-                        # print(intersection2)
-                        # print(len(intersection1))
-                        # print(len(intersection2))
                         if len(intersection1) != 0:
                             flag_whitelist = True
                         if len(intersection2) != 0:
@@ -162,16 +158,13 @@ for repo_dir in repos_dir:
                             if len(intersect2) == len(set_whitelst):
                                 debug_list2.append(intersect2)
                                 flag_whitelist = True
-                            # print(set_whitelst)
-                            # print(len(intersect1))
-                            # print(len(intersect2))
                         """
                         if len(intersection3) != 0:
                             flag_blacklist = True
                         if len(intersection4) != 0:
                             flag_blacklist = True
                         """
-                        log.write(readme_dir + "\n")
+                        log.write("README Section: ---------------------------------------\n")
                         log.write(str(processed_tokens) + "\n")
                         log.write(str(stemmed_tokens) + "\n")
                         log.write("Whitelist intersection: " + str(intersection1) + "\n")
@@ -216,10 +209,14 @@ for repo_dir in repos_dir:
                             flag_whitelist = False
                         log.write("Blacklist intersection in the about section: " + str(intersection3b) + "\n")
                         log.write("Blacklist intersection in the about section: " + str(intersection4b) + "\n")
+                        """
                         if len(about) == 0:
                             flag_whitelist = False
                             log.write("Description length: " + str(len(about)) + "\n")
-                        log.write("Whitelist flag: " + str(flag_whitelist) + "\n\n\n")
+                        """
+                        if len(languages) == 1:
+                            flag_whitelist = False
+                            log.write("Languages: " + str(languages) + "\n")
                         """
                         if flag_whitelist and not flag_blacklist:
                             print(readme_dir.split("/")[-2])
@@ -229,6 +226,7 @@ for repo_dir in repos_dir:
                                 writer = csv.writer(output)
                                 writer.writerow([csv_dict[readme_dir.split("/")[-2]]["repo_url"]]) # TODO .values()
                         """
+                        log.write("Whitelist flag: " + str(flag_whitelist) + "\n\n\n")
                         if flag_whitelist: # elif
                             print(readme_dir.split("/")[-2])
                             with open('whitelist_filtered_repos.csv', 'a', encoding='UTF8') as output:

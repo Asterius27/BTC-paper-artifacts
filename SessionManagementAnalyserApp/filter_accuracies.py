@@ -88,5 +88,12 @@ print("Whitelist Positive Predictive Value (Precision): " + str(getPercentage(tr
 print("Whitelist Negative Predictive Value: " + str(getPercentage(true_negatives_whitelist, true_negatives_whitelist + false_negatives_whitelist)) + " %")
 print("Whitelist F1 Score: " + str(getPercentage(true_positives_whitelist, true_positives_whitelist + 0.5*(false_positives_whitelist + false_negatives_whitelist))) + " %")
 print("\n")
-# TODO have a look at this and improve the whitelist/blacklist (maybe?)
+
+print(whitelist_filtered_list_positives.intersection(manual_filtered_list_true_positives))
+print("\n")
+print(whitelist_filtered_list_negatives.intersection(manual_filtered_list_true_negatives))
+print("\n")
 print(whitelist_filtered_list_positives.difference(whitelist_filtered_list_positives.intersection(manual_filtered_list_true_positives)))
+print("\n")
+print(whitelist_filtered_list_negatives.difference(whitelist_filtered_list_negatives.intersection(manual_filtered_list_true_negatives)))
+print("\n")

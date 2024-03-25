@@ -4,12 +4,12 @@ from pathlib import Path
 
 # Number of repos: 1408 (with 10 or more stars), of which 92 (6.53%) where filtered out
 
-blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "flask", "book", "python", "django", "cybersecurity", "100daysofcode"] # "esercizi"
+blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "flask", "book", "python", "django", "cybersecurity", "100daysofcode", "vulnerability", "vulnerabilities"] # "esercizi"
 # blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"], ["python", "100", "days"]]
 # blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
-path = Path(__file__).parent / '../django_contrib_auth_w_lang_and_readme.csv'
-path_o = Path(__file__).parent / '../django_final_filtered_list_w_lang_and_readme_and_desc.csv'
-log_path = Path(__file__).parent / './filter_logs/django_final_filtered_list_w_lang_and_readme_and_desc.txt'
+path = Path(__file__).parent / '../new_lists/flask.csv'
+path_o = Path(__file__).parent / '../new_lists/flask_filtered.csv'
+log_path = Path(__file__).parent / './filter_logs/flask_filtered_the_truly_final_version.txt'
 filtered_repos = 0
 number_of_repos = 0
 

@@ -967,9 +967,11 @@ function libraryUsagesGrep() {
     });
 }
 
+// TODO download and extract the new lists (new_lists folder) and delete the ones that are not in the new lists
+
 // downloadAndExtractRepos('../flask_login_final_whitelist_filtered_merged_list.csv');
 // downloadAndExtractOldCommits('../flask_login_final_whitelist_filtered_merged_list.csv', '../mid_commits.csv')
-// downloadREADMEs('../django_final_filtered_list_w_lang_and_readme_and_desc.csv');
+downloadREADMEs('../new_lists/django_filtered.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Cookie-name-prefixes", "ut_session_cookie_name_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_session_cookie_name_flask_login_final_filtered_merged_list.txt');
@@ -1011,7 +1013,7 @@ function libraryUsagesGrep() {
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_password_custom_checks.txt"]}, [true, true], './repos_with_interesting_results/14 - repos_with_custom_password_strength_checks_flask_login_and_password_field_filtered_merged_list_final_v2.txt');
 // findOverlappingResultsInRepos({"Password-strength": ["un_form_with_password_field.txt", "un_form_with_password_field_is_validated.txt"]}, [true, true], './repos_with_interesting_results/27 - repos_with_password_form_never_validated_flask_login_and_password_field_whitelist_filtered_list.txt');
 // findOverlappingResultsInReposOr({"Password-hashing": ["un_flask_bcrypt_is_used.txt", "un_argon2_is_used.txt", "un_bcrypt_is_used.txt", "un_passlib_is_used.txt", "un_hashlib_is_used.txt", "un_werkzeug_is_used.txt"]}, [true, true, true, true, true, true], './repos_with_interesting_results/27 - repos_with_more_than_one_hashing_library_including_hashlib_flask_login_and_password_field_whitelist_filtered_list.txt');
-findOverlappingResultsInRepos({"Password-hashing": ["un_werkzeug_is_used.txt", "un_werkzeug_pbkdf2_is_used.txt", "un_werkzeug_scrypt_is_used.txt"]}, [true, false, false], './repos_with_interesting_results/27 - repos_using_werkzeug_and_not_scrypt_or_pbkdf2_flask_login_whitelist_filtered_list.txt');
+// findOverlappingResultsInRepos({"Password-hashing": ["un_werkzeug_is_used.txt", "un_werkzeug_pbkdf2_is_used.txt", "un_werkzeug_scrypt_is_used.txt"]}, [true, false, false], './repos_with_interesting_results/27 - repos_using_werkzeug_and_not_scrypt_or_pbkdf2_flask_login_whitelist_filtered_list.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
 // deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]});
