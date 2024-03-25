@@ -1,0 +1,893 @@
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/3dem_emhub/3dem-emhub-25fae4d: 4498.812 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/AUCR_AUCR/AUCR-AUCR-5e58ceb: 3247.684 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/AdaptationSongs_earth-hz/AdaptationSongs-earth-hz-2f1afbf: 4488.116 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/B-UMMI_Chewie-NS/B-UMMI-Chewie-NS-1143ca6 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/B-UMMI_Chewie-NS/B-UMMI-Chewie-NS-1143ca6 -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m2s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/B-UMMI_Chewie-NS/B-UMMI-Chewie-NS-1143ca6-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 7.6s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/B-UMMI_Chewie-NS/B-UMMI-Chewie-NS-1143ca6-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/B-UMMI_Chewie-NS/B-UMMI-Chewie-NS-1143ca6: 148.94 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/CIT-PROJECTS-2021_cit-cohort-three/CIT-PROJECTS-2021-cit-cohort-three-b0e2b21 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/CIT-PROJECTS-2021_cit-cohort-three/CIT-PROJECTS-2021-cit-cohort-three-b0e2b21 -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 55.4s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/CIT-PROJECTS-2021_cit-cohort-three/CIT-PROJECTS-2021-cit-cohort-three-b0e2b21-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 7.7s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/CIT-PROJECTS-2021_cit-cohort-three/CIT-PROJECTS-2021-cit-cohort-three-b0e2b21-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/CIT-PROJECTS-2021_cit-cohort-three/CIT-PROJECTS-2021-cit-cohort-three-b0e2b21: 157.027 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/CameronWhiteside_Groggo-Needs-Coffee/CameronWhiteside-Groggo-Needs-Coffee-9ee69fe: 2649.997 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/DeepInsight-AI_DeepBI/DeepInsight-AI-DeepBI-12bf2cf: 5480.551 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/DemoGit4LIANG_Chat2Anything/DemoGit4LIANG-Chat2Anything-5ccc933: 5030.449 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skipped the query: Secure-cookie-attribute/sf_secure_attribute_session_cookie_manually_disabled in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/FalkAlexander_traffy/FalkAlexander-traffy-3c11a5f: 3397.508 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/HEPData_hepdata/HEPData-hepdata-c7454cf: 3194.107 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/MaayanLab_geo2enrichr/MaayanLab-geo2enrichr-67b061c Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/MaayanLab_geo2enrichr/MaayanLab-geo2enrichr-67b061c -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m59s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/MaayanLab_geo2enrichr/MaayanLab-geo2enrichr-67b061c-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 12.1s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/MaayanLab_geo2enrichr/MaayanLab-geo2enrichr-67b061c-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/MaayanLab_geo2enrichr/MaayanLab-geo2enrichr-67b061c: 267.515 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/PacktPublishing_Hands-On-Graph-Analytics-with-Neo4j/PacktPublishing-Hands-On-Graph-Analytics-with-Neo4j-4ed56b5: 3936.808 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/SUIBE-Blockchain_Super-NFT/SUIBE-Blockchain-Super-NFT-225aed1: 3135.02 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/Studio-Yandex-Practicum_bot_delo_zhivet/Studio-Yandex-Practicum-bot_delo_zhivet-1df7970: 4305.073 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-36cb9b1: 4453.143 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/adam-p_danforth-east/adam-p-danforth-east-2149f97 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/adam-p_danforth-east/adam-p-danforth-east-2149f97 -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m5s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/adam-p_danforth-east/adam-p-danforth-east-2149f97-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 8.1s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/adam-p_danforth-east/adam-p-danforth-east-2149f97-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/adam-p_danforth-east/adam-p-danforth-east-2149f97: 172.103 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/aman-17_lela/aman-17-lela-239f4da Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/aman-17_lela/aman-17-lela-239f4da -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m1s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/aman-17_lela/aman-17-lela-239f4da-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 8.3s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/aman-17_lela/aman-17-lela-239f4da-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/aman-17_lela/aman-17-lela-239f4da: 175.372 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/bradley-erickson_dash-app-structure/bradley-erickson-dash-app-structure-d65a20d Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/bradley-erickson_dash-app-structure/bradley-erickson-dash-app-structure-d65a20d -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m14s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/bradley-erickson_dash-app-structure/bradley-erickson-dash-app-structure-d65a20d-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 8s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/bradley-erickson_dash-app-structure/bradley-erickson-dash-app-structure-d65a20d-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/bradley-erickson_dash-app-structure/bradley-erickson-dash-app-structure-d65a20d: 190.029 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/cds-snc_notification-admin/cds-snc-notification-admin-86a474c: 5580.037 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/data-for-change_anyway/data-for-change-anyway-ea8fc55: 6788.931 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/digitalmethodsinitiative_4cat/digitalmethodsinitiative-4cat-6f1da76: 6620.757 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/elunez_azure-manager/elunez-azure-manager-e9475bc: 3153.783 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/flowintel_flowintel-cm/flowintel-flowintel-cm-18e8d86: 3261.406 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/greyli_todoism/greyli-todoism-4c2e16c: 3139.021 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/hongquan_QuanWeb/hongquan-QuanWeb-2f232ad: 3510.2 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/opendatateam_udata/opendatateam-udata-6cdab35 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/opendatateam_udata/opendatateam-udata-6cdab35 -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 38.5s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/opendatateam_udata/opendatateam-udata-6cdab35-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 5.8s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/opendatateam_udata/opendatateam-udata-6cdab35-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/opendatateam_udata/opendatateam-udata-6cdab35: 143.419 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/scorelab_OpenMF/scorelab-OpenMF-bc67d4e Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/scorelab_OpenMF/scorelab-OpenMF-bc67d4e -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m8s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/scorelab_OpenMF/scorelab-OpenMF-bc67d4e-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 6.4s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/scorelab_OpenMF/scorelab-OpenMF-bc67d4e-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/scorelab_OpenMF/scorelab-OpenMF-bc67d4e: 171.286 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/scoringengine_scoringengine/scoringengine-scoringengine-ddf3b9d: 3321.73 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/sentanl869_BunKum/sentanl869-BunKum-d7949cc: 2488.116 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/tencentmusic_cube-studio/tencentmusic-cube-studio-e09dd6f: 3764.084 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread0/xiongxianzhu_qingmi/xiongxianzhu-qingmi-ddc0def Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread0/xiongxianzhu_qingmi/xiongxianzhu-qingmi-ddc0def -l=python -t=11 -ct=0
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 28.1s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/xiongxianzhu_qingmi/xiongxianzhu-qingmi-ddc0def-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 3.1s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread0/xiongxianzhu_qingmi/xiongxianzhu-qingmi-ddc0def-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/xiongxianzhu_qingmi/xiongxianzhu-qingmi-ddc0def: 80.142 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393
+Time taken to run the queries on ./repositories/Flask_old_commits/thread0/zoffline_zwift-offline/zoffline-zwift-offline-c948393: 1581.35 seconds.
+Time taken to run the queries and generate the statistics: 92532.639 seconds.

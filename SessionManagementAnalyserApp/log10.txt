@@ -1,0 +1,1103 @@
+Analysis failed for: ./repositories/Flask_old_commits/thread10/Apoorve73_Where_to_Build/Apoorve73-Where_to_Build-6183eeb Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/Apoorve73_Where_to_Build/Apoorve73-Where_to_Build-6183eeb -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m24s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/Apoorve73_Where_to_Build/Apoorve73-Where_to_Build-6183eeb-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 4.9s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/Apoorve73_Where_to_Build/Apoorve73-Where_to_Build-6183eeb-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/Apoorve73_Where_to_Build/Apoorve73-Where_to_Build-6183eeb: 284.394 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/CallMeReznov_Easy_monitor/CallMeReznov-Easy_monitor-253d70b Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/CallMeReznov_Easy_monitor/CallMeReznov-Easy_monitor-253d70b -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m26s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/CallMeReznov_Easy_monitor/CallMeReznov-Easy_monitor-253d70b-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 11.8s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/CallMeReznov_Easy_monitor/CallMeReznov-Easy_monitor-253d70b-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/CallMeReznov_Easy_monitor/CallMeReznov-Easy_monitor-253d70b: 212.494 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/KSP-SpaceDock_SpaceDock/KSP-SpaceDock-SpaceDock-0079d87 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/KSP-SpaceDock_SpaceDock/KSP-SpaceDock-SpaceDock-0079d87 -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 55s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/KSP-SpaceDock_SpaceDock/KSP-SpaceDock-SpaceDock-0079d87-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 6.9s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/KSP-SpaceDock_SpaceDock/KSP-SpaceDock-SpaceDock-0079d87-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/KSP-SpaceDock_SpaceDock/KSP-SpaceDock-SpaceDock-0079d87: 159.183 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/Kbafekr_Youtube-Clone/Kbafekr-Youtube-Clone-64e619f: 2284.024 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-1c0501f: 2511.196 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/LukaszMalucha_Cat-vs.-Dog-Classifier/LukaszMalucha-Cat-vs.-Dog-Classifier-bb661be: 4371.766 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-8735f1e: 4095.973 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/RCOSDP_weko/RCOSDP-weko-dd68c38 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/RCOSDP_weko/RCOSDP-weko-dd68c38 -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m59s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/RCOSDP_weko/RCOSDP-weko-dd68c38-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 11.3s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/RCOSDP_weko/RCOSDP-weko-dd68c38-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/RCOSDP_weko/RCOSDP-weko-dd68c38: 266.776 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/Sciebo-RDS_Sciebo-RDS/Sciebo-RDS-Sciebo-RDS-d2f4998 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/Sciebo-RDS_Sciebo-RDS/Sciebo-RDS-Sciebo-RDS-d2f4998 -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 55.5s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/Sciebo-RDS_Sciebo-RDS/Sciebo-RDS-Sciebo-RDS-d2f4998-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 7.9s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/Sciebo-RDS_Sciebo-RDS/Sciebo-RDS-Sciebo-RDS-d2f4998-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/Sciebo-RDS_Sciebo-RDS/Sciebo-RDS-Sciebo-RDS-d2f4998: 161.903 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/alegonz_otokuna/alegonz-otokuna-c35e798 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/alegonz_otokuna/alegonz-otokuna-c35e798 -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m24s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/alegonz_otokuna/alegonz-otokuna-c35e798-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 7.3s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/alegonz_otokuna/alegonz-otokuna-c35e798-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/alegonz_otokuna/alegonz-otokuna-c35e798: 212.048 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/apache_superset/apache-superset-c519efe: 7910.654 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/appacademy_Module-6-Resources/appacademy-Module-6-Resources-6b50dca Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/appacademy_Module-6-Resources/appacademy-Module-6-Resources-6b50dca -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 42.1s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/appacademy_Module-6-Resources/appacademy-Module-6-Resources-6b50dca-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 5.8s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/appacademy_Module-6-Resources/appacademy-Module-6-Resources-6b50dca-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/appacademy_Module-6-Resources/appacademy-Module-6-Resources-6b50dca: 137.771 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/astronomer_astronomer-fab-securitymanager/astronomer-astronomer-fab-securitymanager-43a7728: 3806.399 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/bradcfisher_OctoPrint-ExcludeRegionPlugin/bradcfisher-OctoPrint-ExcludeRegionPlugin-4c4d41f Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/bradcfisher_OctoPrint-ExcludeRegionPlugin/bradcfisher-OctoPrint-ExcludeRegionPlugin-4c4d41f -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m32s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/bradcfisher_OctoPrint-ExcludeRegionPlugin/bradcfisher-OctoPrint-ExcludeRegionPlugin-4c4d41f-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 8.7s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/bradcfisher_OctoPrint-ExcludeRegionPlugin/bradcfisher-OctoPrint-ExcludeRegionPlugin-4c4d41f-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/bradcfisher_OctoPrint-ExcludeRegionPlugin/bradcfisher-OctoPrint-ExcludeRegionPlugin-4c4d41f: 228.495 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/cabalamat_meowcat2/cabalamat-meowcat2-2eeb7d0: 3516.262 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/cactool_cactool/cactool-cactool-305fa2c: 3861.523 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-b8f29ad Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-b8f29ad -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 1m11s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-b8f29ad-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 10.9s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-b8f29ad-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-b8f29ad: 196.035 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/evidence-surveillance_es3/evidence-surveillance-es3-1cd1577: 5463.16 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/inspirehep_inspirehep/inspirehep-inspirehep-c8654cc Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/inspirehep_inspirehep/inspirehep-inspirehep-c8654cc -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 2m5s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/inspirehep_inspirehep/inspirehep-inspirehep-c8654cc-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 13.3s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/inspirehep_inspirehep/inspirehep-inspirehep-c8654cc-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/inspirehep_inspirehep/inspirehep-inspirehep-c8654cc: 295.814 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-b140f2d: 5910.394 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/lapras-inc_exam-swe-template/lapras-inc-exam-swe-template-d7e3132: 4073.236 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78
+Failed to execute the query: Incorrect-config-changes/un_incorrect_config_changes on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: spawnSync /bin/sh ETIMEDOUT
+Failed to execute the query: Fresh-login-restrictions/un_no_fresh_login_checks on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Fresh-login-restrictions/un_no_fresh_login_checks.bqrs --threads=11 ../Flask_Queries/Fresh-login-restrictions/un_no_fresh_login_checks.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Login-restrictions/un_no_authentication_checks on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Login-restrictions/un_no_authentication_checks.bqrs --threads=11 ../Flask_Queries/Login-restrictions/un_no_authentication_checks.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Login-restrictions/un_no_authentication_checks_general on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Login-restrictions/un_no_authentication_checks_general.bqrs --threads=11 ../Flask_Queries/Login-restrictions/un_no_authentication_checks_general.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Secret-key/un_secret_key on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Secret-key/un_secret_key.bqrs --threads=11 ../Flask_Queries/Secret-key/un_secret_key.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_custom_session_interface on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Explorative-queries/un_custom_session_interface.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_custom_session_interface.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_config_set_from_env_var on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Explorative-queries/un_config_set_from_env_var.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_config_set_from_env_var.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_config_set_from_file_mapping_keys on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Explorative-queries/un_config_set_from_file_mapping_keys.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_config_set_from_file_mapping_keys.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_list_config_settings_from_env_var on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Explorative-queries/un_list_config_settings_from_env_var.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_list_config_settings_from_env_var.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_potential_false_positives on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Explorative-queries/un_potential_false_positives.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_potential_false_positives.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_flask_bcrypt_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_flask_bcrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_flask_bcrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_argon2_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_argon2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_argon2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_bcrypt_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_bcrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_bcrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_hashlib_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_hashlib_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_hashlib_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_werkzeug_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_argon2_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_argon2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_argon2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_bcrypt_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_bcrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_bcrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_flask_bcrypt_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_flask_bcrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_flask_bcrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_argon2_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_argon2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_argon2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_argon2_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_argon2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_argon2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_bcrypt_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_bcrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_bcrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_bcrypt_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_bcrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_bcrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_cryptcontext_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_cryptcontext_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_cryptcontext_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_genconfig_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_genconfig_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_genconfig_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_pbkdf2_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_pbkdf2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_pbkdf2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_pbkdf2_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_pbkdf2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_pbkdf2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_scrypt_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_scrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_scrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_scrypt_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_passlib_scrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_scrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_pbkdf2_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_werkzeug_pbkdf2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_pbkdf2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_pbkdf2_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_werkzeug_pbkdf2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_pbkdf2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_scrypt_is_owasp_compliant on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_werkzeug_scrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_scrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_scrypt_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/un_werkzeug_scrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_scrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/ut_password_hashing_algorithm_manually_set on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/ut_password_hashing_algorithm_manually_set.bqrs --threads=11 ../Flask_Queries/Password-hashing/ut_password_hashing_algorithm_manually_set.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/ut_password_hashing_rounds_manually_set on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/ut_password_hashing_rounds_manually_set.bqrs --threads=11 ../Flask_Queries/Password-hashing/ut_password_hashing_rounds_manually_set.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Failed to execute the query: Password-hashing/sf_password_hashing_algorithm on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/sf_password_hashing_algorithm.bqrs --threads=11 ../Flask_Queries/Password-hashing/sf_password_hashing_algorithm.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Failed to execute the query: Password-hashing/sf_password_hashing_rounds on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-hashing/sf_password_hashing_rounds.bqrs --threads=11 ../Flask_Queries/Password-hashing/sf_password_hashing_rounds.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_deactivation_left_as_default on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_deactivation_left_as_default.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_deactivation_left_as_default.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_deactivation_manually_set on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_deactivation_manually_set.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_deactivation_manually_set.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_user_class_does_not_override_is_active on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_user_class_does_not_override_is_active.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_user_class_does_not_override_is_active.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_user_class_extends_usermixin on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_user_class_extends_usermixin.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_user_class_extends_usermixin.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_user_class_overrides_is_active on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_user_class_overrides_is_active.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_user_class_overrides_is_active.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_user_class_overrides_is_active_always_returns_false on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_user_class_overrides_is_active_always_returns_false.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_user_class_overrides_is_active_always_returns_false.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_user_class_overrides_is_active_always_returns_true on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_user_class_overrides_is_active_always_returns_true.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_user_class_overrides_is_active_always_returns_true.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_user_class_overrides_is_active_custom_boolean_return on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_user_class_overrides_is_active_custom_boolean_return.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_user_class_overrides_is_active_custom_boolean_return.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_user_class_overrides_is_active_non_boolean_return on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_user_class_overrides_is_active_non_boolean_return.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_user_class_overrides_is_active_non_boolean_return.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/un_deactivation_not_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/un_deactivation_not_used.bqrs --threads=11 ../Flask_Queries/Account-deactivation/un_deactivation_not_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Account-deactivation/ut_deactivated_accounts_login on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/ut_deactivated_accounts_login.bqrs --threads=11 ../Flask_Queries/Account-deactivation/ut_deactivated_accounts_login.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Failed to execute the query: Account-deactivation/sf_deactivated_accounts_default on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/sf_deactivated_accounts_default.bqrs --threads=11 ../Flask_Queries/Account-deactivation/sf_deactivated_accounts_default.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Failed to execute the query: Account-deactivation/sf_deactivated_accounts_handling on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Account-deactivation/sf_deactivated_accounts_handling.bqrs --threads=11 ../Flask_Queries/Account-deactivation/sf_deactivated_accounts_handling.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_deform_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_deform_is_used.bqrs --threads=11 ../Flask_Queries/Password-strength/un_deform_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_passwordmeter_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_passwordmeter_is_used.bqrs --threads=11 ../Flask_Queries/Password-strength/un_passwordmeter_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_passwordstrength_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_passwordstrength_is_used.bqrs --threads=11 ../Flask_Queries/Password-strength/un_passwordstrength_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_flask_wtf_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_flask_wtf_is_used.bqrs --threads=11 ../Flask_Queries/Password-strength/un_flask_wtf_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_wtforms_is_used on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_wtforms_is_used.bqrs --threads=11 ../Flask_Queries/Password-strength/un_wtforms_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_form_with_password_field.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_two_password_fields on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_form_with_two_password_fields.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_two_password_fields.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field_and_validators on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_form_with_password_field_and_validators.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field_and_validators.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field_is_validated on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_form_with_password_field_is_validated.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field_is_validated.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field_uses_extra_validators_in_validate_method on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_form_with_password_field_uses_extra_validators_in_validate_method.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field_uses_extra_validators_in_validate_method.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_password_custom_checks on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_password_custom_checks.bqrs --threads=11 ../Flask_Queries/Password-strength/un_password_custom_checks.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_password_length_check on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_password_length_check.bqrs --threads=11 ../Flask_Queries/Password-strength/un_password_length_check.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_password_regexp_check on repository: ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78 Reason: Error: Command failed: codeql query run --database=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database --output=./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-results/Password-strength/un_password_regexp_check.bqrs --threads=11 ../Flask_Queries/Password-strength/un_password_regexp_check.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/mediacloud_web-tools/mediacloud-web-tools-76d8f78: 4196.201 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/ptyin_sqloj/ptyin-sqloj-5f9f2ed: 2955.558 seconds.
+Analysis failed for: ./repositories/Flask_old_commits/thread10/rootio_rootio_web/rootio-rootio_web-a162fa7 Reason: Error: Command failed: npm start -- -s=./repositories/Flask_old_commits/thread10/rootio_rootio_web/rootio-rootio_web-a162fa7 -l=python -t=11 -ct=10
+Compiling query plan for /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Flask_Queries/Flask-login-is-used-check/flask_library_used_check.ql.
+[1/1 eval 57.3s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/rootio_rootio_web/rootio-rootio_web-a162fa7-results/flask_library_used_check.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1] Found in cache: /home/878352/Session-Management-Analyser/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+Starting evaluation of asterius27/codeql-extra-queries-python/Django_Queries/Django-auth-is-used-check/django_library_used_check.ql.
+[1/1 eval 7.2s] Evaluation done; writing results to /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask_old_commits/thread10/rootio_rootio_web/rootio-rootio_web-a162fa7-results/django_library_used_check.bqrs.
+Shutting down query evaluator.
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/rootio_rootio_web/rootio-rootio_web-a162fa7: 156.893 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-a1fdaa6: 3399.399 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-1684092: 7763.096 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/vanessamcf_login_system/vanessamcf-login_system-631520a: 1636.705 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/ven8462_iCooK/ven8462-iCooK-e7999b8: 4684.708 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/willkee_FindTable/willkee-FindTable-9e47be1: 3150.91 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/sf_expires_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-bce8290: 3384.786 seconds.
+Skippable Query: sf_domain_attribute_remember_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_remember_cookie
+Skippable Query: sf_domain_attribute_session_cookie_manually_disabled, Unskippable counterpart: uf_domain_attribute_session_cookie
+Skippable Query: st_expires_attribute_remember_cookie, Unskippable counterpart: ut_expires_attribute_remember_cookie_manually_set
+Skipped the query: Expires-cookie-attribute/st_expires_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Skippable Query: sf_expires_attribute_session_cookie, Unskippable counterpart: ut_expires_attribute_session_cookie_manually_set
+Skippable Query: sf_secure_attribute_remember_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_remember_cookie
+Skippable Query: sf_secure_attribute_session_cookie_manually_disabled, Unskippable counterpart: ut_secure_attribute_session_cookie
+Skippable Query: st_remember_cookie_name_prefix, Unskippable counterpart: ut_remember_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_remember_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Skippable Query: st_session_cookie_name_prefix, Unskippable counterpart: ut_session_cookie_name_manually_set
+Skipped the query: Cookie-name-prefixes/st_session_cookie_name_prefix in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Skippable Query: st_samesite_attribute_remember_cookie, Unskippable counterpart: ut_samesite_attribute_remember_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_remember_cookie in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Skippable Query: st_samesite_attribute_session_cookie, Unskippable counterpart: ut_samesite_attribute_session_cookie_manually_set
+Skipped the query: Samesite-cookie-attribute/st_samesite_attribute_session_cookie in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_password_hashing_algorithm, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_algorithm in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Skippable Query: sf_password_hashing_rounds, Unskippable counterpart: ut_password_hashing_algorithm_manually_set
+Skipped the query: Password-hashing/sf_password_hashing_rounds in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Skippable Query: sf_deactivated_accounts_default, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_default in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Skippable Query: sf_deactivated_accounts_handling, Unskippable counterpart: ut_deactivated_accounts_login
+Skipped the query: Account-deactivation/sf_deactivated_accounts_handling in the repository: ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de
+Time taken to run the queries on ./repositories/Flask_old_commits/thread10/zwdcdu_is_analysis/zwdcdu-is_analysis-b0027de: 4193.834 seconds.
+Time taken to run the queries and generate the statistics: 85481.742 seconds.
