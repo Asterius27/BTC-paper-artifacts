@@ -61,3 +61,17 @@ Whitelist True Negatives Rate (Specificity): 58.62 %
 Whitelist Positive Predictive Value (Precision): 57.89 %
 Whitelist Negative Predictive Value: 82.93 %
 Whitelist F1 Score: 68.04 %
+
+After improvement:
+
+Whitelist True Positives: 31
+Whitelist False Positives: 11
+Whitelist True Negatives: 47
+Whitelist False Negatives: 9
+Whitelist Accuracy: 79.59 %
+Whitelist Misclassification: 20.41 %
+Whitelist True Positive Rate (Sensitivity or Recall): 77.5 %
+Whitelist True Negatives Rate (Specificity): 81.03 %
+Whitelist Positive Predictive Value (Precision): 73.81 %
+Whitelist Negative Predictive Value: 83.93 %
+Whitelist F1 Score: 75.61 %
