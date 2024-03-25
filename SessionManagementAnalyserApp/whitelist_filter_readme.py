@@ -133,7 +133,7 @@ for repo_dir in repos_dir:
                         processed_tokens = set([word for line in replaced_tokens for word in re.split(':|/', line)])
                         stemmed_tokens = set([stemmer.stem(token) for token in processed_tokens])
 
-                        languages = json.loads(csv_dict[readme_dir.split("/")[-2]]["jsonb_agg_lang"])
+                        languages = json.loads(csv_dict[readme_dir.split("/")[-2]]["jsonb_agg_lang"])[0]
 
                         log.write(readme_dir + "\n")
                         log.write(about_dir + "\n")
