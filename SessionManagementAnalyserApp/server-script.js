@@ -397,6 +397,7 @@ function deleteExtraDirs(repos_list) {
     for (let i = 0; i < repos.length; i++) {
         if (!repos_list.includes(repos[i])) {
             fs.rmSync('./repositories/' + framework + "_READMEs/" + repos[i], { recursive: true, force: true });
+            fs.appendFileSync('./log_READMEs.txt', "Deleted dir: " + repos[i] + "\n");
         }
     }
 }
