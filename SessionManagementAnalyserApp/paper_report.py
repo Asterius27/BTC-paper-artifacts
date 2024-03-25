@@ -74,7 +74,7 @@ def getPercentage(value, total):
         return 0
     return (value / total) * 100
 
-csv_dict = loadCSV(Path(__file__).parent / '../flask_login_final_whitelist_filtered_merged_list.csv')
+csv_dict = loadCSV(Path(__file__).parent / '../old_lists_with_whitelist_filtering/flask_login_final_whitelist_filtered_merged_list.csv')
 flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", True, csv_dict)
 flask_login_required_usage = extractResults("Flask", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
 session_protection_none = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection", True, csv_dict)
