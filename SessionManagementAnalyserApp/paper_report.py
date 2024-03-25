@@ -74,6 +74,8 @@ def getPercentage(value, total):
         return 0
     return (value / total) * 100
 
+# TODO remove potential false positives from results (using the results of the corresponding query)
+
 csv_dict = loadCSV(Path(__file__).parent / '../old_lists_with_whitelist_filtering/flask_login_final_whitelist_filtered_merged_list.csv')
 flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", True, csv_dict)
 flask_login_required_usage = extractResults("Flask", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
@@ -98,7 +100,7 @@ counter_no_session_protection = len(no_session_protection)
 counter_session_protection_basic = len(session_protection_basic)
 counter_session_protection_strong = len(session_protection_strong_set)
 # TODO test the following
-# saveDictsToFile(["no_session_protection"], [no_session_protection])
+# saveDictsToFile(["no_session_protection"], [no_session_protection]) # TODO extract links from sets
 report = """
 <p>There were {} flask repos, of which {} didn't use session protection ({} %), {} used basic session protection ({} %) and {} used strong sessoin protection ({} %)</p>
 """
