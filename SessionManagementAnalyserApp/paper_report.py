@@ -93,8 +93,7 @@ counter_no_session_protection = len(no_session_protection)
 # TODO test the following
 # saveDictsToFile(["no_session_protection"], [no_session_protection])
 report = """
-<p>There were <a href="{}">{}</a> bcrypt usages ({} %)<br>
-Among which <a href="{}">{}</a> bcrypt usages were compliant with owasp guidelines ({} %)</p>
+<p>There were <a href="{}">{}</a> bcrypt usages ({} %)</p>
 """
 report_html = report.format("./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)))
 with open("report.html", "w") as file:
