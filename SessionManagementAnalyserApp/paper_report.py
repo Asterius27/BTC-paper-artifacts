@@ -76,22 +76,26 @@ def getPercentage(value, total):
 
 csv_dict = loadCSV(Path(__file__).parent / '../flask_login_final_whitelist_filtered_merged_list.csv')
 flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", True, csv_dict)
-bcrypt_usage = extractResults("Flask", "Password-hashing", "un_bcrypt_is_used", True, csv_dict)
-bcrypt_owasp_compliant = extractResults("Flask", "Password-hashing", "un_bcrypt_is_owasp_compliant", True, csv_dict)
+flask_login_required_usage = extractResults("Flask", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
+session_protection_none = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection", True, csv_dict)
+no_fresh_login = extractResults("Flask", "Flask-login-session-protection", "uf_session_protection_basic", True, csv_dict)
 keys1 = set(flask_login_usage)
-keys2 = set(bcrypt_usage)
-keys3 = set(bcrypt_owasp_compliant)
+keys2 = set(flask_login_required_usage)
+keys3 = set(session_protection_none)
+keys4 = set(no_fresh_login)
+repos = keys1.intersection(keys2)
+temp = keys3.union(keys4)
+no_session_protection = repos.intersection(temp)
 # intersect = keys1.intersection(keys2)
 # results = buildResultsDict(union, [resultDict1, resultDict2, resultDict3])
-counter_flask = len(flask_login_usage)
-counter_bcrypt = len(bcrypt_usage)
-counter_bcrypt_owasp = len(bcrypt_owasp_compliant)
+counter_flask = len(repos)
+counter_no_session_protection = len(no_session_protection)
 # TODO test the following
-saveDictsToFile(["bcrypt_usages", "bcrypt_owasp_compliant_usages"], [bcrypt_usage, bcrypt_owasp_compliant])
+saveDictsToFile(["no_session_protection"], [no_session_protection])
 report = """
 <p>There were <a href="{}">{}</a> bcrypt usages ({} %)<br>
 Among which <a href="{}">{}</a> bcrypt usages were compliant with owasp guidelines ({} %)</p>
 """
-report_html = report.format("./bcrypt_usages.txt", str(counter_bcrypt), str(getPercentage(counter_bcrypt, counter_flask)), "./bcrypt_owasp_compliant_usages.txt", str(counter_bcrypt_owasp), str(getPercentage(counter_bcrypt_owasp, counter_bcrypt)))
+report_html = report.format("./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)))
 with open("report.html", "w") as file:
     file.write(report_html)
