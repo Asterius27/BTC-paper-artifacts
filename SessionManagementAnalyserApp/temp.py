@@ -1,22 +1,19 @@
 import csv
 from pathlib import Path
 
-path1 = Path(__file__).parent / '../flask_list_final.csv'
-path2 = Path(__file__).parent / '../flask_repos.csv'
-lst = []
-different_repos = 0
+path1 = Path(__file__).parent / '../old_lists_with_whitelist_filtering/django_final_whitelist_filtered_list.csv'
+path2 = Path(__file__).parent / '../old_lists_with_whitelist_filtering/django_final_whitelist_filtered_list_v2.csv'
 
-# TODO doesn't work, need to compare the two
-with path2.open() as csv_file:
-    reader = csv.DictReader(csv_file)
-    for i, row in enumerate(reader, start=0):
-        if i < 10000:
-            lst.append(row["repo_url"])
+def loadCSV(csvFile):
+    repos = []
+    with csvFile.open(encoding="utf8") as csv_file:
+        reader = csv.DictReader(csv_file)
+        for row in reader:
+            repos.append(row["repo_url"])
+    return set(repos)
 
-with path1.open() as csv_final_file:
-    final_reader = csv.DictReader(csv_final_file)
-    for i, row in enumerate(final_reader, start=0):
-        if row["repo_url"] not in lst and i < 1000:
-            different_repos += 1
-
-print("Number of different repos: " + str(different_repos))
+old_list = loadCSV(path1)
+new_list = loadCSV(path2)
+print(len(old_list.intersection(new_list)))
+print(len(new_list.difference(old_list)))
+print(len(old_list.difference(new_list)))
