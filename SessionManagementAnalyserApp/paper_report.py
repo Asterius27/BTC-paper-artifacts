@@ -99,7 +99,6 @@ counter_flask = len(repos)
 counter_no_session_protection = len(no_session_protection)
 counter_session_protection_basic = len(session_protection_basic)
 counter_session_protection_strong = len(session_protection_strong_set)
-# TODO test the following
 # saveDictsToFile(["no_session_protection"], [no_session_protection]) # TODO extract links from sets
 report = """
 <p>There were {} flask repos, of which {} didn't use session protection ({} %), {} used basic session protection ({} %) and {} used strong sessoin protection ({} %)</p>
