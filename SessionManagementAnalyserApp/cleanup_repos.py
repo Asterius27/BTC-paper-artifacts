@@ -14,8 +14,8 @@ while True:
     except OverflowError:
         maxInt = int(maxInt/10)
 
-csv_path = Path(__file__).parent / '../new_lists/django_filtered.csv'
-repos_path = Path(__file__).parent / './repositories/Django_READMEs'
+csv_path = Path(__file__).parent / '../flask_filtered.csv'
+repos_path = Path(__file__).parent / './repositories/Flask_READMEs'
 repos = []
 # temp = 0
 

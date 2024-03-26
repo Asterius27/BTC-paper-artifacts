@@ -214,7 +214,7 @@ for repo_dir in repos_dir:
                             flag_whitelist = False
                             log.write("Description length: " + str(len(about)) + "\n")
                         """
-                        if len(languages) == 1:
+                        if len(languages) == 1 or "Python" not in languages:
                             flag_whitelist = False
                             log.write("Languages: " + str(languages) + "\n")
                         """

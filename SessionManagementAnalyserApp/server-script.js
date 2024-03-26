@@ -10,7 +10,7 @@ import { resolve } from "path";
 import { pipeline } from "stream/promises";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
-const framework = "Flask"; // "Django"
+const framework = "Django"; // "Flask"
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
 let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]; // TODO add more, have to make it more precise
