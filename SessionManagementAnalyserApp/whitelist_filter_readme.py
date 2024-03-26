@@ -33,7 +33,7 @@ group_whitelist = [["web", "application"], ["self", "host"], ["content", "manage
 blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "book", "cybersecurity", "100daysofcode", "orm", "vulnerability", "vulnerabilities"]) # "api"
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
-root_dir = "./repositories/Django_READMEs"
+root_dir = "./repositories/Flask_READMEs"
 full_path = Path(__file__).parent / root_dir
 repos_dir = os.listdir(full_path.absolute())
 csv_dict = {}
@@ -55,7 +55,7 @@ if not os.path.isfile('./whitelist_and_blacklist_filtered_repos.csv'):
         output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
 """
 
-with open("../django_final_filtered_list_w_lang_and_readme_and_desc.csv", encoding='utf8') as csv_file:
+with open("../flask_filtered.csv", encoding='utf8') as csv_file:
     reader = csv.DictReader(csv_file, delimiter=',')
     for row in reader:
         owner = row["repo_url"].split("/")[3]
