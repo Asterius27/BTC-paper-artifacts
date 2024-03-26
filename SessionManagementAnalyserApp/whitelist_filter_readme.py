@@ -88,8 +88,17 @@ for repo_dir in repos_dir:
     with open('log_whitelist_readme_filter.txt', 'r+', encoding='UTF8') as log:
         if readme_dir != "" and readme_dir not in log.read():
             with open(readme_dir, 'r', encoding='utf8') as f: # '../README_test_translate.md'
-                if len(f.readlines()) > 3:
+                x = 0
+                try:
+                    x = len(f.readlines())
                     f.seek(0)
+                except Exception as e:
+                    exceptions += 1
+                    print(e)
+                    with open('log_exceptions_whitelist_readme_filter.txt', 'a', encoding='UTF8') as exception_log:
+                        exception_log.write("README Exception in: " + readme_dir + "\n")
+                        exception_log.write(str(e) + "\n")
+                if x > 3:
                     try:
                         if "translated" not in readme_dir.split("/")[-1]:
                             htmlmarkdown = markdown.markdown(f.read())
