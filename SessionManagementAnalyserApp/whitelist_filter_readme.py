@@ -87,7 +87,7 @@ for repo_dir in repos_dir:
 
     with open('log_whitelist_readme_filter.txt', 'r+', encoding='UTF8') as log:
         if readme_dir != "" and readme_dir not in log.read():
-            with open(readme_dir, 'r') as f: # '../README_test_translate.md' , encoding='utf8'
+            with open(readme_dir, 'r', encoding='utf8') as f: # '../README_test_translate.md'
                 if len(f.readlines()) > 3:
                     f.seek(0)
                     try:
