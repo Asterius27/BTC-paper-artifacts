@@ -42,7 +42,7 @@ manual_filtered_list_true_negatives = unfiltered_list.difference(manual_filtered
 gpt_filtered_list_positives = loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - Django_GPT.csv', "yes")
 gpt_filtered_list_negatives = loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - Django_GPT.csv', "no")
 
-whitelist_filtered_list_positives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../flask_whitelist_filtered.csv'))
+whitelist_filtered_list_positives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../flask_whitelist_filtered_v2.csv'))
 whitelist_filtered_list_negatives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../flask.csv')).difference(whitelist_filtered_list_positives)
 
 print(len(unfiltered_list))
