@@ -968,9 +968,9 @@ function libraryUsagesGrep() {
     });
 }
 
-// downloadAndExtractRepos('../flask_login_final_whitelist_filtered_merged_list.csv');
+downloadAndExtractRepos('../flask_whitelist_filtered_v2.csv');
 // downloadAndExtractOldCommits('../flask_login_final_whitelist_filtered_merged_list.csv', '../mid_commits.csv')
-downloadREADMEs('../flask_filtered.csv');
+// downloadREADMEs('../flask_filtered.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
 // findInterestingRepos("HTTPOnly-cookie-attribute", "un_httponly_attribute_session_cookie.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_disabled_httponly_session_cookie_flask_login_final_filtered_merged_list.txt');
 // findInterestingRepos("Cookie-name-prefixes", "ut_session_cookie_name_manually_set.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_set_session_cookie_name_flask_login_final_filtered_merged_list.txt');
