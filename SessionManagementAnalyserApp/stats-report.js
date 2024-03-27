@@ -7,8 +7,8 @@ let root_dir = "./";
 let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let lang = "";
-let csv_file = '../flask_whitelist_filtered_v2.csv';
-let csv_filter_file = '../flask_whitelist_filtered_v2.csv';
+let csv_file = '../django_whitelist_filtered_v2.csv';
+let csv_filter_file = '../django_whitelist_filtered_v2.csv';
 
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
@@ -103,7 +103,7 @@ function usesDjangoForEverything(resDir) {
     } catch (e) {
         fs.appendFileSync('./log_stats_generator.txt', "Failed to read query results for: " + resDir + " Reason: " + e + "\n");
     }
-    return false;
+    return true;
 }
 
 // Root directory of the projects/repositories/applications, if not specified the current directory will be used
