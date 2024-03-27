@@ -574,7 +574,7 @@ function downloadAndExtractRepos(csv_file) {
         let http_errors = 0;
         let duplicates = 0;
         for (let i = 0; i < csv.length; i++) {
-            // if (csv[i].stars >= 1) {
+            if (csv[i].stars >= 5) {
                 number_of_repos++;
                 let owner = csv[i].repo_url.split("/")[3];
                 let repoName = csv[i].repo_url.split("/")[4];
@@ -674,7 +674,10 @@ function downloadAndExtractRepos(csv_file) {
                     }
                     */
                 // }
-            // }
+            }
+            else {
+                fs.appendFileSync('./log.txt', "Repo has too few stars: " + csv[i].repo_url.split("/")[3] + "_" + csv[i].repo_url.split("/")[4] + "\n");
+            }
         }
         fs.appendFileSync('./log.txt', "Number of processed repos: " + number_of_repos + ". " /*+ "Of which " + filtered_repos + " were filtered out, "*/ + http_errors + " repos weren't downloaded because of an HTTP Error and " + duplicates + " duplicates were found.\n");
         console.log("Finished parsing the csv, downloading the repositories, decompressing them and removing all unnecessary files\n");
