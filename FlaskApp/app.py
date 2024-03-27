@@ -227,7 +227,7 @@ users: Dict[str, "User"] = {
 }
 
 
-class TestForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
+class UserRegisterForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
     # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
     pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User(), aux(8)])
     test = PasswordField('pwd', validators=[DataRequired()])
@@ -243,16 +243,16 @@ class NoCustomValidators(FlaskForm):
     def validate_whatever(form, field):
         raise ValidationError("Test")
 
-class AnotherForm(BaseForm):
+class AddUser(BaseForm):
     test = PasswordField('pwd')
 
     def validate_test(form, field):
         raise ValidationError("Test")
 
-class CustomValidators(FlaskForm):
+class NewUserForm(FlaskForm):
     test = PasswordField('pwd', validators=[aux(10)])
 
-class NoValidators(FlaskForm):
+class Form_signup(FlaskForm):
     test = PasswordField('pwd')
 
 def helper():
@@ -317,7 +317,7 @@ def login(id, password):
 
 @app.get("/signup")
 def signup():
-    form = TestForm(request.POST)
+    form = UserRegisterForm(request.POST)
     # check that form.validate() is called on all forms that have the password field with validators (TODO extra_validators aren't checked for now)
     # TODO can also validate single fields instead of the whole form (not checked for now)
     # if request.POST and form.validate():
@@ -333,10 +333,10 @@ def signup():
 @app.get("/logout")
 @login_required
 def logout():
-    form = TestForm(request.POST)
+    form = UserRegisterForm(request.POST)
     form2 = NoCustomValidators()
-    form3 = NoValidators()
-    form4 = AnotherForm()
+    form3 = NewUserForm()
+    form4 = Form_signup()
     # session.pop("_permanent")
     # session.clear()
     logout_user()

@@ -14,8 +14,7 @@ function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
         /*
         "Password-strength": {
-            "un_flask_wtf_is_used": true,
-            "un_wtforms_is_used": true,
+            "un_form_with_password_field_is_signup": true
         },
         */
         "Login-restrictions": {
