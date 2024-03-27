@@ -20,6 +20,9 @@ function repoUsesRequiredLibraries(resDir) {
         "Login-restrictions": {
             "un_no_authentication_checks_general": false
         },
+        "Explorative-queries": {
+            "un_custom_session_interface": false
+        },
         /*
         "Password-hashing": {
             "un_flask_bcrypt_is_used": true,
@@ -70,23 +73,25 @@ function usesDjangoForEverything(resDir) {
         if (auth.length > 2) {
             return false;
         }
+        */
         login = fs.readFileSync(resDir + "/Login-restrictions/un_no_authentication_checks_general.txt", 'utf-8').split("\n");
         login.pop();
         if (login.length > 2) {
             return false;
         }
-        */
+        /*
         lines = fs.readFileSync(resDir + "/Password-strength/un_using_django_built_in_forms.txt", 'utf-8').split("\n");
         lines.pop();
         if (lines.length > 2) {
             return true;
         }
+        */
+        /*
         passfield = fs.readFileSync(resDir + "/Password-strength/un_using_django_password_field.txt", 'utf-8').split("\n");
         passfield.pop();
         if (passfield.length > 2) {
             return true;
         }
-        /*
         hashing = fs.readFileSync(resDir + "/Password-hashing/un_hash_password_function_is_used.txt", 'utf-8').split("\n");
         strength = fs.readFileSync(resDir + "/Password-strength/un_using_custom_forms_with_validators.txt", 'utf-8').split("\n");
         hashing.pop();
