@@ -7,15 +7,17 @@ let root_dir = "./";
 let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let lang = "";
-let csv_file = '../flask_login_final_whitelist_filtered_merged_list.csv';
-let csv_filter_file = '../flask_login_final_whitelist_filtered_merged_list.csv';
+let csv_file = '../flask_whitelist_filtered_v2.csv';
+let csv_filter_file = '../flask_whitelist_filtered_v2.csv';
 
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
+        /*
         "Password-strength": {
             "un_flask_wtf_is_used": true,
             "un_wtforms_is_used": true,
         },
+        */
         "Login-restrictions": {
             "un_no_authentication_checks_general": false
         },
@@ -177,7 +179,7 @@ let failed_repos = 0;
 let custom_session_engine_repos = 0;
 let number_of_repos = 0;
 for (let i = 0; i < repos.length; i++) {
-    if (whitelist.includes(repos[i])) { // csv[repos[i]] >= starsl && csv[repos[i]] <= starsu
+    // if (whitelist.includes(repos[i])) { // csv[repos[i]] >= starsl && csv[repos[i]] <= starsu
         number_of_repos++;
         let dir = root_dir + "/" + repos[i];
         let res = "";
@@ -228,7 +230,7 @@ for (let i = 0; i < repos.length; i++) {
                 */
             }
         }
-    }
+    // }
 }
 if (flask_repos === 0) {
     [flask_counter, flask_error_counter, false_positives_counter_flask] = initializeCounter(flask_counter, flask_error_counter, false_positives_counter_flask, "flask");

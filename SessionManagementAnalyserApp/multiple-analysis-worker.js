@@ -8,8 +8,8 @@ let lang = "";
 let threads = 0;
 let starsl = 0;
 let starsu = Number.MAX_VALUE;
-let csv_file = '../flask_login_final_whitelist_filtered_merged_list.csv';
-let csv_filter_file = '../flask_login_final_whitelist_filtered_merged_list.csv';
+let csv_file = '../flask_whitelist_filtered_v2.csv';
+let csv_filter_file = '../flask_whitelist_filtered_v2.csv';
 let current_thread = 0;
 
 // Root directory of the projects/repositories/applications, if not specified the current directory will be used
@@ -82,7 +82,7 @@ await new Promise((resolve, reject) => {
         });
 });
 for (let i = 0; i < repos.length; i++) {
-    if (whitelist.includes(repos[i])) { // csv[repos[i]] >= starsl && csv[repos[i]] <= starsu
+    // if (whitelist.includes(repos[i])) { // csv[repos[i]] >= starsl && csv[repos[i]] <= starsu
         let dir = root_dir + "/" + repos[i];
         let repo_subdir = fs.readdirSync(dir);
         let repo = "";
@@ -133,7 +133,7 @@ for (let i = 0; i < repos.length; i++) {
             let repoTimeElapsed = (repoEndTime - repoStartTime)/1000;
             fs.appendFileSync('./log' + current_thread + '.txt', "Time taken to run the queries on " + dir + "/" + repo + ": " + repoTimeElapsed + " seconds.\n");
         // }
-    }
+    // }
 }
 /*
 if (failed.length > 0) {
