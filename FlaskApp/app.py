@@ -12,6 +12,7 @@ from wtforms import Form, PasswordField, ValidationError, BaseForm
 from wtforms import validators
 from wtforms.validators import Length, Regexp, length, DataRequired, Email, EqualTo
 from flask_wtf import FlaskForm
+from flask_wtf.csrf import CSRFProtect
 from passlib.hash import pbkdf2_sha256, argon2, scrypt, bcrypt_sha256, pbkdf2_sha512, sha256_crypt
 from passlib.handlers.bcrypt import bcrypt as bcrpt
 from argon2 import PasswordHasher, Type
@@ -34,6 +35,9 @@ def configuration():
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
+# csrf = CSRFProtect(app)
+csrf = CSRFProtect()
+csrf.init_app(app)
 key = bar()
 
 # Hardcoded and short secret key
@@ -122,6 +126,8 @@ class ConfigClass(BaseConfigClass):
 app.config["SECRET_KEY"] = os.getenv("ENVIRON_KEY")
 app.config["SECRET_KEY"] = os.environ.get("ENVIRON_KEY") or "Thisisasecret"
 # app.config["SESSION_COOKIE_SAMESITE"] = os.environ.get("ENVIRON_SAMESITE")
+
+app.config["WTF_CSRF_CHECK_DEFAULT"] = False # default is True
 
 # TODO Other ways of setting config (don't think these are very used, just need to check how many repos use these and then decide whether to include them or not)
 # app.config.from_mapping()
@@ -244,6 +250,9 @@ class NoCustomValidators(FlaskForm):
         raise ValidationError("Test")
 
 class AddUser(BaseForm):
+    class Meta:
+        csrf = True
+
     test = PasswordField('pwd')
 
     def validate_test(form, field):
@@ -314,7 +323,7 @@ def login(id, password):
         return redirect(next or url_for("index"))
     return "<h1>Invalid user id or password</h1>"
 
-
+@csrf.exempt
 @app.get("/signup")
 def signup():
     form = UserRegisterForm(request.POST)
@@ -357,6 +366,7 @@ def sec():
 # Write a general query that just checks if the application does some config changes in places where it shouldn't (or one query for every config change we are interested in? TODO)
 @app.get("/cookiesfalse")
 def attributest():
+    csrf.protect()
     if not current_user.is_authenticated:
         return login_manager.unauthorized()
     app.config["SESSION_COOKIE_HTTPONLY"] = False
@@ -370,6 +380,8 @@ def attributesf():
     app.config["SESSION_COOKIE_HTTPONLY"] = True
     app.config["REMEMBER_COOKIE_HTTPONLY"] = True
     return "<p>Trying to change cookie attributes to true...</p>"
+
+csrf.exempt(attributesf)
 
 def open_redirect(url):
     return url
