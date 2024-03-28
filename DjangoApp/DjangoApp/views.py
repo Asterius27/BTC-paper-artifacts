@@ -12,6 +12,7 @@ from django.utils.decorators import method_decorator
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django import forms
+from django.views.decorators.csrf import requires_csrf_token, ensure_csrf_cookie, csrf_protect, csrf_exempt
 
 @login_required
 def current_datetime(request):
@@ -32,6 +33,7 @@ def current_datetime(request):
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
 
+@csrf_exempt
 def another_view(rq):
     return HttpResponse("No auth checks")
 
@@ -72,6 +74,7 @@ class ViewClass(View, Mixin):
             return HttpResponse("User authenticated!")
         return HttpResponse("Hello world!")
     
+@method_decorator(csrf_protect)
 class ViewClassNoMixin(View):
 
     def idk(self, request):
