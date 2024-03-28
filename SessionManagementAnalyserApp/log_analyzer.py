@@ -5,9 +5,9 @@ from pathlib import Path
 import sys
 
 # TODO add number of failures (and reasons) per query type
-path = Path(__file__).parent / './old_logs/28 - log_repos_old_commits_flask_login_whitelist_filtered_list'
-output = Path(__file__).parent / './old_logs/28 - log_repos_old_commits_flask_login_whitelist_filtered_list/log_analysis_merged.txt'
-csv_path = Path(__file__).parent / '../flask_login_final_whitelist_filtered_merged_list.csv'
+path = Path(__file__).parent / './old_logs/29 - log_crystallized_dataset_flask'
+output = Path(__file__).parent / './old_logs/29 - log_crystallized_dataset_flask/log_analysis_merged.txt'
+csv_path = Path(__file__).parent / '../flask_whitelist_filtered_v2.csv'
 times = []
 thread_times = []
 failed_repos = []
