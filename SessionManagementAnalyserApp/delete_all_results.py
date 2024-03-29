@@ -10,4 +10,4 @@ for dir_name in repos_dir:
     for subdir in subdirs:
         if subdir.endswith("-results") or subdir.endswith("-database"):
             print(str(repos_path.absolute()) + "/" + dir_name + "/" + subdir)
-            # shutil.rmtree(str(repos_path.absolute()) + "/" + dir_name + "/" + subdir)
+            shutil.rmtree(str(repos_path.absolute()) + "/" + dir_name + "/" + subdir)
