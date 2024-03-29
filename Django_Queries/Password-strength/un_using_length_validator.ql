@@ -8,7 +8,8 @@ class PasswordValidatorsConfiguration extends DataFlow::Configuration {
 
     override predicate isSource(DataFlow::Node source) {
         exists(source.getLocation().getFile().getRelativePath())
-        and source.asExpr() instanceof List
+        and (source.asExpr() instanceof List
+            or source.asExpr() instanceof Tuple)
     }
 
     override predicate isSink(DataFlow::Node sink) {
@@ -32,7 +33,8 @@ string output(KeyValuePair pr) {
 
 from DataFlow::Node source, DataFlow::Node sink, PasswordValidatorsConfiguration config, KeyValuePair pair
 where config.hasFlow(source, sink)
-    and pair = source.asExpr().(List).getAnElt().(Dict).getAnItem()
+    and (pair = source.asExpr().(List).getAnElt().(Dict).getAnItem()
+        or pair = source.asExpr().(Tuple).getAnElt().(Dict).getAnItem())
     and pair.getKey().(StrConst).getS() = "NAME"
     and pair.getValue().(StrConst).getS() = "django.contrib.auth.password_validation.MinimumLengthValidator"
-select pair.getLocation(), source, sink, source.getLocation(), sink.getLocation(), output(source.asExpr().(List).getAnElt().(Dict).getAnItem()), "Using a length password validator"
+select pair.getLocation(), source, sink, source.getLocation(), sink.getLocation(), output(pair), "Using a length password validator"

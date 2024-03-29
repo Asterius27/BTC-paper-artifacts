@@ -8,7 +8,8 @@ class PasswordValidatorsConfiguration extends DataFlow::Configuration {
 
     override predicate isSource(DataFlow::Node source) {
         exists(source.getLocation().getFile().getRelativePath())
-        and source.asExpr() instanceof List
+        and (source.asExpr() instanceof List
+            or source.asExpr() instanceof Tuple)
     }
 
     override predicate isSink(DataFlow::Node sink) {
@@ -23,7 +24,8 @@ class PasswordValidatorsConfiguration extends DataFlow::Configuration {
 
 from DataFlow::Node source, DataFlow::Node sink, PasswordValidatorsConfiguration config, KeyValuePair pair
 where config.hasFlow(source, sink)
-    and pair = source.asExpr().(List).getAnElt().(Dict).getAnItem()
+    and (pair = source.asExpr().(List).getAnElt().(Dict).getAnItem()
+        or pair = source.asExpr().(Tuple).getAnElt().(Dict).getAnItem())
     and pair.getKey().(StrConst).getS() = "NAME"
     and pair.getValue().(StrConst).getS() = "django.contrib.auth.password_validation.CommonPasswordValidator"
 select pair.getLocation(), source, sink, source.getLocation(), sink.getLocation(), "Using a common password validator"

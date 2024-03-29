@@ -7,7 +7,8 @@ class AuthBackendsConfiguration extends DataFlow::Configuration {
 
     override predicate isSource(DataFlow::Node source) {
         exists(source.getLocation().getFile().getRelativePath())
-        and source.asExpr() instanceof List
+        and (source.asExpr() instanceof List
+            or source.asExpr() instanceof Tuple)
     }
 
     override predicate isSink(DataFlow::Node sink) {
@@ -22,6 +23,8 @@ class AuthBackendsConfiguration extends DataFlow::Configuration {
 
 from DataFlow::Node source, DataFlow::Node sink, AuthBackendsConfiguration config
 where config.hasFlow(source, sink)
-    and (not source.asExpr().(List).getAnElt().(StrConst).getS().prefix(29) = "django.contrib.auth.backends."
-        or not exists(source.asExpr().(List).getAnElt().(StrConst).getS().prefix(29)))
+    and (not (source.asExpr().(List).getAnElt().(StrConst).getS().prefix(29) = "django.contrib.auth.backends."
+            or source.asExpr().(Tuple).getAnElt().(StrConst).getS().prefix(29) = "django.contrib.auth.backends.")
+        or not (exists(source.asExpr().(List).getAnElt().(StrConst).getS().prefix(29))
+            or exists(source.asExpr().(Tuple).getAnElt().(StrConst).getS().prefix(29))))
 select source, sink, source.getLocation(), sink.getLocation(), "Using a custom auth backend, so the app might allow deactivated accounts to log in"

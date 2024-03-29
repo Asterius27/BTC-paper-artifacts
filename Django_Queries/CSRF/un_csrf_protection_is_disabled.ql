@@ -6,7 +6,8 @@ class MiddlewareConfiguration extends DataFlow::Configuration {
 
     override predicate isSource(DataFlow::Node source) {
         exists(source.getLocation().getFile().getRelativePath())
-        and source.asExpr() instanceof List
+        and (source.asExpr() instanceof List
+            or source.asExpr() instanceof Tuple)
     }
 
     override predicate isSink(DataFlow::Node sink) {
@@ -21,5 +22,6 @@ class MiddlewareConfiguration extends DataFlow::Configuration {
 
 from DataFlow::Node source, DataFlow::Node sink, MiddlewareConfiguration config
 where config.hasFlow(source, sink)
-    and not source.asExpr().(List).getAnElt().(StrConst).getS() = "django.middleware.csrf.CsrfViewMiddleware"
+    and not (source.asExpr().(List).getAnElt().(StrConst).getS() = "django.middleware.csrf.CsrfViewMiddleware"
+        or source.asExpr().(Tuple).getAnElt().(StrConst).getS() = "django.middleware.csrf.CsrfViewMiddleware")
 select source, source.getLocation(), "Global CSRF protection is disabled"

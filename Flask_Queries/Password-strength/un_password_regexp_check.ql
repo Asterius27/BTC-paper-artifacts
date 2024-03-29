@@ -17,5 +17,6 @@ where (node = API::moduleImport("wtforms").getMember("PasswordField").getParamet
         or node = API::moduleImport("flask_wtf").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink())
     and (validator = API::moduleImport("wtforms").getMember("validators").getMember("Regexp")
         or validator = API::moduleImport("wtforms").getMember("validators").getMember("regexp"))
-    and node.asExpr().(List).getAnElt().getAFlowNode() = validator.getReturn().getAValueReachableFromSource().asCfgNode()
+    and (node.asExpr().(List).getAnElt().getAFlowNode() = validator.getReturn().getAValueReachableFromSource().asCfgNode()
+        or node.asExpr().(Tuple).getAnElt().getAFlowNode() = validator.getReturn().getAValueReachableFromSource().asCfgNode())
 select node, node.getLocation(), "The password is being checked using a regexp", getRegexp(validator)

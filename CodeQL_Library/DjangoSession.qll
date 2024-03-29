@@ -29,7 +29,8 @@ module DjangoSession {
 
         override predicate isSource(DataFlow3::Node source) {
             exists(source.getLocation().getFile().getRelativePath())
-            and source.asExpr() instanceof List
+            and (source.asExpr() instanceof List
+                or source.asExpr() instanceof Tuple)
         }
 
         override predicate isSink(DataFlow3::Node sink) {
@@ -52,15 +53,19 @@ module DjangoSession {
 
         override predicate isSink(DataFlow2::Node sink) {
             exists(sink.getLocation().getFile().getRelativePath())
-            and exists(List lst | 
+            and (exists(List lst | 
                 lst.getElt(0) = sink.asExpr())
+                or exists(Tuple lst | 
+                    lst.getElt(0) = sink.asExpr()))
         }
     }
 
     Parameter getARequestObjectFromFunctionViews() {
         exists(Function f, AssignStmt asgn, Expr name, Keyword k |
             (name = asgn.getValue().(List).getAnElt().(Call).getPositionalArg(1)
-                or (k = asgn.getValue().(List).getAnElt().(Call).getANamedArg().(Keyword)
+                or name = asgn.getValue().(Tuple).getAnElt().(Call).getPositionalArg(1)
+                or ((k = asgn.getValue().(List).getAnElt().(Call).getANamedArg().(Keyword)
+                        or k = asgn.getValue().(Tuple).getAnElt().(Call).getANamedArg().(Keyword))
                     and name = k.getValue()
                     and k.getArg() = "view"))
             and asgn.getATarget().toString() = "urlpatterns"
@@ -73,7 +78,9 @@ module DjangoSession {
     Parameter getARequestObjectFromClassViews(int pos) {
         exists(AssignStmt asgn, Expr name, Keyword k, Class cls | 
             (name = asgn.getValue().(List).getAnElt().(Call).getPositionalArg(1)
-                or (k = asgn.getValue().(List).getAnElt().(Call).getANamedArg().(Keyword)
+                or name = asgn.getValue().(Tuple).getAnElt().(Call).getPositionalArg(1)
+                or ((k = asgn.getValue().(List).getAnElt().(Call).getANamedArg().(Keyword)
+                        or k = asgn.getValue().(Tuple).getAnElt().(Call).getANamedArg().(Keyword))
                     and name = k.getValue()
                     and k.getArg() = "view"))
             and asgn.getATarget().toString() = "urlpatterns"
@@ -129,7 +136,8 @@ module DjangoSession {
         exists(DataFlow3::Node source, DataFlow3::Node sink, DataFlow2::Node source2, DataFlow2::Node sink2, PasswordHashersConfiguration config, PasswordHashersListConfiguration config2 |
             config.hasFlow(source, sink)
             and config2.hasFlow(source2, sink2)
-            and source.asExpr().(List).getElt(0) = sink2.asExpr()
+            and (source.asExpr().(List).getElt(0) = sink2.asExpr()
+                or source.asExpr().(Tuple).getElt(0) = sink2.asExpr())
             and result = sink2.asExpr().(StrConst))
     }
 
