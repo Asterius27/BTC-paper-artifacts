@@ -6,6 +6,7 @@
 // st = skippable query, if skipped the default result of the query is true
 // sf = skippable query, if skipped the default result of the query is false
 let flask = {
+    /*
     "SessionHijacking": {
         "Domain-cookie-attribute": {
             "uf_domain_attribute_remember_cookie": [false, ""],
@@ -40,13 +41,16 @@ let flask = {
             "st_session_cookie_name_prefix": [false, ""]
         }
     },
+    */
     "CSRF": {
+        /*
         "Samesite-cookie-attribute": {
             "ut_samesite_attribute_remember_cookie_manually_set": [false, ""],
             "ut_samesite_attribute_session_cookie_manually_set": [false, ""],
             "st_samesite_attribute_remember_cookie": [false, ""],
             "st_samesite_attribute_session_cookie": [false, ""]
         },
+        */
         "CSRF": {
             "un_disabled_wtf_csrf_check": [false, ""],
             "un_using_csrf_exempt": [false, ""],
@@ -150,12 +154,13 @@ let flask = {
             "un_werkzeug_pbkdf2_is_used": [false, ""],
             "un_werkzeug_scrypt_is_owasp_compliant": [false, ""],
             "un_werkzeug_scrypt_is_used": [false, ""],
-            "ut_password_hashing_algorithm_manually_set": [false, ""],
-            "ut_password_hashing_rounds_manually_set": [false, ""],
-            "sf_password_hashing_algorithm": [false, ""],
-            "sf_password_hashing_rounds": [false, ""]
+            // "ut_password_hashing_algorithm_manually_set": [false, ""],
+            // "ut_password_hashing_rounds_manually_set": [false, ""],
+            // "sf_password_hashing_algorithm": [false, ""],
+            // "sf_password_hashing_rounds": [false, ""]
         }
     },
+    /*
     "AccountDeactivation": {
         "Account-deactivation": {
             "un_deactivation_left_as_default": [false, ""],
@@ -173,11 +178,12 @@ let flask = {
             "sf_deactivated_accounts_handling": [false, ""]
         }
     },
+    */
     "PasswordStrength": {
         "Password-strength": {
-            "un_deform_is_used": [false, ""],
-            "un_passwordmeter_is_used": [false, ""],
-            "un_passwordstrength_is_used": [false, ""],
+            // "un_deform_is_used": [false, ""],
+            // "un_passwordmeter_is_used": [false, ""],
+            // "un_passwordstrength_is_used": [false, ""],
             "un_flask_wtf_is_used": [false, ""],
             "un_wtforms_is_used": [false, ""],
             "un_form_with_password_field": [false, ""],
@@ -196,6 +202,7 @@ let flask = {
 function getFlaskQueries() { return flask; }
 
 let django = {
+    /*
     "SessionHijacking": {
         "Domain-cookie-attribute": {
             "un_domain_attribute_session_cookie": [false, ""]
@@ -215,10 +222,13 @@ let django = {
             "un_session_cookie_name_prefix": [false, ""]
         }
     },
+    */
     "CSRF": {
+        /*
         "Samesite-cookie-attribute": {
             "un_samesite_attribute_session_cookie": [false, ""]
         },
+        */
         "CSRF": {
             "un_csrf_exempt_is_used": [false, ""],
             "un_csrf_protect_is_used": [false, ""],
@@ -227,11 +237,13 @@ let django = {
             "un_requires_csrf_token_is_used": [false, ""]
         }
     },
+    /*
     "InsecureSerialization": {
         "Session-serializer": {
             "un_session_serializer": [false, ""]
         }
     },
+    */
     "ClientSideSessionIvalidation": {
         "Logout-session-invalidation": {
             "un_client_side_session": [false, ""]
@@ -261,11 +273,13 @@ let django = {
             "un_secret_key": [false, ""]
         }
     },
+    /*
     "PasswordTheft": {
         "Redirect-everything-to-HTTPS": {
             "un_secure_ssl_redirect": [false, ""]
         }
     },
+    */
     "ExplorativeQueries": {
         "Explorative-queries": {
             "un_list_config_settings_from_env_var": [false, ""],
