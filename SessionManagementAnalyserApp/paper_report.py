@@ -144,10 +144,12 @@ counter_session_protection_basic = len(session_protection_basic)
 counter_session_protection_strong = len(session_protection_strong_set)
 saveDictsToFile(["no_session_protection"], [no_session_protection], [[session_protection_none, no_fresh_login]]) # TODO test this
 report = """
-<p>There were {} flask repos, of which {} didn't use session protection ({} %), {} used basic session protection ({} %) and {} used strong sessoin protection ({} %)</p>
+<p>There were {} flask repos, of which <a href="{}">{}</a> didn't use session protection ({} %), 
+<a href="{}">{}</a> used basic session protection ({} %) and 
+<a href="{}">{}</a> used strong sessoin protection ({} %)</p>
 """
-report_html = report.format(str(counter_flask), str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)), 
-                            str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
-                            str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)))
+report_html = report.format(str(counter_flask), "./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)), 
+                            "", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
+                            "", str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)))
 with open("report.html", "w") as file:
     file.write(report_html)
