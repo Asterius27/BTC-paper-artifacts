@@ -30,9 +30,6 @@ import colander
 def bar():
     return "secret_key"
 
-def configuration():
-    app.config["SESSION_COOKIE_HTTPONLY"] = False
-
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 # csrf = CSRFProtect(app)
@@ -104,6 +101,10 @@ class ConfigClass(BaseConfigClass):
     a = 10
     # Flask settings
     # SECRET_KEY = 'This is an INSECURE secret!! DO NOT use this in production!!'
+
+def configuration(config_class=FlaskConfig):
+    app.config["SESSION_COOKIE_HTTPONLY"] = False
+    app.config.from_object(config_class)
 
 # conf = ConfigClass()
 # app.config.from_object(__name__+'.ConfigClass') # can also pass an imported module as a parameter

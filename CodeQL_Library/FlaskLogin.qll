@@ -42,6 +42,18 @@ module FlaskLogin {
             and result = asgn.getValue())
     }
 
+    Expr getConfigValueFromObjectFile(string config_name, API::Node config) {
+        exists(DataFlow::Node node, AssignStmt asg | 
+            (node = config.getMember("from_object").getParameter(0).getAValueReachingSink()
+                or node = config.getMember("from_object").getKeywordParameter("obj").getAValueReachingSink())
+            and exists(Variable v, AssignStmt asgn | 
+                asgn.defines(v)
+                and v.getId() = config_name
+                and exists(asgn.getLocation().getFile().getRelativePath().indexOf(node.asExpr().(StrConst).getS().splitAt(".")))
+                and asgn = asg)
+            and result = asg.getValue())
+    }
+
     Expr getConfigValueFromPyFile(string config_name, API::Node config) {
         exists(DataFlow::Node node, AssignStmt asg | 
             (node = config.getMember("from_pyfile").getParameter(0).getAValueReachingSink()
@@ -81,6 +93,7 @@ module FlaskLogin {
         exists(Expr expr, API::Node config | 
             config = Flask::FlaskApp::instance().getMember("config")
             and (expr = getConfigValueFromObject(config_name, config)
+                or expr = getConfigValueFromObjectFile(config_name, config)
                 or expr = getConfigValueFromPyFile(config_name, config)
                 or expr = getConfigValueFromAssignment(config_name, config)
                 or expr = getConfigValueFromDictionary(config_name, config))
@@ -104,6 +117,7 @@ module FlaskLogin {
         exists(API::Node config | 
             config = Flask::FlaskApp::instance().getMember("config")
             and (exists(getConfigValueFromObject(config_name, config))
+                or exists(getConfigValueFromObjectFile(config_name, config))
                 or exists(getConfigValueFromPyFile(config_name, config))
                 or exists(getConfigValueFromAssignment(config_name, config))
                 or exists(getConfigValueFromDictionary(config_name, config)))
