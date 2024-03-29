@@ -46,6 +46,14 @@ let flask = {
             "ut_samesite_attribute_session_cookie_manually_set": [false, ""],
             "st_samesite_attribute_remember_cookie": [false, ""],
             "st_samesite_attribute_session_cookie": [false, ""]
+        },
+        "CSRF": {
+            "un_disabled_wtf_csrf_check": [false, ""],
+            "un_using_csrf_exempt": [false, ""],
+            "un_using_csrf_protect": [false, ""],
+            "un_using_flaskform": [false, ""],
+            "un_using_flaskwtf_csrf_protection": [false, ""],
+            "un_using_wtforms_csrf_protection": [false, ""]
         }
     },
     /*
@@ -210,6 +218,13 @@ let django = {
     "CSRF": {
         "Samesite-cookie-attribute": {
             "un_samesite_attribute_session_cookie": [false, ""]
+        },
+        "CSRF": {
+            "un_csrf_exempt_is_used": [false, ""],
+            "un_csrf_protect_is_used": [false, ""],
+            "un_csrf_protection_is_disabled": [false, ""],
+            "un_ensure_csrf_cookie_is_used": [false, ""],
+            "un_requires_csrf_token_is_used": [false, ""]
         }
     },
     "InsecureSerialization": {
@@ -346,6 +361,19 @@ let descriptions = {
             "samesite_attribute_session_cookie_manually_set": "SameSite session cookie attribute is manually set",
             "samesite_attribute_remember_cookie": "SameSite remember cookie attribute not set",
             "samesite_attribute_session_cookie": "SameSite session cookie attribute not set"
+        },
+        "CSRF": {
+            "disabled_wtf_csrf_check": "Flask-WTF CSRF protection is manually disabled",
+            "using_csrf_exempt": "Flask-WTF csrf protection is disabled selectively using csrf exempt",
+            "using_csrf_protect": "Flask-WTF csrf protection is enabled selectively using csrf protect",
+            "using_flaskform": "FlaskForm is being used, which already has csrf protection enabled",
+            "using_flaskwtf_csrf_protection": "Flask-WTF csrf protection is enabled globally",
+            "using_wtforms_csrf_protection": "WTForms csrf protection is enabled for some forms",
+            "csrf_exempt_is_used": "The application is disabling csrf protection for certain views (Django)",
+            "csrf_protect_is_used": "The application is enabling csrf protection for certain views (Django)",
+            "csrf_protection_is_disabled": "Global CSRF protection is disabled (Django)",
+            "ensure_csrf_cookie_is_used": "The application is forcing certain views to send the CSRF cookie (Django)",
+            "requires_csrf_token_is_used": "The application is using requires_csrf_token for certain views (works similarly to csrf_protect, but never rejects an incoming request) (Django)"
         }
     },
     "ClientSideSessionIvalidation": {
@@ -516,7 +544,7 @@ let config = {
         "element_id": 'session_fixation'
     },
     "CSRF": {
-        "options": 'var options = {"title":"CSRF","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "options": 'var options = {"title":"CSRF","width":1500,"height":1500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'csrf'
     },
     "ClientSideSessionIvalidation": {
