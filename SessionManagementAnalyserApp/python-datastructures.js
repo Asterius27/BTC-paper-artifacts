@@ -269,7 +269,16 @@ let django = {
     "ExplorativeQueries": {
         "Explorative-queries": {
             "un_list_config_settings_from_env_var": [false, ""],
-            "un_potential_false_positives": [false, ""]
+            "un_potential_false_positives": [false, ""],
+            "un_allauth_is_used": [false, ""],
+            "un_dj_rest_auth_is_used": [false, ""],
+            "un_django_registration_macropin_is_used": [false, ""],
+            "un_django_registration_ubernostrum_is_used": [false, ""],
+            "un_django_rest_framework_is_used": [false, ""],
+            "un_django_rest_registration_is_used": [false, ""],
+            "un_django_user_accounts_is_used": [false, ""],
+            "un_django_xadmin_is_used": [false, ""],
+            "un_djoser_is_used": [false, ""]
         }
     },
     "AccountDeactivation": {
@@ -429,7 +438,16 @@ let descriptions = {
             "config_set_from_env_var": "How many repos set the whole flask config object from an environment variable",
             "config_set_from_file_mapping_keys": "How many repos set the whole flask config object using the from_file or from_mapping or fromkeys functions",
             "list_config_settings_from_env_var": "How many repos set one or more config settings from environment variables (using for example os.environ.get())",
-            "potential_false_positives": "The repo sets some config settings (e.g. the secret key) multiple times at different points of the codebase"
+            "potential_false_positives": "The repo sets some config settings (e.g. the secret key) multiple times at different points of the codebase",
+            "allauth_is_used": "Allauth is being used by the application",
+            "dj_rest_auth_is_used": "dj_rest_auth is being used by the application",
+            "django_registration_macropin_is_used": "django registration (macropin) is being used by the application",
+            "django_registration_ubernostrum_is_used": "django registration (ubernostrum) is being used by the application",
+            "django_rest_framework_is_used": "django-rest-framework is being used by the application",
+            "django_rest_registration_is_used": "django-rest-registration is being used by the application",
+            "django_user_accounts_is_used": "django-user-accounts is being used by the application",
+            "django_xadmin_is_used": "django xadmin is being used by the application",
+            "djoser_is_used": "djoser is being used by the application"
         }
     },
     "PasswordHashing": {
