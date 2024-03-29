@@ -971,7 +971,7 @@ function libraryUsagesGrep() {
     });
 }
 
-downloadAndExtractRepos('../django_whitelist_filtered_v2.csv');
+// downloadAndExtractRepos('../django_whitelist_filtered_v2.csv');
 // downloadAndExtractOldCommits('../flask_login_final_whitelist_filtered_merged_list.csv', '../mid_commits.csv')
 // downloadREADMEs('../flask_filtered.csv');
 // findInterestingRepos("Secure-cookie-attribute", "sf_secure_attribute_session_cookie_manually_disabled.txt", true, 0, Number.MAX_VALUE, './repos_with_interesting_results/9bis - repos_with_manually_disabled_secure_session_cookie_flask_login_final_filtered_merged_list.txt'); // if third parameter is set to true it will look for queries that returned a result, otherwise it will look for queries that didn't return a result
@@ -1018,6 +1018,6 @@ downloadAndExtractRepos('../django_whitelist_filtered_v2.csv');
 // findOverlappingResultsInRepos({"Password-hashing": ["un_werkzeug_is_used.txt", "un_werkzeug_pbkdf2_is_used.txt", "un_werkzeug_scrypt_is_used.txt"]}, [true, false, false], './repos_with_interesting_results/27 - repos_using_werkzeug_and_not_scrypt_or_pbkdf2_flask_login_whitelist_filtered_list.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
-// deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]});
+deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]}); // TODO
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
