@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import shutil
 
-repos_path = Path(__file__).parent / './repositories/Flask'
+repos_path = Path(__file__).parent / './repositories/Django'
 
 repos_dir = os.listdir(repos_path.absolute())
 for dir_name in repos_dir:
