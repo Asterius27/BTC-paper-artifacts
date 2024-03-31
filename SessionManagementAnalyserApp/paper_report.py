@@ -113,13 +113,13 @@ def saveDictsToFile(fileNames, sets, dicts):
 def getPercentage(value, total):
     if total == 0:
         return 0
-    return (value / total) * 100
+    return round((value / total) * 100, 2)
 
 csv_dict = loadCSV(Path(__file__).parent / '../flask_whitelist_filtered_v2.csv')
 flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", True, csv_dict)
 flask_login_required_usage = extractResults("Flask", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
 flask_custom_session_interface = extractResults("Flask", "Explorative-queries", "un_custom_session_interface", False, csv_dict)
-flask_potential_false_positives = extractFalsePositives("Flask", "Explorative-queries", "un_potential_false_positives", "sf_session_protection sf_session_protection_strong uf_session_protection_basic ", True, csv_dict) # TODO test this
+flask_potential_false_positives = extractFalsePositives("Flask", "Explorative-queries", "un_potential_false_positives", "sf_session_protection sf_session_protection_strong uf_session_protection_basic ", True, csv_dict) # TODO check this
 session_protection_none = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection", True, csv_dict)
 no_fresh_login = extractResults("Flask", "Flask-login-session-protection", "uf_session_protection_basic", True, csv_dict)
 session_protection_strong = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection_strong", True, csv_dict)
@@ -144,11 +144,11 @@ counter_session_protection_basic = len(session_protection_basic)
 counter_session_protection_strong = len(session_protection_strong_set)
 saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives"], 
                 [no_session_protection, session_protection_basic, session_protection_strong_set, keys7], 
-                [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [flask_potential_false_positives]]) # TODO test this
+                [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [flask_potential_false_positives]]) # TODO check this
 report = """
-<p>There were {} flask repos, of which <a href="{}">{}</a> didn't use session protection ({} %), 
-<a href="{}">{}</a> used basic session protection ({} %) and 
-<a href="{}">{}</a> used strong sessoin protection ({} %)</p>
+<p>There were {} flask repos, of which <a href="{}" target="_blank">{}</a> didn't use session protection ({} %), 
+<a href="{}" target="_blank">{}</a> used basic session protection ({} %) and 
+<a href="{}" target="_blank">{}</a> used strong sessoin protection ({} %)</p>
 """
 report_html = report.format(str(counter_flask), "./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)), 
                             "./session_protection_basic.txt", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
