@@ -58,7 +58,7 @@ var data = new google.visualization.arrayToDataTable([
 ["The application is forcing certain views to send the CSRF cookie (Django)", 0, "Flask/Flask-login: 0 (0.00 %)", 0, "Failed Flask Queries: 0 (0.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ["The application is using requires_csrf_token for certain views (works similarly to csrf_protect, but never rejects an incoming request) (Django)", 0, "Flask/Flask-login: 0 (0.00 %)", 0, "Failed Flask Queries: 0 (0.00 %)", 0, "Django: 0 (0.00 %)", 0, "Failed Django Queries: 0 (0.00 %)", ""],
 ]);
-var options = {"title":"CSRF","width":1500,"height":1500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
+var options = {"title":"CSRF","width":1500,"height":1800,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};
 var chart = new google.visualization.BarChart(document.getElementById("csrf"));
 chart.draw(data, options);
 }

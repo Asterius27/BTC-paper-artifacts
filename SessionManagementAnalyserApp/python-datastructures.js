@@ -576,7 +576,7 @@ let config = {
         "element_id": 'session_fixation'
     },
     "CSRF": {
-        "options": 'var options = {"title":"CSRF","width":1500,"height":1500,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "options": 'var options = {"title":"CSRF","width":1500,"height":1800,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'csrf'
     },
     "ClientSideSessionIvalidation": {
