@@ -1,0 +1,44 @@
+URL: https://github.com/pantunes/xtcryptosignals
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/pantunes_xtcryptosignals/pantunes-xtcryptosignals-0553684-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                  col1                                                                                                  |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/pantunes_xtcryptosignals/pantunes-xtcryptosignals-0553684/xtcryptosignals/client/api/user/views.py:90 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/pantunes_xtcryptosignals/pantunes-xtcryptosignals-0553684/xtcryptosignals/client/api/auth/views.py:63 |
+
+
+
+URL: https://github.com/paxswill/evesrp
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/paxswill_evesrp/paxswill-evesrp-01e3658-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                  col1                                                                                   |
++------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/paxswill_evesrp/paxswill-evesrp-01e3658/src/evesrp/auth/__init__.py:66 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/paxswill_evesrp/paxswill-evesrp-01e3658/src/evesrp/auth/oauth.py:101   |
+
+
+
+URL: https://github.com/cryptoadvance/specter-desktop
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/cryptoadvance_specter-desktop/cryptoadvance-specter-desktop-a052373-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                     col1                                                                                                     |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/cryptoadvance_specter-desktop/cryptoadvance-specter-desktop-a052373/src/cryptoadvance/specter/server.py:199 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/cryptoadvance_specter-desktop/cryptoadvance-specter-desktop-a052373/tests/test_services.py:136              |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/cryptoadvance_specter-desktop/cryptoadvance-specter-desktop-a052373/tests/test_services.py:150              |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/cryptoadvance_specter-desktop/cryptoadvance-specter-desktop-a052373/tests/test_services.py:162              |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/cryptoadvance_specter-desktop/cryptoadvance-specter-desktop-a052373/tests/test_services.py:192              |
+
+
+
+URL: https://github.com/secompufscar/site-secomp
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/secompufscar_site-secomp/secompufscar-site-secomp-7d74d37-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                 col1                                                                                                  |
++------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/secompufscar_site-secomp/secompufscar-site-secomp-7d74d37/app/controllers/routes/conteudo.py:87      |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/secompufscar_site-secomp/secompufscar-site-secomp-7d74d37/app/controllers/routes/participantes.py:78 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/secompufscar_site-secomp/secompufscar-site-secomp-7d74d37/app/controllers/routes/views.py:175        |
+
+
+
