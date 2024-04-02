@@ -211,7 +211,7 @@ saveDictsToFile(["custom_password_validators", "length_password_validators", "re
                 [[custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators]])
 saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally"],
                 [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled],
-                [[keys_csrf_enabled_globally], [keys_using_csrf_exempt, keys_disabled_flask_wtf_csrf_protection], [keys_using_flaskform_csrf, keys_using_csrf_protect, keys_using_wtforms_csrf_protection], [repos]])
+                [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage]])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> flask repos for Session Management and <a href="{}" target="_blank">{}</a> flask repos for Account Creation<br></p>
