@@ -138,6 +138,8 @@ using_flaskform_csrf = extractResults("Flask", "CSRF", "un_using_flaskform", Tru
 disabled_flask_wtf_csrf_protection = extractResults("Flask", "CSRF", "un_disabled_wtf_csrf_check", True, csv_dict)
 using_wtforms_csrf_protection = extractResults("Flask", "CSRF", "un_using_wtforms_csrf_protection", True, csv_dict)
 
+form_with_password_field = extractResults("Flask", "Password-strength", "un_form_with_password_field", True, csv_dict)
+
 keys_flask_login_usages = set(flask_login_usage)
 keys_flask_login_required_usages = set(flask_login_required_usage)
 keys_flask_custom_session_interface = set(flask_custom_session_interface)
@@ -177,6 +179,9 @@ csrf_protection_global_selectively_disabled = repos.intersection(keys_using_csrf
 csrf_protection_selectively_activated = repos.difference(csrf_protection_global).intersection(keys_using_flaskform_csrf.union(keys_using_csrf_protect).union(keys_using_wtforms_csrf_protection))
 csrf_protection_disabled = repos.difference(keys_csrf_enabled_globally).difference(keys_using_flaskform_csrf.union(keys_using_wtforms_csrf_protection))
 
+keys_form_with_password_field = set(form_with_password_field)
+temp = keys_form_with_password_field.difference(keys_account_creation)
+
 counter_flask = len(repos)
 counter_account_creation = len(keys_account_creation)
 
@@ -199,19 +204,22 @@ counter_csrf_deactivated_selectively = len(csrf_protection_global_selectively_di
 counter_csrf_activated_selectively = len(csrf_protection_selectively_activated)
 counter_csrf_deactivated = len(csrf_protection_disabled)
 
-saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
-saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection"],
-                [no_session_protection, session_protection_basic, session_protection_strong_set, keys_session_protection_potential_false_positives],
-                [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives]])
-saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys"],
-                [hardcoded_secret_key_set, keys_hardcoded_secret_key_potential_false_positives],
-                [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives]])
-saveDictsToFile(["custom_password_validators", "length_password_validators", "regexp_password_validators", "length_and_regexp_password_validators"],
-                [keys_custom_password_validators, keys_length_password_validators, keys_regexp_password_validators, length_and_regexp_password_validators],
-                [[custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators]])
-saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally"],
-                [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled],
-                [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage]])
+#saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
+#saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection"],
+#                [no_session_protection, session_protection_basic, session_protection_strong_set, keys_session_protection_potential_false_positives],
+#                [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives]])
+#saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys"],
+#                [hardcoded_secret_key_set, keys_hardcoded_secret_key_potential_false_positives],
+#                [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives]])
+#saveDictsToFile(["custom_password_validators", "length_password_validators", "regexp_password_validators", "length_and_regexp_password_validators"],
+#                [keys_custom_password_validators, keys_length_password_validators, keys_regexp_password_validators, length_and_regexp_password_validators],
+#               [[custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators]])
+#saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally"],
+#                [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled],
+#                [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage]])
+saveDictsToFile(["form_with_password_field"],
+                [temp],
+                [[form_with_password_field]])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> flask repos for Session Management and <a href="{}" target="_blank">{}</a> flask repos for Account Creation<br></p>
@@ -258,5 +266,5 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./session_protection_basic.txt", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
                             "./session_protection_strong.txt", str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)),
                             "./potential_false_positives_session_protection.txt", str(counter_session_protection_false_positives), str(getPercentage(counter_session_protection_false_positives, counter_flask)))
-with open(str(path.absolute()) + "/report.html", "w") as file:
-    file.write(report_html)
+#with open(str(path.absolute()) + "/report.html", "w") as file:
+#    file.write(report_html)
