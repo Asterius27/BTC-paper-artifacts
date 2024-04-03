@@ -10,7 +10,7 @@ import { resolve } from "path";
 import { pipeline } from "stream/promises";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
-const framework = "Django"; // "Flask"
+const framework = "Flask"; // "Django"
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
 let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]; // TODO add more, have to make it more precise
@@ -1018,6 +1018,6 @@ function libraryUsagesGrep() {
 // findOverlappingResultsInRepos({"Password-hashing": ["un_werkzeug_is_used.txt", "un_werkzeug_pbkdf2_is_used.txt", "un_werkzeug_scrypt_is_used.txt"]}, [true, false, false], './repos_with_interesting_results/27 - repos_using_werkzeug_and_not_scrypt_or_pbkdf2_flask_login_whitelist_filtered_list.txt');
 // deleteQueriesResults({"Password-strength": ["un_using_django_built_in_forms"]});
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
-deleteQueriesResults({"Logout-function-is-called": ["un_logout_function_is_called"]}); // TODO
+deleteQueriesResults({"Password-hashing": ["un_hashlib_is_used"], "Explorative-queries": ["un_potential_false_positives"]});
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();
