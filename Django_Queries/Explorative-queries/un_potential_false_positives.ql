@@ -11,9 +11,14 @@ AssignStmt aux(string configsetting) {
 
 bindingset[configsetting, queryname]
 string auxx(string configsetting, string queryname) {
-    if count(AssignStmt asgn | asgn = aux(configsetting)) > 1
-    then result = queryname + " " + aux(configsetting).getLocation()
-    else none()
+    exists(AssignStmt asgn1, AssignStmt asgn2 |
+        asgn1 = aux(configsetting)
+        and asgn2 = aux(configsetting)
+        and asgn1 != asgn2
+        and exists(asgn1.getLocation().getFile().getRelativePath())
+        and exists(asgn2.getLocation().getFile().getRelativePath())
+        and asgn1.getLocation().toString() != asgn2.getLocation().toString()
+        and result = queryname + " " + asgn1 + " " + asgn1.getLocation() + " " + asgn2 + " " + asgn2.getLocation())
 }
 
 string output() {

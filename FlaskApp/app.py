@@ -46,7 +46,7 @@ login_manager.init_app(app)
 
 # Session protection with fresh_login_required (in sec() function) (secure implementation)
 login_manager.session_protection = "basic"
-login_manager.session_protection = None
+# login_manager.session_protection = None
 
 # Javascript access to cookies (insecure) (HTTPOnly attribute), default is True
 # z = app.config

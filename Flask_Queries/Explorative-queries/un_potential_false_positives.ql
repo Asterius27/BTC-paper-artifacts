@@ -8,35 +8,43 @@ DataFlow::Node getSessionProtectionSource() {
         and result = n)
 }
 
-string auxsk(Expr expr) {
-    if count(Expr exp | exp = FlaskLogin::getConfigValue("SECRET_KEY", "secret_key") | exp) > 1
-    then expr = FlaskLogin::getConfigValue("SECRET_KEY", "secret_key")
-        and exists(expr.getLocation().getFile().getRelativePath())
-        and result = "un_secret_key " + expr.getLocation()
-    else none()
+string auxsk() {
+    exists(Expr expr1, Expr expr2 |
+        expr1 = FlaskLogin::getConfigValue("SECRET_KEY", "secret_key")
+        and expr2 = FlaskLogin::getConfigValue("SECRET_KEY", "secret_key")
+        and expr1 != expr2
+        and exists(expr1.getLocation().getFile().getRelativePath())
+        and exists(expr2.getLocation().getFile().getRelativePath())
+        and expr1.getLocation().toString() != expr2.getLocation().toString()
+        and result = "un_secret_key " + expr1 + " " + expr1.getLocation() + " " + expr2 + " " + expr2.getLocation())
 }
 
-string auxsp(Expr expr) {
-    if count(Expr exp | exp = getSessionProtectionSource().asExpr() | exp) > 1
-    then expr = getSessionProtectionSource().asExpr()
-        and exists(expr.getLocation().getFile().getRelativePath())
-        and result = "sf_session_protection sf_session_protection_strong uf_session_protection_basic " + expr.getLocation()
-    else none()
+string auxsp() {
+    exists(Expr expr1, Expr expr2 |
+        expr1 = getSessionProtectionSource().asExpr()
+        and expr2 = getSessionProtectionSource().asExpr()
+        and expr1 != expr2
+        and exists(expr1.getLocation().getFile().getRelativePath())
+        and exists(expr2.getLocation().getFile().getRelativePath())
+        and expr1.getLocation().toString() != expr2.getLocation().toString()
+        and result = "sf_session_protection sf_session_protection_strong uf_session_protection_basic " + expr1 + " " + expr1.getLocation() + " " + expr2 + " " + expr2.getLocation())
 }
 
-string auxsi(Expr expr) {
-    if count(Expr exp | exp = FlaskLogin::getConfigValueFromAttribute("session_interface") | exp) > 1
-    then expr = FlaskLogin::getConfigValueFromAttribute("session_interface")
-        and exists(expr.getLocation().getFile().getRelativePath())
-        and result = "un_custom_session_interface " + expr.getLocation()
-    else none()
+string auxsi() {
+    exists(Expr expr1, Expr expr2 |
+        expr1 = FlaskLogin::getConfigValueFromAttribute("session_interface")
+        and expr2 = FlaskLogin::getConfigValueFromAttribute("session_interface")
+        and expr1 != expr2
+        and exists(expr1.getLocation().getFile().getRelativePath())
+        and exists(expr2.getLocation().getFile().getRelativePath())
+        and expr1.getLocation().toString() != expr2.getLocation().toString()
+        and result = "un_custom_session_interface " + expr1 + " " + expr1.getLocation() + " " + expr2 + " " + expr2.getLocation())
 }
 
-string aux(Expr node) {
-    result = auxsk(node)
-    or result = auxsp(node)
-    or result = auxsi(node)
+string aux() {
+    result = auxsk()
+    or result = auxsp()
+    or result = auxsi()
 }
 
-from Expr node
-select aux(node)
+select aux()
