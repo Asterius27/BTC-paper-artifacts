@@ -4,8 +4,7 @@ import semmle.python.ApiGraphs
 from Class cls, AssignStmt asgn, Class meta
 where exists(cls.getLocation().getFile().getRelativePath())
     and (cls.getABase().toString() = "Form"
-        or cls.getABase().toString() = "BaseForm"
-        or cls.getABase().toString() = "FlaskForm")
+        or cls.getABase().toString() = "BaseForm")
     and meta = cls.getAStmt().(ClassDef).getDefinedClass()
     and meta.getName() = "Meta"
     and asgn = meta.getAStmt().(AssignStmt)
