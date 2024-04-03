@@ -2,7 +2,8 @@ from pathlib import Path
 import os
 import csv
 
-path = Path(__file__).parent / './paper_report'
+path = Path(__file__).parent / './paper_reports/paper_report'
+path.mkdir(exist_ok=True)
 
 def loadCSV(csvFile):
     repos = {}
@@ -137,8 +138,33 @@ using_csrf_protect = extractResults("Flask", "CSRF", "un_using_csrf_protect", Tr
 using_flaskform_csrf = extractResults("Flask", "CSRF", "un_using_flaskform", True, csv_dict)
 disabled_flask_wtf_csrf_protection = extractResults("Flask", "CSRF", "un_disabled_wtf_csrf_check", True, csv_dict)
 using_wtforms_csrf_protection = extractResults("Flask", "CSRF", "un_using_wtforms_csrf_protection", True, csv_dict)
+argon2_is_used = extractResults("Flask", "Password-hashing", "un_argon2_is_used", True, csv_dict)
+argon2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_argon2_is_owasp_compliant", True, csv_dict)
+bcrypt_is_used = extractResults("Flask", "Password-hashing", "un_bcrypt_is_used", True, csv_dict)
+bcrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_bcrypt_is_owasp_compliant", True, csv_dict)
+flask_bcrypt_is_used = extractResults("Flask", "Password-hashing", "un_flask_bcrypt_is_used", True, csv_dict)
+flask_bcrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_flask_bcrypt_is_owasp_compliant", True, csv_dict)
+passlib_is_used = extractResults("Flask", "Password-hashing", "un_passlib_is_used", True, csv_dict)
+passlib_argon2_is_used = extractResults("Flask", "Password-hashing", "un_passlib_argon2_is_used", True, csv_dict)
+passlib_argon2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_argon2_is_owasp_compliant", True, csv_dict)
+passlib_bcrypt_is_used = extractResults("Flask", "Password-hashing", "un_passlib_bcrypt_is_used", True, csv_dict)
+passlib_bcrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_bcrypt_is_owasp_compliant", True, csv_dict)
+passlib_pbkdf2_is_used = extractResults("Flask", "Password-hashing", "un_passlib_pbkdf2_is_used", True, csv_dict)
+passlib_pbkdf2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_pbkdf2_is_owasp_compliant", True, csv_dict)
+passlib_scrypt_is_used = extractResults("Flask", "Password-hashing", "un_passlib_scrypt_is_used", True, csv_dict)
+passlib_scrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_scrypt_is_owasp_compliant", True, csv_dict)
+werkzeug_is_used = extractResults("Flask", "Password-hashing", "un_werkzeug_is_used", True, csv_dict)
+werkzeug_pbkdf2_is_used = extractResults("Flask", "Password-hashing", "un_werkzeug_pbkdf2_is_used", True, csv_dict)
+werkzeug_pbkdf2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_werkzeug_pbkdf2_is_owasp_compliant", True, csv_dict)
+werkzeug_scrypt_is_used = extractResults("Flask", "Password-hashing", "un_werkzeug_scrypt_is_used", True, csv_dict)
+werkzeug_scrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_werkzeug_scrypt_is_owasp_compliant", True, csv_dict)
+hashlib_is_used = extractResults("Flask", "Password-hashing", "un_hashlib_is_used", True, csv_dict)
+hashlib_pbkdf2_is_used = extractResults("Flask", "Password-hashing", "un_hashlib_pbkdf2_is_used", True, csv_dict)
+hashlib_pbkdf2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_hashlib_pbkdf2_is_owasp_compliant", True, csv_dict)
+hashlib_scrypt_is_used = extractResults("Flask", "Password-hashing", "un_hashlib_scrypt_is_used", True, csv_dict)
+hashlib_scrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_hashlib_scrypt_is_owasp_compliant", True, csv_dict)
 
-form_with_password_field = extractResults("Flask", "Password-strength", "un_form_with_password_field", True, csv_dict)
+using_more_than_one_password_field = extractResults("Flask", "Password-strength", "un_form_with_two_password_fields", True, csv_dict)
 
 keys_flask_login_usages = set(flask_login_usage)
 keys_flask_login_required_usages = set(flask_login_required_usage)
@@ -175,12 +201,27 @@ keys_using_flaskform_csrf = set(using_flaskform_csrf)
 keys_disabled_flask_wtf_csrf_protection = set(disabled_flask_wtf_csrf_protection)
 keys_using_wtforms_csrf_protection = set(using_wtforms_csrf_protection)
 csrf_protection_global = repos.intersection(keys_csrf_enabled_globally.difference(keys_using_csrf_exempt).difference(keys_disabled_flask_wtf_csrf_protection))
-csrf_protection_global_selectively_disabled = repos.intersection(keys_using_csrf_exempt.union(keys_disabled_flask_wtf_csrf_protection))
-csrf_protection_selectively_activated = repos.difference(csrf_protection_global).intersection(keys_using_flaskform_csrf.union(keys_using_csrf_protect).union(keys_using_wtforms_csrf_protection))
+csrf_protection_global_selectively_disabled = repos.intersection(keys_csrf_enabled_globally).intersection(keys_using_csrf_exempt.union(keys_disabled_flask_wtf_csrf_protection))
+csrf_protection_selectively_activated = repos.difference(keys_csrf_enabled_globally.difference(keys_disabled_flask_wtf_csrf_protection)).intersection(keys_using_flaskform_csrf.union(keys_using_csrf_protect).union(keys_using_wtforms_csrf_protection))
 csrf_protection_disabled = repos.difference(keys_csrf_enabled_globally).difference(keys_using_flaskform_csrf.union(keys_using_wtforms_csrf_protection))
 
-keys_form_with_password_field = set(form_with_password_field)
-temp = keys_form_with_password_field.difference(keys_account_creation)
+keys_argon2_is_used = keys_account_creation.intersection(set(argon2_is_used).union(set(passlib_argon2_is_used)))
+keys_bcrypt_is_used = keys_account_creation.intersection(set(bcrypt_is_used).union(set(flask_bcrypt_is_used)).union(set(passlib_bcrypt_is_used)))
+keys_scrypt_is_used = keys_account_creation.intersection(set(hashlib_scrypt_is_used).union(set(passlib_scrypt_is_used)).union(set(werkzeug_scrypt_is_used)))
+keys_pbkdf2_is_used = keys_account_creation.intersection(set(hashlib_pbkdf2_is_used).union(set(passlib_pbkdf2_is_used)).union(set(werkzeug_pbkdf2_is_used)))
+keys_argon2_is_owasp_compliant = keys_account_creation.intersection(set(argon2_is_owasp_compliant).union(set(passlib_argon2_is_owasp_compliant)))
+keys_bcrypt_is_owasp_compliant = keys_account_creation.intersection(set(bcrypt_is_owasp_compliant).union(set(flask_bcrypt_is_owasp_compliant)).union(set(passlib_bcrypt_is_owasp_compliant)))
+keys_scrypt_is_owasp_compliant = keys_account_creation.intersection(set(hashlib_scrypt_is_owasp_compliant).union(set(passlib_scrypt_is_owasp_compliant)).union(set(werkzeug_scrypt_is_owasp_compliant)))
+keys_pbkdf2_is_owasp_compliant = keys_account_creation.intersection(set(hashlib_pbkdf2_is_owasp_compliant).union(set(passlib_pbkdf2_is_owasp_compliant)).union(set(werkzeug_pbkdf2_is_owasp_compliant)))
+repos_with_password_hashing = keys_account_creation.intersection(set(argon2_is_used).union(set(bcrypt_is_used)).union(set(flask_bcrypt_is_used)).union(set(passlib_is_used)).union(set(werkzeug_is_used)).union(set(hashlib_is_used)))
+repos_using_argon2_not_owasp_compliant = keys_argon2_is_used.difference(keys_argon2_is_owasp_compliant)
+repos_using_bcrypt_not_owasp_compliant = keys_bcrypt_is_used.difference(keys_bcrypt_is_owasp_compliant)
+repos_using_scrypt_not_owasp_compliant = keys_scrypt_is_used.difference(keys_scrypt_is_owasp_compliant)
+repos_using_pbkdf2_not_owasp_compliant = keys_pbkdf2_is_used.difference(keys_pbkdf2_is_owasp_compliant)
+not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used))
+not_using_supported_libraries = keys_account_creation.difference(repos_with_password_hashing)
+
+keys_using_more_than_one_password_field = set(using_more_than_one_password_field)
 
 counter_flask = len(repos)
 counter_account_creation = len(keys_account_creation)
@@ -204,6 +245,22 @@ counter_csrf_deactivated_selectively = len(csrf_protection_global_selectively_di
 counter_csrf_activated_selectively = len(csrf_protection_selectively_activated)
 counter_csrf_deactivated = len(csrf_protection_disabled)
 
+counter_repos_with_password_hashing = len(repos_with_password_hashing)
+counter_not_using_a_recommended_algorithm = len(not_using_a_recommended_algorithm)
+counter_not_using_supported_libraries = len(not_using_supported_libraries)
+counter_keys_argon2_is_used = len(keys_argon2_is_used)
+counter_keys_scrypt_is_used = len(keys_scrypt_is_used)
+counter_keys_bcrypt_is_used = len(keys_bcrypt_is_used)
+counter_keys_pbkdf2_is_used = len(keys_pbkdf2_is_used)
+counter_keys_argon2_is_owasp_compliant = len(keys_argon2_is_owasp_compliant)
+counter_keys_scrypt_is_owasp_compliant = len(keys_scrypt_is_owasp_compliant)
+counter_keys_bcrypt_is_owasp_compliant = len(keys_bcrypt_is_owasp_compliant)
+counter_keys_pbkdf2_is_owasp_compliant = len(keys_pbkdf2_is_owasp_compliant)
+counter_argon2_not_owasp_compliant = len(repos_using_argon2_not_owasp_compliant)
+counter_scrypt_not_owasp_compliant = len(repos_using_scrypt_not_owasp_compliant)
+counter_bcrypt_not_owasp_compliant = len(repos_using_bcrypt_not_owasp_compliant)
+counter_pbkdf2_not_owasp_compliant = len(repos_using_pbkdf2_not_owasp_compliant)
+
 saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
 saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection"],
                 [no_session_protection, session_protection_basic, session_protection_strong_set, keys_session_protection_potential_false_positives],
@@ -217,6 +274,19 @@ saveDictsToFile(["custom_password_validators", "length_password_validators", "re
 saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally"],
                 [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled],
                 [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage]])
+saveDictsToFile(["using_password_hashing", "not_using_recommended_algorithm", "not_using_supported_library", "using_argon2", "using_scrypt", "using_bcrypt", "using_pbkdf2"],
+                [repos_with_password_hashing, not_using_a_recommended_algorithm, not_using_supported_libraries, keys_argon2_is_used, keys_scrypt_is_used, keys_bcrypt_is_used, keys_pbkdf2_is_used],
+                [[argon2_is_used, bcrypt_is_used, flask_bcrypt_is_used, passlib_is_used, werkzeug_is_used, hashlib_is_used], [argon2_is_used, bcrypt_is_used, flask_bcrypt_is_used, passlib_is_used, werkzeug_is_used, hashlib_is_used],
+                 [flask_login_usage], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
+                 [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
+saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owasp_compliant", "pbkdf2_owasp_compliant", "argon2_not_owasp_compliant", "scrypt_not_owasp_compliant", "bcrypt_not_owasp_compliant", "pbkdf2_not_owasp_compliant"],
+                [keys_argon2_is_owasp_compliant, keys_scrypt_is_owasp_compliant, keys_bcrypt_is_owasp_compliant, keys_pbkdf2_is_owasp_compliant, repos_using_argon2_not_owasp_compliant, repos_using_scrypt_not_owasp_compliant, repos_using_bcrypt_not_owasp_compliant, repos_using_pbkdf2_not_owasp_compliant],
+                [[argon2_is_owasp_compliant, passlib_argon2_is_owasp_compliant], [hashlib_scrypt_is_owasp_compliant, passlib_scrypt_is_owasp_compliant, werkzeug_scrypt_is_owasp_compliant], [bcrypt_is_owasp_compliant, flask_bcrypt_is_owasp_compliant, passlib_bcrypt_is_owasp_compliant], 
+                 [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
+                 [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
+saveDictsToFile(["forms_with_two_password_fields"],
+                [keys_using_more_than_one_password_field],
+                [[using_more_than_one_password_field]])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> flask repos for Session Management and <a href="{}" target="_blank">{}</a> flask repos for Account Creation<br></p>
@@ -228,15 +298,25 @@ report = """
 <a href="{}" target="_blank">{}</a> combine length checks and regular expression checks ({} %)<br>
 <a href="{}" target="_blank">{}</a> use a custom validator ({} %)<br></p>
 <h3>Password Hashing</h3>
-<p></p>
+<p><a href="{}" target="_blank">{}</a> applications use some form of (supported) password hashing ({} %)<br>
+<a href="{}" target="_blank">{}</a> applications do not use one of the supported password hashing libraries or do not perform password hashing ({} %)<br>
+<a href="{}" target="_blank">{}</a> applications use some form of (supported) password hashing but do not use one of the recommended algorithms ({} %)<br>
+<a href="{}" target="_blank">{}</a> use argon2id and is owasp compliant ({} %)<br>
+<a href="{}" target="_blank">{}</a> use scrypt and is owasp compliant ({} %)<br>
+<a href="{}" target="_blank">{}</a> use PBKDF2 and is owasp compliant ({} %)<br>
+<a href="{}" target="_blank">{}</a> use bcrypt and is owasp compliant ({} %)<br>
+<a href="{}" target="_blank">{}</a> use argon2id and is not owasp compliant ({} %)<br>
+<a href="{}" target="_blank">{}</a> use scrypt and is not owasp compliant ({} %)<br>
+<a href="{}" target="_blank">{}</a> use PBKDF2 and is not owasp compliant ({} %)<br>
+<a href="{}" target="_blank">{}</a> use bcrypt and is not owasp compliant ({} %)<br></p>
 <h2>Session Management</h2>
 <h3>Cryptographic Keys</h3>
 <p><a href="{}" target="_blank">{}</a> had a hardcoded secret key ({} %)<br>
 <a href="{}" target="_blank">{}</a> set the secret key more than once, so it's a false positive potentially ({} %)<br></p>
 <h3>CSRF</h3>
-<p><a href="{}" target="_blank">{}</a> CSRF protection is activated everywhere ({} %)<br>
-<a href="{}" target="_blank">{}</a> CSRF protection is activated by default, but it is deactivated on some views ({} %)<br>
-<a href="{}" target="_blank">{}</a> CSRF protection is deactivated by default, but it is activated on some views ({} %)<br>
+<p><a href="{}" target="_blank">{}</a> CSRF global protection is always active ({} %)<br>
+<a href="{}" target="_blank">{}</a> CSRF global protection is activated, but it is deactivated on some views ({} %)<br>
+<a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere ({} %)<br></p>
 <h3>Session Protection</h3>
 <p><a href="{}" target="_blank">{}</a> didn't use session protection ({} %)<br>
@@ -253,6 +333,17 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./regexp_password_validators.txt", str(counter_regexp_password_validators), str(getPercentage(counter_regexp_password_validators, counter_account_creation)),
                             "./length_and_regexp_password_validators.txt", str(counter_length_and_regexp_password_validators), str(getPercentage(counter_length_and_regexp_password_validators, counter_account_creation)),
                             "./custom_password_validators.txt", str(counter_custom_password_validators), str(getPercentage(counter_custom_password_validators, counter_account_creation)),
+                            "./using_password_hashing.txt", str(counter_repos_with_password_hashing), str(getPercentage(counter_repos_with_password_hashing, counter_account_creation)),
+                            "./not_using_supported_library.txt", str(counter_not_using_supported_libraries), str(getPercentage(counter_not_using_supported_libraries, counter_account_creation)),
+                            "./not_using_recommended_algorithm.txt", str(counter_not_using_a_recommended_algorithm), str(getPercentage(counter_not_using_a_recommended_algorithm, counter_account_creation)),
+                            "./argon2_owasp_compliant.txt", str(counter_keys_argon2_is_owasp_compliant), str(getPercentage(counter_keys_argon2_is_owasp_compliant, counter_account_creation)),
+                            "./scrypt_owasp_compliant.txt", str(counter_keys_scrypt_is_owasp_compliant), str(getPercentage(counter_keys_scrypt_is_owasp_compliant, counter_account_creation)),
+                            "./pbkdf2_owasp_compliant.txt", str(counter_keys_pbkdf2_is_owasp_compliant), str(getPercentage(counter_keys_pbkdf2_is_owasp_compliant, counter_account_creation)),
+                            "./bcrypt_owasp_compliant.txt", str(counter_keys_bcrypt_is_owasp_compliant), str(getPercentage(counter_keys_bcrypt_is_owasp_compliant, counter_account_creation)),
+                            "./argon2_not_owasp_compliant.txt", str(counter_argon2_not_owasp_compliant), str(getPercentage(counter_argon2_not_owasp_compliant, counter_account_creation)),
+                            "./scrypt_not_owasp_compliant.txt", str(counter_scrypt_not_owasp_compliant), str(getPercentage(counter_scrypt_not_owasp_compliant, counter_account_creation)),
+                            "./pbkdf2_not_owasp_compliant.txt", str(counter_pbkdf2_not_owasp_compliant), str(getPercentage(counter_pbkdf2_not_owasp_compliant, counter_account_creation)),
+                            "./bcrypt_not_owasp_compliant.txt", str(counter_bcrypt_not_owasp_compliant), str(getPercentage(counter_bcrypt_not_owasp_compliant, counter_account_creation)),
                             "./hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys), str(getPercentage(counter_hardcoded_secret_keys, counter_flask)),
                             "./potential_false_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys_false_positives), str(getPercentage(counter_hardcoded_secret_keys_false_positives, counter_flask)), 
                             "./csrf_activated_globally.txt", str(counter_csrf_activated), str(getPercentage(counter_csrf_activated, counter_flask)),
@@ -263,5 +354,6 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./session_protection_basic.txt", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
                             "./session_protection_strong.txt", str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)),
                             "./potential_false_positives_session_protection.txt", str(counter_session_protection_false_positives), str(getPercentage(counter_session_protection_false_positives, counter_flask)))
+
 with open(str(path.absolute()) + "/report.html", "w") as file:
     file.write(report_html)
