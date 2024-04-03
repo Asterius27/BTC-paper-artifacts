@@ -259,7 +259,7 @@ class AddUser(BaseForm):
     def validate_test(form, field):
         raise ValidationError("Test")
 
-class NewUserForm(FlaskForm):
+class NewUserForm(BaseForm):
     test = PasswordField('pwd', validators=[aux(10)])
 
 class Form_signup(FlaskForm):
@@ -346,8 +346,8 @@ def signup():
 @app.get("/logout")
 @login_required
 def logout():
-    form = UserRegisterForm(request.POST)
-    form2 = NoCustomValidators()
+    form = UserRegisterForm(request.POST, meta={'csrf': True})
+    form2 = NoCustomValidators(meta={'csrf': False})
     form3 = NewUserForm()
     form4 = Form_signup()
     # session.pop("_permanent")

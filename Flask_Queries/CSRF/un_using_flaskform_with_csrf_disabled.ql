@@ -1,7 +1,7 @@
 import python
 import semmle.python.ApiGraphs
 
-from Class cls, AssignStmt asgn, Class meta, DictItem item, Call call
+from Class cls, AssignStmt asgn, Class meta, Keyword item, Call call
 where exists(cls.getLocation().getFile().getRelativePath())
     and cls.getABase().toString() = "FlaskForm"
     and ((meta = cls.getAStmt().(ClassDef).getDefinedClass()
@@ -11,7 +11,7 @@ where exists(cls.getLocation().getFile().getRelativePath())
             and asgn.getValue().(ImmutableLiteral).booleanValue() = false)
         or (
             call.getAFlowNode() = cls.getClassObject().getACall()
-            and call.getNamedArgs().getAnItem() = item
-            and item
+            and call.getNamedArgs().getAnItem().(Keyword) = item
+            and item.getArg() = "meta"
         ))
-select cls, cls.getLocation(), "This form has enabled wtforms csrf protection"
+select cls, cls.getLocation(), item.getValue(), "This form has enabled wtforms csrf protection"
