@@ -6,6 +6,6 @@ predicate valueCheck(Expr expr) {
 }
 
 from Expr expr
-where expr = FlaskLogin::getConfigValue("WTF_CSRF_CHECK_DEFAULT")
+where expr = FlaskLogin::getConfigValue("WTF_CSRF_ENABLED")
   and valueCheck(expr)
-select expr, expr.getLocation(), "Flask-WTF CSRF protection has to be activated on a per view basis"
+select expr, expr.getLocation(), "Flask-WTF CSRF protection is manually disabled"
