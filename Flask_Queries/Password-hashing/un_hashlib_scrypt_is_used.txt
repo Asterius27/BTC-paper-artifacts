@@ -1,0 +1,4 @@
+|                      node                       |                                          col1                                           |                      col2                      |
++-------------------------------------------------+-----------------------------------------------------------------------------------------+------------------------------------------------+
+| Use moduleImport("hashlib").getMember("scrypt") | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:339 | Hashlib scrypt is being used to hash passwords |
+| Use moduleImport("hashlib").getMember("scrypt") | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:341 | Hashlib scrypt is being used to hash passwords |

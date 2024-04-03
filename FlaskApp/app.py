@@ -336,7 +336,9 @@ def signup():
     # When using flask_wtf's FlaskForm you can also call validate_on_submit()
     if request.POST:
         if form.validate_on_submit(): # aux(30)
-            hashed = hashlib.scrypt(form.pwd)
+            hashed_pwd = hashlib.scrypt(form.pwd)
+            hashed_passw = hashlib.pbkdf2_hmac('sha256', form.pwd, b"somesalt", 540000)
+            hashed_pssw = hashlib.scrypt(form.pwd, n=131072, r=8, p=1)
             return redirect('/success')
     return "Signup"
 

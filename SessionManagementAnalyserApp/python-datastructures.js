@@ -135,6 +135,7 @@ let flask = {
             "un_argon2_is_used": [false, ""],
             "un_bcrypt_is_used": [false, ""],
             "un_hashlib_is_used": [false, ""],
+            // "un_hashlib_is_used_with_dataflow": [false, ""],
             "un_passlib_is_used": [false, ""],
             "un_werkzeug_is_used": [false, ""],
             "un_argon2_is_owasp_compliant": [false, ""],
@@ -154,6 +155,10 @@ let flask = {
             "un_werkzeug_pbkdf2_is_used": [false, ""],
             "un_werkzeug_scrypt_is_owasp_compliant": [false, ""],
             "un_werkzeug_scrypt_is_used": [false, ""],
+            "un_hashlib_pbkdf2_is_owasp_compliant": [false, ""],
+            "un_hashlib_pbkdf2_is_used": [false, ""],
+            "un_hashlib_scrypt_is_owasp_compliant": [false, ""],
+            "un_hashlib_scrypt_is_used": [false, ""],
             // "ut_password_hashing_algorithm_manually_set": [false, ""],
             // "ut_password_hashing_rounds_manually_set": [false, ""],
             // "sf_password_hashing_algorithm": [false, ""],
@@ -470,6 +475,7 @@ let descriptions = {
             "argon2_is_used": "Argon2 is being used by the application",
             "bcrypt_is_used": "Bcrypt is being used by the application",
             "hashlib_is_used": "Hashlib is being used by the application",
+            "hashlib_is_used_with_dataflow": "Hashlib is being used by the application and there is dataflow with a password field",
             "passlib_is_used": "Passlib is being used by the application",
             "werkzeug_is_used": "Werkzeug is being used by the application",
             "argon2_is_owasp_compliant": "Argon2 is being used and it's compliant with owasp guidelines",
@@ -489,6 +495,10 @@ let descriptions = {
             "werkzeug_pbkdf2_is_used": "Werkzeug's pbkdf2 hasher is being used",
             "werkzeug_scrypt_is_owasp_compliant": "Werkzeug's scrypt hasher is being used and it's compliant with owasp guidelines",
             "werkzeug_scrypt_is_used": "Werkzeug's scrypt hasher is being used",
+            "hashlib_pbkdf2_is_owasp_compliant": "Hashlib's pbkdf2 hasher is being used and it's compliant with owasp guidelines",
+            "hashlib_pbkdf2_is_used": "Hashlib's pbkdf2 hasher is being used",
+            "hashlib_scrypt_is_owasp_compliant": "Hashlib's scrypt hasher is being used and it's compliant with owasp guidelines",
+            "hashlib_scrypt_is_used": "Hashlib's scrypt hasher is being used",
             "password_hashing_algorithm_manually_set": "The password hashing algorithm is manually set",
             "password_hashing_rounds_manually_set": "The number of rounds of the hashing algorithm is manually set",
             "password_hashing_algorithm": "Using a bugged hashing algorithm",
@@ -600,7 +610,7 @@ let config = {
         "element_id": 'password_theft'
     },
     "ExplorativeQueries": {
-        "options": 'var options = {"title":"Explorative Queries","width":1500,"height":1000,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
+        "options": 'var options = {"title":"Explorative Queries","width":1500,"height":1800,"legend": {"position": "top", "maxLines": 3},"bar": {"groupWidth": "75%"},"isStacked": true};\n',
         "element_id": 'explorative_queries'
     },
     "PasswordHashing": {
