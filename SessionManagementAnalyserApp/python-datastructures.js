@@ -106,7 +106,8 @@ let flask = {
         "Flask-login-session-protection": {
             "uf_session_protection_basic": [false, ""],
             "sf_session_protection": [false, ""],
-            "sf_session_protection_strong": [false, ""]
+            "sf_session_protection_strong": [false, ""],
+            "un_session_protection_basic_is_used": [false, ""]
         },
         "Incorrect-config-changes": {
             "un_incorrect_config_changes": [false, ""]
@@ -427,7 +428,8 @@ let descriptions = {
         "Flask-login-session-protection": {
             "session_protection_basic": "Session Protection is set to basic but no fresh login required found",
             "session_protection": "Session Protection is manually disabled",
-            "session_protection_strong": "Session Protection is set to strong"
+            "session_protection_strong": "Session Protection is set to strong",
+            "session_protection_basic_is_used": "Session Protection is set to basic and fresh login required is used"
         },
         "Incorrect-config-changes": {
             "incorrect_config_changes": "Some config changes are made after the user has logged in"
