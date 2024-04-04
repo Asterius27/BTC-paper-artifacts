@@ -346,7 +346,7 @@ def signup():
 @app.get("/logout")
 @login_required
 def logout():
-    form = UserRegisterForm(request.POST, meta={'csrf': True})
+    form = UserRegisterForm(request.POST, None, "", None, {'csrf': True})
     form2 = NoCustomValidators(meta={'csrf': False})
     form3 = NewUserForm()
     form4 = Form_signup()
