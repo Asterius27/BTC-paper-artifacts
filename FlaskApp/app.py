@@ -233,8 +233,10 @@ users: Dict[str, "User"] = {
     '3': User(3, 'giovanni', 'abcd')
 }
 
+class SuperClass(Form):
+    test = 10
 
-class UserRegisterForm(Form): # or BaseForm or FlaskForm (from flask_wtf)
+class UserRegisterForm(SuperClass): # Form or BaseForm or FlaskForm (from flask_wtf)
     # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
     pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User(), aux(8)])
     test = PasswordField('pwd', validators=[DataRequired()])

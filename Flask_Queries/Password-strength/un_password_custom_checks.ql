@@ -1,5 +1,6 @@
 import python
 import semmle.python.ApiGraphs
+import CodeQL_Library.FlaskLogin
 
 DataFlow::Node inlineCustomValidators() {
     exists(Class cls, DataFlow::Node node, AssignStmt asgn | 
@@ -28,7 +29,13 @@ DataFlow::Node customValidators() {
         and result = node)
 }
 
-from DataFlow::Node passfield
-where passfield = inlineCustomValidators()
-    or passfield = customValidators()
+from DataFlow::Node passfield, Class cls, Class supercls
+where (passfield = inlineCustomValidators()
+        or passfield = customValidators())
+    and cls = FlaskLogin::getSignUpFormClass()
+    and if exists(Class superclss | superclss.getName() = cls.getABase().(Name).getId())
+        then supercls.getName() = cls.getABase().(Name).getId()
+            and (passfield.getScope() = cls
+                or passfield.getScope() = supercls)
+        else passfield.getScope() = cls
 select passfield, passfield.getLocation(), "Using a custom validator to check password strength"

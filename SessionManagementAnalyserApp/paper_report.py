@@ -296,7 +296,7 @@ report = """
 <h3>Password Policies</h3>
 <p>{} perform some validation on its password fields ({} %)<br>
 <a href="{}" target="_blank">{}</a> do not perform validation on the password fields ({} %)<br>
-<a href="{}" target="_blank">{}</a> enforce a minimum length ({} %)<br>
+<a href="{}" target="_blank">{}</a> enforce a specific password length ({} %)<br>
 <a href="{}" target="_blank">{}</a> check the password against a regexp ({} %)<br>
 <a href="{}" target="_blank">{}</a> combine length checks and regular expression checks ({} %)<br>
 <a href="{}" target="_blank">{}</a> use a custom validator ({} %)<br></p>

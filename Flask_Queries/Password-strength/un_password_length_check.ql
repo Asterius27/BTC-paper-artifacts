@@ -1,5 +1,6 @@
 import python
 import semmle.python.ApiGraphs
+import CodeQL_Library.FlaskLogin
 
 string getMinValue(API::Node validator) {
     if exists(validator.getKeywordParameter("min").getAValueReachingSink().asExpr().(IntegerLiteral).getValue()) or exists(validator.getParameter(0).getAValueReachingSink().asExpr().(IntegerLiteral).getValue())
@@ -19,6 +20,16 @@ string getMaxValue(API::Node validator) {
     else result = "Max value not set"
 }
 
+predicate isInsideSignUpForm(DataFlow::Node passfield) {
+    exists(Class cls, Class supercls |
+        cls = FlaskLogin::getSignUpFormClass()
+        and if exists(Class superclss | superclss.getName() = cls.getABase().(Name).getId())
+            then supercls.getName() = cls.getABase().(Name).getId()
+                and (passfield.getScope() = cls
+                    or passfield.getScope() = supercls)
+            else passfield.getScope() = cls)
+}
+
 from DataFlow::Node node, API::Node validator
 where (node = API::moduleImport("wtforms").getMember("PasswordField").getParameter(1).getAValueReachingSink()
         or node = API::moduleImport("flask_wtf").getMember("PasswordField").getParameter(1).getAValueReachingSink()
@@ -28,4 +39,5 @@ where (node = API::moduleImport("wtforms").getMember("PasswordField").getParamet
         or validator = API::moduleImport("wtforms").getMember("validators").getMember("length"))
     and (node.asExpr().(List).getAnElt().getAFlowNode() = validator.getReturn().getAValueReachableFromSource().asCfgNode()
         or node.asExpr().(Tuple).getAnElt().getAFlowNode() = validator.getReturn().getAValueReachableFromSource().asCfgNode())
+    and isInsideSignUpForm(node)
 select node, node.getLocation(), "Length checks are being performed on the password field", getMinValue(validator), getMaxValue(validator)
