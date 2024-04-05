@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import csv
 
-path = Path(__file__).parent / './paper_reports_flask/paper_report'
+path = Path(__file__).parent / './paper_reports_django/paper_report'
 path.mkdir(exist_ok=True)
 
 def loadCSV(csvFile):
@@ -118,70 +118,40 @@ def getPercentage(value, total):
         return 0
     return round((value / total) * 100, 2)
 
-csv_dict = loadCSV(Path(__file__).parent / '../flask_whitelist_filtered_v2.csv')
-flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", True, csv_dict)
-flask_login_required_usage = extractResults("Flask", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
-flask_custom_session_interface = extractResults("Flask", "Explorative-queries", "un_custom_session_interface", False, csv_dict)
-flask_wtf_account_creation = extractResults("Flask", "Password-strength", "un_form_with_password_field_is_signup", True, csv_dict)
-session_protection_potential_false_positives = extractFalsePositives("Flask", "Explorative-queries", "un_potential_false_positives", "sf_session_protection sf_session_protection_strong uf_session_protection_basic un_session_protection_basic_is_used ", True, csv_dict)
-session_protection_none = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection", True, csv_dict)
-no_fresh_login = extractResults("Flask", "Flask-login-session-protection", "uf_session_protection_basic", True, csv_dict)
-session_protection_strong = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection_strong", True, csv_dict)
-hardcoded_secret_key = extractResults("Flask", "Secret-key", "un_secret_key", True, csv_dict)
-hardcoded_secret_key_potential_false_positives = extractFalsePositives("Flask", "Explorative-queries", "un_potential_false_positives", "un_secret_key ", True, csv_dict)
-custom_password_validators = extractResults("Flask", "Password-strength", "un_password_custom_checks", True, csv_dict)
-length_password_validators = extractResults("Flask", "Password-strength", "un_password_length_check", True, csv_dict)
-regexp_password_validators = extractResults("Flask", "Password-strength", "un_password_regexp_check", True, csv_dict)
-csrf_enabled_globally = extractResults("Flask", "CSRF", "un_using_flaskwtf_csrf_protection", True, csv_dict)
-using_csrf_exempt = extractResults("Flask", "CSRF", "un_using_csrf_exempt", True, csv_dict)
-using_csrf_protect = extractResults("Flask", "CSRF", "un_using_csrf_protect", True, csv_dict)
-using_flaskform_csrf = extractResults("Flask", "CSRF", "un_using_flaskform", True, csv_dict)
-disabled_flask_wtf_csrf_protection = extractResults("Flask", "CSRF", "un_disabled_wtf_csrf_check", True, csv_dict)
-using_wtforms_csrf_protection = extractResults("Flask", "CSRF", "un_using_wtforms_csrf_protection", True, csv_dict)
-argon2_is_used = extractResults("Flask", "Password-hashing", "un_argon2_is_used", True, csv_dict)
-argon2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_argon2_is_owasp_compliant", True, csv_dict)
-bcrypt_is_used = extractResults("Flask", "Password-hashing", "un_bcrypt_is_used", True, csv_dict)
-bcrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_bcrypt_is_owasp_compliant", True, csv_dict)
-flask_bcrypt_is_used = extractResults("Flask", "Password-hashing", "un_flask_bcrypt_is_used", True, csv_dict)
-flask_bcrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_flask_bcrypt_is_owasp_compliant", True, csv_dict)
-passlib_is_used = extractResults("Flask", "Password-hashing", "un_passlib_is_used", True, csv_dict)
-passlib_argon2_is_used = extractResults("Flask", "Password-hashing", "un_passlib_argon2_is_used", True, csv_dict)
-passlib_argon2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_argon2_is_owasp_compliant", True, csv_dict)
-passlib_bcrypt_is_used = extractResults("Flask", "Password-hashing", "un_passlib_bcrypt_is_used", True, csv_dict)
-passlib_bcrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_bcrypt_is_owasp_compliant", True, csv_dict)
-passlib_pbkdf2_is_used = extractResults("Flask", "Password-hashing", "un_passlib_pbkdf2_is_used", True, csv_dict)
-passlib_pbkdf2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_pbkdf2_is_owasp_compliant", True, csv_dict)
-passlib_scrypt_is_used = extractResults("Flask", "Password-hashing", "un_passlib_scrypt_is_used", True, csv_dict)
-passlib_scrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_scrypt_is_owasp_compliant", True, csv_dict)
-werkzeug_is_used = extractResults("Flask", "Password-hashing", "un_werkzeug_is_used", True, csv_dict)
-werkzeug_pbkdf2_is_used = extractResults("Flask", "Password-hashing", "un_werkzeug_pbkdf2_is_used", True, csv_dict)
-werkzeug_pbkdf2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_werkzeug_pbkdf2_is_owasp_compliant", True, csv_dict)
-werkzeug_scrypt_is_used = extractResults("Flask", "Password-hashing", "un_werkzeug_scrypt_is_used", True, csv_dict)
-werkzeug_scrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_werkzeug_scrypt_is_owasp_compliant", True, csv_dict)
-hashlib_is_used = extractResults("Flask", "Password-hashing", "un_hashlib_is_used", True, csv_dict)
-hashlib_pbkdf2_is_used = extractResults("Flask", "Password-hashing", "un_hashlib_pbkdf2_is_used", True, csv_dict)
-hashlib_pbkdf2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_hashlib_pbkdf2_is_owasp_compliant", True, csv_dict)
-hashlib_scrypt_is_used = extractResults("Flask", "Password-hashing", "un_hashlib_scrypt_is_used", True, csv_dict)
-hashlib_scrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_hashlib_scrypt_is_owasp_compliant", True, csv_dict)
+csv_dict = loadCSV(Path(__file__).parent / '../django_whitelist_filtered_v2.csv')
+django_login_usage = extractResults("Django", ".", "django_library_used_check", True, csv_dict)
+django_login_required_usage = extractResults("Django", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
+django_custom_session_engine = extractResults("Django", ".", "custom_session_engine", False, csv_dict)
+django_account_creation = extractResults("Django", "Password-strength", "un_using_django_built_in_forms", True, csv_dict)
+hardcoded_secret_key = extractResults("Django", "Secret-key", "un_secret_key", True, csv_dict)
+hardcoded_secret_key_potential_false_positives = extractFalsePositives("Django", "Explorative-queries", "un_potential_false_positives", "un_secret_key ", True, csv_dict)
+custom_password_validators = extractResults("Django", "Password-strength", "un_using_custom_validators", True, csv_dict)
+length_password_validators = extractResults("Django", "Password-strength", "un_using_length_validator", True, csv_dict)
+numeric_password_validators = extractResults("Django", "Password-strength", "un_using_numeric_password_validator", True, csv_dict)
+common_password_validators = extractResults("Django", "Password-strength", "un_using_common_password_validator", True, csv_dict)
+similarity_password_validators = extractResults("Django", "Password-strength", "un_using_similarity_validator", True, csv_dict)
+csrf_disabled_globally = extractResults("Django", "CSRF", "un_csrf_protection_is_disabled", True, csv_dict)
+using_csrf_exempt = extractResults("Django", "CSRF", "un_csrf_exempt_is_used", True, csv_dict)
+using_csrf_protect = extractResults("Django", "CSRF", "un_csrf_protect_is_used", True, csv_dict)
+using_csrf_requires = extractResults("Django", "CSRF", "un_requires_csrf_token_is_used", True, csv_dict) # csrf protection still active, but you are not rejecting request that do not adhere, so it's like selectively disabling csrf
+argon2_is_used = extractResults("Django", "Password-hashing", "un_argon2_is_used", True, csv_dict)
+argon2_is_owasp_compliant = extractResults("Django", "Password-hashing", "un_argon2_is_owasp_compliant", True, csv_dict)
+bcrypt_is_used = extractResults("Django", "Password-hashing", "un_bcrypt_is_used", True, csv_dict)
+bcrypt_is_owasp_compliant = extractResults("Django", "Password-hashing", "un_bcrypt_is_owasp_compliant", True, csv_dict)
+pbkdf2_is_used = extractResults("Django", "Password-hashing", "un_pbkdf2_is_used", True, csv_dict)
+pbkdf2_is_owasp_compliant = extractResults("Django", "Password-hashing", "un_pbkdf2_is_owasp_compliant", True, csv_dict)
+scrypt_is_used = extractResults("Django", "Password-hashing", "un_scrypt_is_used", True, csv_dict)
+scrypt_is_owasp_compliant = extractResults("Django", "Password-hashing", "un_scrypt_is_owasp_compliant", True, csv_dict)
+md5_is_used = extractResults("Django", "Password-hashing", "un_md5_is_used", True, csv_dict)
+custom_password_hasher_is_used = extractResults("Django", "Password-hashing", "un_using_custom_password_hasher", True, csv_dict)
+logout_function_is_not_called = extractResults("Django", "Logout-function-is-called", "un_logout_function_is_called", False, csv_dict)
+using_client_side_sessions = extractResults("Django", "Logout-session-invalidation", "un_client_side_session", True, csv_dict)
 
-using_more_than_one_password_field = extractResults("Flask", "Password-strength", "un_form_with_two_password_fields", True, csv_dict)
-
-keys_flask_login_usages = set(flask_login_usage)
-keys_flask_login_required_usages = set(flask_login_required_usage)
-keys_flask_custom_session_interface = set(flask_custom_session_interface)
-repos = keys_flask_login_usages.intersection(keys_flask_login_required_usages).intersection(keys_flask_custom_session_interface)
-keys_account_creation = set(flask_wtf_account_creation)
-
-keys_session_protection_none = set(session_protection_none)
-keys_no_fresh_login = set(no_fresh_login)
-keys_session_protection_strong = set(session_protection_strong)
-keys_session_protection_potential_false_positives = set(session_protection_potential_false_positives)
-repos_session_protection = repos.difference(keys_session_protection_potential_false_positives)
-not_using_session_protection = keys_session_protection_none.union(keys_no_fresh_login)
-temp = keys_session_protection_strong.union(not_using_session_protection)
-no_session_protection = repos_session_protection.intersection(not_using_session_protection)
-session_protection_basic = repos_session_protection.difference(temp)
-session_protection_strong_set = repos_session_protection.intersection(keys_session_protection_strong)
+keys_django_login_usages = set(django_login_usage)
+keys_django_login_required_usages = set(django_login_required_usage)
+keys_django_custom_session_engine = set(django_custom_session_engine)
+repos = keys_django_login_usages.intersection(keys_django_login_required_usages).intersection(keys_django_custom_session_engine)
+keys_account_creation = set(django_account_creation)
 
 keys_hardcoded_secret_key = set(hardcoded_secret_key)
 keys_hardcoded_secret_key_potential_false_positives = set(hardcoded_secret_key_potential_false_positives)
@@ -190,7 +160,9 @@ hardcoded_secret_key_set = repos_hardcoded_secret_key.intersection(keys_hardcode
 
 keys_custom_password_validators = keys_account_creation.intersection(set(custom_password_validators))
 keys_length_password_validators = keys_account_creation.intersection(set(length_password_validators))
-keys_regexp_password_validators = keys_account_creation.intersection(set(regexp_password_validators))
+keys_numeric_password_validators = keys_account_creation.intersection(set(numeric_password_validators))
+keys_common_password_validators = keys_account_creation.intersection(set(common_password_validators))
+keys_similarity_password_validators = keys_account_creation.intersection(set(similarity_password_validators))
 length_and_regexp_password_validators = keys_account_creation.intersection(keys_length_password_validators.intersection(keys_regexp_password_validators))
 performing_password_validation = keys_account_creation.intersection(keys_custom_password_validators.union(keys_length_password_validators).union(keys_regexp_password_validators))
 not_performing_password_validation = keys_account_creation.difference(performing_password_validation)
@@ -222,15 +194,8 @@ repos_using_pbkdf2_not_owasp_compliant = keys_pbkdf2_is_used.difference(keys_pbk
 not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used))
 not_using_supported_libraries = keys_account_creation.difference(repos_with_password_hashing)
 
-keys_using_more_than_one_password_field = set(using_more_than_one_password_field)
-
 counter_flask = len(repos)
 counter_account_creation = len(keys_account_creation)
-
-counter_no_session_protection = len(no_session_protection)
-counter_session_protection_basic = len(session_protection_basic)
-counter_session_protection_strong = len(session_protection_strong_set)
-counter_session_protection_false_positives = len(keys_session_protection_potential_false_positives)
 
 counter_hardcoded_secret_keys = len(hardcoded_secret_key_set)
 counter_hardcoded_secret_keys_false_positives = len(keys_hardcoded_secret_key_potential_false_positives)
@@ -264,9 +229,6 @@ counter_bcrypt_not_owasp_compliant = len(repos_using_bcrypt_not_owasp_compliant)
 counter_pbkdf2_not_owasp_compliant = len(repos_using_pbkdf2_not_owasp_compliant)
 
 saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
-saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection"],
-                [no_session_protection, session_protection_basic, session_protection_strong_set, keys_session_protection_potential_false_positives],
-                [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives]])
 saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys"],
                 [hardcoded_secret_key_set, keys_hardcoded_secret_key_potential_false_positives],
                 [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives]])
@@ -286,9 +248,6 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                 [[argon2_is_owasp_compliant, passlib_argon2_is_owasp_compliant], [hashlib_scrypt_is_owasp_compliant, passlib_scrypt_is_owasp_compliant, werkzeug_scrypt_is_owasp_compliant], [bcrypt_is_owasp_compliant, flask_bcrypt_is_owasp_compliant, passlib_bcrypt_is_owasp_compliant], 
                  [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
-saveDictsToFile(["forms_with_two_password_fields"],
-                [keys_using_more_than_one_password_field],
-                [[using_more_than_one_password_field]])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> flask repos for Session Management and <a href="{}" target="_blank">{}</a> flask repos for Account Creation<br></p>
@@ -322,12 +281,9 @@ report = """
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere ({} %)<br></p>
 <h3>Session Protection</h3>
-<p><a href="{}" target="_blank">{}</a> didn't use session protection ({} %)<br>
-<a href="{}" target="_blank">{}</a> used basic session protection ({} %)<br>
-<a href="{}" target="_blank">{}</a> used strong session protection ({} %)<br>
-<a href="{}" target="_blank">{}</a> set session protection more than once, so it's a false positive potentially ({} %)<br></p>
-<h3>Logout Security</h3>
 <p></p>
+<h3>Logout Security</h3>
+<p><a href="{}" target="_blank">{}</a> Logout function is never called ({} %)<br></p>
 """
 
 report_html = report.format("./session_management.txt", str(counter_flask), "./account_creation.txt", str(counter_account_creation),
@@ -353,11 +309,7 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./csrf_activated_globally.txt", str(counter_csrf_activated), str(getPercentage(counter_csrf_activated, counter_flask)),
                             "./csrf_deactivated_selectively.txt", str(counter_csrf_deactivated_selectively), str(getPercentage(counter_csrf_deactivated_selectively, counter_flask)),
                             "./csrf_activated_selectively.txt", str(counter_csrf_activated_selectively), str(getPercentage(counter_csrf_activated_selectively, counter_flask)),
-                            "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_flask)),
-                            "./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)),
-                            "./session_protection_basic.txt", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
-                            "./session_protection_strong.txt", str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)),
-                            "./potential_false_positives_session_protection.txt", str(counter_session_protection_false_positives), str(getPercentage(counter_session_protection_false_positives, counter_flask)))
+                            "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_flask)))
 
 with open(str(path.absolute()) + "/report.html", "w") as file:
     file.write(report_html)

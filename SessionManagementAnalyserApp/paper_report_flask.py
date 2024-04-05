@@ -164,8 +164,6 @@ hashlib_pbkdf2_is_owasp_compliant = extractResults("Flask", "Password-hashing", 
 hashlib_scrypt_is_used = extractResults("Flask", "Password-hashing", "un_hashlib_scrypt_is_used", True, csv_dict)
 hashlib_scrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_hashlib_scrypt_is_owasp_compliant", True, csv_dict)
 
-using_more_than_one_password_field = extractResults("Flask", "Password-strength", "un_form_with_two_password_fields", True, csv_dict)
-
 keys_flask_login_usages = set(flask_login_usage)
 keys_flask_login_required_usages = set(flask_login_required_usage)
 keys_flask_custom_session_interface = set(flask_custom_session_interface)
@@ -221,8 +219,6 @@ repos_using_scrypt_not_owasp_compliant = keys_scrypt_is_used.difference(keys_scr
 repos_using_pbkdf2_not_owasp_compliant = keys_pbkdf2_is_used.difference(keys_pbkdf2_is_owasp_compliant)
 not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used))
 not_using_supported_libraries = keys_account_creation.difference(repos_with_password_hashing)
-
-keys_using_more_than_one_password_field = set(using_more_than_one_password_field)
 
 counter_flask = len(repos)
 counter_account_creation = len(keys_account_creation)
@@ -286,9 +282,6 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                 [[argon2_is_owasp_compliant, passlib_argon2_is_owasp_compliant], [hashlib_scrypt_is_owasp_compliant, passlib_scrypt_is_owasp_compliant, werkzeug_scrypt_is_owasp_compliant], [bcrypt_is_owasp_compliant, flask_bcrypt_is_owasp_compliant, passlib_bcrypt_is_owasp_compliant], 
                  [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
-saveDictsToFile(["forms_with_two_password_fields"],
-                [keys_using_more_than_one_password_field],
-                [[using_more_than_one_password_field]])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> flask repos for Session Management and <a href="{}" target="_blank">{}</a> flask repos for Account Creation<br></p>
