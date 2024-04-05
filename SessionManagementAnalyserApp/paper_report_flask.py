@@ -127,6 +127,7 @@ session_protection_potential_false_positives = extractFalsePositives("Flask", "E
 session_protection_none = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection", True, csv_dict)
 no_fresh_login = extractResults("Flask", "Flask-login-session-protection", "uf_session_protection_basic", True, csv_dict)
 session_protection_strong = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection_strong", True, csv_dict)
+session_protection_basic = extractResults("Flask", "Flask-login-session-protection", "un_session_protection_basic_is_used", True, csv_dict)
 hardcoded_secret_key = extractResults("Flask", "Secret-key", "un_secret_key", True, csv_dict)
 hardcoded_secret_key_potential_false_positives = extractFalsePositives("Flask", "Explorative-queries", "un_potential_false_positives", "un_secret_key ", True, csv_dict)
 custom_password_validators = extractResults("Flask", "Password-strength", "un_password_custom_checks", True, csv_dict)
@@ -136,7 +137,9 @@ csrf_enabled_globally = extractResults("Flask", "CSRF", "un_using_flaskwtf_csrf_
 using_csrf_exempt = extractResults("Flask", "CSRF", "un_using_csrf_exempt", True, csv_dict)
 using_csrf_protect = extractResults("Flask", "CSRF", "un_using_csrf_protect", True, csv_dict)
 using_flaskform_csrf = extractResults("Flask", "CSRF", "un_using_flaskform", True, csv_dict)
+using_flaskform_with_csrf_disabled = extractResults("Flask", "CSRF", "un_using_flaskform_with_csrf_disabled", True, csv_dict)
 disabled_flask_wtf_csrf_protection = extractResults("Flask", "CSRF", "un_disabled_wtf_csrf_check", True, csv_dict)
+disabled_flask_wtf_csrf_global_protection = extractResults("Flask", "CSRF", "un_disabled_wtf_csrf", True, csv_dict)
 using_wtforms_csrf_protection = extractResults("Flask", "CSRF", "un_using_wtforms_csrf_protection", True, csv_dict)
 argon2_is_used = extractResults("Flask", "Password-hashing", "un_argon2_is_used", True, csv_dict)
 argon2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_argon2_is_owasp_compliant", True, csv_dict)
@@ -173,12 +176,13 @@ keys_account_creation = set(flask_wtf_account_creation)
 keys_session_protection_none = set(session_protection_none)
 keys_no_fresh_login = set(no_fresh_login)
 keys_session_protection_strong = set(session_protection_strong)
+keys_session_protection_basic = set(session_protection_basic)
 keys_session_protection_potential_false_positives = set(session_protection_potential_false_positives)
 repos_session_protection = repos.difference(keys_session_protection_potential_false_positives)
 not_using_session_protection = keys_session_protection_none.union(keys_no_fresh_login)
 temp = keys_session_protection_strong.union(not_using_session_protection)
 no_session_protection = repos_session_protection.intersection(not_using_session_protection)
-session_protection_basic = repos_session_protection.difference(temp)
+session_protection_basic_set = repos_session_protection.intersection(keys_session_protection_basic)
 session_protection_strong_set = repos_session_protection.intersection(keys_session_protection_strong)
 
 keys_hardcoded_secret_key = set(hardcoded_secret_key)
@@ -197,11 +201,13 @@ keys_csrf_enabled_globally = set(csrf_enabled_globally)
 keys_using_csrf_exempt = set(using_csrf_exempt)
 keys_using_csrf_protect = set(using_csrf_protect)
 keys_using_flaskform_csrf = set(using_flaskform_csrf)
+keys_using_flaskform_with_csrf_disabled = set(using_flaskform_with_csrf_disabled)
 keys_disabled_flask_wtf_csrf_protection = set(disabled_flask_wtf_csrf_protection)
+keys_disabled_flask_wtf_csrf_global_protection = set(disabled_flask_wtf_csrf_global_protection)
 keys_using_wtforms_csrf_protection = set(using_wtforms_csrf_protection)
-csrf_protection_global = repos.intersection(keys_csrf_enabled_globally.difference(keys_using_csrf_exempt).difference(keys_disabled_flask_wtf_csrf_protection))
-csrf_protection_global_selectively_disabled = repos.intersection(keys_csrf_enabled_globally).intersection(keys_using_csrf_exempt.union(keys_disabled_flask_wtf_csrf_protection))
-csrf_protection_selectively_activated = repos.difference(keys_csrf_enabled_globally.difference(keys_disabled_flask_wtf_csrf_protection)).intersection(keys_using_flaskform_csrf.union(keys_using_csrf_protect).union(keys_using_wtforms_csrf_protection))
+csrf_protection_global = repos.intersection(keys_csrf_enabled_globally.difference(keys_using_csrf_exempt).difference(keys_disabled_flask_wtf_csrf_protection).difference(keys_disabled_flask_wtf_csrf_global_protection))
+csrf_protection_global_selectively_disabled = repos.intersection(keys_csrf_enabled_globally.difference(keys_disabled_flask_wtf_csrf_global_protection)).intersection(keys_using_csrf_exempt.union(keys_disabled_flask_wtf_csrf_protection).union(keys_using_flaskform_with_csrf_disabled))
+csrf_protection_selectively_activated = repos.difference(keys_csrf_enabled_globally.difference(keys_disabled_flask_wtf_csrf_protection)).difference(keys_using_flaskform_with_csrf_disabled).intersection(keys_using_flaskform_csrf.union(keys_using_csrf_protect).union(keys_using_wtforms_csrf_protection))
 csrf_protection_disabled = repos.difference(keys_csrf_enabled_globally).difference(keys_using_flaskform_csrf.union(keys_using_wtforms_csrf_protection))
 
 keys_argon2_is_used = keys_account_creation.intersection(set(argon2_is_used).union(set(passlib_argon2_is_used)))
@@ -224,7 +230,7 @@ counter_flask = len(repos)
 counter_account_creation = len(keys_account_creation)
 
 counter_no_session_protection = len(no_session_protection)
-counter_session_protection_basic = len(session_protection_basic)
+counter_session_protection_basic = len(session_protection_basic_set)
 counter_session_protection_strong = len(session_protection_strong_set)
 counter_session_protection_false_positives = len(keys_session_protection_potential_false_positives)
 
@@ -261,7 +267,7 @@ counter_pbkdf2_not_owasp_compliant = len(repos_using_pbkdf2_not_owasp_compliant)
 
 saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
 saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection"],
-                [no_session_protection, session_protection_basic, session_protection_strong_set, keys_session_protection_potential_false_positives],
+                [no_session_protection, session_protection_basic_set, session_protection_strong_set, keys_session_protection_potential_false_positives],
                 [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives]])
 saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys"],
                 [hardcoded_secret_key_set, keys_hardcoded_secret_key_potential_false_positives],
@@ -271,7 +277,7 @@ saveDictsToFile(["not_performing_password_validation", "custom_password_validato
                [[flask_wtf_account_creation], [custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators]])
 saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally"],
                 [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled],
-                [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage]])
+                [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection, using_flaskform_with_csrf_disabled], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage]])
 saveDictsToFile(["using_password_hashing", "not_using_recommended_algorithm", "not_using_supported_library", "using_argon2", "using_scrypt", "using_bcrypt", "using_pbkdf2"],
                 [repos_with_password_hashing, not_using_a_recommended_algorithm, not_using_supported_libraries, keys_argon2_is_used, keys_scrypt_is_used, keys_bcrypt_is_used, keys_pbkdf2_is_used],
                 [[argon2_is_used, bcrypt_is_used, flask_bcrypt_is_used, passlib_is_used, werkzeug_is_used, hashlib_is_used], [argon2_is_used, bcrypt_is_used, flask_bcrypt_is_used, passlib_is_used, werkzeug_is_used, hashlib_is_used],
