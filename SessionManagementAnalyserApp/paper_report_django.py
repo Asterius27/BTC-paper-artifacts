@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import csv
 
-path = Path(__file__).parent / './paper_reports/paper_report'
+path = Path(__file__).parent / './paper_reports_flask/paper_report'
 path.mkdir(exist_ok=True)
 
 def loadCSV(csvFile):
