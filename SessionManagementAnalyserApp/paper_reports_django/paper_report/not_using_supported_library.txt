@@ -1,0 +1,27 @@
+URL: https://github.com/WayneLambert/portfolio
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/WayneLambert_portfolio/WayneLambert-portfolio-be64066-results/Password-strength/un_using_django_built_in_forms.txt
+un_using_django_built_in_forms:
+|                 form                 |                                                                                      col1                                                                                      |                     col2                     |
++--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+| ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread9/WayneLambert_portfolio/WayneLambert-portfolio-be64066/apps/users/forms.py:11 | Django's built in user creation form is used |
+
+
+
+URL: https://github.com/GeoNode/geonode
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/GeoNode_geonode/GeoNode-geonode-c4c3a92-results/Password-strength/un_using_django_built_in_forms.txt
+un_using_django_built_in_forms:
+|                 form                 |                                                                                 col1                                                                                  |                     col2                     |
++--------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+| ControlFlowNode for UserCreationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread19/GeoNode_geonode/GeoNode-geonode-c4c3a92/geonode/people/forms.py:44 | Django's built in user creation form is used |
+
+
+
+URL: https://github.com/jdelic/authserver
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/jdelic_authserver/jdelic-authserver-4331dc7-results/Password-strength/un_using_django_built_in_forms.txt
+un_using_django_built_in_forms:
+|             form              |                                                                                      col1                                                                                      |                     col2                     |
++-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+| ControlFlowNode for Attribute | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread19/jdelic_authserver/jdelic-authserver-4331dc7/authserver/mailauth/forms.py:92 | Django's built in user creation form is used |
+
+
+
