@@ -1,0 +1,154 @@
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/CarlosEduAC_GT-Covid19-Atendimento/CarlosEduAC-GT-Covid19-Atendimento-239ba7b
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/CarlosEduAC_GT-Covid19-Atendimento/CarlosEduAC-GT-Covid19-Atendimento-239ba7b
+Time taken to run the queries on ./repositories/Flask/thread2/CarlosEduAC_GT-Covid19-Atendimento/CarlosEduAC-GT-Covid19-Atendimento-239ba7b: 1833.762 seconds.
+Analysis failed for: ./repositories/Flask/thread2/Crossoufire_MyLists/Crossoufire-MyLists-afbfc37 Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/Crossoufire_MyLists/Crossoufire-MyLists-afbfc37 -l=python -t=11 -ct=2
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/Crossoufire_MyLists/Crossoufire-MyLists-afbfc37: 148.637 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/Dylluu_Ravenhood/Dylluu-Ravenhood-0443813
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/Dylluu_Ravenhood/Dylluu-Ravenhood-0443813
+Time taken to run the queries on ./repositories/Flask/thread2/Dylluu_Ravenhood/Dylluu-Ravenhood-0443813: 583.266 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Time taken to run the queries on ./repositories/Flask/thread2/LeetaoGoooo_peach-blog/LeetaoGoooo-peach-blog-455f97f: 695.594 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/Marauders-9998_Marauders-Website/Marauders-9998-Marauders-Website-5854994
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/Marauders-9998_Marauders-Website/Marauders-9998-Marauders-Website-5854994
+Time taken to run the queries on ./repositories/Flask/thread2/Marauders-9998_Marauders-Website/Marauders-9998-Marauders-Website-5854994: 835.331 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/Oripy_foxintheforest/Oripy-foxintheforest-f52925c
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/Oripy_foxintheforest/Oripy-foxintheforest-f52925c
+Time taken to run the queries on ./repositories/Flask/thread2/Oripy_foxintheforest/Oripy-foxintheforest-f52925c: 661.054 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/RansomLook_RansomLook/RansomLook-RansomLook-0ba6871
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/RansomLook_RansomLook/RansomLook-RansomLook-0ba6871
+Time taken to run the queries on ./repositories/Flask/thread2/RansomLook_RansomLook/RansomLook-RansomLook-0ba6871: 979.555 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/SUIBE-Blockchain_FISCO-BCOS-Toolbox/SUIBE-Blockchain-FISCO-BCOS-Toolbox-87957f4
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/SUIBE-Blockchain_FISCO-BCOS-Toolbox/SUIBE-Blockchain-FISCO-BCOS-Toolbox-87957f4
+Time taken to run the queries on ./repositories/Flask/thread2/SUIBE-Blockchain_FISCO-BCOS-Toolbox/SUIBE-Blockchain-FISCO-BCOS-Toolbox-87957f4: 685.715 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/Samsuhhh_Nope-Yelp/Samsuhhh-Nope-Yelp-525d301
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/Samsuhhh_Nope-Yelp/Samsuhhh-Nope-Yelp-525d301
+Time taken to run the queries on ./repositories/Flask/thread2/Samsuhhh_Nope-Yelp/Samsuhhh-Nope-Yelp-525d301: 681.066 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/ccmbioinfo_stager/ccmbioinfo-stager-02ec1e2
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/ccmbioinfo_stager/ccmbioinfo-stager-02ec1e2
+Time taken to run the queries on ./repositories/Flask/thread2/ccmbioinfo_stager/ccmbioinfo-stager-02ec1e2: 826.983 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/cernanalysispreservation_analysispreservation.cern.ch/cernanalysispreservation-analysispreservation.cern.ch-826e34c
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/cernanalysispreservation_analysispreservation.cern.ch/cernanalysispreservation-analysispreservation.cern.ch-826e34c
+Time taken to run the queries on ./repositories/Flask/thread2/cernanalysispreservation_analysispreservation.cern.ch/cernanalysispreservation-analysispreservation.cern.ch-826e34c: 941.021 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/cortictechnology_cep/cortictechnology-cep-2c30773
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/cortictechnology_cep/cortictechnology-cep-2c30773
+Time taken to run the queries on ./repositories/Flask/thread2/cortictechnology_cep/cortictechnology-cep-2c30773: 1442.075 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/dayjyun_instapix-project/dayjyun-instapix-project-a09868f
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/dayjyun_instapix-project/dayjyun-instapix-project-a09868f
+Time taken to run the queries on ./repositories/Flask/thread2/dayjyun_instapix-project/dayjyun-instapix-project-a09868f: 603.326 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Time taken to run the queries on ./repositories/Flask/thread2/eNMS-automation_eNMS/eNMS-automation-eNMS-f1168d3: 809.529 seconds.
+Analysis failed for: ./repositories/Flask/thread2/fkie-cad_FACT_core/fkie-cad-FACT_core-aaa3c4c Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/fkie-cad_FACT_core/fkie-cad-FACT_core-aaa3c4c -l=python -t=11 -ct=2
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/fkie-cad_FACT_core/fkie-cad-FACT_core-aaa3c4c: 100.908 seconds.
+Analysis failed for: ./repositories/Flask/thread2/guardicore_monkey/guardicore-monkey-4f9204c Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/guardicore_monkey/guardicore-monkey-4f9204c -l=python -t=11 -ct=2
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/guardicore_monkey/guardicore-monkey-4f9204c: 80.909 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/kizniche_Mycodo/kizniche-Mycodo-9420c01
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/kizniche_Mycodo/kizniche-Mycodo-9420c01
+Time taken to run the queries on ./repositories/Flask/thread2/kizniche_Mycodo/kizniche-Mycodo-9420c01: 1786.087 seconds.
+Analysis failed for: ./repositories/Flask/thread2/mozilla-releng_shipit/mozilla-releng-shipit-dbb0603 Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread2/mozilla-releng_shipit/mozilla-releng-shipit-dbb0603 -l=python -t=11 -ct=2
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread2/mozilla-releng_shipit/mozilla-releng-shipit-dbb0603: 60.952 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Time taken to run the queries on ./repositories/Flask/thread2/natlas_natlas/natlas-natlas-8f6a649: 1039.147 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/nutechsoftware_alarmdecoder-webapp/nutechsoftware-alarmdecoder-webapp-c75031b
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/nutechsoftware_alarmdecoder-webapp/nutechsoftware-alarmdecoder-webapp-c75031b
+Time taken to run the queries on ./repositories/Flask/thread2/nutechsoftware_alarmdecoder-webapp/nutechsoftware-alarmdecoder-webapp-c75031b: 556.585 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/qeeqbox_analyzer/qeeqbox-analyzer-00b8aba
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/qeeqbox_analyzer/qeeqbox-analyzer-00b8aba
+Time taken to run the queries on ./repositories/Flask/thread2/qeeqbox_analyzer/qeeqbox-analyzer-00b8aba: 1062.098 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/robalb_morsechat/robalb-morsechat-e045b4a
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/robalb_morsechat/robalb-morsechat-e045b4a
+Time taken to run the queries on ./repositories/Flask/thread2/robalb_morsechat/robalb-morsechat-e045b4a: 626.261 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread2/yokonsan_yublog/yokonsan-yublog-5c61703
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread2/yokonsan_yublog/yokonsan-yublog-5c61703
+Time taken to run the queries on ./repositories/Flask/thread2/yokonsan_yublog/yokonsan-yublog-5c61703: 592.034 seconds.
+Time taken to run the queries and generate the statistics: 17631.986 seconds.
