@@ -2,22 +2,14 @@ import python
 import semmle.python.ApiGraphs
 import CodeQL_Library.FlaskLogin
 
-string getMinValue(API::Node validator) {
-    if exists(validator.getKeywordParameter("min").getAValueReachingSink().asExpr().(IntegerLiteral).getValue()) or exists(validator.getParameter(0).getAValueReachingSink().asExpr().(IntegerLiteral).getValue())
-    then exists(Expr minvalue | 
-        (minvalue = validator.getKeywordParameter("min").getAValueReachingSink().asExpr()
-            or minvalue = validator.getParameter(0).getAValueReachingSink().asExpr())
-        and result = "Min value: " + minvalue.(IntegerLiteral).getValue())
-    else result = "Min value not set"
-}
-
-string getMaxValue(API::Node validator) {
-    if exists(validator.getKeywordParameter("max").getAValueReachingSink().asExpr().(IntegerLiteral).getValue()) or exists(validator.getParameter(1).getAValueReachingSink().asExpr().(IntegerLiteral).getValue())
-    then exists(Expr maxvalue | 
-        (maxvalue = validator.getKeywordParameter("max").getAValueReachingSink().asExpr()
-            or maxvalue = validator.getParameter(1).getAValueReachingSink().asExpr())
-        and result = "Max value: " + maxvalue.(IntegerLiteral).getValue())
-    else result = "Max value not set"
+bindingset[val, pos]
+string getValue(ControlFlowNode cfg, string val, int pos) {
+    if exists(cfg.(CallNode).getArgByName(val).inferredValue()) or exists(cfg.(CallNode).getArg(pos).inferredValue())
+    then exists(Value value | 
+        (value = cfg.(CallNode).getArgByName(val).inferredValue()
+            or value = cfg.(CallNode).getArg(pos).inferredValue())
+        and result = val + " value: " + value)
+    else result = val + " value not set"
 }
 
 predicate isInsideSignUpForm(DataFlow::Node passfield) {
@@ -30,14 +22,14 @@ predicate isInsideSignUpForm(DataFlow::Node passfield) {
             else passfield.getScope() = cls)
 }
 
-from DataFlow::Node node, API::Node validator
+from DataFlow::Node node, ControlFlowNode validator
 where (node = API::moduleImport("wtforms").getMember("PasswordField").getParameter(1).getAValueReachingSink()
         or node = API::moduleImport("flask_wtf").getMember("PasswordField").getParameter(1).getAValueReachingSink()
         or node = API::moduleImport("wtforms").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink()
         or node = API::moduleImport("flask_wtf").getMember("PasswordField").getKeywordParameter("validators").getAValueReachingSink())
-    and (validator = API::moduleImport("wtforms").getMember("validators").getMember("Length")
-        or validator = API::moduleImport("wtforms").getMember("validators").getMember("length"))
-    and (node.asExpr().(List).getAnElt().getAFlowNode() = validator.getReturn().getAValueReachableFromSource().asCfgNode()
-        or node.asExpr().(Tuple).getAnElt().getAFlowNode() = validator.getReturn().getAValueReachableFromSource().asCfgNode())
+    and (validator = API::moduleImport("wtforms").getMember("validators").getMember("Length").getReturn().getAValueReachableFromSource().asCfgNode()
+        or validator = API::moduleImport("wtforms").getMember("validators").getMember("length").getReturn().getAValueReachableFromSource().asCfgNode())
+    and (node.asExpr().(List).getAnElt().getAFlowNode() = validator
+        or node.asExpr().(Tuple).getAnElt().getAFlowNode() = validator)
     and isInsideSignUpForm(node)
-select node, node.getLocation(), "Length checks are being performed on the password field", getMinValue(validator), getMaxValue(validator)
+select node, node.getLocation(), "Length checks are being performed on the password field", getValue(validator, "max", 1), getValue(validator, "min", 0)

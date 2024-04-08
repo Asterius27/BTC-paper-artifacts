@@ -8,7 +8,7 @@ from config import FlaskConfig, default_config
 import os
 
 from flask_bcrypt import Bcrypt, generate_password_hash
-from wtforms import Form, PasswordField, ValidationError, BaseForm
+from wtforms import Form, PasswordField, ValidationError, BaseForm, EmailField
 from wtforms import validators
 from wtforms.validators import Length, Regexp, length, DataRequired, Email, EqualTo
 from flask_wtf import FlaskForm
@@ -239,6 +239,7 @@ class SuperClass(Form):
 class UserRegisterForm(SuperClass): # Form or BaseForm or FlaskForm (from flask_wtf)
     # can also define custom validators and then pass them to the field by adding them to the array. The only way to distinguish them is to check whether they are a wtforms import module or not
     pwd = PasswordField('password', [Length(min=16), Regexp("somepattern"), length(min=18), User(), aux(8)])
+    email = EmailField('email', validators=[Length(max=30)])
     test = PasswordField('pwd', validators=[DataRequired()])
     confirm_pwd = PasswordField('conf_pwd')
     # another way to define custom validators

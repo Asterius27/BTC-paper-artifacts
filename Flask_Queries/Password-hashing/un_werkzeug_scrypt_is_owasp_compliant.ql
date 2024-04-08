@@ -17,10 +17,15 @@ predicate isCompliant(int n, int r, int p) {
 predicate aux(DataFlow::Node node) {
     if exists(node.asExpr().(StrConst).getS().splitAt(":", 0)) and exists(node.asExpr().(StrConst).getS().splitAt(":", 1).toInt()) and exists(node.asExpr().(StrConst).getS().splitAt(":", 2).toInt()) and exists(node.asExpr().(StrConst).getS().splitAt(":", 3).toInt())
     then isCompliant(node.asExpr().(StrConst).getS().splitAt(":", 1).toInt(), node.asExpr().(StrConst).getS().splitAt(":", 2).toInt(), node.asExpr().(StrConst).getS().splitAt(":", 3).toInt())
-    else none()
+    else if exists(node.asExpr().(StrConst).getS().splitAt(":", 0)) and exists(node.asExpr().(StrConst).getS().splitAt(":", 1).toInt()) and not exists(node.asExpr().(StrConst).getS().splitAt(":", 2).toInt()) and not exists(node.asExpr().(StrConst).getS().splitAt(":", 3).toInt())
+        then isCompliant(node.asExpr().(StrConst).getS().splitAt(":", 1).toInt(), 8, 1)
+        else none() // TODO
 }
 
 from DataFlow::Node node
 where node = libraryIsUsed()
     and aux(node)
+    // TODO
+    and not node.asCfgNode().isImportMember()
+    and exists(node.asCfgNode())
 select node, node.getLocation(), "Werkzeug's scrypt hasher is being used and it's compliant with owasp guidelines"

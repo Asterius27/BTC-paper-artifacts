@@ -10,4 +10,7 @@ where node = API::moduleImport("werkzeug").getMember("security").getMember("gene
         or not exists(DataFlow::Node method | 
             (method = node.getKeywordParameter("method").getAValueReachingSink()
                 or method = node.getParameter(1).getAValueReachingSink())))
+    // TODO
+    and exists(node.getAValueReachableFromSource().asCfgNode())
+    and not node.getAValueReachableFromSource().asCfgNode().isImportMember()
 select node.getAValueReachableFromSource(), node.getAValueReachableFromSource().getLocation(), "Werkzeug's scrypt hasher is being used"
