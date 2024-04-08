@@ -157,8 +157,9 @@ keys_account_creation = set(django_account_creation)
 
 keys_hardcoded_secret_key = set(hardcoded_secret_key)
 keys_hardcoded_secret_key_potential_false_positives = set(hardcoded_secret_key_potential_false_positives)
-repos_hardcoded_secret_key = repos.difference(keys_hardcoded_secret_key_potential_false_positives)
-hardcoded_secret_key_set = repos_hardcoded_secret_key.intersection(keys_hardcoded_secret_key)
+repos_hardcoded_secret_key = repos.intersection(keys_hardcoded_secret_key)
+hardcoded_secret_key_false_positives = repos_hardcoded_secret_key.intersection(keys_hardcoded_secret_key_potential_false_positives)
+hardcoded_secret_key_true_positives = repos_hardcoded_secret_key.difference(keys_hardcoded_secret_key_potential_false_positives)
 
 keys_custom_password_validators = keys_account_creation.intersection(set(custom_password_validators))
 keys_length_password_validators = keys_account_creation.intersection(set(length_password_validators))
@@ -203,8 +204,9 @@ not_calling_logout_server_side_sessions = keys_logout_function_is_not_called.dif
 counter_django = len(repos)
 counter_account_creation = len(keys_account_creation)
 
-counter_hardcoded_secret_keys = len(hardcoded_secret_key_set)
-counter_hardcoded_secret_keys_false_positives = len(keys_hardcoded_secret_key_potential_false_positives)
+counter_hardcoded_secret_keys = len(repos_hardcoded_secret_key)
+counter_hardcoded_secret_keys_false_positives = len(hardcoded_secret_key_false_positives)
+counter_hardcoded_secret_key_true_positives = len(hardcoded_secret_key_true_positives)
 
 counter_custom_password_validators = len(keys_custom_password_validators)
 counter_length_password_validators = len(keys_length_password_validators)
@@ -241,9 +243,9 @@ counter_password_hashers_potential_false_positives = len(keys_password_hashers_p
 counter_not_calling_logout_server_side_sessions = len(not_calling_logout_server_side_sessions)
 
 saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[django_login_usage], [django_account_creation]])
-saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys"],
-                [hardcoded_secret_key_set, keys_hardcoded_secret_key_potential_false_positives],
-                [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives]])
+saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys"],
+                [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives],
+                [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key]])
 saveDictsToFile(["not_performing_password_validation", "custom_password_validators", "length_password_validators", "numeric_password_validators", "common_password_validators", "similarity_password_validators", "using_all_password_validators"],
                 [not_performing_password_validation, keys_custom_password_validators, keys_length_password_validators, keys_numeric_password_validators, keys_common_password_validators, keys_similarity_password_validators, using_all_password_validators],
                [[django_account_creation], [custom_password_validators], [length_password_validators], [numeric_password_validators], [common_password_validators], [similarity_password_validators],
@@ -294,7 +296,8 @@ report = """
 <h2>Session Management</h2>
 <h3>Cryptographic Keys</h3>
 <p><a href="{}" target="_blank">{}</a> had a hardcoded secret key ({} %)<br>
-<a href="{}" target="_blank">{}</a> set the secret key more than once, so it's a false positive potentially ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> set the secret key more than once (and it's hardcoded at least once), so it's a false positive potentially ({} %)<br>
+<a href="{}" target="_blank">{}</a> set the secret key only once (and it's hardcoded), so it's a true positive ({} %)<br></p>
 <h3>CSRF</h3>
 <p><a href="{}" target="_blank">{}</a> CSRF global protection is always active ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is activated, but it is deactivated on some views ({} %)<br>
@@ -329,7 +332,8 @@ report_html = report.format("./session_management.txt", str(counter_django), "./
                             "./bcrypt_not_owasp_compliant.txt", str(counter_bcrypt_not_owasp_compliant), str(getPercentage(counter_bcrypt_not_owasp_compliant, counter_account_creation)),
                             "./potential_false_positives_password_hashers.txt", str(counter_password_hashers_potential_false_positives), str(getPercentage(counter_password_hashers_potential_false_positives, counter_account_creation)),
                             "./hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys), str(getPercentage(counter_hardcoded_secret_keys, counter_django)),
-                            "./potential_false_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys_false_positives), str(getPercentage(counter_hardcoded_secret_keys_false_positives, counter_django)), 
+                            "./potential_false_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys_false_positives), str(getPercentage(counter_hardcoded_secret_keys_false_positives, counter_hardcoded_secret_keys)), 
+                            "./true_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_key_true_positives),  str(getPercentage(counter_hardcoded_secret_key_true_positives, counter_hardcoded_secret_keys)),
                             "./csrf_activated_globally.txt", str(counter_csrf_activated), str(getPercentage(counter_csrf_activated, counter_django)),
                             "./csrf_deactivated_selectively.txt", str(counter_csrf_deactivated_selectively), str(getPercentage(counter_csrf_deactivated_selectively, counter_django)),
                             "./csrf_activated_selectively.txt", str(counter_csrf_activated_selectively), str(getPercentage(counter_csrf_activated_selectively, counter_django)),
