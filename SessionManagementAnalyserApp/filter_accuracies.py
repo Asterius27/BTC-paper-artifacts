@@ -23,7 +23,7 @@ def loadGPTCSV(csvFile, answer):
         reader = csv.DictReader(csv_file)
         for row in reader:
             if row["answer"] == answer:
-                repos.append(row["repo_name"]) # TODO better to use the url
+                repos.append(row["url"])
     return set(repos)
 
 def loadCSV(csvFile):
@@ -34,16 +34,15 @@ def loadCSV(csvFile):
             repos.append(row["repo_url"])
     return set(repos)
 
-unfiltered_list = loadCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - Flask New List.csv')
-manual_filtered_list_true_positives = loadCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - Flask New List Filtered.csv')
+unfiltered_list = loadCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - Django New List.csv')
+manual_filtered_list_true_positives = loadCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - Django New List Filtered.csv')
 manual_filtered_list_true_negatives = unfiltered_list.difference(manual_filtered_list_true_positives)
 
-# TODO get the updated ones
-gpt_filtered_list_positives = loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - Django_GPT.csv', "yes")
-gpt_filtered_list_negatives = loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - Django_GPT.csv', "no")
+gpt_filtered_list_positives = unfiltered_list.intersection(loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - GPT.csv', "yes"))
+gpt_filtered_list_negatives = unfiltered_list.intersection(loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - GPT.csv', "no"))
 
-whitelist_filtered_list_positives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../flask_whitelist_filtered_v2.csv'))
-whitelist_filtered_list_negatives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../flask.csv')).difference(whitelist_filtered_list_positives)
+whitelist_filtered_list_positives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django_whitelist_filtered_v2.csv'))
+whitelist_filtered_list_negatives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django.csv')).difference(whitelist_filtered_list_positives)
 
 print(len(unfiltered_list))
 print(len(manual_filtered_list_true_positives))
