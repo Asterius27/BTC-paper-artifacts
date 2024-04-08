@@ -147,6 +147,7 @@ bcrypt_is_used = extractResults("Flask", "Password-hashing", "un_bcrypt_is_used"
 bcrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_bcrypt_is_owasp_compliant", True, csv_dict)
 flask_bcrypt_is_used = extractResults("Flask", "Password-hashing", "un_flask_bcrypt_is_used", True, csv_dict)
 flask_bcrypt_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_flask_bcrypt_is_owasp_compliant", True, csv_dict)
+flask_bcrypt_is_owasp_compliant_false_positives = extractFalsePositives("Flask", "Explorative-queries", "un_potential_false_positives", "un_flask_bcrypt_is_owasp_compliant ", True, csv_dict)
 passlib_is_used = extractResults("Flask", "Password-hashing", "un_passlib_is_used", True, csv_dict)
 passlib_argon2_is_used = extractResults("Flask", "Password-hashing", "un_passlib_argon2_is_used", True, csv_dict)
 passlib_argon2_is_owasp_compliant = extractResults("Flask", "Password-hashing", "un_passlib_argon2_is_owasp_compliant", True, csv_dict)
@@ -215,13 +216,14 @@ keys_argon2_is_used = keys_account_creation.intersection(set(argon2_is_used).uni
 keys_bcrypt_is_used = keys_account_creation.intersection(set(bcrypt_is_used).union(set(flask_bcrypt_is_used)).union(set(passlib_bcrypt_is_used)))
 keys_scrypt_is_used = keys_account_creation.intersection(set(hashlib_scrypt_is_used).union(set(passlib_scrypt_is_used)).union(set(werkzeug_scrypt_is_used)))
 keys_pbkdf2_is_used = keys_account_creation.intersection(set(hashlib_pbkdf2_is_used).union(set(passlib_pbkdf2_is_used)).union(set(werkzeug_pbkdf2_is_used)))
+keys_bcrypt_is_owasp_compliant_false_positives = keys_account_creation.intersection(set(flask_bcrypt_is_owasp_compliant_false_positives))
 keys_argon2_is_owasp_compliant = keys_account_creation.intersection(set(argon2_is_owasp_compliant).union(set(passlib_argon2_is_owasp_compliant)))
-keys_bcrypt_is_owasp_compliant = keys_account_creation.intersection(set(bcrypt_is_owasp_compliant).union(set(flask_bcrypt_is_owasp_compliant)).union(set(passlib_bcrypt_is_owasp_compliant)))
+keys_bcrypt_is_owasp_compliant = keys_account_creation.intersection(set(bcrypt_is_owasp_compliant).union(set(flask_bcrypt_is_owasp_compliant)).union(set(passlib_bcrypt_is_owasp_compliant))).difference(keys_bcrypt_is_owasp_compliant_false_positives)
 keys_scrypt_is_owasp_compliant = keys_account_creation.intersection(set(hashlib_scrypt_is_owasp_compliant).union(set(passlib_scrypt_is_owasp_compliant)).union(set(werkzeug_scrypt_is_owasp_compliant)))
 keys_pbkdf2_is_owasp_compliant = keys_account_creation.intersection(set(hashlib_pbkdf2_is_owasp_compliant).union(set(passlib_pbkdf2_is_owasp_compliant)).union(set(werkzeug_pbkdf2_is_owasp_compliant)))
 repos_with_password_hashing = keys_account_creation.intersection(set(argon2_is_used).union(set(bcrypt_is_used)).union(set(flask_bcrypt_is_used)).union(set(passlib_is_used)).union(set(werkzeug_is_used)).union(set(hashlib_is_used)))
 repos_using_argon2_not_owasp_compliant = keys_argon2_is_used.difference(keys_argon2_is_owasp_compliant)
-repos_using_bcrypt_not_owasp_compliant = keys_bcrypt_is_used.difference(keys_bcrypt_is_owasp_compliant)
+repos_using_bcrypt_not_owasp_compliant = keys_bcrypt_is_used.difference(keys_bcrypt_is_owasp_compliant).difference(keys_bcrypt_is_owasp_compliant_false_positives)
 repos_using_scrypt_not_owasp_compliant = keys_scrypt_is_used.difference(keys_scrypt_is_owasp_compliant)
 repos_using_pbkdf2_not_owasp_compliant = keys_pbkdf2_is_used.difference(keys_pbkdf2_is_owasp_compliant)
 not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used))
@@ -261,6 +263,7 @@ counter_keys_pbkdf2_is_used = len(keys_pbkdf2_is_used)
 counter_keys_argon2_is_owasp_compliant = len(keys_argon2_is_owasp_compliant)
 counter_keys_scrypt_is_owasp_compliant = len(keys_scrypt_is_owasp_compliant)
 counter_keys_bcrypt_is_owasp_compliant = len(keys_bcrypt_is_owasp_compliant)
+counter_bcrypt_is_owasp_compliant_false_positives = len(keys_bcrypt_is_owasp_compliant_false_positives)
 counter_keys_pbkdf2_is_owasp_compliant = len(keys_pbkdf2_is_owasp_compliant)
 counter_argon2_not_owasp_compliant = len(repos_using_argon2_not_owasp_compliant)
 counter_scrypt_not_owasp_compliant = len(repos_using_scrypt_not_owasp_compliant)
@@ -290,6 +293,7 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                 [[argon2_is_owasp_compliant, passlib_argon2_is_owasp_compliant], [hashlib_scrypt_is_owasp_compliant, passlib_scrypt_is_owasp_compliant, werkzeug_scrypt_is_owasp_compliant], [bcrypt_is_owasp_compliant, flask_bcrypt_is_owasp_compliant, passlib_bcrypt_is_owasp_compliant], 
                  [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
+saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> flask repos for Session Management and <a href="{}" target="_blank">{}</a> flask repos for Account Creation<br></p>
@@ -305,14 +309,15 @@ report = """
 <p><a href="{}" target="_blank">{}</a> applications use some form of (supported) password hashing ({} %)<br>
 <a href="{}" target="_blank">{}</a> applications do not use one of the supported password hashing libraries or do not perform password hashing ({} %)<br>
 <a href="{}" target="_blank">{}</a> applications use some form of (supported) password hashing but do not use one of the recommended algorithms ({} %)<br>
-<a href="{}" target="_blank">{}</a> use argon2id and is owasp compliant ({} %)<br>
-<a href="{}" target="_blank">{}</a> use scrypt and is owasp compliant ({} %)<br>
-<a href="{}" target="_blank">{}</a> use PBKDF2 and is owasp compliant ({} %)<br>
-<a href="{}" target="_blank">{}</a> use bcrypt and is owasp compliant ({} %)<br>
-<a href="{}" target="_blank">{}</a> use argon2id and is not owasp compliant ({} %)<br>
-<a href="{}" target="_blank">{}</a> use scrypt and is not owasp compliant ({} %)<br>
-<a href="{}" target="_blank">{}</a> use PBKDF2 and is not owasp compliant ({} %)<br>
-<a href="{}" target="_blank">{}</a> use bcrypt and is not owasp compliant ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> use argon2id and is owasp compliant (no false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use scrypt and is owasp compliant (no false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use PBKDF2 and is owasp compliant (no false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use bcrypt and is owasp compliant (no false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use argon2id and is not owasp compliant (no false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use scrypt and is not owasp compliant (no false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use PBKDF2 and is not owasp compliant (no false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use bcrypt and is not owasp compliant (no false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> bcrypt owasp compliance is potentially a false positive ({} %)<br></p>
 <h2>Session Management</h2>
 <h3>Cryptographic Keys</h3>
 <p><a href="{}" target="_blank">{}</a> had a hardcoded secret key ({} %)<br>
@@ -350,6 +355,7 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./scrypt_not_owasp_compliant.txt", str(counter_scrypt_not_owasp_compliant), str(getPercentage(counter_scrypt_not_owasp_compliant, counter_account_creation)),
                             "./pbkdf2_not_owasp_compliant.txt", str(counter_pbkdf2_not_owasp_compliant), str(getPercentage(counter_pbkdf2_not_owasp_compliant, counter_account_creation)),
                             "./bcrypt_not_owasp_compliant.txt", str(counter_bcrypt_not_owasp_compliant), str(getPercentage(counter_bcrypt_not_owasp_compliant, counter_account_creation)),
+                            "./bcrypt_owasp_compliant_false_positives.txt", str(counter_bcrypt_is_owasp_compliant_false_positives), str(getPercentage(counter_bcrypt_is_owasp_compliant_false_positives, counter_account_creation)),
                             "./hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys), str(getPercentage(counter_hardcoded_secret_keys, counter_flask)),
                             "./potential_false_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys_false_positives), str(getPercentage(counter_hardcoded_secret_keys_false_positives, counter_hardcoded_secret_keys)), 
                             "./true_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_key_true_positives),  str(getPercentage(counter_hardcoded_secret_key_true_positives, counter_hardcoded_secret_keys)),
