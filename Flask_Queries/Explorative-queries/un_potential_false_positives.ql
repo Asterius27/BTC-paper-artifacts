@@ -16,6 +16,8 @@ string auxsk() {
         and exists(expr1.getLocation().getFile().getRelativePath())
         and exists(expr2.getLocation().getFile().getRelativePath())
         and expr1.getLocation().toString() != expr2.getLocation().toString()
+        and (not expr1 instanceof Str
+            or not expr2 instanceof Str)
         and result = "un_secret_key " + expr1 + " " + expr1.getLocation() + " " + expr2 + " " + expr2.getLocation())
 }
 
