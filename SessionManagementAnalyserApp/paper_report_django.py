@@ -255,7 +255,7 @@ saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csr
                 [[django_login_usage], [using_csrf_exempt, using_csrf_requires], [using_csrf_protect], [csrf_disabled_globally]])
 saveDictsToFile(["using_password_hashing", "not_using_recommended_algorithm", "not_using_supported_library", "using_argon2", "using_scrypt", "using_bcrypt", "using_pbkdf2"],
                 [repos_with_password_hashing, not_using_a_recommended_algorithm, not_using_supported_libraries, keys_argon2_is_used, keys_scrypt_is_used, keys_bcrypt_is_used, keys_pbkdf2_is_used],
-                [[argon2_is_used, bcrypt_is_used, scrypt_is_used, pbkdf2_is_used, md5_is_used, custom_password_hasher_is_used], [argon2_is_used, bcrypt_is_used, scrypt_is_used, pbkdf2_is_used],
+                [[argon2_is_used, bcrypt_is_used, scrypt_is_used, pbkdf2_is_used, md5_is_used, custom_password_hasher_is_used], [md5_is_used, custom_password_hasher_is_used],
                  [django_account_creation], [argon2_is_used], [scrypt_is_used], [bcrypt_is_used], [pbkdf2_is_used]])
 saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owasp_compliant", "pbkdf2_owasp_compliant", "argon2_not_owasp_compliant", "scrypt_not_owasp_compliant", "bcrypt_not_owasp_compliant", "pbkdf2_not_owasp_compliant"],
                 [keys_argon2_is_owasp_compliant, keys_scrypt_is_owasp_compliant, keys_bcrypt_is_owasp_compliant, keys_pbkdf2_is_owasp_compliant, repos_using_argon2_not_owasp_compliant, repos_using_scrypt_not_owasp_compliant, repos_using_bcrypt_not_owasp_compliant, repos_using_pbkdf2_not_owasp_compliant],
