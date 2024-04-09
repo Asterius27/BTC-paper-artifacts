@@ -18,8 +18,9 @@ from passlib.handlers.bcrypt import bcrypt as bcrpt
 from argon2 import PasswordHasher, Type
 from passlib.context import CryptContext
 import hashlib
+from hashlib import pbkdf2_hmac
 import bcrypt as bcr
-from werkzeug import security
+from werkzeug.security import generate_password_hash as gen_pass_hash
 import passwordmeter
 from password_strength import PasswordStats, PasswordPolicy
 import deform
@@ -151,8 +152,8 @@ ph = PasswordHasher(type=Type.ID)
 hash = ph.hash("correct horse battery staple")
 hashed = hashlib.md5("password")
 hashed = bcr.hashpw("password", bcr.gensalt())
-hash = security.generate_password_hash("password", "scrypt:300000:9:1")
-hash2 = security.generate_password_hash("passwrd", "pbkdf2")
+hash = gen_pass_hash("password", "scrypt:300000:9:1")
+hash2 = gen_pass_hash("passwrd", "pbkdf2")
 
 # other password strenght libraries
 strength, improvements = passwordmeter.test("password")
@@ -340,8 +341,8 @@ def signup():
     if request.POST:
         if form.validate_on_submit(): # aux(30)
             hashed_pwd = hashlib.scrypt(form.pwd)
-            hashed_passw = hashlib.pbkdf2_hmac('sha256', form.pwd, b"somesalt", 540000)
-            hashed_pssw = hashlib.scrypt(form.pwd, n=131072, r=8, p=1)
+            hashed_passw = pbkdf2_hmac('sha256', form.pwd, b"somesalt", 540000)
+            # hashed_pssw = hashlib.scrypt("somepassword", n=131072, r=8, p=1)
             return redirect('/success')
     return "Signup"
 

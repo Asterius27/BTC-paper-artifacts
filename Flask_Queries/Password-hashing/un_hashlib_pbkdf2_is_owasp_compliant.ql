@@ -11,13 +11,14 @@ predicate isCompliant(string method, int iterations) {
         and iterations >= 1300000)
 }
 
-from API::Node node, StrConst method, IntegerLiteral iterations
-where node = API::moduleImport("hashlib").getMember("pbkdf2_hmac")
-    and (exists(node.getParameter(1))
-        or exists(node.getKeywordParameter("password")))
-    and (method = node.getParameter(0).getAValueReachingSink().asExpr().(StrConst)
-        or method = node.getKeywordParameter("hash_name").getAValueReachingSink().asExpr().(StrConst))
-    and (iterations = node.getParameter(3).getAValueReachingSink().asExpr().(IntegerLiteral)
-        or iterations = node.getKeywordParameter("iterations").getAValueReachingSink().asExpr().(IntegerLiteral))
-    and isCompliant(method.getS(), iterations.getValue())
-select node, node.getAValueReachableFromSource().getLocation(), "Hashlib PBKDF2 is being used to hash passwords and it's owasp compliant"
+from ControlFlowNode node, StrConst method, IntegerLiteral iterations
+where node = API::moduleImport("hashlib").getMember("pbkdf2_hmac").getReturn().getAValueReachableFromSource().asCfgNode()
+    and (exists(node.(CallNode).getArg(1))
+        or exists(node.(CallNode).getArgByName("password")))
+    and not node.isImportMember()
+    and (method.getAFlowNode() = node.(CallNode).getArg(0)
+        or method.getAFlowNode() = node.(CallNode).getArgByName("hash_name"))
+    and (iterations.getAFlowNode() = node.(CallNode).getArg(3)
+        or iterations.getAFlowNode() = node.(CallNode).getArgByName("iterations"))
+    and isCompliant(method.getText(), iterations.getValue())
+select node, node.getLocation(), "Hashlib PBKDF2 is being used to hash passwords and it's owasp compliant"

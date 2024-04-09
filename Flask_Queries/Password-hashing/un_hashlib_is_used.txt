@@ -1,5 +1,5 @@
-|                         node                         |                                          col1                                           |                  col2                   |
-+------------------------------------------------------+-----------------------------------------------------------------------------------------+-----------------------------------------+
-| Use moduleImport("hashlib").getMember("scrypt")      | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:339 | Hashlib is being used to hash passwords |
-| Use moduleImport("hashlib").getMember("pbkdf2_hmac") | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:340 | Hashlib is being used to hash passwords |
-| Use moduleImport("hashlib").getMember("scrypt")      | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:341 | Hashlib is being used to hash passwords |
+|               node                |                                          col1                                           |                  col2                   |
++-----------------------------------+-----------------------------------------------------------------------------------------+-----------------------------------------+
+| ControlFlowNode for Attribute()   | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:343 | Hashlib is being used to hash passwords |
+| ControlFlowNode for pbkdf2_hmac() | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:344 | Hashlib is being used to hash passwords |
+| ControlFlowNode for Attribute()   | /home/simone/Uni/Tesi_Laurea_Magistrale/Session-Management-Analyser/FlaskApp/app.py:345 | Hashlib is being used to hash passwords |

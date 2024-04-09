@@ -4,12 +4,13 @@ import CodeQL_Library.FlaskLogin
 
 bindingset[val, pos]
 string getValue(ControlFlowNode cfg, string val, int pos) {
-    if exists(cfg.(CallNode).getArgByName(val).inferredValue()) or exists(cfg.(CallNode).getArg(pos).inferredValue())
-    then exists(Value value | 
-        (value = cfg.(CallNode).getArgByName(val).inferredValue()
-            or value = cfg.(CallNode).getArg(pos).inferredValue())
-        and result = val + " value: " + value)
-    else result = val + " value not set"
+    if exists(IntegerLiteral value | value.getAFlowNode() = cfg.(CallNode).getArgByName(val)
+        or value.getAFlowNode() = cfg.(CallNode).getArg(pos))
+    then exists(IntegerLiteral value | 
+        (value.getAFlowNode() = cfg.(CallNode).getArgByName(val)
+            or value.getAFlowNode() = cfg.(CallNode).getArg(pos))
+        and result = val + " value: " + value.getValue())
+    else result = val + " value not set or it is not an integer literal"
 }
 
 predicate isInsideSignUpForm(DataFlow::Node passfield) {

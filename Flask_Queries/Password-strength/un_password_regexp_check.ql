@@ -3,11 +3,12 @@ import semmle.python.ApiGraphs
 import CodeQL_Library.FlaskLogin
 
 string getRegexp(ControlFlowNode validator) {
-    if exists(validator.(CallNode).getArgByName("regex").inferredValue()) or exists(validator.(CallNode).getArg(0).inferredValue())
-    then exists(Value regexp | 
-        (regexp = validator.(CallNode).getArgByName("regex").inferredValue()
-            or regexp = validator.(CallNode).getArg(0).inferredValue())
-        and result = "The regex being used is: " + regexp)
+    if exists(StrConst regexp | regexp.getAFlowNode() = validator.(CallNode).getArgByName("regex")
+        or regexp.getAFlowNode() = validator.(CallNode).getArg(0))
+    then exists(StrConst regexp | 
+        (regexp.getAFlowNode() = validator.(CallNode).getArgByName("regex")
+            or regexp.getAFlowNode() = validator.(CallNode).getArg(0))
+        and result = "The regex being used is: " + regexp.getText())
     else result = "Either the regexp is not set or it is not a string"
 }
 

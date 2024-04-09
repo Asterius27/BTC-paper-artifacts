@@ -1,8 +1,9 @@
 import python
 import semmle.python.ApiGraphs
 
-from API::Node node
-where node = API::moduleImport("hashlib").getMember("scrypt")
-    and (exists(node.getParameter(0))
-        or exists(node.getKeywordParameter("password")))
-select node, node.getAValueReachableFromSource().getLocation(), "Hashlib scrypt is being used to hash passwords"
+from ControlFlowNode node
+where node = API::moduleImport("hashlib").getMember("scrypt").getReturn().getAValueReachableFromSource().asCfgNode()
+    and (exists(node.(CallNode).getArg(0))
+        or exists(node.(CallNode).getArgByName("password")))
+    and not node.isImportMember()
+select node, node.getLocation(), "Hashlib scrypt is being used to hash passwords"

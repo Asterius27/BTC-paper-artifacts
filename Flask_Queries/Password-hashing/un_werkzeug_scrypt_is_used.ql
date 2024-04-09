@@ -1,16 +1,14 @@
 import python
 import semmle.python.ApiGraphs
 
-from API::Node node
-where node = API::moduleImport("werkzeug").getMember("security").getMember("generate_password_hash")
-    and (exists(DataFlow::Node method |
-            (method = node.getKeywordParameter("method").getAValueReachingSink()
-                or method = node.getParameter(1).getAValueReachingSink())
-            and method.asExpr().(StrConst).getS().prefix(6) = "scrypt")
-        or not exists(DataFlow::Node method | 
-            (method = node.getKeywordParameter("method").getAValueReachingSink()
-                or method = node.getParameter(1).getAValueReachingSink())))
-    // TODO
-    and exists(node.getAValueReachableFromSource().asCfgNode())
-    and not node.getAValueReachableFromSource().asCfgNode().isImportMember()
-select node.getAValueReachableFromSource(), node.getAValueReachableFromSource().getLocation(), "Werkzeug's scrypt hasher is being used"
+from ControlFlowNode node
+where node = API::moduleImport("werkzeug").getMember("security").getMember("generate_password_hash").getReturn().getAValueReachableFromSource().asCfgNode()
+    and (exists(StrConst method |
+            (method.getAFlowNode() = node.(CallNode).getArgByName("method")
+                or method.getAFlowNode() = node.(CallNode).getArg(1))
+            and method.getText().prefix(6) = "scrypt")
+        or not exists(ControlFlowNode method | 
+            (method = node.(CallNode).getArgByName("method")
+                or method = node.(CallNode).getArg(1))))
+    and not node.isImportMember()
+select node, node.getLocation(), "Werkzeug's scrypt hasher is being used"
