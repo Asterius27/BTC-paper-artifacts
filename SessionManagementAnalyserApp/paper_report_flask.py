@@ -316,7 +316,10 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                  [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
 saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]])
-saveDictsToFile(["csrf_categories_union", "not_in_any_csrf_category", "in_more_than_one_category"], [csrf_categories_union, not_in_any_csrf_category, repos_in_more_than_one_category], [[repos_using_csrf_library], [repos_using_csrf_library, csrf_enabled_globally, using_csrf_exempt, using_csrf_protect, using_flaskform_csrf, using_flaskform_with_csrf_disabled, disabled_flask_wtf_csrf_protection, disabled_flask_wtf_csrf_global_protection, using_wtforms_csrf_protection, using_flask_wtf, using_wtforms], 
+saveDictsToFile(["csrf_categories_union", "not_in_any_csrf_category", "in_more_than_one_category"], 
+                [csrf_categories_union, not_in_any_csrf_category, repos_in_more_than_one_category], 
+                [[using_wtforms, using_flask_wtf, csrf_enabled_globally], 
+                [using_wtforms, using_flask_wtf, csrf_enabled_globally, csrf_enabled_globally, using_csrf_exempt, using_csrf_protect, using_flaskform_csrf, using_flaskform_with_csrf_disabled, disabled_flask_wtf_csrf_protection, disabled_flask_wtf_csrf_global_protection, using_wtforms_csrf_protection, using_flask_wtf, using_wtforms], 
                 [csrf_enabled_globally, using_csrf_exempt, using_csrf_protect, using_flaskform_csrf, using_flaskform_with_csrf_disabled, disabled_flask_wtf_csrf_protection, disabled_flask_wtf_csrf_global_protection, using_wtforms_csrf_protection, using_flask_wtf, using_wtforms]])
 
 report = """
