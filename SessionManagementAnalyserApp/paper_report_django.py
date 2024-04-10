@@ -135,6 +135,7 @@ csrf_disabled_globally = extractResults("Django", "CSRF", "un_csrf_protection_is
 using_csrf_exempt = extractResults("Django", "CSRF", "un_csrf_exempt_is_used", True, csv_dict)
 using_csrf_protect = extractResults("Django", "CSRF", "un_csrf_protect_is_used", True, csv_dict)
 using_csrf_requires = extractResults("Django", "CSRF", "un_requires_csrf_token_is_used", True, csv_dict) # csrf protection still active, but you are not rejecting request that do not adhere, so it's like selectively disabling csrf
+overriding_csrf_middleware = extractResults("Django", "CSRF", "un_using_custom_csrf_middleware", True, csv_dict)
 argon2_is_used = extractResults("Django", "Password-hashing", "un_argon2_is_used", True, csv_dict)
 argon2_is_owasp_compliant = extractResults("Django", "Password-hashing", "un_argon2_is_owasp_compliant", True, csv_dict)
 bcrypt_is_used = extractResults("Django", "Password-hashing", "un_bcrypt_is_used", True, csv_dict)
@@ -145,6 +146,7 @@ scrypt_is_used = extractResults("Django", "Password-hashing", "un_scrypt_is_used
 scrypt_is_owasp_compliant = extractResults("Django", "Password-hashing", "un_scrypt_is_owasp_compliant", True, csv_dict)
 md5_is_used = extractResults("Django", "Password-hashing", "un_md5_is_used", True, csv_dict)
 custom_password_hasher_is_used = extractResults("Django", "Password-hashing", "un_using_custom_password_hasher", True, csv_dict)
+middleware_potential_false_positives = extractFalsePositives("Django", "Explorative-queries", "un_potential_false_positives", "un_csrf_protection_is_disabled ", True, csv_dict)
 password_hashers_potential_false_positives = extractFalsePositives("Django", "Explorative-queries", "un_potential_false_positives", "un_manually_set_password_hashers ", True, csv_dict)
 logout_function_is_not_called = extractResults("Django", "Logout-function-is-called", "un_logout_function_is_called", False, csv_dict)
 using_client_side_sessions = extractResults("Django", "Logout-session-invalidation", "un_client_side_session", True, csv_dict)
@@ -171,14 +173,16 @@ using_all_password_validators = keys_account_creation.intersection(keys_length_p
 performing_password_validation = keys_account_creation.intersection(keys_custom_password_validators.union(keys_length_password_validators).union(keys_numeric_password_validators).union(keys_common_password_validators).union(keys_similarity_password_validators))
 not_performing_password_validation = keys_account_creation.difference(performing_password_validation)
 
+keys_overriding_csrf_middleware = repos.intersection(set(overriding_csrf_middleware))
 keys_csrf_disabled_globally = set(csrf_disabled_globally)
 keys_using_csrf_exempt = set(using_csrf_exempt)
 keys_using_csrf_protect = set(using_csrf_protect)
 keys_using_csrf_requires = set(using_csrf_requires)
-csrf_protection_global = repos.difference(keys_csrf_disabled_globally.union(keys_using_csrf_exempt).union(keys_using_csrf_requires))
-csrf_protection_global_selectively_disabled = repos.difference(keys_csrf_disabled_globally).intersection(keys_using_csrf_exempt.union(keys_using_csrf_requires))
-csrf_protection_selectively_activated = repos.intersection(keys_csrf_disabled_globally).intersection(keys_using_csrf_protect)
-csrf_protection_disabled = repos.intersection(keys_csrf_disabled_globally).difference(keys_using_csrf_protect)
+keys_middleware_potential_false_positives = repos.intersection(set(middleware_potential_false_positives))
+csrf_protection_global = repos.difference(keys_overriding_csrf_middleware).difference(keys_csrf_disabled_globally.union(keys_using_csrf_exempt).union(keys_using_csrf_requires))
+csrf_protection_global_selectively_disabled = repos.difference(keys_overriding_csrf_middleware).difference(keys_csrf_disabled_globally).intersection(keys_using_csrf_exempt.union(keys_using_csrf_requires))
+csrf_protection_selectively_activated = repos.difference(keys_overriding_csrf_middleware).intersection(keys_csrf_disabled_globally).intersection(keys_using_csrf_protect)
+csrf_protection_disabled = repos.difference(keys_overriding_csrf_middleware).intersection(keys_csrf_disabled_globally).difference(keys_using_csrf_protect)
 
 keys_argon2_is_used = keys_account_creation.intersection(set(argon2_is_used))
 keys_bcrypt_is_used = keys_account_creation.intersection(set(bcrypt_is_used))
@@ -222,6 +226,8 @@ counter_csrf_activated = len(csrf_protection_global)
 counter_csrf_deactivated_selectively = len(csrf_protection_global_selectively_disabled)
 counter_csrf_activated_selectively = len(csrf_protection_selectively_activated)
 counter_csrf_deactivated = len(csrf_protection_disabled)
+counter_overriding_csrf_middleware = len(keys_overriding_csrf_middleware)
+counter_middleware_potential_false_positives = len(keys_middleware_potential_false_positives)
 
 counter_repos_with_password_hashing = len(repos_with_password_hashing)
 counter_not_using_a_recommended_algorithm = len(not_using_a_recommended_algorithm)
@@ -250,9 +256,9 @@ saveDictsToFile(["not_performing_password_validation", "custom_password_validato
                 [not_performing_password_validation, keys_custom_password_validators, keys_length_password_validators, keys_numeric_password_validators, keys_common_password_validators, keys_similarity_password_validators, using_all_password_validators],
                [[django_account_creation], [custom_password_validators], [length_password_validators], [numeric_password_validators], [common_password_validators], [similarity_password_validators],
                 [length_password_validators, numeric_password_validators, common_password_validators, similarity_password_validators]])
-saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally"],
-                [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled],
-                [[django_login_usage], [using_csrf_exempt, using_csrf_requires], [using_csrf_protect], [csrf_disabled_globally]])
+saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally", "overriding_default_csrf_middleware"],
+                [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled, keys_overriding_csrf_middleware],
+                [[django_login_usage], [using_csrf_exempt, using_csrf_requires], [using_csrf_protect], [csrf_disabled_globally], [overriding_csrf_middleware]])
 saveDictsToFile(["using_password_hashing", "not_using_recommended_algorithm", "not_using_supported_library", "using_argon2", "using_scrypt", "using_bcrypt", "using_pbkdf2"],
                 [repos_with_password_hashing, not_using_a_recommended_algorithm, not_using_supported_libraries, keys_argon2_is_used, keys_scrypt_is_used, keys_bcrypt_is_used, keys_pbkdf2_is_used],
                 [[argon2_is_used, bcrypt_is_used, scrypt_is_used, pbkdf2_is_used, md5_is_used, custom_password_hasher_is_used], [md5_is_used, custom_password_hasher_is_used],
@@ -263,9 +269,9 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
 saveDictsToFile(["not_calling_logout_and_session_set_to_server_side"],
                 [not_calling_logout_server_side_sessions],
                 [[logout_function_is_not_called]])
-saveDictsToFile(["potential_false_positives_password_hashers", "potential_false_positives_password_validators"],
-                [keys_password_hashers_potential_false_positives, keys_password_validators_potential_false_positives],
-                [[password_hashers_potential_false_positives], [password_validators_potential_false_positives]])
+saveDictsToFile(["potential_false_positives_password_hashers", "potential_false_positives_password_validators", "potential_false_positives_middleware"],
+                [keys_password_hashers_potential_false_positives, keys_password_validators_potential_false_positives, keys_middleware_potential_false_positives],
+                [[password_hashers_potential_false_positives], [password_validators_potential_false_positives], [middleware_potential_false_positives]])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> django repos for Session Management and <a href="{}" target="_blank">{}</a> django repos for Account Creation<br></p>
@@ -302,7 +308,9 @@ report = """
 <p><a href="{}" target="_blank">{}</a> CSRF global protection is always active ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is activated, but it is deactivated on some views ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
-<a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere or they are using something else to protect against csrf ({} %)<br>
+<a href="{}" target="_blank">{}</a> override the default csrf middleware, so they were not included in the above classification ({} %)<br>
+<a href="{}" target="_blank">{}</a> set MIDDLEWARE more than once ({} %)<br></p>
 <h3>Session Protection</h3>
 <p></p>
 <h3>Logout Security</h3>
@@ -338,6 +346,8 @@ report_html = report.format("./session_management.txt", str(counter_django), "./
                             "./csrf_deactivated_selectively.txt", str(counter_csrf_deactivated_selectively), str(getPercentage(counter_csrf_deactivated_selectively, counter_django)),
                             "./csrf_activated_selectively.txt", str(counter_csrf_activated_selectively), str(getPercentage(counter_csrf_activated_selectively, counter_django)),
                             "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_django)),
+                            "./overriding_default_csrf_middleware.txt", str(counter_overriding_csrf_middleware), str(getPercentage(counter_overriding_csrf_middleware, counter_django)),
+                            "./potential_false_positives_middleware.txt", str(counter_middleware_potential_false_positives), str(getPercentage(counter_middleware_potential_false_positives, counter_django)),
                             "./not_calling_logout_and_session_set_to_server_side.txt", str(counter_not_calling_logout_server_side_sessions), str(getPercentage(counter_not_calling_logout_server_side_sessions, counter_django)))
 
 with open(str(path.absolute()) + "/report.html", "w") as file:
