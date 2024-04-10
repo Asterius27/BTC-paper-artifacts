@@ -1,0 +1,173 @@
+URL: https://github.com/Salamek/gitlab-tools
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Salamek_gitlab-tools/Salamek-gitlab-tools-debb2b6-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                          col1                                                                                           |
++------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/Salamek_gitlab-tools/Salamek-gitlab-tools-debb2b6/gitlab_tools/views/sign/index.py:106 |
+
+
+
+URL: https://github.com/dgtlmoon/changedetection.io
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/dgtlmoon_changedetection.io/dgtlmoon-changedetection.io-8fac593-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                col1                                                                                                 |
++------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/dgtlmoon_changedetection.io/dgtlmoon-changedetection.io-8fac593/changedetectionio/flask_app.py:292 |
+
+
+
+URL: https://github.com/abilian/abilian-core
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/abilian_abilian-core/abilian-abilian-core-27bd43d-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                       col1                                                                                                       |
++------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/abilian_abilian-core/abilian-abilian-core-27bd43d/src/abilian/web/admin/panels/impersonate.py:21                |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/abilian_abilian-core/abilian-abilian-core-27bd43d/src/abilian/services/auth/service.py:190                      |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/abilian_abilian-core/abilian-abilian-core-27bd43d/tests/integration/test_search.py:37                           |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/abilian_abilian-core/abilian-abilian-core-27bd43d/src/abilian/web/preferences/tests/test_user_preferences.py:26 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/abilian_abilian-core/abilian-abilian-core-27bd43d/src/abilian/services/preferences/tests.py:101                 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/abilian_abilian-core/abilian-abilian-core-27bd43d/src/abilian/testing/util.py:65                                |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/abilian_abilian-core/abilian-abilian-core-27bd43d/src/abilian/services/auth/views.py:103                        |
+
+
+
+URL: https://github.com/eaudeweb/meetings-registration-tool
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/eaudeweb_meetings-registration-tool/eaudeweb-meetings-registration-tool-2745f04-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                       col1                                                                                                        |
++------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/eaudeweb_meetings-registration-tool/eaudeweb-meetings-registration-tool-2745f04/mrt/meetings/registration.py:253 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/eaudeweb_meetings-registration-tool/eaudeweb-meetings-registration-tool-2745f04/mrt/auth/views.py:24             |
+
+
+
+URL: https://github.com/UrbanCCD-UChicago/plenario
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-aabd5bb-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                        col1                                                                                         |
++------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread0/UrbanCCD-UChicago_plenario/UrbanCCD-UChicago-plenario-aabd5bb/plenario/auth.py:121 |
+
+
+
+URL: https://github.com/leosac/access-control-web
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/leosac_access-control-web/leosac-access-control-web-e5a854f-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                      col1                                                                                                       |
++------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/leosac_access-control-web/leosac-access-control-web-e5a854f/web-service/flask-interface/app/routes/login.py:18 |
+
+
+
+URL: https://github.com/infantiablue/converter
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/infantiablue_converter/infantiablue-converter-309350c-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                   col1                                                                                   |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread9/infantiablue_converter/infantiablue-converter-309350c/web/oauth.py:61   |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread9/infantiablue_converter/infantiablue-converter-309350c/web/oauth.py:74   |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread9/infantiablue_converter/infantiablue-converter-309350c/web/oauth.py:112  |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread9/infantiablue_converter/infantiablue-converter-309350c/web/oauth.py:123  |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread9/infantiablue_converter/infantiablue-converter-309350c/web/profile.py:89 |
+
+
+
+URL: https://github.com/iit-technology-ambit/Syphus
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/iit-technology-ambit_Syphus/iit-technology-ambit-Syphus-2057da7-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                 col1                                                                                                 |
++------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/iit-technology-ambit_Syphus/iit-technology-ambit-Syphus-2057da7/app/main/service/auth_service.py:56 |
+
+
+
+URL: https://github.com/paxswill/evesrp
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/paxswill_evesrp/paxswill-evesrp-01e3658-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                  col1                                                                                   |
++------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/paxswill_evesrp/paxswill-evesrp-01e3658/src/evesrp/auth/__init__.py:66 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/paxswill_evesrp/paxswill-evesrp-01e3658/src/evesrp/auth/oauth.py:101   |
+
+
+
+URL: https://github.com/MISP/misp-dashboard
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/MISP_misp-dashboard/MISP-misp-dashboard-3c11250-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                              col1                                                                              |
++------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread8/MISP_misp-dashboard/MISP-misp-dashboard-3c11250/server.py:222 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread8/MISP_misp-dashboard/MISP-misp-dashboard-3c11250/server.py:238 |
+
+
+
+URL: https://github.com/veops/cmdb
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/veops_cmdb/veops-cmdb-bf6331d-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                           col1                                                                                            |
++------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/views/account.py:32                           |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/lib/perm/auth.py:53                           |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/lib/perm/auth.py:67                           |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/lib/perm/auth.py:85                           |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/lib/perm/auth.py:105                          |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/lib/perm/auth.py:152                          |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/commands/click_cmdb.py:187                    |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/tasks/cmdb.py:51                              |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/tasks/cmdb.py:101                             |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/tasks/cmdb.py:153                             |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/tasks/cmdb.py:223                             |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/tasks/cmdb.py:242                             |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/views/acl/login.py:57                         |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/lib/perm/authentication/cas/routing.py:68     |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/api/lib/perm/authentication/oauth2/routing.py:102 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/veops_cmdb/veops-cmdb-bf6331d/cmdb-api/tests/sample.py:22                                |
+
+
+
+URL: https://github.com/Ming119/110-1_Database-System_Project
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Ming119_110-1_Database-System_Project/Ming119-110-1_Database-System_Project-00534d4-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                            col1                                                                                                             |
++------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread6/Ming119_110-1_Database-System_Project/Ming119-110-1_Database-System_Project-00534d4/app/controllers/indexController.py:163 |
+
+
+
+URL: https://github.com/Kushal997-das/Project-Guidance
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Kushal997-das_Project-Guidance/Kushal997-das-Project-Guidance-890fd79-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                           col1                                                                                                           |
++------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/Kushal997-das_Project-Guidance/Kushal997-das-Project-Guidance-890fd79/Web Development/Intermediate/To-do app/app.py:184 |
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/Kushal997-das_Project-Guidance/Kushal997-das-Project-Guidance-890fd79/Web Development/Intermediate/To-do app/app.py:207 |
+
+
+
+URL: https://github.com/mediatum/mediatum
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/mediatum_mediatum/mediatum-mediatum-abab52e-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                 col1                                                                                  |
++------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/mediatum_mediatum/mediatum-mediatum-abab52e/web/admin/__init__.py:84 |
+
+
+
+URL: https://github.com/hack4impact-upenn/next-gen-scholars
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/hack4impact-upenn_next-gen-scholars/hack4impact-upenn-next-gen-scholars-b896631-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                                   col1                                                                                                   |
++------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread0/hack4impact-upenn_next-gen-scholars/hack4impact-upenn-next-gen-scholars-b896631/app/account/views.py:22 |
+
+
+
+URL: https://github.com/prefeiturasp/SME-PratoAberto-Editor
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/prefeiturasp_SME-PratoAberto-Editor/prefeiturasp-SME-PratoAberto-Editor-854a9be-results/./flask_library_used_check.txt
+flask_library_used_check:
+|                   col0                   |                                                                                            col1                                                                                             |
++------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| The flask-login library is actually used | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread8/prefeiturasp_SME-PratoAberto-Editor/prefeiturasp-SME-PratoAberto-Editor-854a9be/app.py:110 |
+
+
+
