@@ -1020,5 +1020,12 @@ function libraryUsagesGrep() {
 // deleteQueriesResults({"Login-restrictions": ["un_no_authentication_checks", "un_no_authentication_checks_general", "un_no_last_login_check"]});
 deleteQueriesResults({"Password-strength": ["un_password_length_check", "un_password_regexp_check"], "Password-hashing": ["un_werkzeug_scrypt_is_used", "un_werkzeug_scrypt_is_owasp_compliant", "un_hashlib_is_used", "un_hashlib_pbkdf2_is_owasp_compliant", "un_hashlib_pbkdf2_is_used", "un_hashlib_scrypt_is_owasp_compliant", "un_hashlib_scrypt_is_used"],
                     "Explorative-queries": ["un_potential_false_positives"]});
+/*
+deleteQueriesResults({"Explorative-queries": ["un_potential_false_positives", "un_allauth_is_used", "un_dj_rest_auth_is_used", "un_django_registration_macropin_is_used", "un_django_registration_ubernostrum_is_used", "un_django_rest_framework_is_used", "un_django_rest_registration_is_used", "un_django_user_accounts_is_used", "un_django_xadmin_is_used", "un_djoser_is_used"], 
+                    "CSRF": ["un_csrf_protection_is_disabled"], "Account-deactivation": ["un_custom_auth_backends"],
+                    "Password-strength": ["un_using_common_password_validator", "un_using_custom_validators", "un_using_length_validator", "un_using_numeric_password_validator", "un_using_similarity_validator", "un_using_password_validators"],
+                    "Password-hashing": ["un_argon2_is_owasp_compliant", "un_argon2_is_used", "un_bcrypt_is_owasp_compliant", "un_bcrypt_is_used", "un_manually_set_password_hashers", "un_md5_is_used", "un_pbkdf2_is_owasp_compliant", "un_pbkdf2_is_used", "un_scrypt_is_owasp_compliant", "un_scrypt_is_used", "un_using_custom_password_hasher"]
+                }); // TODO delete for Django
+*/
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();

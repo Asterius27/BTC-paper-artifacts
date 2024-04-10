@@ -244,7 +244,8 @@ let django = {
             "un_csrf_protect_is_used": [false, ""],
             "un_csrf_protection_is_disabled": [false, ""],
             "un_ensure_csrf_cookie_is_used": [false, ""],
-            "un_requires_csrf_token_is_used": [false, ""]
+            "un_requires_csrf_token_is_used": [false, ""],
+            "un_using_custom_csrf_middleware": [false, ""]
         }
     },
     /*
@@ -410,7 +411,8 @@ let descriptions = {
             "csrf_protect_is_used": "The application is enabling csrf protection for certain views (Django)",
             "csrf_protection_is_disabled": "Global CSRF protection is disabled (Django)",
             "ensure_csrf_cookie_is_used": "The application is forcing certain views to send the CSRF cookie (Django)",
-            "requires_csrf_token_is_used": "The application is using requires_csrf_token for certain views (works similarly to csrf_protect, but never rejects an incoming request) (Django)"
+            "requires_csrf_token_is_used": "The application is using requires_csrf_token for certain views (works similarly to csrf_protect, but never rejects an incoming request) (Django)",
+            "using_custom_csrf_middleware": "Overriding the default CSRF middleware (Django)"
         }
     },
     "ClientSideSessionIvalidation": {

@@ -13,11 +13,14 @@ class PasswordValidatorsConfiguration extends DataFlow::Configuration {
     }
 
     override predicate isSink(DataFlow::Node sink) {
-        exists(AssignStmt asgn, Name name | 
+        exists(AssignStmt asgn, AugAssign augasgn, Name name | 
             name.getId() = "AUTH_PASSWORD_VALIDATORS"
-            and asgn.getATarget() = name
-            and exists(asgn.getLocation().getFile().getRelativePath())
-            and asgn.getValue().getAFlowNode() = sink.asCfgNode()
+            and ((asgn.getATarget() = name
+                and exists(asgn.getLocation().getFile().getRelativePath())
+                and asgn.getValue().getAFlowNode() = sink.asCfgNode())
+            or (augasgn.getTarget() = name
+                and exists(augasgn.getLocation().getFile().getRelativePath())
+                and augasgn.getValue().getAFlowNode() = sink.asCfgNode()))
         )
     }
 }
@@ -29,5 +32,5 @@ where config.hasFlow(source, sink)
     and pair.getKey().(StrConst).getS() = "NAME"
     and (if exists(pair.getValue().(StrConst).getS().prefix(40))
         then pair.getValue().(StrConst).getS().prefix(40) != "django.contrib.auth.password_validation."
-        else any())
+        else pair.getValue() instanceof Str)
 select pair.getLocation(), source, sink, source.getLocation(), sink.getLocation(), "Using a custom password validator"

@@ -11,17 +11,21 @@ class MiddlewareConfiguration extends DataFlow::Configuration {
     }
 
     override predicate isSink(DataFlow::Node sink) {
-        exists(AssignStmt asgn, Name name | 
-            name.getId() = "MIDDLEWARE"
-            and asgn.getATarget() = name
-            and exists(asgn.getLocation().getFile().getRelativePath())
-            and asgn.getValue().getAFlowNode() = sink.asCfgNode()
+        exists(AssignStmt asgn, AugAssign augasgn, Name name | 
+            (name.getId() = "MIDDLEWARE"
+                or name.getId() = "MIDDLEWARE_CLASSES")
+            and ((asgn.getATarget() = name
+                and exists(asgn.getLocation().getFile().getRelativePath())
+                and asgn.getValue().getAFlowNode() = sink.asCfgNode())
+            or (augasgn.getTarget() = name
+                and exists(augasgn.getLocation().getFile().getRelativePath())
+                and augasgn.getValue().getAFlowNode() = sink.asCfgNode()))
         )
     }
 }
 
-from DataFlow::Node source, DataFlow::Node sink, MiddlewareConfiguration config
-where config.hasFlow(source, sink)
-    and not (source.asExpr().(List).getAnElt().(StrConst).getS() = "django.middleware.csrf.CsrfViewMiddleware"
-        or source.asExpr().(Tuple).getAnElt().(StrConst).getS() = "django.middleware.csrf.CsrfViewMiddleware")
-select source, source.getLocation(), "Global CSRF protection is disabled"
+where not exists(DataFlow::Node source, DataFlow::Node sink, MiddlewareConfiguration config |
+    config.hasFlow(source, sink)
+    and (source.asExpr().(List).getAnElt().(StrConst).getS() = "django.middleware.csrf.CsrfViewMiddleware"
+        or source.asExpr().(Tuple).getAnElt().(StrConst).getS() = "django.middleware.csrf.CsrfViewMiddleware"))
+select "Global CSRF protection is disabled"

@@ -1,9 +1,8 @@
 import python
 import semmle.python.ApiGraphs
 
-// This library has login/logout ecc. built in
-class InstalledAppsConfiguration extends DataFlow::Configuration {
-    InstalledAppsConfiguration() { this = "InstalledAppsConfiguration" }
+class MiddlewareConfiguration extends DataFlow::Configuration {
+    MiddlewareConfiguration() { this = "MiddlewareConfiguration" }
 
     override predicate isSource(DataFlow::Node source) {
         exists(source.getLocation().getFile().getRelativePath())
@@ -13,7 +12,8 @@ class InstalledAppsConfiguration extends DataFlow::Configuration {
 
     override predicate isSink(DataFlow::Node sink) {
         exists(AssignStmt asgn, AugAssign augasgn, Name name | 
-            name.getId() = "INSTALLED_APPS"
+            (name.getId() = "MIDDLEWARE"
+                or name.getId() = "MIDDLEWARE_CLASSES")
             and ((asgn.getATarget() = name
                 and exists(asgn.getLocation().getFile().getRelativePath())
                 and asgn.getValue().getAFlowNode() = sink.asCfgNode())
@@ -24,8 +24,9 @@ class InstalledAppsConfiguration extends DataFlow::Configuration {
     }
 }
 
-from DataFlow::Node source, DataFlow::Node sink, InstalledAppsConfiguration config
+from Class cls, DataFlow::Node source, DataFlow::Node sink, MiddlewareConfiguration config
 where config.hasFlow(source, sink)
-    and (source.asExpr().(List).getAnElt().(StrConst).getText() = "xadmin"
-        or source.asExpr().(Tuple).getAnElt().(StrConst).getText() = "xadmin")
-select source, source.getLocation(), "django xadmin is being used by the application"
+    and (source.asExpr().(List).getAnElt().(StrConst).getS().splitAt(".") = cls.getName()
+        or source.asExpr().(Tuple).getAnElt().(StrConst).getS().splitAt(".") = cls.getName())
+    and cls.getABase() = API::moduleImport("django").getMember("middleware").getMember("csrf").getMember("CsrfViewMiddleware").getAValueReachableFromSource().asExpr()
+select cls, cls.getLocation(), "Overriding the default CSRF middleware"

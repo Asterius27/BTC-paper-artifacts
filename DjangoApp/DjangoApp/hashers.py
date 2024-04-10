@@ -1,3 +1,4 @@
+from django.middleware.csrf import CsrfViewMiddleware
 from django.contrib.auth.hashers import Argon2PasswordHasher, ScryptPasswordHasher, PBKDF2PasswordHasher, BCryptPasswordHasher, BCryptSHA256PasswordHasher, PBKDF2SHA1PasswordHasher
 
 class MyArgon2PasswordHasher(Argon2PasswordHasher):
@@ -25,3 +26,6 @@ class MyBcryptSHA256PasswordHasher(BCryptSHA256PasswordHasher): # no password li
     
 class CustomHasher(FloatingPointError, ValueError):
     c = 0
+
+class CSRFMiddleware(CsrfViewMiddleware):
+    pass

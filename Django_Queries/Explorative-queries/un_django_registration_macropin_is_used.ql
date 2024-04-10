@@ -12,11 +12,14 @@ class InstalledAppsConfiguration extends DataFlow::Configuration {
     }
 
     override predicate isSink(DataFlow::Node sink) {
-        exists(AssignStmt asgn, Name name | 
+        exists(AssignStmt asgn, AugAssign augasgn, Name name | 
             name.getId() = "INSTALLED_APPS"
-            and asgn.getATarget() = name
-            and exists(asgn.getLocation().getFile().getRelativePath())
-            and asgn.getValue().getAFlowNode() = sink.asCfgNode()
+            and ((asgn.getATarget() = name
+                and exists(asgn.getLocation().getFile().getRelativePath())
+                and asgn.getValue().getAFlowNode() = sink.asCfgNode())
+            or (augasgn.getTarget() = name
+                and exists(augasgn.getLocation().getFile().getRelativePath())
+                and augasgn.getValue().getAFlowNode() = sink.asCfgNode()))
         )
     }
 }

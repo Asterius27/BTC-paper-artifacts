@@ -25,6 +25,7 @@ SESSION_ENGINE = os.getenv("session_engine")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-7jbr66(3gcuj=%p(^9r_8)-p)_4rhcjzs^xq^1p_f5_e3lxw@d'
+SECRET_KEY = 'SOMETHINGSECRET'
 SECRET_KEY = os.environ.get("secret_key")
 SECRET_KEY_FALLBACKS = ["secret-key", "older_secret_key"]
 
@@ -108,6 +109,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+MIDDLEWARE += ['hashers.CSRFMiddleware']
+
 ROOT_URLCONF = 'DjangoApp.urls'
 
 TEMPLATES = [
@@ -145,7 +148,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation' + '.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -154,10 +157,11 @@ AUTH_PASSWORD_VALIDATORS = [
         },
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.' + 'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation' 
+        '.NumericPasswordValidator',
     },
     {
         'NAME': 'validators.CustomValidator',
