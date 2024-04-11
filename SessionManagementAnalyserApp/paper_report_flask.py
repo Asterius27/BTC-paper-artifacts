@@ -272,7 +272,7 @@ counter_csrf_deactivated_selectively = len(csrf_protection_global_selectively_di
 counter_csrf_activated_selectively = len(csrf_protection_selectively_activated)
 counter_csrf_deactivated_selectively_disabled = len(csrf_protection_selectively_disabled)
 counter_csrf_deactivated = len(csrf_protection_disabled)
-counter_repos_using_csrf_library = len(repos_using_csrf_library)
+counter_repos_using_csrf_library = len(repos_using_csrf_library) + len(repos_with_csrf_disabled)
 counter_not_using_csrf_library = len(not_using_csrf_library)
 counter_repos_with_csrf_disabled = len(repos_with_csrf_disabled)
 
@@ -361,9 +361,9 @@ report = """
 <a href="{}" target="_blank">{}</a> CSRF global protection is always active ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is activated, but it is deactivated on some views ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
-<a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, and the default FlaskForm CSRF protection is also selectively deactivated ({} %)<br>
+<a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, and the default FlaskForm CSRF protection is also selectively deactivated (so either it is fully deactivated or some forms are still protected) ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere, so either the app is doing something custom or it's vulnerable ({} %)<br>
-<a href="{}" target="_blank">{}</a> manually disable CSRF (likely) for testing purposes ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> manually disable CSRF (likely) for testing purposes (CSRF protection deactivated potential false positives) ({} %)<br></p>
 <h3>Session Protection</h3>
 <p><a href="{}" target="_blank">{}</a> didn't use session protection ({} %)<br>
 <a href="{}" target="_blank">{}</a> used basic session protection ({} %)<br>
@@ -406,7 +406,7 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./csrf_activated_selectively.txt", str(counter_csrf_activated_selectively), str(getPercentage(counter_csrf_activated_selectively, counter_repos_using_csrf_library)),
                             "./csrf_disabled_and_selectively_disabled.txt", str(counter_csrf_deactivated_selectively_disabled), str(getPercentage(counter_csrf_deactivated_selectively_disabled, counter_repos_using_csrf_library)),
                             "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_repos_using_csrf_library)),
-                            "./disabling_csrf.txt", str(counter_repos_with_csrf_disabled), str(getPercentage(counter_repos_with_csrf_disabled, counter_flask)),
+                            "./disabling_csrf.txt", str(counter_repos_with_csrf_disabled), str(getPercentage(counter_repos_with_csrf_disabled, counter_repos_using_csrf_library)),
                             """ "./csrf_categories_union.txt", str(counter_csrf_categories_union), str(getPercentage(counter_csrf_categories_union, counter_repos_using_csrf_library)),
                             "./in_more_than_one_category.txt", str(counter_repos_in_more_than_one_category), str(getPercentage(counter_repos_in_more_than_one_category, counter_repos_using_csrf_library)),
                             "./not_in_any_csrf_category.txt", str(counter_not_in_any_csrf_category), str(getPercentage(counter_not_in_any_csrf_category, counter_repos_using_csrf_library)), """
