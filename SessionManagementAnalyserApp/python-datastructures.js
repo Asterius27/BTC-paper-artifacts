@@ -303,7 +303,8 @@ let django = {
             "un_django_rest_registration_is_used": [false, ""],
             "un_django_user_accounts_is_used": [false, ""],
             "un_django_xadmin_is_used": [false, ""],
-            "un_djoser_is_used": [false, ""]
+            "un_djoser_is_used": [false, ""],
+            "un_knox_is_used": [false, ""]
         }
     },
     "AccountDeactivation": {
@@ -403,10 +404,10 @@ let descriptions = {
             "using_flaskform": "FlaskForm is being used, which already has csrf protection enabled",
             "using_flaskwtf_csrf_protection": "Flask-WTF csrf protection is enabled globally",
             "using_wtforms_csrf_protection": "WTForms csrf protection is enabled for some forms",
-            "un_changing_csrf_protected_methods": "The applications changes what methods are protected against CSRF",
-            "un_disabled_wtf_csrf": "The application disables all forms of csrf protection",
-            "un_setting_wtf_csrf_secret_key": "The application sets the csrf secret key",
-            "un_using_flaskform_with_csrf_disabled": "The application is using FlaskForms but it is disabling csrf protection",
+            "changing_csrf_protected_methods": "The applications changes what methods are protected against CSRF",
+            "disabled_wtf_csrf": "The application disables all forms of csrf protection",
+            "setting_wtf_csrf_secret_key": "The application sets the csrf secret key",
+            "using_flaskform_with_csrf_disabled": "The application is using FlaskForms but it is disabling csrf protection",
             "csrf_exempt_is_used": "The application is disabling csrf protection for certain views (Django)",
             "csrf_protect_is_used": "The application is enabling csrf protection for certain views (Django)",
             "csrf_protection_is_disabled": "Global CSRF protection is disabled (Django)",
@@ -478,7 +479,8 @@ let descriptions = {
             "django_rest_registration_is_used": "django-rest-registration is being used by the application",
             "django_user_accounts_is_used": "django-user-accounts is being used by the application",
             "django_xadmin_is_used": "django xadmin is being used by the application",
-            "djoser_is_used": "djoser is being used by the application"
+            "djoser_is_used": "djoser is being used by the application",
+            "knox_is_used": "knox is being used by the application"
         }
     },
     "PasswordHashing": {
