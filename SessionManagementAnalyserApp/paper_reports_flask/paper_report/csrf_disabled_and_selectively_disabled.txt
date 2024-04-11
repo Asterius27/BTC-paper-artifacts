@@ -1,0 +1,59 @@
+URL: https://github.com/emfcamp/Website
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/emfcamp_Website/emfcamp-Website-8bff083-results/CSRF/un_using_flaskform_with_csrf_disabled.txt
+un_using_flaskform_with_csrf_disabled:
+|    cls     |                                                                               col1                                                                                |                               col2                               |
++------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Class Form | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread17/emfcamp_Website/emfcamp-Website-8bff083/apps/common/forms.py:12 | This form (FlaskForm) has disabled csrf protection at least once |
+
+
+
+URL: https://github.com/metabrainz/acousticbrainz-server
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/metabrainz_acousticbrainz-server/metabrainz-acousticbrainz-server-3b92d44-results/CSRF/un_using_flaskform_with_csrf_disabled.txt
+un_using_flaskform_with_csrf_disabled:
+|             cls             |                                                                                               col1                                                                                                |                               col2                               |
++-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Class DatasetEvaluationForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/metabrainz_acousticbrainz-server/metabrainz-acousticbrainz-server-3b92d44/webserver/forms.py:47 | This form (FlaskForm) has disabled csrf protection at least once |
+
+
+
+URL: https://github.com/jackm/kijiji-manager
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/jackm_kijiji-manager/jackm-kijiji-manager-7c34178-results/CSRF/un_using_flaskform_with_csrf_disabled.txt
+un_using_flaskform_with_csrf_disabled:
+|         cls         |                                                                                        col1                                                                                        |                               col2                               |
++---------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Class AttributeForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread16/jackm_kijiji-manager/jackm-kijiji-manager-7c34178/kijiji_manager/views/ad.py:347 | This form (FlaskForm) has disabled csrf protection at least once |
+
+
+
+URL: https://github.com/jazzband/website
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/jazzband_website/jazzband-website-693860e-results/CSRF/un_using_flaskform_with_csrf_disabled.txt
+un_using_flaskform_with_csrf_disabled:
+|       cls        |                                                                                   col1                                                                                   |                               col2                               |
++------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Class UploadForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread9/jazzband_website/jazzband-website-693860e/jazzband/projects/forms.py:44 | This form (FlaskForm) has disabled csrf protection at least once |
+
+
+
+URL: https://github.com/thilojaeggi/WinGetty
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thilojaeggi_WinGetty/thilojaeggi-WinGetty-115adec-results/CSRF/un_using_flaskform_with_csrf_disabled.txt
+un_using_flaskform_with_csrf_disabled:
+|             cls              |                                                                                col1                                                                                 |                               col2                               |
++------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Class AddInstallerFormFields | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread8/thilojaeggi_WinGetty/thilojaeggi-WinGetty-115adec/app/forms.py:68  | This form (FlaskForm) has disabled csrf protection at least once |
+| Class AddPackageForm         | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread8/thilojaeggi_WinGetty/thilojaeggi-WinGetty-115adec/app/forms.py:116 | This form (FlaskForm) has disabled csrf protection at least once |
+| Class AddInstallerForm       | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread8/thilojaeggi_WinGetty/thilojaeggi-WinGetty-115adec/app/forms.py:136 | This form (FlaskForm) has disabled csrf protection at least once |
+| Class AddVersionForm         | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread8/thilojaeggi_WinGetty/thilojaeggi-WinGetty-115adec/app/forms.py:140 | This form (FlaskForm) has disabled csrf protection at least once |
+
+
+
+URL: https://github.com/tomy0000000/tubee
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/tomy0000000_tubee/tomy0000000-tubee-a490383-results/CSRF/un_using_flaskform_with_csrf_disabled.txt
+un_using_flaskform_with_csrf_disabled:
+|             cls              |                                                                              col1                                                                              |                               col2                               |
++------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Class NotificationActionForm | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/tomy0000000_tubee/tomy0000000-tubee-a490383/tubee/forms.py:49 | This form (FlaskForm) has disabled csrf protection at least once |
+| Class PlaylistActionForm     | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/tomy0000000_tubee/tomy0000000-tubee-a490383/tubee/forms.py:87 | This form (FlaskForm) has disabled csrf protection at least once |
+| Class DownloadActionForm     | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/tomy0000000_tubee/tomy0000000-tubee-a490383/tubee/forms.py:99 | This form (FlaskForm) has disabled csrf protection at least once |
+
+
+
