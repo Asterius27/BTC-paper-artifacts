@@ -165,7 +165,7 @@ keys_django_login_usages = set(django_login_usage)
 keys_django_login_required_usages = set(django_login_required_usage)
 keys_django_custom_session_engine = set(django_custom_session_engine)
 repos = keys_django_login_usages.intersection(keys_django_login_required_usages).intersection(keys_django_custom_session_engine)
-keys_account_creation = set(django_account_creation) # .intersection(keys_django_login_required_usages).intersection(keys_django_custom_session_engine) # TODO filter with also django login required and custom session engine, same as above
+keys_account_creation = set(django_account_creation).intersection(keys_django_login_required_usages).intersection(keys_django_custom_session_engine)
 
 keys_hardcoded_secret_key = set(hardcoded_secret_key)
 keys_hardcoded_secret_key_potential_false_positives = set(hardcoded_secret_key_potential_false_positives)
