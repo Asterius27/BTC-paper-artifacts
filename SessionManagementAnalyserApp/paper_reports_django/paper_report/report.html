@@ -1,0 +1,44 @@
+
+<p>There are <a href="./session_management.txt" target="_blank">920</a> django repos for Session Management and <a href="./account_creation.txt" target="_blank">276</a> django repos for Account Creation<br></p>
+<h2>Account Creation</h2>
+<h3>Password Policies</h3>
+<p>217 perform some validation on its password fields (78.62 %)<br>
+<a href="./not_performing_password_validation.txt" target="_blank">59</a> do not perform validation on the password fields (21.38 %)<br>
+<a href="./length_password_validators.txt" target="_blank">207</a> enforce a minimum password length (75.0 %)<br>
+<a href="./similarity_password_validators.txt" target="_blank">202</a> check the similarity between the password and a set of attributes of the user (73.19 %)<br>
+<a href="./common_password_validators.txt" target="_blank">203</a> check whether the password occurs in a list of common passwords (73.55 %)<br>
+<a href="./numeric_password_validators.txt" target="_blank">201</a> check whether the password is not entirely numeric (72.83 %)<br>
+<a href="./using_all_password_validators.txt" target="_blank">199</a> combine all validators (72.1 %)<br>
+<a href="./custom_password_validators.txt" target="_blank">15</a> use a custom validator (5.43 %)<br>
+<a href="./potential_false_positives_password_validators.txt" target="_blank">28</a> set PASSWORD_VALIDATORS more than once (10.14 %)<br></p>
+<h3>Password Hashing</h3>
+<p><a href="./using_password_hashing.txt" target="_blank">274</a> applications use some form of (supported) password hashing (99.28 %)<br>
+<a href="./not_using_supported_library.txt" target="_blank">2</a> applications do not use one of the supported password hashing libraries or do not perform password hashing (0.72 %)<br>
+<a href="./not_using_recommended_algorithm.txt" target="_blank">16</a> applications use some form of (supported) password hashing but do not use one of the recommended algorithms (5.8 %)<br>
+<a href="./argon2_owasp_compliant.txt" target="_blank">15</a> use argon2id and is owasp compliant (5.43 %)<br>
+<a href="./scrypt_owasp_compliant.txt" target="_blank">0</a> use scrypt and is owasp compliant (0.0 %)<br>
+<a href="./pbkdf2_owasp_compliant.txt" target="_blank">240</a> use PBKDF2 and is owasp compliant (86.96 %)<br>
+<a href="./bcrypt_owasp_compliant.txt" target="_blank">1</a> use bcrypt and is owasp compliant (0.36 %)<br>
+<a href="./argon2_not_owasp_compliant.txt" target="_blank">1</a> use argon2id and is not owasp compliant (0.36 %)<br>
+<a href="./scrypt_not_owasp_compliant.txt" target="_blank">0</a> use scrypt and is not owasp compliant (0.0 %)<br>
+<a href="./pbkdf2_not_owasp_compliant.txt" target="_blank">0</a> use PBKDF2 and is not owasp compliant (0.0 %)<br>
+<a href="./bcrypt_not_owasp_compliant.txt" target="_blank">1</a> use bcrypt and is not owasp compliant (0.36 %)<br>
+<a href="./potential_false_positives_password_hashers.txt" target="_blank">9</a> set PASSWORD_HASHERS more than once (3.26 %)<br></p>
+<h2>Session Management</h2>
+<h3>Cryptographic Keys</h3>
+<p><a href="./hardcoded_secret_keys.txt" target="_blank">445</a> had a hardcoded secret key (48.37 %)<br>
+<a href="./potential_false_positives_hardcoded_secret_keys.txt" target="_blank">216</a> set the secret key more than once (and it's hardcoded at least once), so it's a false positive potentially (48.54 %)<br>
+<a href="./true_positives_hardcoded_secret_keys.txt" target="_blank">229</a> set the secret key only once (and it's hardcoded), so it's a true positive (51.46 %)<br></p>
+<h3>CSRF</h3>
+<p><a href="./csrf_activated_globally.txt" target="_blank">555</a> CSRF global protection is always active (60.33 %)<br>
+<a href="./csrf_deactivated_selectively.txt" target="_blank">304</a> CSRF global protection is activated, but it is deactivated on some views (33.04 %)<br>
+<a href="./csrf_activated_selectively.txt" target="_blank">6</a> CSRF global protection is deactivated, but it is activated on some views or forms (0.65 %)<br>
+<a href="./csrf_deactivated_globally.txt" target="_blank">55</a> CSRF protection is deactivated everywhere or they are using something else to protect against csrf (5.98 %)<br>
+<a href="./overriding_default_csrf_middleware.txt" target="_blank">0</a> override the default csrf middleware, so they were not included in the above classification (0.0 %)<br>
+<a href="./potential_false_positives_middleware.txt" target="_blank">0</a> set MIDDLEWARE more than once (0.0 %)<br></p>
+<h3>Session Protection</h3>
+<p></p>
+<h3>Logout Security</h3>
+<p><a href="./not_calling_logout_and_session_set_to_server_side.txt" target="_blank">141</a> logout function is never called and the application is using server side sessions (15.33 %)<br>
+<a href="./repos_without_auth_libraries.txt" target="_blank">451</a> repos do not use some other authentication library (49.02 %)<br>
+<a href="./not_calling_logout_server_side_sessions_without_auth_libraries.txt" target="_blank">51</a> logout function is never called, the application is using server side sessions and it's not using some other authentication library (11.31 %)<br></p>
