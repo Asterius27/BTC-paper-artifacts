@@ -155,7 +155,7 @@ keys_django_login_usages = set(django_login_usage)
 keys_django_login_required_usages = set(django_login_required_usage)
 keys_django_custom_session_engine = set(django_custom_session_engine)
 repos = keys_django_login_usages.intersection(keys_django_login_required_usages).intersection(keys_django_custom_session_engine)
-keys_account_creation = set(django_account_creation)
+keys_account_creation = set(django_account_creation) # TODO filter with also django login required and custom session engine, same as above
 
 keys_hardcoded_secret_key = set(hardcoded_secret_key)
 keys_hardcoded_secret_key_potential_false_positives = set(hardcoded_secret_key_potential_false_positives)
@@ -203,7 +203,7 @@ not_using_supported_libraries = keys_account_creation.difference(repos_with_pass
 
 keys_logout_function_is_not_called = repos.intersection(set(logout_function_is_not_called))
 keys_using_client_side_sessions = repos.intersection(set(using_client_side_sessions))
-not_calling_logout_server_side_sessions = keys_logout_function_is_not_called.difference(keys_using_client_side_sessions)
+not_calling_logout_server_side_sessions = keys_logout_function_is_not_called.difference(keys_using_client_side_sessions) # TODO try to remove all other libraries
 
 counter_django = len(repos)
 counter_account_creation = len(keys_account_creation)

@@ -174,7 +174,7 @@ keys_flask_login_usages = set(flask_login_usage)
 keys_flask_login_required_usages = set(flask_login_required_usage)
 keys_flask_custom_session_interface = set(flask_custom_session_interface)
 repos = keys_flask_login_usages.intersection(keys_flask_login_required_usages).intersection(keys_flask_custom_session_interface)
-keys_account_creation = set(flask_wtf_account_creation)
+keys_account_creation = set(flask_wtf_account_creation) # TODO filter with also login required and custom session interface, same as above
 
 keys_session_protection_none = set(session_protection_none)
 keys_no_fresh_login = set(no_fresh_login)
@@ -215,13 +215,14 @@ repos_using_csrf_library = keys_using_flask_wtf.union(keys_using_wtforms).union(
 repos_with_csrf_disabled = keys_using_flask_wtf.union(keys_using_wtforms).union(keys_csrf_enabled_globally).intersection(keys_disabled_flask_wtf_csrf_global_protection)
 csrf_protection_global = repos_using_csrf_library.intersection(keys_csrf_enabled_globally.difference(keys_using_csrf_exempt).difference(keys_disabled_flask_wtf_csrf_protection))
 csrf_protection_global_selectively_disabled = repos_using_csrf_library.intersection(keys_csrf_enabled_globally).intersection(keys_using_csrf_exempt.union(keys_disabled_flask_wtf_csrf_protection))
+csrf_protection_selectively_disabled = repos_using_csrf_library.intersection(keys_using_flaskform_with_csrf_disabled).difference(keys_csrf_enabled_globally.difference(keys_disabled_flask_wtf_csrf_protection))
 csrf_protection_selectively_activated = repos_using_csrf_library.difference(keys_csrf_enabled_globally.difference(keys_disabled_flask_wtf_csrf_protection)).difference(keys_using_flaskform_with_csrf_disabled).intersection(keys_using_flaskform_csrf.union(keys_using_csrf_protect).union(keys_using_wtforms_csrf_protection))
-csrf_protection_disabled = repos_using_csrf_library.difference(keys_csrf_enabled_globally).difference(keys_using_flaskform_csrf.union(keys_using_wtforms_csrf_protection).union(keys_using_csrf_protect)) # .union(keys_using_flaskform_with_csrf_disabled)
+csrf_protection_disabled = repos_using_csrf_library.difference(keys_csrf_enabled_globally).difference(keys_using_flaskform_csrf.union(keys_using_wtforms_csrf_protection).union(keys_using_csrf_protect))
 not_using_csrf_library = repos.difference(repos_using_csrf_library).difference(repos_with_csrf_disabled)
 
-csrf_categories_union = csrf_protection_global.union(csrf_protection_global_selectively_disabled).union(csrf_protection_selectively_activated).union(csrf_protection_disabled)
-not_in_any_csrf_category = repos_using_csrf_library.difference(csrf_protection_global).difference(csrf_protection_global_selectively_disabled).difference(csrf_protection_selectively_activated).difference(csrf_protection_disabled)
-all_elements = list(csrf_protection_global) + list(csrf_protection_global_selectively_disabled) + list(csrf_protection_selectively_activated) + list(csrf_protection_disabled)
+csrf_categories_union = csrf_protection_global.union(csrf_protection_global_selectively_disabled).union(csrf_protection_selectively_activated).union(csrf_protection_disabled).union(csrf_protection_selectively_disabled)
+not_in_any_csrf_category = repos_using_csrf_library.difference(csrf_protection_global).difference(csrf_protection_global_selectively_disabled).difference(csrf_protection_selectively_activated).difference(csrf_protection_disabled).difference(csrf_protection_selectively_disabled)
+all_elements = list(csrf_protection_global) + list(csrf_protection_global_selectively_disabled) + list(csrf_protection_selectively_activated) + list(csrf_protection_disabled) + list(csrf_protection_selectively_disabled)
 repos_in_more_than_one_category = set()
 unique_elements = set()
 for element in csrf_categories_union:
@@ -269,6 +270,7 @@ counter_not_performing_password_validation = len(not_performing_password_validat
 counter_csrf_activated = len(csrf_protection_global)
 counter_csrf_deactivated_selectively = len(csrf_protection_global_selectively_disabled)
 counter_csrf_activated_selectively = len(csrf_protection_selectively_activated)
+counter_csrf_deactivated_selectively_disabled = len(csrf_protection_selectively_disabled)
 counter_csrf_deactivated = len(csrf_protection_disabled)
 counter_repos_using_csrf_library = len(repos_using_csrf_library)
 counter_not_using_csrf_library = len(not_using_csrf_library)
@@ -305,9 +307,9 @@ saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_s
 saveDictsToFile(["not_performing_password_validation", "custom_password_validators", "length_password_validators", "regexp_password_validators", "length_and_regexp_password_validators"],
                 [not_performing_password_validation, keys_custom_password_validators, keys_length_password_validators, keys_regexp_password_validators, length_and_regexp_password_validators],
                [[flask_wtf_account_creation], [custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators]])
-saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally", "not_using_csrf_library", "using_csrf_library", "disabling_csrf"],
-                [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled, not_using_csrf_library, repos_using_csrf_library, repos_with_csrf_disabled],
-                [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection, using_flaskform_with_csrf_disabled], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage], [flask_login_usage], [using_wtforms, using_flask_wtf], [disabled_flask_wtf_csrf_global_protection]])
+saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally", "not_using_csrf_library", "using_csrf_library", "disabling_csrf", "csrf_disabled_and_selectively_disabled"],
+                [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled, not_using_csrf_library, repos_using_csrf_library, repos_with_csrf_disabled, csrf_protection_selectively_disabled],
+                [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection, using_flaskform_with_csrf_disabled], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage], [flask_login_usage], [using_wtforms, using_flask_wtf], [disabled_flask_wtf_csrf_global_protection], [keys_using_flaskform_with_csrf_disabled]])
 saveDictsToFile(["using_password_hashing", "not_using_recommended_algorithm", "not_using_supported_library", "using_argon2", "using_scrypt", "using_bcrypt", "using_pbkdf2"],
                 [repos_with_password_hashing, not_using_a_recommended_algorithm, not_using_supported_libraries, keys_argon2_is_used, keys_scrypt_is_used, keys_bcrypt_is_used, keys_pbkdf2_is_used],
                 [[argon2_is_used, bcrypt_is_used, flask_bcrypt_is_used, passlib_is_used, werkzeug_is_used, hashlib_is_used], [argon2_is_used, bcrypt_is_used, flask_bcrypt_is_used, passlib_is_used, werkzeug_is_used, hashlib_is_used],
@@ -359,6 +361,7 @@ report = """
 <a href="{}" target="_blank">{}</a> CSRF global protection is always active ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is activated, but it is deactivated on some views ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
+<a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, and the default FlaskForm CSRF protection is also selectively deactivated ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere ({} %)<br>
 <a href="{}" target="_blank">{}</a> disable CSRF (likely) for testing purposes ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF categories union ({} %)<br>
@@ -400,6 +403,7 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./csrf_activated_globally.txt", str(counter_csrf_activated), str(getPercentage(counter_csrf_activated, counter_repos_using_csrf_library)),
                             "./csrf_deactivated_selectively.txt", str(counter_csrf_deactivated_selectively), str(getPercentage(counter_csrf_deactivated_selectively, counter_repos_using_csrf_library)),
                             "./csrf_activated_selectively.txt", str(counter_csrf_activated_selectively), str(getPercentage(counter_csrf_activated_selectively, counter_repos_using_csrf_library)),
+                            "./csrf_disabled_and_selectively_disabled.txt", str(counter_csrf_deactivated_selectively_disabled), str(getPercentage(counter_csrf_deactivated_selectively_disabled, counter_repos_using_csrf_library)),
                             "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_repos_using_csrf_library)),
                             "./disabling_csrf.txt", str(counter_repos_with_csrf_disabled), str(getPercentage(counter_repos_with_csrf_disabled, counter_flask)),
                             "./csrf_categories_union.txt", str(counter_csrf_categories_union), str(getPercentage(counter_csrf_categories_union, counter_repos_using_csrf_library)),
