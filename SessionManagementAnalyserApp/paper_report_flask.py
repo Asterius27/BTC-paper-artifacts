@@ -211,8 +211,8 @@ keys_disabled_flask_wtf_csrf_global_protection = set(disabled_flask_wtf_csrf_glo
 keys_using_wtforms_csrf_protection = set(using_wtforms_csrf_protection)
 keys_using_flask_wtf = repos.intersection(set(using_flask_wtf))
 keys_using_wtforms = repos.intersection(set(using_wtforms))
-repos_using_csrf_library = keys_using_flask_wtf.union(keys_using_wtforms).union(repos.intersection(keys_csrf_enabled_globally)).difference(keys_csrf_enabled_globally.intersection(keys_disabled_flask_wtf_csrf_global_protection))
-repos_with_csrf_disabled = keys_using_flask_wtf.union(keys_using_wtforms).union(repos.intersection(keys_csrf_enabled_globally)).intersection(keys_csrf_enabled_globally.intersection(keys_disabled_flask_wtf_csrf_global_protection))
+repos_using_csrf_library = keys_using_flask_wtf.union(keys_using_wtforms).union(repos.intersection(keys_csrf_enabled_globally)).difference(keys_disabled_flask_wtf_csrf_global_protection)
+repos_with_csrf_disabled = keys_using_flask_wtf.union(keys_using_wtforms).union(repos.intersection(keys_csrf_enabled_globally)).intersection(keys_disabled_flask_wtf_csrf_global_protection)
 csrf_protection_global = repos_using_csrf_library.intersection(keys_csrf_enabled_globally.difference(keys_using_csrf_exempt).difference(keys_disabled_flask_wtf_csrf_protection))
 csrf_protection_global_selectively_disabled = repos_using_csrf_library.intersection(keys_csrf_enabled_globally).intersection(keys_using_csrf_exempt.union(keys_disabled_flask_wtf_csrf_protection))
 csrf_protection_selectively_disabled = repos_using_csrf_library.intersection(keys_using_flaskform_with_csrf_disabled).difference(keys_csrf_enabled_globally.difference(keys_disabled_flask_wtf_csrf_protection))
@@ -362,8 +362,8 @@ report = """
 <a href="{}" target="_blank">{}</a> CSRF global protection is activated, but it is deactivated on some views ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, and the default FlaskForm CSRF protection is also selectively deactivated ({} %)<br>
-<a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere ({} %)<br>
-<a href="{}" target="_blank">{}</a> disable CSRF (likely) for testing purposes ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere, so either the app is doing something custom or it's vulnerable ({} %)<br>
+<a href="{}" target="_blank">{}</a> manually disable CSRF (likely) for testing purposes ({} %)<br></p>
 <h3>Session Protection</h3>
 <p><a href="{}" target="_blank">{}</a> didn't use session protection ({} %)<br>
 <a href="{}" target="_blank">{}</a> used basic session protection ({} %)<br>
