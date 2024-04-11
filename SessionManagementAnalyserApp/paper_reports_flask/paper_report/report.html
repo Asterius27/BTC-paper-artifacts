@@ -1,0 +1,46 @@
+
+<p>There are <a href="./session_management.txt" target="_blank">353</a> flask repos for Session Management and <a href="./account_creation.txt" target="_blank">95</a> flask repos for Account Creation<br></p>
+<h2>Account Creation</h2>
+<h3>Password Policies</h3>
+<p>41 perform some validation on its password fields (43.16 %)<br>
+<a href="./not_performing_password_validation.txt" target="_blank">54</a> do not perform validation on the password fields (56.84 %)<br>
+<a href="./length_password_validators.txt" target="_blank">36</a> enforce a specific password length (37.89 %)<br>
+<a href="./regexp_password_validators.txt" target="_blank">2</a> check the password against a regexp (2.11 %)<br>
+<a href="./length_and_regexp_password_validators.txt" target="_blank">2</a> combine length checks and regular expression checks (2.11 %)<br>
+<a href="./custom_password_validators.txt" target="_blank">6</a> use a custom validator (6.32 %)<br></p>
+<h3>Password Hashing</h3>
+<p><a href="./using_password_hashing.txt" target="_blank">92</a> applications use some form of (supported) password hashing (96.84 %)<br>
+<a href="./not_using_supported_library.txt" target="_blank">3</a> applications do not use one of the supported password hashing libraries or do not perform password hashing (3.16 %)<br>
+<a href="./not_using_recommended_algorithm.txt" target="_blank">8</a> applications use some form of (supported) password hashing but do not use one of the recommended algorithms (8.42 %)<br>
+<a href="./argon2_owasp_compliant.txt" target="_blank">1</a> use argon2id and is owasp compliant (no false positives) (1.05 %)<br>
+<a href="./scrypt_owasp_compliant.txt" target="_blank">0</a> use scrypt and is owasp compliant (no false positives) (0.0 %)<br>
+<a href="./pbkdf2_owasp_compliant.txt" target="_blank">1</a> use PBKDF2 and is owasp compliant (no false positives) (1.05 %)<br>
+<a href="./bcrypt_owasp_compliant.txt" target="_blank">21</a> use bcrypt and is owasp compliant (no false positives) (22.11 %)<br>
+<a href="./argon2_not_owasp_compliant.txt" target="_blank">0</a> use argon2id and is not owasp compliant (no false positives) (0.0 %)<br>
+<a href="./scrypt_not_owasp_compliant.txt" target="_blank">58</a> use scrypt and is not owasp compliant (no false positives) (61.05 %)<br>
+<a href="./pbkdf2_not_owasp_compliant.txt" target="_blank">3</a> use PBKDF2 and is not owasp compliant (no false positives) (3.16 %)<br>
+<a href="./bcrypt_not_owasp_compliant.txt" target="_blank">0</a> use bcrypt and is not owasp compliant (no false positives) (0.0 %)<br>
+<a href="./bcrypt_owasp_compliant_false_positives.txt" target="_blank">3</a> bcrypt owasp compliance is potentially a false positive (3.16 %)<br></p>
+<h2>Session Management</h2>
+<h3>Cryptographic Keys</h3>
+<p><a href="./hardcoded_secret_keys.txt" target="_blank">80</a> had a hardcoded secret key (22.66 %)<br>
+<a href="./potential_false_positives_hardcoded_secret_keys.txt" target="_blank">35</a> set the secret key more than once (and it's hardcoded at least once), so it's a false positive potentially (43.75 %)<br>
+<a href="./true_positives_hardcoded_secret_keys.txt" target="_blank">45</a> set the secret key only once (and it's hardcoded), so it's a true positive (56.25 %)<br></p>
+<h3>CSRF</h3>
+<p><a href=".not_using_csrf_library/.txt" target="_blank">130</a> Not using CSRF library, so either they don't have csrf protection or use some other way to protect against CSRF (36.83 %)<br>
+<a href="./using_csrf_library.txt" target="_blank">223</a> use a csrf library, either flask_wtf or wtforms (63.17 %)<br>
+<a href="./csrf_activated_globally.txt" target="_blank">12</a> CSRF global protection is always active (5.38 %)<br>
+<a href="./csrf_deactivated_selectively.txt" target="_blank">16</a> CSRF global protection is activated, but it is deactivated on some views (7.17 %)<br>
+<a href="./csrf_activated_selectively.txt" target="_blank">143</a> CSRF global protection is deactivated, but it is activated on some views or forms (64.13 %)<br>
+<a href="./csrf_disabled_and_selectively_disabled.txt" target="_blank">6</a> CSRF global protection is deactivated, and the default FlaskForm CSRF protection is also selectively deactivated (so either it is fully deactivated or some forms are still protected) (2.69 %)<br>
+<a href="./csrf_deactivated_globally.txt" target="_blank">14</a> CSRF protection is deactivated everywhere, so either the app is doing something custom or it's vulnerable (6.28 %)<br>
+<a href="./disabling_csrf.txt" target="_blank">32</a> manually disable CSRF (likely) for testing purposes (CSRF protection deactivated potential false positives) (14.35 %)<br></p>
+<h3>Session Protection</h3>
+<p><a href=" "./csrf_categories_union.txt", str(counter_csrf_categories_union), str(getPercentage(counter_csrf_categories_union, counter_repos_using_csrf_library)),
+                            "./in_more_than_one_category.txt", str(counter_repos_in_more_than_one_category), str(getPercentage(counter_repos_in_more_than_one_category, counter_repos_using_csrf_library)),
+                            "./not_in_any_csrf_category.txt", str(counter_not_in_any_csrf_category), str(getPercentage(counter_not_in_any_csrf_category, counter_repos_using_csrf_library)), ./no_session_protection.txt" target="_blank">325</a> didn't use session protection (92.07 %)<br>
+<a href="./session_protection_basic.txt" target="_blank">2</a> used basic session protection (0.57 %)<br>
+<a href="./session_protection_strong.txt" target="_blank">23</a> used strong session protection (6.52 %)<br>
+<a href="./potential_false_positives_session_protection.txt" target="_blank">1</a> set session protection more than once, so it's a false positive potentially (0.28 %)<br></p>
+<h3>Logout Security</h3>
+<p></p>
