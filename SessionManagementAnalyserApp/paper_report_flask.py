@@ -174,7 +174,7 @@ keys_flask_login_usages = set(flask_login_usage)
 keys_flask_login_required_usages = set(flask_login_required_usage)
 keys_flask_custom_session_interface = set(flask_custom_session_interface)
 repos = keys_flask_login_usages.intersection(keys_flask_login_required_usages).intersection(keys_flask_custom_session_interface)
-keys_account_creation = set(flask_wtf_account_creation) # TODO filter with also login required and custom session interface, same as above
+keys_account_creation = set(flask_wtf_account_creation).intersection(keys_flask_login_required_usages).intersection(keys_flask_custom_session_interface)
 
 keys_session_protection_none = set(session_protection_none)
 keys_no_fresh_login = set(no_fresh_login)
@@ -220,7 +220,7 @@ csrf_protection_selectively_activated = repos_using_csrf_library.difference(keys
 csrf_protection_disabled = repos_using_csrf_library.difference(keys_csrf_enabled_globally).difference(keys_using_flaskform_csrf.union(keys_using_wtforms_csrf_protection).union(keys_using_csrf_protect))
 not_using_csrf_library = repos.difference(repos_using_csrf_library).difference(repos_with_csrf_disabled)
 
-csrf_categories_union = csrf_protection_global.union(csrf_protection_global_selectively_disabled).union(csrf_protection_selectively_activated).union(csrf_protection_disabled).union(csrf_protection_selectively_disabled)
+""" csrf_categories_union = csrf_protection_global.union(csrf_protection_global_selectively_disabled).union(csrf_protection_selectively_activated).union(csrf_protection_disabled).union(csrf_protection_selectively_disabled)
 not_in_any_csrf_category = repos_using_csrf_library.difference(csrf_protection_global).difference(csrf_protection_global_selectively_disabled).difference(csrf_protection_selectively_activated).difference(csrf_protection_disabled).difference(csrf_protection_selectively_disabled)
 all_elements = list(csrf_protection_global) + list(csrf_protection_global_selectively_disabled) + list(csrf_protection_selectively_activated) + list(csrf_protection_disabled) + list(csrf_protection_selectively_disabled)
 repos_in_more_than_one_category = set()
@@ -229,7 +229,7 @@ for element in csrf_categories_union:
     if element in unique_elements:
         repos_in_more_than_one_category.add(element)
     else:
-        unique_elements.add(element)
+        unique_elements.add(element) """
 
 keys_argon2_is_used = keys_account_creation.intersection(set(argon2_is_used).union(set(passlib_argon2_is_used)))
 keys_bcrypt_is_used = keys_account_creation.intersection(set(bcrypt_is_used).union(set(flask_bcrypt_is_used)).union(set(passlib_bcrypt_is_used)))
@@ -276,9 +276,9 @@ counter_repos_using_csrf_library = len(repos_using_csrf_library)
 counter_not_using_csrf_library = len(not_using_csrf_library)
 counter_repos_with_csrf_disabled = len(repos_with_csrf_disabled)
 
-counter_csrf_categories_union = len(csrf_categories_union)
+""" counter_csrf_categories_union = len(csrf_categories_union)
 counter_not_in_any_csrf_category = len(not_in_any_csrf_category)
-counter_repos_in_more_than_one_category = len(repos_in_more_than_one_category)
+counter_repos_in_more_than_one_category = len(repos_in_more_than_one_category) """
 
 counter_repos_with_password_hashing = len(repos_with_password_hashing)
 counter_not_using_a_recommended_algorithm = len(not_using_a_recommended_algorithm)
@@ -321,11 +321,11 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                  [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
 saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]])
-saveDictsToFile(["csrf_categories_union", "not_in_any_csrf_category", "in_more_than_one_category"], 
+""" saveDictsToFile(["csrf_categories_union", "not_in_any_csrf_category", "in_more_than_one_category"], 
                 [csrf_categories_union, not_in_any_csrf_category, repos_in_more_than_one_category], 
                 [[using_wtforms, using_flask_wtf, csrf_enabled_globally], 
                 [csrf_enabled_globally, using_csrf_exempt, using_csrf_protect, using_flaskform_csrf, using_flaskform_with_csrf_disabled, disabled_flask_wtf_csrf_protection, disabled_flask_wtf_csrf_global_protection, using_wtforms_csrf_protection, using_flask_wtf, using_wtforms], 
-                [csrf_enabled_globally, using_csrf_exempt, using_csrf_protect, using_flaskform_csrf, using_flaskform_with_csrf_disabled, disabled_flask_wtf_csrf_protection, disabled_flask_wtf_csrf_global_protection, using_wtforms_csrf_protection, using_flask_wtf, using_wtforms]])
+                [csrf_enabled_globally, using_csrf_exempt, using_csrf_protect, using_flaskform_csrf, using_flaskform_with_csrf_disabled, disabled_flask_wtf_csrf_protection, disabled_flask_wtf_csrf_global_protection, using_wtforms_csrf_protection, using_flask_wtf, using_wtforms]]) """
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> flask repos for Session Management and <a href="{}" target="_blank">{}</a> flask repos for Account Creation<br></p>
@@ -363,10 +363,7 @@ report = """
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, and the default FlaskForm CSRF protection is also selectively deactivated ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere ({} %)<br>
-<a href="{}" target="_blank">{}</a> disable CSRF (likely) for testing purposes ({} %)<br>
-<a href="{}" target="_blank">{}</a> CSRF categories union ({} %)<br>
-<a href="{}" target="_blank">{}</a> are in more than one CSRF category ({} %)<br>
-<a href="{}" target="_blank">{}</a> are not in any CSRF category but use a csrf library ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> disable CSRF (likely) for testing purposes ({} %)<br></p>
 <h3>Session Protection</h3>
 <p><a href="{}" target="_blank">{}</a> didn't use session protection ({} %)<br>
 <a href="{}" target="_blank">{}</a> used basic session protection ({} %)<br>
@@ -375,6 +372,10 @@ report = """
 <h3>Logout Security</h3>
 <p></p>
 """
+
+""" <a href="{}" target="_blank">{}</a> CSRF categories union ({} %)<br>
+<a href="{}" target="_blank">{}</a> are in more than one CSRF category ({} %)<br>
+<a href="{}" target="_blank">{}</a> are not in any CSRF category but use a csrf library ({} %)<br> """
 
 report_html = report.format("./session_management.txt", str(counter_flask), "./account_creation.txt", str(counter_account_creation),
                             str(counter_performing_password_validation), str(getPercentage(counter_performing_password_validation, counter_account_creation)),
@@ -406,9 +407,9 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./csrf_disabled_and_selectively_disabled.txt", str(counter_csrf_deactivated_selectively_disabled), str(getPercentage(counter_csrf_deactivated_selectively_disabled, counter_repos_using_csrf_library)),
                             "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_repos_using_csrf_library)),
                             "./disabling_csrf.txt", str(counter_repos_with_csrf_disabled), str(getPercentage(counter_repos_with_csrf_disabled, counter_flask)),
-                            "./csrf_categories_union.txt", str(counter_csrf_categories_union), str(getPercentage(counter_csrf_categories_union, counter_repos_using_csrf_library)),
+                            """ "./csrf_categories_union.txt", str(counter_csrf_categories_union), str(getPercentage(counter_csrf_categories_union, counter_repos_using_csrf_library)),
                             "./in_more_than_one_category.txt", str(counter_repos_in_more_than_one_category), str(getPercentage(counter_repos_in_more_than_one_category, counter_repos_using_csrf_library)),
-                            "./not_in_any_csrf_category.txt", str(counter_not_in_any_csrf_category), str(getPercentage(counter_not_in_any_csrf_category, counter_repos_using_csrf_library)),
+                            "./not_in_any_csrf_category.txt", str(counter_not_in_any_csrf_category), str(getPercentage(counter_not_in_any_csrf_category, counter_repos_using_csrf_library)), """
                             "./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)),
                             "./session_protection_basic.txt", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
                             "./session_protection_strong.txt", str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)),
