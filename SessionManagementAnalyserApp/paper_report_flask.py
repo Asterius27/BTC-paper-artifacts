@@ -187,6 +187,7 @@ temp = keys_session_protection_strong.union(not_using_session_protection)
 no_session_protection = repos_session_protection.intersection(not_using_session_protection)
 session_protection_basic_set = repos_session_protection.intersection(keys_session_protection_basic)
 session_protection_strong_set = repos_session_protection.intersection(keys_session_protection_strong)
+uncategorized_session_protection = repos_session_protection.difference(no_session_protection.union(session_protection_basic_set).union(session_protection_strong_set).union())
 
 keys_hardcoded_secret_key = set(hardcoded_secret_key)
 keys_hardcoded_secret_key_potential_false_positives = set(hardcoded_secret_key_potential_false_positives)
@@ -255,6 +256,7 @@ counter_no_session_protection = len(no_session_protection)
 counter_session_protection_basic = len(session_protection_basic_set)
 counter_session_protection_strong = len(session_protection_strong_set)
 counter_session_protection_false_positives = len(keys_session_protection_potential_false_positives)
+counter_uncategorized_session_protection = len(uncategorized_session_protection)
 
 counter_hardcoded_secret_keys = len(repos_hardcoded_secret_key)
 counter_hardcoded_secret_keys_false_positives = len(hardcoded_secret_key_false_positives)
@@ -298,9 +300,9 @@ counter_bcrypt_not_owasp_compliant = len(repos_using_bcrypt_not_owasp_compliant)
 counter_pbkdf2_not_owasp_compliant = len(repos_using_pbkdf2_not_owasp_compliant)
 
 saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
-saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection"],
-                [no_session_protection, session_protection_basic_set, session_protection_strong_set, keys_session_protection_potential_false_positives],
-                [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives]])
+saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection", "uncategorized_session_protection"],
+                [no_session_protection, session_protection_basic_set, session_protection_strong_set, keys_session_protection_potential_false_positives, uncategorized_session_protection],
+                [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives], [flask_login_usage]])
 saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys"],
                 [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives],
                 [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key]])
@@ -368,7 +370,8 @@ report = """
 <p><a href="{}" target="_blank">{}</a> didn't use session protection ({} %)<br>
 <a href="{}" target="_blank">{}</a> used basic session protection ({} %)<br>
 <a href="{}" target="_blank">{}</a> used strong session protection ({} %)<br>
-<a href="{}" target="_blank">{}</a> set session protection more than once, so it's a false positive potentially ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> set session protection more than once, so it's a false positive potentially ({} %)<br>
+<a href="{}" target="_blank">{}</a> are not in any session protection category ({} %)<br></p>
 <h3>Logout Security</h3>
 <p></p>
 """
@@ -413,7 +416,8 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)),
                             "./session_protection_basic.txt", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
                             "./session_protection_strong.txt", str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)),
-                            "./potential_false_positives_session_protection.txt", str(counter_session_protection_false_positives), str(getPercentage(counter_session_protection_false_positives, counter_flask)))
+                            "./potential_false_positives_session_protection.txt", str(counter_session_protection_false_positives), str(getPercentage(counter_session_protection_false_positives, counter_flask)),
+                            "./uncategorized_session_protection.txt", str(counter_uncategorized_session_protection), str(getPercentage(counter_uncategorized_session_protection, counter_flask)))
 
 with open(str(path.absolute()) + "/report.html", "w") as file:
     file.write(report_html)
