@@ -356,7 +356,7 @@ report = """
 <h3>Cryptographic Keys</h3>
 <p><a href="{}" target="_blank">{}</a> had a hardcoded secret key ({} %)<br>
 <a href="{}" target="_blank">{}</a> set the secret key more than once (and it's hardcoded at least once), so it's a false positive potentially ({} %)<br>
-<a href="{}" target="_blank">{}</a> set the secret key only once (and it's hardcoded), so it's a true positive ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> set the secret key to a hardcoded string every time, so it's a true positive ({} %)<br></p>
 <h3>CSRF</h3>
 <p><a href="{}" target="_blank">{}</a> Not using CSRF library, so either they don't have csrf protection or use some other way to protect against CSRF ({} %)<br>
 <a href="{}" target="_blank">{}</a> use a csrf library, either flask_wtf or wtforms ({} %)<br>
@@ -379,6 +379,10 @@ report = """
 """ <a href="{}" target="_blank">{}</a> CSRF categories union ({} %)<br>
 <a href="{}" target="_blank">{}</a> are in more than one CSRF category ({} %)<br>
 <a href="{}" target="_blank">{}</a> are not in any CSRF category but use a csrf library ({} %)<br> """
+
+""" "./csrf_categories_union.txt", str(counter_csrf_categories_union), str(getPercentage(counter_csrf_categories_union, counter_repos_using_csrf_library)),
+"./in_more_than_one_category.txt", str(counter_repos_in_more_than_one_category), str(getPercentage(counter_repos_in_more_than_one_category, counter_repos_using_csrf_library)),
+"./not_in_any_csrf_category.txt", str(counter_not_in_any_csrf_category), str(getPercentage(counter_not_in_any_csrf_category, counter_repos_using_csrf_library)), """
 
 report_html = report.format("./session_management.txt", str(counter_flask), "./account_creation.txt", str(counter_account_creation),
                             str(counter_performing_password_validation), str(getPercentage(counter_performing_password_validation, counter_account_creation)),
@@ -410,9 +414,6 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./csrf_disabled_and_selectively_disabled.txt", str(counter_csrf_deactivated_selectively_disabled), str(getPercentage(counter_csrf_deactivated_selectively_disabled, counter_repos_using_csrf_library)),
                             "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_repos_using_csrf_library)),
                             "./disabling_csrf.txt", str(counter_repos_with_csrf_disabled), str(getPercentage(counter_repos_with_csrf_disabled, counter_repos_using_csrf_library)),
-                            """ "./csrf_categories_union.txt", str(counter_csrf_categories_union), str(getPercentage(counter_csrf_categories_union, counter_repos_using_csrf_library)),
-                            "./in_more_than_one_category.txt", str(counter_repos_in_more_than_one_category), str(getPercentage(counter_repos_in_more_than_one_category, counter_repos_using_csrf_library)),
-                            "./not_in_any_csrf_category.txt", str(counter_not_in_any_csrf_category), str(getPercentage(counter_not_in_any_csrf_category, counter_repos_using_csrf_library)), """
                             "./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)),
                             "./session_protection_basic.txt", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
                             "./session_protection_strong.txt", str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)),

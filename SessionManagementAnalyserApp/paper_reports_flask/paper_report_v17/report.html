@@ -36,9 +36,7 @@
 <a href="./csrf_deactivated_globally.txt" target="_blank">14</a> CSRF protection is deactivated everywhere, so either the app is doing something custom or it's vulnerable (6.28 %)<br>
 <a href="./disabling_csrf.txt" target="_blank">32</a> manually disable CSRF (likely) for testing purposes (CSRF protection deactivated potential false positives) (14.35 %)<br></p>
 <h3>Session Protection</h3>
-<p><a href=" "./csrf_categories_union.txt", str(counter_csrf_categories_union), str(getPercentage(counter_csrf_categories_union, counter_repos_using_csrf_library)),
-                            "./in_more_than_one_category.txt", str(counter_repos_in_more_than_one_category), str(getPercentage(counter_repos_in_more_than_one_category, counter_repos_using_csrf_library)),
-                            "./not_in_any_csrf_category.txt", str(counter_not_in_any_csrf_category), str(getPercentage(counter_not_in_any_csrf_category, counter_repos_using_csrf_library)), ./no_session_protection.txt" target="_blank">325</a> didn't use session protection (92.07 %)<br>
+<p><a href="./no_session_protection.txt" target="_blank">325</a> didn't use session protection (92.07 %)<br>
 <a href="./session_protection_basic.txt" target="_blank">2</a> used basic session protection (0.57 %)<br>
 <a href="./session_protection_strong.txt" target="_blank">23</a> used strong session protection (6.52 %)<br>
 <a href="./potential_false_positives_session_protection.txt" target="_blank">1</a> set session protection more than once, so it's a false positive potentially (0.28 %)<br>

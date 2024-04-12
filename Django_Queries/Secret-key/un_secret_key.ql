@@ -35,4 +35,4 @@ string output2(StrConst key) {
 
 from DataFlow2::Node secsource, DataFlow2::Node key, SecretKeyConfiguration sconfig
 where sconfig.hasFlow(secsource, key)
-select key.getLocation(), output(key.asExpr()), output2(key.asExpr())
+select key.asExpr().(StrConst).getS(), key.getLocation(), output(key.asExpr()), output2(key.asExpr())

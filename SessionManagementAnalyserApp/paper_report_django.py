@@ -317,7 +317,7 @@ report = """
 <h3>Cryptographic Keys</h3>
 <p><a href="{}" target="_blank">{}</a> had a hardcoded secret key ({} %)<br>
 <a href="{}" target="_blank">{}</a> set the secret key more than once (and it's hardcoded at least once), so it's a false positive potentially ({} %)<br>
-<a href="{}" target="_blank">{}</a> set the secret key only once (and it's hardcoded), so it's a true positive ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> set the secret key to a hardcoded string every time, so it's a true positive ({} %)<br></p>
 <h3>CSRF</h3>
 <p><a href="{}" target="_blank">{}</a> CSRF global protection is always active ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is activated, but it is deactivated on some views ({} %)<br>

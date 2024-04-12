@@ -1024,7 +1024,8 @@ deleteQueriesResults({"Password-strength": ["un_password_length_check", "un_pass
 deleteQueriesResults({"Explorative-queries": ["un_potential_false_positives", "un_allauth_is_used", "un_dj_rest_auth_is_used", "un_django_registration_macropin_is_used", "un_django_registration_ubernostrum_is_used", "un_django_rest_framework_is_used", "un_django_rest_registration_is_used", "un_django_user_accounts_is_used", "un_django_xadmin_is_used", "un_djoser_is_used"], 
                     "CSRF": ["un_csrf_protection_is_disabled"], "Account-deactivation": ["un_custom_auth_backends"],
                     "Password-strength": ["un_using_common_password_validator", "un_using_custom_validators", "un_using_length_validator", "un_using_numeric_password_validator", "un_using_similarity_validator", "un_using_password_validators"],
-                    "Password-hashing": ["un_argon2_is_owasp_compliant", "un_argon2_is_used", "un_bcrypt_is_owasp_compliant", "un_bcrypt_is_used", "un_manually_set_password_hashers", "un_md5_is_used", "un_pbkdf2_is_owasp_compliant", "un_pbkdf2_is_used", "un_scrypt_is_owasp_compliant", "un_scrypt_is_used", "un_using_custom_password_hasher"]
+                    "Password-hashing": ["un_argon2_is_owasp_compliant", "un_argon2_is_used", "un_bcrypt_is_owasp_compliant", "un_bcrypt_is_used", "un_manually_set_password_hashers", "un_md5_is_used", "un_pbkdf2_is_owasp_compliant", "un_pbkdf2_is_used", "un_scrypt_is_owasp_compliant", "un_scrypt_is_used", "un_using_custom_password_hasher"],
+                    "Secret-key": ["un_secret_key"]
                 }); // TODO delete for Django
 */
 // libraryUsagesGrep();
