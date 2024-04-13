@@ -1,0 +1,336 @@
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/Diluka_nas-tools-unlock/Diluka-nas-tools-unlock-20ce515
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/Diluka_nas-tools-unlock/Diluka-nas-tools-unlock-20ce515
+Time taken to run the queries on ./repositories/Flask/thread10/Diluka_nas-tools-unlock/Diluka-nas-tools-unlock-20ce515: 207.549 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/Diluka_nas-tools-unlock/Diluka-nas-tools-unlock-20ce515
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/Diluka_nas-tools-unlock/Diluka-nas-tools-unlock-20ce515
+Time taken to run the queries on ./repositories/Flask/thread10/Diluka_nas-tools-unlock/Diluka-nas-tools-unlock-20ce515: 1084.318 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/KSP-SpaceDock_SpaceDock/KSP-SpaceDock-SpaceDock-6517c0e
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/KSP-SpaceDock_SpaceDock/KSP-SpaceDock-SpaceDock-6517c0e
+Time taken to run the queries on ./repositories/Flask/thread10/KSP-SpaceDock_SpaceDock/KSP-SpaceDock-SpaceDock-6517c0e: 565.892 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-f6a6607
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-f6a6607
+Time taken to run the queries on ./repositories/Flask/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-f6a6607: 468.692 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-d255cb3
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-d255cb3
+Time taken to run the queries on ./repositories/Flask/thread10/PowerDNS-Admin_PowerDNS-Admin/PowerDNS-Admin-PowerDNS-Admin-d255cb3: 535.949 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3
+Failed to execute the query: Incorrect-config-changes/un_incorrect_config_changes on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: spawnSync /bin/sh ETIMEDOUT
+Failed to execute the query: Fresh-login-restrictions/un_no_fresh_login_checks on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Fresh-login-restrictions/un_no_fresh_login_checks.bqrs --threads=11 ../Flask_Queries/Fresh-login-restrictions/un_no_fresh_login_checks.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Login-restrictions/un_no_authentication_checks on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Login-restrictions/un_no_authentication_checks.bqrs --threads=11 ../Flask_Queries/Login-restrictions/un_no_authentication_checks.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Login-restrictions/un_no_authentication_checks_general on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Login-restrictions/un_no_authentication_checks_general.bqrs --threads=11 ../Flask_Queries/Login-restrictions/un_no_authentication_checks_general.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Secret-key/un_secret_key on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Secret-key/un_secret_key.bqrs --threads=11 ../Flask_Queries/Secret-key/un_secret_key.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_custom_session_interface on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Explorative-queries/un_custom_session_interface.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_custom_session_interface.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_config_set_from_env_var on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Explorative-queries/un_config_set_from_env_var.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_config_set_from_env_var.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_config_set_from_file_mapping_keys on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Explorative-queries/un_config_set_from_file_mapping_keys.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_config_set_from_file_mapping_keys.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_list_config_settings_from_env_var on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Explorative-queries/un_list_config_settings_from_env_var.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_list_config_settings_from_env_var.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Explorative-queries/un_potential_false_positives on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Explorative-queries/un_potential_false_positives.bqrs --threads=11 ../Flask_Queries/Explorative-queries/un_potential_false_positives.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_flask_bcrypt_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_flask_bcrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_flask_bcrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_argon2_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_argon2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_argon2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_bcrypt_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_bcrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_bcrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_hashlib_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_hashlib_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_hashlib_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_werkzeug_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_argon2_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_argon2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_argon2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_bcrypt_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_bcrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_bcrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_flask_bcrypt_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_flask_bcrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_flask_bcrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_argon2_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_argon2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_argon2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_argon2_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_argon2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_argon2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_bcrypt_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_bcrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_bcrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_bcrypt_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_bcrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_bcrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_cryptcontext_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_cryptcontext_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_cryptcontext_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_genconfig_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_genconfig_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_genconfig_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_pbkdf2_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_pbkdf2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_pbkdf2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_pbkdf2_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_pbkdf2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_pbkdf2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_scrypt_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_scrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_scrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_passlib_scrypt_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_passlib_scrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_passlib_scrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_pbkdf2_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_werkzeug_pbkdf2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_pbkdf2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_pbkdf2_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_werkzeug_pbkdf2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_pbkdf2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_scrypt_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_werkzeug_scrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_scrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_werkzeug_scrypt_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_werkzeug_scrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_werkzeug_scrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_hashlib_pbkdf2_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_hashlib_pbkdf2_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_hashlib_pbkdf2_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_hashlib_pbkdf2_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_hashlib_pbkdf2_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_hashlib_pbkdf2_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_hashlib_scrypt_is_owasp_compliant on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_hashlib_scrypt_is_owasp_compliant.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_hashlib_scrypt_is_owasp_compliant.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-hashing/un_hashlib_scrypt_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-hashing/un_hashlib_scrypt_is_used.bqrs --threads=11 ../Flask_Queries/Password-hashing/un_hashlib_scrypt_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_flask_wtf_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_flask_wtf_is_used.bqrs --threads=11 ../Flask_Queries/Password-strength/un_flask_wtf_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_wtforms_is_used on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_wtforms_is_used.bqrs --threads=11 ../Flask_Queries/Password-strength/un_wtforms_is_used.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_form_with_password_field.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field_is_signup on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_form_with_password_field_is_signup.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field_is_signup.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_two_password_fields on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_form_with_two_password_fields.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_two_password_fields.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field_and_validators on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_form_with_password_field_and_validators.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field_and_validators.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field_is_validated on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_form_with_password_field_is_validated.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field_is_validated.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_form_with_password_field_uses_extra_validators_in_validate_method on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_form_with_password_field_uses_extra_validators_in_validate_method.bqrs --threads=11 ../Flask_Queries/Password-strength/un_form_with_password_field_uses_extra_validators_in_validate_method.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_password_custom_checks on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_password_custom_checks.bqrs --threads=11 ../Flask_Queries/Password-strength/un_password_custom_checks.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_password_length_check on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_password_length_check.bqrs --threads=11 ../Flask_Queries/Password-strength/un_password_length_check.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Failed to execute the query: Password-strength/un_password_regexp_check on repository: ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3 Reason: Error: Command failed: codeql query run --database=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database --output=./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-results/Password-strength/un_password_regexp_check.bqrs --threads=11 ../Flask_Queries/Password-strength/un_password_regexp_check.ql
+A fatal error occurred: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3-database/db-python/default/cache/.lock
+(eventual cause: OverlappingFileLockException)
+
+Time taken to run the queries on ./repositories/Flask/thread10/RCOSDP_weko/RCOSDP-weko-72759b3: 1776.142 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/Sciebo-RDS_Sciebo-RDS/Sciebo-RDS-Sciebo-RDS-c488736
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/Sciebo-RDS_Sciebo-RDS/Sciebo-RDS-Sciebo-RDS-c488736
+Time taken to run the queries on ./repositories/Flask/thread10/Sciebo-RDS_Sciebo-RDS/Sciebo-RDS-Sciebo-RDS-c488736: 528.724 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/apache_superset/apache-superset-349e496
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/apache_superset/apache-superset-349e496
+Time taken to run the queries on ./repositories/Flask/thread10/apache_superset/apache-superset-349e496: 1082.262 seconds.
+Analysis failed for: ./repositories/Flask/thread10/appacademy_Module-6-Resources/appacademy-Module-6-Resources-877ffa5 Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread10/appacademy_Module-6-Resources/appacademy-Module-6-Resources-877ffa5 -l=python -t=11 -ct=10
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread10/appacademy_Module-6-Resources/appacademy-Module-6-Resources-877ffa5: 56.27 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/bounswe_bounswe2023group6/bounswe-bounswe2023group6-db3f9d6
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/bounswe_bounswe2023group6/bounswe-bounswe2023group6-db3f9d6
+Time taken to run the queries on ./repositories/Flask/thread10/bounswe_bounswe2023group6/bounswe-bounswe2023group6-db3f9d6: 523.118 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/cactool_cactool/cactool-cactool-75e0af8
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/cactool_cactool/cactool-cactool-75e0af8
+Time taken to run the queries on ./repositories/Flask/thread10/cactool_cactool/cactool-cactool-75e0af8: 414.746 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-e5ad7a9
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-e5ad7a9
+Time taken to run the queries on ./repositories/Flask/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-e5ad7a9: 507.188 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/evidence-surveillance_es3/evidence-surveillance-es3-fa84521
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/evidence-surveillance_es3/evidence-surveillance-es3-fa84521
+Time taken to run the queries on ./repositories/Flask/thread10/evidence-surveillance_es3/evidence-surveillance-es3-fa84521: 630.96 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/gae-init_gae-init/gae-init-gae-init-9a75f0a
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/gae-init_gae-init/gae-init-gae-init-9a75f0a
+Time taken to run the queries on ./repositories/Flask/thread10/gae-init_gae-init/gae-init-gae-init-9a75f0a: 512.211 seconds.
+Analysis failed for: ./repositories/Flask/thread10/inspirehep_inspirehep/inspirehep-inspirehep-da50059 Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread10/inspirehep_inspirehep/inspirehep-inspirehep-da50059 -l=python -t=11 -ct=10
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread10/inspirehep_inspirehep/inspirehep-inspirehep-da50059: 86.909 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-fe12de2
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-fe12de2
+Time taken to run the queries on ./repositories/Flask/thread10/kgeorgiev42_Style-AI/kgeorgiev42-Style-AI-fe12de2: 607.053 seconds.
+Analysis failed for: ./repositories/Flask/thread10/rootio_rootio_web/rootio-rootio_web-44e170d Reason: Error: Command failed: npm start -- -s=./repositories/Flask/thread10/rootio_rootio_web/rootio-rootio_web-44e170d -l=python -t=11 -ct=10
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Flask/thread10/rootio_rootio_web/rootio-rootio_web-44e170d: 95.85 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-94e638a
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-94e638a
+Time taken to run the queries on ./repositories/Flask/thread10/ryangoggin_PixelPal/ryangoggin-PixelPal-94e638a: 327.454 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/sleepymole_vjudge/sleepymole-vjudge-cbbcde2
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/sleepymole_vjudge/sleepymole-vjudge-cbbcde2
+Time taken to run the queries on ./repositories/Flask/thread10/sleepymole_vjudge/sleepymole-vjudge-cbbcde2: 381.458 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-cdc7d98
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-cdc7d98
+Time taken to run the queries on ./repositories/Flask/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-cdc7d98: 453.662 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/teknologkoren_flasquelistan/teknologkoren-flasquelistan-34f94a0
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/teknologkoren_flasquelistan/teknologkoren-flasquelistan-34f94a0
+Time taken to run the queries on ./repositories/Flask/thread10/teknologkoren_flasquelistan/teknologkoren-flasquelistan-34f94a0: 180.232 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection in the repository: ./repositories/Flask/thread10/willkee_FindTable/willkee-FindTable-d1c57be
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Skipped the query: Flask-login-session-protection/sf_session_protection_strong in the repository: ./repositories/Flask/thread10/willkee_FindTable/willkee-FindTable-d1c57be
+Time taken to run the queries on ./repositories/Flask/thread10/willkee_FindTable/willkee-FindTable-d1c57be: 106 seconds.
+Skippable Query: sf_session_protection, Unskippable counterpart: uf_session_protection_basic
+Skippable Query: sf_session_protection_strong, Unskippable counterpart: uf_session_protection_basic
+Time taken to run the queries on ./repositories/Flask/thread10/yeyeto2788_Things-Organizer/yeyeto2788-Things-Organizer-865403e: 104.356 seconds.
+Time taken to run the queries and generate the statistics: 11029.569 seconds.
