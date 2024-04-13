@@ -98,6 +98,7 @@ export function pythonAnalysis(root_dir, threads, current_thread) {
     }
     fs.writeFileSync(root_dir + "-results/info.txt", "python");
     // TODO because some queries for django and flask have the same name, when a repo uses both frameworks, the results for those queries (in flask) get overwritten (by django)
+    /*
     if (flask_lib[0]) {
         flask_queries = getFlaskQueries();
         for (let [key, value] of Object.entries(flask_queries)) {
@@ -136,7 +137,7 @@ export function pythonAnalysis(root_dir, threads, current_thread) {
         // generateReport(flask_queries, "Flask/Flask-login", root_dir + "-results");
         fs.appendFileSync(root_dir + "-results/info.txt", ", flask");
     }
-    /*
+    */
     if (django_lib[0]) {
         let session_engine = execBoolQuery(root_dir + "-database", root_dir + "-results", DJANGO_QUERIES_DIR + "/Custom-session-engine", "custom_session_engine", threads, current_thread);
         if (session_engine[0]) {
@@ -163,5 +164,4 @@ export function pythonAnalysis(root_dir, threads, current_thread) {
         // generateReport(django_queries, "Django", root_dir + "-results");
         fs.appendFileSync(root_dir + "-results/info.txt", ", django");
     }
-    */
 }

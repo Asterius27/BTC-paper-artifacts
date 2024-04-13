@@ -7,8 +7,8 @@ let root_dir = "./";
 let starsl = 0;
 let starsu = Number.MAX_VALUE;
 let lang = "";
-let csv_file = '../flask_whitelist_filtered_v2.csv';
-let csv_filter_file = '../flask_whitelist_filtered_v2.csv';
+let csv_file = '../django_whitelist_filtered_v2.csv';
+let csv_filter_file = '../django_whitelist_filtered_v2.csv';
 
 function repoUsesRequiredLibraries(resDir) {
     let filterQueries = {
