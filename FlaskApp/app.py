@@ -154,6 +154,7 @@ hashed = hashlib.md5("password")
 hashed = bcr.hashpw("password", bcr.gensalt())
 hash = gen_pass_hash("password", "scrypt:300000:9:1")
 hash2 = gen_pass_hash("passwrd", "pbkdf2")
+hash3 = gen_pass_hash("omg")
 
 # other password strenght libraries
 strength, improvements = passwordmeter.test("password")
@@ -343,7 +344,7 @@ def signup():
             hashed_pwd = hashlib.scrypt(form.pwd)
             hashed_passw = pbkdf2_hmac('sha256', form.pwd, b"somesalt", 540000)
             # hashed_pssw = hashlib.scrypt("somepassword", n=131072, r=8, p=1)
-            return redirect('/success')
+            return redirect('/success' + hash3)
     return "Signup"
 
 

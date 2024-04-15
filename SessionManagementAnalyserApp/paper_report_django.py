@@ -292,7 +292,7 @@ report = """
 <h2>Account Creation</h2>
 <h3>Password Policies</h3>
 <p>{} perform some validation on its password fields ({} %)<br>
-<a href="{}" target="_blank">{}</a> do not perform validation on the password fields ({} %)<br>
+<a href="{}" target="_blank">{}</a> do not perform validation on the password fields (or the other queries failed so there might be false positives) ({} %)<br>
 <a href="{}" target="_blank">{}</a> enforce a minimum password length ({} %)<br>
 <a href="{}" target="_blank">{}</a> check the similarity between the password and a set of attributes of the user ({} %)<br>
 <a href="{}" target="_blank">{}</a> check whether the password occurs in a list of common passwords ({} %)<br>
@@ -322,7 +322,7 @@ report = """
 <p><a href="{}" target="_blank">{}</a> CSRF global protection is always active ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is activated, but it is deactivated on some views ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
-<a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere or they are using something else to protect against csrf ({} %)<br>
+<a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere or they are using something else to protect against csrf (could be a false positive because they're doing something strange when setting the middleware) ({} %)<br>
 <a href="{}" target="_blank">{}</a> override the default csrf middleware, so they were not included in the above classification ({} %)<br>
 <a href="{}" target="_blank">{}</a> set MIDDLEWARE more than once ({} %)<br></p>
 <h3>Session Protection</h3>

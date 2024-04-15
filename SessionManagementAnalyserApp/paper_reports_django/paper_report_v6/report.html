@@ -3,7 +3,7 @@
 <h2>Account Creation</h2>
 <h3>Password Policies</h3>
 <p>213 perform some validation on its password fields (77.17 %)<br>
-<a href="./not_performing_password_validation.txt" target="_blank">63</a> do not perform validation on the password fields (22.83 %)<br>
+<a href="./not_performing_password_validation.txt" target="_blank">63</a> do not perform validation on the password fields (or the other queries failed so there might be false positives) (22.83 %)<br>
 <a href="./length_password_validators.txt" target="_blank">208</a> enforce a minimum password length (75.36 %)<br>
 <a href="./similarity_password_validators.txt" target="_blank">203</a> check the similarity between the password and a set of attributes of the user (73.55 %)<br>
 <a href="./common_password_validators.txt" target="_blank">204</a> check whether the password occurs in a list of common passwords (73.91 %)<br>
@@ -33,7 +33,7 @@
 <p><a href="./csrf_activated_globally.txt" target="_blank">531</a> CSRF global protection is always active (57.72 %)<br>
 <a href="./csrf_deactivated_selectively.txt" target="_blank">294</a> CSRF global protection is activated, but it is deactivated on some views (31.96 %)<br>
 <a href="./csrf_activated_selectively.txt" target="_blank">7</a> CSRF global protection is deactivated, but it is activated on some views or forms (0.76 %)<br>
-<a href="./csrf_deactivated_globally.txt" target="_blank">85</a> CSRF protection is deactivated everywhere or they are using something else to protect against csrf (9.24 %)<br>
+<a href="./csrf_deactivated_globally.txt" target="_blank">85</a> CSRF protection is deactivated everywhere or they are using something else to protect against csrf (could be a false positive because they're doing something strange when setting the middleware) (9.24 %)<br>
 <a href="./overriding_default_csrf_middleware.txt" target="_blank">3</a> override the default csrf middleware, so they were not included in the above classification (0.33 %)<br>
 <a href="./potential_false_positives_middleware.txt" target="_blank">171</a> set MIDDLEWARE more than once (18.59 %)<br></p>
 <h3>Session Protection</h3>
