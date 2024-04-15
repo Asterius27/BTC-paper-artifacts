@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import csv
+import re
 
 path = Path(__file__).parent / './paper_reports_flask/paper_report'
 path.mkdir(exist_ok=True)
@@ -79,6 +80,44 @@ def extractFalsePositives(reposDir, queryDir, queryName, falsePositiveQuery, res
                                     output_results[repo]["file"] = queryFile
                                     output_results[repo]["result"] = queryName + ":\n"
                                     output_results[repo]["result"] += output_str
+    return output_results
+
+# TODO
+def extractValues(reposDir, queryDir, queryName, queryString, result, csvDict):
+    output_results = {}
+    values = []
+    path = Path(__file__).parent / './repositories'
+    repos = os.listdir(str(path.absolute()) + "/" + reposDir)
+    for repo in repos:
+        if os.path.isdir(os.path.join(str(path.absolute()) + "/" + reposDir, repo)):
+            dirs = os.listdir(str(path.absolute()) + "/" + reposDir + "/" + repo)
+            for dir in dirs:
+                if os.path.isdir(os.path.join(str(path.absolute()) + "/" + reposDir + "/" + repo, dir)) and dir.endswith("-results"):
+                    queryFile = str(path.absolute()) + "/" + reposDir + "/" + repo + "/" + dir + "/" + queryDir + "/" + queryName + ".txt"
+                    if os.path.isfile(queryFile):
+                        with open(queryFile, "r") as output:
+                            if len(output.readlines()) <= 2 and not result:
+                                output.seek(0)
+                                output_str = output.read()
+                                if queryString in output_str:
+                                    output_results[repo] = {}
+                                    if repo in csvDict:
+                                        output_results[repo]["url"] = csvDict[repo]
+                                    output_results[repo]["file"] = queryFile
+                                    output_results[repo]["result"] = queryName + ":\n"
+                                    output_results[repo]["result"] += output_str
+                            output.seek(0)
+                            if len(output.readlines()) > 2 and result:
+                                output.seek(0)
+                                output_str = output.read()
+                                if queryString in output_str:
+                                    output_results[repo] = {}
+                                    if repo in csvDict:
+                                        output_results[repo]["url"] = csvDict[repo]
+                                    output_results[repo]["file"] = queryFile
+                                    output_results[repo]["result"] = queryName + ":\n"
+                                    output_results[repo]["result"] += output_str
+                                    output_str_value = re.search(queryString + '(.*)' + re.escape(' |'))
     return output_results
 
 def buildResultsDict(resultRepos, subDicts):
