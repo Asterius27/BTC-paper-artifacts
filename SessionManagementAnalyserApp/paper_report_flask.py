@@ -130,6 +130,7 @@ session_protection_strong = extractResults("Flask", "Flask-login-session-protect
 session_protection_basic = extractResults("Flask", "Flask-login-session-protection", "un_session_protection_basic_is_used", True, csv_dict)
 hardcoded_secret_key = extractResults("Flask", "Secret-key", "un_secret_key", True, csv_dict)
 hardcoded_secret_key_potential_false_positives = extractFalsePositives("Flask", "Explorative-queries", "un_potential_false_positives", "un_secret_key ", True, csv_dict)
+hardcoded_secret_key_too_short = extractFalsePositives("Flask", "Secret-key", "un_secret_key", " and it's too short", True, csv_dict)
 custom_password_validators = extractResults("Flask", "Password-strength", "un_password_custom_checks", True, csv_dict)
 length_password_validators = extractResults("Flask", "Password-strength", "un_password_length_check", True, csv_dict)
 regexp_password_validators = extractResults("Flask", "Password-strength", "un_password_regexp_check", True, csv_dict)
@@ -191,9 +192,11 @@ uncategorized_session_protection = repos_session_protection.difference(no_sessio
 
 keys_hardcoded_secret_key = set(hardcoded_secret_key)
 keys_hardcoded_secret_key_potential_false_positives = set(hardcoded_secret_key_potential_false_positives)
+keys_hardcoded_secret_key_too_short = set(hardcoded_secret_key_too_short)
 repos_hardcoded_secret_key = repos.intersection(keys_hardcoded_secret_key)
 hardcoded_secret_key_false_positives = repos_hardcoded_secret_key.intersection(keys_hardcoded_secret_key_potential_false_positives)
 hardcoded_secret_key_true_positives = repos_hardcoded_secret_key.difference(keys_hardcoded_secret_key_potential_false_positives)
+hardcoded_secret_key_too_short_true_positives = hardcoded_secret_key_true_positives.intersection(keys_hardcoded_secret_key_too_short)
 
 keys_custom_password_validators = keys_account_creation.intersection(set(custom_password_validators))
 keys_length_password_validators = keys_account_creation.intersection(set(length_password_validators))
@@ -261,6 +264,7 @@ counter_uncategorized_session_protection = len(uncategorized_session_protection)
 counter_hardcoded_secret_keys = len(repos_hardcoded_secret_key)
 counter_hardcoded_secret_keys_false_positives = len(hardcoded_secret_key_false_positives)
 counter_hardcoded_secret_key_true_positives = len(hardcoded_secret_key_true_positives)
+counter_hardcoded_secret_key_too_short_true_positives = len(hardcoded_secret_key_too_short_true_positives)
 
 counter_custom_password_validators = len(keys_custom_password_validators)
 counter_length_password_validators = len(keys_length_password_validators)
@@ -303,9 +307,9 @@ saveDictsToFile(["session_management", "account_creation"], [repos, keys_account
 saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection", "uncategorized_session_protection"],
                 [no_session_protection, session_protection_basic_set, session_protection_strong_set, keys_session_protection_potential_false_positives, uncategorized_session_protection],
                 [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives], [flask_login_usage]])
-saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys"],
-                [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives],
-                [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key]])
+saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys", "hardcoded_secret_key_too_short_true_positives"],
+                [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives, hardcoded_secret_key_too_short_true_positives],
+                [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key], [hardcoded_secret_key]])
 saveDictsToFile(["not_performing_password_validation", "custom_password_validators", "length_password_validators", "regexp_password_validators", "length_and_regexp_password_validators"],
                 [not_performing_password_validation, keys_custom_password_validators, keys_length_password_validators, keys_regexp_password_validators, length_and_regexp_password_validators],
                [[flask_wtf_account_creation], [custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators]])
@@ -356,7 +360,8 @@ report = """
 <h3>Cryptographic Keys</h3>
 <p><a href="{}" target="_blank">{}</a> had a hardcoded secret key ({} %)<br>
 <a href="{}" target="_blank">{}</a> set the secret key more than once (and it's hardcoded at least once), so it's a false positive potentially ({} %)<br>
-<a href="{}" target="_blank">{}</a> set the secret key to a hardcoded string every time, so it's a true positive ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> set the secret key to a hardcoded string every time, so it's a true positive ({} %)<br>
+<a href="{}" target="_blank">{}</a> set the secret key to a hardcoded string every time, so it's a true positive and it's too short ({} %)<br></p>
 <h3>CSRF</h3>
 <p><a href="{}" target="_blank">{}</a> Not using CSRF library, so either they don't have csrf protection or use some other way to protect against CSRF ({} %)<br>
 <a href="{}" target="_blank">{}</a> use a csrf library, either flask_wtf or wtforms ({} %)<br>
@@ -406,6 +411,7 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys), str(getPercentage(counter_hardcoded_secret_keys, counter_flask)),
                             "./potential_false_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys_false_positives), str(getPercentage(counter_hardcoded_secret_keys_false_positives, counter_hardcoded_secret_keys)), 
                             "./true_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_key_true_positives), str(getPercentage(counter_hardcoded_secret_key_true_positives, counter_hardcoded_secret_keys)),
+                            "./hardcoded_secret_key_too_short_true_positives.txt", str(counter_hardcoded_secret_key_too_short_true_positives), str(getPercentage(counter_hardcoded_secret_key_too_short_true_positives, counter_hardcoded_secret_keys)),
                             ".not_using_csrf_library/.txt", str(counter_not_using_csrf_library), str(getPercentage(counter_not_using_csrf_library, counter_flask)),
                             "./using_csrf_library.txt", str(counter_repos_using_csrf_library), str(getPercentage(counter_repos_using_csrf_library, counter_flask)),
                             "./csrf_activated_globally.txt", str(counter_csrf_activated), str(getPercentage(counter_csrf_activated, counter_repos_using_csrf_library)),
