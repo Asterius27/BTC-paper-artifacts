@@ -1,0 +1,82 @@
+URL: https://github.com/rafalp/Misago
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/rafalp_Misago/rafalp-Misago-abad4f0-results/CSRF/un_csrf_protect_is_used.txt
+un_csrf_protect_is_used:
+|               node               |                                                                                       col1                                                                                        |                             col2                              |
++----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/users/views/auth.py:17               | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/users/views/auth.py:49               | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/admin/views/auth.py:13               | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/admin/views/auth.py:34               | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/users/api/auth.py:54                 | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/users/api/auth.py:102                | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/users/api/auth.py:141                | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/users/api/auth.py:186                | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/rafalp_Misago/rafalp-Misago-abad4f0/misago/users/api/userendpoints/create.py:22 | The application is enabling csrf protection for certain views |
+
+
+
+URL: https://github.com/akvo/akvo-rsr
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/akvo_akvo-rsr/akvo-akvo-rsr-0e03f13-results/CSRF/un_csrf_protect_is_used.txt
+un_csrf_protect_is_used:
+|               node               |                                                                            col1                                                                            |                             col2                              |
++----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread6/akvo_akvo-rsr/akvo-akvo-rsr-0e03f13/akvo/rsr/admin.py:42 | The application is enabling csrf protection for certain views |
+
+
+
+URL: https://github.com/reviewboard/reviewboard
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/reviewboard_reviewboard/reviewboard-reviewboard-27a6550-results/CSRF/un_csrf_protect_is_used.txt
+un_csrf_protect_is_used:
+|               node               |                                                                                                     col1                                                                                                      |                             col2                              |
++----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/reviewboard_reviewboard/reviewboard-reviewboard-27a6550/reviewboard/extensions/views.py:7                   | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/reviewboard_reviewboard/reviewboard-reviewboard-27a6550/reviewboard/admin/views.py:145                      | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/reviewboard_reviewboard/reviewboard-reviewboard-27a6550/reviewboard/accounts/views.py:478                   | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread4/reviewboard_reviewboard/reviewboard-reviewboard-27a6550/reviewboard/accounts/sso/backends/saml/views.py:369 | The application is enabling csrf protection for certain views |
+
+
+
+URL: https://github.com/djblets/djblets
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/djblets_djblets/djblets-djblets-ae0b225-results/CSRF/un_csrf_protect_is_used.txt
+un_csrf_protect_is_used:
+|               node               |                                                                                     col1                                                                                     |                             col2                              |
++----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/djblets_djblets/djblets-djblets-ae0b225/djblets/siteconfig/views.py:16    | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/djblets_djblets/djblets-djblets-ae0b225/djblets/extensions/views.py:9     | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/djblets_djblets/djblets-djblets-ae0b225/djblets/extensions/views.py:25    | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/djblets_djblets/djblets-djblets-ae0b225/djblets/configforms/views.py:64   | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/djblets_djblets/djblets-djblets-ae0b225/djblets/integrations/views.py:173 | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/djblets_djblets/djblets-djblets-ae0b225/djblets/auth/views.py:17          | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/djblets_djblets/djblets-djblets-ae0b225/djblets/integrations/views.py:256 | The application is enabling csrf protection for certain views |
+
+
+
+URL: https://github.com/Wirecloud/wirecloud
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/Wirecloud_wirecloud/Wirecloud-wirecloud-247b900-results/CSRF/un_csrf_protect_is_used.txt
+un_csrf_protect_is_used:
+|               node               |                                                                                            col1                                                                                            |                             col2                              |
++----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread6/Wirecloud_wirecloud/Wirecloud-wirecloud-247b900/src/wirecloud/oauth2provider/views.py:56 | The application is enabling csrf protection for certain views |
+
+
+
+URL: https://github.com/ESSolutions/ESSArch
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/ESSolutions_ESSArch/ESSolutions-ESSArch-2f54f03-results/CSRF/un_csrf_protect_is_used.txt
+un_csrf_protect_is_used:
+|               node               |                                                                                           col1                                                                                            |                             col2                              |
++----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread12/ESSolutions_ESSArch/ESSolutions-ESSArch-2f54f03/ESSArch_Core/configuration/admin.py:44 | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread12/ESSolutions_ESSArch/ESSolutions-ESSArch-2f54f03/ESSArch_Core/auth/admin.py:42          | The application is enabling csrf protection for certain views |
+
+
+
+URL: https://github.com/samuelclay/NewsBlur
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/samuelclay_NewsBlur/samuelclay-NewsBlur-65e51ac-results/CSRF/un_csrf_protect_is_used.txt
+un_csrf_protect_is_used:
+|               node               |                                                                                     col1                                                                                     |                             col2                              |
++----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread10/samuelclay_NewsBlur/samuelclay-NewsBlur-65e51ac/apps/profile/views.py:99  | The application is enabling csrf protection for certain views |
+| ControlFlowNode for csrf_protect | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread10/samuelclay_NewsBlur/samuelclay-NewsBlur-65e51ac/apps/profile/views.py:149 | The application is enabling csrf protection for certain views |
+
+
+
