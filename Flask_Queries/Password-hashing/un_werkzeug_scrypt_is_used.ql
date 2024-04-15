@@ -11,4 +11,5 @@ where node = API::moduleImport("werkzeug").getMember("security").getMember("gene
             (method = node.(CallNode).getArgByName("method")
                 or method = node.(CallNode).getArg(1))))
     and not node.isImportMember()
+    and exists(CallNode cn | cn = node.(CallNode))
 select node, node.getLocation(), "Werkzeug's scrypt hasher is being used"
