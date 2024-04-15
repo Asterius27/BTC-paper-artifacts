@@ -1,0 +1,38 @@
+URL: https://github.com/FreeTAKTeam/UI
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/FreeTAKTeam_UI/FreeTAKTeam-UI-75f147b-results/Password-hashing/un_hashlib_pbkdf2_is_used.txt
+un_hashlib_pbkdf2_is_used:
+|              node               |                                                                                     col1                                                                                     |                      col2                      |
++---------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| ControlFlowNode for Attribute() | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread17/FreeTAKTeam_UI/FreeTAKTeam-UI-75f147b/FreeTAKServer-UI/app/base/util.py:14 | Hashlib PBKDF2 is being used to hash passwords |
+
+
+
+URL: https://github.com/SleepinWei/Video-Site-project
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/SleepinWei_Video-Site-project/SleepinWei-Video-Site-project-e031a47-results/Password-hashing/un_hashlib_pbkdf2_is_used.txt
+un_hashlib_pbkdf2_is_used:
+|              node               |                                                                                          col1                                                                                           |                      col2                      |
++---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| ControlFlowNode for Attribute() | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread14/SleepinWei_Video-Site-project/SleepinWei-Video-Site-project-e031a47/app/models.py:205 | Hashlib PBKDF2 is being used to hash passwords |
+| ControlFlowNode for Attribute() | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread14/SleepinWei_Video-Site-project/SleepinWei-Video-Site-project-e031a47/app/models.py:217 | Hashlib PBKDF2 is being used to hash passwords |
+
+
+
+URL: https://github.com/lucyparsons/OpenOversight
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/lucyparsons_OpenOversight/lucyparsons-OpenOversight-3122e34-results/Password-hashing/un_werkzeug_pbkdf2_is_used.txt
+un_werkzeug_pbkdf2_is_used:
+|          node           |                                                                                                 col1                                                                                                  |                  col2                  |
++-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread0/lucyparsons_OpenOversight/lucyparsons-OpenOversight-3122e34/OpenOversight/app/models/database.py:760 | Werkzeug's pbkdf2 hasher is being used |
+
+
+
+URL: https://github.com/doncat99/FinanceCenter
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/doncat99_FinanceCenter/doncat99-FinanceCenter-926f376-results/Password-hashing/un_hashlib_pbkdf2_is_used.txt
+un_hashlib_pbkdf2_is_used:
+|              node               |                                                                                         col1                                                                                          |                      col2                      |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| ControlFlowNode for Attribute() | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread0/doncat99_FinanceCenter/doncat99-FinanceCenter-926f376/apps/authentication/util.py:17 | Hashlib PBKDF2 is being used to hash passwords |
+| ControlFlowNode for Attribute() | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread0/doncat99_FinanceCenter/doncat99-FinanceCenter-926f376/apps/authentication/util.py:29 | Hashlib PBKDF2 is being used to hash passwords |
+
+
+
