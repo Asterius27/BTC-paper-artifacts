@@ -1026,6 +1026,6 @@ deleteQueriesResults({"Explorative-queries": ["un_potential_false_positives", "u
                     "Password-hashing": ["un_argon2_is_owasp_compliant", "un_argon2_is_used", "un_bcrypt_is_owasp_compliant", "un_bcrypt_is_used", "un_manually_set_password_hashers", "un_md5_is_used", "un_pbkdf2_is_owasp_compliant", "un_pbkdf2_is_used", "un_scrypt_is_owasp_compliant", "un_scrypt_is_used", "un_using_custom_password_hasher"],
                     "Secret-key": ["un_secret_key"]});
 */
-deleteQueriesResults({"Password-hashing": ["un_werkzeug_scrypt_is_used"]});
+deleteQueriesResults({"Password-strength": ["un_form_with_password_field_is_validated"]});
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();

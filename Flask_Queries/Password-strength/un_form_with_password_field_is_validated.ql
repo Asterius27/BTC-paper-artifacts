@@ -1,5 +1,6 @@
 import python
 import semmle.python.ApiGraphs
+import CodeQL_Library.FlaskLogin
 
 class FormConfiguration extends DataFlow::Configuration {
     FormConfiguration() { this = "FormConfiguration" }
@@ -59,4 +60,5 @@ from Class cls
 where cls = getFormClasses()
     and exists(cls.getClassObject().getACall())
     and not formIsValidated(cls)
+    and cls = FlaskLogin::getSignUpFormClass()
 select cls, cls.getLocation(), "This form with a password field (that has some validators) is never validated"

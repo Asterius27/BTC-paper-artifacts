@@ -134,6 +134,7 @@ hardcoded_secret_key_too_short = extractFalsePositives("Flask", "Secret-key", "u
 custom_password_validators = extractResults("Flask", "Password-strength", "un_password_custom_checks", True, csv_dict)
 length_password_validators = extractResults("Flask", "Password-strength", "un_password_length_check", True, csv_dict)
 regexp_password_validators = extractResults("Flask", "Password-strength", "un_password_regexp_check", True, csv_dict)
+signup_form_not_validated = extractResults("Flask", "Password-strength", "un_form_with_password_field_is_validated", True, csv_dict)
 csrf_enabled_globally = extractResults("Flask", "CSRF", "un_using_flaskwtf_csrf_protection", True, csv_dict)
 using_csrf_exempt = extractResults("Flask", "CSRF", "un_using_csrf_exempt", True, csv_dict)
 using_csrf_protect = extractResults("Flask", "CSRF", "un_using_csrf_protect", True, csv_dict)
@@ -201,9 +202,11 @@ hardcoded_secret_key_too_short_true_positives = hardcoded_secret_key_true_positi
 keys_custom_password_validators = keys_account_creation.intersection(set(custom_password_validators))
 keys_length_password_validators = keys_account_creation.intersection(set(length_password_validators))
 keys_regexp_password_validators = keys_account_creation.intersection(set(regexp_password_validators))
+keys_signup_form_not_validated = keys_account_creation.intersection(set(signup_form_not_validated))
 length_and_regexp_password_validators = keys_account_creation.intersection(keys_length_password_validators.intersection(keys_regexp_password_validators))
 performing_password_validation = keys_account_creation.intersection(keys_custom_password_validators.union(keys_length_password_validators).union(keys_regexp_password_validators))
 not_performing_password_validation = keys_account_creation.difference(performing_password_validation)
+not_validating_password_fields_with_validators = performing_password_validation.intersection(keys_signup_form_not_validated)
 
 keys_csrf_enabled_globally = set(csrf_enabled_globally)
 keys_using_csrf_exempt = set(using_csrf_exempt)
@@ -272,6 +275,7 @@ counter_regexp_password_validators = len(keys_regexp_password_validators)
 counter_length_and_regexp_password_validators = len(length_and_regexp_password_validators)
 counter_performing_password_validation = len(performing_password_validation)
 counter_not_performing_password_validation = len(not_performing_password_validation)
+counter_not_validating_password_fields_with_validators = len(not_validating_password_fields_with_validators)
 
 counter_csrf_activated = len(csrf_protection_global)
 counter_csrf_deactivated_selectively = len(csrf_protection_global_selectively_disabled)
@@ -310,9 +314,9 @@ saveDictsToFile(["no_session_protection", "session_protection_basic", "session_p
 saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys", "hardcoded_secret_key_too_short_true_positives"],
                 [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives, hardcoded_secret_key_too_short_true_positives],
                 [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key], [hardcoded_secret_key]])
-saveDictsToFile(["not_performing_password_validation", "custom_password_validators", "length_password_validators", "regexp_password_validators", "length_and_regexp_password_validators"],
-                [not_performing_password_validation, keys_custom_password_validators, keys_length_password_validators, keys_regexp_password_validators, length_and_regexp_password_validators],
-               [[flask_wtf_account_creation], [custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators]])
+saveDictsToFile(["not_performing_password_validation", "custom_password_validators", "length_password_validators", "regexp_password_validators", "length_and_regexp_password_validators", "not_validating_password_fields_with_validators"],
+                [not_performing_password_validation, keys_custom_password_validators, keys_length_password_validators, keys_regexp_password_validators, length_and_regexp_password_validators, not_validating_password_fields_with_validators],
+               [[flask_wtf_account_creation], [custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators], [signup_form_not_validated]])
 saveDictsToFile(["csrf_activated_globally", "csrf_deactivated_selectively", "csrf_activated_selectively", "csrf_deactivated_globally", "not_using_csrf_library", "using_csrf_library", "disabling_csrf", "csrf_disabled_and_selectively_disabled"],
                 [csrf_protection_global, csrf_protection_global_selectively_disabled, csrf_protection_selectively_activated, csrf_protection_disabled, not_using_csrf_library, repos_using_csrf_library, repos_with_csrf_disabled, csrf_protection_selectively_disabled],
                 [[csrf_enabled_globally], [using_csrf_exempt, disabled_flask_wtf_csrf_protection, using_flaskform_with_csrf_disabled], [using_flaskform_csrf, using_csrf_protect, using_wtforms_csrf_protection], [flask_login_usage], [flask_login_usage], [using_wtforms, using_flask_wtf], [disabled_flask_wtf_csrf_global_protection], [using_flaskform_with_csrf_disabled]])
@@ -338,6 +342,7 @@ report = """
 <h2>Account Creation</h2>
 <h3>Password Policies</h3>
 <p>{} perform some validation on its password fields ({} %)<br>
+<a href="{}" target="_blank">{}</a> do not validate the signup form that has some validators associated with its password field(s), so it's a false positive potentially ({} %)<br>
 <a href="{}" target="_blank">{}</a> do not perform validation on the password fields ({} %)<br>
 <a href="{}" target="_blank">{}</a> enforce a specific password length ({} %)<br>
 <a href="{}" target="_blank">{}</a> check the password against a regexp ({} %)<br>
@@ -391,6 +396,7 @@ report = """
 
 report_html = report.format("./session_management.txt", str(counter_flask), "./account_creation.txt", str(counter_account_creation),
                             str(counter_performing_password_validation), str(getPercentage(counter_performing_password_validation, counter_account_creation)),
+                            "./not_validating_password_fields_with_validators.txt", str(counter_not_validating_password_fields_with_validators), str(getPercentage(counter_not_validating_password_fields_with_validators, counter_performing_password_validation)),
                             "./not_performing_password_validation.txt", str(counter_not_performing_password_validation), str(getPercentage(counter_not_performing_password_validation, counter_account_creation)),
                             "./length_password_validators.txt", str(counter_length_password_validators), str(getPercentage(counter_length_password_validators, counter_account_creation)),
                             "./regexp_password_validators.txt", str(counter_regexp_password_validators), str(getPercentage(counter_regexp_password_validators, counter_account_creation)),

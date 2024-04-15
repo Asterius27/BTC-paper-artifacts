@@ -249,7 +249,7 @@ class UserRegisterForm(SuperClass): # Form or BaseForm or FlaskForm (from flask_
         if field.data < 16:
             raise ValidationError("Password is too short")
         
-class NoCustomValidators(FlaskForm):
+class NoCustomValidatorsRegister(FlaskForm):
     test = PasswordField('pwd', validators=[DataRequired()])
     
     def validate_whatever(form, field):
@@ -352,7 +352,7 @@ def signup():
 @login_required
 def logout():
     form = UserRegisterForm(request.POST, None, "", None, {'csrf': True})
-    form2 = NoCustomValidators(meta={'csrf': False})
+    form2 = NoCustomValidatorsRegister(meta={'csrf': False})
     form3 = NewUserForm()
     form4 = Form_signup()
     # session.pop("_permanent")
