@@ -25,20 +25,23 @@ class PasswordValidatorsConfiguration extends DataFlow::Configuration {
     }
 }
 
-string output(KeyValuePair pr) {
-    if pr.getKey().(StrConst).getS() = "OPTIONS"
-    then exists(KeyValuePair pair |
-        pair = pr.getValue().(Dict).getAnItem()
+string output(Dict pr) {
+    if pr.getAnItem().(KeyValuePair).getKey().(StrConst).getS() = "OPTIONS"
+    then exists(KeyValuePair pair, KeyValuePair prnt |
+        prnt = pr.getAnItem()
+        and prnt.getKey().(StrConst).getS() = "OPTIONS"
+        and pair = prnt.getValue().(Dict).getAnItem()
         and pair.getKey().(StrConst).getS() = "min_length"
-        and result = pair.getValue().(IntegerLiteral).getValue().toString())
+        and result = "Min value manually set: " + pair.getValue().(IntegerLiteral).getValue().toString())
     else result = ""
 }
 
-from DataFlow::Node source, DataFlow::Node sink, PasswordValidatorsConfiguration config, KeyValuePair pair
+from DataFlow::Node source, DataFlow::Node sink, PasswordValidatorsConfiguration config, KeyValuePair pair, Dict dct
 where config.hasFlow(source, sink)
-    and (pair = source.asExpr().(List).getAnElt().(Dict).getAnItem()
-        or pair = source.asExpr().(Tuple).getAnElt().(Dict).getAnItem())
+    and (dct = source.asExpr().(List).getAnElt().(Dict)
+        or dct = source.asExpr().(Tuple).getAnElt().(Dict))
+    and pair = dct.getAnItem()
     and pair.getKey().(StrConst).getS() = "NAME"
     and (pair.getValue().(StrConst).getS() = "django.contrib.auth.password_validation.MinimumLengthValidator"
         or pair.getValue().(BinaryExpr).getLeft().(StrConst).getS() + pair.getValue().(BinaryExpr).getRight().(StrConst).getS() = "django.contrib.auth.password_validation.MinimumLengthValidator")
-select pair.getLocation(), source, sink, source.getLocation(), sink.getLocation(), output(pair), "Using a length password validator"
+select pair.getLocation(), source, sink, source.getLocation(), sink.getLocation(), output(dct), "Using a length password validator"
