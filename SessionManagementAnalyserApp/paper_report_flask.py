@@ -83,7 +83,7 @@ def extractFalsePositives(reposDir, queryDir, queryName, falsePositiveQuery, res
     return output_results
 
 def extractValues(reposDir, queryDir, queryName, queryString, result):
-    values = []
+    output_results = {}
     path = Path(__file__).parent / './repositories'
     repos = os.listdir(str(path.absolute()) + "/" + reposDir)
     for repo in repos:
@@ -98,24 +98,30 @@ def extractValues(reposDir, queryDir, queryName, queryString, result):
                                 output.seek(0)
                                 output_str = output.read()
                                 if queryString in output_str:
+                                    output_results[repo] = []
                                     output_str_values = output_str.splitlines()
                                     for line in output_str_values:
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
-                                            values.append(int(substrings[1].split(" ")[0]))
+                                            output_results[repo].append(int(substrings[1].split(" ")[0]))
                             output.seek(0)
                             if len(output.readlines()) > 2 and result:
                                 output.seek(0)
                                 output_str = output.read()
                                 if queryString in output_str:
+                                    output_results[repo] = []
                                     output_str_values = output_str.splitlines()
                                     for line in output_str_values:
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
-                                            values.append(int(substrings[1].split(" ")[0]))
-    print(len(values))
-    print(values)
-    return values
+                                            output_results[repo].append(int(substrings[1].split(" ")[0]))
+    print(len(output_results))
+    i = 0
+    for elem in output_results:
+        i += len(elem)
+    print(i)
+    print(output_results)
+    return output_results
 
 def buildResultsDict(resultRepos, subDicts):
     result = {}
