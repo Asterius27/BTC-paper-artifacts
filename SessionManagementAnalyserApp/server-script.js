@@ -10,7 +10,7 @@ import { resolve } from "path";
 import { pipeline } from "stream/promises";
 
 const octokit = new Octokit({ auth: process.env.TOKEN });
-const framework = "Flask"; // "Django"
+const framework = "Django"; // "Flask"
 let lang = "python";
 let extensions = [".pyx", ".pxd", ".pxi", ".numpy", ".numpyw", ".numsc", ".py", ".cgi", ".fcgi", ".gyp", ".gypi", ".lmi", ".py3", ".pyde", ".pyi", ".pyp", ".pyt", ".pyw", ".rpy", ".spec", ".tac", ".wsgi", ".xpy", ".pytb"];
 let blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hackathon"]; // TODO add more, have to make it more precise
@@ -1026,6 +1026,6 @@ deleteQueriesResults({"Explorative-queries": ["un_potential_false_positives", "u
                     "Password-hashing": ["un_argon2_is_owasp_compliant", "un_argon2_is_used", "un_bcrypt_is_owasp_compliant", "un_bcrypt_is_used", "un_manually_set_password_hashers", "un_md5_is_used", "un_pbkdf2_is_owasp_compliant", "un_pbkdf2_is_used", "un_scrypt_is_owasp_compliant", "un_scrypt_is_used", "un_using_custom_password_hasher"],
                     "Secret-key": ["un_secret_key"]});
 */
-deleteQueriesResults({"Password-strength": ["un_form_with_password_field_is_validated"]});
+deleteQueriesResults({"Password-strength": ["un_using_length_validator"]});
 // libraryUsagesGrep();
 // listMostCommonKeywordsAndUsers();

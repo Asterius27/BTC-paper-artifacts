@@ -325,7 +325,7 @@ counter_not_calling_logout_server_side_sessions = len(not_calling_logout_server_
 counter_repos_without_auth_libraries = len(repos_without_auth_libraries)
 counter_not_calling_logout_server_side_sessions_without_auth_libraries = len(not_calling_logout_server_side_sessions_without_auth_libraries)
 
-""" saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[django_login_usage], [django_account_creation]])
+saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[django_login_usage], [django_account_creation]])
 saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys", "hardcoded_secret_key_too_short_true_positives"],
                 [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives, hardcoded_secret_key_too_short_true_positives],
                 [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key], [hardcoded_secret_key]])
@@ -349,7 +349,7 @@ saveDictsToFile(["not_calling_logout_and_session_set_to_server_side", "repos_wit
 saveDictsToFile(["potential_false_positives_password_hashers", "potential_false_positives_password_validators", "potential_false_positives_middleware"],
                 [keys_password_hashers_potential_false_positives, keys_password_validators_potential_false_positives, keys_middleware_potential_false_positives],
                 [[password_hashers_potential_false_positives], [password_validators_potential_false_positives], [middleware_potential_false_positives]])
-saveDistributionsToFile(["password_validation_min_lengths"], [keys_min_length_password_validation], [[min_lengths_password_validation]], [True]) """
+saveDistributionsToFile(["password_validation_min_lengths"], [keys_min_length_password_validation], [[min_lengths_password_validation]], [True])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> django repos for Session Management and <a href="{}" target="_blank">{}</a> django repos for Account Creation<br></p>
@@ -436,5 +436,5 @@ report_html = report.format("./session_management.txt", str(counter_django), "./
                             "./repos_without_auth_libraries.txt", str(counter_repos_without_auth_libraries), str(getPercentage(counter_repos_without_auth_libraries, counter_django)),
                             "./not_calling_logout_server_side_sessions_without_auth_libraries.txt", str(counter_not_calling_logout_server_side_sessions_without_auth_libraries), str(getPercentage(counter_not_calling_logout_server_side_sessions_without_auth_libraries, counter_repos_without_auth_libraries)))
 
-""" with open(str(path.absolute()) + "/report.html", "w") as file:
-    file.write(report_html) """
+with open(str(path.absolute()) + "/report.html", "w") as file:
+    file.write(report_html)
