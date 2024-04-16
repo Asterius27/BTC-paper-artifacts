@@ -115,12 +115,6 @@ def extractValues(reposDir, queryDir, queryName, queryString, result):
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
                                             output_results[repo].add(int(substrings[1].split(" ")[0]))
-    print(len(output_results))
-    i = 0
-    for elem in output_results.values():
-        i += len(elem)
-    print(i)
-    print(output_results)
     return output_results
 
 def buildResultsDict(resultRepos, subDicts):
@@ -154,6 +148,18 @@ def saveDictsToFile(fileNames, sets, dicts):
                             flag = True
                         file.write(str(dct[key]["result"]) + "\n")
                 file.write("\n\n")
+
+def saveDistributionsToFile(fileNames, sets, dicts, flags):
+    for i, set in enumerate(sets):
+        with open(str(path.absolute()) + "/" + fileNames[i] + '.txt', 'w', encoding='UTF8') as file:
+            for key in set:
+                for dct in dicts[i]:
+                    if key in dct:
+                        for elem in dct[key]:
+                            if flags[i]:
+                                file.write(str(max(elem)) + ", ")
+                            else:
+                                file.write(str(min(elem)) + ", ")
 
 def getPercentage(value, total):
     if total == 0:
@@ -247,6 +253,8 @@ keys_custom_password_validators = keys_account_creation.intersection(set(custom_
 keys_length_password_validators = keys_account_creation.intersection(set(length_password_validators))
 keys_regexp_password_validators = keys_account_creation.intersection(set(regexp_password_validators))
 keys_signup_form_not_validated = keys_account_creation.intersection(set(signup_form_not_validated))
+keys_min_length_password_validation = keys_account_creation.intersection(set(min_lengths_password_validation))
+keys_max_length_password_validation = keys_account_creation.intersection(set(max_lengths_password_validation))
 length_and_regexp_password_validators = keys_account_creation.intersection(keys_length_password_validators.intersection(keys_regexp_password_validators))
 performing_password_validation = keys_account_creation.intersection(keys_custom_password_validators.union(keys_length_password_validators).union(keys_regexp_password_validators))
 not_performing_password_validation = keys_account_creation.difference(performing_password_validation)
@@ -320,6 +328,8 @@ counter_length_and_regexp_password_validators = len(length_and_regexp_password_v
 counter_performing_password_validation = len(performing_password_validation)
 counter_not_performing_password_validation = len(not_performing_password_validation)
 counter_not_validating_password_fields_with_validators = len(not_validating_password_fields_with_validators)
+counter_min_length_password_validation = len(keys_min_length_password_validation)
+counter_max_length_password_validation = len(keys_max_length_password_validation)
 
 counter_csrf_activated = len(csrf_protection_global)
 counter_csrf_deactivated_selectively = len(csrf_protection_global_selectively_disabled)
@@ -351,7 +361,7 @@ counter_scrypt_not_owasp_compliant = len(repos_using_scrypt_not_owasp_compliant)
 counter_bcrypt_not_owasp_compliant = len(repos_using_bcrypt_not_owasp_compliant)
 counter_pbkdf2_not_owasp_compliant = len(repos_using_pbkdf2_not_owasp_compliant)
 
-""" saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
+saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
 saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection", "uncategorized_session_protection"],
                 [no_session_protection, session_protection_basic_set, session_protection_strong_set, keys_session_protection_potential_false_positives, uncategorized_session_protection],
                 [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives], [flask_login_usage]])
@@ -374,7 +384,8 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                 [[argon2_is_owasp_compliant, passlib_argon2_is_owasp_compliant], [hashlib_scrypt_is_owasp_compliant, passlib_scrypt_is_owasp_compliant, werkzeug_scrypt_is_owasp_compliant], [bcrypt_is_owasp_compliant, flask_bcrypt_is_owasp_compliant, passlib_bcrypt_is_owasp_compliant], 
                  [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
-saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]]) """
+saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]])
+saveDistributionsToFile(["password_validation_min_lengths", "password_validation_max_lengths"], [keys_min_length_password_validation, keys_max_length_password_validation], [[min_lengths_password_validation], [max_lengths_password_validation]], [True, False])
 """ saveDictsToFile(["csrf_categories_union", "not_in_any_csrf_category", "in_more_than_one_category"], 
                 [csrf_categories_union, not_in_any_csrf_category, repos_in_more_than_one_category], 
                 [[using_wtforms, using_flask_wtf, csrf_enabled_globally], 
@@ -389,6 +400,8 @@ report = """
 <a href="{}" target="_blank">{}</a> do not validate the signup form that has some validators associated with its password field(s), so it's a false positive potentially ({} %)<br>
 <a href="{}" target="_blank">{}</a> do not perform validation on the password fields ({} %)<br>
 <a href="{}" target="_blank">{}</a> enforce a specific password length ({} %)<br>
+<a href="{}" target="_blank">{}</a> enforce a minimum length ({} %)<br>
+<a href="{}" target="_blank">{}</a> enforce a maximum length ({} %)<br>
 <a href="{}" target="_blank">{}</a> check the password against a regexp ({} %)<br>
 <a href="{}" target="_blank">{}</a> combine length checks and regular expression checks ({} %)<br>
 <a href="{}" target="_blank">{}</a> use a custom validator ({} %)<br></p>
@@ -443,6 +456,8 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./not_validating_password_fields_with_validators.txt", str(counter_not_validating_password_fields_with_validators), str(getPercentage(counter_not_validating_password_fields_with_validators, counter_performing_password_validation)),
                             "./not_performing_password_validation.txt", str(counter_not_performing_password_validation), str(getPercentage(counter_not_performing_password_validation, counter_account_creation)),
                             "./length_password_validators.txt", str(counter_length_password_validators), str(getPercentage(counter_length_password_validators, counter_account_creation)),
+                            "./password_validation_min_lengths.txt", str(counter_min_length_password_validation), str(getPercentage(counter_min_length_password_validation, counter_account_creation)),
+                            "./password_validation_max_lengths.txt", str(counter_max_length_password_validation), str(getPercentage(counter_max_length_password_validation, counter_account_creation)),
                             "./regexp_password_validators.txt", str(counter_regexp_password_validators), str(getPercentage(counter_regexp_password_validators, counter_account_creation)),
                             "./length_and_regexp_password_validators.txt", str(counter_length_and_regexp_password_validators), str(getPercentage(counter_length_and_regexp_password_validators, counter_account_creation)),
                             "./custom_password_validators.txt", str(counter_custom_password_validators), str(getPercentage(counter_custom_password_validators, counter_account_creation)),
@@ -476,5 +491,5 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./potential_false_positives_session_protection.txt", str(counter_session_protection_false_positives), str(getPercentage(counter_session_protection_false_positives, counter_flask)),
                             "./uncategorized_session_protection.txt", str(counter_uncategorized_session_protection), str(getPercentage(counter_uncategorized_session_protection, counter_flask)))
 
-""" with open(str(path.absolute()) + "/report.html", "w") as file:
-    file.write(report_html) """
+with open(str(path.absolute()) + "/report.html", "w") as file:
+    file.write(report_html)
