@@ -81,6 +81,51 @@ def extractFalsePositives(reposDir, queryDir, queryName, falsePositiveQuery, res
                                     output_results[repo]["result"] += output_str
     return output_results
 
+def extractValues(reposDir, queryDir, queryName, queryString, result):
+    output_results = {}
+    path = Path(__file__).parent / './repositories'
+    repos = os.listdir(str(path.absolute()) + "/" + reposDir)
+    for repo in repos:
+        if os.path.isdir(os.path.join(str(path.absolute()) + "/" + reposDir, repo)):
+            dirs = os.listdir(str(path.absolute()) + "/" + reposDir + "/" + repo)
+            for dir in dirs:
+                if os.path.isdir(os.path.join(str(path.absolute()) + "/" + reposDir + "/" + repo, dir)) and dir.endswith("-results"):
+                    queryFile = str(path.absolute()) + "/" + reposDir + "/" + repo + "/" + dir + "/" + queryDir + "/" + queryName + ".txt"
+                    if os.path.isfile(queryFile):
+                        with open(queryFile, "r") as output:
+                            if len(output.readlines()) <= 2 and not result:
+                                output.seek(0)
+                                output_str = output.read()
+                                if queryString in output_str:
+                                    output_results[repo] = set()
+                                    output_str_values = output_str.splitlines()
+                                    for line in output_str_values:
+                                        substrings = line.split(queryString)
+                                        if len(substrings) > 1:
+                                            temp = substrings[0].split(" ")[-1]
+                                            if len(temp) == 0:
+                                                output_results[repo].add(8)
+                                            else:
+                                                output_results[repo].add(int(temp))
+                            output.seek(0)
+                            if len(output.readlines()) > 2 and result:
+                                output.seek(0)
+                                output_str = output.read()
+                                if queryString in output_str:
+                                    output_results[repo] = set()
+                                    output_str_values = output_str.splitlines()
+                                    for line in output_str_values:
+                                        substrings = line.split(queryString)
+                                        if len(substrings) > 1:
+                                            temp = substrings[0].split(" ")[-1]
+                                            print(temp)
+                                            if len(temp) == 0:
+                                                output_results[repo].add(8)
+                                            else:
+                                                output_results[repo].add(int(temp))
+    print(output_results)
+    return output_results
+
 def buildResultsDict(resultRepos, subDicts):
     result = {}
     for key in resultRepos:
@@ -113,6 +158,17 @@ def saveDictsToFile(fileNames, sets, dicts):
                         file.write(str(dct[key]["result"]) + "\n")
                 file.write("\n\n")
 
+def saveDistributionsToFile(fileNames, sets, dicts, flags):
+    for i, set in enumerate(sets):
+        with open(str(path.absolute()) + "/" + fileNames[i] + '.txt', 'w', encoding='UTF8') as file:
+            for key in set:
+                for dct in dicts[i]:
+                    if key in dct:
+                        if flags[i]:
+                            file.write(str(max(dct[key])) + ", ")
+                        else:
+                            file.write(str(min(dct[key])) + ", ")
+
 def getPercentage(value, total):
     if total == 0:
         return 0
@@ -128,6 +184,7 @@ hardcoded_secret_key_potential_false_positives = extractFalsePositives("Django",
 hardcoded_secret_key_too_short = extractFalsePositives("Django", "Secret-key", "un_secret_key", " and it's too short", True, csv_dict)
 custom_password_validators = extractResults("Django", "Password-strength", "un_using_custom_validators", True, csv_dict)
 length_password_validators = extractResults("Django", "Password-strength", "un_using_length_validator", True, csv_dict)
+min_lengths_password_validation = extractValues("Django", "Password-strength", "un_using_length_validator", " | Using a length password validator", True)
 numeric_password_validators = extractResults("Django", "Password-strength", "un_using_numeric_password_validator", True, csv_dict)
 common_password_validators = extractResults("Django", "Password-strength", "un_using_common_password_validator", True, csv_dict)
 similarity_password_validators = extractResults("Django", "Password-strength", "un_using_similarity_validator", True, csv_dict)
@@ -182,6 +239,7 @@ keys_numeric_password_validators = keys_account_creation.intersection(set(numeri
 keys_common_password_validators = keys_account_creation.intersection(set(common_password_validators))
 keys_similarity_password_validators = keys_account_creation.intersection(set(similarity_password_validators))
 keys_password_validators_potential_false_positives = keys_account_creation.intersection(set(password_validators_potential_false_positives))
+keys_min_length_password_validation = keys_account_creation.intersection(set(min_lengths_password_validation))
 using_all_password_validators = keys_account_creation.intersection(keys_length_password_validators.intersection(keys_numeric_password_validators).intersection(keys_common_password_validators).intersection(keys_similarity_password_validators))
 performing_password_validation = keys_account_creation.intersection(keys_custom_password_validators.union(keys_length_password_validators).union(keys_numeric_password_validators).union(keys_common_password_validators).union(keys_similarity_password_validators))
 not_performing_password_validation = keys_account_creation.difference(performing_password_validation)
@@ -230,6 +288,7 @@ counter_hardcoded_secret_key_too_short_true_positives = len(hardcoded_secret_key
 
 counter_custom_password_validators = len(keys_custom_password_validators)
 counter_length_password_validators = len(keys_length_password_validators)
+counter_min_length_password_validation = len(keys_min_length_password_validation)
 counter_numeric_password_validators = len(keys_numeric_password_validators)
 counter_common_password_validators = len(keys_common_password_validators)
 counter_similarity_password_validators = len(keys_similarity_password_validators)
@@ -266,7 +325,7 @@ counter_not_calling_logout_server_side_sessions = len(not_calling_logout_server_
 counter_repos_without_auth_libraries = len(repos_without_auth_libraries)
 counter_not_calling_logout_server_side_sessions_without_auth_libraries = len(not_calling_logout_server_side_sessions_without_auth_libraries)
 
-saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[django_login_usage], [django_account_creation]])
+""" saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[django_login_usage], [django_account_creation]])
 saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys", "hardcoded_secret_key_too_short_true_positives"],
                 [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives, hardcoded_secret_key_too_short_true_positives],
                 [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key], [hardcoded_secret_key]])
@@ -290,6 +349,7 @@ saveDictsToFile(["not_calling_logout_and_session_set_to_server_side", "repos_wit
 saveDictsToFile(["potential_false_positives_password_hashers", "potential_false_positives_password_validators", "potential_false_positives_middleware"],
                 [keys_password_hashers_potential_false_positives, keys_password_validators_potential_false_positives, keys_middleware_potential_false_positives],
                 [[password_hashers_potential_false_positives], [password_validators_potential_false_positives], [middleware_potential_false_positives]])
+saveDistributionsToFile(["password_validation_min_lengths"], [keys_min_length_password_validation], [[min_lengths_password_validation]], [True]) """
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> django repos for Session Management and <a href="{}" target="_blank">{}</a> django repos for Account Creation<br></p>
@@ -298,6 +358,7 @@ report = """
 <p>{} perform some validation on its password fields ({} %)<br>
 <a href="{}" target="_blank">{}</a> do not perform validation on the password fields (or the other queries failed so there might be false positives) ({} %)<br>
 <a href="{}" target="_blank">{}</a> enforce a minimum password length ({} %)<br>
+<a href="{}" target="_blank">{}</a> enforce a specific minimum length ({} %)<br>
 <a href="{}" target="_blank">{}</a> check the similarity between the password and a set of attributes of the user ({} %)<br>
 <a href="{}" target="_blank">{}</a> check whether the password occurs in a list of common passwords ({} %)<br>
 <a href="{}" target="_blank">{}</a> check whether the password is not entirely numeric ({} %)<br>
@@ -342,6 +403,7 @@ report_html = report.format("./session_management.txt", str(counter_django), "./
                             str(counter_performing_password_validation), str(getPercentage(counter_performing_password_validation, counter_account_creation)),
                             "./not_performing_password_validation.txt", str(counter_not_performing_password_validation), str(getPercentage(counter_not_performing_password_validation, counter_account_creation)),
                             "./length_password_validators.txt", str(counter_length_password_validators), str(getPercentage(counter_length_password_validators, counter_account_creation)),
+                            "./password_validation_min_lengths.txt", str(counter_min_length_password_validation), str(getPercentage(counter_min_length_password_validation, counter_account_creation)),
                             "./similarity_password_validators.txt", str(counter_similarity_password_validators), str(getPercentage(counter_similarity_password_validators, counter_account_creation)),
                             "./common_password_validators.txt", str(counter_common_password_validators), str(getPercentage(counter_common_password_validators, counter_account_creation)),
                             "./numeric_password_validators.txt", str(counter_numeric_password_validators), str(getPercentage(counter_numeric_password_validators, counter_account_creation)),
@@ -374,5 +436,5 @@ report_html = report.format("./session_management.txt", str(counter_django), "./
                             "./repos_without_auth_libraries.txt", str(counter_repos_without_auth_libraries), str(getPercentage(counter_repos_without_auth_libraries, counter_django)),
                             "./not_calling_logout_server_side_sessions_without_auth_libraries.txt", str(counter_not_calling_logout_server_side_sessions_without_auth_libraries), str(getPercentage(counter_not_calling_logout_server_side_sessions_without_auth_libraries, counter_repos_without_auth_libraries)))
 
-with open(str(path.absolute()) + "/report.html", "w") as file:
-    file.write(report_html)
+""" with open(str(path.absolute()) + "/report.html", "w") as file:
+    file.write(report_html) """
