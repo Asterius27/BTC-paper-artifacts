@@ -155,11 +155,10 @@ def saveDistributionsToFile(fileNames, sets, dicts, flags):
             for key in set:
                 for dct in dicts[i]:
                     if key in dct:
-                        for elem in dct[key]:
-                            if flags[i]:
-                                file.write(str(max(elem)) + ", ")
-                            else:
-                                file.write(str(min(elem)) + ", ")
+                        if flags[i]:
+                            file.write(str(max(dct[key])) + ", ")
+                        else:
+                            file.write(str(min(dct[key])) + ", ")
 
 def getPercentage(value, total):
     if total == 0:
