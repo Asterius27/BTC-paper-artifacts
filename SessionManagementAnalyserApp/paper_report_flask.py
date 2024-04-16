@@ -117,7 +117,7 @@ def extractValues(reposDir, queryDir, queryName, queryString, result):
                                             output_results[repo].append(int(substrings[1].split(" ")[0]))
     print(len(output_results))
     i = 0
-    for elem in output_results:
+    for elem in output_results.values():
         i += len(elem)
     print(i)
     print(output_results)
