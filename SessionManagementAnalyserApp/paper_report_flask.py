@@ -82,9 +82,7 @@ def extractFalsePositives(reposDir, queryDir, queryName, falsePositiveQuery, res
                                     output_results[repo]["result"] += output_str
     return output_results
 
-# TODO
-def extractValues(reposDir, queryDir, queryName, queryString, result, csvDict):
-    output_results = {}
+def extractValues(reposDir, queryDir, queryName, queryString, result):
     values = []
     path = Path(__file__).parent / './repositories'
     repos = os.listdir(str(path.absolute()) + "/" + reposDir)
@@ -100,25 +98,23 @@ def extractValues(reposDir, queryDir, queryName, queryString, result, csvDict):
                                 output.seek(0)
                                 output_str = output.read()
                                 if queryString in output_str:
-                                    output_results[repo] = {}
-                                    if repo in csvDict:
-                                        output_results[repo]["url"] = csvDict[repo]
-                                    output_results[repo]["file"] = queryFile
-                                    output_results[repo]["result"] = queryName + ":\n"
-                                    output_results[repo]["result"] += output_str
+                                    output_str_values = output_str.splitlines()
+                                    for line in output_str_values:
+                                        substrings = line.split(queryString)
+                                        if len(substrings) > 1:
+                                            values.append(substrings[1].split(" ")[0])
                             output.seek(0)
                             if len(output.readlines()) > 2 and result:
                                 output.seek(0)
                                 output_str = output.read()
                                 if queryString in output_str:
-                                    output_results[repo] = {}
-                                    if repo in csvDict:
-                                        output_results[repo]["url"] = csvDict[repo]
-                                    output_results[repo]["file"] = queryFile
-                                    output_results[repo]["result"] = queryName + ":\n"
-                                    output_results[repo]["result"] += output_str
-                                    output_str_value = re.search(queryString + '(.*)' + re.escape(' |'))
-    return output_results
+                                    output_str_values = output_str.splitlines()
+                                    for line in output_str_values:
+                                        substrings = line.split(queryString)
+                                        if len(substrings) > 1:
+                                            values.append(substrings[1].split(" ")[0])
+    print(values)
+    return values
 
 def buildResultsDict(resultRepos, subDicts):
     result = {}
@@ -174,6 +170,7 @@ custom_password_validators = extractResults("Flask", "Password-strength", "un_pa
 length_password_validators = extractResults("Flask", "Password-strength", "un_password_length_check", True, csv_dict)
 regexp_password_validators = extractResults("Flask", "Password-strength", "un_password_regexp_check", True, csv_dict)
 signup_form_not_validated = extractResults("Flask", "Password-strength", "un_form_with_password_field_is_validated", True, csv_dict)
+min_lengths = extractValues("Flask", "Password-strength", "un_password_length_check", "min value: ", True)
 csrf_enabled_globally = extractResults("Flask", "CSRF", "un_using_flaskwtf_csrf_protection", True, csv_dict)
 using_csrf_exempt = extractResults("Flask", "CSRF", "un_using_csrf_exempt", True, csv_dict)
 using_csrf_protect = extractResults("Flask", "CSRF", "un_using_csrf_protect", True, csv_dict)
@@ -346,7 +343,7 @@ counter_scrypt_not_owasp_compliant = len(repos_using_scrypt_not_owasp_compliant)
 counter_bcrypt_not_owasp_compliant = len(repos_using_bcrypt_not_owasp_compliant)
 counter_pbkdf2_not_owasp_compliant = len(repos_using_pbkdf2_not_owasp_compliant)
 
-saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
+""" saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
 saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection", "uncategorized_session_protection"],
                 [no_session_protection, session_protection_basic_set, session_protection_strong_set, keys_session_protection_potential_false_positives, uncategorized_session_protection],
                 [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives], [flask_login_usage]])
@@ -369,7 +366,7 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                 [[argon2_is_owasp_compliant, passlib_argon2_is_owasp_compliant], [hashlib_scrypt_is_owasp_compliant, passlib_scrypt_is_owasp_compliant, werkzeug_scrypt_is_owasp_compliant], [bcrypt_is_owasp_compliant, flask_bcrypt_is_owasp_compliant, passlib_bcrypt_is_owasp_compliant], 
                  [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
-saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]])
+saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]]) """
 """ saveDictsToFile(["csrf_categories_union", "not_in_any_csrf_category", "in_more_than_one_category"], 
                 [csrf_categories_union, not_in_any_csrf_category, repos_in_more_than_one_category], 
                 [[using_wtforms, using_flask_wtf, csrf_enabled_globally], 
@@ -471,5 +468,5 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./potential_false_positives_session_protection.txt", str(counter_session_protection_false_positives), str(getPercentage(counter_session_protection_false_positives, counter_flask)),
                             "./uncategorized_session_protection.txt", str(counter_uncategorized_session_protection), str(getPercentage(counter_uncategorized_session_protection, counter_flask)))
 
-with open(str(path.absolute()) + "/report.html", "w") as file:
-    file.write(report_html)
+""" with open(str(path.absolute()) + "/report.html", "w") as file:
+    file.write(report_html) """
