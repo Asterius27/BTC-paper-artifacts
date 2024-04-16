@@ -1,0 +1,296 @@
+URL: https://github.com/machine2learn/ezeeai
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/machine2learn_ezeeai/machine2learn-ezeeai-081c343-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                  col1                                                                                  |                      col2                      |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/machine2learn_ezeeai/machine2learn-ezeeai-081c343/ezeeai/dfweb.py:53 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/craws/OpenAtlas
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/craws_OpenAtlas/craws-OpenAtlas-47fe706-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                  col1                                                                                  |                      col2                      |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/craws_OpenAtlas/craws-OpenAtlas-47fe706/instance/example_testing.py:7 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/meolu/walle-web
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/meolu_walle-web/meolu-walle-web-f96dc41-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                 col1                                                                                  |                      col2                      |
++-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread15/meolu_walle-web/meolu-walle-web-f96dc41/walle/config/settings.py:16 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/paris-saclay-cds/ramp-board
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/paris-saclay-cds_ramp-board/paris-saclay-cds-ramp-board-97fbb52-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                                          col1                                                                                                          |                      col2                      |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/paris-saclay-cds_ramp-board/paris-saclay-cds-ramp-board-97fbb52/ramp-frontend/ramp_frontend/tests/test_admin.py:37   | Flask-WTF CSRF protection is manually disabled |
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/paris-saclay-cds_ramp-board/paris-saclay-cds-ramp-board-97fbb52/ramp-frontend/ramp_frontend/tests/test_auth.py:38    | Flask-WTF CSRF protection is manually disabled |
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/paris-saclay-cds_ramp-board/paris-saclay-cds-ramp-board-97fbb52/ramp-frontend/ramp_frontend/tests/test_general.py:27 | Flask-WTF CSRF protection is manually disabled |
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/paris-saclay-cds_ramp-board/paris-saclay-cds-ramp-board-97fbb52/ramp-frontend/ramp_frontend/tests/test_testing.py:28 | Flask-WTF CSRF protection is manually disabled |
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/paris-saclay-cds_ramp-board/paris-saclay-cds-ramp-board-97fbb52/ramp-frontend/ramp_frontend/tests/test_utils.py:30   | Flask-WTF CSRF protection is manually disabled |
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/paris-saclay-cds_ramp-board/paris-saclay-cds-ramp-board-97fbb52/ramp-frontend/ramp_frontend/tests/test_ramp.py:45    | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/Sumukh/Ignite
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Sumukh_Ignite/Sumukh-Ignite-7480c98-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                            col1                                                                             |                      col2                      |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/Sumukh_Ignite/Sumukh-Ignite-7480c98/appname/settings.py:88 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/FAI-CIVL/FAI-Airscore
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/FAI-CIVL_FAI-Airscore/FAI-CIVL-FAI-Airscore-e0d19ca-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                   col1                                                                                    |                      col2                      |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread6/FAI-CIVL_FAI-Airscore/FAI-CIVL-FAI-Airscore-e0d19ca/tests/settings.py:18 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/Abdur-rahmaanJ/shopcube
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Abdur-rahmaanJ_shopcube/Abdur-rahmaanJ-shopcube-e25ef8f-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                        col1                                                                                         |                      col2                      |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread8/Abdur-rahmaanJ_shopcube/Abdur-rahmaanJ-shopcube-e25ef8f/src/shopcube/config.py:110 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/FrameOS/frameos
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/FrameOS_frameos/FrameOS-frameos-7d91652-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                              col1                                                                              |                      col2                      |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread14/FrameOS_frameos/FrameOS-frameos-7d91652/backend/config.py:16 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/Club-Alpin-Annecy/collectives
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Club-Alpin-Annecy_collectives/Club-Alpin-Annecy-collectives-1fd34db-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                                col1                                                                                                 |                      col2                      |
++-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread12/Club-Alpin-Annecy_collectives/Club-Alpin-Annecy-collectives-1fd34db/tests/assets/config.test.py:4 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/uwcirg/truenth-portal
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/uwcirg_truenth-portal/uwcirg-truenth-portal-c143920-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                       col1                                                                                        |                      col2                      |
++-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/uwcirg_truenth-portal/uwcirg-truenth-portal-c143920/portal/config/config.py:279 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/Orbital-Knewbie/Knewbie
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Orbital-Knewbie_Knewbie/Orbital-Knewbie-Knewbie-930d3fb-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                  col1                                                                                  |                      col2                      |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread12/Orbital-Knewbie_Knewbie/Orbital-Knewbie-Knewbie-930d3fb/config.py:28 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/internetarchive/fatcat
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/internetarchive_fatcat/internetarchive-fatcat-a0baed3-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                        col1                                                                                         |                      col2                      |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread14/internetarchive_fatcat/internetarchive-fatcat-a0baed3/python/tests/fixtures.py:61 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/microsoft/Oryx
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/microsoft_Oryx/microsoft-Oryx-173e2d6-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                                col1                                                                                                |                      col2                      |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread14/microsoft_Oryx/microsoft-Oryx-173e2d6/tests/SampleApps/python/React-Redux-Flask-app/config.py:17 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/shopyo/shopyo
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/shopyo_shopyo/shopyo-shopyo-1cd751d-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                           col1                                                                           |                      col2                      |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread3/shopyo_shopyo/shopyo-shopyo-1cd751d/shopyo/config.py:98 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/AllynH/destiny_focus
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/AllynH_destiny_focus/AllynH-destiny_focus-9a78560-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                  col1                                                                                   |                      col2                      |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread4/AllynH_destiny_focus/AllynH-destiny_focus-9a78560/tests/settings.py:12 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/JeffVandrewJr/patron
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/JeffVandrewJr_patron/JeffVandrewJr-patron-b254506-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                  col1                                                                                  |                      col2                      |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/JeffVandrewJr_patron/JeffVandrewJr-patron-b254506/tests/tconfig.py:40 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/msarmi9/Sparkle
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/msarmi9_Sparkle/msarmi9-Sparkle-71d01c8-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                           col1                                                                            |                      col2                      |
++-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/msarmi9_Sparkle/msarmi9-Sparkle-71d01c8/app/config.py:16 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/nutechsoftware/alarmdecoder-webapp
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/nutechsoftware_alarmdecoder-webapp/nutechsoftware-alarmdecoder-webapp-c75031b-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                                col1                                                                                                |                      col2                      |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/nutechsoftware_alarmdecoder-webapp/nutechsoftware-alarmdecoder-webapp-c75031b/ad2web/config.py:83 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/MultiQC/MegaQC
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/MultiQC_MegaQC/MultiQC-MegaQC-d1c2ea3-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                              col1                                                                              |                      col2                      |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread11/MultiQC_MegaQC/MultiQC-MegaQC-d1c2ea3/megaqc/settings.py:150 | Flask-WTF CSRF protection is manually disabled |
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread11/MultiQC_MegaQC/MultiQC-MegaQC-d1c2ea3/megaqc/settings.py:178 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/wikimedia/labs-tools-Isa
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/wikimedia_labs-tools-Isa/wikimedia-labs-tools-Isa-04e3d90-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                            col1                                                                                             |                      col2                      |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/wikimedia_labs-tools-Isa/wikimedia-labs-tools-Isa-04e3d90/tests/test_campaign_routes.py:21 | Flask-WTF CSRF protection is manually disabled |
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/wikimedia_labs-tools-Isa/wikimedia-labs-tools-Isa-04e3d90/tests/test_main_routes.py:20     | Flask-WTF CSRF protection is manually disabled |
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/wikimedia_labs-tools-Isa/wikimedia-labs-tools-Isa-04e3d90/tests/test_users_routes.py:20    | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/malwaredllc/byob
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/malwaredllc_byob/malwaredllc-byob-a6b4c7b-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                        col1                                                                                         |                      col2                      |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread14/malwaredllc_byob/malwaredllc-byob-a6b4c7b/web-gui/buildyourownbotnet/config.py:13 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/szymon6927/bio-gen-calc
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-cdc7d98-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                  col1                                                                                  |                      col2                      |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/szymon6927_bio-gen-calc/szymon6927-bio-gen-calc-cdc7d98/config.py:52 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/infantiablue/converter
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/infantiablue_converter/infantiablue-converter-309350c-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                       col1                                                                                       |                      col2                      |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread18/infantiablue_converter/infantiablue-converter-309350c/tests/profile_test.py:10 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/ccsa-ufrn/PosGraduacao
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-e5ad7a9-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                  col1                                                                                   |                      col2                      |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/ccsa-ufrn_PosGraduacao/ccsa-ufrn-PosGraduacao-e5ad7a9/test_unit.py:11 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/scoringengine/scoringengine
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/scoringengine_scoringengine/scoringengine-scoringengine-6c0bb39-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                                   col1                                                                                                   |                      col2                      |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread0/scoringengine_scoringengine/scoringengine-scoringengine-6c0bb39/tests/scoring_engine/web/web_test.py:18 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/teknologkoren/flasquelistan
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/teknologkoren_flasquelistan/teknologkoren-flasquelistan-34f94a0-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                         col1                                                                                          |                      col2                      |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/teknologkoren_flasquelistan/teknologkoren-flasquelistan-34f94a0/tests/helpers.py:14 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/stefaneichert/thanados
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/stefaneichert_thanados/stefaneichert-thanados-1a046b0-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                   col1                                                                                    |                      col2                      |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread13/stefaneichert_thanados/stefaneichert-thanados-1a046b0/tests/tests.py:13 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/SUIBE-Blockchain/FISCO-BCOS-Toolbox
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/SUIBE-Blockchain_FISCO-BCOS-Toolbox/SUIBE-Blockchain-FISCO-BCOS-Toolbox-87957f4-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                                 col1                                                                                                  |                      col2                      |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread2/SUIBE-Blockchain_FISCO-BCOS-Toolbox/SUIBE-Blockchain-FISCO-BCOS-Toolbox-87957f4/tests/settings.py:12 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/dgtlmoon/changedetection.io
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/dgtlmoon_changedetection.io/dgtlmoon-changedetection.io-8fac593-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                                  col1                                                                                                   |                      col2                      |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/dgtlmoon_changedetection.io/dgtlmoon-changedetection.io-8fac593/changedetectionio/tests/conftest.py:71 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/lucyparsons/OpenOversight
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/lucyparsons_OpenOversight/lucyparsons-OpenOversight-3122e34-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                               col1                                                                                               |                      col2                      |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread1/lucyparsons_OpenOversight/lucyparsons-OpenOversight-3122e34/OpenOversight/tests/conftest.py:285 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/AI4Green/AI4Green
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/AI4Green_AI4Green/AI4Green-AI4Green-f4ea696-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                   col1                                                                                   |                      col2                      |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread7/AI4Green_AI4Green/AI4Green-AI4Green-f4ea696/Webapp/sources/config.py:21 | Flask-WTF CSRF protection is manually disabled |
+
+
+
+URL: https://github.com/Lazytangent/Qwerkey
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/Lazytangent_Qwerkey/Lazytangent-Qwerkey-f6a6607-results/CSRF/un_disabled_wtf_csrf.txt
+un_disabled_wtf_csrf:
+| expr  |                                                                                col1                                                                                |                      col2                      |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
+| False | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread10/Lazytangent_Qwerkey/Lazytangent-Qwerkey-f6a6607/app/config.py:44 | Flask-WTF CSRF protection is manually disabled |
+
+
+
