@@ -102,11 +102,7 @@ def extractValues(reposDir, queryDir, queryName, queryString, result):
                                     for line in output_str_values:
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
-                                            temp = substrings[0].split(" ")[-1]
-                                            if len(temp) == 0:
-                                                output_results[repo].add(8)
-                                            else:
-                                                output_results[repo].add(int(temp))
+                                            output_results[repo].add(int(substrings[1].split(" ")[0]))
                             output.seek(0)
                             if len(output.readlines()) > 2 and result:
                                 output.seek(0)
@@ -117,12 +113,7 @@ def extractValues(reposDir, queryDir, queryName, queryString, result):
                                     for line in output_str_values:
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
-                                            temp = substrings[0].split(" ")[-1]
-                                            print(temp)
-                                            if len(temp) == 0:
-                                                output_results[repo].add(8)
-                                            else:
-                                                output_results[repo].add(int(temp))
+                                            output_results[repo].add(int(substrings[1].split(" ")[0]))
     print(output_results)
     return output_results
 
@@ -184,7 +175,7 @@ hardcoded_secret_key_potential_false_positives = extractFalsePositives("Django",
 hardcoded_secret_key_too_short = extractFalsePositives("Django", "Secret-key", "un_secret_key", " and it's too short", True, csv_dict)
 custom_password_validators = extractResults("Django", "Password-strength", "un_using_custom_validators", True, csv_dict)
 length_password_validators = extractResults("Django", "Password-strength", "un_using_length_validator", True, csv_dict)
-min_lengths_password_validation = extractValues("Django", "Password-strength", "un_using_length_validator", " | Using a length password validator", True)
+min_lengths_password_validation = extractValues("Django", "Password-strength", "un_using_length_validator", "Min value manually set: ", True)
 numeric_password_validators = extractResults("Django", "Password-strength", "un_using_numeric_password_validator", True, csv_dict)
 common_password_validators = extractResults("Django", "Password-strength", "un_using_common_password_validator", True, csv_dict)
 similarity_password_validators = extractResults("Django", "Password-strength", "un_using_similarity_validator", True, csv_dict)
