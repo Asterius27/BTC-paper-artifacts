@@ -98,23 +98,23 @@ def extractValues(reposDir, queryDir, queryName, queryString, result):
                                 output.seek(0)
                                 output_str = output.read()
                                 if queryString in output_str:
-                                    output_results[repo] = []
+                                    output_results[repo] = set()
                                     output_str_values = output_str.splitlines()
                                     for line in output_str_values:
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
-                                            output_results[repo].append(int(substrings[1].split(" ")[0]))
+                                            output_results[repo].add(int(substrings[1].split(" ")[0]))
                             output.seek(0)
                             if len(output.readlines()) > 2 and result:
                                 output.seek(0)
                                 output_str = output.read()
                                 if queryString in output_str:
-                                    output_results[repo] = []
+                                    output_results[repo] = set()
                                     output_str_values = output_str.splitlines()
                                     for line in output_str_values:
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
-                                            output_results[repo].append(int(substrings[1].split(" ")[0]))
+                                            output_results[repo].add(int(substrings[1].split(" ")[0]))
     print(len(output_results))
     i = 0
     for elem in output_results.values():
@@ -177,7 +177,8 @@ custom_password_validators = extractResults("Flask", "Password-strength", "un_pa
 length_password_validators = extractResults("Flask", "Password-strength", "un_password_length_check", True, csv_dict)
 regexp_password_validators = extractResults("Flask", "Password-strength", "un_password_regexp_check", True, csv_dict)
 signup_form_not_validated = extractResults("Flask", "Password-strength", "un_form_with_password_field_is_validated", True, csv_dict)
-min_lengths = extractValues("Flask", "Password-strength", "un_password_length_check", "min value: ", True)
+min_lengths_password_validation = extractValues("Flask", "Password-strength", "un_password_length_check", "min value: ", True)
+max_lengths_password_validation = extractValues("Flask", "Password-strength", "un_password_length_check", "max value: ", True)
 csrf_enabled_globally = extractResults("Flask", "CSRF", "un_using_flaskwtf_csrf_protection", True, csv_dict)
 using_csrf_exempt = extractResults("Flask", "CSRF", "un_using_csrf_exempt", True, csv_dict)
 using_csrf_protect = extractResults("Flask", "CSRF", "un_using_csrf_protect", True, csv_dict)
