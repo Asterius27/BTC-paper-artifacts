@@ -1,0 +1,860 @@
+Time taken to run the queries on ./repositories/Django/thread16/17thshard_palanaeum/17thshard-palanaeum-5d513bf: 454.457 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/Bluefissure_OtterBot/Bluefissure-OtterBot-b49fd28: 305.719 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/CSUA_csua-backend/CSUA-csua-backend-99c8d67: 259.595 seconds.
+Analysis failed for: ./repositories/Django/thread16/Conchylicultor_DeepQA/Conchylicultor-DeepQA-886ec77 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/Conchylicultor_DeepQA/Conchylicultor-DeepQA-886ec77 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/Conchylicultor_DeepQA/Conchylicultor-DeepQA-886ec77: 103.844 seconds.
+Analysis failed for: ./repositories/Django/thread16/DDMAL_cantus/DDMAL-cantus-68bd70e Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/DDMAL_cantus/DDMAL-cantus-68bd70e -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/DDMAL_cantus/DDMAL-cantus-68bd70e: 99.683 seconds.
+Analysis failed for: ./repositories/Django/thread16/DalgoT4D_DDP_backend/DalgoT4D-DDP_backend-c31520a Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/DalgoT4D_DDP_backend/DalgoT4D-DDP_backend-c31520a -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/DalgoT4D_DDP_backend/DalgoT4D-DDP_backend-c31520a: 101.725 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/Doran-Doran-development_DoranDoran-Server-2/Doran-Doran-development-DoranDoran-Server-2-6340af1: 261.094 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/DurhamARC_ManyFEWS/DurhamARC-ManyFEWS-223a491: 402.608 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/EdFlix5_Ed-Flix/EdFlix5-Ed-Flix-bc42ea3: 174.919 seconds.
+Analysis failed for: ./repositories/Django/thread16/Frieda0315_404/Frieda0315-404-27c2c5b Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/Frieda0315_404/Frieda0315-404-27c2c5b -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/Frieda0315_404/Frieda0315-404-27c2c5b: 62.36 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/HumanCompatibleAI_tensor-trust/HumanCompatibleAI-tensor-trust-b2682d5: 551.965 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/INSaFLU_INSaFLU/INSaFLU-INSaFLU-4d0e8fc: 1233.37 seconds.
+Analysis failed for: ./repositories/Django/thread16/International-GNSS-Service_SLM/International-GNSS-Service-SLM-4cd4330 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/International-GNSS-Service_SLM/International-GNSS-Service-SLM-4cd4330 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/International-GNSS-Service_SLM/International-GNSS-Service-SLM-4cd4330: 131.24 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/KIClubinfo_upont-v4/KIClubinfo-upont-v4-0e07ce3: 264.551 seconds.
+Analysis failed for: ./repositories/Django/thread16/Khan_frankenserver/Khan-frankenserver-c745dce Reason: Error: spawnSync /bin/sh ENOBUFS
+Could not delete database for: ./repositories/Django/thread16/Khan_frankenserver/Khan-frankenserver-c745dce Reason: Error: ENOTEMPTY: directory not empty, rmdir './repositories/Django/thread16/Khan_frankenserver/Khan-frankenserver-c745dce-database/src/home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread16/Khan_frankenserver/Khan-frankenserver-c745dce/python/lib'
+Time taken to run the queries on ./repositories/Django/thread16/Khan_frankenserver/Khan-frankenserver-c745dce: 159.394 seconds.
+Analysis failed for: ./repositories/Django/thread16/Klimaat-Helpdesk_website/Klimaat-Helpdesk-website-0eef969 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/Klimaat-Helpdesk_website/Klimaat-Helpdesk-website-0eef969 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/Klimaat-Helpdesk_website/Klimaat-Helpdesk-website-0eef969: 75.016 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/Lexpedite_blawx/Lexpedite-blawx-3de892f: 209.114 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/Lomank123_shared-music/Lomank123-shared-music-2f312b6: 204.919 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/LvPeng990324_performance_management/LvPeng990324-performance_management-4d73bde: 239.983 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/MAC-AutoML_PCL_AutoML_System/MAC-AutoML-PCL_AutoML_System-39c96bd: 854.393 seconds.
+Analysis failed for: ./repositories/Django/thread16/OSGeo_OSGeoLive/OSGeo-OSGeoLive-94231c1 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/OSGeo_OSGeoLive/OSGeo-OSGeoLive-94231c1 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/OSGeo_OSGeoLive/OSGeo-OSGeoLive-94231c1: 109.558 seconds.
+Analysis failed for: ./repositories/Django/thread16/OperationCode_back-end/OperationCode-back-end-ed1cd14 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/OperationCode_back-end/OperationCode-back-end-ed1cd14 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/OperationCode_back-end/OperationCode-back-end-ed1cd14: 98.354 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/ProfitMaximizationTool_Profit-Maximization-Tool/ProfitMaximizationTool-Profit-Maximization-Tool-6317794: 657.069 seconds.
+Analysis failed for: ./repositories/Django/thread16/QuantuMobileSoftware_clearcut_detection/QuantuMobileSoftware-clearcut_detection-03a2573 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/QuantuMobileSoftware_clearcut_detection/QuantuMobileSoftware-clearcut_detection-03a2573 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/QuantuMobileSoftware_clearcut_detection/QuantuMobileSoftware-clearcut_detection-03a2573: 121.992 seconds.
+Analysis failed for: ./repositories/Django/thread16/SELab-2_Dr-Trottoir-4/SELab-2-Dr-Trottoir-4-e2c051b Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/SELab-2_Dr-Trottoir-4/SELab-2-Dr-Trottoir-4-e2c051b -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/SELab-2_Dr-Trottoir-4/SELab-2-Dr-Trottoir-4-e2c051b: 53.443 seconds.
+Analysis failed for: ./repositories/Django/thread16/Shigoto-Q_shigoto/Shigoto-Q-shigoto-e49b7f5 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/Shigoto-Q_shigoto/Shigoto-Q-shigoto-e49b7f5 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/Shigoto-Q_shigoto/Shigoto-Q-shigoto-e49b7f5: 84.778 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/TabbycatDebate_tabbycat/TabbycatDebate-tabbycat-09201fc: 298.098 seconds.
+Analysis failed for: ./repositories/Django/thread16/TencentBlueKing_bk-chatbot/TencentBlueKing-bk-chatbot-e11f3bb Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/TencentBlueKing_bk-chatbot/TencentBlueKing-bk-chatbot-e11f3bb -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/TencentBlueKing_bk-chatbot/TencentBlueKing-bk-chatbot-e11f3bb: 96.216 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/Williano_Final-Senior-Year-Project-/Williano-Final-Senior-Year-Project--4bd9885: 216.654 seconds.
+Analysis failed for: ./repositories/Django/thread16/YumaInaura_YumaInaura/YumaInaura-YumaInaura-f4b57fc Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/YumaInaura_YumaInaura/YumaInaura-YumaInaura-f4b57fc -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/YumaInaura_YumaInaura/YumaInaura-YumaInaura-f4b57fc: 81.942 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/acremonezi_Projeto-Integrador-em-Computacao-II/acremonezi-Projeto-Integrador-em-Computacao-II-5b23ce9: 168.785 seconds.
+Analysis failed for: ./repositories/Django/thread16/aggie-coding-club_Rev-Registration/aggie-coding-club-Rev-Registration-096e080 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/aggie-coding-club_Rev-Registration/aggie-coding-club-Rev-Registration-096e080 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/aggie-coding-club_Rev-Registration/aggie-coding-club-Rev-Registration-096e080: 108.285 seconds.
+Analysis failed for: ./repositories/Django/thread16/ajslater_codex/ajslater-codex-a98b333 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/ajslater_codex/ajslater-codex-a98b333 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/ajslater_codex/ajslater-codex-a98b333: 109.977 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/alameda-project_matorral/matorral-project-matorral-ad5d8c1: 198.606 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/aryan29_Quizoo/aryan29-Quizoo-931eed7: 206.253 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/beeracademy_web/beeracademy-web-344ed97: 800.278 seconds.
+Analysis failed for: ./repositories/Django/thread16/betagouv_Aidants_Connect/betagouv-Aidants_Connect-a81ef26 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/betagouv_Aidants_Connect/betagouv-Aidants_Connect-a81ef26 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/betagouv_Aidants_Connect/betagouv-Aidants_Connect-a81ef26: 110.611 seconds.
+Analysis failed for: ./repositories/Django/thread16/blondelg_ecommerce/blondelg-ecommerce-616d68e Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/blondelg_ecommerce/blondelg-ecommerce-616d68e -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/blondelg_ecommerce/blondelg-ecommerce-616d68e: 67.183 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/bounswe_bounswe2019group8/bounswe-bounswe2019group8-a4a60d1: 253.115 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/bounswe_bounswe2020group1/bounswe-bounswe2020group1-f7d4bcf: 287.766 seconds.
+Analysis failed for: ./repositories/Django/thread16/bounswe_bounswe2020group3/bounswe-bounswe2020group3-03d36d2 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/bounswe_bounswe2020group3/bounswe-bounswe2020group3-03d36d2 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/bounswe_bounswe2020group3/bounswe-bounswe2020group3-03d36d2: 58.931 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/bschollnick_QuickBBS/bschollnick-QuickBBS-147548c: 497.493 seconds.
+Analysis failed for: ./repositories/Django/thread16/cfpb_consumerfinance.gov/cfpb-consumerfinance.gov-33d096c Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/cfpb_consumerfinance.gov/cfpb-consumerfinance.gov-33d096c -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/cfpb_consumerfinance.gov/cfpb-consumerfinance.gov-33d096c: 164.162 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/chiefonboarding_ChiefOnboarding/chiefonboarding-ChiefOnboarding-158c2fc: 318.199 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/coders4help_volunteer_planner/coders4help-volunteer_planner-f5cbd8d: 195.535 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/cu2_KT/cu2-KT-98845c3: 233.904 seconds.
+Analysis failed for: ./repositories/Django/thread16/d1vory_askme/d1vory-askme-7f6a54c Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/d1vory_askme/d1vory-askme-7f6a54c -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/d1vory_askme/d1vory-askme-7f6a54c: 73.991 seconds.
+Analysis failed for: ./repositories/Django/thread16/datamade_chi-councilmatic/datamade-chi-councilmatic-e587e77 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/datamade_chi-councilmatic/datamade-chi-councilmatic-e587e77 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/datamade_chi-councilmatic/datamade-chi-councilmatic-e587e77: 57.429 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/dav-kempten_WebTool3/dav-kempten-WebTool3-e2e79da: 271.871 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/dchaplinsky_declarations.com.ua/dchaplinsky-declarations.com.ua-37db9cd: 249.07 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/diging_vogon-web/diging-vogon-web-d0fe51a: 308.583 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/djaodjin_djaodjin-pages/djaodjin-djaodjin-pages-a675f1b: 244.249 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/djblets_djblets/djblets-djblets-ae0b225: 484.942 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/dlareau_puzzlehunt_server/dlareau-puzzlehunt_server-648f1fd: 180.372 seconds.
+Analysis failed for: ./repositories/Django/thread16/dtpstat_dtp-stat-archive/dtpstat-dtp-stat-archive-6f7437c Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/dtpstat_dtp-stat-archive/dtpstat-dtp-stat-archive-6f7437c -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/dtpstat_dtp-stat-archive/dtpstat-dtp-stat-archive-6f7437c: 74.938 seconds.
+Analysis failed for: ./repositories/Django/thread16/eHealthAfrica_aether/eHealthAfrica-aether-2a4bf1b Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/eHealthAfrica_aether/eHealthAfrica-aether-2a4bf1b -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/eHealthAfrica_aether/eHealthAfrica-aether-2a4bf1b: 118.525 seconds.
+Analysis failed for: ./repositories/Django/thread16/ebmdatalab_euctr-tracker-code/ebmdatalab-euctr-tracker-code-0e880fe Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/ebmdatalab_euctr-tracker-code/ebmdatalab-euctr-tracker-code-0e880fe -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/ebmdatalab_euctr-tracker-code/ebmdatalab-euctr-tracker-code-0e880fe: 111.659 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/edx-unsupported_api-integration/edx-api-integration-d0acf17: 266.658 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/elmpystudio_pyStudio/elmpystudio-pyStudio-9b49ded: 470.514 seconds.
+Analysis failed for: ./repositories/Django/thread16/etesync_server/etesync-server-6b66ec1 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/etesync_server/etesync-server-6b66ec1 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/etesync_server/etesync-server-6b66ec1: 69.215 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/frg-fossee_eSim-Cloud/frg-fossee-eSim-Cloud-2d8a2e8: 507.706 seconds.
+Analysis failed for: ./repositories/Django/thread16/hpi-dhc_alps/hpi-dhc-alps-6efb04a Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/hpi-dhc_alps/hpi-dhc-alps-6efb04a -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/hpi-dhc_alps/hpi-dhc-alps-6efb04a: 184.936 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/ialbert_biostar-central/ialbert-biostar-central-efe9fc1: 360.996 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/ihabunek_radioscraper/ihabunek-radioscraper-26626e6: 198.611 seconds.
+Analysis failed for: ./repositories/Django/thread16/jadijadi_bestoon/jadijadi-bestoon-4cbeaf1 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/jadijadi_bestoon/jadijadi-bestoon-4cbeaf1 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/jadijadi_bestoon/jadijadi-bestoon-4cbeaf1: 83.695 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/justinmayer_kagi/justinmayer-kagi-7bc2457: 227.819 seconds.
+Analysis failed for: ./repositories/Django/thread16/kera-cudmore_seaside-sewing/kera-cudmore-seaside-sewing-af3e606 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/kera-cudmore_seaside-sewing/kera-cudmore-seaside-sewing-af3e606 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/kera-cudmore_seaside-sewing/kera-cudmore-seaside-sewing-af3e606: 78.809 seconds.
+Analysis failed for: ./repositories/Django/thread16/lancegoyke_fitness-store/lancegoyke-fitness-store-ce9c602 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/lancegoyke_fitness-store/lancegoyke-fitness-store-ce9c602 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/lancegoyke_fitness-store/lancegoyke-fitness-store-ce9c602: 109.711 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/leo-pfeiffer_portfolio_dashboard/leo-pfeiffer-portfolio_dashboard-d6e5d3f: 830.966 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/lukeshingles_atlasserver/lukeshingles-atlasserver-92a2274: 496.594 seconds.
+Analysis failed for: ./repositories/Django/thread16/masneyb_cavedbmanager/masneyb-cavedbmanager-06eda05 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/masneyb_cavedbmanager/masneyb-cavedbmanager-06eda05 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/masneyb_cavedbmanager/masneyb-cavedbmanager-06eda05: 64.564 seconds.
+Analysis failed for: ./repositories/Django/thread16/matthiask_towel/matthiask-towel-bc3fed8 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/matthiask_towel/matthiask-towel-bc3fed8 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/matthiask_towel/matthiask-towel-bc3fed8: 77.103 seconds.
+Analysis failed for: ./repositories/Django/thread16/mchara01_FuelOpt/mchara01-FuelOpt-5a80257 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/mchara01_FuelOpt/mchara01-FuelOpt-5a80257 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/mchara01_FuelOpt/mchara01-FuelOpt-5a80257: 142.792 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/ministryofjustice_money-to-prisoners-api/ministryofjustice-money-to-prisoners-api-86cef46: 842.05 seconds.
+Analysis failed for: ./repositories/Django/thread16/mitodl_ocw-studio/mitodl-ocw-studio-cea8d04 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/mitodl_ocw-studio/mitodl-ocw-studio-cea8d04 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/mitodl_ocw-studio/mitodl-ocw-studio-cea8d04: 124.314 seconds.
+Analysis failed for: ./repositories/Django/thread16/mohit200008_medi-Care/mohit200008-medi-Care-e33752f Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/mohit200008_medi-Care/mohit200008-medi-Care-e33752f -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/mohit200008_medi-Care/mohit200008-medi-Care-e33752f: 123.863 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/mtianyan_OnlineMooc/mtianyan-OnlineMooc-218b3e2: 255.982 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/nkorobkov_lfmsh_bank/nkorobkov-lfmsh_bank-faa71e2: 197.74 seconds.
+Analysis failed for: ./repositories/Django/thread16/okfn_rtei/okfn-rtei-c5e641f Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/okfn_rtei/okfn-rtei-c5e641f -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/okfn_rtei/okfn-rtei-c5e641f: 62.985 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/openedx_blockstore/openedx-unsupported-blockstore-28b3885: 203.744 seconds.
+Analysis failed for: ./repositories/Django/thread16/openfootprint_openfootprint/openfootprint-openfootprint-5e3923b Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/openfootprint_openfootprint/openfootprint-openfootprint-5e3923b -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/openfootprint_openfootprint/openfootprint-openfootprint-5e3923b: 82.283 seconds.
+Analysis failed for: ./repositories/Django/thread16/openwisp_openwisp-radius/openwisp-openwisp-radius-ad1deee Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/openwisp_openwisp-radius/openwisp-openwisp-radius-ad1deee -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/openwisp_openwisp-radius/openwisp-openwisp-radius-ad1deee: 89.516 seconds.
+Analysis failed for: ./repositories/Django/thread16/osantana_quickstartup-template/osantana-quickstartup-template-61ebd7a Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/osantana_quickstartup-template/osantana-quickstartup-template-61ebd7a -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/osantana_quickstartup-template/osantana-quickstartup-template-61ebd7a: 85.653 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/paulo-campos-57_Projetos3/paulo-campos-57-Projetos3-7596cae: 179.118 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/project-lovelace_lovelace-website/project-lovelace-lovelace-website-3456e0d: 479.317 seconds.
+Analysis failed for: ./repositories/Django/thread16/project-travel-mate_server/project-travel-mate-server-275ff5f Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/project-travel-mate_server/project-travel-mate-server-275ff5f -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/project-travel-mate_server/project-travel-mate-server-275ff5f: 79.767 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/pymasterspl_Dshop/pymasterspl-Dshop-e4d8f28: 306.734 seconds.
+Analysis failed for: ./repositories/Django/thread16/pyvec_cz.pycon.org/pyvec-cz.pycon.org-55530dc Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/pyvec_cz.pycon.org/pyvec-cz.pycon.org-55530dc -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/pyvec_cz.pycon.org/pyvec-cz.pycon.org-55530dc: 82.966 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/rapidpro_rapidpro/rapidpro-rapidpro-38f5ba7: 440.252 seconds.
+Analysis failed for: ./repositories/Django/thread16/rubickkcibur_cdc/rubickkcibur-cdc-507b234 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/rubickkcibur_cdc/rubickkcibur-cdc-507b234 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/rubickkcibur_cdc/rubickkcibur-cdc-507b234: 118.441 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/shuup_shuup/shuup-shuup-25f78cf: 533.586 seconds.
+Analysis failed for: ./repositories/Django/thread16/svthalia_concrexit/svthalia-concrexit-743ab0b Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/svthalia_concrexit/svthalia-concrexit-743ab0b -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/svthalia_concrexit/svthalia-concrexit-743ab0b: 89.665 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/thaisviana_AlgPedia/thaisviana-AlgPedia-029501a: 342.66 seconds.
+Analysis failed for: ./repositories/Django/thread16/the-difference-engine_ymim/the-difference-engine-ymim-e579d9b Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/the-difference-engine_ymim/the-difference-engine-ymim-e579d9b -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/the-difference-engine_ymim/the-difference-engine-ymim-e579d9b: 58.581 seconds.
+Analysis failed for: ./repositories/Django/thread16/tkhang1999_Solr-SBERT-semantic-search/tkhang1999-Solr-SBERT-semantic-search-aacd2bd Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/tkhang1999_Solr-SBERT-semantic-search/tkhang1999-Solr-SBERT-semantic-search-aacd2bd -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/tkhang1999_Solr-SBERT-semantic-search/tkhang1999-Solr-SBERT-semantic-search-aacd2bd: 51.94 seconds.
+Analysis failed for: ./repositories/Django/thread16/torchbox_wagtail-wordpress-import/torchbox-wagtail-wordpress-import-ec44ab5 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/torchbox_wagtail-wordpress-import/torchbox-wagtail-wordpress-import-ec44ab5 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/torchbox_wagtail-wordpress-import/torchbox-wagtail-wordpress-import-ec44ab5: 71.596 seconds.
+Analysis failed for: ./repositories/Django/thread16/transportkollektiv_cykel/transportkollektiv-cykel-b292d95 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/transportkollektiv_cykel/transportkollektiv-cykel-b292d95 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/transportkollektiv_cykel/transportkollektiv-cykel-b292d95: 54.241 seconds.
+Analysis failed for: ./repositories/Django/thread16/trep_opentrep/trep-opentrep-8453443 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/trep_opentrep/trep-opentrep-8453443 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/trep_opentrep/trep-opentrep-8453443: 68.392 seconds.
+Analysis failed for: ./repositories/Django/thread16/ubc_ubcpi/ubc-ubcpi-757e890 Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/ubc_ubcpi/ubc-ubcpi-757e890 -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/ubc_ubcpi/ubc-ubcpi-757e890: 38.285 seconds.
+Analysis failed for: ./repositories/Django/thread16/vapdev_Twiker/vapdev-Twiker-21b5fbc Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/vapdev_Twiker/vapdev-Twiker-21b5fbc -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/vapdev_Twiker/vapdev-Twiker-21b5fbc: 48.15 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/vstconsulting_vstutils/vstconsulting-vstutils-34d58f2: 163.099 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/w-a-r-m-inventory-system_Food-Pantry-Inventory/w-a-r-m-inventory-system-Food-Pantry-Inventory-3607703: 102.191 seconds.
+Analysis failed for: ./repositories/Django/thread16/wagtail_wagtail.org/wagtail-wagtail.org-76fdc3e Reason: Error: Command failed: npm start -- -s=./repositories/Django/thread16/wagtail_wagtail.org/wagtail-wagtail.org-76fdc3e -l=python -t=11 -ct=16
+file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97
+        throw new Error("None of the supported libraries/frameworks is used");
+              ^
+
+Error: None of the supported libraries/frameworks is used
+    at pythonAnalysis (file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/python-single-analysis.js:97:15)
+    at file:///home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/app.js:57:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:217:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:66:12)
+
+Node.js v20.8.0
+
+Time taken to run the queries on ./repositories/Django/thread16/wagtail_wagtail.org/wagtail-wagtail.org-76fdc3e: 45.29 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/welliamcao_OpsManage/welliamcao-OpsManage-eb86c4d: 136.715 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/wikimedia_operations-software-debmonitor/wikimedia-operations-software-debmonitor-fcb5994: 62.149 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/zam-haus_inventory_management/zam-haus-inventory_management-9ea4abd: 58.099 seconds.
+Time taken to run the queries on ./repositories/Django/thread16/zuri-training_Chunk-file-team-45/zuri-training-Chunk-file-team-45-aef9288: 44.824 seconds.
+Time taken to run the queries and generate the statistics: 23817.899 seconds.

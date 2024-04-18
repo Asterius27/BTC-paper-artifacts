@@ -103,6 +103,9 @@ def extractValues(reposDir, queryDir, queryName, queryString, result):
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
                                             output_results[repo].add(int(substrings[1].split(" ")[0]))
+                                else:
+                                    output_results[repo] = set()
+                                    output_results[repo].add(8)
                             output.seek(0)
                             if len(output.readlines()) > 2 and result:
                                 output.seek(0)
@@ -114,6 +117,9 @@ def extractValues(reposDir, queryDir, queryName, queryString, result):
                                         substrings = line.split(queryString)
                                         if len(substrings) > 1:
                                             output_results[repo].add(int(substrings[1].split(" ")[0]))
+                                else:
+                                    output_results[repo] = set()
+                                    output_results[repo].add(8)
     print(output_results)
     return output_results
 
