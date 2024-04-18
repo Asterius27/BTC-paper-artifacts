@@ -1,0 +1,144 @@
+URL: https://github.com/UTNkar/moore
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/UTNkar_moore/UTNkar-moore-0ae1614-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                col1                                                                                 |                          col2                          |
++-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread10/UTNkar_moore/UTNkar-moore-0ae1614/src/moore/settings/base.py:230 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/bihealth/sodar-server
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/bihealth_sodar-server/bihealth-sodar-server-cad197d-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                        col1                                                                                        |                          col2                          |
++-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread14/bihealth_sodar-server/bihealth-sodar-server-cad197d/config/settings/base.py:261 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/bihealth/sodar-core
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/bihealth_sodar-core/bihealth-sodar-core-be012e5-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                     col1                                                                                      |                          col2                          |
++-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread6/bihealth_sodar-core/bihealth-sodar-core-be012e5/config/settings/base.py:251 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/stustanet/wahlfang
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/stustanet_wahlfang/stustanet-wahlfang-e9eccbd-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                      col1                                                                                      |                          col2                          |
++-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread19/stustanet_wahlfang/stustanet-wahlfang-e9eccbd/wahlfang/settings/base.py:104 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/baseplate-admin/CoreProject
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/baseplate-admin_CoreProject/coreproject-moe-CoreProject-Monorepo-ed35475-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                                         col1                                                                                                         |                          col2                          |
++-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread14/baseplate-admin_CoreProject/coreproject-moe-CoreProject-Monorepo-ed35475/backend/django_core/core/settings.py:303 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/freedombox/FreedomBox
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/freedombox_FreedomBox/freedombox-FreedomBox-fb8d796-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|              cfn              |                                                                                   col1                                                                                    |                          col2                          |
++-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for ClassExpr | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread0/freedombox_FreedomBox/freedombox-FreedomBox-fb8d796/plinth/hashers.py:9 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/GhostManager/Ghostwriter
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/GhostManager_Ghostwriter/GhostManager-Ghostwriter-8e891a1-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                           col1                                                                                           |                          col2                          |
++-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread10/GhostManager_Ghostwriter/GhostManager-Ghostwriter-8e891a1/config/settings/base.py:170 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/swapnilsparsh/Rescue
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/swapnilsparsh_Rescue/swapnilsparsh-Rescue-49273ae-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                   col1                                                                                    |                          col2                          |
++-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread9/swapnilsparsh_Rescue/swapnilsparsh-Rescue-49273ae/mysite/settings.py:96 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/eugena/my_tourist
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/eugena_my_tourist/eugena-my_tourist-ea84579-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                   col1                                                                                    |                          col2                          |
++-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread6/eugena_my_tourist/eugena-my_tourist-ea84579/config/settings/base.py:113 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/RPIForge/website
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/RPIForge_website/RPIForge-website-251bca7-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                               col1                                                                                |                          col2                          |
++-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread12/RPIForge_website/RPIForge-website-251bca7/forge/settings.py:99 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/riso-tech/one-platform
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/riso-tech_one-platform/RisoTech-Hub-one-platform-c37a3f6-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                          col1                                                                                          |                          col2                          |
++-------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread3/riso-tech_one-platform/RisoTech-Hub-one-platform-c37a3f6/config/settings/base.py:137 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/khannakshat7/Elektra
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/khannakshat7_Elektra/khannakshat7-Elektra-a141d6b-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                     col1                                                                                      |                          col2                          |
++-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread18/khannakshat7_Elektra/khannakshat7-Elektra-a141d6b/Elecktra/settings.py:103 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/bihealth/varfish-server
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/bihealth_varfish-server/varfish-org-varfish-server-ba73b99-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                           col1                                                                                           |                          col2                          |
++-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread8/bihealth_varfish-server/varfish-org-varfish-server-ba73b99/config/settings/base.py:389 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/lawandorga/lawandorga-backend-service
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/lawandorga_lawandorga-backend-service/lawandorga-lawandorga-backend-service-aaf4edc-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                                       col1                                                                                                       |                          col2                          |
++-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread1/lawandorga_lawandorga-backend-service/lawandorga-lawandorga-backend-service-aaf4edc/config/settings/base.py:54 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/ksiuwr/zosia16-site
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/ksiuwr_zosia16-site/ksiuwr-zosia16-site-e81882f-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                           col1                                                                                            |                          col2                          |
++-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread14/ksiuwr_zosia16-site/ksiuwr-zosia16-site-e81882f/app/src/zosia16/settings/common.py:196 | Argon2 is being used as the password hashing algorithm |
+
+
+
+URL: https://github.com/MuckRock/squarelet
+FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/MuckRock_squarelet/MuckRock-squarelet-8f973f8-results/Password-hashing/un_argon2_is_used.txt
+un_argon2_is_used:
+|           cfn           |                                                                                    col1                                                                                     |                          col2                          |
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ControlFlowNode for Str | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Django/thread3/MuckRock_squarelet/MuckRock-squarelet-8f973f8/config/settings/base.py:120 | Argon2 is being used as the password hashing algorithm |
+
+
+
