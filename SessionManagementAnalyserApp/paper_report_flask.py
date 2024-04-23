@@ -306,12 +306,12 @@ repos_using_pbkdf2_not_owasp_compliant = keys_pbkdf2_is_used.difference(keys_pbk
 not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used))
 not_using_supported_libraries = keys_account_creation.difference(repos_with_password_hashing)
 
-print("argon2_is_used: " + str(len(keys_account_creation.intersection(set(argon2_is_used)))))
+""" print("argon2_is_used: " + str(len(keys_account_creation.intersection(set(argon2_is_used)))))
 print("bcrypt_is_used: " + str(len(keys_account_creation.intersection(set(bcrypt_is_used)))))
 print("flask_bcrypt_is_used: " + str(len(keys_account_creation.intersection(set(flask_bcrypt_is_used)))))
 print("passlib_is_used: " + str(len(keys_account_creation.intersection(set(passlib_is_used)))))
 print("werkzeug_is_used: " + str(len(keys_account_creation.intersection(set(werkzeug_is_used)))))
-print("hashlib_is_used: " + str(len(keys_account_creation.intersection(set(hashlib_is_used)))))
+print("hashlib_is_used: " + str(len(keys_account_creation.intersection(set(hashlib_is_used))))) """
 
 counter_flask = len(repos)
 counter_account_creation = len(keys_account_creation)
@@ -367,7 +367,7 @@ counter_scrypt_not_owasp_compliant = len(repos_using_scrypt_not_owasp_compliant)
 counter_bcrypt_not_owasp_compliant = len(repos_using_bcrypt_not_owasp_compliant)
 counter_pbkdf2_not_owasp_compliant = len(repos_using_pbkdf2_not_owasp_compliant)
 
-""" saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
+saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[flask_login_usage], [flask_wtf_account_creation]])
 saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection", "uncategorized_session_protection"],
                 [no_session_protection, session_protection_basic_set, session_protection_strong_set, keys_session_protection_potential_false_positives, uncategorized_session_protection],
                 [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives], [flask_login_usage]])
@@ -391,7 +391,7 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                  [hashlib_pbkdf2_is_owasp_compliant, passlib_pbkdf2_is_owasp_compliant, werkzeug_pbkdf2_is_owasp_compliant], [argon2_is_used, passlib_argon2_is_used], [hashlib_scrypt_is_used, passlib_scrypt_is_used, werkzeug_scrypt_is_used], [bcrypt_is_used, flask_bcrypt_is_used, passlib_bcrypt_is_used],
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
 saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]])
-saveDistributionsToFile(["password_validation_min_lengths", "password_validation_max_lengths"], [keys_min_length_password_validation, keys_max_length_password_validation], [[min_lengths_password_validation], [max_lengths_password_validation]], [True, False]) """
+saveDistributionsToFile(["password_validation_min_lengths", "password_validation_max_lengths"], [keys_min_length_password_validation, keys_max_length_password_validation], [[min_lengths_password_validation], [max_lengths_password_validation]], [True, False])
 """ saveDictsToFile(["csrf_categories_union", "not_in_any_csrf_category", "in_more_than_one_category"], 
                 [csrf_categories_union, not_in_any_csrf_category, repos_in_more_than_one_category], 
                 [[using_wtforms, using_flask_wtf, csrf_enabled_globally], 
@@ -497,5 +497,5 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./potential_false_positives_session_protection.txt", str(counter_session_protection_false_positives), str(getPercentage(counter_session_protection_false_positives, counter_flask)),
                             "./uncategorized_session_protection.txt", str(counter_uncategorized_session_protection), str(getPercentage(counter_uncategorized_session_protection, counter_flask)))
 
-""" with open(str(path.absolute()) + "/report.html", "w") as file:
-    file.write(report_html) """
+with open(str(path.absolute()) + "/report.html", "w") as file:
+    file.write(report_html)
