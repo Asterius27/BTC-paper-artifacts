@@ -306,6 +306,13 @@ repos_using_pbkdf2_not_owasp_compliant = keys_pbkdf2_is_used.difference(keys_pbk
 not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used))
 not_using_supported_libraries = keys_account_creation.difference(repos_with_password_hashing)
 
+print("argon2_is_used: " + str(len(set(argon2_is_used))))
+print("bcrypt_is_used: " + str(len(set(bcrypt_is_used))))
+print("flask_bcrypt_is_used: " + str(len(set(flask_bcrypt_is_used))))
+print("passlib_is_used: " + str(len(set(passlib_is_used))))
+print("werkzeug_is_used: " + str(len(set(werkzeug_is_used))))
+print("hashlib_is_used: " + str(len(set(hashlib_is_used))))
+
 counter_flask = len(repos)
 counter_account_creation = len(keys_account_creation)
 
