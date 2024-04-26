@@ -13,13 +13,13 @@ codeql database create <database> --language=<language-identifier> [--threads=<n
 codeql database create ./FlaskApp-database --language=python --source-root ./FlaskApp
 ```
 
-<br> 2. Run the query/queries (first method is preferred)
+<br> 2. Run the query/queries
 ```console
 codeql query run (--database=<database> | --dataset=<dataset>) [--output=<file.bqrs>] [--threads=<num>] <file.ql>
 codeql query run --database=FlaskApp-database --output=example_query_output.bqrs ./example_query.ql
 ```
 
-<br> 3. Decode the results (first method is preferred, the two commands differ in the output formats they support)
+<br> 3. Decode the results
 ```console
 codeql bqrs decode [--output=<file>] [--result-set=<name>] [--sort-key=<col>[,<col>...]] <file>
 codeql bqrs decode --output=example_query_results.txt --format=text ./example_query_output.bqrs
