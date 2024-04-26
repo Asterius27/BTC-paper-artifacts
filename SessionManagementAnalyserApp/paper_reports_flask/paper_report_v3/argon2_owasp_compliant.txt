@@ -1,9 +1,0 @@
-URL: https://github.com/MultiQC/MegaQC
-FILE: /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/MultiQC_MegaQC/MultiQC-MegaQC-d1c2ea3-results/Password-hashing/un_passlib_argon2_is_owasp_compliant.txt
-un_passlib_argon2_is_owasp_compliant:
-|             hash              |                                                                               col1                                                                               |                                    col2                                    |
-+-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| ControlFlowNode for Attribute | /home/878352/Session-Management-Analyser/SessionManagementAnalyserApp/repositories/Flask/thread5/MultiQC_MegaQC/MultiQC-MegaQC-d1c2ea3/megaqc/user/models.py:129 | PassLib is being used with argon2 and it's compliant with owasp guidelines |
-
-
-

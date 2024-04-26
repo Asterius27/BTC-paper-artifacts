@@ -171,7 +171,7 @@ def getPercentage(value, total):
         return 0
     return round((value / total) * 100, 2)
 
-csv_dict = loadCSV(Path(__file__).parent / '../django_whitelist_filtered_v2.csv')
+csv_dict = loadCSV(Path(__file__).parent / '../django_final_dataset.csv')
 django_login_usage = extractResults("Django", ".", "django_library_used_check", True, csv_dict)
 django_login_required_usage = extractResults("Django", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
 django_custom_session_engine = extractResults("Django", ".", "custom_session_engine", False, csv_dict)
@@ -203,18 +203,6 @@ md5_is_used = extractResults("Django", "Password-hashing", "un_md5_is_used", Tru
 custom_password_hasher_is_used = extractResults("Django", "Password-hashing", "un_using_custom_password_hasher", True, csv_dict)
 middleware_potential_false_positives = extractFalsePositives("Django", "Explorative-queries", "un_potential_false_positives", "un_csrf_protection_is_disabled ", True, csv_dict)
 password_hashers_potential_false_positives = extractFalsePositives("Django", "Explorative-queries", "un_potential_false_positives", "un_manually_set_password_hashers ", True, csv_dict)
-logout_function_is_not_called = extractResults("Django", "Logout-function-is-called", "un_logout_function_is_called", False, csv_dict)
-using_client_side_sessions = extractResults("Django", "Logout-session-invalidation", "un_client_side_session", True, csv_dict)
-allauth_is_used = extractResults("Django", "Explorative-queries", "un_allauth_is_used", True, csv_dict)
-dj_rest_auth_is_used = extractResults("Django", "Explorative-queries", "un_dj_rest_auth_is_used", True, csv_dict)
-django_registration_macropin_is_used = extractResults("Django", "Explorative-queries", "un_django_registration_macropin_is_used", True, csv_dict)
-django_registration_ubernostrum_is_used = extractResults("Django", "Explorative-queries", "un_django_registration_ubernostrum_is_used", True, csv_dict)
-django_rest_framework_is_used = extractResults("Django", "Explorative-queries", "un_django_rest_framework_is_used", True, csv_dict)
-django_rest_registration_is_used = extractResults("Django", "Explorative-queries", "un_django_rest_registration_is_used", True, csv_dict)
-django_user_accounts_is_used = extractResults("Django", "Explorative-queries", "un_django_user_accounts_is_used", True, csv_dict)
-django_xadmin_is_used = extractResults("Django", "Explorative-queries", "un_django_xadmin_is_used", True, csv_dict)
-djoser_is_used = extractResults("Django", "Explorative-queries", "un_djoser_is_used", True, csv_dict)
-knox_is_used = extractResults("Django", "Explorative-queries", "un_knox_is_used", True, csv_dict)
 
 keys_django_login_usages = set(django_login_usage)
 keys_django_login_required_usages = set(django_login_required_usage)
@@ -266,14 +254,8 @@ repos_using_argon2_not_owasp_compliant = keys_argon2_is_used.difference(keys_arg
 repos_using_bcrypt_not_owasp_compliant = keys_bcrypt_is_used.difference(keys_bcrypt_is_owasp_compliant)
 repos_using_scrypt_not_owasp_compliant = keys_scrypt_is_used.difference(keys_scrypt_is_owasp_compliant)
 repos_using_pbkdf2_not_owasp_compliant = keys_pbkdf2_is_used.difference(keys_pbkdf2_is_owasp_compliant)
-not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used)) # don't know if this works, I probably need to use custom password hasher + md5 is used
+not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used))
 not_using_supported_libraries = keys_account_creation.difference(repos_with_password_hashing)
-
-keys_logout_function_is_not_called = repos.intersection(set(logout_function_is_not_called))
-keys_using_client_side_sessions = repos.intersection(set(using_client_side_sessions))
-repos_without_auth_libraries = repos.difference(set(allauth_is_used).union(set(dj_rest_auth_is_used).union(set(django_registration_macropin_is_used).union(set(django_registration_ubernostrum_is_used).union(set(django_rest_framework_is_used).union(set(django_rest_registration_is_used).union(set(django_user_accounts_is_used).union(set(django_xadmin_is_used).union(set(djoser_is_used).union(set(knox_is_used)))))))))))
-not_calling_logout_server_side_sessions = keys_logout_function_is_not_called.difference(keys_using_client_side_sessions)
-not_calling_logout_server_side_sessions_without_auth_libraries = repos_without_auth_libraries.intersection(not_calling_logout_server_side_sessions)
 
 counter_django = len(repos)
 counter_account_creation = len(keys_account_creation)
@@ -318,10 +300,6 @@ counter_bcrypt_not_owasp_compliant = len(repos_using_bcrypt_not_owasp_compliant)
 counter_pbkdf2_not_owasp_compliant = len(repos_using_pbkdf2_not_owasp_compliant)
 counter_password_hashers_potential_false_positives = len(keys_password_hashers_potential_false_positives)
 
-counter_not_calling_logout_server_side_sessions = len(not_calling_logout_server_side_sessions)
-counter_repos_without_auth_libraries = len(repos_without_auth_libraries)
-counter_not_calling_logout_server_side_sessions_without_auth_libraries = len(not_calling_logout_server_side_sessions_without_auth_libraries)
-
 saveDictsToFile(["session_management", "account_creation"], [repos, keys_account_creation], [[django_login_usage], [django_account_creation]])
 saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys", "hardcoded_secret_key_too_short_true_positives"],
                 [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives, hardcoded_secret_key_too_short_true_positives],
@@ -340,9 +318,6 @@ saveDictsToFile(["using_password_hashing", "not_using_recommended_algorithm", "n
 saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owasp_compliant", "pbkdf2_owasp_compliant", "argon2_not_owasp_compliant", "scrypt_not_owasp_compliant", "bcrypt_not_owasp_compliant", "pbkdf2_not_owasp_compliant"],
                 [keys_argon2_is_owasp_compliant, keys_scrypt_is_owasp_compliant, keys_bcrypt_is_owasp_compliant, keys_pbkdf2_is_owasp_compliant, repos_using_argon2_not_owasp_compliant, repos_using_scrypt_not_owasp_compliant, repos_using_bcrypt_not_owasp_compliant, repos_using_pbkdf2_not_owasp_compliant],
                 [[argon2_is_owasp_compliant], [scrypt_is_owasp_compliant], [bcrypt_is_owasp_compliant], [pbkdf2_is_owasp_compliant], [argon2_is_used], [scrypt_is_used], [bcrypt_is_used], [pbkdf2_is_used]])
-saveDictsToFile(["not_calling_logout_and_session_set_to_server_side", "repos_without_auth_libraries", "not_calling_logout_server_side_sessions_without_auth_libraries"],
-                [not_calling_logout_server_side_sessions, repos_without_auth_libraries, not_calling_logout_server_side_sessions_without_auth_libraries],
-                [[logout_function_is_not_called], [django_login_usage], [logout_function_is_not_called]])
 saveDictsToFile(["potential_false_positives_password_hashers", "potential_false_positives_password_validators", "potential_false_positives_middleware"],
                 [keys_password_hashers_potential_false_positives, keys_password_validators_potential_false_positives, keys_middleware_potential_false_positives],
                 [[password_hashers_potential_false_positives], [password_validators_potential_false_positives], [middleware_potential_false_positives]])
@@ -388,12 +363,6 @@ report = """
 <a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere or they are using something else to protect against csrf (could be a false positive because they're doing something strange when setting the middleware) ({} %)<br>
 <a href="{}" target="_blank">{}</a> override the default csrf middleware, so they were not included in the above classification ({} %)<br>
 <a href="{}" target="_blank">{}</a> set MIDDLEWARE more than once ({} %)<br></p>
-<h3>Session Protection</h3>
-<p></p>
-<h3>Logout Security</h3>
-<p><a href="{}" target="_blank">{}</a> logout function is never called and the application is using server side sessions ({} %)<br>
-<a href="{}" target="_blank">{}</a> repos do not use some other authentication library ({} %)<br>
-<a href="{}" target="_blank">{}</a> logout function is never called, the application is using server side sessions and it's not using some other authentication library ({} %)<br></p>
 """
 
 report_html = report.format("./session_management.txt", str(counter_django), "./account_creation.txt", str(counter_account_creation),
@@ -428,10 +397,7 @@ report_html = report.format("./session_management.txt", str(counter_django), "./
                             "./csrf_activated_selectively.txt", str(counter_csrf_activated_selectively), str(getPercentage(counter_csrf_activated_selectively, counter_django)),
                             "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_django)),
                             "./overriding_default_csrf_middleware.txt", str(counter_overriding_csrf_middleware), str(getPercentage(counter_overriding_csrf_middleware, counter_django)),
-                            "./potential_false_positives_middleware.txt", str(counter_middleware_potential_false_positives), str(getPercentage(counter_middleware_potential_false_positives, counter_django)),
-                            "./not_calling_logout_and_session_set_to_server_side.txt", str(counter_not_calling_logout_server_side_sessions), str(getPercentage(counter_not_calling_logout_server_side_sessions, counter_django)),
-                            "./repos_without_auth_libraries.txt", str(counter_repos_without_auth_libraries), str(getPercentage(counter_repos_without_auth_libraries, counter_django)),
-                            "./not_calling_logout_server_side_sessions_without_auth_libraries.txt", str(counter_not_calling_logout_server_side_sessions_without_auth_libraries), str(getPercentage(counter_not_calling_logout_server_side_sessions_without_auth_libraries, counter_repos_without_auth_libraries)))
+                            "./potential_false_positives_middleware.txt", str(counter_middleware_potential_false_positives), str(getPercentage(counter_middleware_potential_false_positives, counter_django)))
 
 with open(str(path.absolute()) + "/report.html", "w") as file:
     file.write(report_html)

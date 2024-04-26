@@ -165,7 +165,7 @@ def getPercentage(value, total):
         return 0
     return round((value / total) * 100, 2)
 
-csv_dict = loadCSV(Path(__file__).parent / '../flask_whitelist_filtered_v2.csv')
+csv_dict = loadCSV(Path(__file__).parent / '../flask_final_dataset.csv')
 flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", True, csv_dict)
 flask_login_required_usage = extractResults("Flask", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
 flask_custom_session_interface = extractResults("Flask", "Explorative-queries", "un_custom_session_interface", False, csv_dict)
@@ -445,8 +445,6 @@ report = """
 <a href="{}" target="_blank">{}</a> used strong session protection ({} %)<br>
 <a href="{}" target="_blank">{}</a> set session protection more than once, so it's a false positive potentially ({} %)<br>
 <a href="{}" target="_blank">{}</a> are not in any session protection category ({} %)<br></p>
-<h3>Logout Security</h3>
-<p></p>
 """
 
 """ <a href="{}" target="_blank">{}</a> CSRF categories union ({} %)<br>

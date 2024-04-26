@@ -14,8 +14,6 @@ import json
 
 maxInt = sys.maxsize
 while True:
-    # decrease the maxInt value by factor 10 
-    # as long as the OverflowError occurs.
     try:
         csv.field_size_limit(maxInt)
         break
@@ -23,14 +21,8 @@ while True:
         maxInt = int(maxInt/10)
 
 nltk.download('punkt')
-# TODO check and improve language filter, don't know if it is needed
-# require that more than one term is present? probably no
-# removed: forum, collaborative, cloud
 whitelist = set(["backend", "frontend", "fullstack", "selfhost", "ecommerce", "platform", "cms", "localhost", "bulletin", "127.0.0.1"])
-# removed: web app
 group_whitelist = [["web", "application"], ["self", "host"], ["content", "management", "system"]]
-# add: cheat sheet (?)
-# TODO remove sample and example?
 blacklist = set(["library", "tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "book", "cybersecurity", "100daysofcode", "orm", "vulnerability", "vulnerabilities"]) # "api"
 stemmer = PorterStemmer()
 # csv_dir = Path(__file__).parent / "../django_filtered_list_final_v2.csv"
@@ -105,8 +97,7 @@ for repo_dir in repos_dir:
                             texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
                             text = ' '.join(texts)
                             split_text = [text[i:i+1700] for i in range(0, len(text), 1700)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
-                            translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # there might be an API limit, don't know if we will hit it
-                            # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
+                            translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text)
 
                             tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
                             readme_subdir = readme_dir.split("/")

@@ -2,12 +2,10 @@ import csv
 import sys
 from pathlib import Path
 
-# Number of repos: 1408 (with 10 or more stars), of which 92 (6.53%) where filtered out
-
 blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "flask", "book", "python", "django", "cybersecurity", "100daysofcode", "vulnerability", "vulnerabilities"] # "esercizi"
 # blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"], ["python", "100", "days"]]
 # blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
-path = Path(__file__).parent / '../django.csv'
+path = Path(__file__).parent / '../django_q4_dataset_before_post_processing.csv'
 path_o = Path(__file__).parent / '../django_filtered.csv'
 log_path = Path(__file__).parent / './filter_logs/django_filtered_the_truly_final_version_v2.txt'
 filtered_repos = 0
@@ -15,8 +13,6 @@ number_of_repos = 0
 
 maxInt = sys.maxsize
 while True:
-    # decrease the maxInt value by factor 10 
-    # as long as the OverflowError occurs.
     try:
         csv.field_size_limit(maxInt)
         break

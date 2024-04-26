@@ -4,8 +4,6 @@ import csv
 
 maxInt = sys.maxsize
 while True:
-    # decrease the maxInt value by factor 10 
-    # as long as the OverflowError occurs.
     try:
         csv.field_size_limit(maxInt)
         break
@@ -41,8 +39,8 @@ manual_filtered_list_true_negatives = unfiltered_list.difference(manual_filtered
 gpt_filtered_list_positives = unfiltered_list.intersection(loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - GPT.csv', "yes"))
 gpt_filtered_list_negatives = unfiltered_list.intersection(loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - GPT.csv', "no"))
 
-whitelist_filtered_list_positives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django_whitelist_filtered_v2.csv'))
-whitelist_filtered_list_negatives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django.csv')).difference(whitelist_filtered_list_positives)
+whitelist_filtered_list_positives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django_final_dataset.csv'))
+whitelist_filtered_list_negatives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django_q4_dataset_before_post_processing.csv')).difference(whitelist_filtered_list_positives)
 
 print(len(unfiltered_list))
 print(len(manual_filtered_list_true_positives))
