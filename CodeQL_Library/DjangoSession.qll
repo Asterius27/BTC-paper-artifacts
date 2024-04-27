@@ -23,7 +23,6 @@ module DjangoSession {
         }
     }
 
-    // TODO there might be other ways to set the password hashers (not sure because they are constants, so the only way to set them should be in the settings.py file (which is what this query checks))
     class PasswordHashersConfiguration extends DataFlow3::Configuration {
         PasswordHashersConfiguration() { this = "PasswordHashersConfiguration" }
 
@@ -94,7 +93,6 @@ module DjangoSession {
                 or result = getARequestObjectFromSuperClassOfClassViews(pos, cls)))
     }
 
-    // TODO have to make this recursive
     Parameter getARequestObjectFromSuperClassOfClassViews(int pos, Class cls) {
         exists(Class supercls | 
             supercls.getName() = cls.getABase().toString()
@@ -157,7 +155,7 @@ module DjangoSession {
         exists (Class cls, StrConst str | 
             str = getDefaultHashingAlg()
             and cls.getName() = str.getS().splitAt(".")
-            and cls.getABase() = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("hashers").getMember(alg).getAValueReachableFromSource().asExpr() // TODO have to test this
+            and cls.getABase() = API::moduleImport("django").getMember("contrib").getMember("auth").getMember("hashers").getMember(alg).getAValueReachableFromSource().asExpr()
             and (if exists(str.getS().prefix(28))
                 then str.getS().prefix(28) != "django.contrib.auth.hashers."
                 else any())

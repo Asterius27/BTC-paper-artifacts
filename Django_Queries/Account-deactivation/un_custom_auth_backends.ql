@@ -1,7 +1,6 @@
 import python
 import semmle.python.dataflow.new.DataFlow
 
-// TODO there might be other ways to change the password validators (not sure because they are constants, so the only way to set them should be in the settings.py file (which is what this query checks))
 class AuthBackendsConfiguration extends DataFlow::Configuration {
     AuthBackendsConfiguration() { this = "AuthBackendsConfiguration" }
 

@@ -1,7 +1,6 @@
 import python
 
 module InterproceduralControlFlow {
-    // TODO this might lead to infite recursion, have to put a time limit (or something) when using this function
     predicate reaches(ControlFlowNode source, ControlFlowNode sink) {
         source.strictlyReaches(sink)
         and exists(sink.getLocation().getFile().getRelativePath())
@@ -14,8 +13,6 @@ module InterproceduralControlFlow {
             and reaches(f.getAFlowNode(), sink))
     }
 
-    // TODO this might lead to infite recursion, have to put a time limit (or something) when using this function
-    // Interprocedural reachability query which also checks that the barrier control flow node is not in the path between source and sink
     predicate reachesWithBarrier(ControlFlowNode source, ControlFlowNode sink, ControlFlowNode barrier) {
         source.strictlyReaches(sink)
         and not (source.strictlyReaches(barrier) and barrier.strictlyReaches(sink))

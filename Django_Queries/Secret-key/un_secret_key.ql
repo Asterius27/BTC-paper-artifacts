@@ -2,7 +2,6 @@ import python
 import semmle.python.dataflow.new.DataFlow
 import semmle.python.dataflow.new.DataFlow2
 
-// TODO there might be other ways to set the secret key (not sure because they are constants, so the only way to set them should be in the settings.py file (which is what this query checks))
 class SecretKeyConfiguration extends DataFlow2::Configuration {
     SecretKeyConfiguration() { this = "SecretKeyConfiguration" }
 

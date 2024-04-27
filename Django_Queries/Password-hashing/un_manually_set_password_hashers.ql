@@ -1,7 +1,6 @@
 import python
 import semmle.python.dataflow.new.DataFlow
 
-// TODO there might be other ways to set the password hashers (not sure because they are constants, so the only way to set them should be in the settings.py file (which is what this query checks))
 class PasswordHashersConfiguration extends DataFlow::Configuration {
     PasswordHashersConfiguration() { this = "PasswordHashersConfiguration" }
 

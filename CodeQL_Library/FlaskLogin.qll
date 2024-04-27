@@ -2,8 +2,6 @@ import python
 import semmle.python.ApiGraphs
 import semmle.python.frameworks.Flask
 
-// TODO check the whole supertype chain (have to use recursion, it's probably better to only check the direct supertypes, which is what the query currently does, and ignore the rest of the chain because it would make the evaluation much slower and it would just catch a couple more cases (they are corner cases, not used as much))
-// TODO .getValue() is not intra nor interprocedural
 module FlaskLogin {
     bindingset[main, suf]
     int sufcalc(string main, string suf) {

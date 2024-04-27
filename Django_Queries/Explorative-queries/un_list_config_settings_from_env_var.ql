@@ -1,8 +1,6 @@
 import python
 import CodeQL_Library.DjangoSession
 
-// TODO see if there are other ways to set config variables from env, in general have a look at the results to see what the developers are doing
-
 class ConfigValueConfiguration extends DataFlow::Configuration {
     ConfigValueConfiguration() { this = "ConfigValueConfiguration" }
 
