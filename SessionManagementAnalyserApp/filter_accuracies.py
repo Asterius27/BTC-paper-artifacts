@@ -40,7 +40,7 @@ gpt_filtered_list_positives = unfiltered_list.intersection(loadGPTCSV(Path(__fil
 gpt_filtered_list_negatives = unfiltered_list.intersection(loadGPTCSV(Path(__file__).parent / './filtered_lists_to_calculate_accuracy/Session Management Repos - GPT.csv', "no"))
 
 whitelist_filtered_list_positives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django_final_dataset.csv'))
-whitelist_filtered_list_negatives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django_q4_dataset_before_post_processing.csv')).difference(whitelist_filtered_list_positives)
+whitelist_filtered_list_negatives = unfiltered_list.intersection(loadCSV(Path(__file__).parent / '../django_q3_dataset_before_post_processing.csv')).difference(whitelist_filtered_list_positives)
 
 print(len(unfiltered_list))
 print(len(manual_filtered_list_true_positives))
