@@ -5,7 +5,7 @@ from pathlib import Path
 blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "flask", "book", "python", "django", "cybersecurity", "100daysofcode", "vulnerability", "vulnerabilities"] # "esercizi"
 # blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"], ["python", "100", "days"]]
 # blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
-path = Path(__file__).parent / '../django_q3_dataset_before_post_processing.csv'
+path = Path(__file__).parent / '../django_q4_dataset_before_post_processing.csv'
 path_o = Path(__file__).parent / '../django_filtered.csv'
 log_path = Path(__file__).parent / './filter_logs/django_filtered_the_truly_final_version_v2.txt'
 filtered_repos = 0
