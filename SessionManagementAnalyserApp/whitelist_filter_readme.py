@@ -97,8 +97,7 @@ for repo_dir in repos_dir:
                             texts = [elem.text for elem in BeautifulSoup(htmlmarkdown, features="html.parser").findAll()]
                             text = ' '.join(texts)
                             split_text = [text[i:i+1700] for i in range(0, len(text), 1700)] # 499 for mymemory translator, 2000 for google translator (anything above that you're at risk of getting an api error for unknown reasons)
-                            translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text) # there might be an API limit, don't know if we will hit it
-                            # translated = MyMemoryTranslator(source='auto', target='english').translate_batch(split_text)
+                            translated = GoogleTranslator(source='auto', target='en').translate_batch(split_text)
 
                             tokens = word_tokenize(' '.join(translated)) # use text (the variable) to skip translation
                             readme_subdir = readme_dir.split("/")

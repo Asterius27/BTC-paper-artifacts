@@ -24,7 +24,6 @@ with path.open(encoding="utf8") as csv_file:
     with path_o.open("w", newline='', encoding="utf8") as csv_filtered:
         writer = csv.writer(csv_filtered)
         writer.writerow(["repo_name", "repo_url", "stars", "contributors", "commits", "last_commit_date", "forks", "jsonb_agg_lang", "homepage", "desc_url", "last_committer", "homepage_status", "desc_url_status", "python", "html", "css", "readme", "description", "readme_j"])
-        # writer.writerow(["repo_name", "repo_url", "stars", "contributors", "commits", "last_commit_date", "forks", "jsonb_agg_lang", "homepage", "desc_url", "last_committer", "homepage_status", "desc_url_status", "css", "python", "html", "description", "readme", "readme_j"])
         for row in reader:
             if int(row["stars"]) >= 1:
                 number_of_repos += 1
