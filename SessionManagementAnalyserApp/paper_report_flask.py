@@ -165,7 +165,7 @@ def getPercentage(value, total):
         return 0
     return round((value / total) * 100, 2)
 
-csv_dict = loadCSV(Path(__file__).parent / '../flask_final_dataset.csv')
+csv_dict = loadCSV(Path(__file__).parent / '../flask_q3_whitelist_filtered.csv')
 flask_login_usage = extractResults("Flask", ".", "flask_library_used_check", True, csv_dict)
 flask_login_required_usage = extractResults("Flask", "Login-restrictions", "un_no_authentication_checks_general", False, csv_dict)
 flask_custom_session_interface = extractResults("Flask", "Explorative-queries", "un_custom_session_interface", False, csv_dict)
@@ -176,22 +176,31 @@ no_fresh_login = extractResults("Flask", "Flask-login-session-protection", "uf_s
 session_protection_strong = extractResults("Flask", "Flask-login-session-protection", "sf_session_protection_strong", True, csv_dict)
 session_protection_basic = extractResults("Flask", "Flask-login-session-protection", "un_session_protection_basic_is_used", True, csv_dict)
 hardcoded_secret_key = extractResults("Flask", "Secret-key", "un_secret_key", True, csv_dict)
+not_hardcoded_secret_key = extractResults("Flask", "Secret-key", "un_secret_key", False, csv_dict)
 hardcoded_secret_key_potential_false_positives = extractFalsePositives("Flask", "Explorative-queries", "un_potential_false_positives", "un_secret_key ", True, csv_dict)
 hardcoded_secret_key_too_short = extractFalsePositives("Flask", "Secret-key", "un_secret_key", " and it's too short", True, csv_dict)
 custom_password_validators = extractResults("Flask", "Password-strength", "un_password_custom_checks", True, csv_dict)
 length_password_validators = extractResults("Flask", "Password-strength", "un_password_length_check", True, csv_dict)
 regexp_password_validators = extractResults("Flask", "Password-strength", "un_password_regexp_check", True, csv_dict)
 signup_form_not_validated = extractResults("Flask", "Password-strength", "un_form_with_password_field_is_validated", True, csv_dict)
+using_custom_regexp = extractResults("Flask", "Password-strength", "un_using_custom_regexp", True, csv_dict)
+using_re_module = extractResults("Flask", "Password-strength", "un_using_re_module", True, csv_dict)
+using_re_module_with_variable_password = extractResults("Flask", "Password-strength", "un_using_re_module_with_variable_named_password", True, csv_dict)
 min_lengths_password_validation = extractValues("Flask", "Password-strength", "un_password_length_check", "min value: ", True)
 max_lengths_password_validation = extractValues("Flask", "Password-strength", "un_password_length_check", "max value: ", True)
 csrf_enabled_globally = extractResults("Flask", "CSRF", "un_using_flaskwtf_csrf_protection", True, csv_dict)
 using_csrf_exempt = extractResults("Flask", "CSRF", "un_using_csrf_exempt", True, csv_dict)
 using_csrf_protect = extractResults("Flask", "CSRF", "un_using_csrf_protect", True, csv_dict)
+generate_csrf_token = extractResults("Flask", "CSRF", "un_generate_csrf_token_is_used", True, csv_dict)
 using_flaskform_csrf = extractResults("Flask", "CSRF", "un_using_flaskform", True, csv_dict)
 using_flaskform_with_csrf_disabled = extractResults("Flask", "CSRF", "un_using_flaskform_with_csrf_disabled", True, csv_dict)
 disabled_flask_wtf_csrf_protection = extractResults("Flask", "CSRF", "un_disabled_wtf_csrf_check", True, csv_dict)
 disabled_flask_wtf_csrf_global_protection = extractResults("Flask", "CSRF", "un_disabled_wtf_csrf", True, csv_dict)
 using_wtforms_csrf_protection = extractResults("Flask", "CSRF", "un_using_wtforms_csrf_protection", True, csv_dict)
+views_with_db_writes = extractResults("Flask", "CSRF", "un_extract_views_with_db_writes", True, csv_dict)
+views_with_login_required = extractResults("Flask", "CSRF", "un_extract_views_with_login_required", True, csv_dict)
+views_with_user_access = extractResults("Flask", "CSRF", "un_extract_views_with_user_access", True, csv_dict)
+views = extractResults("Flask", "CSRF", "un_extract_views", True, csv_dict)
 using_flask_wtf = extractResults("Flask", "Password-strength", "un_flask_wtf_is_used", True, csv_dict)
 using_wtforms = extractResults("Flask", "Password-strength", "un_wtforms_is_used", True, csv_dict)
 argon2_is_used = extractResults("Flask", "Password-hashing", "un_argon2_is_used", True, csv_dict)
@@ -241,9 +250,11 @@ session_protection_strong_set = repos_session_protection.intersection(keys_sessi
 uncategorized_session_protection = repos_session_protection.difference(no_session_protection.union(session_protection_basic_set).union(session_protection_strong_set).union())
 
 keys_hardcoded_secret_key = set(hardcoded_secret_key)
+keys_not_hardcoded_secret_key = set(not_hardcoded_secret_key)
 keys_hardcoded_secret_key_potential_false_positives = set(hardcoded_secret_key_potential_false_positives)
 keys_hardcoded_secret_key_too_short = set(hardcoded_secret_key_too_short)
 repos_hardcoded_secret_key = repos.intersection(keys_hardcoded_secret_key)
+repos_not_hardcoded_secret_key = repos.intersection(keys_not_hardcoded_secret_key)
 hardcoded_secret_key_false_positives = repos_hardcoded_secret_key.intersection(keys_hardcoded_secret_key_potential_false_positives)
 hardcoded_secret_key_true_positives = repos_hardcoded_secret_key.difference(keys_hardcoded_secret_key_potential_false_positives)
 hardcoded_secret_key_too_short_true_positives = hardcoded_secret_key_true_positives.intersection(keys_hardcoded_secret_key_too_short)
@@ -258,6 +269,9 @@ length_and_regexp_password_validators = keys_account_creation.intersection(keys_
 performing_password_validation = keys_account_creation.intersection(keys_custom_password_validators.union(keys_length_password_validators).union(keys_regexp_password_validators))
 not_performing_password_validation = keys_account_creation.difference(performing_password_validation)
 not_validating_password_fields_with_validators = performing_password_validation.intersection(keys_signup_form_not_validated)
+key_custom_regexp = keys_account_creation.intersection(set(using_custom_regexp))
+key_re_module = keys_account_creation.intersection(set(using_re_module))
+key_re_module_with_variable_password = keys_account_creation.intersection(set(using_re_module_with_variable_password))
 
 keys_csrf_enabled_globally = set(csrf_enabled_globally)
 keys_using_csrf_exempt = set(using_csrf_exempt)
@@ -267,6 +281,11 @@ keys_using_flaskform_with_csrf_disabled = set(using_flaskform_with_csrf_disabled
 keys_disabled_flask_wtf_csrf_protection = set(disabled_flask_wtf_csrf_protection)
 keys_disabled_flask_wtf_csrf_global_protection = set(disabled_flask_wtf_csrf_global_protection)
 keys_using_wtforms_csrf_protection = set(using_wtforms_csrf_protection)
+keys_generate_csrf_token = repos.intersection(set(generate_csrf_token))
+keys_views = repos.intersection(set(views))
+keys_views_with_db_writes = repos.intersection(set(views_with_db_writes))
+keys_views_with_login_required = repos.intersection(set(views_with_login_required))
+keys_views_with_user_access = repos.intersection(set(views_with_user_access))
 keys_using_flask_wtf = repos.intersection(set(using_flask_wtf))
 keys_using_wtforms = repos.intersection(set(using_wtforms))
 repos_using_csrf_library = keys_using_flask_wtf.union(keys_using_wtforms).union(repos.intersection(keys_csrf_enabled_globally)).difference(keys_disabled_flask_wtf_csrf_global_protection)
@@ -277,17 +296,8 @@ csrf_protection_selectively_disabled = repos_using_csrf_library.intersection(key
 csrf_protection_selectively_activated = repos_using_csrf_library.difference(keys_disabled_flask_wtf_csrf_global_protection).difference(keys_csrf_enabled_globally.difference(keys_disabled_flask_wtf_csrf_protection)).difference(keys_using_flaskform_with_csrf_disabled).intersection(keys_using_flaskform_csrf.union(keys_using_csrf_protect).union(keys_using_wtforms_csrf_protection))
 csrf_protection_disabled = repos_using_csrf_library.difference(keys_csrf_enabled_globally).difference(keys_using_flaskform_csrf.union(keys_using_wtforms_csrf_protection).union(keys_using_csrf_protect)).union(repos_using_csrf_library.intersection(keys_disabled_flask_wtf_csrf_global_protection))
 not_using_csrf_library = repos.difference(repos_using_csrf_library).difference(repos_with_csrf_disabled)
-
-""" csrf_categories_union = csrf_protection_global.union(csrf_protection_global_selectively_disabled).union(csrf_protection_selectively_activated).union(csrf_protection_disabled).union(csrf_protection_selectively_disabled)
-not_in_any_csrf_category = repos_using_csrf_library.difference(csrf_protection_global).difference(csrf_protection_global_selectively_disabled).difference(csrf_protection_selectively_activated).difference(csrf_protection_disabled).difference(csrf_protection_selectively_disabled)
-all_elements = list(csrf_protection_global) + list(csrf_protection_global_selectively_disabled) + list(csrf_protection_selectively_activated) + list(csrf_protection_disabled) + list(csrf_protection_selectively_disabled)
-repos_in_more_than_one_category = set()
-unique_elements = set()
-for element in csrf_categories_union:
-    if element in unique_elements:
-        repos_in_more_than_one_category.add(element)
-    else:
-        unique_elements.add(element) """
+keys_views_with_user_access_or_login_required = keys_views_with_user_access.union(keys_views_with_login_required)
+keys_views_with_user_access_or_login_required_and_db_writes = keys_views_with_user_access_or_login_required.intersection(keys_views_with_db_writes)
 
 keys_argon2_is_used = keys_account_creation.intersection(set(argon2_is_used).union(set(passlib_argon2_is_used)))
 keys_bcrypt_is_used = keys_account_creation.intersection(set(bcrypt_is_used).union(set(flask_bcrypt_is_used)).union(set(passlib_bcrypt_is_used)))
@@ -306,13 +316,6 @@ repos_using_pbkdf2_not_owasp_compliant = keys_pbkdf2_is_used.difference(keys_pbk
 not_using_a_recommended_algorithm = repos_with_password_hashing.difference(keys_argon2_is_used.union(keys_bcrypt_is_used).union(keys_scrypt_is_used).union(keys_pbkdf2_is_used))
 not_using_supported_libraries = keys_account_creation.difference(repos_with_password_hashing)
 
-""" print("argon2_is_used: " + str(len(keys_account_creation.intersection(set(argon2_is_used)))))
-print("bcrypt_is_used: " + str(len(keys_account_creation.intersection(set(bcrypt_is_used)))))
-print("flask_bcrypt_is_used: " + str(len(keys_account_creation.intersection(set(flask_bcrypt_is_used)))))
-print("passlib_is_used: " + str(len(keys_account_creation.intersection(set(passlib_is_used)))))
-print("werkzeug_is_used: " + str(len(keys_account_creation.intersection(set(werkzeug_is_used)))))
-print("hashlib_is_used: " + str(len(keys_account_creation.intersection(set(hashlib_is_used))))) """
-
 counter_flask = len(repos)
 counter_account_creation = len(keys_account_creation)
 
@@ -323,6 +326,7 @@ counter_session_protection_false_positives = len(keys_session_protection_potenti
 counter_uncategorized_session_protection = len(uncategorized_session_protection)
 
 counter_hardcoded_secret_keys = len(repos_hardcoded_secret_key)
+counter_not_hardcoded_secret_keys = len(repos_not_hardcoded_secret_key)
 counter_hardcoded_secret_keys_false_positives = len(hardcoded_secret_key_false_positives)
 counter_hardcoded_secret_key_true_positives = len(hardcoded_secret_key_true_positives)
 counter_hardcoded_secret_key_too_short_true_positives = len(hardcoded_secret_key_too_short_true_positives)
@@ -336,6 +340,9 @@ counter_not_performing_password_validation = len(not_performing_password_validat
 counter_not_validating_password_fields_with_validators = len(not_validating_password_fields_with_validators)
 counter_min_length_password_validation = len(keys_min_length_password_validation)
 counter_max_length_password_validation = len(keys_max_length_password_validation)
+counter_custom_regexp = len(key_custom_regexp)
+counter_re_module = len(key_re_module)
+counter_re_module_with_variable_password = len(key_re_module_with_variable_password)
 
 counter_csrf_activated = len(csrf_protection_global)
 counter_csrf_deactivated_selectively = len(csrf_protection_global_selectively_disabled)
@@ -345,10 +352,10 @@ counter_csrf_deactivated = len(csrf_protection_disabled)
 counter_repos_using_csrf_library = len(repos_using_csrf_library) + len(repos_with_csrf_disabled)
 counter_not_using_csrf_library = len(not_using_csrf_library)
 counter_repos_with_csrf_disabled = len(repos_with_csrf_disabled)
-
-""" counter_csrf_categories_union = len(csrf_categories_union)
-counter_not_in_any_csrf_category = len(not_in_any_csrf_category)
-counter_repos_in_more_than_one_category = len(repos_in_more_than_one_category) """
+counter_generate_csrf_token = len(keys_generate_csrf_token)
+counter_views = len(keys_views)
+counter_views_with_user_access_or_login_required = len(keys_views_with_user_access_or_login_required)
+counter_views_with_user_access_or_login_required_and_db_writes = len(keys_views_with_user_access_or_login_required_and_db_writes)
 
 counter_repos_with_password_hashing = len(repos_with_password_hashing)
 counter_not_using_a_recommended_algorithm = len(not_using_a_recommended_algorithm)
@@ -371,9 +378,9 @@ saveDictsToFile(["session_management", "account_creation"], [repos, keys_account
 saveDictsToFile(["no_session_protection", "session_protection_basic", "session_protection_strong", "potential_false_positives_session_protection", "uncategorized_session_protection"],
                 [no_session_protection, session_protection_basic_set, session_protection_strong_set, keys_session_protection_potential_false_positives, uncategorized_session_protection],
                 [[session_protection_none, no_fresh_login], [flask_login_usage], [session_protection_strong], [session_protection_potential_false_positives], [flask_login_usage]])
-saveDictsToFile(["hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys", "hardcoded_secret_key_too_short_true_positives"],
-                [repos_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives, hardcoded_secret_key_too_short_true_positives],
-                [[hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key], [hardcoded_secret_key]])
+saveDictsToFile(["hardcoded_secret_keys", "not_hardcoded_secret_keys", "potential_false_positives_hardcoded_secret_keys", "true_positives_hardcoded_secret_keys", "hardcoded_secret_key_too_short_true_positives"],
+                [repos_hardcoded_secret_key, repos_not_hardcoded_secret_key, hardcoded_secret_key_false_positives, hardcoded_secret_key_true_positives, hardcoded_secret_key_too_short_true_positives],
+                [[hardcoded_secret_key], [not_hardcoded_secret_key], [hardcoded_secret_key_potential_false_positives], [hardcoded_secret_key], [hardcoded_secret_key]])
 saveDictsToFile(["not_performing_password_validation", "custom_password_validators", "length_password_validators", "regexp_password_validators", "length_and_regexp_password_validators", "not_validating_password_fields_with_validators"],
                 [not_performing_password_validation, keys_custom_password_validators, keys_length_password_validators, keys_regexp_password_validators, length_and_regexp_password_validators, not_validating_password_fields_with_validators],
                [[flask_wtf_account_creation], [custom_password_validators], [length_password_validators], [regexp_password_validators], [length_password_validators, regexp_password_validators], [signup_form_not_validated]])
@@ -392,11 +399,12 @@ saveDictsToFile(["argon2_owasp_compliant", "scrypt_owasp_compliant", "bcrypt_owa
                  [hashlib_pbkdf2_is_used, passlib_pbkdf2_is_used, werkzeug_pbkdf2_is_used]])
 saveDictsToFile(["bcrypt_owasp_compliant_false_positives"], [keys_bcrypt_is_owasp_compliant_false_positives], [[flask_bcrypt_is_owasp_compliant_false_positives]])
 saveDistributionsToFile(["password_validation_min_lengths", "password_validation_max_lengths"], [keys_min_length_password_validation, keys_max_length_password_validation], [[min_lengths_password_validation], [max_lengths_password_validation]], [True, False])
-""" saveDictsToFile(["csrf_categories_union", "not_in_any_csrf_category", "in_more_than_one_category"], 
-                [csrf_categories_union, not_in_any_csrf_category, repos_in_more_than_one_category], 
-                [[using_wtforms, using_flask_wtf, csrf_enabled_globally], 
-                [csrf_enabled_globally, using_csrf_exempt, using_csrf_protect, using_flaskform_csrf, using_flaskform_with_csrf_disabled, disabled_flask_wtf_csrf_protection, disabled_flask_wtf_csrf_global_protection, using_wtforms_csrf_protection, using_flask_wtf, using_wtforms], 
-                [csrf_enabled_globally, using_csrf_exempt, using_csrf_protect, using_flaskform_csrf, using_flaskform_with_csrf_disabled, disabled_flask_wtf_csrf_protection, disabled_flask_wtf_csrf_global_protection, using_wtforms_csrf_protection, using_flask_wtf, using_wtforms]]) """
+saveDictsToFile(["views", "using_custom_regexp", "using_re_module_with_variable_password", "generate_csrf_token"], 
+                [keys_views, key_custom_regexp, key_re_module_with_variable_password, keys_generate_csrf_token], 
+                [[views], [using_custom_regexp], [using_re_module_with_variable_password], [generate_csrf_token]])
+saveDictsToFile(["using_re_module", "views_with_user_access_or_login_required", "views_with_user_access_or_login_required_and_db_writes"], 
+                [key_re_module, keys_views_with_user_access_or_login_required, keys_views_with_user_access_or_login_required_and_db_writes], 
+                [[using_re_module], [views_with_user_access, views_with_login_required], [views_with_db_writes]])
 
 report = """
 <p>There are <a href="{}" target="_blank">{}</a> flask repos for Session Management and <a href="{}" target="_blank">{}</a> flask repos for Account Creation<br></p>
@@ -410,7 +418,10 @@ report = """
 <a href="{}" target="_blank">{}</a> enforce a maximum length ({} %)<br>
 <a href="{}" target="_blank">{}</a> check the password against a regexp ({} %)<br>
 <a href="{}" target="_blank">{}</a> combine length checks and regular expression checks ({} %)<br>
-<a href="{}" target="_blank">{}</a> use a custom validator ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> use a custom validator ({} %)<br>
+<a href="{}" target="_blank">{}</a> use a custom regexp to check password strength (python's re module) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use a custom regexp (python's re module) ({} %)<br>
+<a href="{}" target="_blank">{}</a> use a custom regexp with variable named password (python's re module) ({} %)<br></p>
 <h3>Password Hashing</h3>
 <p><a href="{}" target="_blank">{}</a> applications use some form of (supported) password hashing ({} %)<br>
 <a href="{}" target="_blank">{}</a> applications do not use one of the supported password hashing libraries or do not perform password hashing ({} %)<br>
@@ -426,7 +437,8 @@ report = """
 <a href="{}" target="_blank">{}</a> bcrypt owasp compliance is potentially a false positive ({} %)<br></p>
 <h2>Session Management</h2>
 <h3>Cryptographic Keys</h3>
-<p><a href="{}" target="_blank">{}</a> had a hardcoded secret key ({} %)<br>
+<p><a href="{}" target="_blank">{}</a> have a hardcoded secret key ({} %)<br>
+<a href="{}" target="_blank">{}</a> do not have a hardcoded secret key ({} %)<br>
 <a href="{}" target="_blank">{}</a> set the secret key more than once (and it's hardcoded at least once), so it's a false positive potentially ({} %)<br>
 <a href="{}" target="_blank">{}</a> set the secret key to a hardcoded string every time, so it's a true positive ({} %)<br>
 <a href="{}" target="_blank">{}</a> set the secret key to a hardcoded string every time, so it's a true positive and it's too short ({} %)<br></p>
@@ -438,7 +450,11 @@ report = """
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, but it is activated on some views or forms ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF global protection is deactivated, and the default FlaskForm CSRF protection is also selectively deactivated (so either it is fully deactivated or some forms are still protected) ({} %)<br>
 <a href="{}" target="_blank">{}</a> CSRF protection is deactivated everywhere, so either the app is doing something custom or it's vulnerable ({} %)<br>
-<a href="{}" target="_blank">{}</a> manually disable CSRF (likely) for testing purposes (CSRF protection deactivated potential false positives) ({} %)<br></p>
+<a href="{}" target="_blank">{}</a> manually disable CSRF (likely) for testing purposes (CSRF protection deactivated potential false positives) ({} %)<br>
+<a href="{}" target="_blank">{}</a> using generate csrf token ({} %)<br>
+<a href="{}" target="_blank">{}</a> have a view ({} %)<br>
+<a href="{}" target="_blank">{}</a> have a view that requires the user to be logged in or accesses the user object ({} %)<br>
+<a href="{}" target="_blank">{}</a> have a view that requires the user to be logged in or accesses the user object and writes to the db ({} %)<br></p>
 <h3>Session Protection</h3>
 <p><a href="{}" target="_blank">{}</a> didn't use session protection ({} %)<br>
 <a href="{}" target="_blank">{}</a> used basic session protection ({} %)<br>
@@ -465,6 +481,9 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./regexp_password_validators.txt", str(counter_regexp_password_validators), str(getPercentage(counter_regexp_password_validators, counter_account_creation)),
                             "./length_and_regexp_password_validators.txt", str(counter_length_and_regexp_password_validators), str(getPercentage(counter_length_and_regexp_password_validators, counter_account_creation)),
                             "./custom_password_validators.txt", str(counter_custom_password_validators), str(getPercentage(counter_custom_password_validators, counter_account_creation)),
+                            "./using_custom_regexp.txt", str(counter_custom_regexp), str(getPercentage(counter_custom_regexp, counter_account_creation)),
+                            "./using_re_module.txt", str(counter_re_module), str(getPercentage(counter_re_module, counter_account_creation)),
+                            "./using_re_module_with_variable_password.txt", str(counter_re_module_with_variable_password), str(getPercentage(counter_re_module_with_variable_password, counter_account_creation)),
                             "./using_password_hashing.txt", str(counter_repos_with_password_hashing), str(getPercentage(counter_repos_with_password_hashing, counter_account_creation)),
                             "./not_using_supported_library.txt", str(counter_not_using_supported_libraries), str(getPercentage(counter_not_using_supported_libraries, counter_account_creation)),
                             "./not_using_recommended_algorithm.txt", str(counter_not_using_a_recommended_algorithm), str(getPercentage(counter_not_using_a_recommended_algorithm, counter_account_creation)),
@@ -478,10 +497,11 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./bcrypt_not_owasp_compliant.txt", str(counter_bcrypt_not_owasp_compliant), str(getPercentage(counter_bcrypt_not_owasp_compliant, counter_account_creation)),
                             "./bcrypt_owasp_compliant_false_positives.txt", str(counter_bcrypt_is_owasp_compliant_false_positives), str(getPercentage(counter_bcrypt_is_owasp_compliant_false_positives, counter_account_creation)),
                             "./hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys), str(getPercentage(counter_hardcoded_secret_keys, counter_flask)),
+                            "./not_hardcoded_secret_keys.txt", str(counter_not_hardcoded_secret_keys), str(getPercentage(counter_not_hardcoded_secret_keys, counter_flask)),
                             "./potential_false_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_keys_false_positives), str(getPercentage(counter_hardcoded_secret_keys_false_positives, counter_hardcoded_secret_keys)), 
                             "./true_positives_hardcoded_secret_keys.txt", str(counter_hardcoded_secret_key_true_positives), str(getPercentage(counter_hardcoded_secret_key_true_positives, counter_hardcoded_secret_keys)),
                             "./hardcoded_secret_key_too_short_true_positives.txt", str(counter_hardcoded_secret_key_too_short_true_positives), str(getPercentage(counter_hardcoded_secret_key_too_short_true_positives, counter_hardcoded_secret_keys)),
-                            ".not_using_csrf_library/.txt", str(counter_not_using_csrf_library), str(getPercentage(counter_not_using_csrf_library, counter_flask)),
+                            "./not_using_csrf_library.txt", str(counter_not_using_csrf_library), str(getPercentage(counter_not_using_csrf_library, counter_flask)),
                             "./using_csrf_library.txt", str(counter_repos_using_csrf_library), str(getPercentage(counter_repos_using_csrf_library, counter_flask)),
                             "./csrf_activated_globally.txt", str(counter_csrf_activated), str(getPercentage(counter_csrf_activated, counter_repos_using_csrf_library)),
                             "./csrf_deactivated_selectively.txt", str(counter_csrf_deactivated_selectively), str(getPercentage(counter_csrf_deactivated_selectively, counter_repos_using_csrf_library)),
@@ -489,6 +509,10 @@ report_html = report.format("./session_management.txt", str(counter_flask), "./a
                             "./csrf_disabled_and_selectively_disabled.txt", str(counter_csrf_deactivated_selectively_disabled), str(getPercentage(counter_csrf_deactivated_selectively_disabled, counter_repos_using_csrf_library)),
                             "./csrf_deactivated_globally.txt", str(counter_csrf_deactivated), str(getPercentage(counter_csrf_deactivated, counter_repos_using_csrf_library)),
                             "./disabling_csrf.txt", str(counter_repos_with_csrf_disabled), str(getPercentage(counter_repos_with_csrf_disabled, counter_repos_using_csrf_library)),
+                            "./generate_csrf_token.txt", str(counter_generate_csrf_token),  str(getPercentage(counter_generate_csrf_token, counter_flask)),
+                            "./views.txt", str(counter_views), str(getPercentage(counter_views, counter_flask)),
+                            "./views_with_user_access_or_login_required.txt", str(counter_views_with_user_access_or_login_required), str(getPercentage(counter_views_with_user_access_or_login_required, counter_flask)),
+                            "./views_with_user_access_or_login_required_and_db_writes.txt", str(counter_views_with_user_access_or_login_required_and_db_writes), str(getPercentage(counter_views_with_user_access_or_login_required_and_db_writes, counter_flask)),
                             "./no_session_protection.txt", str(counter_no_session_protection), str(getPercentage(counter_no_session_protection, counter_flask)),
                             "./session_protection_basic.txt", str(counter_session_protection_basic), str(getPercentage(counter_session_protection_basic, counter_flask)), 
                             "./session_protection_strong.txt", str(counter_session_protection_strong), str(getPercentage(counter_session_protection_strong, counter_flask)),

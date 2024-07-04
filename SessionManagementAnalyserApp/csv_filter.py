@@ -5,9 +5,9 @@ from pathlib import Path
 blacklist_terms = ["tutorial", "docs", "ctf", "test", "challenge", "demo", "example", "sample", "bootcamp", "assignment", "workshop", "homework", "course", "exercise", "hack", "vulnerable", "snippet", "internship", "programming", "flask", "book", "python", "django", "cybersecurity", "100daysofcode", "vulnerability", "vulnerabilities"] # "esercizi"
 # blacklist_term_groups = [["learn", "python"], ["learn", "flask"], ["learn", "django"], ["youtube", "code"], ["python", "code"], ["python", "100", "days"]]
 # blacklist_users = ["PacktPublishing", "rithmschool", "UCLComputerScience", "easyctf", "JustDoPython"]
-path = Path(__file__).parent / '../django_q4_dataset_before_post_processing.csv'
-path_o = Path(__file__).parent / '../django_filtered.csv'
-log_path = Path(__file__).parent / './filter_logs/django_filtered_the_truly_final_version_v2.txt'
+path = Path(__file__).parent / '../flask_q2.csv'
+path_o = Path(__file__).parent / '../flask_q2_filtered.csv'
+log_path = Path(__file__).parent / './filter_logs/flask_q2_filtered.txt'
 filtered_repos = 0
 number_of_repos = 0
 
@@ -23,7 +23,8 @@ with path.open(encoding="utf8") as csv_file:
     reader = csv.DictReader(csv_file)
     with path_o.open("w", newline='', encoding="utf8") as csv_filtered:
         writer = csv.writer(csv_filtered)
-        writer.writerow(["repo_name", "repo_url", "stars", "contributors", "commits", "update_date", "forks", "jsonb_agg_lang", "jsonb_agg_readme", "description"])
+        writer.writerow(["repo_name", "repo_url", "stars", "contributors", "commits", "last_commit_date", "forks", "jsonb_agg_lang", "homepage", "desc_url", "last_committer", "homepage_status", "desc_url_status", "python", "html", "css", "readme", "description", "readme_j"])
+        # writer.writerow(["repo_name", "repo_url", "stars", "contributors", "commits", "last_commit_date", "forks", "jsonb_agg_lang", "homepage", "desc_url", "last_committer", "homepage_status", "desc_url_status", "css", "python", "html", "description", "readme", "readme_j"])
         for row in reader:
             if int(row["stars"]) >= 1:
                 number_of_repos += 1

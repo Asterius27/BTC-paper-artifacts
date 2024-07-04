@@ -134,7 +134,9 @@ module FlaskLogin {
         exists(DataFlow::Node env | 
             (env = API::moduleImport("os").getMember("getenv").getACall()
                 or env = API::moduleImport("os").getMember("environ").getASubscript().getAValueReachableFromSource()
-                or env = API::moduleImport("os").getMember("environ").getMember("get").getAValueReachableFromSource())
+                or env = API::moduleImport("os").getMember("environ").getMember("get").getAValueReachableFromSource()
+                or env = API::moduleImport("environs").getMember("Env").getReturn().getACall()
+                or env = API::moduleImport("environs").getMember("Env").getReturn().getAMember().getACall())
             and exists(env.getLocation().getFile().getRelativePath())
             and exists(value.getLocation().getFile().getRelativePath())
             and value.getAFlowNode() = env.asCfgNode())
@@ -221,5 +223,34 @@ module FlaskLogin {
                     or cls.getName().toLowerCase().matches("%usersform%")
                     or cls.getName().toLowerCase().matches("%registform%"))
                 and result = cls)
+    }
+
+    string getPasswordFieldName(Class cls) {
+        exists(DataFlow::Node node | 
+            (node = API::moduleImport("wtforms").getMember("PasswordField").getReturn().getAValueReachableFromSource()
+                or node = API::moduleImport("flask_wtf").getMember("PasswordField").getReturn().getAValueReachableFromSource())
+            and cls.getBody().contains(node.asCfgNode().getNode())
+            and result = node.asExpr().(Name).toString())
+    }
+
+    Class getClassViews() {
+        exists(Class cls, DataFlow::Node node |
+            (node = API::moduleImport("flask").getMember("views").getMember("View").getAValueReachableFromSource()
+                or node = API::moduleImport("flask").getMember("views").getMember("MethodView").getAValueReachableFromSource())
+            and cls.getABase() = node.asExpr()
+            and result = cls)
+    }
+    
+    Function getFunctionViews() {
+        exists(Function f |
+            (f.getADecorator().(Call).getFunc().(Attribute).getAttr() = "route"
+                or f.getADecorator().(Call).getFunc().(Attribute).getAttr() = "get"
+                or f.getADecorator().(Call).getFunc().(Attribute).getAttr() = "post"
+                or f.getADecorator().(Call).getFunc().(Attribute).getAttr() = "put"
+                or f.getADecorator().(Call).getFunc().(Attribute).getAttr() = "delete"
+                or f.getADecorator().(Call).getFunc().(Attribute).getAttr() = "patch"
+                or f.getADecorator().(Call).getFunc().(Attribute).getAttr() = "options"
+                or f.getADecorator().(Call).getFunc().(Attribute).getAttr() = "head")
+            and result = f)
     }
 }

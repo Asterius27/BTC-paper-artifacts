@@ -7,7 +7,12 @@ string output(Expr seckey) {
     else result = "The secret key is a hardcoded string"
 }
 
-from Expr expr
-where expr = FlaskLogin::getConfigValue("SECRET_KEY", "secret_key")
-  and expr instanceof StrConst
-select expr, expr.getLocation(), output(expr), expr.(StrConst).getS()
+from Expr expr, StrConst str
+where (expr = FlaskLogin::getConfigValue("SECRET_KEY", "secret_key")
+    	and expr instanceof StrConst
+		and str = expr)
+	or (expr = FlaskLogin::getConfigSinkFromEnvVar("SECRET_KEY", "secret_key")
+		and exists(expr.getLocation().getFile().getRelativePath())
+		and (str = expr.(Call).getNamedArg(0).(Keyword).getValue().(StrConst)
+			or str = expr.(Call).getPositionalArg(1).(StrConst)))
+select str, str.getLocation(), output(str), str.getS()

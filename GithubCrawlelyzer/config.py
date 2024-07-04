@@ -1,4 +1,4 @@
-GIT_API_KEY = "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"
-GIT_API_KEYS = "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,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"
-GIT_API_KEYS = "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"
+GIT_API_KEY = "<api_key>"
+GIT_API_KEYS = "<api_key>,<api_key>"
+GIT_API_KEYS = "<api_key>"
 PROCESSES = 4
