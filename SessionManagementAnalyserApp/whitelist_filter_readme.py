@@ -48,7 +48,7 @@ if not os.path.isfile('./whitelist_and_blacklist_filtered_repos.csv'):
         output.write("repo_url\n") # TODO repo_name,repo_url,stars,contributors,commits,update_date,forks,jsonb_agg_lang,jsonb_agg_readme
 """
 
-with open("../django_q2_filtered.csv", encoding='utf8') as csv_file:
+with open("../django_q3_filtered.csv", encoding='utf8') as csv_file:
     reader = csv.DictReader(csv_file, delimiter=',')
     for row in reader:
         owner = row["repo_url"].split("/")[3]
